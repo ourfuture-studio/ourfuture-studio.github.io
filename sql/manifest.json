@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "engine": "sql.js 1.13.0",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "b175645fec8bc8ddc15baaa265a96da6c5c6dfc6edb5ffe858c6a1b64f44a4e8"
+    },
+    {
+      "file": "lab.html",
+      "sha256": "3b21bb5f1fbde652fdefb7474ac9a6bac52abc2e3fd71886aa2a85bd08ef1356"
+    },
+    {
+      "file": "lab.css",
+      "sha256": "a5ec33ba287ef17a009747052057f60383a1290d0ff424ca134a52a99d7ec0db"
+    },
+    {
+      "file": "catalog.js",
+      "sha256": "a6b03fde692df4e079f5d09cc56b6c433bc3979ad2215e87d31f5fefa7dc73bc"
+    },
+    {
+      "file": "lab.js",
+      "sha256": "ae6184cfdb80422d180385dd51300ba469cccb6a4d943926ad726ef08b35a474"
+    },
+    {
+      "file": "engine-worker.js",
+      "sha256": "19fc5924691b303be3346731d65f7ff3751e9346d199339edcb34093a0bb287d"
+    },
+    {
+      "file": "episodes.json",
+      "sha256": "4647506b2bc2d99d51449fd52918326aa57afafd85fe28221595dde9e8a55a83"
+    },
+    {
+      "file": "theory-links.json",
+      "sha256": "fd2f928acbc71ed066f8b9b9b5e401b56a5e5fc3fe04677dd03b523cfc8d6d79"
+    },
+    {
+      "file": "vendor/sql-wasm.js",
+      "sha256": "694ca5b36aa3e6e71f417819d7df390b65343665fcfa5c69015ca33d93d291b3"
+    },
+    {
+      "file": "vendor/sql-wasm.wasm",
+      "sha256": "0734155c83e493983d1f2ff5b09a4fab6e35a32e9449c7e4e545756439f62d73"
+    },
+    {
+      "file": "vendor/LICENSE-sql.js.txt",
+      "sha256": "60a3f6e4d7b29b4321359e683b36cf198d24f58e24582070f56e6fa89d5ee2be"
+    },
+    {
+      "file": "vendor/AUTHORS-sql.js.txt",
+      "sha256": "2bb11c65286bd0f2919022e119671036ff8d85c6cd1522b6ebcc1362e67f2ce5"
+    },
+    {
+      "file": "theory/E001.html",
+      "sha256": "4e53ba21b73d1e2f7120ac2e071a918de5e7ca2fb4419bdc8a9783cd75221412"
+    },
+    {
+      "file": "theory/E025.html",
+      "sha256": "0b0170c6ec4e1b12a0bde4a037bd48a419d8ed9609761779dcaf1cdc311ce6c7"
+    },
+    {
+      "file": "theory/E004.html",
+      "sha256": "abd58bca3a9b513686abd1f752b5f96962da9f288525989aa1832392e635695f"
+    },
+    {
+      "file": "theory/E016.html",
+      "sha256": "86615c37d586f5548af612cd878810bff7e488671b9ffeb8ec745067770d7187"
+    },
+    {
+      "file": "theory/E019.html",
+      "sha256": "5cff28e9668f8f74921f5f5f96a16fa350fb8e50187641c700d2984859c77197"
+    },
+    {
+      "file": "theory/E026.html",
+      "sha256": "c26c952f4ddac0a5d7b6009b80febdf306f32e0ca38586739c4841e5f2d7cfdd"
+    },
+    {
+      "file": "theory/E002.html",
+      "sha256": "01c1aaac50aaf7b2ffe13541e687da055b23d90d5c108a012797e09f764de523"
+    },
+    {
+      "file": "theory/E011.html",
+      "sha256": "f5fdbcf75aa1594ecfc3d5e7e009d9f2b7cb7addd5eff3023e71fa63133898db"
+    },
+    {
+      "file": "theory/E005.html",
+      "sha256": "6914aa18aeb403ee50d6fe9153ebd14d8e728f7b52d3d71117a3858a9ce59c67"
+    },
+    {
+      "file": "theory/E003.html",
+      "sha256": "7bb684039be4077c2770d813c7561f23257491a9100072902b28194655798608"
+    },
+    {
+      "file": "theory/E018.html",
+      "sha256": "07f3e6824e05c1d6004901afbba59620343d7add5a70710133b970cfac496a1c"
+    },
+    {
+      "file": "theory/E021.html",
+      "sha256": "484a03e55ea032182e03338acb120afdc709b8a9ebe539d15c9553f97079a064"
+    }
+  ]
+}
