@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>필터와 특징 맵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg button:disabled{color:var(--label);cursor:default}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
+.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:400}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
+body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+#g .px{cursor:pointer}
+body.shorts .insight p{line-height:1.5}
+body.shorts .result{margin-bottom:6px;font-size:22px}
+body.shorts figure{border:0}
+body.shorts .controls{margin:10px 0 6px}
+body.shorts .ctl-run{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-23</div>
+  <h1>필터는 이미지에서 무엇을 찾을까<span class="dot">.</span></h1>
+  <p class="lede">3×3 필터를 8×8 이미지 위에 한 칸씩 밀며, 겹친 9칸의 원소곱을 모두 더한 값을 특징 맵에 적습니다. 필터 모양과 같은 무늬가 있는 곳에서 값이 커집니다. 필터를 바꾸고 [한 칸씩]을 눌러 보세요. 입력 픽셀은 눌러서 켜고 끌 수 있습니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">8×8 흑백 그림 · 손으로 그린 예시</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">필터</span>
+      <span class="seg" role="group" aria-label="필터">
+        <button data-f="v" aria-pressed="true">세로선</button>
+        <button data-f="h" aria-pressed="false">가로선</button>
+        <button data-f="blur" aria-pressed="false">흐리기</button>
+      </span>
+    </div>
+    <div class="ctl-extra"><span class="mono ctl-label">입력</span>
+      <span class="seg" role="group" aria-label="입력 그림">
+        <button data-img="seven" aria-pressed="true">숫자 7</button>
+        <button data-img="square" aria-pressed="false">사각형</button>
+      </span>
+    </div>
+    <div class="ctl-run"><span class="seg" role="group" aria-label="진행">
+        <button id="stepBtn">한 칸씩</button>
+        <button id="playBtn" aria-pressed="false">재생</button>
+        <button id="endBtn" class="ctl-extra">끝까지</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="g" viewBox="0 0 760 330" role="img" aria-label="입력 이미지, 필터, 특징 맵"></svg>
+    <figcaption class="mono">입력: ■ 채운 칸 = 1 · □ 빈 칸 = 0 · 붉은 테두리 = 현재 필터 창(칸 속 숫자 = 필터 값) · 특징 맵: 청록 = 양수, 주황 = 음수, 진할수록 절댓값이 큼, 숫자 = 값 · 위치 (행, 열)은 0부터 셉니다</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>스트라이드 1, 패딩 없음: 출력 크기 = 8 − 3 + 1 = 6, 그래서 6×6 특징 맵입니다. 각 칸은 out[i][j] = Σₐ Σ_b in[i+a][j+b] · k[a][b] (a, b = 0, 1, 2)입니다.</p>
+    <p>PyTorch·TensorFlow 같은 딥러닝 라이브러리의 ‘convolution’은 실제로는 필터를 뒤집지 않는 교차상관(cross-correlation)이며, 이 페이지도 그렇게 계산합니다. 수학의 합성곱은 필터를 180° 뒤집어 곱합니다. 필터를 학습으로 정하는 신경망에서는 뒤집힌 필터를 배우면 되므로 결과에 차이가 없습니다. 여기 보인 세로선·가로선 필터는 좌우·상하 대칭이라 뒤집어도 같습니다.</p>
+    <p>필터 값은 설명용으로 직접 정했습니다. CNN에서는 필터 값을 학습하며, 보통 편향을 더하고 ReLU 같은 활성화를 거칩니다(여기서는 생략). 흐리기 필터는 9칸 평균(모든 값 1/9)이고 특징 맵 숫자는 소수 둘째 자리로 반올림했습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const IMGS={
+    seven:['00000000','01111110','00000100','00001000','00010000','00010000','00010000','00000000'],
+    square:['00000000','01111110','01000010','01000010','01000010','01000010','01111110','00000000']
+  };
+  const FILT={
+    v:{name:'세로선',k:[[-1,2,-1],[-1,2,-1],[-1,2,-1]],lab:['−1','2','−1']},
+    h:{name:'가로선',k:[[-1,-1,-1],[2,2,2],[-1,-1,-1]]},
+    blur:{name:'흐리기',k:[[1/9,1/9,1/9],[1/9,1/9,1/9],[1/9,1/9,1/9]]}
+  };
+  let img=IMGS.seven.map(r=>r.split('').map(Number)), fk='v', k=0, playing=false, raf=0, last=0, imgName='seven';
+  const N=8, M=6;
+  const NS='http://www.w3.org/2000/svg';
+  const svg=document.getElementById('g');
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);(p||svg).appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const hex=c=>{c=c.replace('#','');return [0,2,4].map(i=>parseInt(c.substr(i,2),16));};
+  const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,i)=>Math.round(v*t+B[i]*(1-t))).join(',')+')';};
+  const isBlur=()=>fk==='blur';
+  const fmtV=v=>{if(isBlur()){const r=Math.round(v*100)/100;return r===0?'0':r.toFixed(2);} const r=Math.round(v);return r>0?'+'+r:(r<0?'−'+(-r):'0');};
+  const wTxt=w=>isBlur()?'1/9':(w<0?'−'+(-w):String(w));
+
+  function conv(){
+    const K=FILT[fk].k, out=[];
+    for(let i=0;i<M;i++){out.push([]);for(let j=0;j<M;j++){let s=0;for(let a=0;a<3;a++)for(let b=0;b<3;b++)s+=img[i+a][j+b]*K[a][b];out[i].push(s);}}
+    return out;
+  }
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts');
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), c1=css('--c1'), c2=css('--c2');
+    const Lo=big?{vb:[400,456],inp:[10,30,25],fil:[250,60,40],out:[10,268,31],fs:15,ts:15}
+                :{vb:[760,330],inp:[20,42,34],fil:[338,110,34],out:[492,42,38],fs:13,ts:13};
+    svg.setAttribute('viewBox',`0 0 ${Lo.vb[0]} ${Lo.vb[1]}`);
+    const out=conv(), K=FILT[fk].k, ci=Math.floor(k/M), cj=k%M;
+    const maxAbs=Math.max(1e-9,...out.flat().map(Math.abs));
+    const T=(x,y,s,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono','font-size':Lo.fs,fill:ink},a));e.textContent=s;return e;};
+    // 입력
+    const [ix,iy,ic]=Lo.inp;
+    T(ix,iy-10,'입력 8×8',{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
+    for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+      const on=img[r][c]===1, rc=el('rect',{x:ix+c*ic,y:iy+r*ic,width:ic,height:ic,fill:on?ink:bg,stroke:rule,'stroke-width':1,class:'px','data-r':r,'data-c':c});
+    }
+    el('rect',{x:ix,y:iy,width:N*ic,height:N*ic,fill:'none',stroke:label,'stroke-width':1});
+    // 필터 창
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++){
+      const r=ci+a,c=cj+b,on=img[r][c]===1;
+      T(ix+c*ic+ic/2,iy+r*ic+ic/2+Lo.fs*0.36,wTxt(K[a][b]),{'text-anchor':'middle','font-size':(isBlur()?Lo.fs*0.8:Lo.fs),fill:on?bg:acc,'pointer-events':'none'});
+    }
+    el('rect',{x:ix+cj*ic,y:iy+ci*ic,width:3*ic,height:3*ic,fill:'none',stroke:acc,'stroke-width':3,'pointer-events':'none'});
+    // 필터
+    const [fx,fy,fc]=Lo.fil;
+    T(fx,fy-10,`필터 · ${FILT[fk].name}`,{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++){
+      const w=K[a][b];
+      el('rect',{x:fx+b*fc,y:fy+a*fc,width:fc,height:fc,fill:isBlur()?mix(c1,bg,.12):(w>0?mix(c1,bg,.22):mix(c2,bg,.16)),stroke:label,'stroke-width':1});
+      T(fx+b*fc+fc/2,fy+a*fc+fc/2+Lo.fs*0.36,wTxt(w),{'text-anchor':'middle','font-size':isBlur()?Lo.fs*0.85:Lo.fs});
+    }
+    if(!big){T(fx+1.5*fc,fy+3*fc+24,'원소곱 후 합',{'text-anchor':'middle',fill:label,'font-size':12,'font-family':'IBM Plex Sans KR'});
+      T(fx+1.5*fc,fy+3*fc+44,'→',{'text-anchor':'middle',fill:label,'font-size':18});}
+    // 출력
+    const [ox,oy,oc]=Lo.out;
+    T(ox,oy-10,'특징 맵 6×6',{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
+    for(let i=0;i<M;i++)for(let j=0;j<M;j++){
+      const idx=i*M+j, done=idx<=k, v=out[i][j];
+      const t=Math.abs(v)/maxAbs, fill=!done?bg:(Math.abs(v)<1e-9?bg:mix(v>0?c1:c2,bg,0.12+0.5*t));
+      el('rect',{x:ox+j*oc,y:oy+i*oc,width:oc,height:oc,fill,stroke:rule,'stroke-width':1});
+      if(done)T(ox+j*oc+oc/2,oy+i*oc+oc/2+Lo.fs*0.36,fmtV(v),{'text-anchor':'middle','font-size':isBlur()?Lo.fs*0.8:Lo.fs});
+    }
+    el('rect',{x:ox,y:oy,width:M*oc,height:M*oc,fill:'none',stroke:label,'stroke-width':1});
+    el('rect',{x:ox+cj*oc,y:oy+ci*oc,width:oc,height:oc,fill:'none',stroke:acc,'stroke-width':3});
+    // 쇼츠: 현재 계산을 오른쪽 아래 빈칸에
+    const v=out[ci][cj];
+    if(big){
+      T(222,300,`위치 (${ci},${cj})`,{fill:label,'font-size':16});
+      T(222,342,'합 =',{'font-size':20,'font-family':'IBM Plex Sans KR'});
+      T(222,388,fmtV(v),{'font-size':36,fill:Math.abs(v)<1e-9?ink:(v>0?c1:c2)});
+      T(222,440,`${k+1} / 36칸`,{fill:label,'font-size':15});
+    }
+
+    // 문구
+    const terms=[];let ones=0;
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++){const p=img[ci+a][cj+b];ones+=p;terms.push(`${p}·${wTxt(K[a][b]).replace('−','(−')+(K[a][b]<0?')':'')}`);}
+    document.getElementById('formula').textContent=isBlur()
+      ? `위치 (${ci},${cj}): (1/9) × (${terms.map(s=>s.split('·')[0]).join(' + ')}) = ${ones}/9 = ${fmtV(v)}`
+      : `위치 (${ci},${cj}): ${terms.join(' + ')} = ${fmtV(v)}`;
+    const vr=fmtV(v);
+    let res, ex;
+    if(k===M*M-1){
+      let bi=0,bj=0;out.forEach((row,i)=>row.forEach((x,j)=>{if(x>out[bi][bj]){bi=i;bj=j;}}));
+      res=`특징 맵 완성 · 가장 큰 값 <b>${fmtV(out[bi][bj])}</b> (위치 ${bi},${bj})`;
+      ex=fk==='v'?'세로 획이 있는 곳이 청록으로 밝게 떴습니다. 획 바로 옆은 필터의 −1 칸에 걸려 음수(주황)가 됩니다.'
+        :fk==='h'?'가로 획이 있는 곳이 청록으로 떴습니다. 같은 그림이라도 필터가 다르면 전혀 다른 부분을 찾아냅니다.'
+        :'흐리기는 9칸 평균이라 음수가 없고, 획이 부드럽게 번진 그림이 됩니다. 무늬를 찾기보다 잡음을 줄이는 필터입니다.';
+    }else{
+      res=`위치 (${ci},${cj}) · 원소곱의 합 = <b>${vr}</b>`;
+      ex=isBlur()?`창 안 검은 칸 ${ones}개 → 평균 ${ones}/9. 흐리기는 무늬와 상관없이 밝기의 평균만 냅니다.`
+        :(v>0?`창 안의 무늬가 필터의 ‘2’ 줄(${fk==='v'?'가운데 열':'가운데 행'})과 겹쳐 양수가 나왔습니다.`
+        :v<0?`검은 칸이 필터의 ‘−1’ 칸에 걸려 음수가 나왔습니다. 찾는 선의 옆자리라는 뜻입니다.`
+        :`양수와 음수가 상쇄되었거나 창이 비어 있어 0입니다.`);
+    }
+    document.getElementById('result').innerHTML=big?`(${ci},${cj}) 합 = <b>${vr}</b>`:res;
+    document.getElementById('explain').innerHTML=big?(fk==='v'?'세로 획 위에서 커지고, 옆에서 음수.':fk==='h'?'가로 획 위에서 커지고, 위아래에서 음수.':'9칸 평균 — 음수 없이 번집니다.'):ex;
+    if(big&&k===M*M-1)document.getElementById('result').innerHTML=`완성 · 최댓값 <b>${fmtV(Math.max(...out.flat()))}</b>`;
+    document.getElementById('stepBtn').disabled=k>=M*M-1;
+  }
+
+  svg.addEventListener('click',e=>{const t=e.target;if(t.classList&&t.classList.contains('px')){const r=+t.dataset.r,c=+t.dataset.c;img[r][c]=1-img[r][c];draw();}});
+  function go(n){k=Math.max(0,Math.min(M*M-1,n));draw();}
+  document.getElementById('stepBtn').addEventListener('click',()=>{setPlay(false);go(k+1);});
+  document.getElementById('endBtn').addEventListener('click',()=>{setPlay(false);go(M*M-1);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{setPlay(false);go(0);});
+  const pb=document.getElementById('playBtn');
+  function tick(ts){if(!playing)return;if(ts-last>420){last=ts;if(k>=M*M-1){setPlay(false);return;}go(k+1);}raf=requestAnimationFrame(tick);}
+  function setPlay(on){playing=on;pb.textContent=on?'일시정지':'재생';pb.setAttribute('aria-pressed',on);cancelAnimationFrame(raf);
+    if(on){if(k>=M*M-1)go(0);last=performance.now();raf=requestAnimationFrame(tick);}}
+  pb.addEventListener('click',()=>setPlay(!playing));
+  document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>{fk=b.dataset.f;document.querySelectorAll('[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
+  document.querySelectorAll('[data-img]').forEach(b=>b.addEventListener('click',()=>{imgName=b.dataset.img;img=IMGS[imgName].map(r=>r.split('').map(Number));document.querySelectorAll('[data-img]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
+  const sbt=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sbt.setAttribute('aria-pressed',on);draw();}
+  sbt.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?filter=v|h|blur&img=seven|square&pos=1~36&play=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('filter'))document.querySelector(`[data-f="${u.get('filter')}"]`)?.click();
+  if(u.get('img'))document.querySelector(`[data-img="${u.get('img')}"]`)?.click();
+  if(u.get('pos'))k=Math.max(0,Math.min(M*M-1,(parseInt(u.get('pos'))||1)-1));
+  if(u.get('shorts')==='1')setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+  if(u.get('play')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)setPlay(true);
+  window.__conv=conv; // 검증용
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>어텐션 히트맵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg button:disabled{color:var(--label);cursor:default}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
+.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:400}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
+body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+.disc{font-size:14px;color:var(--ink2);border-left:2px solid var(--accent);padding:2px 0 2px 12px;margin:14px 0 0}
+#g text.tok{cursor:pointer}
+#g rect.cell{cursor:pointer}
+.mats{display:flex;flex-wrap:wrap;gap:12px 28px;margin:10px 0}
+.mats table{width:auto;font-family:'IBM Plex Mono',monospace;font-size:13px;margin:0}
+.mats td,.mats th{padding:2px 8px}
+.mats caption{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);text-align:left;padding-bottom:2px}
+body.shorts .mats, body.shorts .ctl-tau{display:none}
+body.shorts .insight p{line-height:1.5}
+body.shorts .result{margin-bottom:6px;font-size:22px}
+body.shorts figure{border:0}
+body.shorts .controls{margin:10px 0 6px}
+body.shorts .disc{display:none}
+.disc-s{display:none}
+body.shorts .disc-s{display:block;font-size:12px;margin:6px 0 0;color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-24</div>
+  <h1>단어는 다른 단어를 얼마나 볼까<span class="dot">.</span></h1>
+  <p class="lede">어텐션은 각 단어(질의 Q)가 문장의 모든 단어(키 K)와 얼마나 맞는지 내적으로 점수를 매기고, softmax로 합이 1인 가중치로 바꿉니다. 행을 눌러 한 단어가 어디를 보는지 확인하고, √d 나누기를 끄거나 온도를 바꿔 분포가 얼마나 날카로워지는지 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 장난감 계산</span><span class="mono">6토큰 · 손으로 만든 임베딩 d=4</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">스케일</span>
+      <span class="seg" role="group" aria-label="점수 스케일">
+        <button data-scale="sqrt" aria-pressed="true">÷√d (표준)</button>
+        <button data-scale="none" aria-pressed="false">÷1 (안 나눔)</button>
+      </span>
+    </div>
+    <div class="ctl-tau"><label class="mono ctl-label" for="tau">온도 τ</label><input type="range" id="tau" min="0.25" max="3" step="0.05" value="1"><span class="val" id="tauV">1.00</span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="g" viewBox="0 0 760 430" role="img" aria-label="어텐션 가중치 히트맵"></svg>
+    <figcaption class="mono">행 = 보는 단어(질의) · 열 = 보이는 단어(키) · 칸 숫자 = 가중치(각 행의 합 = 1) · 진할수록 큼(5단계: 0.1 · 0.2 · 0.35 · 0.5 경계) · 오른쪽 막대 = 선택한 행</figcaption>
+  </figure>
+  <p class="mono disc-s">장난감 계산 · 실제 모델의 학습된 가중치 아님</p>
+  <p class="disc">실제 언어모델에서 학습된 가중치가 아니라, 원리를 보여 주려고 손으로 정한 숫자로 계산한 장난감 계산입니다.</p>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+  <p class="formula" id="formula"></p>
+  <div class="mats" id="mats"></div>
+
+  <div class="notes">
+    <p>계산: Q = E·W_Q, K = E·W_K, 점수 S = Q·Kᵀ, 가중치 A = softmax(S / (√d·τ)) — softmax는 각 행(질의)마다 키 6개에 대해 적용합니다. d = 4이므로 √d = 2. 표준 트랜스포머는 τ = 1, ÷√d입니다. τ와 ‘÷1’ 토글은 점수의 크기가 분포의 날카로움을 어떻게 바꾸는지 보여 주려고 넣었습니다(÷√d에서 τ = 0.5는 √4 = 2이므로 ÷1·τ = 1과 같은 결과입니다).</p>
+    <p>√d로 나누는 이유: 차원 d가 커지면 내적의 크기(분산)가 d에 비례해 커지고, softmax가 한 칸에 쏠려 기울기가 매우 작아지기 때문입니다(Vaswani 외, 2017).</p>
+    <p>단순화: 임베딩 E(4차원: 사물·조사·장소·동작 느낌의 축)와 W_Q, W_K는 설명용으로 직접 정했고, W_K는 단위행렬입니다. 위치 인코딩·여러 헤드·값(V)과의 곱·마스킹은 생략했습니다. 위치 정보가 없으므로 ‘가’와 ‘에’는 어느 명사 뒤에 붙었는지 모르고, 단어 뜻 축만으로 점수가 정해집니다. 실제 모델의 어텐션 패턴은 이와 다르며, 어텐션 가중치를 곧바로 ‘설명’으로 해석하는 데에도 한계가 있습니다.</p>
+    <p>모든 숫자는 이 페이지가 브라우저에서 직접 계산한 값입니다(표시는 소수 둘째 자리 반올림이라 행 합이 1.00과 0.01 정도 다르게 보일 수 있습니다).</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const TOK=['고양이','가','매트','위','에','앉았다'];
+  // 손으로 만든 임베딩 (축: 사물·명사, 조사, 장소, 동작)
+  const E=[[1,0,0,0],[0,1,0,0],[0.6,0,1,0],[0.2,0,0.8,0],[0,1,1,0],[0,0,0,1]];
+  const WQ=[[0,0,0,3],[4,0,0,0],[1,0,3,0],[4,0,1,0]];
+  const WK=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];
+  const D=4;
+  let row=5, scale='sqrt', tau=1;
+  const mm=(A,B)=>A.map(r=>B[0].map((_,j)=>r.reduce((s,v,k)=>s+v*B[k][j],0)));
+  const Q=mm(E,WQ), K=mm(E,WK);
+  const S=Q.map(q=>K.map(k=>q.reduce((s,v,i)=>s+v*k[i],0)));
+  function attn(sc,t){
+    const div=(sc==='sqrt'?Math.sqrt(D):1)*t;
+    return S.map(r=>{const z=r.map(v=>v/div), m=Math.max(...z), e=z.map(v=>Math.exp(v-m)), Z=e.reduce((a,b)=>a+b,0);return e.map(v=>v/Z);});
+  }
+  const NS='http://www.w3.org/2000/svg';
+  const svg=document.getElementById('g');
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);(p||svg).appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const hex=c=>{c=c.replace('#','');return [0,2,4].map(i=>parseInt(c.substr(i,2),16));};
+  const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,i)=>Math.round(v*t+B[i]*(1-t))).join(',')+')';};
+  const lum=rgb=>{const v=rgb.match(/\d+/g).map(Number).map(c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);});return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];};
+  const f2=v=>v.toFixed(2), f3=v=>v.toFixed(3);
+  const LV=[0.1,0.2,0.35,0.5], SH=[0.06,0.2,0.38,0.58,0.85];
+  const level=w=>LV.filter(x=>w>=x).length;
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts');
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    const A=attn(scale,tau);
+    const Lo=big?{vb:[400,436],hx:80,hy:28,c:44,fs:15,ls:16,bx:80,by:328,bw:250,bh:18}
+                :{vb:[760,430],hx:90,hy:44,c:62,fs:15,ls:15,bx:560,by:70,bw:150,bh:44};
+    svg.setAttribute('viewBox',`0 0 ${Lo.vb[0]} ${Lo.vb[1]}`);
+    const T=(x,y,s,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono','font-size':Lo.fs,fill:ink},a));e.textContent=s;return e;};
+    // 열 이름 (키)
+    TOK.forEach((t,j)=>T(Lo.hx+j*Lo.c+Lo.c/2,Lo.hy-10,t,{'text-anchor':'middle','font-size':Lo.ls-1,fill:label,'font-family':'IBM Plex Sans KR'}));
+    if(!big)T(Lo.hx+3*Lo.c,14,'키 (보이는 단어) →',{'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Sans KR'});
+    for(let i=0;i<6;i++){
+      const sel=i===row;
+      const tl=T(Lo.hx-10,Lo.hy+i*Lo.c+Lo.c/2+5,TOK[i],{'text-anchor':'end','font-size':Lo.ls,fill:sel?acc:ink,'font-family':'IBM Plex Sans KR','font-weight':sel?600:400,class:'tok','data-i':i});
+      for(let j=0;j<6;j++){
+        const w=A[i][j], lv=level(w);
+        const cf=mix(acc,bg,SH[lv]);
+        el('rect',{x:Lo.hx+j*Lo.c,y:Lo.hy+i*Lo.c,width:Lo.c,height:Lo.c,fill:cf,stroke:bg,'stroke-width':1.5,class:'cell','data-i':i});
+        T(Lo.hx+j*Lo.c+Lo.c/2,Lo.hy+i*Lo.c+Lo.c/2+5,f2(w),{'text-anchor':'middle',fill:lum(cf)>0.18?'#1B2340':'#FFFFFF','pointer-events':'none','font-size':Lo.fs-1});
+      }
+    }
+    el('rect',{x:Lo.hx-1,y:Lo.hy+row*Lo.c,width:6*Lo.c+2,height:Lo.c,fill:'none',stroke:ink,'stroke-width':2.5,'pointer-events':'none'});
+    if(!big){const y0=Lo.hy+3*Lo.c;const t=T(16,y0,'질의 (보는 단어)',{'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Sans KR',transform:`rotate(-90 16 ${y0})`});}
+
+    // 선택한 행의 막대
+    const r=A[row], sum=r.reduce((a,b)=>a+b,0), mx=Math.max(...r);
+    if(!big){
+      T(Lo.bx-70,Lo.by-30,`‘${TOK[row]}’가 주는 가중치`,{'font-size':13,fill:label,'font-family':'IBM Plex Sans KR'});
+      r.forEach((w,j)=>{
+        const y=Lo.by+j*Lo.bh;
+        T(Lo.bx-10,y+Lo.bh/2+5,TOK[j],{'text-anchor':'end','font-size':14,'font-family':'IBM Plex Sans KR'});
+        el('rect',{x:Lo.bx,y:y+8,width:Lo.bw,height:Lo.bh-16,fill:'none',stroke:rule});
+        el('rect',{x:Lo.bx,y:y+8,width:Lo.bw*w,height:Lo.bh-16,fill:w===mx?acc:ink});
+        T(Lo.bx+Lo.bw+8,y+Lo.bh/2+5,f3(w),{'font-size':13});
+      });
+      const ys=Lo.by+6*Lo.bh+22;
+      el('line',{x1:Lo.bx-60,x2:Lo.bx+Lo.bw+50,y1:ys-16,y2:ys-16,stroke:rule});
+      T(Lo.vb[0]-8,ys+2,`합 ${f3(sum)}`,{'font-size':13,fill:acc,'text-anchor':'end'});
+      T(Lo.bx-10,ys+2,'행 합',{'text-anchor':'end','font-size':13,fill:label,'font-family':'IBM Plex Sans KR'});
+    }else{
+      const y0=Lo.by;
+      T(Lo.bx-10,y0-10,`‘${TOK[row]}’ 행 · 합 ${f3(sum)}`,{'font-size':14,fill:label,'font-family':'IBM Plex Sans KR','text-anchor':'start'});
+      r.forEach((w,j)=>{
+        const y=y0+j*Lo.bh;
+        T(Lo.bx-10,y+Lo.bh/2+5,TOK[j],{'text-anchor':'end','font-size':14,'font-family':'IBM Plex Sans KR'});
+        el('rect',{x:Lo.bx,y:y+3,width:Lo.bw*w,height:Lo.bh-6,fill:w===mx?acc:ink});
+        T(Lo.bx+Lo.bw*w+6,y+Lo.bh/2+5,f2(w),{'font-size':13});
+      });
+    }
+
+    // 문구
+    const jm=r.indexOf(mx);
+    const other=attn(scale==='sqrt'?'none':'sqrt',tau)[row], omx=Math.max(...other);
+    const sharp=scale==='none'?'나누지 않으면':'√d로 나누면';
+    document.getElementById('result').innerHTML=big
+      ? `‘${TOK[row]}’ → ‘${TOK[jm]}’ <b>${f2(mx)}</b>`
+      : (jm===row?`‘${TOK[row]}’는 자기 자신을 가장 많이 봅니다 · <b>${f2(mx)}</b>`:`‘${TOK[row]}’는 ‘${TOK[jm]}’를 가장 많이 봅니다 · <b>${f2(mx)}</b>`);
+    const ent=-r.reduce((s,w)=>s+(w>0?w*Math.log(w):0),0);
+    document.getElementById('explain').innerHTML=big
+      ? (scale==='none'?`÷√d를 끄면 최댓값 ${f2(mx)} — 더 쏠립니다.`:`÷√d를 끄면 ${f2(omx)}까지 쏠립니다.`)
+      : `지금 설정(${scale==='sqrt'?'÷√d':'÷1'}, τ=${tau.toFixed(2)})에서 이 행의 최댓값은 ${f2(mx)}, 엔트로피는 ${ent.toFixed(2)}입니다(균등이면 ln 6 ≈ 1.79). ${scale==='sqrt'?'√d로 나누지 않으면':'√d로 나누면'} 최댓값이 ${f2(omx)}가 됩니다. 점수를 크게 만들수록(÷1, 작은 τ) 분포가 한 단어로 쏠리고, 작게 만들수록(큰 τ) 고르게 퍼집니다.`;
+    const div=(scale==='sqrt'?Math.sqrt(D):1)*tau;
+    document.getElementById('formula').innerHTML=
+      `‘${TOK[row]}’의 q = [${Q[row].join(', ')}] · 점수 q·k = [${S[row].map(v=>+v.toFixed(2)).join(', ')}]<br>`+
+      `가중치 = softmax(점수 / ${div.toFixed(2)}) → ‘${TOK[jm]}’: exp(${(S[row][jm]/div).toFixed(2)}) / Σ exp(…) = ${f3(mx)} · 행 합 = ${f3(sum)}`;
+    document.getElementById('tauV').textContent=tau.toFixed(2);
+  }
+
+  // 행렬 표
+  const tbl=(cap,M,rowNames,colNames)=>`<table><caption>${cap}</caption><thead><tr><th></th>${colNames.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${M.map((r,i)=>`<tr><th>${rowNames[i]}</th>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  document.getElementById('mats').innerHTML=tbl('임베딩 E (6×4)',E,TOK,['사물','조사','장소','동작'])+tbl('W_Q (4×4)',WQ,['1','2','3','4'],['1','2','3','4'])+tbl('W_K (4×4)',WK,['1','2','3','4'],['1','2','3','4']);
+
+  svg.addEventListener('click',e=>{const t=e.target;if(t.dataset&&t.dataset.i!==undefined){row=+t.dataset.i;draw();}});
+  document.querySelectorAll('[data-scale]').forEach(b=>b.addEventListener('click',()=>{scale=b.dataset.scale;document.querySelectorAll('[data-scale]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
+  const ts=document.getElementById('tau');
+  ts.addEventListener('input',()=>{tau=+ts.value;draw();});
+  const sbt=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sbt.setAttribute('aria-pressed',on);draw();}
+  sbt.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?row=0~5&scale=sqrt|none&tau=0.25~3&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('row'))row=Math.max(0,Math.min(5,parseInt(u.get('row'))||0));
+  if(u.get('scale'))document.querySelector(`[data-scale="${u.get('scale')}"]`)?.click();
+  if(u.get('tau')){const v=parseFloat(u.get('tau'));if(!isNaN(v)){tau=Math.max(0.25,Math.min(3,v));ts.value=tau;}}
+  if(u.get('shorts')==='1')setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

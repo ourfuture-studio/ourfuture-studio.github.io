@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROC 곡선 그리기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.slider{display:flex;align-items:center;gap:12px;flex:1 1 320px}
+.slider input{flex:1;accent-color:var(--ink)}
+.slider output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4.5em}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+td.num{text-align:right}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .controls{display:none}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:12px 16px;margin:12px 0}
+body.shorts #explain{font-size:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 08 검증·성능평가 · VIZ-26</div>
+  <h1>ROC 곡선은 어떻게 그려질까<span class="dot">.</span></h1>
+  <p class="lede">분류 모델은 점수를 내고, 우리는 임계값 이상을 ‘양성’이라 부릅니다. 임계값 하나가 ROC 평면의 점 하나(위양성률, 재현율)를 만들고, 임계값을 끝까지 내리면 그 점들이 곡선이 됩니다. 슬라이더를 오른쪽 끝에서 왼쪽으로 끌어 보거나 [재생]을 눌러 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">양성 20개 · 음성 20개 · 고정 시드로 만든 점수</span></p>
+
+  <div class="controls">
+    <label class="slider"><span class="mono">임계값 t</span>
+      <input id="t" type="range" min="0" max="100" step="1" value="100" aria-label="임계값">
+      <output id="tOut">1.00</output>
+    </label>
+    <span class="seg" role="group" aria-label="재생">
+      <button id="play" aria-pressed="false">재생</button>
+      <button id="step">한 단계</button>
+      <button id="reset">처음으로</button>
+    </span>
+    <span class="seg" role="group" aria-label="전체 곡선">
+      <button id="full" aria-pressed="false">전체 곡선 보기</button>
+    </span>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 640" role="img" aria-label="두 클래스 점수 분포와 ROC 곡선"></svg>
+    <figcaption class="mono">● 실제 양성 · ○ 실제 음성 · 세로선 = 임계값(이 값 이상이면 양성으로 예측) · 아래: 가로 = 위양성률(FPR), 세로 = 재현율(TPR) · 점선 대각선 = 무작위 기준</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="AUC 두 가지 계산">
+    <thead><tr><th>AUC 계산 방법</th><th>과정</th><th style="text-align:right">계산 결과</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>점수는 음성 평균 0.40, 양성 평균 0.62, 표준편차 0.15인 정규분포에서 고정 시드(mulberry32, 26)로 뽑아 0.02~0.98로 자르고 소수 둘째 자리로 반올림했습니다. 반올림 때문에 양성·음성이 같은 점수인 동점이 생기며, 그 구간에서 ROC 곡선은 계단이 아니라 대각선으로 이어집니다.</p>
+    <p>AUC는 전체 곡선의 꼭짓점을 사다리꼴 공식으로 적분한 값과, 양성·음성 20×20 = 400쌍을 모두 비교해 ‘양성 점수가 더 높은 쌍 + 동점 쌍 × 0.5’를 400으로 나눈 값(만-휘트니 U / 400)을 따로 계산해 보여 줍니다. 두 값은 수학적으로 같습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: 고정 시드 점수 (정수 = 점수 × 100)
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const rnd = mulberry32(26);
+  const gauss = ()=>{const u1=rnd(), u2=rnd(); return Math.sqrt(-2*Math.log(1-u1))*Math.cos(2*Math.PI*u2);};
+  const score = mu => Math.min(98, Math.max(2, Math.floor((mu+0.15*gauss())*100+0.5)));
+  const NEG = Array.from({length:20},()=>score(0.40));
+  const POS = Array.from({length:20},()=>score(0.62));
+  const P=POS.length, N=NEG.length;
+
+  const rate = v => ({tp:POS.filter(s=>s>=v).length, fp:NEG.filter(s=>s>=v).length});
+  // 전체 곡선: 서로 다른 점수를 큰 것부터 임계값으로
+  const uniq = [...new Set(POS.concat(NEG))].sort((a,b)=>b-a);
+  const CURVE = [{v:101,fpr:0,tpr:0}].concat(uniq.map(v=>{const r=rate(v);return {v,fpr:r.fp/N,tpr:r.tp/P};}));
+  let aucTrap=0; for(let i=1;i<CURVE.length;i++) aucTrap += (CURVE[i].fpr-CURVE[i-1].fpr)*(CURVE[i].tpr+CURVE[i-1].tpr)/2;
+  let win=0, tie=0; POS.forEach(p=>NEG.forEach(n=>{ if(p>n) win++; else if(p===n) tie++; }));
+  const aucPair = (win+0.5*tie)/(P*N);
+
+  let tv=100, full=false, playing=false, raf=0, last=0;
+  const visited = new Set([100]);
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const txt=(s,a,p)=>{const t=el('text',a,p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const f2=v=>(v/100).toFixed(2), f3=v=>v.toFixed(3);
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.9:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box');
+    const mono={'font-family':'IBM Plex Mono'};
+    // ---- 위: 점수 분포 ----
+    const L=110, R=690, sx=s=>L+(s/100)*(R-L);
+    const axisY = big?190:150, dr=big?10.5:6.5, gap=dr*2+1.5;
+    const H0 = big?350:270;   // 분포 영역 높이
+    svg.setAttribute('viewBox', `0 0 720 ${big?H0+510:640}`);
+    // 예측 양성 영역
+    el('rect',{x:sx(tv), y:big?34:24, width:Math.max(0,R+20-sx(tv)), height:H0-(big?60:44), fill:box});
+    txt('양성으로 예측', {x:R+22, 'text-anchor':'end', y:H0-(big?44:42), 'font-size':12*F, fill:label, ...mono});
+    el('line',{x1:L,x2:R,y1:axisY,y2:axisY,stroke:label,'stroke-width':1});
+    for(let s=0;s<=100;s+=20){
+      el('line',{x1:sx(s),x2:sx(s),y1:axisY-4,y2:axisY+4,stroke:label});
+    }
+    txt('0', {x:sx(0), y:H0-(big?6:10), 'text-anchor':'middle','font-size':12*F, fill:label, ...mono});
+    txt('1', {x:sx(100), y:H0-(big?6:10), 'text-anchor':'middle','font-size':12*F, fill:label, ...mono});
+    txt('모델 점수', {x:(L+R)/2, y:H0-(big?6:10), 'text-anchor':'middle','font-size':12*F, fill:label});
+    // 쌓기: 같은 줄에서 겹치면 한 칸 위(양성)/아래(음성)로
+    function stack(arr, dir){
+      const items=arr.map((s,i)=>({s,i})).sort((a,b)=>a.s-b.s), levels=[];
+      items.forEach(it=>{ let lv=0; while(levels[lv]!==undefined && sx(it.s)-levels[lv] < gap) lv++; levels[lv]=sx(it.s); it.lv=lv; });
+      return items.map(it=>({s:it.s, x:sx(it.s), y:axisY + dir*(dr+3+it.lv*gap)}));
+    }
+    stack(POS,-1).forEach(p=>el('circle',{cx:p.x,cy:p.y,r:dr,fill:ink,stroke:ink,'stroke-width':1.5,opacity:p.s>=tv?1:.35}));
+    stack(NEG,1).forEach(p=>el('circle',{cx:p.x,cy:p.y,r:dr,fill:bg,stroke:ink,'stroke-width':p.s>=tv?2.6:1.3,opacity:p.s>=tv?1:.45}));
+    txt('양성 ●', {x:8, y:axisY-(big?14:10), 'font-size':12*F, fill:label, ...mono});
+    txt('음성 ○', {x:8, y:axisY+(big?30:20), 'font-size':12*F, fill:label, ...mono});
+    el('line',{x1:sx(tv),x2:sx(tv),y1:big?34:24,y2:H0-(big?36:34),stroke:acc,'stroke-width':2*F/1.4});
+    txt(`t = ${f2(tv)}`, {x:Math.max(L+40, Math.min(sx(tv), R-40)), y:big?28:18, 'text-anchor':'middle','font-size':13*F, fill:acc, ...mono});
+
+    // ---- 아래: ROC 평면 ----
+    const S = big?400:320, X0 = big?(720-S)/2+30:80, Y0 = H0+(big?20:30);
+    const px=f=>X0+f*S, py=t=>Y0+S-t*S;
+    for(let g=0; g<=4; g++){
+      const q=g/4;
+      el('line',{x1:px(q),x2:px(q),y1:Y0,y2:Y0+S,stroke:rule});
+      el('line',{x1:X0,x2:X0+S,y1:py(q),y2:py(q),stroke:rule});
+      if(g%2===0||!big){
+        txt(q.toFixed(2).replace(/0$/,'').replace(/\.0?$/,'')||'0', {x:px(q), y:Y0+S+18*F, 'text-anchor':'middle','font-size':12*F, fill:label, ...mono});
+        txt(q.toFixed(2).replace(/0$/,'').replace(/\.0?$/,'')||'0', {x:X0-8, y:py(q)+4*F, 'text-anchor':'end','font-size':12*F, fill:label, ...mono});
+      }
+    }
+    txt('위양성률 FPR', {x:X0+S/2, y:Y0+S+(big?66:40), 'text-anchor':'middle','font-size':13*F, fill:label});
+    const yl = big?X0-62:X0-44;
+    txt('재현율 TPR', {x:yl, y:Y0+S/2, 'text-anchor':'middle','font-size':13*F, fill:label, transform:`rotate(-90 ${yl} ${Y0+S/2})`});
+    el('line',{x1:px(0),y1:py(0),x2:px(1),y2:py(1),stroke:label,'stroke-width':1.2,'stroke-dasharray':'6 5'});
+
+    if(full){
+      const d = CURVE.map((c,i)=>`${i?'L':'M'}${px(c.fpr)},${py(c.tpr)}`).join('');
+      el('path',{d:d+`L${px(1)},${py(0)}Z`, fill:box, stroke:'none'});
+      // 격자·대각선이 면 위에 보이도록 다시
+      el('line',{x1:px(0),y1:py(0),x2:px(1),y2:py(1),stroke:label,'stroke-width':1.2,'stroke-dasharray':'6 5'});
+      el('path',{d, fill:'none', stroke:ink, 'stroke-width':2.2*F/1.3});
+      txt(`AUC = ${f3(aucTrap)}`, {x:px(0.55), y:py(0.18), 'font-size':15*F, fill:ink, ...mono});
+    }
+    txt('무작위 기준 (AUC 0.5)', {x:px(0.6), y:py(0.5)+(big?36:22), 'font-size':11*F, fill:label, ...mono, transform:`rotate(-45 ${px(0.6)} ${py(0.5)+(big?36:22)})`});
+    // 지나온 점
+    const vis = [...visited].sort((a,b)=>b-a).map(v=>{const r=rate(v);return {fpr:r.fp/N,tpr:r.tp/P};});
+    const vd = vis.map((c,i)=>`${i?'L':'M'}${px(c.fpr)},${py(c.tpr)}`).join('');
+    el('path',{d:vd, fill:'none', stroke:acc, 'stroke-width':1.6*F/1.3});
+    const seen=new Set();
+    vis.forEach(c=>{const k=c.fpr+','+c.tpr; if(seen.has(k))return; seen.add(k); el('circle',{cx:px(c.fpr),cy:py(c.tpr),r:3*F,fill:bg,stroke:acc,'stroke-width':1.4});});
+    const cur = rate(tv), cf=cur.fp/N, ct=cur.tp/P;
+    el('circle',{cx:px(cf),cy:py(ct),r:7*F,fill:acc,stroke:bg,'stroke-width':2});
+    const lx = px(cf) + (cf>0.6? -12*F : 12*F);
+    txt(`(${cf.toFixed(2)}, ${ct.toFixed(2)})`, {x:lx, y:py(ct)+(ct>0.9? 22*F : -10*F), 'text-anchor':cf>0.6?'end':'start','font-size':13*F, fill:acc, ...mono});
+
+    // 데스크톱: 오른쪽 혼동행렬 숫자
+    if(!big){
+      const bx=X0+S+60, by=Y0+10;
+      txt(`t = ${f2(tv)}일 때`, {x:bx, y:by+8, 'font-size':12, fill:label, ...mono});
+      const lines=[[`TP ${cur.tp}`, `양성 중 t 이상`],[`FN ${P-cur.tp}`,`양성 중 t 미만`],[`FP ${cur.fp}`,`음성 중 t 이상`],[`TN ${N-cur.fp}`,`음성 중 t 미만`]];
+      lines.forEach((l,i)=>{ txt(l[0],{x:bx,y:by+40+i*26,'font-size':15,fill:ink,...mono}); txt(l[1],{x:bx+70,y:by+40+i*26,'font-size':12,fill:label}); });
+      txt(`TPR = ${cur.tp}/${P} = ${ct.toFixed(2)}`, {x:bx, y:by+164, 'font-size':14, fill:ink, ...mono});
+      txt(`FPR = ${cur.fp}/${N} = ${cf.toFixed(2)}`, {x:bx, y:by+190, 'font-size':14, fill:ink, ...mono});
+      txt(`AUC 사다리꼴 ${f3(aucTrap)}`, {x:bx, y:by+240, 'font-size':13, fill:label, ...mono});
+      txt(`쌍 비교      ${f3(aucPair)}`, {x:bx, y:by+262, 'font-size':13, fill:label, ...mono});
+    }
+
+    // 문장
+    document.getElementById('tOut').textContent = f2(tv);
+    document.getElementById('t').value = tv;
+    document.getElementById('result').innerHTML = big ? `t ${f2(tv)} → TPR <b>${ct.toFixed(2)}</b> · FPR <b>${cf.toFixed(2)}</b>` : `t = ${f2(tv)} → 재현율 <b>${ct.toFixed(2)}</b> · 위양성률 <b>${cf.toFixed(2)}</b>`;
+    let ex;
+    if(big){
+      ex = full ? `AUC ${f3(aucTrap)} = 양성 점수가 더 높은 쌍의 비율 ${f3(aucPair)}.` : `임계값을 내리면 점이 오른쪽 위로 갑니다.`;
+    } else {
+      ex = `양성 ${P}개 중 ${cur.tp}개, 음성 ${N}개 중 ${cur.fp}개가 t 이상이라 양성으로 예측됩니다. 임계값을 내리면 두 비율이 함께 늘어 점이 오른쪽 위로 움직이고, 왼쪽 위 모서리에 가까울수록 좋은 임계값입니다. `;
+      ex += full ? `전체 곡선 아래 넓이 AUC는 <b>${f3(aucTrap)}</b>이고, 이는 무작위로 고른 양성 하나의 점수가 무작위로 고른 음성 하나보다 높을 확률(동점은 0.5) <b>${f3(aucPair)}</b>와 같습니다.`
+                 : `[전체 곡선 보기]를 누르면 모든 임계값의 점을 이은 곡선과 AUC가 나타납니다.`;
+    }
+    document.getElementById('explain').innerHTML = ex;
+    document.getElementById('rows').innerHTML =
+      `<tr><td>사다리꼴 적분</td><td class="formula">곡선 꼭짓점 ${CURVE.length}개, Σ (ΔFPR × 평균 TPR)</td><td class="num">${f3(aucTrap)}</td></tr>`+
+      `<tr><td>양성·음성 쌍 비교</td><td class="formula">(양성 우세 ${win} + 0.5 × 동점 ${tie}) / ${P*N}</td><td class="num">${f3(aucPair)}</td></tr>`;
+    document.getElementById('formula').textContent = `두 값의 차이 = ${Math.abs(aucTrap-aucPair).toExponential(1)} (부동소수점 오차 수준이면 같음)`;
+  }
+
+  // 조작
+  const slider=document.getElementById('t');
+  function setT(v){ tv=Math.max(0,Math.min(100,v)); visited.add(tv); draw(); }
+  slider.addEventListener('input',()=>{ stop(); setT(+slider.value); });
+  const playBtn=document.getElementById('play');
+  function stop(){ playing=false; cancelAnimationFrame(raf); playBtn.setAttribute('aria-pressed',false); playBtn.textContent='재생'; }
+  function tick(ts){ if(!playing) return; if(ts-last>55){ last=ts; if(tv<=0){ stop(); full=true; syncFull(); draw(); return; } setT(tv-1); } raf=requestAnimationFrame(tick); }
+  playBtn.addEventListener('click',()=>{ if(playing){stop();return;} if(tv<=0){ visited.clear(); tv=100; visited.add(100); full=false; syncFull(); } playing=true; playBtn.setAttribute('aria-pressed',true); playBtn.textContent='일시정지'; last=0; raf=requestAnimationFrame(tick); });
+  // 한 단계: 다음으로 낮은 서로 다른 점수까지 (ROC 점이 바뀌는 곳)
+  document.getElementById('step').addEventListener('click',()=>{ stop(); const nx=uniq.find(v=>v<tv); setT(nx===undefined?0:nx); });
+  document.getElementById('reset').addEventListener('click',()=>{ stop(); visited.clear(); full=false; syncFull(); setT(100); });
+  const fullBtn=document.getElementById('full');
+  function syncFull(){ fullBtn.setAttribute('aria-pressed',full); }
+  fullBtn.addEventListener('click',()=>{ full=!full; syncFull(); draw(); });
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?t=0.5&trace=1&full=1&theme=dark&shorts=1
+  //  trace=1: 1.00부터 t까지 훑어 내려온 자취를 미리 그림
+  const u=new URLSearchParams(location.search);
+  if(u.get('theme')) document.documentElement.setAttribute('data-theme',u.get('theme'));
+  if(u.get('t')!==null){ const v=Math.round(parseFloat(u.get('t'))*100); if(Number.isFinite(v)){ tv=Math.max(0,Math.min(100,v)); visited.add(tv);} }
+  if(u.get('trace')==='1') for(let v=100; v>=tv; v--) visited.add(v);
+  if(u.get('full')==='1'){ full=true; syncFull(); }
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>은닉층과 결정 경계</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg button:disabled{color:var(--label);cursor:default}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
+.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:400}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
+body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+body.shorts .stats{font-size:14px;letter-spacing:0;margin:0 0 8px}
+body.shorts .ctl-run{display:none}
+body.shorts figure{border:0}
+body.shorts #plot{width:280px;margin:0 auto}
+body.shorts .insight p{line-height:1.5}
+body.shorts .result{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-20</div>
+  <h1>은닉층은 경계를 어떻게 구부릴까<span class="dot">.</span></h1>
+  <p class="lede">은닉층이 없는 모델(로지스틱 회귀)이 그을 수 있는 경계는 직선 하나뿐입니다. tanh 은닉 뉴런을 넣으면 경계가 휘어집니다. 데이터와 은닉 뉴런 수를 고른 뒤 [학습 시작]을 눌러 경계가 자라는 모습을 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">80점 · 고정 시드로 생성</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">데이터</span>
+      <span class="seg" role="group" aria-label="데이터">
+        <button data-data="xor" aria-pressed="true">XOR</button>
+        <button data-data="circle" aria-pressed="false">동심원</button>
+      </span>
+    </div>
+    <div><span class="mono ctl-label">은닉 뉴런</span>
+      <span class="seg" role="group" aria-label="은닉 뉴런 수">
+        <button data-h="0" aria-pressed="false">0(로지스틱)</button>
+        <button data-h="2" aria-pressed="false">2</button>
+        <button data-h="4" aria-pressed="true">4</button>
+        <button data-h="8" aria-pressed="false">8</button>
+      </span>
+    </div>
+    <div class="ctl-run"><span class="seg" role="group" aria-label="학습">
+        <button id="runBtn" aria-pressed="false">학습 시작</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <p class="stats" id="stats"></p>
+  <figure>
+    <svg id="plot" viewBox="0 0 720 470" role="img" aria-label="데이터와 결정 경계"></svg>
+    <figcaption class="mono">● 클래스 1 · ○ 클래스 0 · 진한 면 = 확률 0.8 이상(또는 0.2 이하) · 옅은 면 = 0.5~0.8(0.2~0.5) · 굵은 선 = 확률 0.5 경계 · 붉은 테두리 = 틀린 점 · 오른쪽: 신경망 구조(실선 = 양수 가중치, 점선 = 음수, 굵기 = 크기)</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>모델: 입력 2 → tanh 은닉 1층(뉴런 H개) → 시그모이드 출력 1개. H=0이면 입력이 곧바로 시그모이드로 가는 로지스틱 회귀입니다. 손실은 이진 교차엔트로피, 80점 전체배치에 Adam(학습률 0.03, β₁=0.9, β₂=0.999)을 적용합니다. 이 작은 신경망은 이 페이지가 브라우저에서 직접 JS로 학습합니다(라이브러리 없음).</p>
+    <p>가중치 초기값은 고정 시드(4)의 정규분포(Xavier 방식 분산)입니다. 초기값에 따라 실패할 수 있음: 특히 은닉 뉴런 2개로 XOR을 풀 때 같은 설정으로 시드 1~20을 시험해 보니 9개에서 정확도 71~75%에 머물렀습니다(나쁜 국소해·정체 구간). 이 페이지는 성공하는 시드를 고정했습니다.</p>
+    <p>정확도는 학습 데이터 80점에 대한 값입니다(검증 데이터로 잰 일반화 성능이 아님). 배경 면은 화면을 60×60 격자로 나눠 각 칸 중심의 예측 확률로 칠했습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+// CORE-BEGIN
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function gauss(r){let u=0,v=0;while(u===0)u=r();v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function makeData(kind){
+  const r=mulberry32(kind==='xor'?7:11), pts=[];
+  if(kind==='xor'){
+    const C=[[-1,-1,0],[1,1,0],[-1,1,1],[1,-1,1]];
+    for(let i=0;i<80;i++){const c=C[i%4];pts.push([c[0]+0.35*gauss(r),c[1]+0.35*gauss(r),c[2]]);}
+  }else{
+    for(let i=0;i<80;i++){const inner=i%2===0, rad=(inner?0.55:1.45)+0.18*gauss(r), a=2*Math.PI*r();
+      pts.push([rad*Math.cos(a),rad*Math.sin(a),inner?1:0]);}
+  }
+  return pts;
+}
+function makeNet(H,seed){
+  const r=mulberry32(seed), n=()=>gauss(r);
+  const net={H,W1:[],b1:[],W2:[],b2:0};
+  for(let j=0;j<H;j++){net.W1.push([n()*Math.sqrt(1/2),n()*Math.sqrt(1/2)]);net.b1.push(0);net.W2.push(n()*Math.sqrt(1/H));}
+  if(H===0){net.W2=[0,0];}
+  net.m=zeroLike(net);net.v=zeroLike(net);net.t=0;
+  return net;
+}
+function zeroLike(net){return {W1:net.W1.map(w=>[0,0]),b1:net.b1.map(()=>0),W2:net.W2.map(()=>0),b2:0};}
+function forward(net,x,y){
+  if(net.H===0){const z=net.W2[0]*x+net.W2[1]*y+net.b2;return {p:1/(1+Math.exp(-z)),h:null};}
+  const h=new Array(net.H);let z=net.b2;
+  for(let j=0;j<net.H;j++){h[j]=Math.tanh(net.W1[j][0]*x+net.W1[j][1]*y+net.b1[j]);z+=net.W2[j]*h[j];}
+  return {p:1/(1+Math.exp(-z)),h};
+}
+function evalNet(net,data){
+  let loss=0,ok=0;
+  for(const d of data){const p=forward(net,d[0],d[1]).p, pc=Math.min(Math.max(p,1e-12),1-1e-12);
+    loss+=-(d[2]*Math.log(pc)+(1-d[2])*Math.log(1-pc)); if((p>=0.5?1:0)===d[2])ok++;}
+  return {loss:loss/data.length,acc:ok/data.length};
+}
+// 전체배치 1회: 이진 교차엔트로피 기울기 + Adam
+function step(net,data,lr){
+  const g=zeroLike(net), N=data.length;
+  for(const d of data){
+    const f=forward(net,d[0],d[1]), dz=(f.p-d[2])/N;
+    g.b2+=dz;
+    if(net.H===0){g.W2[0]+=dz*d[0];g.W2[1]+=dz*d[1];continue;}
+    for(let j=0;j<net.H;j++){
+      g.W2[j]+=dz*f.h[j];
+      const dh=dz*net.W2[j]*(1-f.h[j]*f.h[j]);
+      g.W1[j][0]+=dh*d[0];g.W1[j][1]+=dh*d[1];g.b1[j]+=dh;
+    }
+  }
+  const b1=0.9,b2=0.999,eps=1e-8;net.t++;
+  const c1=1-Math.pow(b1,net.t),c2=1-Math.pow(b2,net.t);
+  const upd=(obj,key,gv,m,v)=>{m[key]=b1*m[key]+(1-b1)*gv;v[key]=b2*v[key]+(1-b2)*gv*gv;obj[key]-=lr*(m[key]/c1)/(Math.sqrt(v[key]/c2)+eps);};
+  upd(net,'b2',g.b2,net.m,net.v);
+  for(let j=0;j<net.W2.length;j++)upd(net.W2,j,g.W2[j],net.m.W2,net.v.W2);
+  for(let j=0;j<net.H;j++){upd(net.b1,j,g.b1[j],net.m.b1,net.v.b1);upd(net.W1[j],0,g.W1[j][0],net.m.W1[j],net.v.W1[j]);upd(net.W1[j],1,g.W1[j][1],net.m.W1[j],net.v.W1[j]);}
+}
+// CORE-END
+  const LR=0.03, MAXE=600, SEED=4, PER_FRAME=2;
+  let kind='xor', H=4, data=makeData(kind), net=makeNet(H,SEED), epoch=0, running=false, raf=0;
+
+  const svg=document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const hex=c=>{c=c.replace('#','');return [0,2,4].map(k=>parseInt(c.substr(k,2),16));};
+  const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,k)=>Math.round(v*t+B[k]*(1-t))).join(',')+')';};
+  const sg=v=>(v<0?'− ':'+ ')+fmt(Math.abs(v),2);
+  const R=2.4; // 좌표 범위 [-R, R]
+  const G=60;
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), c1=css('--c1'), c2=css('--c2');
+    const VW=big?460:720, VH=big?460:470;
+    svg.setAttribute('viewBox',`0 0 ${VW} ${VH}`);
+    const P={x:big?10:20,y:big?10:15,s:440};
+    const px=x=>P.x+(x+R)/(2*R)*P.s, py=y=>P.y+(R-y)/(2*R)*P.s;
+
+    // 배경: 예측 확률 2단계 면
+    const cs=P.s/G;
+    for(let i=0;i<G;i++)for(let j=0;j<G;j++){
+      const x=-R+(i+.5)*2*R/G, y=R-(j+.5)*2*R/G, p=forward(net,x,y).p;
+      const col=p>=0.5?c1:c2, strong=(p>=0.8||p<=0.2);
+      el('rect',{x:P.x+i*cs,y:P.y+j*cs,width:cs+.5,height:cs+.5,fill:mix(col,bg,strong?.24:.09)});
+    }
+    // 0.5 경계선: 격자 꼭짓점 값으로 마칭 스퀘어
+    const V=[];for(let i=0;i<=G;i++){V.push([]);for(let j=0;j<=G;j++){V[i].push(forward(net,-R+i*2*R/G,R-j*2*R/G).p-0.5);}}
+    let dpath='';
+    const ip=(a,b)=>a/(a-b);
+    for(let i=0;i<G;i++)for(let j=0;j<G;j++){
+      const a=V[i][j],b=V[i+1][j],c=V[i+1][j+1],d=V[i][j+1]; // TL TR BR BL
+      const pts=[];
+      if((a>=0)!==(b>=0))pts.push([i+ip(a,b),j]);
+      if((b>=0)!==(c>=0))pts.push([i+1,j+ip(b,c)]);
+      if((c>=0)!==(d>=0))pts.push([i+1-ip(c,d),j+1]);
+      if((d>=0)!==(a>=0))pts.push([i,j+1-ip(d,a)]);
+      for(let k=0;k+1<pts.length;k+=2)dpath+=`M${(P.x+pts[k][0]*cs).toFixed(1)},${(P.y+pts[k][1]*cs).toFixed(1)}L${(P.x+pts[k+1][0]*cs).toFixed(1)},${(P.y+pts[k+1][1]*cs).toFixed(1)}`;
+    }
+    if(dpath)el('path',{d:dpath,fill:'none',stroke:ink,'stroke-width':2.2*F/ (big?1.4:1),'stroke-linecap':'round'});
+    el('rect',{x:P.x,y:P.y,width:P.s,height:P.s,fill:'none',stroke:rule});
+    // 축 십자
+    el('line',{x1:px(0),x2:px(0),y1:P.y,y2:P.y+P.s,stroke:label,'stroke-opacity':.35,'stroke-dasharray':'2 4'});
+    el('line',{x1:P.x,x2:P.x+P.s,y1:py(0),y2:py(0),stroke:label,'stroke-opacity':.35,'stroke-dasharray':'2 4'});
+
+    // 점
+    for(const d of data){
+      const p=forward(net,d[0],d[1]).p, wrong=(p>=0.5?1:0)!==d[2];
+      el('circle',{cx:px(d[0]),cy:py(d[1]),r:(big?7:5.2),fill:d[2]?ink:bg,stroke:wrong?acc:ink,'stroke-width':wrong?(big?3.4:2.6):(big?1.8:1.4)});
+    }
+
+    // 신경망 구조 (데스크톱만)
+    if(!big){
+      const gx=[500,600,690], cy=P.y+P.s/2;
+      const ys=n=>Array.from({length:n},(_,k)=>cy+(k-(n-1)/2)*Math.min(46,380/Math.max(n,1)));
+      const inY=ys(2), hY=ys(H), oY=[cy];
+      const maxw=Math.max(1e-6,...net.W2.map(Math.abs),...net.W1.flat().map(Math.abs));
+      const edge=(x1,y1,x2,y2,w)=>el('line',{x1,y1,x2,y2,stroke:ink,'stroke-opacity':.75,'stroke-width':0.6+2.6*Math.abs(w)/maxw,'stroke-dasharray':w<0?'4 3':'none'});
+      if(H===0){inY.forEach((y,k)=>edge(gx[0],y,gx[2],oY[0],net.W2[k]));}
+      else{
+        hY.forEach((y,j)=>{inY.forEach((yy,k)=>edge(gx[0],yy,gx[1],y,net.W1[j][k]));edge(gx[1],y,gx[2],oY[0],net.W2[j]);});
+      }
+      const node=(x,y,t)=>{el('circle',{cx:x,cy:y,r:12,fill:bg,stroke:ink,'stroke-width':1.4});const tx=el('text',{x,y:y+4,'text-anchor':'middle','font-size':11,fill:ink,'font-family':'IBM Plex Mono'});tx.textContent=t;};
+      inY.forEach((y,k)=>node(gx[0],y,'x'+(k+1)));
+      hY.forEach(y=>node(gx[1],y,'h'));
+      node(gx[2],oY[0],'σ');
+      const lab=(x,t)=>{const tx=el('text',{x,y:P.y+P.s-6,'text-anchor':'middle','font-size':11,fill:label,'font-family':'IBM Plex Mono'});tx.textContent=t;};
+      lab(gx[0],'입력'); if(H>0)lab(gx[1],'tanh×'+H); lab(gx[2],'출력');
+      if(H===0){const t=el('text',{x:gx[1],y:cy-40,'text-anchor':'middle','font-size':11,fill:label,'font-family':'IBM Plex Mono'});t.textContent='은닉층 없음';}
+    }
+
+    // 지표
+    const r=evalNet(net,data);
+    document.getElementById('stats').innerHTML=`에폭 <b>${epoch}</b> / ${MAXE} · 손실 <b>${fmt(r.loss,3)}</b> · 정확도 <b>${fmt(r.acc*100,1)}%</b>`;
+    const dn=kind==='xor'?'XOR':'동심원';
+    let res, ex, exS, resS;
+    if(epoch===0){
+      res=`학습 전 · 정확도 <b>${fmt(r.acc*100,1)}%</b>`;
+      ex=`가중치가 무작위 초기값이라 경계도 아무렇게나 놓여 있습니다. [학습 시작]을 누르면 경사하강이 손실을 줄이는 쪽으로 가중치를 고칩니다.`;
+      exS='무작위 초기값. 아직 아무것도 모릅니다.';resS=`학습 전 · <b>${fmt(r.acc*100,1)}%</b>`;
+    }else if(H===0){
+      res=`은닉층 없음 → 경계는 <b>직선 하나</b> · 정확도 ${fmt(r.acc*100,1)}%`;
+      ex=`로지스틱 회귀의 경계 w₁x₁+w₂x₂+b=0은 항상 직선입니다. ${dn} 데이터는 어떤 직선으로도 두 클래스를 가를 수 없어서, 학습을 오래 해도 정확도가 절반 근처에 머뭅니다.`;
+      exS=`직선 하나로는 ${dn}을 못 가릅니다.`;resS=`은닉 0 → <b>직선 하나</b> · ${fmt(r.acc*100,1)}%`;
+    }else if(r.acc>=0.97){
+      res=`은닉 뉴런 ${H}개가 경계를 구부려 · 정확도 <b>${fmt(r.acc*100,1)}%</b>`;
+      ex=`각 tanh 뉴런은 직선 하나를 기준으로 부드러운 계단을 만들고, 출력층이 이 계단들을 가중합해 휜 경계를 만듭니다. ${kind==='circle'?'원을 둘러싸려면 직선 여러 개가 필요합니다.':'XOR은 직선 두 개의 조합으로 풀립니다.'}`;
+      exS=`뉴런 ${H}개의 계단을 섞어 경계가 휩니다.`;resS=`은닉 ${H} → <b>휜 경계</b> · ${fmt(r.acc*100,1)}%`;
+    }else if(kind==='circle'&&H===2&&epoch>=MAXE){
+      res=`뉴런 2개로는 원을 <b>닫을 수 없습니다</b> · 정확도 ${fmt(r.acc*100,1)}%`;
+      ex=`은닉 뉴런 2개는 입력을 두 방향으로만 봅니다. 각 tanh가 한 방향으로 단조롭게 변하므로 그 조합으로는 안쪽 원을 사방에서 감싸는 닫힌 경계를 만들 수 없고, 한쪽이 열린 경계에 그칩니다.`;
+      exS='뉴런 2개는 두 방향만 봅니다. 닫힌 경계를 만들 수 없습니다.';resS=`은닉 2 → <b>원을 못 닫음</b> · ${fmt(r.acc*100,1)}%`;
+    }else{
+      res=`학습 중 · 정확도 <b>${fmt(r.acc*100,1)}%</b>`;
+      ex=`손실이 줄어드는 동안 경계가 조금씩 움직입니다. 은닉 뉴런이 있으면 경계가 직선에서 벗어나 휘기 시작합니다.`;
+      exS='경계가 조금씩 휘는 중입니다.';resS=`학습 중 · <b>${fmt(r.acc*100,1)}%</b>`;
+    }
+    document.getElementById('result').innerHTML=big?resS:res;
+    document.getElementById('explain').innerHTML=big?exS:ex;
+    document.getElementById('formula').textContent=H===0
+      ? `p = σ(w₁x₁ + w₂x₂ + b) = σ(${fmt(net.W2[0],2)}·x₁ ${sg(net.W2[1])}·x₂ ${sg(net.b2)})`
+      : `p = σ(Σⱼ vⱼ·tanh(wⱼ₁x₁ + wⱼ₂x₂ + cⱼ) + b),  j = 1…${H} · 학습할 가중치 ${4*H+1}개`;
+  }
+
+  function loop(){
+    for(let k=0;k<PER_FRAME&&epoch<MAXE;k++){step(net,data,LR);epoch++;}
+    draw();
+    if(epoch>=MAXE)setRun(false); else if(running)raf=requestAnimationFrame(loop);
+  }
+  const runBtn=document.getElementById('runBtn');
+  function setRun(on){
+    running=on; runBtn.textContent=on?'정지':(epoch>=MAXE?'학습 완료':'학습 시작'); runBtn.setAttribute('aria-pressed',on);
+    runBtn.disabled=!on&&epoch>=MAXE;
+    cancelAnimationFrame(raf); if(on)raf=requestAnimationFrame(loop);
+  }
+  function reset(){setRun(false);data=makeData(kind);net=makeNet(H,SEED);epoch=0;setRun(false);draw();}
+  runBtn.addEventListener('click',()=>setRun(!running));
+  document.getElementById('resetBtn').addEventListener('click',reset);
+  document.querySelectorAll('[data-data]').forEach(b=>b.addEventListener('click',()=>{
+    kind=b.dataset.data;document.querySelectorAll('[data-data]').forEach(x=>x.setAttribute('aria-pressed',x===b));reset();}));
+  document.querySelectorAll('[data-h]').forEach(b=>b.addEventListener('click',()=>{
+    H=+b.dataset.h;document.querySelectorAll('[data-h]').forEach(x=>x.setAttribute('aria-pressed',x===b));reset();}));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sb.setAttribute('aria-pressed',on);draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?data=xor|circle&h=0|2|4|8&epoch=0~600&play=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('data'))document.querySelector(`[data-data="${u.get('data')}"]`)?.click();
+  if(u.get('h'))document.querySelector(`[data-h="${u.get('h')}"]`)?.click();
+  if(u.get('epoch')){const n=Math.min(MAXE,Math.max(0,parseInt(u.get('epoch'))||0));for(let e=0;e<n;e++){step(net,data,LR);epoch++;}setRun(false);}
+  if(u.get('shorts')==='1')setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(u.get('play')==='1'&&!reduce&&epoch<MAXE)setRun(true);
+})();
+</script>
+</body>
+</html>

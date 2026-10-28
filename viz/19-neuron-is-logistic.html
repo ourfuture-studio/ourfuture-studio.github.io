@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뉴런과 로지스틱 회귀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#2F45D8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#7F8DFF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#7F8DFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.sliders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 24px;margin:6px 0 14px}
+.sl{display:flex;flex-direction:column;min-width:0}
+.sl .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sl .v{font-family:'IBM Plex Mono',monospace;font-size:15px}
+input[type=range]{accent-color:var(--ink);width:100%;margin:2px 0}
+.figs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--rule)}
+.figs figure{margin:0;border:0;min-width:0}
+.figs figure + figure{border-left:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+#plane{cursor:pointer}
+.cap{padding:10px 14px;border:1px solid var(--rule);border-top:0}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+tr.sel td{font-weight:600}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:620px){
+  .figs{grid-template-columns:1fr}
+  .figs figure + figure{border-left:0;border-top:1px solid var(--rule)}
+  .sliders{grid-template-columns:1fr}
+  th,td{padding:5px 4px}
+}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:20px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts .cap, body.shorts .tagline, body.shorts .ctl-view, body.shorts .sliders, body.shorts .ctl-fit{display:none}
+body.shorts #explain{font-size:15px;line-height:1.6}
+body.shorts h1{font-size:23px;margin:2px 0 6px}
+body.shorts .controls{margin:0 0 8px}
+body.shorts .figs{grid-template-columns:1fr}
+body.shorts .figs figure + figure{border-left:0;border-top:1px solid var(--rule)}
+body.shorts .insight{padding:10px 14px;margin:8px 0 0}
+body.shorts .result{font-size:19px;margin:0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono series">기계와 생각 · 07 신경망·심화 기법 · VIZ-19</div>
+  <h1>뉴런 하나는 무엇을 계산할까<span class="dot">.</span></h1>
+  <p class="lede">인공 뉴런 하나는 입력에 가중치를 곱해 더하고(가중합), 시그모이드에 넣어 0~1 사이 값을 냅니다. 슬라이더로 w₁, w₂, b를 바꾸며 오른쪽 평면의 경계선과 로그손실을 보세요. [이름표 바꾸기]를 누르면 같은 그림이 로지스틱 회귀의 용어로 바뀝니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">점 14개 · 직접 만든 예시</span></p>
+
+  <div class="controls">
+    <div><span class="seg" role="group" aria-label="이름표">
+        <button id="lblBtn" aria-pressed="false">이름표 바꾸기</button>
+      </span></div>
+    <div class="ctl-fit"><span class="seg" role="group" aria-label="파라미터">
+        <button id="fitBtn">로그손실 최소로</button>
+        <button id="resetBtn">처음 값</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <div class="sliders">
+    <label class="sl"><span class="top"><span class="mono" id="lw1">가중치 w₁</span><span class="v" id="vw1"></span></span><input type="range" id="w1" min="-3" max="3" step="0.05"></label>
+    <label class="sl"><span class="top"><span class="mono" id="lw2">가중치 w₂</span><span class="v" id="vw2"></span></span><input type="range" id="w2" min="-3" max="3" step="0.05"></label>
+    <label class="sl"><span class="top"><span class="mono" id="lb">편향 b</span><span class="v" id="vb"></span></span><input type="range" id="b" min="-3" max="3" step="0.05"></label>
+  </div>
+
+  <div class="figs">
+    <figure><svg id="diag" viewBox="0 0 360 340" role="img" aria-label="뉴런 계산 다이어그램"></svg></figure>
+    <figure><svg id="plane" viewBox="0 0 360 340" role="img" aria-label="입력 평면과 결정 경계"></svg></figure>
+  </div>
+  <p class="cap mono">왼쪽: 간선 굵기 = |가중치| · 실선 = 양수, 점선 = 음수 · 입력값은 선택한 점(강조 테두리)의 값 · 오른쪽: ● y=1 · ○ y=0 · 실선 = 출력 0.5 경계(w₁x₁+w₂x₂+b=0) · 점선 = 0.1, 0.9 등고선 · 옅은 면 = 출력 0.5 이상 · 점을 누르면 왼쪽 계산이 그 점으로 바뀝니다</p>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="점별 계산">
+    <thead><tr><th>점</th><th>x₁</th><th>x₂</th><th>y</th><th id="hz">z</th><th id="hp">σ(z)</th><th>손실 항</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>시그모이드 σ(z) = 1/(1+e<sup>−z</sup>). 로그손실(이진 교차엔트로피) = −(1/n) Σ [ y·ln σ(z) + (1−y)·ln(1−σ(z)) ], 자연로그. 이 값을 최소로 하는 것은 로지스틱 회귀의 최대우도추정과 같은 문제입니다.</p>
+    <p>[로그손실 최소로]는 이 14개 점에 뉴턴-랩슨(IRLS)법을 브라우저에서 돌려 찾은 값으로 슬라이더를 옮깁니다. 이 데이터는 직선 하나로 완전히 나뉘지 않아 최솟값이 유한합니다. 정규화(규제)는 쓰지 않았습니다.</p>
+    <p>등고선 0.1, 0.9는 z = ln(0.1/0.9) ≈ −2.197, ln(0.9/0.1) ≈ 2.197인 직선입니다. 활성화 함수를 시그모이드가 아닌 다른 함수(예: ReLU)로 바꾸면 더는 로지스틱 회귀와 같지 않습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터 [x1, x2, y]
+  const D=[[1.5,1.0,1],[2.2,-0.4,1],[0.6,2.1,1],[1.8,2.3,1],[-0.4,1.6,1],[2.5,0.8,1],[-1.0,-0.6,1],
+           [-1.6,-0.8,0],[-2.3,0.6,0],[-0.7,-2.0,0],[0.9,-1.7,0],[-1.2,0.4,0],[0.3,0.2,0],[-0.5,-1.0,0]];
+  const INIT={w1:1.0,w2:0.5,b:0};
+  let w1=INIT.w1, w2=INIT.w2, b=INIT.b, sel=0, logit=false;
+  const sig=z=>1/(1+Math.exp(-z));
+  const Z90=Math.log(9);
+
+  function loss(w1,w2,b){let s=0;D.forEach(([x1,x2,y])=>{const p=Math.min(Math.max(sig(w1*x1+w2*x2+b),1e-12),1-1e-12);s+=-(y*Math.log(p)+(1-y)*Math.log(1-p));});return s/D.length;}
+  // 뉴턴-랩슨(IRLS)으로 최대우도 해
+  function fit(){let w=[0,0,0];for(let it=0;it<50;it++){const g=[0,0,0],H=[[0,0,0],[0,0,0],[0,0,0]];
+      D.forEach(([x1,x2,y])=>{const x=[x1,x2,1],p=sig(w[0]*x1+w[1]*x2+w[2]),r=p*(1-p);for(let i=0;i<3;i++){g[i]+=(y-p)*x[i];for(let j=0;j<3;j++)H[i][j]+=r*x[i]*x[j];}});
+      const d=solve3(H,g);w=w.map((v,i)=>v+d[i]);if(Math.hypot(...d)<1e-10)break;}return w;}
+  function solve3(A,y){const M=A.map((r,i)=>r.concat([y[i]]));for(let c=0;c<3;c++){let p=c;for(let r=c+1;r<3;r++)if(Math.abs(M[r][c])>Math.abs(M[p][c]))p=r;[M[c],M[p]]=[M[p],M[c]];
+      for(let r=0;r<3;r++)if(r!==c){const f=M[r][c]/M[c][c];for(let k=c;k<4;k++)M[r][k]-=f*M[c][k];}}return [M[0][3]/M[0][0],M[1][3]/M[1][1],M[2][3]/M[2][2]];}
+  const BEST=fit();
+
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+  const txt=(p,a,s)=>{const t=el('text',a,p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>{let s=v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});if(/^-0(\.0+)?$/.test(s))s=s.slice(1);return s.replace('-','−');};
+  const par=(v,d)=>v<0?'('+fmt(v,d)+')':fmt(v,d);
+  const sgn=v=>(v<0?'−':'+')+' '+fmt(Math.abs(v),2);
+  const diag=document.getElementById('diag'), plane=document.getElementById('plane');
+
+  const LBL={
+    neuron:{w1:'가중치 w₁',w2:'가중치 w₂',b:'편향 b',x:'입력',z:'가중합 z',act:'활성화 σ',out:'출력 ŷ',sw1:'w₁',sw2:'w₂',sb:'b',name:'뉴런'},
+    logit:{w1:'계수 β₁',w2:'계수 β₂',b:'절편 β₀',x:'특성',z:'로짓 z',act:'시그모이드',out:'P(y=1|x)',sw1:'β₁',sw2:'β₂',sb:'β₀',name:'로지스틱 회귀'}
+  };
+
+  function drawDiag(F){
+    const big=F>1, H=big?180:340; diag.setAttribute('viewBox',`0 0 360 ${H}`);
+    diag.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining');
+    const L=LBL[logit?'logit':'neuron'], [x1,x2]=D[sel], z=w1*x1+w2*x2+b, p=sig(z);
+    const fs=big?14:12;
+    // 노드 위치
+    const ys=big?[32,88,144]:[70,170,270], xi=42, xs=200, xo=310;
+    const yz=big?88:170, RZ=big?34:30;
+    const inV=[[`x₁`,fmt(x1,1)],[`x₂`,fmt(x2,1)],['1','상수']];
+    const ws=[[w1,L.sw1],[w2,L.sw2],[b,L.sb]];
+    // 간선
+    ws.forEach(([w,nm],i)=>{
+      const sw=0.8+2.6*Math.abs(w);
+      el('line',{x1:xi+22,y1:ys[i],x2:xs-RZ,y2:yz,stroke:Math.abs(w)<0.005?rule:ink,'stroke-width':sw,'stroke-dasharray':w<0?'6 5':'none','stroke-linecap':'butt'},diag);
+      const ax=xi+22, ay=ys[i], bx=xs-RZ, by=yz, len=Math.hypot(bx-ax,by-ay);
+      let nx=-(by-ay)/len, ny=(bx-ax)/len; if((i<2&&ny>0)||(i===2&&ny<0)){nx=-nx;ny=-ny;}
+      const off=sw/2+(i===2?16:8)*(big?1.1:1), t=i===1?0.42:0.5;
+      const mx=ax+(bx-ax)*t+nx*off, my=ay+(by-ay)*t+ny*off;
+      const tl=txt(diag,{x:mx,y:my,'text-anchor':'middle','font-size':fs,fill:acc,'font-family':'IBM Plex Mono'},`${nm} ${fmt(w,2)}`);
+      tl.setAttribute('paint-order','stroke');tl.setAttribute('stroke',bg);tl.setAttribute('stroke-width',4);
+    });
+    // 입력 노드
+    inV.forEach(([nm,v],i)=>{
+      el('circle',{cx:xi,cy:ys[i],r:22,fill:bg,stroke:ink,'stroke-width':1.5,'stroke-dasharray':i===2?'3 3':'none'},diag);
+      txt(diag,{x:xi,y:ys[i]-2,'text-anchor':'middle','font-size':fs,fill:ink,'font-family':'IBM Plex Mono'},nm);
+      txt(diag,{x:xi,y:ys[i]+13,'text-anchor':'middle','font-size':fs-2,fill:label,'font-family':'IBM Plex Mono'},v);
+    });
+    if(!big) txt(diag,{x:xi,y:ys[0]-36,'text-anchor':'middle','font-size':12,fill:label},L.x);
+    // Σ 노드
+    el('circle',{cx:xs,cy:yz,r:RZ,fill:bg,stroke:ink,'stroke-width':1.8},diag);
+    txt(diag,{x:xs,y:yz-4,'text-anchor':'middle','font-size':20,fill:ink,'font-family':'Noto Serif KR'},'Σ');
+    txt(diag,{x:xs,y:yz+16,'text-anchor':'middle','font-size':fs-1,fill:ink,'font-family':'IBM Plex Mono'},`z=${fmt(z,2)}`);
+    txt(diag,{x:xs,y:yz+(big?-40:-42),'text-anchor':'middle','font-size':fs,fill:label},L.z);
+    // σ 노드
+    el('line',{x1:xs+RZ,y1:yz,x2:xo-26,y2:yz,stroke:ink,'stroke-width':1.5},diag);
+    el('rect',{x:xo-26,y:yz-26,width:52,height:52,fill:bg,stroke:ink,'stroke-width':1.8},diag);
+    // 작은 시그모이드 모양
+    const sp=[];for(let k=-6;k<=6;k+=0.5)sp.push(`${(xo+k*3).toFixed(1)},${(yz+14-28*sig(k)).toFixed(1)}`);
+    el('polyline',{points:sp.join(' '),fill:'none',stroke:ink,'stroke-width':1.5},diag);
+    txt(diag,{x:xo,y:yz+(big?-38:-42),'text-anchor':'middle','font-size':fs,fill:label},L.act);
+    // 출력
+    txt(diag,{x:xo,y:yz+48,'text-anchor':'middle','font-size':fs,fill:label},L.out);
+    txt(diag,{x:xo,y:yz+(big?70:72),'text-anchor':'middle','font-size':big?20:20,fill:acc,'font-family':'IBM Plex Mono'},fmt(p,3));
+    if(!big){
+      txt(diag,{x:180,y:326,'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Mono'},`σ(${fmt(w1,2)}·${par(x1,1)} ${sgn(w2)}·${par(x2,1)} ${sgn(b)}) = ${fmt(p,3)}`);
+    }
+  }
+
+  // 평면: 같은 축척
+  let PH=340;
+  const PW=360, PM=18, X0=-3, X1=3, U=(PW-2*PM)/(X1-X0);
+  const px=x=>PM+(x-X0)*U, py=y=>PH/2-y*U, Y1=()=>(PH/2-PM)/U;
+  function clipHalf(poly,a,c,k){ // a·x + c·y + k >= 0
+    const out=[];for(let i=0;i<poly.length;i++){const P=poly[i],Q=poly[(i+1)%poly.length];const fp=a*P[0]+c*P[1]+k, fq=a*Q[0]+c*Q[1]+k;
+      if(fp>=0)out.push(P); if((fp>=0)!==(fq>=0)){const t=fp/(fp-fq);out.push([P[0]+t*(Q[0]-P[0]),P[1]+t*(Q[1]-P[1])]);}}return out;}
+  function lineSeg(c){ // w1 x + w2 y + b = c, 사각형 안 선분
+    const yl=Y1(), rect=[[X0,-yl],[X1,-yl],[X1,yl],[X0,yl]];
+    const pts=[];for(let i=0;i<4;i++){const P=rect[i],Q=rect[(i+1)%4];const fp=w1*P[0]+w2*P[1]+b-c, fq=w1*Q[0]+w2*Q[1]+b-c;
+      if(fp===0)pts.push(P); else if(fp*fq<0){const t=fp/(fp-fq);pts.push([P[0]+t*(Q[0]-P[0]),P[1]+t*(Q[1]-P[1])]);}}
+    return pts.length>=2?[pts[0],pts[1]]:null;}
+  function drawPlane(F){
+    const big=F>1; PH=big?300:340; plane.setAttribute('viewBox',`0 0 ${PW} ${PH}`);
+    plane.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining');
+    const yl=Y1();
+    for(let x=-3;x<=3;x++) el('line',{x1:px(x),x2:px(x),y1:py(yl),y2:py(-yl),stroke:rule,'stroke-width':x===0?1.4:1},plane);
+    for(let y=-Math.floor(yl);y<=Math.floor(yl);y++) el('line',{x1:px(X0),x2:px(X1),y1:py(y),y2:py(y),stroke:rule,'stroke-width':y===0?1.4:1},plane);
+    [-2,2].forEach(x=>txt(plane,{x:px(x),y:py(0)+13,'text-anchor':'middle','font-size':10,fill:label,'font-family':'IBM Plex Mono'},x));
+    [-2,2].forEach(y=>txt(plane,{x:px(0)-4,y:py(y)+4,'text-anchor':'end','font-size':10,fill:label,'font-family':'IBM Plex Mono'},y));
+    txt(plane,{x:px(X1)-4,y:py(0)-6,'text-anchor':'end','font-size':12,fill:label},'x₁');
+    txt(plane,{x:px(0)+6,y:py(yl)+14,'font-size':12,fill:label},'x₂');
+    // 옅은 면: 출력 ≥ 0.5
+    const rect=[[X0,-yl],[X1,-yl],[X1,yl],[X0,yl]];
+    const poly=(w1===0&&w2===0)?(b>=0?rect:[]):clipHalf(rect,w1,w2,b);
+    if(poly.length>2) el('polygon',{points:poly.map(q=>px(q[0]).toFixed(1)+','+py(q[1]).toFixed(1)).join(' '),fill:lin,opacity:.09},plane);
+    // 등고선
+    [[-Z90,'0.1'],[0,'0.5'],[Z90,'0.9']].forEach(([c,nm])=>{const s=lineSeg(c);if(!s)return;
+      el('line',{x1:px(s[0][0]),y1:py(s[0][1]),x2:px(s[1][0]),y2:py(s[1][1]),stroke:c===0?ink:lin,'stroke-width':c===0?2.2:1.3,'stroke-dasharray':c===0?'none':'5 4'},plane);
+      // 라벨: 선분 위 안쪽 지점
+      const t=0.82, lx=s[0][0]+(s[1][0]-s[0][0])*t, ly=s[0][1]+(s[1][1]-s[0][1])*t;
+      const tt=txt(plane,{x:px(lx)+4,y:py(ly)-4,'font-size':11,fill:c===0?ink:lin,'font-family':'IBM Plex Mono'},nm);
+      tt.setAttribute('paint-order','stroke');tt.setAttribute('stroke',bg);tt.setAttribute('stroke-width',3);});
+    // 점
+    D.forEach(([x1,x2,y],i)=>{
+      if(i===sel) el('circle',{cx:px(x1),cy:py(x2),r:11,fill:'none',stroke:acc,'stroke-width':2.2},plane);
+      const c=el('circle',{cx:px(x1),cy:py(x2),r:5.5,fill:y?ink:bg,stroke:ink,'stroke-width':1.6,'data-i':i},plane);
+      c.style.cursor='pointer';
+    });
+  }
+
+  function draw(){
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const L=LBL[logit?'logit':'neuron'];
+    ['w1','w2','b'].forEach(k=>{document.getElementById('l'+k).textContent=L[k];});
+    document.getElementById('vw1').textContent=fmt(w1,2);document.getElementById('vw2').textContent=fmt(w2,2);document.getElementById('vb').textContent=fmt(b,2);
+    document.getElementById('lblBtn').setAttribute('aria-pressed',logit);
+    document.getElementById('lblBtn').textContent=logit?'이름표: 로지스틱 회귀':'이름표: 뉴런';
+    drawDiag(F); drawPlane(F);
+    const ll=loss(w1,w2,b), llBest=loss(...BEST);
+    const wrong=D.filter(([x1,x2,y])=>(sig(w1*x1+w2*x2+b)>=0.5?1:0)!==y).length;
+    const atBest=ll-llBest<5e-4;
+    document.getElementById('result').innerHTML=big
+      ?`로그손실 <b>${fmt(ll,3)}</b> · 0.5 기준 오분류 ${wrong}개`
+      :`로그손실 <b>${fmt(ll,3)}</b> · 0.5 기준으로 틀린 점 ${wrong}개${atBest?' · 최솟값':''}`;
+    document.getElementById('explain').innerHTML=big?`이름만 다를 뿐, 시그모이드 뉴런 = 로지스틱 회귀.`:(logit
+      ?`지금 이름표는 로지스틱 회귀입니다. 계수 β₁, β₂와 절편 β₀로 로짓 z를 만들고 시그모이드로 확률 P(y=1|x)를 냅니다. 이름만 바뀌었을 뿐, 왼쪽 그림의 계산은 뉴런일 때와 한 글자도 다르지 않습니다.`
+      :`지금 이름표는 뉴런입니다. 가중치와 편향으로 가중합 z를 만들고 시그모이드 활성화로 0~1 값을 냅니다. [이름표 바꾸기]를 눌러도 숫자는 그대로입니다. 시그모이드 뉴런 하나 = 로지스틱 회귀입니다.`)
+      +` 이 점들에서 로그손실의 최솟값은 ${fmt(llBest,3)}입니다${atBest?'(지금 값)':''}.`;
+    document.getElementById('hz').textContent=logit?'로짓 z':'z';
+    document.getElementById('hp').textContent=logit?'P(y=1|x)':'σ(z)';
+    document.getElementById('rows').innerHTML=D.map(([x1,x2,y],i)=>{const z=w1*x1+w2*x2+b,p=sig(z),t=-(y*Math.log(Math.max(p,1e-12))+(1-y)*Math.log(Math.max(1-p,1e-12)));
+      return `<tr class="${i===sel?'sel':''}"><td>${i===sel?'▸ ':''}${i+1}</td><td>${fmt(x1,1)}</td><td>${fmt(x2,1)}</td><td>${y?'● 1':'○ 0'}</td><td>${fmt(z,2)}</td><td>${fmt(p,3)}</td><td>${fmt(t,3)}</td></tr>`;}).join('');
+    document.getElementById('formula').textContent=`로그손실 = −(1/${D.length}) Σ [y·ln σ(z) + (1−y)·ln(1−σ(z))] = ${fmt(ll,4)} · 최솟값(IRLS): ${L.sw1}=${fmt(BEST[0],3)}, ${L.sw2}=${fmt(BEST[1],3)}, ${L.sb}=${fmt(BEST[2],3)} → ${fmt(llBest,4)}`;
+  }
+
+  const ins={w1:document.getElementById('w1'),w2:document.getElementById('w2'),b:document.getElementById('b')};
+  function syncSliders(){ins.w1.value=w1;ins.w2.value=w2;ins.b.value=b;}
+  ins.w1.addEventListener('input',()=>{w1=+ins.w1.value;draw();});
+  ins.w2.addEventListener('input',()=>{w2=+ins.w2.value;draw();});
+  ins.b.addEventListener('input',()=>{b=+ins.b.value;draw();});
+  document.getElementById('lblBtn').addEventListener('click',()=>{logit=!logit;draw();});
+  document.getElementById('fitBtn').addEventListener('click',()=>{[w1,w2,b]=BEST;syncSliders();draw();});
+  document.getElementById('resetBtn').addEventListener('click',()=>{({w1,w2,b}=INIT);syncSliders();draw();});
+  plane.addEventListener('click',e=>{const i=e.target.getAttribute&&e.target.getAttribute('data-i');
+    if(i!==null&&i!==undefined){sel=+i;draw();return;}
+    // 가장 가까운 점 선택
+    const pt=plane.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(plane.getScreenCTM().inverse());
+    let bi=0,bd=Infinity;D.forEach(([x1,x2],k)=>{const d=Math.hypot(px(x1)-q.x,py(x2)-q.y);if(d<bd){bd=d;bi=k;}});sel=bi;draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sb.setAttribute('aria-pressed',on);draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?w1=1&w2=0.5&b=0&label=logit&pt=3&fit=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  const num=(k,v)=>{const s=u.get(k);return s!==null&&isFinite(+s)?Math.max(-3,Math.min(3,+s)):v;};
+  w1=num('w1',w1);w2=num('w2',w2);b=num('b',b);
+  if(u.get('fit')==='1')[w1,w2,b]=BEST;
+  if(u.get('label')==='logit')logit=true;
+  const up=parseInt(u.get('pt'),10); if(up>=1&&up<=D.length)sel=up-1;
+  syncSliders();
+  if(u.get('shorts')==='1') setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

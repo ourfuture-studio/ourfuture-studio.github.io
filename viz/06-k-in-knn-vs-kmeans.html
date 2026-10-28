@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>두 개의 K</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E;
+  --c1:#1F6F6F; --c2:#B5481A; --c3:#2F45D8; --c4:#A8336A; --c5:#5B3A8C; --c6:#7A1F2E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C;
+    --c1:#4DB5AC; --c2:#EE8A52; --c3:#7F8DFF; --c4:#E57AAE; --c5:#A98BE6; --c6:#E06A7C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C;
+  --c1:#4DB5AC; --c2:#EE8A52; --c3:#7F8DFF; --c4:#E57AAE; --c5:#A98BE6; --c6:#E06A7C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.topctl{display:flex;justify-content:flex-end;margin:16px 0 8px}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel .ctl{display:flex;align-items:center;gap:8px;margin:0 0 8px;flex-wrap:wrap}
+.range input{accent-color:var(--ink);width:130px;vertical-align:middle}
+.range output{font-family:'IBM Plex Mono',monospace;font-size:14px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none}
+#left{cursor:crosshair}
+figcaption{padding:8px 12px;border-top:1px solid var(--rule);line-height:1.6}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+td:first-child{color:var(--label);font-size:14px;white-space:nowrap}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:620px){ .panels{grid-template-columns:1fr} td:first-child{white-space:normal} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:20px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts figcaption, body.shorts .tagline, body.shorts .topctl{display:none}
+body.shorts .panels{grid-template-columns:1fr;gap:6px;margin-top:8px}
+body.shorts .panel .ctl{margin:0 0 4px}
+body.shorts .range input{width:170px}
+body.shorts .result{font-size:19px;line-height:1.6;margin:0}
+body.shorts h1{font-size:24px;line-height:1.3;margin:4px 0 4px}
+body.shorts .insight{padding:10px 14px;margin:8px 0}
+body.shorts #explain{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-06</div>
+  <h1>K-NN의 K와 K-means의 K는 같을까<span class="dot">.</span></h1>
+  <p class="lede">이름에 둘 다 K가 들어가지만 뜻이 다릅니다. 같은 점 45개를 왼쪽은 라벨이 있는 상태로 K-NN에, 오른쪽은 라벨을 지운 상태로 K-means에 넣었습니다. 두 슬라이더를 각각 움직이고, 왼쪽 그래프를 눌러 새 점(★)을 옮겨 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">45점 · 고정 시드 · 세 무리</span></p>
+
+  <div class="topctl"><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="ctl range"><span class="mono">K-NN · 이웃 수 K</span>
+        <input type="range" id="k1" min="1" max="15" step="1" value="5" aria-label="K-NN 이웃 수">
+        <output id="k1o">5</output></div>
+      <figure>
+        <svg id="left" viewBox="0 0 360 250" role="img" aria-label="라벨 있는 데이터와 K-NN 이웃"></svg>
+        <figcaption class="mono">● A · ▲ B · ■ C (라벨) · ★ 새 점 · 붉은 고리 = 이웃 K개</figcaption>
+      </figure>
+    </div>
+    <div class="panel">
+      <div class="ctl range"><span class="mono">K-means · 군집 수 K</span>
+        <input type="range" id="k2" min="1" max="6" step="1" value="3" aria-label="K-means 군집 수">
+        <output id="k2o">3</output></div>
+      <figure>
+        <svg id="right" viewBox="0 0 360 250" role="img" aria-label="라벨 없는 데이터와 K-means 군집"></svg>
+        <figcaption class="mono">색·모양 = 알고리즘이 붙인 군집 번호(라벨 아님) · ✕ = 군집 중심</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="K-NN과 K-means 비교">
+    <thead><tr><th></th><th>K-NN</th><th>K-means</th></tr></thead>
+    <tbody>
+      <tr><td>학습 유형</td><td>지도 학습 (분류·회귀)</td><td>비지도 학습 (군집화)</td></tr>
+      <tr><td>필요한 데이터</td><td>특성 + 정답 라벨</td><td>특성만 (라벨 없음)</td></tr>
+      <tr><td>K의 뜻</td><td>예측할 때 참고하는 <b>이웃의 수</b></td><td>데이터를 나눌 <b>군집의 수</b></td></tr>
+      <tr><td>계산 시점</td><td>학습 때는 저장만, 거리 계산은 <b>예측할 때</b> (지연 학습)</td><td><b>학습(적합) 때</b> 배정과 중심 갱신을 수렴까지 반복. 새 점은 가장 가까운 중심에 배정</td></tr>
+      <tr><td>결과물</td><td>새 점의 클래스(또는 값)</td><td>각 점의 군집 번호와 K개의 중심</td></tr>
+      <tr><td>K를 키우면</td><td>경계가 매끈해짐 (너무 크면 과소적합)</td><td>군집이 더 잘게 나뉨</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <p>K-NN: 유클리드 거리, 가중치 없는 다수결. 표가 같으면 가장 가까운 이웃의 클래스를 따릅니다.</p>
+    <p>K-means: 로이드(Lloyd) 알고리즘으로 ‘가장 가까운 중심에 배정 → 각 군집의 평균으로 중심 이동’을 배정이 더 바뀌지 않을 때까지 반복했습니다. 초기 중심은 고정 규칙(첫 중심 = 0번 점, 다음 중심 = 이미 고른 중심들에서 가장 먼 점)으로 정했습니다. K-means는 초기값에 따라 결과가 달라질 수 있고, 실무에서는 k-means++ 초기화와 여러 번 실행을 흔히 씁니다. 군집 내 제곱합은 각 점과 소속 군집 중심 사이 거리 제곱의 합입니다.</p>
+    <p>오른쪽 그림은 라벨을 쓰지 않았습니다. 군집 번호(색·모양)는 알고리즘이 임의로 붙인 이름이라 왼쪽의 A·B·C와 대응하지 않습니다. 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const rnd=mulberry32(2026);
+  const gauss=()=>{let u=0;while(u===0)u=rnd();const v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+  const CENT=[[2.6,4.3],[7.2,4.6],[5.0,1.7]], SD=[0.85,0.8,0.9];
+  const DATA=[];
+  for(let i=0;i<45;i++){const c=i%3; DATA.push([+(Math.min(9.7,Math.max(0.3,CENT[c][0]+SD[c]*gauss()))).toFixed(2), +(Math.min(6.1,Math.max(0.3,CENT[c][1]+SD[c]*gauss()))).toFixed(2), c]);}
+  const CLS=['A','B','C'];
+  let q=[4.6,3.4], K1=5, K2=3;
+
+  // ---- K-NN ----
+  function knn(){
+    const r=DATA.map((d,i)=>({i,d:Math.hypot(d[0]-q[0],d[1]-q[1])})).sort((a,b)=>a.d-b.d||a.i-b.i).slice(0,K1);
+    const cnt=[0,0,0]; r.forEach(n=>cnt[DATA[n.i][2]]++);
+    const mx=Math.max(...cnt), top=cnt.map((c,j)=>c===mx?j:-1).filter(j=>j>=0);
+    const pred = top.length===1 ? top[0] : DATA[r[0].i][2]; // 동점: 가장 가까운 이웃의 클래스
+    return {nb:r.map(n=>n.i), cnt, pred, tie:top.length>1};
+  }
+  // ---- K-means (Lloyd, 고정 초기값: farthest-first) ----
+  const d2=(a,b)=>(a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1]);
+  function kmeans(K){
+    const C=[[DATA[0][0],DATA[0][1]]];
+    while(C.length<K){
+      let best=-1, bi=0;
+      DATA.forEach((p,i)=>{const m=Math.min(...C.map(c=>d2(p,c))); if(m>best){best=m;bi=i;}});
+      C.push([DATA[bi][0],DATA[bi][1]]);
+    }
+    let asg=new Array(DATA.length).fill(-1), it=0;
+    while(it<100){
+      const na=DATA.map(p=>{let b=0;for(let k=1;k<K;k++) if(d2(p,C[k])<d2(p,C[b])) b=k; return b;});
+      const changed=na.some((a,i)=>a!==asg[i]); asg=na;
+      if(!changed) break;
+      it++;
+      for(let k=0;k<K;k++){const m=DATA.filter((p,i)=>asg[i]===k); if(m.length) C[k]=[m.reduce((s,p)=>s+p[0],0)/m.length, m.reduce((s,p)=>s+p[1],0)/m.length];}
+    }
+    const wcss=DATA.reduce((s,p,i)=>s+d2(p,C[asg[i]]),0);
+    return {C,asg,it,wcss};
+  }
+
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const L=document.getElementById('left'), Rt=document.getElementById('right');
+
+  let VW=360, VH=250;
+  const PM={l:10,r:10,t:30,b:10}, DX=10, DY=6.4;
+  function geo(){ // 두 축 같은 축척, 가운데 정렬
+    const s=Math.min((VW-PM.l-PM.r)/DX,(VH-PM.t-PM.b)/DY);
+    const ox=PM.l+((VW-PM.l-PM.r)-s*DX)/2, oy=PM.t+((VH-PM.t-PM.b)-s*DY)/2;
+    return {s, X:x=>ox+x*s, Y:y=>oy+(DY-y)*s, ix:X=>(X-ox)/s, iy:Y=>DY-(Y-oy)/s, ox, oy};
+  }
+  // 모양: 0 원, 1 삼각형, 2 사각형, 3 마름모, 4 역삼각형, 5 육각형
+  function shape(par,k,x,y,r,a){
+    const P=(pts)=>el('polygon',Object.assign({points:pts.map(p=>(x+p[0]*r).toFixed(1)+','+(y+p[1]*r).toFixed(1)).join(' ')},a),par);
+    if(k===0) return el('circle',Object.assign({cx:x,cy:y,r:r},a),par);
+    if(k===1) return P([[0,-1.25],[1.1,0.75],[-1.1,0.75]]);
+    if(k===2) return P([[-0.9,-0.9],[0.9,-0.9],[0.9,0.9],[-0.9,0.9]]);
+    if(k===3) return P([[0,-1.2],[1.1,0],[0,1.2],[-1.1,0]]);
+    if(k===4) return P([[0,1.25],[1.1,-0.75],[-1.1,-0.75]]);
+    const h=[];for(let j=0;j<6;j++){const t=Math.PI/6+j*Math.PI/3;h.push([1.05*Math.cos(t),1.05*Math.sin(t)]);} return P(h);
+  }
+  function frame(svg,title,g,F){
+    el('rect',{x:g.ox,y:g.oy,width:DX*g.s,height:DY*g.s,fill:'none',stroke:css('--rule')},svg);
+    const t=el('text',{x:PM.l,y:19*F,'font-size':12*F,fill:css('--label'),'font-family':'IBM Plex Mono','letter-spacing':'.06em'},svg); t.textContent=title;
+  }
+
+  function draw(){
+    const big=document.body.classList.contains('shorts'), F=big?1.15:1;
+    const ink=css('--ink'), acc=css('--accent'), bg=css('--bg'), label=css('--label');
+    const col=k=>css('--c'+(k+1));
+    const g=geo(), r=4.8*F;
+    // 군집은 왼쪽 클래스와 다른 색·모양 순서를 써서 '군집 = 라벨'로 오해하지 않게 한다
+    const CSH=[3,4,5,0,1,2], CCOL=[3,4,5,0,1,2];
+
+    // 왼쪽: K-NN
+    L.innerHTML=''; frame(L,'라벨 있음 · 이웃 '+K1+'개',g,F);
+    const kn=knn(), nbSet=new Set(kn.nb);
+    const far=Math.hypot(DATA[kn.nb[kn.nb.length-1]][0]-q[0],DATA[kn.nb[kn.nb.length-1]][1]-q[1]);
+    el('circle',{cx:g.X(q[0]),cy:g.Y(q[1]),r:far*g.s,fill:'none',stroke:acc,'stroke-width':1,'stroke-dasharray':'4 3',opacity:.8},L);
+    kn.nb.forEach(i=>el('line',{x1:g.X(q[0]),y1:g.Y(q[1]),x2:g.X(DATA[i][0]),y2:g.Y(DATA[i][1]),stroke:acc,'stroke-width':1,opacity:.55},L));
+    DATA.forEach((p,i)=>{
+      const on=nbSet.has(i);
+      shape(L,p[2],g.X(p[0]),g.Y(p[1]),r,{fill:col(p[2]),stroke:on?acc:bg,'stroke-width':on?2.4*F:1});
+    });
+    const sx=g.X(q[0]), sy=g.Y(q[1]), pts=[];
+    for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5, rr=(k%2?4.5:10.5)*F; pts.push((sx+rr*Math.cos(a)).toFixed(1)+','+(sy+rr*Math.sin(a)).toFixed(1));}
+    el('polygon',{points:pts.join(' '),fill:acc,stroke:bg,'stroke-width':1.2},L);
+    const pl=el('text',{x:VW-PM.r,y:19*F,'text-anchor':'end','font-size':12*F,fill:acc,'font-family':'IBM Plex Mono'},L); pl.textContent='★ → '+CLS[kn.pred];
+
+    // 오른쪽: K-means
+    Rt.innerHTML='';
+    const km=kmeans(K2);
+    frame(Rt,'라벨 없음 · 군집 '+K2+'개',g,F);
+    DATA.forEach((p,i)=>{const a=km.asg[i]; shape(Rt,CSH[a],g.X(p[0]),g.Y(p[1]),r,{fill:col(CCOL[a]),stroke:bg,'stroke-width':1});});
+    km.C.forEach((c,k)=>{
+      const x=g.X(c[0]), y=g.Y(c[1]), s=7*F;
+      el('circle',{cx:x,cy:y,r:s+3,fill:bg,stroke:col(CCOL[k]),'stroke-width':1.5,opacity:.95},Rt);
+      el('path',{d:`M${x-s*.7},${y-s*.7}L${x+s*.7},${y+s*.7}M${x+s*.7},${y-s*.7}L${x-s*.7},${y+s*.7}`,stroke:ink,'stroke-width':2.2*F,'stroke-linecap':'round'},Rt);
+    });
+    const it=el('text',{x:VW-PM.r,y:19*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},Rt); it.textContent=`${km.it}회 반복 후 수렴`;
+
+    document.getElementById('k1o').textContent=K1;
+    document.getElementById('k2o').textContent=K2;
+    const cntTxt=kn.cnt.map((c,j)=>c?`${CLS[j]} ${c}`:'').filter(Boolean).join(' · ');
+    document.getElementById('result').innerHTML = big
+      ? `위 K = <b>이웃 ${K1}개</b> · 아래 K = <b>군집 ${K2}개</b>`
+      : `K-NN: 이웃 ${K1}개(${cntTxt}) → ★는 <b>${CLS[kn.pred]}</b> · K-means: <b>${K2}개</b> 군집`;
+    document.getElementById('explain').innerHTML =
+      `왼쪽 K는 새 점 하나를 예측할 때 몇 명에게 물어볼지(이웃 수)이고, 라벨이 있어야 셀 수 있습니다${kn.tie?'(지금은 표가 같아 가장 가까운 이웃의 클래스를 따랐습니다)':''}. 오른쪽 K는 라벨 없이 데이터를 몇 덩어리로 나눌지(군집 수)이며, ${km.it}번 반복 만에 배정이 멈췄습니다(군집 내 제곱합 ${fmt(km.wcss,1)}). `+
+      (K2===3?`K = 3은 데이터를 만든 무리 수와 같지만, 군집 번호가 실제 라벨과 맞는지는 알고리즘이 알지 못합니다.`:`K-means의 K는 데이터가 정해 주지 않으니 사람이 고르거나 엘보 방법·실루엣 계수 같은 기준으로 정합니다.`);
+    window.__state={K1,K2,q:q.slice(),knn:kn,km:{C:km.C,it:km.it,wcss:km.wcss,sizes:[...Array(K2)].map((_,k)=>km.asg.filter(a=>a===k).length)}};
+  }
+
+  const k1=document.getElementById('k1'), k2=document.getElementById('k2');
+  k1.addEventListener('input',()=>{K1=+k1.value; draw();});
+  k2.addEventListener('input',()=>{K2=+k2.value; draw();});
+
+  let dragging=false;
+  function moveTo(e){
+    const pt=L.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const p=pt.matrixTransform(L.getScreenCTM().inverse()), g=geo();
+    q=[Math.round(Math.min(Math.max(g.ix(p.x),0.1),DX-0.1)*10)/10, Math.round(Math.min(Math.max(g.iy(p.y),0.1),DY-0.1)*10)/10]; draw();
+  }
+  L.addEventListener('pointerdown',e=>{dragging=true;L.setPointerCapture(e.pointerId);moveTo(e);});
+  L.addEventListener('pointermove',e=>{if(dragging)moveTo(e);});
+  L.addEventListener('pointerup',()=>dragging=false);
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on);
+    VH=on?184:250; PM.t=on?32:30; [L,Rt].forEach(s=>s.setAttribute('viewBox',`0 0 ${VW} ${VH}`)); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?k1=1..15 &k2=1..6 &x=0~10&y=0~6.4 (새 점) &shorts=1
+  const u=new URLSearchParams(location.search);
+  const a=parseInt(u.get('k1'),10); if(a>=1&&a<=15){K1=a;k1.value=a;}
+  const b=parseInt(u.get('k2'),10); if(b>=1&&b<=6){K2=b;k2.value=b;}
+  if(u.get('x')!==null&&!isNaN(+u.get('x'))) q[0]=Math.min(Math.max(+u.get('x'),0.1),DX-0.1);
+  if(u.get('y')!==null&&!isNaN(+u.get('y'))) q[1]=Math.min(Math.max(+u.get('y'),0.1),DY-0.1);
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

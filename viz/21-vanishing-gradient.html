@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사라지는 기울기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg button:disabled{color:var(--label);cursor:default}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
+.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:400}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
+body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+figure + figure{border-top:0}
+body.shorts .insight p{line-height:1.5}
+body.shorts .result{margin-bottom:8px}
+body.shorts .controls{margin:10px 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-21</div>
+  <h1>층이 깊어지면 기울기는 어디로 갈까<span class="dot">.</span></h1>
+  <p class="lede">역전파에서 기울기는 층을 하나 지날 때마다 그 층 활성화 함수의 도함수 값이 곱해집니다. 도함수가 1보다 작으면 곱이 쌓이며 기울기가 사라집니다. 활성화 함수를 바꾸고 층 수를 늘려 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 계산 예시</span><span class="mono">데이터 없음 · 함수값을 직접 계산</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">활성화</span>
+      <span class="seg" role="group" aria-label="활성화 함수">
+        <button data-act="sigmoid" aria-pressed="true">시그모이드</button>
+        <button data-act="tanh" aria-pressed="false">tanh</button>
+        <button data-act="relu" aria-pressed="false">ReLU</button>
+      </span>
+    </div>
+    <div><label class="mono ctl-label" for="L">층 수 L</label><input type="range" id="L" min="1" max="20" step="1" value="10"><span class="val" id="Lv">10</span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="fn" viewBox="0 0 720 250" role="img" aria-label="활성화 함수와 도함수"></svg>
+    <figcaption class="mono">실선 = 활성화 함수 f(z) · 점선 = 도함수 f′(z) · ● = 도함수의 최댓값</figcaption>
+  </figure>
+  <figure>
+    <svg id="bars" viewBox="0 0 720 330" role="img" aria-label="층을 지날 때 기울기 크기 상한의 누적곱"></svg>
+    <figcaption class="mono">막대 = 출력에서 k층 거슬러 내려갔을 때 기울기 크기의 상한 (max f′)ᵏ, 가중치 크기 1 가정 · ◇ = 모든 층에서 z=1일 때의 예 f′(1)ᵏ · 세로축은 로그 눈금</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>가정: 층마다 뉴런 하나인 사슬 a_l = f(w_l·a_(l−1))에서 |w_l| = 1로 두면 |∂a_L/∂a_0| = Π|f′(z_l)| ≤ (max f′)ᴸ입니다. 막대는 이 ‘최대 가능 크기’(상한)이며 실제 신경망의 기울기가 아닙니다. 실제 값은 가중치 행렬과 각 층의 입력에 따라 달라지고, 가중치가 크면 반대로 기울기가 폭주할 수도 있습니다.</p>
+    <p>실전에서는 Xavier/He 같은 초기화, 배치·층 정규화, 잔차 연결, ReLU 계열 활성화로 이 문제를 완화합니다.</p>
+    <p>ReLU는 활성 구간(z&gt;0)에서 도함수가 정확히 1이라 곱해도 줄지 않지만, z&lt;0이면 0이 되어 기울기가 완전히 끊깁니다. 입력이 늘 음수인 뉴런은 다시 학습되지 않는 ‘죽은 ReLU’ 문제가 생깁니다(z=0에서는 미분이 정의되지 않으며 관례상 0으로 둡니다).</p>
+    <p>수치는 이 페이지가 브라우저에서 직접 계산한 값입니다: σ′(z) = σ(z)(1−σ(z)), tanh′(z) = 1 − tanh²(z).</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const sig=z=>1/(1+Math.exp(-z));
+  const ACT={
+    sigmoid:{name:'시그모이드',f:sig,d:z=>sig(z)*(1-sig(z)),max:0.25,maxTxt:'0.25'},
+    tanh:{name:'tanh',f:Math.tanh,d:z=>1-Math.tanh(z)**2,max:1,maxTxt:'1'},
+    relu:{name:'ReLU',f:z=>Math.max(0,z),d:z=>z>0?1:0,max:1,maxTxt:'1'}
+  };
+  let act='sigmoid', L=10;
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+  const txt=(p,x,y,t,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono'},a),p);e.textContent=t;return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const SUP={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
+  // 지수 표기: HTML은 <sup>, SVG는 위첨자 tspan (위첨자 숫자 글리프가 없는 서체 대비)
+  const pow10=(e,svgMode)=>svgMode?`10<tspan baseline-shift="super" font-size="72%">−${-e}</tspan>`:`10<sup>−${-e}</sup>`;
+  function sci(v,svgMode){
+    if(v>=0.01) return fmt(v,v>=0.1?3:4);
+    let e=Math.floor(Math.log10(v)), m=v/Math.pow(10,e);
+    if(+m.toFixed(1)>=10){m/=10;e+=1;}
+    return fmt(m,1)+' × '+pow10(e,svgMode);
+  }
+  const LOGMIN=-15; // 10^-15
+
+  function draw(){
+    const big=document.body.classList.contains('shorts'), F=big?1.9:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), c1=css('--c1');
+    const A=ACT[act];
+
+    // ---- 상단: 함수와 도함수
+    const s1=document.getElementById('fn'); s1.innerHTML='';
+    const W1=big?460:720, H1=big?150:250; s1.setAttribute('viewBox',`0 0 ${W1} ${H1}`);
+    const m={l:big?56:52,r:big?14:24,t:big?10:16,b:big?34:34};
+    const X0=-5,X1=5,Y0=-1.2,Y1=1.2;
+    const px=x=>m.l+(x-X0)/(X1-X0)*(W1-m.l-m.r), py=y=>H1-m.b-(y-Y0)/(Y1-Y0)*(H1-m.t-m.b);
+    el('defs',{},s1).innerHTML=`<clipPath id="c1"><rect x="${m.l}" y="${m.t}" width="${W1-m.l-m.r}" height="${H1-m.t-m.b}"/></clipPath>`;
+    for(const y of [-1,0,1]){el('line',{x1:m.l,x2:W1-m.r,y1:py(y),y2:py(y),stroke:rule},s1);txt(s1,m.l-8,py(y)+4*F,String(y),{'text-anchor':'end','font-size':12*F,fill:label});}
+    for(const x of (big?[-4,0,4]:[-4,-2,0,2,4])){el('line',{x1:px(x),x2:px(x),y1:m.t,y2:H1-m.b,stroke:rule},s1);txt(s1,px(x),H1-m.b+18*F,String(x),{'text-anchor':'middle','font-size':12*F,fill:label});}
+    if(!big)txt(s1,W1-m.r,H1-6,'z',{'text-anchor':'end','font-size':12,fill:label});
+    const g=el('g',{'clip-path':'url(#c1)'},s1);
+    const path=(fn,step)=>{let d='';for(let i=0;i<=400;i++){const x=X0+(X1-X0)*i/400;d+=(i?'L':'M')+px(x).toFixed(1)+','+py(fn(x)).toFixed(1);}return d;};
+    el('path',{d:path(A.f),fill:'none',stroke:ink,'stroke-width':2.2*F},g);
+    if(act==='relu'){ // 도함수: 계단 (z=0에서 끊김)
+      el('path',{d:`M${px(X0)},${py(0)}L${px(0)},${py(0)}`,fill:'none',stroke:acc,'stroke-width':2.2*F,'stroke-dasharray':'6 4'},g);
+      el('path',{d:`M${px(0)},${py(1)}L${px(X1)},${py(1)}`,fill:'none',stroke:acc,'stroke-width':2.2*F,'stroke-dasharray':'6 4'},g);
+      el('circle',{cx:px(0),cy:py(1),r:4*F,fill:bg,stroke:acc,'stroke-width':1.6*F},g);
+      el('circle',{cx:px(2),cy:py(1),r:4.5*F,fill:acc},g);
+    }else{
+      el('path',{d:path(A.d),fill:'none',stroke:acc,'stroke-width':2.2*F,'stroke-dasharray':'6 4'},g);
+      el('circle',{cx:px(0),cy:py(A.max),r:4.5*F,fill:acc},g);
+    }
+    txt(s1,W1-m.r-8,py(-0.55),`● max f′ = ${A.maxTxt}`,{'text-anchor':'end','font-size':13*F,fill:acc});
+    if(!big){txt(s1,W1-m.r-8,py(-0.55)+20,`${A.name}`,{'text-anchor':'end','font-size':12,fill:label});}
+
+    // ---- 하단: 누적곱 막대 (로그 눈금)
+    const s2=document.getElementById('bars'); s2.innerHTML='';
+    const W2=big?460:720, H2=big?240:340; s2.setAttribute('viewBox',`0 0 ${W2} ${H2}`);
+    const n={l:big?78:64,r:big?10:20,t:big?14:40,b:big?36:40};
+    const ly=v=>{const lg=Math.max(LOGMIN,Math.log10(v));return n.t+(0-lg)/(0-LOGMIN)*(H2-n.t-n.b);};
+    for(const e of (big?[0,-5,-10,-15]:[0,-3,-6,-9,-12,-15])){
+      const y=ly(Math.pow(10,e));
+      el('line',{x1:n.l,x2:W2-n.r,y1:y,y2:y,stroke:rule},s2);
+      txt(s2,n.l-8,y+4*F,'',{'text-anchor':'end','font-size':12*F,fill:label}).innerHTML=e===0?'1':pow10(e,true);
+    }
+    const slot=(W2-n.l-n.r)/20, bw=slot*0.62, base=H2-n.b;
+    el('line',{x1:n.l,x2:W2-n.r,y1:base,y2:base,stroke:label},s2);
+    const ex1=A.d(1);
+    for(let k=1;k<=20;k++){
+      const x=n.l+(k-1)*slot+(slot-bw)/2;
+      if(k<=L){
+        const v=Math.pow(A.max,k), y=ly(v);
+        el('rect',{x,y,width:bw,height:Math.max(0,base-y),fill:k===L?acc:ink,'fill-opacity':k===L?1:.78},s2);
+        const ve=Math.pow(ex1,k), yy=ly(ve), cx=x+bw/2, r=4.2*F;
+        el('path',{d:`M${cx},${yy-r}L${cx+r},${yy}L${cx},${yy+r}L${cx-r},${yy}Z`,fill:bg,stroke:c1,'stroke-width':1.5*F},s2);
+      }
+      if(!big||k%5===0||k===1)txt(s2,x+bw/2,base+15*F,String(k),{'text-anchor':'middle','font-size':11*F,fill:k<=L?label:rule});
+    }
+    if(!big)txt(s2,(n.l+W2-n.r)/2,H2-4,'거슬러 내려간 층 수 k',{'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Sans KR'});
+    // 마지막 막대 값
+    const vL=Math.pow(A.max,L), xL=n.l+(L-1)*slot+slot/2, yL=ly(vL);
+    if(!big)txt(s2,W2-n.r,22,'',{'text-anchor':'end','font-size':13,fill:acc}).innerHTML=`k = ${L}:  ${A.maxTxt}<tspan baseline-shift="super" font-size="72%">${L}</tspan> = ${sci(vL,true)}`;
+
+    // ---- 문구
+    document.getElementById('Lv').textContent=L;
+    const vEx=Math.pow(ex1,L);
+    let res,ex,exS,resS;
+    if(act==='sigmoid'){
+      res=`${L}층을 지나면 상한 0.25<sup>${L}</sup> = <b>${sci(vL)}</b>`;
+      ex=`시그모이드의 도함수는 아무리 커도 0.25라서 한 층 지날 때마다 기울기가 최소 4분의 1로 줄어듭니다. 입력에 가까운 층은 거의 학습 신호를 받지 못합니다. z=1이면 층당 ${fmt(ex1,3)}배라 ${sci(vEx)}까지 줄어듭니다.`;
+      exS=`층마다 최소 ¼로. 앞쪽 층에는 신호가 <b>거의 안 닿습니다</b>.`;resS=`${L}층: 0.25<sup>${L}</sup> = <b>${sci(vL)}</b>`;
+    }else if(act==='tanh'){
+      res=`tanh의 상한은 1 · ${L}층 뒤에도 <b>1</b>`;
+      ex=`tanh′는 z=0에서만 1이고 나머지에서는 1보다 작습니다. 그래서 상한은 줄지 않지만 실제로는 줄어듭니다. 모든 층에서 z=1이면 층당 ${fmt(ex1,3)}배, ${L}층 뒤 ${sci(vEx)}입니다(◇).`;
+      exS=`상한은 1이지만 z≠0이면 줄어듭니다(◇ z=1일 때 ${sci(vEx)}).`;resS=`${L}층: 상한 <b>1</b>`;
+    }else{
+      res=`ReLU는 활성 구간에서 <b>1을 그대로</b> 전달`;
+      ex=`z&gt;0인 구간에서 도함수가 정확히 1이라 몇 층을 지나도 곱이 줄지 않습니다. 대신 z&lt;0이면 도함수가 0이 되어 기울기가 끊깁니다(죽은 ReLU).`;
+      exS=`활성 구간에서는 1. 단, z&lt;0이면 0 — <b>죽은 ReLU</b>.`;resS=`${L}층: 활성 구간 <b>1</b>`;
+    }
+    document.getElementById('result').innerHTML=big?resS:res;
+    document.getElementById('explain').innerHTML=big?exS:ex;
+    document.getElementById('formula').innerHTML=
+      `상한 = (max f′)<sup>L</sup> = ${A.maxTxt}<sup>${L}</sup> = ${sci(vL)} &nbsp;·&nbsp; z=1 예: f′(1)<sup>L</sup> = ${fmt(ex1,4)}<sup>${L}</sup> = ${sci(vEx)}`;
+  }
+
+  document.querySelectorAll('[data-act]').forEach(b=>b.addEventListener('click',()=>{
+    act=b.dataset.act;document.querySelectorAll('[data-act]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
+  const Ls=document.getElementById('L');
+  Ls.addEventListener('input',()=>{L=+Ls.value;draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sb.setAttribute('aria-pressed',on);draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?act=sigmoid|tanh|relu&L=1~20&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('act'))document.querySelector(`[data-act="${u.get('act')}"]`)?.click();
+  if(u.get('L')){L=Math.min(20,Math.max(1,parseInt(u.get('L'))||10));Ls.value=L;}
+  if(u.get('shorts')==='1')setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>서포트 벡터와 마진</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--accent)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.sl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sl input[type=range]{accent-color:var(--ink);width:200px;max-width:52vw}
+.sl output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4.5em;font-variant-numeric:tabular-nums}
+.params{display:none}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:6px 0}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .controls{display:none}
+body.shorts .params{display:block;margin:6px 0 12px;font-size:14px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:16px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-13</div>
+  <h1>경계를 정하는 건 어떤 점들일까<span class="dot">.</span></h1>
+  <p class="lede">선형 SVM은 두 무리 사이에 가장 넓은 ‘길’을 내고, 그 길 한가운데를 경계로 삼습니다. 길의 가장자리에 닿거나 길 안으로 들어온 점(서포트 벡터)만 경계를 정합니다. 점을 끌어 옮겨 보세요. 굵은 테두리가 없는 점은 길 밖에 있는 한 아무리 옮겨도 경계가 그대로입니다. C 슬라이더로 길 안 침범을 얼마나 봐줄지도 바꿔 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">18개 점 · 직접 만든 예시</span></p>
+
+  <div class="controls">
+    <div class="sl"><label class="mono" for="c">C</label><input type="range" id="c" min="-2" max="2" step="0.05" value="0" aria-label="규제 상수 C (로그 눈금)"><output id="cOut"></output></div>
+    <div><span class="seg" role="group" aria-label="데이터">
+        <button id="resetBtn">점 위치 되돌리기</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <p class="mono params" id="params"></p>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 690 590" role="img" aria-label="선형 SVM 결정 경계와 마진"></svg>
+    <figcaption class="mono">● 범주 A(+1) · ○ 범주 B(−1) · 실선 = 결정 경계 · 점선 = 마진(w·x+b = ±1) · 굵은 강조색 테두리 = 서포트 벡터 · 옅은 선 = 마지막 드래그 전 경계</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="학습 결과">
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>소프트 마진 선형 SVM: ½‖w‖² + C·Σ max(0, 1 − yᵢ(w·xᵢ + b))를 최소화합니다. 이 페이지는 쌍대 문제를 SMO(LIBSVM과 같은 ‘최대 위반 쌍’ 선택, 선형 커널)로 브라우저에서 직접 풉니다. KKT 위반량이 10⁻⁷ 아래가 될 때까지 반복하며, 화면의 수치는 그 계산 결과입니다.</p>
+    <p>서포트 벡터는 쌍대 변수 αᵢ &gt; 0인 점, 곧 마진 위(yᵢf(xᵢ) = 1)이거나 마진 안·반대편(yᵢf(xᵢ) &lt; 1)에 있는 점입니다. 마진 폭 2/‖w‖은 두 점선 사이의 거리이며, 좌표 단위로 잽니다.</p>
+    <p>C가 크면 침범에 큰 벌점을 주어 하드 마진에 가까워지고(좁은 길), C가 작으면 침범을 더 봐주는 대신 ‖w‖를 줄여 길이 넓어지고 서포트 벡터가 늘어납니다. C의 효과는 좌표의 척도에 따라 달라집니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+// SOLVER-BEGIN — 선형 커널 SMO (LIBSVM의 WSS1 최대 위반 쌍)
+function svmTrain(X, y, C, eps, maxIter){
+  eps = eps||1e-7; maxIter = maxIter||200000;
+  const n = X.length;
+  const K = (i,j)=>X[i][0]*X[j][0]+X[i][1]*X[j][1];
+  const Q = []; for(let i=0;i<n;i++){Q.push([]);for(let j=0;j<n;j++)Q[i].push(y[i]*y[j]*K(i,j));}
+  const a = new Array(n).fill(0), G = new Array(n).fill(-1); // G = Qα − e
+  let it=0, gap=Infinity;
+  const isUp = t => (y[t]===1 && a[t]<C) || (y[t]===-1 && a[t]>0);
+  const isLow= t => (y[t]===1 && a[t]>0) || (y[t]===-1 && a[t]<C);
+  for(; it<maxIter; it++){
+    let i=-1, j=-1, gmax=-Infinity, gmin=Infinity;
+    for(let t=0;t<n;t++){
+      const v = -y[t]*G[t];
+      if(isUp(t) && v>gmax){gmax=v;i=t;}
+      if(isLow(t) && v<gmin){gmin=v;j=t;}
+    }
+    gap = gmax-gmin;
+    if(i<0||j<0||gap<eps) break;
+    const oi=a[i], oj=a[j];
+    if(y[i]!==y[j]){
+      let q = Q[i][i]+Q[j][j]+2*Q[i][j]; if(q<=0) q=1e-12;
+      const delta=(-G[i]-G[j])/q, diff=a[i]-a[j];
+      a[i]+=delta; a[j]+=delta;
+      if(diff>0){ if(a[j]<0){a[j]=0;a[i]=diff;} } else { if(a[i]<0){a[i]=0;a[j]=-diff;} }
+      if(diff>0){ if(a[i]>C){a[i]=C;a[j]=C-diff;} } else { if(a[j]>C){a[j]=C;a[i]=C+diff;} }
+    } else {
+      let q = Q[i][i]+Q[j][j]-2*Q[i][j]; if(q<=0) q=1e-12;
+      const delta=(G[i]-G[j])/q, sum=a[i]+a[j];
+      a[i]-=delta; a[j]+=delta;
+      if(sum>C){ if(a[i]>C){a[i]=C;a[j]=sum-C;} } else { if(a[j]<0){a[j]=0;a[i]=sum;} }
+      if(sum>C){ if(a[j]>C){a[j]=C;a[i]=sum-C;} } else { if(a[i]<0){a[i]=0;a[j]=sum;} }
+    }
+    const di=a[i]-oi, dj=a[j]-oj;
+    for(let t=0;t<n;t++) G[t]+=Q[t][i]*di+Q[t][j]*dj;
+  }
+  // 절편: 자유 서포트 벡터(0<α<C)의 평균, 없으면 상·하한의 중간 (LIBSVM calculate_rho)
+  let ub=Infinity, lb=-Infinity, sf=0, nf=0;
+  const tol = 1e-12*Math.max(1,C);
+  for(let t=0;t<n;t++){
+    const yG=y[t]*G[t];
+    if(a[t]>=C-tol){ if(y[t]===-1) ub=Math.min(ub,yG); else lb=Math.max(lb,yG); }
+    else if(a[t]<=tol){ if(y[t]===1) ub=Math.min(ub,yG); else lb=Math.max(lb,yG); }
+    else { nf++; sf+=yG; }
+  }
+  const rho = nf>0 ? sf/nf : (ub+lb)/2;
+  const w=[0,0]; for(let t=0;t<n;t++){w[0]+=a[t]*y[t]*X[t][0]; w[1]+=a[t]*y[t]*X[t][1];}
+  return {w, b:-rho, alpha:a, iter:it, gap};
+}
+// SOLVER-END
+(function(){
+  // 가상 데이터: [x, y, 범주(+1/−1)]
+  const BASE = [
+    [6.2,7.5,1],[7.6,6.0,1],[8.3,8.2,1],[5.6,8.8,1],[9.0,5.0,1],[7.0,8.9,1],[6.1,6.3,1],[9.4,7.1,1],[4.7,7.7,1],
+    [2.0,2.5,-1],[3.5,1.6,-1],[1.6,4.2,-1],[3.0,3.6,-1],[4.4,3.0,-1],[2.6,5.4,-1],[1.2,1.4,-1],[5.2,1.5,-1],[3.9,4.7,-1]
+  ];
+  let P = BASE.map(p=>p.slice());
+  let C = 1, model = null, ghost = null, lastDrag = null; // lastDrag: {i, wasSV, isSV}
+
+  const W=690, HT=590, M={l:60,r:30,t:20,b:50}, U=50; // 1 단위 = 50px (가로·세로 같은 척도)
+  const XR=[0,12], YR=[0,10];
+  const px = x => M.l + (x-XR[0])*U;
+  const py = v => M.t + (YR[1]-v)*U;
+  const ix = X => XR[0] + (X-M.l)/U;
+  const iy = Y => YR[1] - (Y-M.t)/U;
+
+  const svg = document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el = (n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt = (v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const fmtC = c => c>=10?fmt(c,0):c>=1?fmt(c,1):c>=0.1?fmt(c,2):fmt(c,3);
+
+  function fit(){
+    model = svmTrain(P.map(p=>[p[0],p[1]]), P.map(p=>p[2]), C);
+    model.sv = model.alpha.map(a=>a>1e-7);
+  }
+  // w·x + b = c 직선을 화면 밖까지 긴 선분으로
+  function lineSeg(w,b,c){
+    const nn=w[0]*w[0]+w[1]*w[1];
+    const p0=[(c-b)*w[0]/nn,(c-b)*w[1]/nn], d=[-w[1]/Math.sqrt(nn),w[0]/Math.sqrt(nn)], L=40;
+    return [[p0[0]-L*d[0],p0[1]-L*d[1]],[p0[0]+L*d[0],p0[1]+L*d[1]]];
+  }
+  const angle = w => Math.atan2(w[1],w[0])*180/Math.PI;
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box');
+    el('defs',{}).innerHTML = `<clipPath id="clip"><rect x="${M.l}" y="${M.t}" width="${(XR[1]-XR[0])*U}" height="${(YR[1]-YR[0])*U}"/></clipPath>`;
+    // 격자·축
+    for(let x=0;x<=12;x+=2){
+      el('line',{x1:px(x),x2:px(x),y1:M.t,y2:py(0),stroke:rule,'stroke-width':1});
+      const t=el('text',{x:px(x),y:py(0)+20*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=x;
+    }
+    for(let v=0;v<=10;v+=2){
+      el('line',{x1:M.l,x2:px(12),y1:py(v),y2:py(v),stroke:rule,'stroke-width':1});
+      const t=el('text',{x:M.l-10,y:py(v)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=v;
+    }
+    const g=el('g',{'clip-path':'url(#clip)'});
+    const {w,b}=model;
+    // 마진 띠
+    const up=lineSeg(w,b,1), dn=lineSeg(w,b,-1);
+    el('polygon',{points:[up[0],up[1],dn[1],dn[0]].map(p=>px(p[0])+','+py(p[1])).join(' '),fill:box,opacity:.9},g);
+    // 드래그 전 경계(유령)
+    if(ghost){
+      const s=lineSeg(ghost.w,ghost.b,0);
+      el('line',{x1:px(s[0][0]),y1:py(s[0][1]),x2:px(s[1][0]),y2:py(s[1][1]),stroke:label,'stroke-width':5*F,opacity:.28},g);
+    }
+    [up,dn].forEach(s=>el('line',{x1:px(s[0][0]),y1:py(s[0][1]),x2:px(s[1][0]),y2:py(s[1][1]),stroke:ink,'stroke-width':1.3*F,'stroke-dasharray':`${6*F} ${5*F}`},g));
+    const s0=lineSeg(w,b,0);
+    el('line',{x1:px(s0[0][0]),y1:py(s0[0][1]),x2:px(s0[1][0]),y2:py(s0[1][1]),stroke:ink,'stroke-width':2*F},g);
+    // 마진 폭 표시(경계에 수직인 화살표 대신 가는 선)
+    // 점
+    P.forEach((p,i)=>{
+      const sv=model.sv[i], R=(sv?8:6.5)*F;
+      if(sv) el('circle',{cx:px(p[0]),cy:py(p[1]),r:R+3.5*F,fill:'none',stroke:acc,'stroke-width':2.6*F});
+      el('circle',{cx:px(p[0]),cy:py(p[1]),r:R,fill:p[2]===1?ink:bg,stroke:ink,'stroke-width':(sv?2.4:1.5)*F,style:'cursor:grab','data-i':i});
+      if(lastDrag && lastDrag.i===i){
+        el('circle',{cx:px(p[0]),cy:py(p[1]),r:2*F,fill:p[2]===1?bg:ink});
+      }
+    });
+    // 범례(쇼츠에서도 보이도록 그림 안에)
+    const VH = big?640:HT; svg.setAttribute('viewBox',`0 0 ${W} ${VH}`);
+    const ly = VH-16;
+    const lg=[[1,'A'],[-1,'B']];
+    lg.forEach((it,j)=>{
+      const lx=M.l+j*(big?150:90);
+      el('circle',{cx:lx+6,cy:ly-5*F,r:6*F,fill:it[0]===1?ink:bg,stroke:ink,'stroke-width':1.5*F});
+      const t=el('text',{x:lx+18*F,y:ly,'font-size':13*F,fill:label}); t.textContent='범주 '+it[1];
+    });
+    const lx2=M.l+(big?310:190);
+    el('circle',{cx:lx2+6,cy:ly-5*F,r:9*F,fill:'none',stroke:acc,'stroke-width':2.6*F});
+    const t2=el('text',{x:lx2+22*F,y:ly,'font-size':13*F,fill:label}); t2.textContent='서포트 벡터';
+
+    // 수치
+    const nw=Math.hypot(w[0],w[1]), width=2/nw;
+    const nsv=model.sv.filter(Boolean).length;
+    const nBound=model.alpha.filter(a=>a>=C*(1-1e-6)).length;
+    const yf=P.map(p=>p[2]*(w[0]*p[0]+w[1]*p[1]+b));
+    const inside=yf.filter(v=>v<1-1e-6).length, wrong=yf.filter(v=>v<0).length;
+    document.getElementById('cOut').textContent=fmtC(C);
+    document.getElementById('params').textContent=`C = ${fmtC(C)} · 마진 폭 ${fmt(width,2)} · 서포트 벡터 ${nsv}개`;
+
+    let res, ex, exS;
+    res = `마진 폭 2/‖w‖ = <b>${fmt(width,2)}</b> · 서포트 벡터 <b>${nsv}개</b>`;
+    if(lastDrag){
+      const dAng=Math.abs(((angle(w)-angle(ghost.w)+540)%360)-180);
+      const dOff=Math.abs(b/nw - ghost.b/Math.hypot(ghost.w[0],ghost.w[1]));
+      const dWid=Math.abs(width-2/Math.hypot(ghost.w[0],ghost.w[1]));
+      const tiny = dAng<0.05 && dOff<0.005 && dWid<0.005;
+      const chg = `(드래그 전 대비 경계 각도 ${fmt(dAng,2)}° · 위치 ${fmt(dOff,3)} · 마진 폭 ${fmt(dWid,3)} 변화)`;
+      if(!lastDrag.wasSV && !lastDrag.isSV && tiny){
+        ex = `방금 옮긴 점은 서포트 벡터가 아니었고, 옮긴 뒤에도 길 밖에 있습니다. 그래서 경계가 그대로입니다 ${chg}. 이 점의 α는 0이라 해에 아무 기여도 하지 않습니다.`;
+        exS = `서포트 벡터가 아닌 점은 옮겨도 경계가 <b>그대로</b>입니다.`;
+      } else if(!lastDrag.wasSV && lastDrag.isSV){
+        ex = `길 밖에 있던 점을 길 가장자리나 안쪽으로 옮기자 서포트 벡터가 되었고, 경계가 움직였습니다 ${chg}.`;
+        exS = `점이 길 안으로 들어오자 <b>서포트 벡터</b>가 되어 경계를 밀어냅니다.`;
+      } else if(tiny){
+        ex = `옮긴 점이 경계에 거의 영향을 주지 않았습니다 ${chg}.`;
+        exS = `경계가 거의 그대로입니다.`;
+      } else {
+        ex = `서포트 벡터를 옮기자 경계와 마진이 따라 움직였습니다 ${chg}. 경계는 서포트 벡터들만으로 정해집니다.`;
+        exS = `<b>서포트 벡터</b>를 옮기면 경계가 따라 움직입니다.`;
+      }
+    } else {
+      ex = `18개 점 중 경계를 정하는 건 굵은 테두리의 ${nsv}개뿐입니다(α &gt; 0). 나머지 점은 길 밖에 있는 한 지우거나 옮겨도 경계가 바뀌지 않습니다.` +
+        (inside? ` 지금 C에서는 ${inside}개 점이 마진 안으로 들어와 있습니다(침범 허용${wrong?`, 그중 ${wrong}개는 경계 반대편`:''}).`:'');
+      exS = `경계를 정하는 건 굵은 테두리의 <b>${nsv}개 점</b>뿐입니다.`;
+    }
+    document.getElementById('result').innerHTML = big? `마진 폭 <b>${fmt(width,2)}</b> · 서포트 벡터 <b>${nsv}개</b>` : res;
+    document.getElementById('explain').innerHTML = big?exS:ex;
+
+    const obj = 0.5*nw*nw + C*yf.reduce((s,v)=>s+Math.max(0,1-v),0);
+    const dual = model.alpha.reduce((s,a)=>s+a,0) - 0.5*nw*nw;
+    document.getElementById('rows').innerHTML = [
+      ['w = (w₁, w₂)', `(${fmt(w[0],4)}, ${fmt(w[1],4)})`],
+      ['b', fmt(b,4)],
+      ['‖w‖', fmt(nw,4)],
+      ['서포트 벡터 (마진 위 / 마진 안·반대편)', `${nsv}개 (${nsv-nBound} / ${nBound})`],
+      ['마진 안쪽 점 · 잘못 분류된 점', `${inside}개 · ${wrong}개`],
+      ['목적함수 ½‖w‖² + CΣξ (쌍대 목적함수)', `${fmt(obj,5)} (${fmt(dual,5)})`],
+      ['SMO 반복 · 최종 KKT 위반량', `${model.iter}회 · ${Math.max(0,model.gap).toExponential(1)}`]
+    ].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+    document.getElementById('formula').textContent =
+      `결정 함수 f(x) = ${fmt(w[0],3)}·x₁ + ${fmt(w[1],3)}·x₂ ${b<0?'−':'+'} ${fmt(Math.abs(b),3)} · 마진 폭 = 2/‖w‖ = 2/${fmt(nw,4)} = ${fmt(width,3)}`;
+  }
+
+  // 슬라이더
+  const sC=document.getElementById('c');
+  function setC(){ C=Math.pow(10,+sC.value); fit(); draw(); }
+  sC.addEventListener('input',()=>{lastDrag=null; ghost=null; setC();});
+  document.getElementById('resetBtn').addEventListener('click',()=>{P=BASE.map(p=>p.slice()); lastDrag=null; ghost=null; fit(); draw();});
+
+  // 드래그
+  let drag=-1;
+  function svgPt(e){const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse());}
+  function beginDrag(i){ drag=i; ghost={w:model.w.slice(), b:model.b}; lastDrag={i, wasSV:model.sv[i], isSV:model.sv[i]}; }
+  function moveTo(i,x,v){
+    P[i][0]=Math.min(Math.max(Math.round(x*10)/10,XR[0]+0.2),XR[1]-0.2);
+    P[i][1]=Math.min(Math.max(Math.round(v*10)/10,YR[0]+0.2),YR[1]-0.2);
+    fit(); lastDrag.isSV=model.sv[i]; draw();
+  }
+  svg.addEventListener('pointerdown',e=>{
+    const p=svgPt(e); let best=-1, bd=1e9;
+    P.forEach((q,i)=>{const d=Math.hypot(px(q[0])-p.x,py(q[1])-p.y); if(d<bd){bd=d;best=i;}});
+    const big=document.body.classList.contains('shorts');
+    if(best>=0 && bd<(big?36:22)){ beginDrag(best); svg.setPointerCapture(e.pointerId); }
+  });
+  svg.addEventListener('pointermove',e=>{ if(drag<0) return; const p=svgPt(e); moveTo(drag,ix(p.x),iy(p.y)); });
+  svg.addEventListener('pointerup',()=>{drag=-1;});
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?c=1&move=3,8.5,9.5&shorts=1  (move: 점 번호(1~18), 옮길 x, y — 드래그한 것처럼 표시)
+  const u=new URLSearchParams(location.search);
+  if(u.get('c')&&+u.get('c')>0){ sC.value=Math.min(2,Math.max(-2,Math.log10(+u.get('c')))); }
+  C=Math.pow(10,+sC.value); fit();
+  if(u.get('move')){
+    const m=u.get('move').split(',').map(Number);
+    if(m.length===3 && m[0]>=1 && m[0]<=P.length && !m.some(isNaN)){ beginDrag(m[0]-1); moveTo(m[0]-1,m[1],m[2]); drag=-1; }
+  }
+  if(u.get('shorts')==='1') setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

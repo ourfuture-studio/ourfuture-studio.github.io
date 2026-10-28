@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이웃의 답 모으기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.range{display:flex;align-items:center;gap:10px}
+.range input{accent-color:var(--ink);width:180px;max-width:46vw}
+.range output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:3.5em}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none;cursor:ew-resize}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.aside{border:1px solid var(--rule);padding:14px 18px;margin:0 0 18px;font-size:15px;line-height:1.75}
+.aside .mono{display:block;margin-bottom:6px}
+.aside .cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px}
+.aside .cols p{margin:0}
+.aside b{font-weight:500}
+.aside .short{display:none}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:560px){ .aside .cols{grid-template-columns:1fr} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:22px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view{display:none}
+body.shorts .controls{margin:8px 0 10px;gap:10px 12px;flex-wrap:nowrap}
+body.shorts .range input{width:105px}
+body.shorts .range{gap:6px}
+body.shorts .seg button{padding:5px 11px}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px;line-height:1.3}
+body.shorts .insight{padding:12px 16px;margin:12px 0 10px}
+body.shorts #explain{font-size:16px;line-height:1.7}
+body.shorts .aside{padding:10px 14px;font-size:15px}
+body.shorts .aside .cols{display:none}
+body.shorts .aside .short{display:block;margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-04</div>
+  <h1>이웃의 답은 어떻게 모을까<span class="dot">.</span></h1>
+  <p class="lede">같은 데이터로 두 가지를 예측합니다. 분류는 ‘합격했나’(점수 60 이상), 회귀는 ‘몇 점일까’입니다. 이웃을 찾는 방법은 똑같고, 이웃의 답을 모으는 방법만 다릅니다. 탭을 바꾸고, K를 움직이고, 그래프를 좌우로 끌어 새 학생(★)의 공부 시간을 바꿔 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">16명 · 직접 만든 예시 · 특성은 공부 시간 하나</span></p>
+
+  <div class="controls">
+    <div><span class="seg" role="group" aria-label="문제 유형">
+        <button data-mode="cls" aria-pressed="true">분류</button>
+        <button data-mode="reg" aria-pressed="false">회귀</button>
+      </span></div>
+    <div class="range"><span class="mono">이웃 수</span>
+      <input type="range" id="kRange" min="1" max="9" step="1" value="5" aria-label="이웃 수 K">
+      <output id="kOut" for="kRange">K = 5</output>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 430" role="img" aria-label="공부 시간과 점수, 이웃과 집계"></svg>
+    <figcaption class="mono" id="cap"></figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <div class="aside">
+    <span class="mono">구분 · 이웃끼리의 투표 ≠ 여러 모델의 보팅</span>
+    <div class="cols">
+      <p><b>K-NN의 다수결·평균</b> — 모델은 하나입니다. 표를 던지는 쪽은 새 점 주변의 <b>훈련 데이터 K개</b>이고, 그 점들의 정답(라벨·값)을 세거나 평균 냅니다.</p>
+      <p><b>앙상블의 보팅</b> — 서로 다른 <b>여러 모델</b>이 각자 예측을 내고, 그 예측을 다수결(하드 보팅)하거나 확률을 평균(소프트 보팅)합니다. 회귀에서는 예측값을 평균합니다.</p>
+    </div>
+    <p class="short">K-NN의 투표자는 <b>데이터 점 K개</b>, 앙상블 보팅의 투표자는 <b>모델 여러 개</b>입니다.</p>
+  </div>
+
+  <table aria-label="가까운 이웃">
+    <thead><tr><th>순위</th><th>공부 시간</th><th>거리</th><th>점수</th><th>합격</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>특성은 공부 시간(시간) 하나이고, 거리는 |x − x<sub>새</sub>|입니다. 분류 라벨은 점수 60 이상을 합격으로 정해 같은 데이터에서 만들었습니다.</p>
+    <p>동점 처리: 분류에서 짝수 K로 표가 같으면 가장 가까운 이웃(1순위)의 클래스를 따릅니다. 거리가 같은 점이 여럿이면 공부 시간이 짧은 점부터 셉니다. 라이브러리마다 동점 규칙이 다를 수 있어, 2클래스 분류에서는 K를 홀수로 두는 일이 흔합니다.</p>
+    <p>여기서는 모든 이웃에게 같은 가중치를 주었습니다(uniform). 거리가 가까울수록 더 큰 가중치를 주는 방식(예: 1/거리)도 있습니다. 표와 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: [공부 시간(0.1시간 단위 정수), 점수]
+  const DATA=[[8,32],[15,41],[21,38],[27,50],[33,47],[38,62],[44,55],[49,58],[53,66],[58,61],[64,57],[69,72],[75,69],[81,80],[88,76],[94,88]];
+  const PASS=60;
+  let mode='cls', K=5, xq=50; // xq: 0.1시간 단위
+
+  const svg=document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(par||svg).appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const hr=t=>fmt(t/10,1);
+
+  const W=720, H=430, M={l:60,r:210,t:24,b:52}, PX0=W-M.r+40, PX1=W-22;
+  const X0=0, X1=100, Y0=20, Y1=100;
+  const px=t=>M.l+(t-X0)/(X1-X0)*(W-M.l-M.r);
+  const py=s=>H-M.b-(s-Y0)/(Y1-Y0)*(H-M.t-M.b);
+  const ix=X=>X0+(X-M.l)/(W-M.l-M.r)*(X1-X0);
+
+  function neighbors(){
+    return DATA.map((d,i)=>({i,d,dist:Math.abs(d[0]-xq)})).sort((a,b)=>a.dist-b.dist||a.i-b.i);
+  }
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box');
+    const ranked=neighbors(), nb=ranked.slice(0,K), nbSet=new Set(nb.map(n=>n.i));
+    const rK=nb[nb.length-1].dist;
+
+    // 이웃 범위 띠
+    el('rect',{x:px(Math.max(X0,xq-rK)),y:M.t,width:px(Math.min(X1,xq+rK))-px(Math.max(X0,xq-rK)),height:H-M.t-M.b,fill:box});
+    // 격자·축
+    for(let s=20;s<=100;s+=20){
+      el('line',{x1:M.l,x2:W-M.r,y1:py(s),y2:py(s),stroke:rule});
+      const t=el('text',{x:M.l-8,y:py(s)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=s;
+    }
+    for(let t=0;t<=100;t+=(big?50:20)){
+      const e=el('text',{x:px(t),y:H-M.b+20*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); e.textContent=t/10;
+    }
+    el('line',{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:label});
+    const xl=el('text',{x:W-M.r,y:H-8,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Sans KR'}); xl.textContent='공부 시간 (시간)';
+    const yl=el('text',{x:M.l,y:M.t-8,'text-anchor':'start','font-size':12*F,fill:label,'font-family':'IBM Plex Sans KR'}); yl.textContent=big?'':'점수';
+
+    if(mode==='cls'){
+      el('line',{x1:M.l,x2:W-M.r,y1:py(PASS),y2:py(PASS),stroke:ink,'stroke-width':1.2*F,'stroke-dasharray':`${5*F} ${4*F}`});
+      const t=el('text',{x:W-M.r-4,y:py(PASS)-6,'text-anchor':'end','font-size':11*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=big?'60':'합격선 60';
+    }
+    // 새 점 세로선
+    el('line',{x1:px(xq),x2:px(xq),y1:M.t,y2:H-M.b,stroke:acc,'stroke-width':1.2*F,'stroke-dasharray':`${2*F} ${3*F}`});
+
+    // 데이터 점
+    DATA.forEach((d,i)=>{
+      const on=nbSet.has(i), pass=d[1]>=PASS;
+      const filled = mode==='cls' ? pass : true;
+      el('circle',{cx:px(d[0]),cy:py(d[1]),r:(on?7.5:6)*F,fill:filled?(on?ink:ink):bg,stroke:on?acc:ink,'stroke-width':(on?3:1.4)*F,opacity:on?1:.55});
+    });
+
+    // 오른쪽 집계 패널
+    el('line',{x1:PX0-20,x2:PX0-20,y1:M.t,y2:H-M.b,stroke:rule});
+    const votes=nb.filter(n=>n.d[1]>=PASS).length, fails=K-votes;
+    const tie = votes===fails;
+    const predCls = votes>fails ? 1 : votes<fails ? 0 : (nb[0].d[1]>=PASS?1:0);
+    const mean = nb.reduce((a,n)=>a+n.d[1],0)/K;
+
+    if(mode==='cls'){
+      const head=el('text',{x:(PX0+PX1)/2,y:M.t+4*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); head.textContent='표 (다수결)';
+      const bw=(PX1-PX0)/2-14, base=H-M.b, top=M.t+30*F, unitH=(base-top)/9;
+      [[1,votes,'합격'],[0,fails,'불합격']].forEach((b,j)=>{
+        const x=PX0+j*((PX1-PX0)/2)+7, h=b[1]*unitH, win=b[0]===predCls;
+        // 칸 단위 막대: 합격 = 채움, 불합격 = 빈 칸
+        for(let v=0;v<b[1];v++) el('rect',{x:x,y:base-(v+1)*unitH+1.5,width:bw,height:unitH-3,fill:b[0]?ink:bg,stroke:ink,'stroke-width':1.2*F});
+        if(win) el('rect',{x:x-4,y:base-h-4,width:bw+8,height:h+4,fill:'none',stroke:acc,'stroke-width':2.2*F});
+        const c=el('text',{x:x+bw/2,y:base-h-10,'text-anchor':'middle','font-size':16*F,fill:win?acc:ink,'font-family':'IBM Plex Mono'}); c.textContent=b[1];
+        const lb=el('text',{x:x+bw/2,y:base+20*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Sans KR'}); lb.textContent=b[2];
+      });
+      // ★ 새 학생: 축 위
+      star(px(xq),H-M.b,acc,F);
+    } else {
+      const head=el('text',{x:(PX0+PX1)/2,y:M.t+4*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); head.textContent='이웃 점수';
+      const cx=PX1-24*F;
+      // 평균선: 이웃 범위 → 패널까지
+      el('line',{x1:px(Math.max(X0,xq-rK)),x2:PX1,y1:py(mean),y2:py(mean),stroke:acc,'stroke-width':2.4*F});
+      // 이웃 y값 띠그림 (겹치면 좌우로 비킴)
+      const ys=nb.map(n=>n.d[1]).sort((a,b)=>a-b);
+      // 가까운 값끼리 겹치지 않도록 열을 바꿔 쌓는다
+      const lastY={}, rr=5*F, cols=[0,-1,1,-2,2];
+      ys.forEach(v=>{const y=py(v); const c=cols.find(c=>lastY[c]===undefined||Math.abs(y-lastY[c])>=2*rr+1)??0; lastY[c]=y;
+        el('circle',{cx:cx+c*(2*rr+2),cy:y,r:rr,fill:ink,stroke:bg,'stroke-width':1});});
+      const mt=el('text',{x:PX0-12,y:py(mean)+(mean>80?20:-8)*F,'text-anchor':'start','font-size':14*F,fill:acc,'font-family':'IBM Plex Mono'}); mt.textContent=(big?'':'평균 ')+fmt(mean,1);
+      star(px(xq),py(mean),acc,F);
+    }
+
+    // 결과 문구
+    document.getElementById('kOut').textContent=`K = ${K}`;
+    const R=document.getElementById('result'), E=document.getElementById('explain');
+    if(mode==='cls'){
+      R.innerHTML=`이웃 ${K}명: 합격 ${votes} · 불합격 ${fails} → 예측 <b>${predCls?'합격':'불합격'}</b>`;
+      E.innerHTML = big
+        ? (tie?`표가 같아 <b>가장 가까운 이웃</b>(${nb[0].d[1]>=PASS?'합격':'불합격'})을 따랐습니다.`:`이웃의 라벨을 세어 <b>많은 쪽</b>을 고릅니다.`)
+        : `분류는 이웃 ${K}명의 라벨을 세어 가장 많은 클래스를 고릅니다(다수결).` + (tie
+          ? ` 지금은 ${votes} 대 ${fails} 동점이라, 정해 둔 규칙대로 가장 가까운 이웃(공부 시간 ${hr(nb[0].d[0])}시간, ${nb[0].d[1]>=PASS?'합격':'불합격'})의 클래스를 따랐습니다.`
+          : ` 이웃의 점수가 얼마였는지는 세지 않고, 합격선을 넘었는지만 봅니다.`);
+    } else {
+      R.innerHTML=`이웃 ${K}명 점수의 평균 → 예측 <b>${fmt(mean,1)}점</b>`;
+      E.innerHTML = big
+        ? `이웃의 <b>값을 평균</b> 냅니다. 표를 세지 않습니다.`
+        : `회귀는 이웃 ${K}명의 점수(연속값)를 평균 냅니다. 예측값은 이웃 점수의 최솟값(${Math.min(...nb.map(n=>n.d[1]))})과 최댓값(${Math.max(...nb.map(n=>n.d[1]))}) 사이에서만 나옵니다. 그래서 K-NN 회귀는 데이터 범위 밖을 외삽하지 못합니다.`;
+    }
+    document.getElementById('cap').textContent = mode==='cls'
+      ? '● 합격(점수 ≥ 60) · ○ 불합격 · 붉은 테두리 = 이웃 K명 · 회색 띠 = 이웃이 들어온 공부 시간 범위 · ★ = 새 학생 · 오른쪽 = 클래스별 표'
+      : '● 학생(점수) · 붉은 테두리 = 이웃 K명 · 굵은 가로선 = 이웃 점수의 평균 · ★ = 새 학생의 예측 점수 · 오른쪽 = 이웃 점수만 모은 것';
+
+    document.getElementById('rows').innerHTML=ranked.slice(0,Math.max(K,5)).map((n,j)=>
+      `<tr style="${j<K?'font-weight:500':'color:var(--label)'}"><td>${j+1}${j<K?' · 이웃':''}</td><td>${hr(n.d[0])}</td><td>${hr(n.dist)}</td><td>${n.d[1]}</td><td>${n.d[1]>=PASS?'● 합격':'○ 불합격'}</td></tr>`).join('');
+    document.getElementById('formula').textContent = mode==='cls'
+      ? `다수결: 합격 ${votes}표, 불합격 ${fails}표 → ${predCls?'합격':'불합격'}${tie?' (동점 → 1순위 이웃의 클래스)':''}`
+      : `평균: (${nb.map(n=>n.d[1]).join(' + ')}) / ${K} = ${nb.reduce((a,n)=>a+n.d[1],0)} / ${K} = ${fmt(mean,2)}`;
+    window.__state={mode,K,xq,votes,fails,predCls,mean,nb:nb.map(n=>n.d)};
+  }
+  function star(sx,sy,col,F){
+    const pts=[];
+    for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5, rr=(k%2?5:12)*F; pts.push((sx+rr*Math.cos(a)).toFixed(1)+','+(sy+rr*Math.sin(a)).toFixed(1));}
+    el('polygon',{points:pts.join(' '),fill:col,stroke:css('--bg'),'stroke-width':1});
+  }
+
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+    mode=b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b)); draw();
+  }));
+  const kr=document.getElementById('kRange');
+  kr.addEventListener('input',()=>{K=+kr.value; draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); M.l=on?84:60; M.b=on?84:52; M.t=on?40:24; draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  let dragging=false;
+  function moveTo(e){
+    const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    xq=Math.round(Math.min(Math.max(ix(p.x),0),100)); draw();
+  }
+  svg.addEventListener('pointerdown',e=>{dragging=true;svg.setPointerCapture(e.pointerId);moveTo(e);});
+  svg.addEventListener('pointermove',e=>{if(dragging)moveTo(e);});
+  svg.addEventListener('pointerup',()=>dragging=false);
+
+  // URL 옵션: ?mode=cls|reg &k=1..9 &x=0~10(시간) &shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('x')!==null && !isNaN(parseFloat(u.get('x')))) xq=Math.round(Math.min(Math.max(parseFloat(u.get('x'))*10,0),100));
+  const uk=parseInt(u.get('k'),10); if(uk>=1&&uk<=9){K=uk; kr.value=uk;}
+  if(u.get('mode')) document.querySelector(`[data-mode="${u.get('mode')}"]`)?.click();
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

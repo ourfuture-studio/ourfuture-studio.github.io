@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>단위가 바꾸는 이웃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts .ctl-k, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view{display:none}
+body.shorts .controls{margin:14px 0 12px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-01</div>
+  <h1>단위를 바꾸면 이웃도 바뀔까<span class="dot">.</span></h1>
+  <p class="lede">키(cm)와 연봉(만원)으로 동호회 가입 여부를 맞히는 K-NN입니다. 같은 데이터, 같은 새 사람인데 척도만 바꾸면 ‘가장 가까운 이웃’과 예측이 달라집니다. 그래프를 눌러 새 사람(★)의 위치를 옮겨 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">12명 · 직접 만든 예시</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">척도</span>
+      <span class="seg" role="group" aria-label="척도">
+        <button data-mode="raw" aria-pressed="true">원본 단위</button>
+        <button data-mode="std" aria-pressed="false">표준화</button>
+        <button data-mode="mm" aria-pressed="false">최소-최대</button>
+      </span>
+    </div>
+    <div class="ctl-k"><span class="mono ctl-label">K</span>
+      <span class="seg" role="group" aria-label="이웃 수 K">
+        <button data-k="1" aria-pressed="false">1</button>
+        <button data-k="3" aria-pressed="true">3</button>
+        <button data-k="5" aria-pressed="false">5</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 460" role="img" aria-label="키와 연봉 산점도"></svg>
+    <figcaption class="mono">● 가입 · ○ 미가입 · ★ 새 사람 · 굵은 테두리 = 모델이 고른 이웃 · 곡선 = 이 척도에서 ‘같은 거리’의 경계</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="가까운 이웃">
+    <thead><tr><th>순위</th><th>가입</th><th>키</th><th>연봉</th><th id="distHead">거리</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>표준화·최소-최대 변환은 훈련 데이터 12명의 통계로 계산했고, 새 사람(★)은 포함하지 않았습니다. 표준편차는 scikit-learn StandardScaler와 같은 모집단 기준(ddof=0)입니다.</p>
+    <p>거리는 유클리드 거리(L2)입니다. 표의 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: [키(cm), 연봉(만원), 가입(1)/미가입(0)]
+  const DATA = [
+    [186,3200,1],[181,3700,1],[184,4600,1],[188,5500,1],[182,6400,1],[185,7200,1],
+    [158,3950,0],[162,4080,0],[160,4150,0],[156,5000,0],[164,6000,0],[159,7000,0]
+  ];
+  let q = [183,4000];
+  let mode = 'raw', K = 3;
+
+  const H = DATA.map(d=>d[0]), S = DATA.map(d=>d[1]);
+  const mean = a => a.reduce((x,y)=>x+y,0)/a.length;
+  const sd = a => { const m=mean(a); return Math.sqrt(a.reduce((x,y)=>x+(y-m)*(y-m),0)/a.length); };
+  const st = { mh:mean(H), sh:sd(H), ms:mean(S), ss:sd(S),
+               nh:Math.min(...H), xh:Math.max(...H), ns:Math.min(...S), xs:Math.max(...S) };
+
+  // 각 척도에서 한 단위 거리가 원본 단위로 얼마인지 (경계 타원 반지름 환산용)
+  const unit = {
+    raw:[1,1],
+    std:[st.sh, st.ss],
+    mm:[st.xh-st.nh, st.xs-st.ns]
+  };
+  function tf(h,s){
+    if(mode==='std') return [(h-st.mh)/st.sh, (s-st.ms)/st.ss];
+    if(mode==='mm')  return [(h-st.nh)/(st.xh-st.nh), (s-st.ns)/(st.xs-st.ns)];
+    return [h,s];
+  }
+
+  // 플롯 좌표
+  const W=720, HT=460, M={l:70,r:24,t:20,b:56}; // 쇼츠 화면에서는 축 여백을 넓힘
+  const X0=148, X1=194, Y0=2600, Y1=7800;
+  const px = h => M.l + (h-X0)/(X1-X0)*(W-M.l-M.r);
+  const py = s => HT-M.b - (s-Y0)/(Y1-Y0)*(HT-M.t-M.b);
+  const ih = x => X0 + (x-M.l)/(W-M.l-M.r)*(X1-X0);
+  const is = y => Y0 + (HT-M.b-y)/(HT-M.t-M.b)*(Y1-Y0);
+
+  const svg = document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el = (n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt = (v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    el('defs',{}).innerHTML = `<clipPath id="clip"><rect x="${M.l}" y="${M.t}" width="${W-M.l-M.r}" height="${HT-M.t-M.b}"/></clipPath>`;
+
+    // 격자·축
+    for(let h=150;h<=190;h+=10){
+      el('line',{x1:px(h),x2:px(h),y1:M.t,y2:HT-M.b,stroke:rule,'stroke-width':1});
+      const t=el('text',{x:px(h),y:HT-M.b+20*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=h;
+    }
+    for(let s=3000;s<=7500;s+=1500){
+      el('line',{x1:M.l,x2:W-M.r,y1:py(s),y2:py(s),stroke:rule,'stroke-width':1});
+      const t=el('text',{x:M.l-10,y:py(s)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t.textContent=fmt(s,0);
+    }
+    const xl=el('text',{x:(M.l+W-M.r)/2,y:HT-12,'text-anchor':'middle','font-size':13*F,fill:label}); xl.textContent='키 (cm)';
+    const yl=el('text',{x:big?24:18,y:(M.t+HT-M.b)/2,'text-anchor':'middle','font-size':13*F,fill:label,transform:`rotate(-90 ${big?24:18} ${(M.t+HT-M.b)/2})`}); yl.textContent='연봉 (만원)';
+
+    // 거리 계산
+    const tq = tf(q[0],q[1]);
+    const ranked = DATA.map((d,i)=>{const t=tf(d[0],d[1]);return {i,d,dist:Math.hypot(t[0]-tq[0],t[1]-tq[1])};})
+                       .sort((a,b)=>a.dist-b.dist);
+    const nb = ranked.slice(0,K), nbSet=new Set(nb.map(n=>n.i));
+    const r = nb[nb.length-1].dist;
+
+    // 같은 거리 경계(타원) — 원본 단위로 환산해 그림
+    const g = el('g',{'clip-path':'url(#clip)'});
+    const rxPx = Math.abs(px(q[0]+r*unit[mode][0])-px(q[0]));
+    const ryPx = Math.abs(py(q[1]+r*unit[mode][1])-py(q[1]));
+    el('ellipse',{cx:px(q[0]),cy:py(q[1]),rx:rxPx,ry:ryPx,fill:'none',stroke:acc,'stroke-width':1.5*F,'stroke-dasharray':'5 4'},g);
+
+    // 이웃 연결선
+    nb.forEach(n=>el('line',{x1:px(q[0]),y1:py(q[1]),x2:px(n.d[0]),y2:py(n.d[1]),stroke:acc,'stroke-width':F,opacity:.6},g));
+
+    // 점
+    DATA.forEach((d,i)=>{
+      const on = nbSet.has(i);
+      el('circle',{cx:px(d[0]),cy:py(d[1]),r:(on?8:6.5)*F,fill:d[2]?ink:bg,stroke:ink,'stroke-width':(on?3:1.5)*F});
+    });
+    // 새 사람 ★
+    const sx=px(q[0]), sy=py(q[1]), pts=[];
+    for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5, rr=(k%2?5:12)*F; pts.push((sx+rr*Math.cos(a)).toFixed(1)+','+(sy+rr*Math.sin(a)).toFixed(1));}
+    el('polygon',{points:pts.join(' '),fill:acc});
+
+    // 결과
+    const votes = nb.reduce((a,n)=>a+n.d[2],0);
+    const pred = votes*2 > K ? 1 : 0;
+    document.getElementById('result').innerHTML =
+      `이웃 ${K}명 중 가입 ${votes}명 → 예측: <b>${pred?'가입':'미가입'}</b>`;
+    const ex = {
+      raw:`원본 단위에서는 연봉 1만원 차이와 키 1cm 차이가 같은 무게입니다. 연봉의 폭(수천)이 키의 폭(수십)보다 훨씬 커서, 모델은 사실상 <b>연봉만 보고</b> 이웃을 고릅니다. 점선 경계가 가로로 납작한 이유입니다.`,
+      std:`표준화는 각 특성을 ‘평균에서 표준편차 몇 개만큼 떨어졌나’로 바꿔, 키와 연봉을 같은 무게로 봅니다. 이제 키가 비슷한 사람들이 이웃이 됩니다.`,
+      mm:`최소-최대 변환은 각 특성을 0~1 범위로 맞춥니다. 이 데이터에서는 표준화와 같은 결론이지만, 극단값이 하나 있으면 범위 전체가 그 값에 끌려가므로 두 방법의 결과가 달라질 수 있습니다.`
+    };
+    const exShort = {raw:'연봉 1만원 = 키 1cm. 모델은 사실상 <b>연봉만</b> 봅니다.', std:'키와 연봉을 같은 무게로. 이제 <b>키가 비슷한</b> 사람이 이웃입니다.', mm:'0~1로 맞춰도 같은 결론. 단, 극단값에는 약합니다.'};
+    document.getElementById('explain').innerHTML = (big?exShort:ex)[mode];
+
+    // 표
+    const unitName = {raw:'거리(원본)',std:'거리(표준화)',mm:'거리(0~1)'}[mode];
+    document.getElementById('distHead').textContent = unitName;
+    document.getElementById('rows').innerHTML = ranked.slice(0,Math.max(K,5)).map((n,j)=>
+      `<tr style="${j<K?'font-weight:500':'color:var(--label)'}"><td>${j+1}${j<K?' · 이웃':''}</td><td>${n.d[2]?'● 가입':'○ 미가입'}</td><td>${n.d[0]}</td><td>${fmt(n.d[1],0)}</td><td>${fmt(n.dist,mode==='raw'?1:3)}</td></tr>`).join('');
+
+    // 1순위 이웃 계산식
+    const a=tf(nb[0].d[0],nb[0].d[1]);
+    const dx=a[0]-tq[0], dy=a[1]-tq[1], dg=mode==='raw'?0:3;
+    document.getElementById('formula').textContent =
+      `1순위 이웃까지: √((키 차이)² + (연봉 차이)²) = √(${fmt(dx,dg)}² + ${fmt(dy,dg)}²) = ${fmt(nb[0].dist,mode==='raw'?1:3)}`;
+  }
+
+  // 조작
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+    mode=b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b)); draw();
+  }));
+  document.querySelectorAll('[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    K=+b.dataset.k; document.querySelectorAll('[data-k]').forEach(x=>x.setAttribute('aria-pressed',x===b)); draw();
+  }));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); M.l=on?140:70; M.b=on?90:56; draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  let dragging=false;
+  function moveTo(e){
+    const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    const h=Math.min(Math.max(ih(p.x),X0+1),X1-1), s=Math.min(Math.max(is(p.y),Y0+50),Y1-50);
+    q=[Math.round(h), Math.round(s/10)*10]; draw();
+  }
+  svg.addEventListener('pointerdown',e=>{dragging=true;svg.setPointerCapture(e.pointerId);moveTo(e);});
+  svg.addEventListener('pointermove',e=>{if(dragging)moveTo(e);});
+  svg.addEventListener('pointerup',()=>dragging=false);
+
+  // URL 옵션: ?mode=std&k=5&shorts=1 (녹화·정지 화면 저장용)
+  const u=new URLSearchParams(location.search);
+  if(u.get('mode')) document.querySelector(`[data-mode="${u.get('mode')}"]`)?.click();
+  if(u.get('k')) document.querySelector(`[data-k="${u.get('k')}"]`)?.click();
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

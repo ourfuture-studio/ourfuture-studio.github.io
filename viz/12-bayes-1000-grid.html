@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>양성 1,000명 격자</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#A8336A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E57AAE;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E57AAE;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--accent)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.sl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sl label{min-width:4.6em}
+.sl input[type=range]{accent-color:var(--ink);width:170px;max-width:52vw}
+.sl output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4.2em;font-variant-numeric:tabular-nums}
+.params{display:none}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:6px 0}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .controls{display:none}
+body.shorts .params{display:block;margin:6px 0 12px;font-size:14px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:16px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 04 회귀·확률 · VIZ-12</div>
+  <h1>양성이면 정말 병에 걸린 걸까<span class="dot">.</span></h1>
+  <p class="lede">1,000명이 같은 검사를 받았다고 해 봅시다. 검사가 꽤 정확해도, 병이 드물면 ‘양성’ 판정을 받은 사람 중 실제 환자는 생각보다 적습니다. 유병률·민감도·특이도 슬라이더를 움직여 양성(사각형) 무리 안에서 채운 사각형이 얼마나 되는지 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">1,000명 · 비율로 만든 예시</span></p>
+
+  <div class="controls">
+    <div class="sl"><label class="mono" for="prev">유병률</label><input type="range" id="prev" min="0" max="16" step="1" value="5" aria-label="유병률"><output id="prevOut"></output></div>
+    <div class="sl"><label class="mono" for="sens">민감도</label><input type="range" id="sens" min="500" max="999" step="1" value="900" aria-label="민감도"><output id="sensOut"></output></div>
+    <div class="sl"><label class="mono" for="spec">특이도</label><input type="range" id="spec" min="500" max="999" step="1" value="910" aria-label="특이도"><output id="specOut"></output></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <p class="mono params" id="params"></p>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 520" role="img" aria-label="1,000명 아이콘 격자"></svg>
+    <figcaption class="mono">채움 = 실제 환자 · 빈 모양 = 건강 · 사각형(강조색) = 검사 양성 · 원 = 검사 음성 · 한 칸 = 1명</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="1,000명 기준 인원">
+    <thead><tr><th>1,000명 기준</th><th>검사 양성</th><th>검사 음성</th><th>합계</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+  <p class="formula" id="formula2"></p>
+
+  <div class="notes">
+    <p>민감도 = P(양성 | 환자), 특이도 = P(음성 | 건강)입니다. 구하려는 값은 그 반대 방향인 P(환자 | 양성)이며, 베이즈 정리로 계산했습니다.</p>
+    <p>격자와 표의 인원은 1,000명 기준으로 반올림한 정수입니다(환자 수 = 1,000 × 유병률, 진짜 양성 = 환자 × 민감도, 거짓 양성 = 건강 × (1 − 특이도)를 각각 반올림). 그래서 격자 비율과 공식의 확률은 소수점 아래에서 조금 다를 수 있으며, 화면에는 둘을 함께 적었습니다.</p>
+    <p>유병률은 검사 대상 집단에 따라 달라집니다. 증상이 있어 병원에 온 사람이라면 기저율이 높아져 같은 검사라도 P(환자 | 양성)이 커집니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 유병률 슬라이더 눈금(%) — 드문 병 구간을 촘촘하게
+  const PREVS = [0.1,0.2,0.3,0.5,0.7,1,1.5,2,3,4,5,6,8,10,12,15,20];
+  const N = 1000, COLS = 40, ROWS = 25;
+  const sPrev = document.getElementById('prev'), sSens = document.getElementById('sens'), sSpec = document.getElementById('spec');
+
+  const svg = document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el = (n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt = (v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const pct = (p)=>{ // 확률을 %로, 작을수록 자릿수를 늘림
+    const v=p*100; return fmt(v, v<1?2:1)+'%';
+  };
+  const pctIn = v => (v<1||v%1?fmt(v,1):fmt(v,0))+'%';
+
+  function state(){
+    const prev = PREVS[+sPrev.value]/100, sens = +sSens.value/1000, spec = +sSpec.value/1000;
+    // 자연빈도(1,000명 기준, 반올림한 정수)
+    const sick = Math.round(N*prev), healthy = N - sick;
+    const TP = Math.round(sick*sens), FN = sick - TP;
+    const FP = Math.round(healthy*(1-spec)), TN = healthy - FP;
+    // 정확한 확률(베이즈 정리)
+    const num = sens*prev, den = sens*prev + (1-spec)*(1-prev);
+    const post = num/den;
+    return {prev,sens,spec,sick,healthy,TP,FN,FP,TN,num,den,post};
+  }
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    const s = state();
+
+    document.getElementById('prevOut').textContent = pctIn(PREVS[+sPrev.value]);
+    document.getElementById('sensOut').textContent = pctIn(+sSens.value/10);
+    document.getElementById('specOut').textContent = pctIn(+sSpec.value/10);
+    document.getElementById('params').textContent = `유병률 ${pctIn(PREVS[+sPrev.value])} · 민감도 ${pctIn(+sSens.value/10)} · 특이도 ${pctIn(+sSpec.value/10)}`;
+
+    // 격자: 거짓 음성 → 진짜 양성 → 거짓 양성 → 진짜 음성 순서로 채움(환자끼리, 양성끼리 붙어 보이게)
+    const cell = 17, x0 = 20, y0 = 14, r = 5.6;
+    const kinds = [];
+    for(let i=0;i<s.FN;i++) kinds.push('FN');
+    for(let i=0;i<s.TP;i++) kinds.push('TP');
+    for(let i=0;i<s.FP;i++) kinds.push('FP');
+    for(let i=0;i<s.TN;i++) kinds.push('TN');
+    const g = el('g',{});
+    function mark(kind,cx,cy,sz,parent){
+      const p = parent||g;
+      if(kind==='TP') el('rect',{x:cx-sz,y:cy-sz,width:2*sz,height:2*sz,fill:acc,stroke:acc,'stroke-width':1.4},p);
+      else if(kind==='FP') el('rect',{x:cx-sz+0.8,y:cy-sz+0.8,width:2*sz-1.6,height:2*sz-1.6,fill:'none',stroke:acc,'stroke-width':1.6},p);
+      else if(kind==='FN') el('circle',{cx,cy,r:sz,fill:ink,stroke:ink,'stroke-width':1},p);
+      else el('circle',{cx,cy,r:sz-0.6,fill:'none',stroke:label,'stroke-width':1,opacity:.55},p);
+    }
+    kinds.forEach((k,i)=>{
+      const col = i%COLS, row = Math.floor(i/COLS);
+      mark(k, x0+col*cell+cell/2, y0+row*cell+cell/2, r);
+    });
+
+    // 범례 겸 인원
+    const ly = y0+ROWS*cell+24;
+    el('line',{x1:x0,x2:x0+COLS*cell,y1:ly-12,y2:ly-12,stroke:rule,'stroke-width':1});
+    const items = [
+      ['TP','환자 · 양성',s.TP],['FP','건강 · 양성',s.FP],
+      ['FN','환자 · 음성',s.FN],['TN','건강 · 음성',s.TN]
+    ];
+    items.forEach((it,j)=>{
+      const col=j%2, row=Math.floor(j/2);
+      const lx = x0 + col*340 + 8, yy = ly + 14*F + row*(big?40:28);
+      mark(it[0], lx+6, yy-5*F, 6*F, svg);
+      const t=el('text',{x:lx+22*F,y:yy,'font-size':14*F,fill:ink}); t.textContent=`${it[1]}  ${fmt(it[2],0)}명`;
+    });
+    svg.setAttribute('viewBox', `0 0 720 ${big?ly+96:ly+66}`);
+
+    // 결과
+    const pos = s.TP + s.FP;
+    const gridRatio = pos? s.TP/pos : 0;
+    // 반올림 때문에 격자 비율이 정확한 확률과 0.5%p 넘게 어긋나면, 자연빈도는 더 큰 집단(1만·10만 명…)으로 셈
+    let B = N, tpB = s.TP, fpB = s.FP;
+    if(Math.abs(gridRatio - s.post) > 0.005){
+      for(B=10000; B<1e7; B*=10){ tpB=Math.round(B*s.num); fpB=Math.round(B*(s.den-s.num)); if(tpB+fpB>0 && Math.abs(tpB/(tpB+fpB)-s.post)<=0.001) break; }
+      tpB=Math.round(B*s.num); fpB=Math.round(B*(s.den-s.num));
+    }
+    const sickB = Math.round(B*s.prev), healthyB = B - sickB;
+    const baseTxt = B===N ? '' : `${fmt(B,0)}명이라면 `;
+    document.getElementById('result').innerHTML = big
+      ? `P(환자 | 양성) ≈ <b>${pct(s.post)}</b><span style="display:block;font-size:19px">${B===N?'1,000명':fmt(B,0)+'명'} 중 양성 약 ${fmt(tpB+fpB,0)}명, 그중 환자 <b>${fmt(tpB,0)}명</b></span>`
+      : `${baseTxt}양성 ${fmt(tpB+fpB,0)}명 중 실제 환자는 <b>${fmt(tpB,0)}명</b><span class="mono" style="font-size:12px"> (반올림)</span> — P(환자 | 양성) = <b>${pct(s.post)}</b>`;
+    const sensTxt = pctIn(+sSens.value/10);
+    const eTP = s.num, eFP = s.den - s.num; // 반올림 전 비교
+    let ex, exShort;
+    if(eFP > eTP*1.0005){
+      ex = `건강한 ${fmt(healthyB,0)}명 중 ${pctIn(100-(+sSpec.value/10))}(1 − 특이도)만 잘못 양성으로 나와도 ${fmt(fpB,0)}명이라, 진짜 양성 ${fmt(tpB,0)}명보다 많습니다. 민감도 ${sensTxt}라는 말만 듣고 ‘양성이면 ${sensTxt} 확률로 환자’라고 생각하는 것이 <b>기저율 무시</b>입니다. P(양성 | 환자)와 P(환자 | 양성)은 다른 값입니다.`;
+      exShort = `거짓 양성 ${fmt(fpB,0)}명이 진짜 양성 ${fmt(tpB,0)}명보다 많습니다. 병이 드물면 정확한 검사도 이렇게 됩니다.`;
+    } else if(eTP > eFP*1.0005){
+      ex = `진짜 양성 ${fmt(tpB,0)}명이 거짓 양성 ${fmt(fpB,0)}명보다 많아, 이제 양성 판정이 꽤 믿을 만합니다. 기저율(유병률)이 높아지거나 특이도가 높아지면 거짓 양성의 비중이 줄어듭니다. 그래도 답은 민감도 ${sensTxt}와 같지 않습니다.`;
+      exShort = `진짜 양성이 거짓 양성보다 많습니다. 기저율이 높거나 특이도가 높으면 양성을 믿을 만해집니다.`;
+    } else {
+      ex = `진짜 양성과 거짓 양성이 거의 같은 수라, 양성 판정은 동전 던지기에 가깝습니다. 민감도 ${sensTxt}와는 전혀 다른 값입니다.`;
+      exShort = `진짜 양성과 거짓 양성이 거의 같습니다. 양성은 반반입니다.`;
+    }
+    const warn = B===N ? '' : `<span class="mono" style="display:block;margin-bottom:6px">주의 · 1,000명 격자는 0.5명 같은 소수 인원을 그릴 수 없어 반올림했습니다. 그래서 격자 비율(${fmt(s.TP,0)}/${fmt(pos,0)} = ${pct(gridRatio)})이 정확한 값(${pct(s.post)})과 다르고, 위 문장은 ${fmt(B,0)}명 기준으로 셌습니다.</span>`;
+    document.getElementById('explain').innerHTML = (big?'':warn) + (big?exShort:ex);
+
+    // 표
+    document.getElementById('rows').innerHTML =
+      `<tr><td>● 환자 ${fmt(s.sick,0)}명</td><td>■ ${fmt(s.TP,0)} <span class="mono">진짜 양성</span></td><td>● ${fmt(s.FN,0)} <span class="mono">거짓 음성</span></td><td>${fmt(s.sick,0)}</td></tr>`+
+      `<tr><td>○ 건강 ${fmt(s.healthy,0)}명</td><td>□ ${fmt(s.FP,0)} <span class="mono">거짓 양성</span></td><td>○ ${fmt(s.TN,0)} <span class="mono">진짜 음성</span></td><td>${fmt(s.healthy,0)}</td></tr>`+
+      `<tr style="font-weight:500"><td>합계</td><td>${fmt(pos,0)}</td><td>${fmt(s.FN+s.TN,0)}</td><td>${fmt(N,0)}</td></tr>`;
+
+    const dg = s.num<0.001?6:4, f4 = v=>fmt(v,dg);
+    document.getElementById('formula').textContent =
+      `베이즈 정리: P(환자|양성) = P(양성|환자)·P(환자) / [P(양성|환자)·P(환자) + P(양성|건강)·P(건강)] = ${fmt(s.sens,3)}×${fmt(s.prev,3)} / (${fmt(s.sens,3)}×${fmt(s.prev,3)} + ${fmt(1-s.spec,3)}×${fmt(1-s.prev,3)}) = ${f4(s.num)} / ${f4(s.den)} = ${pct(s.post)}`;
+    document.getElementById('formula2').textContent =
+      `자연빈도(반올림한 인원): 양성 ${fmt(pos,0)}명 중 환자 ${fmt(s.TP,0)}명 = ${pct(gridRatio)} · 반올림 전 기대 인원은 진짜 양성 ${fmt(N*s.num,1)}명, 거짓 양성 ${fmt(N*(s.den-s.num),1)}명`;
+  }
+
+  [sPrev,sSens,sSpec].forEach(x=>x.addEventListener('input',draw));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?prev=1&sens=90&spec=91&shorts=1 (값은 %; prev는 눈금 중 가장 가까운 값)
+  const u=new URLSearchParams(location.search);
+  if(u.get('prev')){const v=+u.get('prev'); let bi=0; PREVS.forEach((p,i)=>{if(Math.abs(p-v)<Math.abs(PREVS[bi]-v))bi=i;}); sPrev.value=bi;}
+  const clampPct = v => Math.min(999,Math.max(500,Math.round(v*10)));
+  if(u.get('sens')&&!isNaN(+u.get('sens'))) sSens.value=clampPct(+u.get('sens'));
+  if(u.get('spec')&&!isNaN(+u.get('spec'))) sSpec.value=clampPct(+u.get('spec'));
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

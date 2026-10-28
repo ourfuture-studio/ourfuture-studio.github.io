@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>학습률과 경사하강</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible, input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.slider{display:flex;align-items:center}
+.slider input{accent-color:var(--ink);width:220px;margin:0 10px 0 0}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4ch;font-variant-numeric:tabular-nums}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.tbl{max-height:330px;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400;position:sticky;top:0;background:var(--bg)}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:440px){ body:not(.shorts) .slider input{width:140px} body:not(.shorts) table{font-size:13px} body:not(.shorts) th, body:not(.shorts) td{padding:5px 4px} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts .tbl, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view{display:none}
+body.shorts .controls{margin:12px 0 10px;gap:10px 16px}
+body.shorts .slider input{width:190px}
+body.shorts .seg button{padding:5px 10px}
+body.shorts .result{font-size:23px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 04 회귀·확률 · VIZ-09</div>
+  <h1>학습률이 크면 무슨 일이 생길까<span class="dot">.</span></h1>
+  <p class="lede">손실 f(w) = (w − 3)²의 최솟값 w = 3을 경사하강으로 찾아갑니다. 한 걸음의 크기는 <b>학습률 × 기울기</b>입니다. 학습률 슬라이더를 0.05, 0.3, 0.8, 1.05 근처로 옮기고 [재생] 또는 [한 단계]를 눌러 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 계산 예시</span><span class="mono">시작점 w₀ = −1 · 최대 30단계 · 브라우저에서 직접 계산</span></p>
+
+  <div class="controls">
+    <div class="slider"><span class="mono ctl-label">학습률 η</span>
+      <input id="lrS" type="range" min="0.01" max="1.1" step="0.01" value="0.1" aria-label="학습률"><span class="val" id="lrV"></span></div>
+    <div><span class="seg" role="group" aria-label="재생 조작">
+        <button id="playBtn" aria-pressed="false">재생</button>
+        <button id="stepBtn">한 단계</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 600" role="img" aria-label="손실 곡선 위의 경사하강 경로"></svg>
+    <figcaption class="mono">위: 손실 곡선 위의 이동 경로(○ 지난 위치 · ● 현재 위치 · 점선 = 최솟값) · 아래: 단계별 손실(로그 눈금)</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <div class="tbl"><table aria-label="단계별 값">
+    <thead><tr><th>단계 t</th><th>w_t</th><th>손실 f(w_t)</th><th>기울기 f′(w_t)</th><th>이동 −η·f′</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>갱신식 w ← w − η·f′(w), f′(w) = 2(w − 3). 정리하면 (w_{t+1} − 3) = (1 − 2η)(w_t − 3)이므로 오차는 매 단계 r = 1 − 2η배가 됩니다.</p>
+    <p>일반적으로 f(w) = a(w − c)² (a &gt; 0)이면 r = 1 − 2aη이고, 0 &lt; η &lt; 1/(2a)이면 한쪽에서 단조 수렴, η = 1/(2a)이면 한 번에 도착, 1/(2a) &lt; η &lt; 1/a이면 진동하며 수렴, η = 1/a이면 같은 폭으로 진동, η &gt; 1/a이면 진동하며 발산합니다. 이 페이지는 a = 1이라 경계가 0.5와 1입니다.</p>
+    <p>‘느린 수렴’과 ‘빠른 수렴’을 가르는 η = 0.1은 설명을 위해 정한 임의의 경계입니다. 실제 모델의 손실은 이차함수가 아니므로 적절한 학습률은 문제마다 다릅니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const A=1, C=3, MAXS=30;
+  let W0=-1, lr=0.1, step=0, playing=false;
+  const f=w=>A*(w-C)**2, df=w=>2*A*(w-C);
+  function path(){ const p=[W0]; for(let t=0;t<MAXS;t++){ const w=p[t]; p.push(w-lr*df(w)); } return p; }
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,at,p)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,at,p)=>{const t=el('text',Object.assign({x,y},at),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>{ if(!isFinite(v)) return '∞'; if(Math.abs(v)>=1e6||(v!==0&&Math.abs(v)<Math.pow(10,-d)/2)) return v.toExponential(2).replace('e','×10^').replace('+','').replace('-','−'); return v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d}).replace('-','−'); };
+
+  function scene(){
+    const r=1-2*A*lr;
+    if(lr>1/A+1e-9) return {k:'div',name:'발산',r};
+    if(Math.abs(lr-1/A)<1e-9) return {k:'osc0',name:'같은 폭으로 진동',r};
+    if(lr>1/(2*A)+1e-9) return {k:'osc',name:'진동하며 수렴',r};
+    if(Math.abs(lr-1/(2*A))<1e-9) return {k:'one',name:'한 번에 도착',r};
+    if(lr<=0.1+1e-9) return {k:'slow',name:'느린 수렴',r};
+    return {k:'fast',name:'빠른 수렴',r};
+  }
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining');
+    const mono={'font-family':'IBM Plex Mono','font-size':12*F,fill:label};
+    const p=path();
+
+    // 위: 손실 곡선
+    const L=big?92:56, R=700, T=big?20:16, B=big?520:300;
+    const WA=-4, WB=10, FA=0, FB=36;
+    const xw=w=>L+(w-WA)/(WB-WA)*(R-L), yf=v=>B-(v-FA)/(FB-FA)*(B-T);
+    el('defs',{}).innerHTML=`<clipPath id="c1"><rect x="${L}" y="${T-2}" width="${R-L}" height="${B-T+4}"/></clipPath>`;
+    for(let w=-4;w<=10;w+=2){
+      el('line',{x1:xw(w),x2:xw(w),y1:T,y2:B,stroke:rule,'stroke-width':1});
+      tx(xw(w),B+18*F,w,{...mono,'text-anchor':'middle'});
+    }
+    for(let v=0;v<=36;v+=big?18:12){
+      el('line',{x1:L,x2:R,y1:yf(v),y2:yf(v),stroke:rule,'stroke-width':1});
+      tx(L-8,yf(v)+4*F,v,{...mono,'text-anchor':'end'});
+    }
+    if(!big) tx(R,B+34,'w',{...mono,'text-anchor':'end'});
+    if(!big) tx(L+6,T+14*F,'f(w)',{...mono});
+    const g=el('g',{'clip-path':'url(#c1)'});
+    let d=''; for(let i=0;i<=200;i++){const w=WA+(WB-WA)*i/200; d+=(i?'L':'M')+xw(w).toFixed(1)+' '+yf(f(w)).toFixed(1);}
+    el('path',{d,fill:'none',stroke:ink,'stroke-width':1.5*F},g);
+    // 최솟값 표시
+    el('line',{x1:xw(C),x2:xw(C),y1:T,y2:B,stroke:ink,'stroke-width':1,'stroke-dasharray':'3 4'});
+    tx(xw(C)+6,T+14*F,'최솟값 w = 3',{...mono,'font-size':11*F,fill:ink});
+    // 경로
+    let out=false;
+    for(let t=0;t<step;t++){
+      el('line',{x1:xw(p[t]),y1:yf(f(p[t])),x2:xw(p[t+1]),y2:yf(f(p[t+1])),stroke:acc,'stroke-width':1.5*F,opacity:.75},g);
+    }
+    for(let t=0;t<=step;t++){
+      const w=p[t], inside=w>=WA&&w<=WB&&f(w)<=FB;
+      if(!inside){ if(t===step) out=true; continue; }
+      const cur=t===step;
+      el('circle',{cx:xw(w),cy:yf(f(w)),r:(cur?6.5:4)*F,fill:cur?acc:bg,stroke:acc,'stroke-width':1.5*F},g);
+    }
+    if(!big || step<=6){ // 시작점 표기
+      tx(xw(p[0]),yf(f(p[0]))-12*F,'시작',{...mono,'text-anchor':'middle','font-size':11*F,fill:ink});
+    }
+    if(out){
+      const w=p[step], side=w>C?R-6:L+6;
+      tx(side,B-10*F,`w = ${fmt(w,1)} → 그림 밖`,{...mono,fill:acc,'text-anchor':w>C?'end':'start','font-size':12*F});
+    }
+
+    // 아래: 단계별 손실(로그) — 쇼츠에서는 생략
+    if(!big){
+    const T2=B+(big?92:72), B2=T2+(big?190:170), L2=L, R2=R;
+    const LA=-8, LB=4;
+    const xs=t=>L2+t/MAXS*(R2-L2), yl=v=>{const lv=Math.max(LA,Math.min(LB,Math.log10(Math.max(v,1e-300)))); return B2-(lv-LA)/(LB-LA)*(B2-T2);};
+    for(let e=LA;e<=LB;e+=4){
+      el('line',{x1:L2,x2:R2,y1:yl(Math.pow(10,e)),y2:yl(Math.pow(10,e)),stroke:rule,'stroke-width':1});
+      tx(L2-8,yl(Math.pow(10,e))+4*F,e===0?'1':`1e${e}`,{...mono,'text-anchor':'end'});
+    }
+    for(let t=0;t<=MAXS;t+=big?10:5){ tx(xs(t),B2+18*F,t,{...mono,'text-anchor':'middle'}); }
+    tx(R2,B2+(big?46:36),'단계 t',{...mono,'text-anchor':'end'});
+    tx(L2+6,T2-8,'손실 f(w_t) · 로그 눈금',{...mono,fill:ink});
+    let dl='';
+    for(let t=0;t<=step;t++){ dl+=(t?'L':'M')+xs(t).toFixed(1)+' '+yl(f(p[t])).toFixed(1); }
+    el('path',{d:dl,fill:'none',stroke:acc,'stroke-width':1.5*F});
+    for(let t=0;t<=step;t++){
+      const v=f(p[t]), clipped=v<1e-8||v>1e4;
+      el('circle',{cx:xs(t),cy:yl(v),r:(t===step?5:3)*F,fill:t===step?acc:bg,stroke:acc,'stroke-width':1.2*F});
+      if(clipped&&t===step) tx(xs(t)+8,yl(v)+(v<1e-8?-8:16),v<1e-8?(v===0?'= 0':'< 1e-8'):'> 1e4',{...mono,fill:acc});
+    }
+    svg.setAttribute('viewBox',`0 0 720 ${Math.ceil(B2+44)}`);
+    } else svg.setAttribute('viewBox',`0 0 720 ${B+40}`);
+
+    // 글
+    const sc=scene(), w=p[step];
+    document.getElementById('lrV').textContent=lr.toFixed(2);
+    document.getElementById('result').innerHTML=`η = ${lr.toFixed(2)} → <b>${sc.name}</b>`;
+    const rr=fmt(sc.r,2), ar=fmt(Math.abs(sc.r),2);
+    const long={
+      slow:`매 단계 오차(w − 3)에 1 − 2η = ${rr}를 곱합니다. 1에 가까워 조금씩만 줄어들어, 30단계 뒤에도 오차가 ${fmt(4*Math.pow(Math.abs(sc.r),30),3)} 남습니다.`,
+      fast:`매 단계 오차(w − 3)에 1 − 2η = ${rr}를 곱합니다. 한쪽에서 다가가며 빠르게 줄어듭니다.`,
+      one:`1 − 2η = 0이라 첫 걸음에 정확히 w = 3에 도착합니다. 이차함수라서 생기는 특별한 경우입니다.`,
+      osc:`1 − 2η = ${rr}로 음수입니다. 걸음이 너무 커서 최솟값을 넘어가 좌우로 오가지만, |r| = ${ar} < 1이라 폭은 줄어듭니다.`,
+      osc0:`1 − 2η = −1입니다. w = −1과 w = 7을 영원히 오가며 손실이 전혀 줄지 않습니다.`,
+      div:`1 − 2η = ${rr}, |r| = ${ar} > 1입니다. 넘어갈 때마다 더 멀리 튕겨 나가 손실이 끝없이 커집니다(발산).`
+    };
+    const short={slow:'조금씩만 다가갑니다.',fast:'한쪽에서 빠르게 다가갑니다.',one:'첫 걸음에 정확히 도착합니다.',osc:'넘어갔다 돌아오며 <b>진동</b>합니다.',osc0:'같은 폭으로 끝없이 오갑니다.',div:'갈수록 멀리 튕겨 <b>발산</b>합니다.'};
+    document.getElementById('explain').innerHTML = (big?short[sc.k]+`<br><span class="mono">t = ${step} · w = ${fmt(w,3)}</span>`:long[sc.k]);
+
+    document.getElementById('rows').innerHTML = p.slice(0,step+1).map((w,t)=>
+      `<tr style="${t===step?'font-weight:500':''}"><td>${t}</td><td>${fmt(w,4)}</td><td>${fmt(f(w),4)}</td><td>${fmt(df(w),4)}</td><td>${t<MAXS?fmt(-lr*df(w),4):''}</td></tr>`).join('');
+    document.getElementById('formula').textContent =
+      `현재 t = ${step}: w_t − 3 = (1 − 2·${lr.toFixed(2)})^${step} × (−4) = ${fmt(Math.pow(1-2*A*lr,step)*(W0-C),4)}`;
+    document.getElementById('playBtn').textContent = playing?'일시정지':'재생';
+    document.getElementById('playBtn').setAttribute('aria-pressed',playing);
+  }
+
+  const lrS=document.getElementById('lrS');
+  lrS.addEventListener('input',()=>{lr=Math.round(+lrS.value*100)/100; draw();});
+  let last=0;
+  function tick(t){
+    if(!playing) return;
+    if(t-last>450){ last=t; if(step<MAXS) step++; if(step>=MAXS){ playing=false; } draw(); }
+    if(playing) requestAnimationFrame(tick);
+  }
+  document.getElementById('playBtn').addEventListener('click',()=>{
+    if(playing){ playing=false; draw(); return; }
+    if(step>=MAXS) step=0;
+    playing=true; last=performance.now(); draw(); requestAnimationFrame(tick);
+  });
+  document.getElementById('stepBtn').addEventListener('click',()=>{ playing=false; if(step<MAXS) step++; draw(); });
+  document.getElementById('resetBtn').addEventListener('click',()=>{ playing=false; step=0; draw(); });
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?lr=0.8&step=10&shorts=1&play=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('lr')!==null && isFinite(+u.get('lr'))) lr=Math.min(1.1,Math.max(0.01,Math.round(+u.get('lr')*100)/100));
+  lrS.value=lr;
+  if(u.get('step')!==null && isFinite(+u.get('step'))) step=Math.min(MAXS,Math.max(0,Math.round(+u.get('step'))));
+  if(u.get('shorts')==='1') setShorts(true);
+  draw();
+  if(u.get('play')==='1' && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.getElementById('playBtn').click();
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+})();
+</script>
+</body>
+</html>

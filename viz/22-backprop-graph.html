@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>역전파 계산 그래프</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg button:disabled{color:var(--label);cursor:default}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
+.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:400}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
+body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+.sliders{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px 24px;margin:0 0 14px}
+.sliders input[type=range]{width:110px}
+.sliders>div{white-space:nowrap}
+.result .m{font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0}
+body.shorts .result .m{font-size:21px}
+.check{border:1px solid var(--rule);padding:12px 16px;margin:14px 0 0;font-size:15px}
+.check .ok{color:var(--c1)}
+body.shorts .insight p{line-height:1.5}
+body.shorts .result{margin-bottom:6px;font-size:22px}
+body.shorts .sliders, body.shorts .stats, body.shorts .check{display:none}
+body.shorts figure{border:0}
+body.shorts .controls{margin:10px 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-22</div>
+  <h1>역전파는 무엇을 거꾸로 전할까<span class="dot">.</span></h1>
+  <p class="lede">L = (x·w + b − y)²를 계산 그래프로 쪼갰습니다. 순전파는 값을 왼쪽에서 오른쪽으로 채우고, 역전파는 ‘L이 각 노드에 얼마나 민감한가(∂L/∂노드)’를 오른쪽에서 왼쪽으로 전합니다. [다음 단계]를 누르고, 슬라이더로 입력값을 바꿔 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 계산 예시</span><span class="mono">입력값 4개 · 손으로 정한 값</span></p>
+
+  <div class="controls">
+    <div><span class="seg" role="group" aria-label="단계">
+        <button id="prevBtn">◀ 이전</button>
+        <button id="nextBtn">다음 단계 ▶</button>
+        <button id="playBtn" aria-pressed="false">재생</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <div class="sliders">
+    <div><label class="mono ctl-label" for="sx">x</label><input type="range" id="sx" min="-3" max="3" step="0.1" value="2"><span class="val" id="vx"></span></div>
+    <div><label class="mono ctl-label" for="sw">w</label><input type="range" id="sw" min="-3" max="3" step="0.1" value="0.5"><span class="val" id="vw"></span></div>
+    <div><label class="mono ctl-label" for="sb">b</label><input type="range" id="sb" min="-3" max="3" step="0.1" value="1"><span class="val" id="vb"></span></div>
+    <div><label class="mono ctl-label" for="sy">y</label><input type="range" id="sy" min="-3" max="3" step="0.1" value="3"><span class="val" id="vy"></span></div>
+  </div>
+
+  <p class="stats" id="stats"></p>
+  <figure>
+    <svg id="g" viewBox="0 0 760 380" role="img" aria-label="계산 그래프"></svg>
+    <figcaption class="mono">□ = 입력 · ○ = 연산 · 위 = 순전파 값 · 아래(붉은색) = 역전파 기울기 ∂L/∂(노드) · 간선 위 작은 글씨 = 국소 기울기</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+  <p class="formula" id="formula"></p>
+  <div class="check" id="check"></div>
+
+  <div class="notes">
+    <p>u = x·w, z = u + b, d = z − y, L = d². 역전파의 각 단계는 연쇄법칙 ∂L/∂(입력) = ∂L/∂(출력) × ∂(출력)/∂(입력)입니다. 국소 기울기는 곱셈이면 ‘상대편 입력’(∂u/∂w = x), 덧셈이면 1, 뺄셈의 빼는 쪽은 −1, 제곱이면 2d입니다.</p>
+    <p>검증의 수치미분은 중앙차분 (L(w+h) − L(w−h)) / 2h, h = 10⁻⁴입니다. L이 w에 대해 2차식이라 중앙차분은 이론상 정확하고, 차이는 부동소수점 반올림 오차뿐입니다. 실제 신경망에서는 이렇게 역전파 구현을 수치미분과 비교하는 ‘기울기 검사(gradient check)’를 씁니다.</p>
+    <p>모든 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다(표시는 소수 둘째 자리 반올림).</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  let V={x:2,w:0.5,b:1,y:3}, step=0, playing=false, raf=0, last=0;
+  const MAX=9, H=1e-4;
+  const NS='http://www.w3.org/2000/svg';
+  const svg=document.getElementById('g');
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const f2=v=>{const r=Math.round(v*100)/100;return (r<0?'−':'')+Math.abs(r).toFixed(2);};
+  const f1=v=>{const r=Math.round(v*10)/10;return (r<0?'−':'')+Math.abs(r).toFixed(1);};
+  const p2=v=>v<0?'('+f2(v)+')':f2(v);
+
+  const Lf=(x,w,b,y)=>{const d=x*w+b-y;return d*d;};
+  function compute(){
+    const {x,w,b,y}=V, u=x*w, z=u+b, d=z-y, L=d*d;
+    const gL=1, gd=2*d*gL, gz=gd*1, gy=gd*(-1), gu=gz*1, gb=gz*1, gw=gu*x, gx=gu*w;
+    return {x,w,b,y,u,z,d,L,g:{L:gL,d:gd,z:gz,y:gy,u:gu,b:gb,w:gw,x:gx}};
+  }
+  // 노드가 값/기울기를 얻는 단계
+  const VAL_AT={x:0,w:0,b:0,y:0,u:1,z:2,d:3,L:4};
+  const GRAD_AT={L:5,d:6,z:7,y:7,u:8,b:8,w:9,x:9};
+  const OPS={u:'×',z:'+',d:'−',L:'x²'};
+  const EDGES=[['x','u'],['w','u'],['u','z'],['b','z'],['z','d'],['y','d'],['d','L']];
+  const LAYOUT={
+    desk:{vb:[760,400],box:[96,40],r:24,fs:14,gs:13,es:12,
+      pos:{x:[70,50],w:[70,150],b:[70,250],y:[70,350],u:[310,100],z:[470,190],d:[600,290],L:[715,290]},
+      lbl:{'x>u':[22,-12,'middle'],'w>u':[-6,26,'middle'],'u>z':[14,-8,'start'],'b>z':[0,22,'middle'],'z>d':[-20,22,'end'],'y>d':[0,22,'middle'],'d>L':[0,-10,'middle']},
+      val:{u:[30,-26,'start'],z:[0,-36,'middle'],d:[0,-36,'middle'],L:[0,-36,'middle']},
+      grad:{x:[0,38,'middle'],w:[0,38,'middle'],b:[0,38,'middle'],y:[0,38,'middle'],u:[0,46,'middle'],z:[0,46,'middle'],d:[0,46,'middle'],L:[0,46,'middle']}},
+    shorts:{vb:[400,460],box:[104,38],r:24,fs:19,gs:16,es:15,
+      pos:{x:[62,28],w:[62,106],b:[62,196],y:[62,312],u:[234,62],z:[234,180],d:[234,298],L:[234,416]},
+      lbl:{'x>u':[14,-14,'middle'],'w>u':[14,28,'middle'],'u>z':[-10,4,'end'],'b>z':[0,24,'middle'],'z>d':[-10,4,'end'],'y>d':[0,26,'middle'],'d>L':[-10,4,'end']},
+      val:{u:[34,-4,'start'],z:[34,-4,'start'],d:[34,-4,'start'],L:[34,-4,'start']},
+      grad:{x:[-52,40,'start'],w:[-52,40,'start'],b:[-52,40,'start'],y:[-52,40,'start'],u:[34,20,'start'],z:[34,20,'start'],d:[34,20,'start'],L:[34,20,'start']}}
+  };
+  const isIn=k=>k==='x'||k==='w'||k==='b'||k==='y';
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), Lo=LAYOUT[big?'shorts':'desk'];
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    svg.setAttribute('viewBox',`0 0 ${Lo.vb[0]} ${Lo.vb[1]}`);
+    el('defs',{}).innerHTML=`<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${label}"/></marker>
+      <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${acc}"/></marker>`;
+    const C=compute(), P=Lo.pos;
+    const t=(x,y,s,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono','font-size':Lo.fs,fill:ink},a));e.textContent=s;return e;};
+    // 간선 끝점: 노드 경계까지
+    const ends=(a,b)=>{
+      const [x1,y1]=P[a],[x2,y2]=P[b];
+      let sx=x1,sy=y1;
+      if(isIn(a)){ // 상자 오른쪽 가장자리에서 출발
+        sx=x1+Lo.box[0]/2; sy=y1;
+      }else{const L=Math.hypot(x2-x1,y2-y1);sx=x1+(x2-x1)/L*Lo.r;sy=y1+(y2-y1)/L*Lo.r;}
+      const L2=Math.hypot(x2-sx,y2-sy), ex=x2-(x2-sx)/L2*(Lo.r+3), ey=y2-(y2-sy)/L2*(Lo.r+3);
+      return [sx,sy,ex,ey];
+    };
+    // 역전파 중 현재 단계에서 기울기가 흐르는 간선과 국소 기울기
+    const LOCAL={'d>L':['∂L/∂d = 2d',2*C.d],'z>d':['∂d/∂z = 1',1],'y>d':['∂d/∂y = −1',-1],'u>z':['∂z/∂u = 1',1],'b>z':['∂z/∂b = 1',1],'w>u':['∂u/∂w = x',C.x],'x>u':['∂u/∂x = w',C.w]};
+    const LOCAL_AT={'d>L':6,'z>d':7,'y>d':7,'u>z':8,'b>z':8,'w>u':9,'x>u':9};
+    EDGES.forEach(([a,b])=>{
+      const [sx,sy,ex,ey]=ends(a,b), key=a+'>'+b;
+      const fwdOn=step>=VAL_AT[b]&&step<=4, fwdNow=step===VAL_AT[b];
+      const bwdNow=step===LOCAL_AT[key], bwdDone=step>=LOCAL_AT[key];
+      if(bwdNow){
+        el('line',{x1:ex,y1:ey,x2:sx,y2:sy,stroke:acc,'stroke-width':2.6,'stroke-dasharray':'7 4','marker-end':'url(#ahA)'});
+      }else{
+        el('line',{x1:sx,y1:sy,x2:ex,y2:ey,stroke:fwdNow?ink:(step>=VAL_AT[b]?label:rule),'stroke-width':fwdNow?2.6:1.4,'marker-end':'url(#ah)'});
+      }
+      if(bwdDone&&(!big||bwdNow)){
+        const mx=(sx+ex)/2, my=(sy+ey)/2, lt=LOCAL[key], o=Lo.lbl[key];
+        const s=key==='d>L'?`2d = ${f2(lt[1])}`:`${lt[0]}${!big&&(key==='x>u'||key==='w>u')?' = '+f2(lt[1]):''}`;
+        t(mx+o[0],my+o[1],s,{'font-size':Lo.es,fill:bwdNow?acc:label,'text-anchor':o[2]});
+      }
+    });
+    // 노드
+    const NAMES=['x','w','b','y','u','z','d','L'];
+    NAMES.forEach(k=>{
+      const [cx,cy]=P[k], hasV=step>=VAL_AT[k], hasG=step>=GRAD_AT[k];
+      const now=(step>=1&&step<=4&&VAL_AT[k]===step)||(step>=5&&GRAD_AT[k]===step);
+      const sw=now?2.6:1.4, sc=now?acc:ink;
+      if(isIn(k)){
+        el('rect',{x:cx-Lo.box[0]/2,y:cy-Lo.box[1]/2,width:Lo.box[0],height:Lo.box[1],fill:bg,stroke:sc,'stroke-width':sw});
+        t(cx,cy+Lo.fs*0.36,`${k} = ${f1(C[k])}`,{'text-anchor':'middle'});
+      }else{
+        el('circle',{cx,cy,r:Lo.r,fill:bg,stroke:hasV?sc:rule,'stroke-width':sw});
+        t(cx,cy+Lo.fs*0.36,OPS[k],{'text-anchor':'middle',fill:hasV?ink:label});
+        const o=Lo.val[k];
+        t(cx+o[0],cy+o[1],hasV?`${k} = ${f2(C[k])}`:`${k} = ?`,{'text-anchor':o[2],fill:hasV?ink:label});
+      }
+      if(hasG){const o=Lo.grad[k];
+        t(cx+o[0],cy+o[1],`∂L/∂${k} = ${f2(C.g[k])}`,{'text-anchor':o[2],fill:acc,'font-size':Lo.gs});}
+    });
+    if(!big){
+      t(P.L[0]+30,P.L[1]+76,'출력 = 손실',{'text-anchor':'end','font-size':12,fill:label,'font-family':'IBM Plex Sans KR'});
+      const ph=step===0?'':step<=4?'순전파 →':'← 역전파';
+      if(ph)t(Lo.vb[0]/2,Lo.vb[1]-10,ph,{'text-anchor':'middle','font-size':13,fill:step<=4?ink:acc});
+    }
+
+    // 문구
+    const S=[
+      ['입력 준비',`x=${f1(C.x)}, w=${f1(C.w)}, b=${f1(C.b)}, y=${f1(C.y)}. 아직 아무것도 계산하지 않았습니다.`,'입력만 있습니다.'],
+      [`u = x·w = ${p2(C.x)}·${p2(C.w)} = <b>${f2(C.u)}</b>`,'순전파 1단계: 곱셈 노드가 두 입력을 곱합니다.','순전파: 곱셈'],
+      [`z = u + b = ${p2(C.u)} + ${p2(C.b)} = <b>${f2(C.z)}</b>`,'순전파 2단계: 덧셈 노드. 이것이 모델의 예측값입니다.','순전파: 예측값'],
+      [`d = z − y = ${p2(C.z)} − ${p2(C.y)} = <b>${f2(C.d)}</b>`,'순전파 3단계: 예측과 정답의 차이(오차)입니다.','순전파: 오차'],
+      [`L = d² = ${p2(C.d)}² = <b>${f2(C.L)}</b>`,'순전파 끝: 손실이 나왔습니다. 이제 이 값을 줄이려면 각 입력을 어느 쪽으로 움직여야 하는지 거꾸로 따져 갑니다.','순전파 끝: 손실'],
+      [`∂L/∂L = <b>1</b>`,'역전파 시작: 출력은 자기 자신에 대해 기울기 1입니다. 이 1이 오른쪽에서 왼쪽으로 곱해지며 전달됩니다.','역전파 시작: 1'],
+      [`∂L/∂d = 1 × 2d = 1 × 2·${p2(C.d)} = <b>${f2(C.g.d)}</b>`,'받은 기울기(1) × 제곱 노드의 국소 기울기(2d).','받은 값 × 2d'],
+      [`∂L/∂z = ${p2(C.g.d)} × 1 = <b>${f2(C.g.z)}</b><br>∂L/∂y = ${p2(C.g.d)} × (−1) = <b>${f2(C.g.y)}</b>`,'뺄셈 노드: 앞쪽 입력엔 1, 빼는 쪽 입력엔 −1이 곱해집니다.','뺄셈: ×1, ×(−1)'],
+      [`∂L/∂u = ${p2(C.g.z)} × 1 = <b>${f2(C.g.u)}</b><br>∂L/∂b = <b>${f2(C.g.b)}</b>`,'덧셈 노드는 받은 기울기를 두 입력에 그대로 나눠 줍니다(국소 기울기 1).','덧셈: 그대로 전달'],
+      [`∂L/∂w = ${p2(C.g.u)} × x(${f1(C.x)}) = <b>${f2(C.g.w)}</b><br>∂L/∂x = ${p2(C.g.u)} × w(${f1(C.w)}) = <b>${f2(C.g.x)}</b>`,'곱셈 노드는 상대편 입력값을 곱합니다. w의 기울기에는 x가, x의 기울기에는 w가 곱해집니다.','곱셈: 상대편 값을 곱함']
+    ];
+    const short=[S[0][2],`u = <b>${f2(C.u)}</b>`,`z = <b>${f2(C.z)}</b>`,`d = <b>${f2(C.d)}</b>`,`L = <b>${f2(C.L)}</b>`,'∂L/∂L = <b>1</b>',`∂L/∂d = <b>${f2(C.g.d)}</b>`,`∂L/∂z = <b>${f2(C.g.z)}</b>`,`∂L/∂u = <b>${f2(C.g.u)}</b>`,`∂L/∂w = <b>${f2(C.g.w)}</b>`];
+    document.getElementById('result').innerHTML=big?`<span class="mono" style="font-size:14px">${step}/${MAX}</span> <span class="m">${short[step]}</span>`:(step===0?S[0][0]:`<span class="m">${S[step][0]}</span>`);
+    const nwS=(Lf(C.x,C.w+H,C.b,C.y)-Lf(C.x,C.w-H,C.b,C.y))/(2*H);
+    document.getElementById('explain').innerHTML=big?(step===MAX?`수치미분 ${f2(nwS)}과 일치`:S[step][2]):S[step][1];
+    document.getElementById('stats').textContent=`단계 ${step} / ${MAX} · ${step===0?'준비':step<=4?'순전파':'역전파'}`;
+    document.getElementById('formula').innerHTML=S.slice(1,step+1).map((s,i)=>`${i+1}. ${s[0].replace(/<\/?b>/g,'').replace('<br>',' · ')}`).join('<br>');
+    // 검증
+    const ck=document.getElementById('check');
+    if(step>=MAX){
+      const nw=(Lf(C.x,C.w+H,C.b,C.y)-Lf(C.x,C.w-H,C.b,C.y))/(2*H);
+      const nb=(Lf(C.x,C.w,C.b+H,C.y)-Lf(C.x,C.w,C.b-H,C.y))/(2*H);
+      const nx=(Lf(C.x+H,C.w,C.b,C.y)-Lf(C.x-H,C.w,C.b,C.y))/(2*H);
+      const row=(n,bp,num)=>`<tr><td>∂L/∂${n}</td><td>${bp.toFixed(6)}</td><td>${num.toFixed(6)}</td><td>${Math.abs(bp-num).toExponential(1)}</td></tr>`;
+      ck.innerHTML=`<span class="mono">검증 · 수치미분과 비교 (h = 10⁻⁴)</span>
+        <table><thead><tr><th>기울기</th><th>역전파</th><th>수치미분 (L(·+h)−L(·−h))/2h</th><th>차이</th></tr></thead><tbody>${row('w',C.g.w,nw)}${row('b',C.g.b,nb)}${row('x',C.g.x,nx)}</tbody></table>
+        <span class="ok">● 일치</span> — 역전파로 얻은 기울기와 수치미분이 반올림 오차 안에서 같습니다.`;
+      ck.style.display='';
+    }else{ck.innerHTML='<span class="mono">검증 · 역전파를 끝까지(9단계) 진행하면 수치미분과 비교합니다.</span>';}
+    document.getElementById('prevBtn').disabled=step===0;
+    document.getElementById('nextBtn').disabled=step===MAX;
+    ['x','w','b','y'].forEach(k=>document.getElementById('v'+k).textContent=f1(V[k]));
+  }
+
+  function go(n){step=Math.max(0,Math.min(MAX,n));draw();}
+  document.getElementById('prevBtn').addEventListener('click',()=>{setPlay(false);go(step-1);});
+  document.getElementById('nextBtn').addEventListener('click',()=>{setPlay(false);go(step+1);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{setPlay(false);go(0);});
+  const pb=document.getElementById('playBtn');
+  function tick(ts){
+    if(!playing)return;
+    if(ts-last>1100){last=ts;if(step>=MAX){setPlay(false);return;}go(step+1);}
+    raf=requestAnimationFrame(tick);
+  }
+  function setPlay(on){
+    playing=on;pb.textContent=on?'일시정지':'재생';pb.setAttribute('aria-pressed',on);cancelAnimationFrame(raf);
+    if(on){if(step>=MAX)go(0);last=performance.now();raf=requestAnimationFrame(tick);}
+  }
+  pb.addEventListener('click',()=>setPlay(!playing));
+  ['x','w','b','y'].forEach(k=>{const s=document.getElementById('s'+k);s.addEventListener('input',()=>{V[k]=+s.value;draw();});});
+  const sbt=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sbt.setAttribute('aria-pressed',on);draw();}
+  sbt.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?step=0~9&x=&w=&b=&y=(−3~3)&play=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  ['x','w','b','y'].forEach(k=>{if(u.get(k)!==null){const v=Math.max(-3,Math.min(3,parseFloat(u.get(k))));if(!isNaN(v)){V[k]=Math.round(v*10)/10;document.getElementById('s'+k).value=V[k];}}});
+  if(u.get('step'))step=Math.max(0,Math.min(MAX,parseInt(u.get('step'))||0));
+  if(u.get('shorts')==='1')setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+  if(u.get('play')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)setPlay(true);
+})();
+</script>
+</body>
+</html>

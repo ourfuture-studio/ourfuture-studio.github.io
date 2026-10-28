@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>쓸모와 쉬움 진단</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#2F45D8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#7F8DFF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#7F8DFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.qs{margin:20px 0 12px}
+.q{margin:0 0 14px}
+.q p{margin:0 0 2px}
+.q .qt{font-size:16px}
+.q .qt b{font-weight:500}
+.slider{display:flex;align-items:center;gap:10px}
+.slider input{accent-color:var(--ink);flex:1 1 auto;max-width:320px;margin:0}
+.scale{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--label);white-space:nowrap}
+.val{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:600;min-width:1.4ch;text-align:right;font-variant-numeric:tabular-nums}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:4px 0 16px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible, input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px;white-space:nowrap}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.src{font-size:14px;color:var(--label);margin-top:8px !important}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+.short-only{display:none}
+@media (max-width:440px){ body:not(.shorts) .seg button{padding:6px 10px} body:not(.shorts) .scale{display:none} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts figcaption, body.shorts .tagline, body.shorts .controls, body.shorts #explain, body.shorts .src, body.shorts .scale, body.shorts .qt{display:none}
+body.shorts .short-only{display:block}
+body.shorts h1{font-size:26px}
+body.shorts .qs{margin:8px 0 8px}
+body.shorts .q{margin:0 0 2px}
+body.shorts .val{font-size:18px}
+body.shorts .result{font-size:20px;margin:0}
+body.shorts .insight{padding:12px 16px;margin:10px 0 0}
+body.shorts .insight .short-only{font-size:15px;color:var(--ink2);margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 기술 노트 02 · VIZ-30</div>
+  <h1>쉬운데 왜 안 쓸까<span class="dot">.</span></h1>
+  <p class="lede">기술 수용 모형(TAM)은 새 도구를 쓸지 말지를 두 믿음으로 봅니다. ‘이게 내 일에 도움이 되는가’와 ‘쓰는 게 힘들지 않은가’입니다. 지금 쓰는(또는 써 보다 그만둔) 도구 하나를 떠올리고 두 문항에 1~7점으로 답해 보세요. 네 칸 가운데 내 자리와 칸별 처방이 바로 나옵니다. 답은 이 화면에서만 계산되고 어디에도 저장·전송되지 않습니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 예시</span><span class="mono">이 페이지에서 만든 두 문항 · 원 논문의 척도 아님</span></p>
+
+  <div class="qs">
+    <div class="q">
+      <p class="qt"><span class="mono">Q1 유용성</span><br><b>이 도구를 쓰면 내 일을 더 잘, 더 빨리 끝낼 수 있다.</b></p>
+      <div class="slider"><span class="mono short-only">Q1 쓸모</span><span class="scale">1 전혀 아니다</span><input id="q1" type="range" min="1" max="7" step="1" value="2" aria-label="Q1 유용성 점수"><span class="scale">7 매우 그렇다</span><span class="val" id="q1V"></span></div>
+    </div>
+    <div class="q">
+      <p class="qt"><span class="mono">Q2 사용 용이성</span><br><b>이 도구를 원하는 대로 다루는 데 힘이 거의 들지 않는다.</b></p>
+      <div class="slider"><span class="mono short-only">Q2 쉬움</span><span class="scale">1 전혀 아니다</span><input id="q2" type="range" min="1" max="7" step="1" value="6" aria-label="Q2 사용 용이성 점수"><span class="scale">7 매우 그렇다</span><span class="val" id="q2V"></span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">예시 불러오기</span><span class="seg" role="group" aria-label="예시 불러오기">
+        <button data-p="A" aria-pressed="false">A 매일 씀</button><button data-p="B" aria-pressed="false">B 써 보고 그만둠</button>
+      </span></div>
+    <div><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 560" role="img" aria-label="유용성과 사용 용이성으로 나눈 네 칸과 내 자리"></svg>
+    <figcaption class="mono">가로 = Q1 유용성, 세로 = Q2 사용 용이성 · 4점 선으로 네 칸 · ● 채운 점 = 내 답 · ○ 빈 점 = 글의 예시 A·B · 회색 칸 = 지금 내 칸</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="short-only" id="shortline"></p>
+    <p class="src" id="src"></p>
+  </div>
+
+  <div class="notes">
+    <p>두 문항은 Davis(1989)의 개념 정의를 바탕으로 이 페이지에서 쓴 것입니다. 원 논문의 척도는 문항이 각각 6개이고 표현도 다릅니다. 따라서 이 결과는 생각을 정리하는 도구일 뿐, 검증된 측정이나 진단이 아닙니다.</p>
+    <p>칸을 나누는 기준은 7점 척도의 가운데인 4점입니다. 5점 이상은 높음, 3점 이하는 낮음, 4점은 경계로 봅니다. 칸 이름과 처방은 이 페이지에서 정한 예시이며 원 논문에 있는 내용이 아닙니다.</p>
+    <p>근거: Davis, F. D. (1989). Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology. <i>MIS Quarterly, 13</i>(3), 319–340. doi:10.2307/249008. 상관 수치는 이 논문의 초록 기준입니다(연구 1: 현재 사용, 연구 2: 앞으로의 사용 예측).</p>
+    <p>답한 점수는 이 화면의 자바스크립트로만 계산되며, 저장하거나 서버로 보내지 않습니다. 새로고침하면 처음 값으로 돌아갑니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const PRESET={A:[6,5], B:[2,5]};   // 글 01의 두 사람: 둘 다 쉽다고 답했지만 쓸모 판단이 갈린다
+  let q1=2, q2=6;
+
+  const CELL={
+    hh:{name:'계속 쓴다', rx:'쓰는 방법을 팀에 나누기',
+        ex:'쓸모와 쉬움이 모두 높습니다. 지금 잘 쓰는 작업과 방법을 팀에 나누면, 다른 사람의 ‘쓸모’ 판단을 앞당길 수 있습니다.'},
+    lh:{name:'쉬운데 안 쓴다', rx:'교육보다 쓸 자리 찾기',
+        ex:'다루기는 쉬운데 일이 나아진다고 느끼지 못합니다. 사용법을 더 배우기보다 내 일의 어느 단계에 쓰면 이득인지부터 찾아보세요. 이미 쉬우니 쉬움을 더해도 사용은 잘 늘지 않습니다.'},
+    hl:{name:'번거로워도 쓴다', rx:'사용 흐름 다듬기',
+        ex:'쓸모를 느끼니 번거로워도 씁니다. 자주 하는 작업을 틀이나 단축 순서로 다듬으면 같은 쓸모를 더 적은 힘으로 얻을 수 있습니다.'},
+    ll:{name:'쓸 이유도 없다', rx:'억지로 들이지 않기',
+        ex:'지금 일에는 맞지 않는 도구일 수 있습니다. 억지로 붙잡기보다, 이 도구가 잘하는 일이 내 일에 있는지부터 다시 보세요.'},
+  };
+  const lvl=v=>v>=5?'h':v<=3?'l':'m';
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,at,p)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,at,p)=>{const t=el('text',Object.assign({x,y},at),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.8:1;
+    const ink=css('--ink'), ink2=css('--ink2'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box'), lin=css('--lining');
+    const mono={'font-family':'IBM Plex Mono','font-size':12*F,fill:label};
+    const sz=big?560:440, X0=big?(720-sz)/2+20:150, Y0=big?20:36;
+    const xp=v=>X0+(v-1)/6*sz, yp=v=>Y0+sz-(v-1)/6*sz;
+    const a=lvl(q1), b=lvl(q2);
+    // 지금 칸 칠하기 (경계면 이웃 칸 모두 옅게)
+    const xs=a==='h'?[[4,7]]:a==='l'?[[1,4]]:[[1,4],[4,7]];
+    const ys=b==='h'?[[4,7]]:b==='l'?[[1,4]]:[[1,4],[4,7]];
+    for(const [x1,x2] of xs) for(const [y1,y2] of ys) el('rect',{x:xp(x1),y:yp(y2),width:xp(x2)-xp(x1),height:yp(y1)-yp(y2),fill:box});
+    // 격자
+    for(let v=1;v<=7;v++){
+      el('line',{x1:xp(v),x2:xp(v),y1:Y0,y2:Y0+sz,stroke:rule,'stroke-width':1});
+      el('line',{x1:X0,x2:X0+sz,y1:yp(v),y2:yp(v),stroke:rule,'stroke-width':1});
+      tx(xp(v),Y0+sz+16*F,v,{...mono,'text-anchor':'middle'});
+      tx(X0-8*F,yp(v)+4*F,v,{...mono,'text-anchor':'end'});
+    }
+    el('rect',{x:X0,y:Y0,width:sz,height:sz,fill:'none',stroke:ink2,'stroke-width':1.2});
+    el('line',{x1:xp(4),x2:xp(4),y1:Y0,y2:Y0+sz,stroke:ink2,'stroke-width':1.5*F});
+    el('line',{x1:X0,x2:X0+sz,y1:yp(4),y2:yp(4),stroke:ink2,'stroke-width':1.5*F});
+    if(!big){
+      tx(X0+sz,Y0+sz+38,'Q1 유용성 → 쓸모 있다',{...mono,'text-anchor':'end'});
+      tx(X0-30,Y0+sz/2,'Q2 사용 용이성 → 쉽다',{...mono,'text-anchor':'middle',transform:`rotate(-90 ${X0-30} ${Y0+sz/2})`});
+    }
+    // 칸 이름
+    // 점은 정수 칸에만 놓이므로, 글자는 격자선 사이(.5)에 두어 겹치지 않게 한다
+    const cells=[['lh',2.5,6.5],['hh',5.5,6.5],['ll',2.5,3.5],['hl',5.5,3.5]];
+    for(const [k,u,v] of cells){
+      const on=a+b===k[0]+k[1];
+      tx(xp(u),yp(v)+6*F,CELL[k].name,{'font-family':'Noto Serif KR','font-weight':600,'font-size':17*F,fill:on?ink:label,'text-anchor':'middle'});
+      if(!big) tx(xp(u),yp(v-1)+4.5,CELL[k].rx,{'font-family':'IBM Plex Sans KR','font-size':13,fill:on?ink2:label,'text-anchor':'middle'});
+    }
+    // 글의 예시 A·B (빈 점)
+    for(const [k,[u,v]] of Object.entries(PRESET)){
+      el('circle',{cx:xp(u),cy:yp(v),r:9*F,fill:bg,stroke:label,'stroke-width':1.5*F,'stroke-dasharray':`${3*F} ${2*F}`});
+      tx(xp(u),yp(v)+4*F,k,{...mono,fill:label,'text-anchor':'middle'});
+    }
+    // 내 답 (채운 점)
+    el('circle',{cx:xp(q1),cy:yp(q2),r:13*F,fill:acc,stroke:bg,'stroke-width':2*F});
+    tx(xp(q1),yp(q2)+4.5*F,'나',{'font-family':'IBM Plex Sans KR','font-size':13*F,'font-weight':500,fill:bg,'text-anchor':'middle'});
+    svg.setAttribute('viewBox',`0 0 720 ${Math.ceil(Y0+sz+(big?40:52))}`);
+
+    // ---- 문장 ----
+    document.getElementById('q1V').textContent=q1;
+    document.getElementById('q2V').textContent=q2;
+    const R=document.getElementById('result'), E=document.getElementById('explain'), SL=document.getElementById('shortline'), SRC=document.getElementById('src');
+    const gap=q1-q2;
+    const gapTxt=gap===0?'쓸모와 쉬움 점수가 같습니다':gap>0?`쓸모가 쉬움보다 ${gap}점 높습니다`:`쉬움이 쓸모보다 ${-gap}점 높습니다`;
+    if(a!=='m' && b!=='m'){
+      const c=CELL[a+b];
+      R.innerHTML=`내 자리: <b>${c.name}</b>`;
+      E.innerHTML=`${c.ex} <span style="color:var(--label)">(${gapTxt}.)</span>`;
+      SL.innerHTML=`처방: ${c.rx} · ${gapTxt}`;
+    }else{
+      const nb=[];
+      for(const x of (a==='m'?['l','h']:[a])) for(const y of (b==='m'?['l','h']:[b])) nb.push(CELL[x+y].name);
+      const which=a==='m'&&b==='m'?'두 문항이 모두':a==='m'?'Q1(쓸모)이':'Q2(쉬움)이';
+      R.innerHTML=`내 자리: <b>경계선 위</b>`;
+      E.innerHTML=`${which} 4점이라 ‘${nb.join('’, ‘')}’ 사이에 있습니다. 판단이 아직 서지 않은 상태일 수 있으니, 일주일쯤 실제 일에 써 본 뒤 다시 답해 보세요.`;
+      SL.innerHTML=`${nb.join(' / ')} 사이 · 써 본 뒤 다시`;
+    }
+    SRC.innerHTML='Davis(1989)의 두 연구에서는 쉬움보다 쓸모가 사용과 더 강하게 연결됐습니다. 현재 사용과의 상관은 유용성 .63, 용이성 .45(연구 1), 앞으로의 사용 예측과는 .85, .59(연구 2)였습니다.';
+    document.querySelectorAll('[data-p]').forEach(btn=>{const [u,v]=PRESET[btn.dataset.p]; btn.setAttribute('aria-pressed',u===q1&&v===q2);});
+  }
+
+  const s1=document.getElementById('q1'), s2=document.getElementById('q2');
+  s1.addEventListener('input',()=>{q1=+s1.value; draw();});
+  s2.addEventListener('input',()=>{q2=+s2.value; draw();});
+  document.querySelectorAll('[data-p]').forEach(btn=>btn.addEventListener('click',()=>{[q1,q2]=PRESET[btn.dataset.p]; s1.value=q1; s2.value=q2; draw();}));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?q1=2&q2=6&shorts=1
+  const u=new URLSearchParams(location.search);
+  const pick=(k,d)=>{const v=Math.round(+u.get(k)); return u.get(k)!==null&&v>=1&&v<=7?v:d;};
+  q1=pick('q1',q1); q2=pick('q2',q2); s1.value=q1; s2.value=q2;
+  if(u.get('shorts')==='1') setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

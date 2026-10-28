@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>장바구니 연관 규칙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+select{font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:0;padding:4px 8px}
+select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.arrow{font-family:'Noto Serif KR',serif;font-size:20px;margin:0 10px}
+.rule-big{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:600;margin:4px 0 8px;display:none}
+.rule-big .ar{color:var(--accent);margin:0 8px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--rule);margin:16px 0 0}
+.card{padding:12px 14px;border-right:1px solid var(--rule);cursor:pointer;min-width:0}
+.card:last-child{border-right:0}
+.card.on{outline:2px solid var(--ink);outline-offset:-2px}
+.card .nm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+.card .def{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.card .calc{font-family:'IBM Plex Mono',monospace;font-size:14px;overflow-wrap:anywhere;line-height:1.6}
+.card .val{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:600;line-height:1.3}
+.legend{display:flex;flex-wrap:wrap;gap:4px 18px;margin:18px 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:22px;height:14px}
+.sw.n{background:transparent;border-bottom:3px solid var(--accent)}
+.sw.d{border:2px solid var(--ink)}
+.sw.b{background:var(--box);border:1px solid var(--rule)}
+.tx{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 6px;table-layout:fixed}
+.tx col.c0{width:60px}.tx col.ck{width:64px}
+.tx th,.tx td{text-align:center;padding:3px 6px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;line-height:1.5}
+.tx th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--label);font-weight:400}
+.tx th.ca, .tx th.cb{color:var(--ink);font-weight:600}
+.tx td:first-child,.tx th:first-child{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:13px}
+.tx td.kind{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--label)}
+.tx tr.dim td{color:var(--label)}
+.tx tr.dim td .mk{opacity:.45}
+.tx tr.num td{color:var(--accent);font-weight:600}
+.tx tr.num td.kind{color:var(--accent)}
+.tx tr.den td{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.tx tr.den td:first-child{border-left:2px solid var(--ink)}
+.tx tr.den td:last-child{border-right:2px solid var(--ink)}
+.tx.allden{outline:2px solid var(--ink);outline-offset:-1px}
+.tx td.bcol{background:var(--box)}
+.tx tr.dim td.bcol .mk{opacity:1;color:var(--ink)}
+.tx tfoot td{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--label);border-bottom:0;padding-top:6px}
+figure{margin:0;border:1px solid var(--rule)}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .card{border-right:0;border-bottom:1px solid var(--rule)}
+  .card:last-child{border-bottom:0}
+  .tx th,.tx td{padding:3px 3px}
+  .tx th.kind,.tx td.kind,.tx col.ck{display:none}
+  .tx col.c0{width:44px}
+  .tx tr.den td:nth-last-child(2){border-right:2px solid var(--ink)}
+}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:22px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts .formula, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-rule, body.shorts .legend, body.shorts .tx tfoot, body.shorts .tx .kind, body.shorts #explain{display:none}
+body.shorts h1{font-size:25px;margin:4px 0 2px}
+body.shorts .rule-big{display:block}
+body.shorts .controls{margin:4px 0 8px}
+body.shorts .tx{font-size:15px;margin:0}
+body.shorts .tx col.ck{display:none}
+body.shorts .tx col.c0{width:46px}
+body.shorts .tx tr.den td:nth-last-child(2){border-right:2px solid var(--ink)}
+body.shorts .tx th,body.shorts .tx td{padding:0 3px;line-height:1.32}
+body.shorts .cards{grid-template-columns:1fr;margin:8px 0 0;border:0}
+body.shorts .card{display:none;border:0;padding:6px 0 0}
+body.shorts .card.on{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;outline:0}
+body.shorts .card .calc{font-size:17px}
+body.shorts .card .calc::after{content:' ='}
+body.shorts .card .val{font-size:28px}
+body.shorts .card .def{display:none}
+body.shorts .insight{padding:10px 14px;margin:8px 0 0}
+body.shorts .result{font-size:19px;margin:0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 06 군집·연관·차원축소 · VIZ-18</div>
+  <h1>‘같이 산다’를 숫자로 말하면<span class="dot">.</span></h1>
+  <p class="lede">작은 가게의 장바구니 16건입니다. “A를 사면 B도 산다”는 규칙 A→B를 지지도·신뢰도·향상도 세 숫자로 잽니다. 드롭다운으로 A와 B를 고르고, 지표 카드를 눌러 그 숫자의 분자와 분모가 표의 어느 거래인지 확인해 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">거래 16건 · 품목 6개 · 직접 만든 예시</span></p>
+
+  <div class="controls">
+    <div class="ctl-rule"><span class="mono ctl-label">규칙</span>
+      <select id="selA" aria-label="조건 품목 A"></select><span class="arrow">→</span><select id="selB" aria-label="결과 품목 B"></select>
+    </div>
+    <div><span class="seg" role="group" aria-label="강조할 지표">
+        <button data-m="sup" aria-pressed="false">지지도</button>
+        <button data-m="conf" aria-pressed="true">신뢰도</button>
+        <button data-m="lift" aria-pressed="false">향상도</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <p class="rule-big" id="ruleBig"></p>
+
+  <div class="legend mono" id="legend"></div>
+  <table class="tx" id="tx" aria-label="거래 표"></table>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>지지도(support) = P(A∩B) = A와 B를 함께 담은 거래 수 ÷ 전체 거래 수. A만 담은 거래의 비율이 아닙니다. 신뢰도(confidence) = P(B|A) = P(A∩B)/P(A). 향상도(lift) = P(B|A)/P(B) = P(A∩B)/(P(A)P(B))이며, A와 B를 바꿔도 값이 같습니다.</p>
+    <p>향상도 1은 ‘A를 샀는지가 B를 살 확률에 아무 영향이 없을 때(독립)’와 같은 값입니다. 연관 규칙은 함께 나타나는 빈도를 셀 뿐이라 원인과 결과를 말하지 않습니다. 실제 분석에서는 최소 지지도·최소 신뢰도로 규칙을 먼저 거릅니다(예: Apriori). 이 페이지는 규칙 하나의 세 지표만 계산합니다.</p>
+    <p>표와 카드의 수치는 이 페이지가 브라우저에서 직접 센 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const ITEMS=[['milk','우유'],['bread','빵'],['butter','버터'],['coffee','커피'],['snack','과자'],['ramen','라면']];
+  const NAME=Object.fromEntries(ITEMS);
+  // 가상 거래 16건
+  const T=[
+    ['milk','snack','coffee'],['milk','snack','bread','coffee'],['milk','snack','bread','butter'],['milk','snack','bread','butter'],
+    ['milk','snack','butter'],['milk','ramen'],['milk','ramen'],['milk','ramen'],
+    ['milk','bread','butter','coffee'],['milk','bread','coffee'],['snack','coffee'],['snack','bread','butter'],
+    ['snack','bread'],['ramen','coffee'],['ramen','bread'],['ramen']
+  ].map(t=>new Set(t));
+  const N=T.length;
+  let A='bread', B='butter', M='conf';
+
+  const selA=document.getElementById('selA'), selB=document.getElementById('selB');
+  ITEMS.forEach(([k,v])=>{selA.add(new Option(v,k));selB.add(new Option(v,k));});
+  const f3=v=>v.toLocaleString('ko-KR',{minimumFractionDigits:3,maximumFractionDigits:3});
+  const gcd=(a,b)=>b?gcd(b,a%b):a;
+
+  function draw(){
+    const big=document.body.classList.contains('shorts');
+    selA.value=A; selB.value=B;
+    const same=A===B;
+    const inA=T.map(t=>t.has(A)), inB=T.map(t=>t.has(B)), inAB=T.map((t,i)=>inA[i]&&inB[i]);
+    const nA=inA.filter(Boolean).length, nB=inB.filter(Boolean).length, nAB=inAB.filter(Boolean).length;
+    const sup=nAB/N, conf=nAB/nA, pB=nB/N, lift=conf/pB;
+    // 향상도 비교는 정수로: nAB·N 과 nA·nB
+    const cmp=Math.sign(nAB*N-nA*nB);
+
+    document.getElementById('ruleBig').innerHTML=`${NAME[A]}<span class="ar">→</span>${NAME[B]}`;
+
+    // 표 강조: 분자 = 진한 강조색 글자, 분모 = 테두리
+    const tx=document.getElementById('tx');
+    tx.classList.toggle('allden',M==='sup'&&!same);
+    let h=`<colgroup><col class="c0">${ITEMS.map(()=>'<col>').join('')}<col class="ck"></colgroup><thead><tr><th>거래</th>${ITEMS.map(([k,v])=>`<th class="${k===A?'ca':''} ${k===B?'cb':''}">${v}${k===A?' (A)':''}${k===B&&!same?' (B)':''}</th>`).join('')}<th class="kind">구분</th></tr></thead><tbody>`;
+    T.forEach((t,i)=>{
+      let cls='';
+      if(!same){
+        if(M==='sup') cls=inAB[i]?'num':'dim';
+        else { cls=inAB[i]?'num den':(inA[i]?'den':'dim'); }
+      }
+      const kind=same?'':inAB[i]?'A∩B':inA[i]?'A만':inB[i]?'B만':'';
+      h+=`<tr class="${cls}"><td>#${String(i+1).padStart(2,'0')}</td>${ITEMS.map(([k])=>`<td class="${M==='lift'&&k===B&&!same?'bcol':''}">${t.has(k)?'<span class="mk">●</span>':''}</td>`).join('')}<td class="kind">${kind}</td></tr>`;
+    });
+    h+=`</tbody><tfoot><tr><td>합계</td>${ITEMS.map(([k])=>`<td>${T.filter(t=>t.has(k)).length}</td>`).join('')}<td class="kind"></td></tr></tfoot>`;
+    tx.innerHTML=h;
+
+    const lg={
+      sup:`<span><i class="sw n"></i>분자: A와 B를 함께 담은 거래 ${nAB}건</span><span><i class="sw d"></i>분모: 전체 거래 ${N}건 (표 전체)</span>`,
+      conf:`<span><i class="sw n"></i>분자: A와 B를 함께 담은 거래 ${nAB}건</span><span><i class="sw d"></i>분모: A를 담은 거래 ${nA}건</span>`,
+      lift:`<span><i class="sw n"></i><i class="sw d" style="margin-left:-4px"></i>분자 P(B|A) = ${nAB}/${nA}</span><span><i class="sw b"></i>분모 P(B): B 열의 ● ${nB}건 / 전체 ${N}건</span>`
+    };
+    document.getElementById('legend').innerHTML=same?'<span>A와 B는 서로 다른 품목을 고르세요</span>':lg[M];
+
+    // 지표 카드
+    const card=(m,nm,def,calc,val)=>`<div class="card${M===m?' on':''}" data-card="${m}" role="button" tabindex="0" aria-pressed="${M===m}"><div class="nm">${nm}</div><div class="def">${def}</div><div class="calc">${calc}</div><div class="val">${val}</div></div>`;
+    document.getElementById('cards').innerHTML=same?'':
+      card('sup','지지도 SUPPORT','P(A∩B) = n(A∩B) / N',`${nAB} / ${N}`,f3(sup))+
+      card('conf','신뢰도 CONFIDENCE','P(B|A) = n(A∩B) / n(A)',`${nAB} / ${nA}`,f3(conf))+
+      card('lift','향상도 LIFT','P(B|A) / P(B)',`(${nAB}/${nA}) / (${nB}/${N})`,f3(lift));
+    document.querySelectorAll('[data-card]').forEach(c=>{const go=()=>setM(c.dataset.card);c.addEventListener('click',go);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+
+    // 해석
+    let res, ex;
+    const a=NAME[A], b=NAME[B];
+    const jo=(w,x,y)=>{const c=w.charCodeAt(w.length-1)-0xAC00;return w+((c>=0&&c<=11171&&c%28)?x:y);};
+    const aR=jo(a,'을','를'), bR=jo(b,'을','를'), aW=jo(a,'과','와'), aG=jo(a,'이','가');
+    if(same){res='A와 B를 서로 다른 품목으로 고르세요';ex='';}
+    else if(nAB===0){
+      res=`향상도 <b>0</b>: ${aW} ${bR} 함께 산 거래가 한 건도 없습니다`;
+      ex=`이 데이터에서는 ${aR} 산 손님 중 ${bR} 산 사람이 없습니다. 지지도·신뢰도·향상도가 모두 0입니다.`;
+    } else if(cmp>0){
+      res=`향상도 ${f3(lift)} &gt; 1: ${aR} 사면 ${bR} <b>평소보다 더 자주</b> 삽니다`;
+      ex=`전체 손님 중 ${bR} 사는 비율은 ${nB}/${N}(${f3(pB)})인데, ${aR} 산 손님 중에서는 ${nAB}/${nA}(${f3(conf)})입니다. 함께 사는 경향(양의 연관)이 있다는 뜻이지, ${aG} ${b} 구매의 원인이라는 뜻은 아닙니다.`;
+    } else if(cmp===0){
+      res=`향상도 = 1: ${aR} 샀는지와 <b>상관없이</b> ${bR} 사는 비율이 같습니다`;
+      ex=`${aR} 산 손님 중 ${b} 구매 비율 ${nAB}/${nA}(${f3(conf)})이 전체 비율 ${nB}/${N}(${f3(pB)})과 똑같습니다. 두 품목이 서로 독립일 때 나오는 값입니다.${conf>=0.5?` 신뢰도(${f3(conf)})만 보면 강한 규칙처럼 보이지만, ${b}가 원래 잘 팔리는 품목일 뿐입니다.`:''}`;
+    } else {
+      res=`향상도 ${f3(lift)} &lt; 1: ${aR} 사면 ${bR} <b>평소보다 덜</b> 삽니다`;
+      ex=`${aR} 산 손님 중 ${b} 구매 비율 ${nAB}/${nA}(${f3(conf)})이 전체 비율 ${nB}/${N}(${f3(pB)})보다 낮습니다(음의 연관).${conf>=0.5?` 신뢰도(${f3(conf)})만 보면 높아 보여도, 향상도로 보면 오히려 덜 함께 사는 규칙입니다.`:''}`;
+    }
+    document.getElementById('result').innerHTML=res;
+    document.getElementById('explain').innerHTML=ex;
+    document.getElementById('formula').textContent=same?'':`향상도 = P(A∩B) / (P(A)·P(B)) = (${nAB}/${N}) / ((${nA}/${N})·(${nB}/${N})) = ${nAB*N}/${nA*nB} = ${f3(lift)} · 같은 값을 B→A로 계산해도 ${f3(lift)}`;
+  }
+
+  function setM(m){M=m;document.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===m));draw();}
+  document.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>setM(b.dataset.m)));
+  selA.addEventListener('change',()=>{A=selA.value;draw();});
+  selB.addEventListener('change',()=>{B=selB.value;draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sb.setAttribute('aria-pressed',on);draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?a=bread&b=butter&m=lift&shorts=1  (품목: milk bread butter coffee snack ramen · 지표: sup conf lift)
+  const u=new URLSearchParams(location.search);
+  if(NAME[u.get('a')]) A=u.get('a');
+  if(NAME[u.get('b')]) B=u.get('b');
+  if(['sup','conf','lift'].includes(u.get('m'))) M=u.get('m');
+  document.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===M));
+  if(u.get('shorts')==='1') setShorts(true);
+  draw();
+})();
+</script>
+</body>
+</html>

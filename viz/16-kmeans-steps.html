@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-means 한 단계씩</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:disabled{color:var(--label);cursor:default}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+input[type=range]{accent-color:var(--ink);vertical-align:middle;width:140px}
+.kval{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px}
+.status{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:6px 0 10px}
+.status .phase{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600}
+.conv{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;border:1px solid var(--accent);color:var(--accent);padding:0 8px;line-height:1.7}
+figure{margin:0;border:1px solid var(--rule)}
+figure + figure{border-top:0}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:24px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-k, body.shorts .ctl-init, body.shorts .ctl-play{display:none}
+body.shorts .controls{margin:8px 0 6px}
+body.shorts .status{margin:4px 0 8px}
+body.shorts .status .phase{font-size:22px}
+body.shorts .conv{font-size:16px}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px;margin:4px 0 4px}
+body.shorts .insight{padding:12px 16px;margin:12px 0 0}
+body.shorts .insight #explain{font-size:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 06 군집·연관·차원축소 · VIZ-16</div>
+  <h1>K-means는 어떻게 군집을 찾을까<span class="dot">.</span></h1>
+  <p class="lede">K-means는 두 동작을 번갈아 반복합니다. 점마다 가장 가까운 중심에 붙이고(할당), 중심을 자기 점들의 평균으로 옮깁니다(중심 이동). [한 단계]를 눌러 한 동작씩 진행하고, 아래 그래프에서 군집 내 제곱합(SSE)이 어떻게 변하는지 보세요. 초기값 A와 B를 바꿔 보면 같은 K에서도 다른 답에 멈출 수 있습니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">80개 점 · 고정 시드로 만든 4개 덩어리</span></p>
+
+  <div class="controls">
+    <div class="ctl-k"><span class="mono ctl-label">K</span><input type="range" id="kRange" min="2" max="6" step="1" value="4" aria-label="군집 수 K"><span class="kval" id="kVal">4</span></div>
+    <div class="ctl-init"><span class="mono ctl-label">초기 중심</span>
+      <span class="seg" role="group" aria-label="초기 중심">
+        <button data-init="a" aria-pressed="true">초기값 A</button>
+        <button data-init="b" aria-pressed="false">초기값 B</button>
+      </span>
+    </div>
+    <div><span class="seg" role="group" aria-label="진행">
+        <button id="stepBtn">한 단계</button>
+        <button id="playBtn" class="ctl-play" aria-pressed="false">재생</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <div class="status"><span class="mono" id="stepNo"></span><span class="phase" id="phase"></span><span class="conv" id="conv" hidden>수렴</span></div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 440" role="img" aria-label="K-means 산점도"></svg>
+  </figure>
+  <figure>
+    <svg id="sse" viewBox="0 0 720 190" role="img" aria-label="단계별 SSE 그래프"></svg>
+    <figcaption class="mono">위: 점 모양 = 소속 군집 · 강조색 큰 표시 = 중심 · 점선 = 중심이 지나온 길 · 아래: 단계별 SSE (● 할당 후 · □ 이동 후)</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="단계별 SSE 기록">
+    <thead><tr><th>단계</th><th>동작</th><th>소속이 바뀐 점</th><th>SSE</th><th>직전 대비</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>SSE(군집 내 제곱합, inertia) = Σ<sub>i</sub> ‖x<sub>i</sub> − μ<sub>c(i)</sub>‖². 할당 단계는 중심을 고정한 채 각 점의 거리 제곱을 가장 작게, 이동 단계는 소속을 고정한 채 평균(제곱합을 최소로 하는 점)으로 옮기므로 SSE는 어느 단계에서도 늘지 않습니다.</p>
+    <p>초기 중심은 데이터 점 중 K개를 고정 시드로 무작위 선택(Forgy 방식)했고, K마다 서로 다른 국소해로 수렴하는 시드 두 개를 미리 골랐습니다. 실제 라이브러리(예: scikit-learn)는 k-means++ 초기화와 여러 번 반복 실행(n_init) 중 SSE가 가장 작은 결과를 고르는 방식으로 이 문제를 줄입니다.</p>
+    <p>할당이 하나도 바뀌지 않으면 ‘수렴’으로 판정합니다. 점이 하나도 배정되지 않은 중심은 제자리에 둡니다. 모든 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  // 가상 데이터: 4개 덩어리 × 20점 (고정 시드 16, 박스-뮬러 정규분포)
+  const P=(function(){const r=mulberry32(16);const g=()=>{let u=0,v=0;while(u===0)u=r();v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+    const C=[[2.2,2.4,0.65],[6.4,2.0,0.7],[3.0,7.0,0.7],[7.4,6.6,0.75]];const out=[];
+    C.forEach(c=>{for(let i=0;i<20;i++)out.push([+(c[0]+c[2]*g()).toFixed(2),+(c[1]+c[2]*g()).toFixed(2)]);});return out;})();
+  // K별 초기값 시드 (이 데이터에서 A와 B가 서로 다른 해로 수렴함을 확인해 고름)
+  const SEEDS={2:{a:280,b:44},3:{a:56,b:127},4:{a:166,b:27},5:{a:74,b:62},6:{a:174,b:147}};
+
+  const d2=(p,q)=>(p[0]-q[0])**2+(p[1]-q[1])**2;
+  function initCenters(K,seed){const r=mulberry32(seed),idx=[];while(idx.length<K){const i=Math.floor(r()*P.length);if(!idx.includes(i))idx.push(i);}return idx.map(i=>P[i].slice());}
+  function assign(C){return P.map(p=>{let b=0,bd=Infinity;C.forEach((c,j)=>{const d=d2(p,c);if(d<bd){bd=d;b=j;}});return b;});}
+  function means(A,C){return C.map((c,j)=>{let sx=0,sy=0,n=0;P.forEach((p,i)=>{if(A[i]===j){sx+=p[0];sy+=p[1];n++;}});return n?[sx/n,sy/n]:c.slice();});}
+  const sse=(A,C)=>P.reduce((s,p,i)=>s+d2(p,C[A[i]]),0);
+
+  function freshHist(K,init){return [{type:'init',C:initCenters(K,SEEDS[K][init]),A:null,sse:null,changed:null,conv:false}];}
+  function advance(H){
+    const L=H[H.length-1]; if(L.conv) return false;
+    if(L.type==='assign'){const C=means(L.A,L.C);H.push({type:'move',C,A:L.A,sse:sse(L.A,C),changed:0,conv:false});}
+    else{const prev=L.A, A=assign(L.C); const ch=prev?A.reduce((s,v,i)=>s+(v!==prev[i]),0):P.length;
+      H.push({type:'assign',C:L.C,A,sse:sse(A,L.C),changed:ch,conv:prev!==null&&ch===0});}
+    return true;
+  }
+  function finalSSE(K,init){const H=freshHist(K,init);let n=0;while(advance(H)&&n<500)n++;return {sse:H[H.length-1].sse,steps:H.length-1};}
+
+  let K=4, init='a', hist=freshHist(K,init), playing=false;
+
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  // 군집 모양: 채운 원, 빈 원, 채운 사각, 빈 사각, 채운 삼각, 빈 삼각
+  function shape(g,j,x,y,s,col,bg,sw){
+    const filled=j%2===0, kind=Math.floor(j/2), f=filled?col:bg;
+    if(kind===0) return el('circle',{cx:x,cy:y,r:s,fill:f,stroke:col,'stroke-width':sw},g);
+    if(kind===1) return el('rect',{x:x-s*.9,y:y-s*.9,width:s*1.8,height:s*1.8,fill:f,stroke:col,'stroke-width':sw},g);
+    return el('polygon',{points:`${x},${y-s*1.15} ${x+s*1.05},${y+s*.75} ${x-s*1.05},${y+s*.75}`,fill:f,stroke:col,'stroke-width':sw},g);
+  }
+
+  const plot=document.getElementById('plot'), sv=document.getElementById('sse');
+  const W=720, M={l:54,r:20,t:16,b:40}; let HT=440;
+  const X0=0, X1=10, Y0=0, Y1=9.5;
+  const px=x=>M.l+(x-X0)/(X1-X0)*(W-M.l-M.r);
+  const py=y=>HT-M.b-(y-Y0)/(Y1-Y0)*(HT-M.t-M.b);
+
+  function drawPlot(F){
+    plot.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    for(let x=0;x<=10;x+=2){el('line',{x1:px(x),x2:px(x),y1:M.t,y2:HT-M.b,stroke:rule},plot);
+      const t=el('text',{x:px(x),y:HT-M.b+18*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},plot);t.textContent=x;}
+    for(let y=0;y<=8;y+=2){el('line',{x1:M.l,x2:W-M.r,y1:py(y),y2:py(y),stroke:rule},plot);
+      const t=el('text',{x:M.l-8,y:py(y)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},plot);t.textContent=y;}
+    const L=hist[hist.length-1];
+    // 할당 단계 직후: 점→중심 연결선
+    if(L.type==='assign'){P.forEach((p,i)=>{const c=L.C[L.A[i]];el('line',{x1:px(p[0]),y1:py(p[1]),x2:px(c[0]),y2:py(c[1]),stroke:ink,'stroke-width':.8,opacity:.22},plot);});}
+    // 점
+    P.forEach((p,i)=>{
+      if(!L.A) el('circle',{cx:px(p[0]),cy:py(p[1]),r:4*F,fill:'none',stroke:label,'stroke-width':1.2*F},plot);
+      else shape(plot,L.A[i],px(p[0]),py(p[1]),4.6*F,ink,bg,1.3*F);
+    });
+    // 중심 궤적
+    for(let j=0;j<K;j++){
+      const pts=[];hist.forEach(h=>{const c=h.C[j];const s=px(c[0]).toFixed(1)+','+py(c[1]).toFixed(1);if(pts[pts.length-1]!==s)pts.push(s);});
+      if(pts.length>1){el('polyline',{points:pts.join(' '),fill:'none',stroke:acc,'stroke-width':1.5*F,'stroke-dasharray':'4 4'},plot);
+        pts.slice(0,-1).forEach(s=>{const [x,y]=s.split(',');el('circle',{cx:x,cy:y,r:2.5*F,fill:acc},plot);});}
+    }
+    // 중심
+    L.C.forEach((c,j)=>{const x=px(c[0]),y=py(c[1]);
+      el('circle',{cx:x,cy:y,r:11*F,fill:bg,stroke:acc,'stroke-width':2.5*F},plot);
+      shape(plot,j,x,y,4.4*F,acc,bg,1.6*F);});
+  }
+
+  function drawSSE(F,other){
+    sv.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining');
+    const big=F>1, SW=720, SH=big?200:190, m={l:big?120:76,r:big?150:96,t:big?22:16,b:big?50:36};
+    sv.setAttribute('viewBox',`0 0 ${SW} ${SH}`);
+    const rec=hist.filter(h=>h.sse!==null);
+    const ymax=Math.max(...rec.map(h=>h.sse), other?other.sse:0, 1)*1.08;
+    const n=Math.max(hist.length-1,10);
+    const sx=i=>m.l+(i-1)/(n-1)*(SW-m.l-m.r), sy=v=>SH-m.b-v/ymax*(SH-m.t-m.b);
+    // 축
+    const raw=ymax/(big?2.2:4), p10=Math.pow(10,Math.floor(Math.log10(raw))), step=[1,2,5,10].map(x=>x*p10).find(x=>x>=raw);
+    for(let v=0;v<=ymax;v+=step){el('line',{x1:m.l,x2:SW-m.r,y1:sy(v),y2:sy(v),stroke:rule},sv);
+      const t=el('text',{x:m.l-8,y:sy(v)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},sv);t.textContent=v;}
+    const tickEvery=n>20?5:n>10?2:1;
+    for(let i=1;i<=n;i+=tickEvery){const t=el('text',{x:sx(i),y:SH-m.b+16*F,'text-anchor':'middle','font-size':11*F,fill:label,'font-family':'IBM Plex Mono'},sv);t.textContent=i;}
+    const yl=el('text',{x:big?8:6,y:m.t+8*F,'font-size':12*F,fill:label},sv);yl.textContent='SSE';
+    if(!big){const xl=el('text',{x:SW-m.r,y:SH-4,'text-anchor':'end','font-size':12*F,fill:label},sv);xl.textContent='단계';}
+    // 다른 초기값의 수렴 SSE (기준선)
+    if(other){el('line',{x1:m.l,x2:SW-m.r,y1:sy(other.sse),y2:sy(other.sse),stroke:lin,'stroke-width':1.5*F,'stroke-dasharray':'6 5'},sv);
+      const t=el('text',{x:SW-m.r+8,y:sy(other.sse)-3*F,'font-size':12*F,fill:lin,'font-family':'IBM Plex Mono'},sv);
+      t.textContent=`${init==='a'?'B':'A'} 수렴`;
+      const t2=el('text',{x:SW-m.r+8,y:sy(other.sse)+12*F,'font-size':12*F,fill:lin,'font-family':'IBM Plex Mono'},sv);t2.textContent=fmt(other.sse,1);}
+    if(!rec.length){const t=el('text',{x:(m.l+SW-m.r)/2,y:(m.t+SH-m.b)/2+4,'text-anchor':'middle','font-size':13*F,fill:label},sv);t.textContent='[한 단계]를 누르면 기록이 시작됩니다';return;}
+    const pts=hist.map((h,i)=>[i,h]).filter(([i,h])=>h.sse!==null);
+    el('polyline',{points:pts.map(([i,h])=>sx(i).toFixed(1)+','+sy(h.sse).toFixed(1)).join(' '),fill:'none',stroke:ink,'stroke-width':1.5*F},sv);
+    pts.forEach(([i,h])=>{
+      if(h.type==='assign') el('circle',{cx:sx(i),cy:sy(h.sse),r:3.6*F,fill:ink},sv);
+      else el('rect',{x:sx(i)-3.4*F,y:sy(h.sse)-3.4*F,width:6.8*F,height:6.8*F,fill:bg,stroke:ink,'stroke-width':1.4*F},sv);
+    });
+    const [li,lh]=pts[pts.length-1];
+    const near=other&&Math.abs(sy(lh.sse)-sy(other.sse))<16*F;
+    const t=el('text',{x:sx(li)+(li>n*0.75?-8:8),y:sy(lh.sse)-(near?18:8)*F,'text-anchor':li>n*0.75?'end':'start','font-size':13*F,fill:acc,'font-family':'IBM Plex Mono'},sv);t.textContent=fmt(lh.sse,1);
+  }
+
+  function draw(){
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const L=hist[hist.length-1], si=hist.length-1;
+    const other=finalSSE(K,init==='a'?'b':'a'), mine=finalSSE(K,init);
+    drawPlot(F); drawSSE(F,other);
+    const name={init:'초기 중심',assign:'할당 단계',move:'중심 이동 단계'}[L.type];
+    document.getElementById('stepNo').textContent=big?`K=${K} · ${init.toUpperCase()} · 단계 ${si}`:`K=${K} · 초기값 ${init.toUpperCase()} · 단계 ${si}`;
+    document.getElementById('phase').textContent=name;
+    document.getElementById('conv').hidden=!L.conv;
+    document.getElementById('stepBtn').disabled=L.conv;
+    const rec=hist.filter(h=>h.sse!==null);
+    const mono=rec.every((h,i)=>i===0||h.sse<=rec[i-1].sse+1e-9);
+    let res, ex, exS, resS;
+    if(L.type==='init'){
+      res=`중심 ${K}개를 데이터 점 중에서 무작위로 골랐습니다`;
+      ex=`아직 어느 점도 군집에 속하지 않았습니다. [한 단계]를 누르면 각 점이 가장 가까운 중심에 붙습니다.`;
+      exS=`[한 단계] → 점마다 가장 가까운 중심에 붙입니다.`; resS=`중심 ${K}개를 무작위로 골랐습니다`;
+    } else if(L.conv){
+      const diff=Math.abs(mine.sse-other.sse)>1e-6, better=mine.sse<other.sse;
+      res=`수렴: SSE <b>${fmt(L.sse,1)}</b>에서 멈췄습니다`;
+      ex=`할당을 다시 해도 소속이 바뀐 점이 없어, 중심도 더 움직이지 않습니다. `+(diff?`같은 데이터·같은 K인데 초기값 ${init==='a'?'B':'A'}로 시작하면 SSE ${fmt(other.sse,1)}에서 멈춥니다. K-means는 출발점에 따라 ${better?'이보다 나쁜':'이보다 좋은'} 국소해에 멈출 수 있습니다.`:`이 K에서는 두 초기값이 같은 해에 도달했습니다.`)+(mono?' 기록 내내 SSE는 한 번도 늘지 않았습니다.':'');
+      resS=`수렴: SSE <b>${fmt(L.sse,1)}</b>`;
+      exS=diff?`초기값 ${init==='a'?'B':'A'}로는 SSE ${fmt(other.sse,1)}. 출발점이 답을 바꿉니다.`:`소속이 더 바뀌지 않습니다.`;
+    } else if(L.type==='assign'){
+      res=`할당: <b>${L.changed}개</b> 점의 소속이 ${si===1?'정해졌습니다':'바뀌었습니다'} · SSE ${fmt(L.sse,1)}`;
+      ex=`중심은 그대로 두고, 각 점을 가장 가까운 중심의 군집으로 옮겼습니다. 가는 선이 점과 중심을 잇습니다. 각 점의 거리 제곱이 같거나 작아지므로 SSE는 늘지 않습니다.`;
+      exS=`점마다 가장 가까운 중심에 붙입니다. SSE는 늘지 않습니다.`; resS=`<b>${L.changed}개</b> 점 소속 결정 · SSE ${fmt(L.sse,1)}`.replace('결정',si===1?'결정':'변경');
+    } else {
+      const prev=hist[si-1];
+      const mv=Math.max(...L.C.map((c,j)=>Math.sqrt(d2(c,prev.C[j]))));
+      res=`중심 이동: 가장 크게 움직인 중심 ${fmt(mv,2)} · SSE ${fmt(L.sse,1)}`;
+      ex=`소속은 그대로 두고, 각 중심을 자기 군집 점들의 평균으로 옮겼습니다. 평균은 그 점들까지의 거리 제곱합을 가장 작게 하는 위치라서 SSE는 늘지 않습니다.`;
+      exS=`중심을 자기 점들의 평균으로 옮깁니다. SSE는 늘지 않습니다.`; resS=`중심을 평균으로 · SSE ${fmt(L.sse,1)}`;
+    }
+    document.getElementById('result').innerHTML=big?resS:res;
+    document.getElementById('explain').innerHTML=big?exS:ex;
+    // 표: 최근 기록
+    document.getElementById('rows').innerHTML=hist.map((h,i)=>[i,h]).filter(([i,h])=>h.sse!==null).slice(-8).map(([i,h])=>{
+      const p=hist[i-1].sse; const dd=p===null?'—':(h.sse-p<=1e-9?(Math.abs(h.sse-p)<1e-9?'0':'−'+fmt(p-h.sse,2)):'+'+fmt(h.sse-p,2));
+      return `<tr${h.conv?' style="font-weight:500"':''}><td>${i}</td><td>${h.type==='assign'?'● 할당':'□ 중심 이동'}${h.conv?' · 수렴':''}</td><td>${h.type==='assign'?h.changed:'—'}</td><td>${fmt(h.sse,2)}</td><td>${dd}</td></tr>`;}).join('')
+      || `<tr><td colspan="5" style="color:var(--label)">아직 기록이 없습니다</td></tr>`;
+    document.getElementById('formula').textContent=`SSE = Σ ‖점 − 소속 중심‖² · 초기값 A 수렴 SSE ${fmt(init==='a'?mine.sse:other.sse,2)} (${init==='a'?mine.steps:other.steps}단계) · 초기값 B 수렴 SSE ${fmt(init==='b'?mine.sse:other.sse,2)} (${init==='b'?mine.steps:other.steps}단계)`;
+  }
+
+  function reset(){stop();hist=freshHist(K,init);draw();}
+  function stepOnce(){if(advance(hist))draw();}
+  // 재생
+  let last=0, raf=0;
+  const pb=document.getElementById('playBtn');
+  function loop(t){if(!playing)return; if(t-last>750){last=t; if(!advance(hist)){stop();draw();return;} draw();} raf=requestAnimationFrame(loop);}
+  function play(){if(hist[hist.length-1].conv)hist=freshHist(K,init);playing=true;pb.setAttribute('aria-pressed','true');pb.textContent='일시정지';last=performance.now();raf=requestAnimationFrame(loop);}
+  function stop(){playing=false;cancelAnimationFrame(raf);pb.setAttribute('aria-pressed','false');pb.textContent='재생';}
+  pb.addEventListener('click',()=>playing?stop():play());
+  document.getElementById('stepBtn').addEventListener('click',()=>{stop();stepOnce();});
+  document.getElementById('resetBtn').addEventListener('click',reset);
+  const kr=document.getElementById('kRange');
+  kr.addEventListener('input',()=>{K=+kr.value;document.getElementById('kVal').textContent=K;reset();});
+  document.querySelectorAll('[data-init]').forEach(b=>b.addEventListener('click',()=>{
+    init=b.dataset.init;document.querySelectorAll('[data-init]').forEach(x=>x.setAttribute('aria-pressed',x===b));reset();}));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on);sb.setAttribute('aria-pressed',on);M.l=on?96:54;M.b=on?64:40;HT=on?400:440;plot.setAttribute('viewBox',`0 0 ${W} ${HT}`);draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?k=4&init=b&step=6&play=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  const uk=+u.get('k'); if(uk>=2&&uk<=6){K=uk;kr.value=K;document.getElementById('kVal').textContent=K;}
+  if(u.get('init')==='b'||u.get('init')==='a'){init=u.get('init');document.querySelectorAll('[data-init]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.init===init));}
+  hist=freshHist(K,init);
+  const us=u.get('step'); if(us!==null){const n=us==='end'?500:Math.max(0,Math.min(500,parseInt(us,10)||0));for(let i=0;i<n;i++)if(!advance(hist))break;}
+  if(u.get('shorts')==='1') setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+  if(u.get('play')==='1') play(); // 자동재생은 URL로 요청할 때만 (기본값 없음)
+})();
+</script>
+</body>
+</html>

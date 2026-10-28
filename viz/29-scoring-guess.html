@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>채점 규칙과 찍기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible, input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.slider{display:flex;flex-wrap:wrap;align-items:center}
+.ctl-label,.pen,.val{white-space:nowrap}
+.slider input{accent-color:var(--ink);width:240px;margin:0 10px 0 0}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4ch;font-variant-numeric:tabular-nums}
+.pen{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);margin-left:12px}
+.short-only{display:none}
+body.shorts .short-only{display:block;font-size:15px;color:var(--ink2);margin-top:6px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:440px){ body:not(.shorts) .slider input{width:150px} body:not(.shorts) table{font-size:13px} body:not(.shorts) th, body:not(.shorts) td{padding:5px 3px} body:not(.shorts) .seg button{padding:6px 10px} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-dist, body.shorts #explain, body.shorts .tblhead{display:none}
+body.shorts .controls{margin:10px 0 10px}
+body.shorts .slider input{width:150px}
+body.shorts .pen{margin-left:6px}
+body.shorts .result{font-size:20px;margin:0}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:12px 16px;margin:10px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 기술 노트 01 · VIZ-29</div>
+  <h1>모르면 찍는 게 이득일까<span class="dot">.</span></h1>
+  <p class="lede">맞히면 1점, 틀려도 0점이면 모르는 문제도 찍는 편이 낫습니다. 틀린 답에 감점을 주면 셈이 달라집니다. 기준 t를 움직여 보세요. ‘다 답하는’ 전략 A와 ‘자신감이 t보다 높을 때만 답하는’ 전략 B의 점수와 틀린 답 수가 함께 바뀝니다. 자신감 분포도 바꿔 볼 수 있습니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">100문항 · 문항별 자신감 고정값 · 기대값 계산</span></p>
+
+  <div class="controls">
+    <div class="slider"><span class="mono ctl-label">기준 t</span>
+      <input id="tS" type="range" min="0" max="0.9" step="0.05" value="0.5" aria-label="자신감 기준 t"><span class="val" id="tV"></span>
+      <span class="pen" id="penV"></span></div>
+    <div class="ctl-dist"><span class="mono ctl-label">자신감 분포</span><span class="seg" role="group" aria-label="자신감 분포">
+        <button data-d="uniform" aria-pressed="true">고르게</button><button data-d="high" aria-pressed="false">자신 있는 쪽</button><button data-d="low" aria-pressed="false">자신 없는 쪽</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 640" role="img" aria-label="자신감 분포와 두 전략의 점수 비교"></svg>
+    <figcaption class="mono">위: 문항의 자신감 분포 · 채운 막대 = B가 답하는 문항, 빈 막대 = B가 ‘모르겠다’ / 아래: 채운 막대 = A(다 답함), 테두리 막대 = B(자신 있을 때만) · ● = 그 채점에서 이기는 전략</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="short-only" id="shortline"></p>
+  </div>
+
+  <p class="mono tblhead" style="margin:24px 0 0">기준별 비교 · 현재 분포</p>
+  <table aria-label="기준별 두 전략 비교">
+    <thead><tr><th>기준 t</th><th>감점</th><th>B 답한 수</th><th>B 기대 오답</th><th>이진 A / B</th><th>감점 A / B</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>채점은 Kalai 외(2025, “Why Language Models Hallucinate”, §4.2)의 제안을 따랐습니다. 맞히면 +1, ‘모르겠다’는 0, 틀리면 −t/(1−t)점입니다. 자신감이 p인 문항에 답할 때의 기대 점수는 p − (1−p)·t/(1−t)이고, 이 값은 p = t에서 0이 됩니다. 그래서 자신감이 t보다 높을 때만 답하는 것이 기대 점수를 가장 크게 합니다. 이진 채점은 t = 0인 경우와 같습니다.</p>
+    <p>자신감은 난수 없이 고정한 값입니다. u<sub>i</sub> = (2i+1)/200 (i = 0…99)로 두고, ‘고르게’는 p = u, ‘자신 있는 쪽’은 p = √u, ‘자신 없는 쪽’은 p = 1 − √(1−u)입니다. 평균 자신감은 각각 0.50, 약 0.67, 약 0.33입니다. B는 p &gt; t인 문항에만 답합니다.</p>
+    <p>화면의 수치는 모두 기대값입니다(오답 수 = 답한 문항의 1−p 합). 실제 시험 한 번의 결과는 이 값 주변에서 흔들립니다. 또 모델이 자기 자신감 p를 정확히 안다고 가정했습니다. 실제 언어 모델은 자신감을 잘못 매길 수 있습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---- 데이터: 100문항의 자신감(고정값) ----
+  const U=Array.from({length:100},(_,i)=>(2*i+1)/200);
+  const DIST={uniform:u=>u, high:u=>Math.sqrt(u), low:u=>1-Math.sqrt(1-u)};
+  let dist='uniform', th=0.5, P=U.map(DIST[dist]);
+
+  const pen=t=>t/(1-t);
+  function score(t){
+    const k=pen(t);
+    let aRight=0,aWrong=0,bN=0,bRight=0,bWrong=0;
+    for(const p of P){aRight+=p; aWrong+=1-p; if(p>t){bN++; bRight+=p; bWrong+=1-p;}}
+    return {k, A:{n:P.length, wrong:aWrong, bin:aRight, pen:aRight-k*aWrong},
+               B:{n:bN, wrong:bWrong, bin:bRight, pen:bRight-k*bWrong}};
+  }
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,at,p)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,at,p)=>{const t=el('text',Object.assign({x,y},at),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  // 소수 둘째 자리까지, 불필요한 0은 지움
+  const fm=v=>{const r=Math.round(v*100+1e-6)/100; return (Object.is(r,-0)?0:r).toLocaleString('ko-KR',{maximumFractionDigits:2}).replace('-','−');};
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining'), box=css('--box');
+    const mono={'font-family':'IBM Plex Mono','font-size':12*F,fill:label};
+    const sans={'font-family':'IBM Plex Sans KR','font-size':14*F,fill:ink};
+    const S=score(th);
+
+    // ---- 위: 자신감 히스토그램 (0.05 간격 20칸) ----
+    const L=big?20:56, Rr=700, T=big?84:58, B=big?270:210;
+    const xp=p=>L+p*(Rr-L);
+    const bins=Array(20).fill(0);
+    P.forEach(p=>bins[Math.min(19,Math.floor(p*20))]++);
+    const maxC=Math.max(...bins), yc=c=>B-c/maxC*(B-T);
+    tx(L,big?24:16,big?'문항의 자신감':'문항의 자신감 분포 (막대 = 문항 수)',{...mono,fill:ink});
+    if(!big) for(const c of [0,Math.round(maxC/2),maxC]){ el('line',{x1:L,x2:Rr,y1:yc(c),y2:yc(c),stroke:rule,'stroke-width':1}); tx(L-8,yc(c)+4,c,{...mono,'text-anchor':'end'}); }
+    bins.forEach((c,i)=>{
+      if(!c) return;
+      const lo=i/20, ans=lo>=th-1e-9;   // 기준이 0.05 단위라 칸 경계와 맞는다
+      const x=xp(lo)+1.5, w=xp(0.05)-L-3;
+      el('rect',{x,y:yc(c),width:w,height:B-yc(c),fill:ans?ink:bg,stroke:ink,'stroke-width':1.2*F});
+    });
+    el('line',{x1:L,x2:Rr,y1:B,y2:B,stroke:label,'stroke-width':1});
+    for(const p of [0,0.25,0.5,0.75,1]) tx(xp(p),B+16*F,p,{...mono,'text-anchor':p===0&&big?'start':p===1?'end':'middle'});
+    if(!big) tx(Rr,B+34,'자신감 p (답이 맞을 확률)',{...mono,'text-anchor':'end'});
+    // 기준선
+    el('line',{x1:xp(th),x2:xp(th),y1:T-(big?34:24),y2:B,stroke:acc,'stroke-width':2*F,'stroke-dasharray':`${5*F} ${4*F}`});
+    const right=th>0.7;
+    const lt=th>0?`t = ${th.toFixed(2)} · B는 왼쪽을 ‘모르겠다’`:'t = 0 · B도 전부 답함';
+    tx(xp(th)+(right?-6:6)*F,T-(big?20:12),lt,{...mono,fill:acc,'text-anchor':right?'end':'start'});
+
+    // ---- 아래: 두 전략 비교 막대 ----
+    const groups=[
+      {key:'n', name:'답한 문항 수', win:null, short:false},
+      {key:'wrong', name:'기대 오답 (그럴듯하게 틀린 답)', short:true, win:null},
+      {key:'bin', name:'이진 채점 점수', win:'max', short:true},
+      {key:'pen', name:S.k?`감점 채점 점수 (틀리면 −${fm(S.k)})`:'감점 채점 점수 (감점 0)', win:'max', short:true},
+    ].filter(g=>!big||g.short);
+    let y=B+(big?84:62);
+    const BL=big?20:56, BR=big?560:600, bh=(big?17:16)*F/ (big?1.4:1), gap=6;
+    for(const g of groups){
+      const a=S.A[g.key], b=S.B[g.key];
+      const pos=Math.max(a,b,0), neg=Math.max(-a,-b,0), tot=pos+neg||1;
+      const z=BL+(BR-BL)*neg/tot, sc=v=>(BR-BL)*v/tot;
+      tx(BL,y,g.name,{...sans,'font-size':(big?13:14)*F});
+      const y0=y+10*F;
+      el('line',{x1:z,x2:z,y1:y0-3,y2:y0+2*bh+gap+3,stroke:label,'stroke-width':1});
+      const bar=(v,yy,isA)=>{
+        const w=Math.abs(sc(v)), x=v>=0?z:z-w, col=v<0?acc:(isA?ink:lin);
+        if(w>0.5) el('rect',{x,y:yy,width:Math.max(w,1),height:bh,fill:isA?col:bg,stroke:col,'stroke-width':(isA?1:2)*F});
+      };
+      bar(a,y0,true); bar(b,y0+bh+gap,false);
+      const best=g.win?(Math.abs(a-b)<1e-9?'same':(a>b?'A':'B')):null;
+      const lab=(v,yy,who)=>tx(Rr,yy+bh/2+4.5*F,`${who} ${fm(v)}${best===who?' ●':best==='same'?'':'  '}`,{...mono,fill:v<0?acc:ink,'text-anchor':'end','font-size':(big?12:13)*F});
+      lab(a,y0,'A'); lab(b,y0+bh+gap,'B');
+      y=y0+2*bh+gap+(big?40:34);
+    }
+    svg.setAttribute('viewBox',`0 0 720 ${Math.ceil(y-(big?10:4))}`);
+
+    // ---- 문장 ----
+    document.getElementById('tV').textContent=th.toFixed(2);
+    document.getElementById('penV').textContent=S.k?`틀리면 −${fm(S.k)}`:'감점 없음';
+    const R=document.getElementById('result'), E=document.getElementById('explain');
+    if(th===0){
+      R.innerHTML='기준 0이면 <b>두 채점이 같아집니다</b>';
+      E.innerHTML=`감점이 0이라 지금의 감점 채점은 이진 채점과 같습니다. 자신감이 0인 문항이 없으니 B도 100문항에 모두 답해 A와 같아집니다. 기대 오답은 ${fm(S.A.wrong)}개입니다. 기준을 올려 보세요.`;
+    }else{
+      R.innerHTML=`이진 채점은 <b>A</b>, 감점 채점은 <b>B</b>가 이깁니다`;
+      E.innerHTML=`이진 채점에서 A는 ${fm(S.A.bin)}점, B는 ${fm(S.B.bin)}점입니다. 모르는 문제에 답해도 잃을 것이 없기 때문입니다. 틀리면 ${fm(S.k)}점을 깎는 채점에서는 A ${fm(S.A.pen)}점, B ${fm(S.B.pen)}점으로 뒤집힙니다. B를 택하면 기대 오답이 ${fm(S.A.wrong)}개에서 <b>${fm(S.B.wrong)}개</b>로 줄고, 대신 답하는 문항도 ${S.B.n}개로 줄어듭니다.`;
+    }
+
+    document.getElementById('shortline').innerHTML=`A 다 답함 · B t보다 자신 있을 때만<br>기대 오답 ${fm(S.A.wrong)} → <b>${fm(S.B.wrong)}</b>개`;
+    document.getElementById('rows').innerHTML=[0,0.25,0.5,0.75,0.9].map(t=>{const q=score(t);
+      return `<tr style="${Math.abs(t-th)<1e-9?'font-weight:500':'color:var(--label)'}"><td>${t.toFixed(2)}</td><td>${fm(q.k)}</td><td>${q.B.n}</td><td>${fm(q.B.wrong)}</td><td>${fm(q.A.bin)} / ${fm(q.B.bin)}</td><td>${fm(q.A.pen)} / ${fm(q.B.pen)}</td></tr>`;}).join('');
+    document.getElementById('formula').textContent=`현재: 감점 t/(1−t) = ${th.toFixed(2)}/${(1-th).toFixed(2)} = ${fm(S.k)} · 답하기의 기대 점수 p − (1−p)·${fm(S.k)} 는 p = ${th.toFixed(2)}에서 0`;
+  }
+
+  const tS=document.getElementById('tS');
+  tS.addEventListener('input',()=>{th=Math.round(+tS.value*20)/20; draw();});
+  const segs=[...document.querySelectorAll('[data-d]')];
+  function setDist(d){dist=d; P=U.map(DIST[d]); segs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===d)); draw();}
+  segs.forEach(b=>b.addEventListener('click',()=>setDist(b.dataset.d)));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?t=0.5&dist=uniform|high|low&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('t')!==null && isFinite(+u.get('t'))) th=Math.min(0.9,Math.max(0,Math.round(+u.get('t')*20)/20));
+  tS.value=th;
+  if(DIST[u.get('dist')]) {dist=u.get('dist'); P=U.map(DIST[dist]); segs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===dist));}
+  if(u.get('shorts')==='1') setShorts(true);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>
