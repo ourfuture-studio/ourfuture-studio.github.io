@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>교차검증 블록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --teal:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+td.num{text-align:right}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .controls{display:none}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:12px 16px;margin:12px 0}
+body.shorts #explain{font-size:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 08 검증·성능평가 · VIZ-27</div>
+  <h1>교차검증은 왜 여러 번 나눌까<span class="dot">.</span></h1>
+  <p class="lede">검증 점수는 ‘어떤 점이 검증 쪽에 걸렸느냐’에 따라 달라집니다. K-폴드 교차검증은 데이터를 K조각으로 나눠 조각마다 한 번씩 검증을 맡기고 점수를 평균합니다. [다음 폴드]나 [재생]으로 검증 칸이 옮겨 가는 것을 보고, [다른 분할로 홀드아웃]을 여러 번 눌러 한 번 나눈 점수가 얼마나 출렁이는지 비교해 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">24개 점 · 고정 시드 · 모델 = 최소제곱 직선 · 점수 = 검증 MSE(낮을수록 좋음)</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">K</span>
+      <span class="seg" role="group" aria-label="폴드 수 K">
+        <button data-k="3" aria-pressed="false">3</button>
+        <button data-k="5" aria-pressed="true">5</button>
+        <button data-k="10" aria-pressed="false">10</button>
+      </span>
+    </div>
+    <span class="seg" role="group" aria-label="폴드 진행">
+      <button id="next">다음 폴드</button>
+      <button id="play" aria-pressed="false">재생</button>
+      <button id="reset">처음으로</button>
+    </span>
+    <span class="seg" role="group" aria-label="홀드아웃">
+      <button id="hold">다른 분할로 홀드아웃</button>
+    </span>
+    <div><span class="mono ctl-label">섞기</span>
+      <span class="seg" role="group" aria-label="섞기">
+        <button data-sh="1" aria-pressed="true">켬</button>
+        <button data-sh="0" aria-pressed="false">끔</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 640" role="img" aria-label="데이터 블록, 회귀 직선, 폴드별 검증 점수"></svg>
+    <figcaption class="mono">칸 하나 = 데이터 점 하나 · 채운 칸·● = 검증 · 빈 칸·○ = 훈련 · 빗금 칸 = 시험 세트(교차검증에 쓰지 않음) · 점선 = 검증 점의 오차</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="분할 운에 따른 흔들림">
+    <thead><tr><th>같은 방식으로 10번 반복</th><th>점수 범위</th><th style="text-align:right">점수의 표준편차</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>데이터: x는 0~10 균등분포, y = 1.5 + 0.7x + 잡음(표준편차 1.3)으로 고정 시드(mulberry32)에서 만든 24개 점입니다. 그중 4개를 먼저 시험 세트로 떼어 두고, 나머지 20개로만 교차검증합니다.</p>
+    <p>폴드 나누기는 scikit-learn KFold와 같은 규칙입니다: (섞은 뒤) 차례대로 자르고, 20이 K로 나누어떨어지지 않으면 앞쪽 폴드가 하나씩 더 가집니다(K = 3이면 7·7·6). ‘섞기 끔’은 x 순서대로 모은 데이터를 그대로 자르므로, 검증 폴드가 x 범위의 한쪽 끝에 몰립니다.</p>
+    <p>홀드아웃은 20개를 섞어 14개 훈련 · 6개 검증으로 한 번 나눈 것입니다. 표준편차는 모집단 기준(ddof = 0)입니다. 표의 ‘±’는 폴드 점수의 흩어짐이지 평균의 신뢰구간이 아닙니다. 모든 수치는 이 페이지가 브라우저에서 직접 계산했습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  function perm(n, seed){ const r=mulberry32(seed), a=[...Array(n).keys()]; for(let i=n-1;i>0;i--){const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+  // 가상 데이터
+  const rnd=mulberry32(27);
+  const gauss=()=>{const u1=rnd(),u2=rnd();return Math.sqrt(-2*Math.log(1-u1))*Math.cos(2*Math.PI*u2);};
+  const XS=Array.from({length:24},()=>rnd()*10).sort((a,b)=>a-b);
+  const ALL=XS.map(x=>({x, y:1.5+0.7*x+1.3*gauss()}));
+  const testIdx=new Set(perm(24,99).slice(0,4));
+  const TEST=ALL.filter((d,i)=>testIdx.has(i));
+  const D=ALL.filter((d,i)=>!testIdx.has(i));   // 교차검증용 20개 (x 순서)
+  const n=D.length;
+
+  function fit(idx){ const mx=idx.reduce((s,i)=>s+D[i].x,0)/idx.length, my=idx.reduce((s,i)=>s+D[i].y,0)/idx.length;
+    let sxy=0,sxx=0; idx.forEach(i=>{sxy+=(D[i].x-mx)*(D[i].y-my); sxx+=(D[i].x-mx)**2;}); const b=sxy/sxx; return {a:my-b*mx, b}; }
+  const mse=(m,idx)=>idx.reduce((s,i)=>s+(D[i].y-(m.a+m.b*D[i].x))**2,0)/idx.length;
+  const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
+  const sd=a=>{const m=mean(a);return Math.sqrt(a.reduce((s,v)=>s+(v-m)**2,0)/a.length);};
+  function folds(order,K){ const base=Math.floor(n/K), extra=n%K, out=[]; let s=0;
+    for(let f=0;f<K;f++){const sz=base+(f<extra?1:0); out.push(order.slice(s,s+sz)); s+=sz;} return out; }
+  function cv(order,K){ return folds(order,K).map(val=>{const vs=new Set(val); const tr=order.filter(i=>!vs.has(i)); const m=fit(tr); return {val,tr,m,score:mse(m,val)};}); }
+  function holdout(seed){ const p=perm(n,seed), val=p.slice(0,6), tr=p.slice(6), m=fit(tr); return {val,tr,m,score:mse(m,val)}; }
+
+  let K=5, shuffle=true, done=0, holds=[], view='cv', playing=false, timer=0;
+  const order=()=> shuffle ? perm(n,27) : [...Array(n).keys()];
+  let RES=cv(order(),K);
+  const recompute=()=>{ RES=cv(order(),K); };
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(nm,a,p)=>{const e=document.createElementNS(NS,nm);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const txt=(s,a,p)=>{const t=el('text',a,p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const f2=v=>v.toFixed(2);
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.8:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box'), teal=css('--teal');
+    const mono={'font-family':'IBM Plex Mono'};
+    const H = big?780:640; svg.setAttribute('viewBox',`0 0 720 ${H}`);
+    el('defs',{}).innerHTML=`<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="${label}" stroke-width="1.5"/></pattern>`;
+
+    // 현재 보여 줄 분할
+    const ord=order();
+    let cur=null, title;
+    if(view==='hold' && holds.length){ cur=holds[holds.length-1]; title=`홀드아웃 ${holds.length}번째 분할 · 훈련 14 · 검증 6`; }
+    else if(done>0){ cur=RES[done-1]; title=`폴드 ${done} / ${K} · 검증 ${cur.val.length}개 · 훈련 ${cur.tr.length}개`; }
+    else title=`교차검증용 20개 · ${K}조각으로 나눌 준비`;
+    const valSet=new Set(cur?cur.val:[]);
+
+    // ---- 블록 줄 ----
+    const cw=big?24:24, g=3, bx0=20, by=big?70:44, ch=big?44:30;
+    txt(title,{x:bx0,y:by-14,'font-size':12*F,fill:ink,...mono});
+    // 블록 순서: 교차검증은 섞은 순서, 홀드아웃은 그 분할의 순서(검증 6개 먼저)
+    const blockOrder = (view==='hold'&&cur) ? cur.val.concat(cur.tr) : ord;
+    blockOrder.forEach((i,j)=>{
+      const x=bx0+j*(cw+g), isV=valSet.has(i);
+      el('rect',{x,y:by,width:cw,height:ch,fill:isV?acc:bg,stroke:isV?acc:ink,'stroke-width':1.2});
+    });
+    // 폴드 경계 표시
+    if(view!=='hold'){
+      const fs=folds(ord,K); let s=0;
+      fs.forEach((f,fi)=>{ const x0=bx0+s*(cw+g), x1=bx0+(s+f.length)*(cw+g)-g; const on=fi===done-1;
+        el('path',{d:`M${x0},${by+ch+6}V${by+ch+12}H${x1}V${by+ch+6}`,fill:'none',stroke:on?acc:label,'stroke-width':on?2:1});
+        if(!big||K<10) txt(fi+1,{x:(x0+x1)/2,y:by+ch+12+14*F,'text-anchor':'middle','font-size':11*F,fill:on?acc:label,...mono});
+        s+=f.length; });
+    }
+    // 시험 세트
+    const tx0=bx0+n*(cw+g)+ (big?14:22);
+    for(let j=0;j<4;j++) el('rect',{x:tx0+j*(cw+g),y:by,width:cw,height:ch,fill:'url(#hatch)',stroke:label,'stroke-width':1.2,'stroke-dasharray':'3 2'});
+    txt('시험',{x:tx0+2*(cw+g)-g/2,y:by-14,'text-anchor':'middle','font-size':12*F,fill:label,...mono});
+
+    // ---- 산점도 ----
+    const pl=big?110:70, pr=big?690:690, pt=big?170:120, pb=big?440:370;
+    const X=x=>pl+x/10*(pr-pl), Y=y=>pb-(y-0)/(12-0)*(pb-pt);
+    for(let v=0;v<=10;v+=2.5){ el('line',{x1:X(v),x2:X(v),y1:pt,y2:pb,stroke:rule}); if(v%5===0) txt(v,{x:X(v),y:pb+18*F,'text-anchor':'middle','font-size':12*F,fill:label,...mono}); }
+    for(let v=0;v<=12;v+=4){ el('line',{x1:pl,x2:pr,y1:Y(v),y2:Y(v),stroke:rule}); txt(v,{x:pl-8,y:Y(v)+4*F,'text-anchor':'end','font-size':12*F,fill:label,...mono}); }
+    txt('x',{x:X(7.5),y:pb+18*F,'text-anchor':'middle','font-size':12*F,fill:label,...mono});
+    if(cur){
+      el('line',{x1:X(0),y1:Y(cur.m.a),x2:X(10),y2:Y(cur.m.a+cur.m.b*10),stroke:ink,'stroke-width':2*F/1.4});
+      cur.val.forEach(i=>el('line',{x1:X(D[i].x),x2:X(D[i].x),y1:Y(D[i].y),y2:Y(cur.m.a+cur.m.b*D[i].x),stroke:acc,'stroke-width':1.5*F/1.3,'stroke-dasharray':'4 3'}));
+    }
+    D.forEach((d,i)=>{ const v=valSet.has(i); el('circle',{cx:X(d.x),cy:Y(d.y),r:(v?6:5)*F,fill:v?acc:bg,stroke:v?acc:ink,'stroke-width':1.4}); });
+    if(cur) txt(`훈련 점으로 맞춘 직선 ŷ = ${f2(cur.m.a)} + ${f2(cur.m.b)}x`,{x:pl+8,y:pt+16*F,'font-size':12*F,fill:ink,...mono});
+
+    // ---- 점수 띠 ----
+    const sl=big?150:150, sr=690, sTop=big?500:420;
+    const allScores=RES.map(r=>r.score).concat(holds.map(h=>h.score));
+    const smax=Math.max(4, Math.ceil(Math.max(...allScores)));
+    const S=v=>sl+v/smax*(sr-sl);
+    const r1=sTop+(big?50:30), r2=sTop+(big?160:110), axY=sTop+(big?250:170);
+    txt('검증 MSE',{x:sr,y:sTop,'text-anchor':'end','font-size':12*F,fill:label,...mono});
+    el('line',{x1:sl,x2:sr,y1:axY,y2:axY,stroke:label});
+    for(let v=0;v<=smax;v++){ if(big && smax>6 && v%2) continue; el('line',{x1:S(v),x2:S(v),y1:sTop+10,y2:axY,stroke:rule}); txt(v,{x:S(v),y:axY+18*F,'text-anchor':'middle','font-size':12*F,fill:label,...mono}); }
+    txt(`${K}-폴드`,{x:sl-12,y:r1+5*F,'text-anchor':'end','font-size':12*F,fill:ink,...mono});
+    txt('홀드아웃',{x:sl-12,y:r2+5*F,'text-anchor':'end','font-size':12*F,fill:ink,...mono});
+    // 폴드 점수 (겹치면 위아래로 비켜 놓기)
+    const placeRow=(vals,y0)=>{ const pos=[]; return vals.map(v=>{ let lv=0; while(pos.some(p=>p.lv===lv&&Math.abs(p.x-S(v))<11*F)) lv++; const p={x:S(v),lv}; pos.push(p); return {x:p.x,y:y0-(lv%2?1:-1)*Math.ceil(lv/2)*11*F}; }); };
+    const fp=placeRow(RES.slice(0,done).map(r=>r.score), r1);
+    fp.forEach((p,i)=>el('circle',{cx:p.x,cy:p.y,r:5*F,fill:i===done-1&&view!=='hold'?acc:bg,stroke:i===done-1&&view!=='hold'?acc:ink,'stroke-width':1.4}));
+    if(done===K){
+      const sc=RES.map(r=>r.score), m=mean(sc), s=sd(sc);
+      el('line',{x1:S(Math.max(0,m-s)),x2:S(m+s),y1:r1+(big?40:24),y2:r1+(big?40:24),stroke:ink,'stroke-width':2});
+      [m-s,m+s].forEach(v=>el('line',{x1:S(Math.max(0,v)),x2:S(Math.max(0,v)),y1:r1+(big?32:19),y2:r1+(big?48:29),stroke:ink,'stroke-width':2}));
+      el('rect',{x:S(m)-5*F,y:r1+(big?40:24)-5*F,width:10*F,height:10*F,fill:ink});
+      const lbl=`평균 ${f2(m)} ± ${f2(s)}`, lw=lbl.length*7.4*F; const lx=Math.max(sl, Math.min(S(m)-lw/2, sr-lw)); txt(lbl,{x:lx, y:r1+(big?40:24)+18*F,'font-size':12*F,fill:ink,...mono});
+    }
+    const hp=placeRow(holds.map(h=>h.score), r2);
+    hp.forEach((p,i)=>el('rect',{x:p.x-4.5*F,y:p.y-4.5*F,width:9*F,height:9*F,fill:i===holds.length-1&&view==='hold'?acc:ink,stroke:'none'}));
+    if(holds.length>=2){ const hs=holds.map(h=>h.score), lo=Math.min(...hs), hi=Math.max(...hs);
+      el('path',{d:`M${S(lo)},${r2+(big?32:18)}V${r2+(big?40:24)}H${S(hi)}V${r2+(big?32:18)}`,fill:'none',stroke:label,'stroke-width':1.2});
+      txt(`${holds.length}회 범위 ${f2(lo)} ~ ${f2(hi)}`,{x:S(lo),y:r2+(big?40:24)+16*F,'font-size':12*F,fill:label,...mono}); }
+
+    // ---- 문장 ----
+    let res, ex;
+    const sc=RES.map(r=>r.score);
+    if(view==='hold' && holds.length){
+      const h=holds[holds.length-1], hs=holds.map(x=>x.score);
+      res=`홀드아웃 ${holds.length}번째: 검증 MSE <b>${f2(h.score)}</b>`;
+      ex= big ? (holds.length>1?`분할만 바꿨는데 ${f2(Math.min(...hs))} ~ ${f2(Math.max(...hs))}.`:'분할을 바꿔 다시 눌러 보세요.')
+        : `같은 데이터·같은 모델인데 어떤 6개가 검증에 걸렸느냐에 따라 점수가 달라집니다.${holds.length>1?` 지금까지 ${holds.length}번: ${f2(Math.min(...hs))} ~ ${f2(Math.max(...hs))}.`:''} 한 번의 분할로 모델을 고르면 이 운까지 함께 고르는 셈입니다.`;
+    } else if(done===0){
+      res=`${K}-폴드: 아직 시작 전`;
+      ex= big ? '검증 칸이 한 조각씩 옮겨 갑니다.' : `[다음 폴드]를 누르면 첫 조각이 검증을 맡고, 나머지로 직선을 맞춥니다. 시험 세트 4개는 처음부터 떼어 두고 끝까지 쓰지 않습니다.`;
+    } else if(done<K){
+      res=`폴드 ${done} / ${K}: 검증 MSE <b>${f2(RES[done-1].score)}</b>`;
+      ex= big ? '검증 칸이 한 조각씩 옮겨 갑니다.' : `검증 조각이 옮겨 가며, 끝나면 20개 점이 모두 정확히 한 번씩 검증에 쓰입니다. 폴드 점수 하나하나도 출렁이지만 K개를 평균하면 한 번의 분할보다 덜 흔들립니다.`;
+    } else {
+      res=`${K}-폴드 평균 MSE <b>${f2(mean(sc))} ± ${f2(sd(sc))}</b>`;
+      ex= big ? `폴드 점수 ${f2(Math.min(...sc))} ~ ${f2(Math.max(...sc))}를 평균한 값.`
+        : `폴드 점수는 ${f2(Math.min(...sc))} ~ ${f2(Math.max(...sc))}로 흩어지지만, 모든 점을 한 번씩 검증에 쓴 평균이라 분할 하나의 운에 덜 좌우됩니다. 모델을 고른 뒤 마지막에 시험 세트로 한 번만 확인합니다.${shuffle?'':' (섞기 끔: 검증 조각마다 x의 한 구간이 통째로 빠집니다. 첫·마지막 조각은 훈련 범위 밖을 맞혀야 하는 외삽입니다. 데이터가 정렬돼 있거나 시간 순서라면 이런 분할이 점수를 크게 바꿀 수 있습니다.)'}`;
+    }
+    document.getElementById('result').innerHTML=res;
+    document.getElementById('explain').innerHTML=ex;
+
+    // 표: 10번 반복 비교 (현재 K, 섞기 켬 기준)
+    const cvMeans=[], hoScores=[];
+    for(let s=1;s<=10;s++){ cvMeans.push(mean(cv(perm(n,s),K).map(r=>r.score))); hoScores.push(holdout(1000+s).score); }
+    document.getElementById('rows').innerHTML=
+      `<tr><td>${K}-폴드 평균 (셔플 시드 1~10)</td><td>${f2(Math.min(...cvMeans))} ~ ${f2(Math.max(...cvMeans))}</td><td class="num">${f2(sd(cvMeans))}</td></tr>`+
+      `<tr><td>홀드아웃 1회 (분할 시드 1~10)</td><td>${f2(Math.min(...hoScores))} ~ ${f2(Math.max(...hoScores))}</td><td class="num">${f2(sd(hoScores))}</td></tr>`;
+    document.getElementById('formula').textContent = done>0 ? `폴드별 MSE: ${RES.slice(0,done).map((r,i)=>`${i+1}) ${f2(r.score)}`).join(' · ')}` : '';
+  }
+
+  // 조작
+  function stop(){ playing=false; clearTimeout(timer); const p=document.getElementById('play'); p.setAttribute('aria-pressed',false); p.textContent='재생'; }
+  function next(){ view='cv'; if(done<K) done++; draw(); }
+  document.getElementById('next').addEventListener('click',()=>{ stop(); next(); });
+  document.getElementById('play').addEventListener('click',()=>{
+    if(playing){ stop(); return; }
+    if(done>=K) done=0;
+    playing=true; const p=document.getElementById('play'); p.setAttribute('aria-pressed',true); p.textContent='일시정지';
+    const loop=()=>{ if(!playing) return; next(); if(done>=K){ stop(); return; } timer=setTimeout(loop,900); };
+    loop();
+  });
+  document.getElementById('reset').addEventListener('click',()=>{ stop(); done=0; holds=[]; view='cv'; draw(); });
+  document.getElementById('hold').addEventListener('click',()=>{ stop(); holds.push(holdout(1000+holds.length+1)); view='hold'; draw(); });
+  document.querySelectorAll('[data-k]').forEach(b=>b.addEventListener('click',()=>{ stop(); K=+b.dataset.k; document.querySelectorAll('[data-k]').forEach(x=>x.setAttribute('aria-pressed',x===b)); done=0; view='cv'; recompute(); draw(); }));
+  document.querySelectorAll('[data-sh]').forEach(b=>b.addEventListener('click',()=>{ stop(); shuffle=b.dataset.sh==='1'; document.querySelectorAll('[data-sh]').forEach(x=>x.setAttribute('aria-pressed',x===b)); done=0; view='cv'; recompute(); draw(); }));
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?k=5&fold=3&holdout=4&view=hold&shuffle=0&theme=dark&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('theme')) document.documentElement.setAttribute('data-theme',u.get('theme'));
+  if(u.get('k')) document.querySelector(`[data-k="${u.get('k')}"]`)?.click();
+  if(u.get('shuffle')==='0') document.querySelector('[data-sh="0"]').click();
+  const h=parseInt(u.get('holdout'),10); if(h>0) for(let i=0;i<Math.min(h,30);i++) holds.push(holdout(1000+i+1));
+  const fd=parseInt(u.get('fold'),10); if(fd>0) done=Math.min(fd,K);
+  view = (u.get('view')==='hold' && holds.length) ? 'hold' : 'cv';
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

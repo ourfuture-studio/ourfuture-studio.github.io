@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오차를 제곱하는 이유</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible, input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.slider{display:flex;align-items:center}
+.slider input{accent-color:var(--ink);width:150px;margin:0 10px 0 0}
+.val{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:5ch;font-variant-numeric:tabular-nums}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:440px){ body:not(.shorts) .slider input{width:140px} body:not(.shorts) table{font-size:13px} body:not(.shorts) th, body:not(.shorts) td{padding:5px 4px} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-b{display:none}
+body.shorts .controls{margin:12px 0 10px;gap:10px 16px}
+body.shorts .slider input{width:130px}
+body.shorts .result{font-size:23px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 04 회귀·확률 · VIZ-08</div>
+  <h1>왜 오차를 제곱할까<span class="dot">.</span></h1>
+  <p class="lede">최소제곱법은 각 점의 세로 오차(잔차)를 한 변으로 하는 <b>정사각형 넓이의 합</b>을 가장 작게 만드는 직선을 찾습니다. 기울기·절편 슬라이더로 직선을 움직이고 점을 끌어 옮겨 보세요. [최소제곱 해 보기]를 누르면 계산으로 구한 정답 직선으로 이동합니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">점 7개 · 직접 만든 예시 · 가로·세로 눈금 1:1</span></p>
+
+  <div class="controls">
+    <div class="slider"><span class="mono ctl-label">기울기</span>
+      <input id="aS" type="range" min="-1" max="2" step="0.01" value="0.2" aria-label="기울기"><span class="val" id="aV"></span></div>
+    <div class="slider ctl-b"><span class="mono ctl-label">절편</span>
+      <input id="bS" type="range" min="-4" max="8" step="0.05" value="3.5" aria-label="절편"><span class="val" id="bV"></span></div>
+    <div><span class="seg" role="group" aria-label="최소제곱 해">
+        <button id="fitBtn" aria-pressed="false">최소제곱 해 보기</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 600" role="img" aria-label="점과 직선, 잔차 정사각형"></svg>
+    <figcaption class="mono">● 점(끌어서 이동) · 실선 사각형 = 점이 직선보다 위(+) · 점선 사각형 = 아래(−) · 아래 막대 = 사각형 넓이 합(SSE), 세로 눈금 = 최소 SSE</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="점별 잔차">
+    <thead><tr><th>점</th><th>x</th><th>y</th><th>ŷ = a·x + b</th><th>잔차 y − ŷ</th><th>정사각형 넓이</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>잔차는 세로 방향(y − ŷ)으로 잽니다. 정사각형이 화면에서도 정사각형으로 보이도록 가로·세로 축의 1단위를 같은 길이로 그렸습니다. SSE = Σ(yᵢ − ŷᵢ)²이며, 아래 막대 길이는 그 합입니다.</p>
+    <p>최소제곱 해는 정규방정식(XᵀX)β = Xᵀy의 닫힌 해 a = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)², b = ȳ − a·x̄로 브라우저에서 계산합니다. SSE는 a, b에 대한 볼록 이차함수여서 이 해가 유일한 최솟값입니다(모든 x가 같지 않을 때).</p>
+    <p>슬라이더는 기울기 −1~2, 절편 −4~8 범위만 움직입니다. 점을 크게 옮겨 최소제곱 해가 이 범위를 벗어나면 직선은 정확한 해로 그리되 슬라이더는 끝에 멈춥니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터 (x, y)
+  const P = [[1.0,2.1],[2.2,3.6],[3.5,3.0],[4.6,5.2],[6.0,5.0],[7.3,7.0],[8.6,6.4]];
+  let a=0.2, b=3.5;
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,at,p)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,at,p)=>{const t=el('text',Object.assign({x,y},at),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>(Math.abs(v)<0.5*Math.pow(10,-d)?0:v).toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d}).replace('-','−');
+
+  // 좌표: 가로·세로 1단위 = 같은 픽셀(U) → 정사각형 유지
+  const X0=0, X1=11, Y0=0, Y1=8;
+  const G={l:52,t:16,U:0};
+  function geom(big){ G.l=big?84:52; G.t=big?24:16; G.U=(720-G.l-20)/(X1-X0); }
+  const px=x=>G.l+(x-X0)*G.U, py=y=>G.t+(Y1-y)*G.U;
+  const ix=X=>X0+(X-G.l)/G.U, iy=Y=>Y1-(Y-G.t)/G.U;
+
+  function ols(){
+    const n=P.length, mx=P.reduce((s,p)=>s+p[0],0)/n, my=P.reduce((s,p)=>s+p[1],0)/n;
+    let sxy=0,sxx=0; P.forEach(p=>{sxy+=(p[0]-mx)*(p[1]-my); sxx+=(p[0]-mx)**2;});
+    if(sxx<1e-12) return {a:0,b:my,mx,my,sxy,sxx};
+    const A=sxy/sxx; return {a:A,b:my-A*mx,mx,my,sxy,sxx};
+  }
+  const sse=(A,B)=>P.reduce((s,p)=>s+(p[1]-(A*p[0]+B))**2,0);
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    geom(big);
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining'), box=css('--box');
+    const mono={'font-family':'IBM Plex Mono','font-size':12*F,fill:label};
+    const pw=(X1-X0)*G.U, ph=(Y1-Y0)*G.U, bottom=G.t+ph;
+    el('defs',{}).innerHTML=`<clipPath id="clip"><rect x="${G.l}" y="${G.t}" width="${pw}" height="${ph}"/></clipPath>`;
+    for(let x=X0;x<=X1;x++){
+      el('line',{x1:px(x),x2:px(x),y1:G.t,y2:bottom,stroke:rule,'stroke-width':1});
+      if(x%2===0) tx(px(x),bottom+16*F,x,{...mono,'text-anchor':'middle'});
+    }
+    for(let y=Y0;y<=Y1;y++){
+      el('line',{x1:G.l,x2:G.l+pw,y1:py(y),y2:py(y),stroke:rule,'stroke-width':1});
+      if(y%2===0) tx(G.l-8,py(y)+4*F,y,{...mono,'text-anchor':'end'});
+    }
+    const g=el('g',{'clip-path':'url(#clip)'});
+    // 잔차 정사각형
+    const res=P.map(p=>p[1]-(a*p[0]+b));
+    P.forEach((p,i)=>{
+      const r=res[i], s=Math.abs(r); if(s<1e-9) return;
+      const dir = (r>0) === (a>=0) ? -1 : 1;
+      const xa=Math.min(p[0],p[0]+dir*s), yh=Math.max(p[1],p[1]-r);
+      el('rect',{x:px(xa),y:py(yh),width:s*G.U,height:s*G.U,fill:lin,'fill-opacity':.14,stroke:lin,'stroke-width':1.5*F,'stroke-dasharray':r>0?'none':`${5*F} ${3*F}`},g);
+      el('line',{x1:px(p[0]),x2:px(p[0]),y1:py(p[1]),y2:py(p[1]-r),stroke:lin,'stroke-width':2*F},g);
+    });
+    // 직선
+    el('line',{x1:px(X0),y1:py(a*X0+b),x2:px(X1),y2:py(a*X1+b),stroke:acc,'stroke-width':2.5*F},g);
+    // 점
+    P.forEach((p,i)=>{
+      const c=el('circle',{cx:px(p[0]),cy:py(p[1]),r:6*F,fill:ink,stroke:bg,'stroke-width':1.5*F,'data-i':i,style:'cursor:grab'});
+    });
+
+    // SSE 막대
+    const o=ols(), smin=sse(o.a,o.b), sNow=sse(a,b);
+    const barY=bottom+(big?82:50), barH=big?34:22, BMAX=16, k=pw/BMAX;
+    tx(G.l,barY-8*F/1.3,big?'SSE':'SSE = 정사각형 넓이 합',{...mono,fill:ink});
+    el('rect',{x:G.l,y:barY,width:pw,height:barH,fill:box});
+    let acc0=0;
+    res.forEach((r,i)=>{
+      const w=Math.min(r*r, Math.max(0,BMAX-acc0))*k;
+      if(w>0) el('rect',{x:G.l+acc0*k,y:barY,width:w,height:barH,fill:lin,'fill-opacity':.14+.1*(i%2),stroke:lin,'stroke-width':1,'stroke-dasharray':r>0?'none':'4 2'});
+      acc0+=r*r;
+    });
+    if(sNow>BMAX) tx(G.l+pw-6,barY+barH/2+4*F,'→',{...mono,fill:ink,'text-anchor':'end'});
+    // 최소 SSE 눈금
+    const mxp=G.l+Math.min(smin,BMAX)*k;
+    el('line',{x1:mxp,x2:mxp,y1:barY-6,y2:barY+barH+6,stroke:acc,'stroke-width':2*F});
+    tx(mxp,barY+barH+18*F,`최소 ${fmt(smin,2)}`,{...mono,fill:acc,'text-anchor':'start'});
+    tx(G.l+pw,barY-8*F/1.3,`현재 ${fmt(sNow,2)}`,{...mono,fill:ink,'text-anchor':'end'});
+    svg.setAttribute('viewBox',`0 0 720 ${Math.ceil(barY+barH+(big?44:30))}`);
+
+    // 글
+    const atMin = Math.abs(sNow-smin) < 1e-6*Math.max(1,smin);
+    const gap=sNow-smin;
+    document.getElementById('result').innerHTML = atMin
+      ? `지금이 최소입니다: <b>SSE = ${fmt(sNow,2)}</b>`
+      : `SSE = <b>${fmt(sNow,2)}</b> · 최소보다 ${fmt(gap,2)} 큼`;
+    document.getElementById('explain').innerHTML = big
+      ? (atMin ? '어느 쪽으로 움직여도 넓이 합이 <b>커집니다</b>.' : '큰 오차는 넓이가 <b>제곱으로</b> 커집니다.')
+      : (atMin
+        ? `기울기 ${fmt(o.a,3)}, 절편 ${fmt(o.b,3)}. 이 직선에서 슬라이더를 어느 쪽으로 움직여도 정사각형 넓이의 합이 커집니다. 제곱을 하면 양(+)·음(−) 오차가 서로 지워지지 않고, 오차가 2배면 벌점은 4배가 됩니다.`
+        : `오차를 그냥 더하면 위아래 오차가 서로 지워지지만, 제곱하면 모두 양수가 되고 큰 오차일수록 훨씬 크게 벌받습니다. 또 SSE가 기울기·절편의 매끄러운 이차함수라서 미분이 0인 지점을 식 하나로 풀 수 있습니다.`);
+
+    document.getElementById('rows').innerHTML = P.map((p,i)=>{
+      const yh=a*p[0]+b, r=p[1]-yh;
+      return `<tr><td>${i+1}</td><td>${fmt(p[0],2)}</td><td>${fmt(p[1],2)}</td><td>${fmt(yh,3)}</td><td>${r>=0?'+':''}${fmt(r,3)}</td><td>${fmt(r*r,3)}</td></tr>`;
+    }).join('') + `<tr style="font-weight:500"><td>합</td><td></td><td></td><td></td><td>${fmt(res.reduce((s,r)=>s+r,0),3)}</td><td>${fmt(sNow,3)}</td></tr>`;
+    document.getElementById('formula').textContent =
+      `최소제곱 해: x̄ = ${fmt(o.mx,3)}, ȳ = ${fmt(o.my,3)}, a = Σ(x−x̄)(y−ȳ)/Σ(x−x̄)² = ${fmt(o.sxy,3)}/${fmt(o.sxx,3)} = ${fmt(o.a,4)}, b = ȳ − a·x̄ = ${fmt(o.b,4)}, 최소 SSE = ${fmt(smin,4)}`;
+    document.getElementById('aV').textContent=fmt(a,2);
+    document.getElementById('bV').textContent=fmt(b,2);
+    document.getElementById('fitBtn').setAttribute('aria-pressed',atMin);
+  }
+
+  const aS=document.getElementById('aS'), bS=document.getElementById('bS');
+  aS.addEventListener('input',()=>{a=+aS.value; draw();});
+  bS.addEventListener('input',()=>{b=+bS.value; draw();});
+  function syncSliders(){ aS.value=a; bS.value=b; }
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function goFit(animate){
+    const o=ols(), a0=a, b0=b, t0=performance.now(), D=700;
+    if(!animate||reduce){ a=o.a; b=o.b; syncSliders(); draw(); return; }
+    (function step(t){
+      const u=Math.min(1,(t-t0)/D), e=u<.5?2*u*u:1-2*(1-u)*(1-u);
+      a=a0+(o.a-a0)*e; b=b0+(o.b-b0)*e; syncSliders(); draw();
+      if(u<1) requestAnimationFrame(step); else { a=o.a; b=o.b; draw(); }
+    })(t0);
+  }
+  document.getElementById('fitBtn').addEventListener('click',()=>goFit(true));
+
+  // 점 끌기
+  let drag=-1;
+  function toData(e){
+    const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse()); return [ix(p.x), iy(p.y)];
+  }
+  svg.addEventListener('pointerdown',e=>{
+    const [x,y]=toData(e); let best=-1, bd=1e9;
+    P.forEach((p,i)=>{const d=Math.hypot(p[0]-x,p[1]-y); if(d<bd){bd=d;best=i;}});
+    if(bd<0.45){ drag=best; svg.setPointerCapture(e.pointerId); e.preventDefault(); }
+  });
+  svg.addEventListener('pointermove',e=>{
+    if(drag<0) return; const [x,y]=toData(e);
+    P[drag]=[Math.round(Math.min(Math.max(x,0.2),10.8)*10)/10, Math.round(Math.min(Math.max(y,0.2),7.8)*10)/10]; draw();
+  });
+  svg.addEventListener('pointerup',()=>drag=-1);
+  svg.addEventListener('pointercancel',()=>drag=-1);
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?a=0.5&b=2&fit=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('a')!==null && isFinite(+u.get('a'))) a=+u.get('a');
+  if(u.get('b')!==null && isFinite(+u.get('b'))) b=+u.get('b');
+  syncSliders();
+  if(u.get('shorts')==='1') setShorts(true);
+  if(u.get('fit')==='1') goFit(false);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

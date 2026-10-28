@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K와 결정 경계</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --teal:#1F6F6F; --orange:#B5481A; --wash:.13;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC; --orange:#EE8A52; --wash:.09;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC; --orange:#EE8A52; --wash:.09;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.range{display:flex;align-items:center;gap:10px}
+.range input{accent-color:var(--ink);width:220px;max-width:52vw}
+.range output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:3.5em}
+figure{margin:0;border:1px solid var(--rule)}
+figure + figure{margin-top:14px}
+svg{display:block;width:100%;height:auto;touch-action:none}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:20px 16px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-show{display:none}
+body.shorts .controls{margin:4px 0 8px}
+body.shorts .range input{width:230px;max-width:none}
+body.shorts figure + figure{margin-top:8px}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px;line-height:1.3;margin:4px 0 4px}
+body.shorts .insight{padding:12px 16px;margin:12px 0}
+body.shorts #explain{font-size:16px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-03</div>
+  <h1>K를 키우면 경계는 어떻게 변할까<span class="dot">.</span></h1>
+  <p class="lede">두 클래스가 조금씩 섞인 2차원 데이터에 K-NN을 적용했습니다. 배경의 옅은 면은 그 자리에 새 점이 오면 모델이 내릴 예측입니다. K 슬라이더를 1부터 30까지 움직이며 경계 모양과 아래 정확도 곡선을 함께 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">100점 · 고정 시드 · 훈련 60 / 검증 40</span></p>
+
+  <div class="controls">
+    <div class="range"><span class="mono">이웃 수</span>
+      <input type="range" id="kRange" min="1" max="30" step="1" value="1" aria-label="이웃 수 K">
+      <output id="kOut" for="kRange">K = 1</output>
+    </div>
+    <div class="ctl-show"><span class="mono ctl-label">점 표시</span>
+      <span class="seg" role="group" aria-label="점 표시">
+        <button data-show="both" aria-pressed="true">둘 다</button>
+        <button data-show="train" aria-pressed="false">훈련</button>
+        <button data-show="val" aria-pressed="false">검증</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="map" viewBox="0 0 700 480" role="img" aria-label="K-NN 결정 경계"></svg>
+    <figcaption class="mono">● 클래스 A 훈련 · ○ A 검증 · ▲ 클래스 B 훈련 · △ B 검증 · 배경(60×40칸) = 각 칸 중심에서 현재 K의 예측</figcaption>
+  </figure>
+  <figure>
+    <svg id="acc" viewBox="0 0 720 250" role="img" aria-label="K별 훈련·검증 정확도"></svg>
+    <figcaption class="mono">실선·채운 점 = 훈련 정확도 · 점선·빈 점 = 검증 정확도 · 세로선 = 현재 K · 모두 이 페이지가 계산한 값</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <div class="notes">
+    <p>데이터: 시드 42의 mulberry32 난수로 만든 네 개의 가우시안 덩어리(표준편차 0.55, 클래스마다 2개, XOR 배치) 100점을 섞은 뒤 앞 60점을 훈련, 뒤 40점을 검증으로 나눴습니다(훈련 A 25·B 35, 검증 A 25·B 15). 층화 추출은 하지 않았습니다.</p>
+    <p>거리는 유클리드 거리, 투표는 가중치 없는 다수결입니다. 짝수 K에서 표가 같으면 가장 가까운 이웃의 클래스를 따릅니다(그래서 K = 2는 K = 1과 같은 예측이 됩니다). 2클래스에서 K를 홀수로 두면 표 동점이 생기지 않습니다. 거리까지 같으면 데이터 순서가 앞선 점을 먼저 셉니다.</p>
+    <p>훈련 정확도는 훈련 점 자신도 이웃 후보에 넣어 계산했습니다(훈련 데이터로 학습한 모델을 같은 데이터에 적용). 그래서 K = 1에서는 겹치는 점이 없는 한 각 점의 최근접 이웃이 자기 자신이고, 훈련 정확도가 100%가 됩니다.</p>
+    <p>정확도 곡선은 표본 40개짜리 검증 세트 하나의 결과라 들쭉날쭉합니다. 실제로 K를 고를 때는 교차 검증을 쓰는 편이 안정적입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---- 가상 데이터 (고정 시드) ----
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const rnd=mulberry32(42), SD=0.55;
+  const gauss=()=>{let u=0;while(u===0)u=rnd();const v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+  const blobs=[[-1.4,0.8,0],[1.3,-0.8,0],[-1.2,-0.9,1],[1.4,0.9,1]];
+  const pts=[];
+  for(let i=0;i<100;i++){const b=blobs[i%4];
+    let x=b[0]+SD*gauss(), y=b[1]+SD*gauss();
+    x=Math.max(-2.9,Math.min(2.9,x)); y=Math.max(-1.9,Math.min(1.9,y));
+    pts.push([x,y,b[2]]);}
+  for(let i=pts.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[pts[i],pts[j]]=[pts[j],pts[i]];}
+  const TRAIN=pts.slice(0,60), VAL=pts.slice(60);
+
+  // ---- K-NN ----
+  // 질의점에서 훈련점까지 거리 순서(동일 거리면 인덱스 순)
+  function order(x,y){
+    return TRAIN.map((p,i)=>[(p[0]-x)*(p[0]-x)+(p[1]-y)*(p[1]-y),i]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]).map(d=>d[1]);
+  }
+  function vote(ord,K){
+    let v=0; for(let k=0;k<K;k++) v+=TRAIN[ord[k]][2];
+    if(2*v>K) return 1; if(2*v<K) return 0;
+    return TRAIN[ord[0]][2]; // 동점: 가장 가까운 이웃의 클래스
+  }
+  const KMAX=30;
+  const trOrd=TRAIN.map(p=>order(p[0],p[1])), vaOrd=VAL.map(p=>order(p[0],p[1]));
+  const accTr=[], accVa=[], hitTr=[], hitVa=[];
+  for(let K=1;K<=KMAX;K++){
+    const a=TRAIN.reduce((s,p,i)=>s+(vote(trOrd[i],K)===p[2]),0);
+    const b=VAL.reduce((s,p,i)=>s+(vote(vaOrd[i],K)===p[2]),0);
+    hitTr[K]=a; hitVa[K]=b; accTr[K]=a/TRAIN.length; accVa[K]=b/VAL.length;
+  }
+  let bestK=1; for(let K=1;K<=KMAX;K++) if(accVa[K]>accVa[bestK]) bestK=K; // 동률이면 작은 K
+  // 배경 격자
+  const GX=60, GY=40, X0=-3, X1=3, Y0=-2, Y1=2;
+  const gridOrd=[];
+  for(let j=0;j<GY;j++) for(let i=0;i<GX;i++){
+    const x=X0+(i+.5)*(X1-X0)/GX, y=Y1-(j+.5)*(Y1-Y0)/GY;
+    gridOrd.push(order(x,y));
+  }
+
+  let K=1, show='both';
+  const map=document.getElementById('map'), acc=document.getElementById('acc');
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const pct=v=>(v*100).toLocaleString('ko-KR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+
+  const MW=700, MH=480, MM={l:20,r:20,t:20,b:20};
+  const mx=x=>MM.l+(x-X0)/(X1-X0)*(MW-MM.l-MM.r);
+  const my=y=>MH-MM.b-(y-Y0)/(Y1-Y0)*(MH-MM.t-MM.b);
+
+  function marker(par,x,y,cls,filled,r,col,bg,sw){
+    if(cls===0) return el('circle',{cx:x,cy:y,r:r,fill:filled?col:bg,stroke:col,'stroke-width':sw},par);
+    const h=r*1.25;
+    return el('polygon',{points:`${x},${y-h} ${x+h*0.95},${y+h*0.7} ${x-h*0.95},${y+h*0.7}`,fill:filled?col:bg,stroke:col,'stroke-width':sw,'stroke-linejoin':'round'},par);
+  }
+
+  function drawMap(){
+    map.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.7:1;
+    const teal=css('--teal'), orange=css('--orange'), bg=css('--bg'), rule=css('--rule'), label=css('--label'), wash=css('--wash');
+    const cw=(MW-MM.l-MM.r)/GX, ch=(MH-MM.t-MM.b)/GY;
+    const gA=el('g',{fill:teal,opacity:wash,'shape-rendering':'crispEdges'},map), gB=el('g',{fill:orange,opacity:wash,'shape-rendering':'crispEdges'},map);
+    for(let j=0;j<GY;j++) for(let i=0;i<GX;i++){
+      const c=vote(gridOrd[j*GX+i],K);
+      el('rect',{x:MM.l+i*cw,y:MM.t+j*ch,width:cw,height:ch},c?gB:gA);
+    }
+    el('rect',{x:MM.l,y:MM.t,width:MW-MM.l-MM.r,height:MH-MM.t-MM.b,fill:'none',stroke:rule},map);
+    const t1=el('text',{x:MW-MM.r-6,y:MH-MM.b-8,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},map); t1.textContent='특성 1 →';
+    const t2=el('text',{x:MM.l+8,y:MM.t+16*F,'font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},map); t2.textContent='↑ 특성 2';
+    const r=4.6*F, sw=1.6*F;
+    if(show!=='train') VAL.forEach(p=>marker(map,mx(p[0]),my(p[1]),p[2],false,r,p[2]?orange:teal,bg,sw));
+    if(show!=='val') TRAIN.forEach(p=>marker(map,mx(p[0]),my(p[1]),p[2],true,r,p[2]?orange:teal,bg,sw*0.6));
+  }
+
+  const AW=720; let AH=250; const AM={l:58,r:64,t:34,b:42};
+  function drawAcc(){
+    acc.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), accent=css('--accent'), bg=css('--bg'), rule=css('--rule'), label=css('--label');
+    const ax=k=>AM.l+(k-1)/(KMAX-1)*(AW-AM.l-AM.r);
+    const ay=v=>AH-AM.b-(v-0.5)/(1-0.5)*(AH-AM.t-AM.b);
+    [0.5,0.75,1].forEach(v=>{
+      el('line',{x1:AM.l,x2:AW-AM.r,y1:ay(v),y2:ay(v),stroke:rule},acc);
+      const t=el('text',{x:AM.l-8,y:ay(v)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},acc); t.textContent=Math.round(v*100)+'%';
+    });
+    (big?[1,10,20,30]:[1,5,10,15,20,25,30]).forEach(k=>{
+      const t=el('text',{x:ax(k),y:AH-AM.b+18*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},acc); t.textContent=k;
+    });
+    const xl=el('text',{x:AW-AM.r,y:AH-6,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},acc); xl.textContent=big?'':'K (이웃 수)';
+    // 현재 K
+    el('line',{x1:ax(K),x2:ax(K),y1:AM.t-24*F,y2:AH-AM.b,stroke:accent,'stroke-width':1.5*F},acc);
+    const line=(arr)=>arr.slice(1).map((v,i)=>`${ax(i+1).toFixed(1)},${ay(v).toFixed(1)}`).join(' ');
+    el('polyline',{points:line(accTr),fill:'none',stroke:ink,'stroke-width':1.6*F},acc);
+    el('polyline',{points:line(accVa),fill:'none',stroke:ink,'stroke-width':1.6*F,'stroke-dasharray':`${5*F} ${4*F}`},acc);
+    const rr=big?4.2:2.8;
+    for(let k=1;k<=KMAX;k++){
+      el('circle',{cx:ax(k),cy:ay(accTr[k]),r:rr,fill:ink},acc);
+      el('circle',{cx:ax(k),cy:ay(accVa[k]),r:rr,fill:bg,stroke:ink,'stroke-width':1.3*F},acc);
+    }
+    // 선 끝 라벨
+    const e1=el('text',{x:AW-AM.r+8,y:ay(accTr[KMAX])+(accTr[KMAX]>=accVa[KMAX]?-2:12)*F,'font-size':12*F,fill:ink,'font-family':'IBM Plex Sans KR'},acc); e1.textContent='훈련';
+    const e2=el('text',{x:AW-AM.r+8,y:ay(accVa[KMAX])+(accTr[KMAX]>=accVa[KMAX]?12:-2)*F,'font-size':12*F,fill:ink,'font-family':'IBM Plex Sans KR'},acc); e2.textContent='검증';
+    // 현재 K 강조
+    el('circle',{cx:ax(K),cy:ay(accTr[K]),r:rr*1.9,fill:'none',stroke:accent,'stroke-width':1.6*F},acc);
+    el('circle',{cx:ax(K),cy:ay(accVa[K]),r:rr*1.9,fill:'none',stroke:accent,'stroke-width':1.6*F},acc);
+    const right = ax(K) > AW*0.62;
+    const lab=el('text',{x:ax(K)+(right?-6:6)*F,y:AM.t-12,'text-anchor':right?'end':'start','font-size':12*F,fill:accent,'font-family':'IBM Plex Mono'},acc);
+    lab.textContent=`K=${K}`;
+  }
+
+  function draw(){
+    drawMap(); drawAcc();
+    const big=document.body.classList.contains('shorts');
+    document.getElementById('kOut').textContent=`K = ${K}`;
+    document.getElementById('result').innerHTML=
+      `K = ${K}: 훈련 <b>${pct(accTr[K])}</b> · 검증 <b>${pct(accVa[K])}</b>`;
+    const gap=accTr[K]-accVa[K], drop=accVa[bestK]-accVa[K];
+    let ex, sh;
+    if(K<=3 && gap>=0.08){
+      ex=`K가 작으면 경계가 훈련 점 하나하나를 따라 들쭉날쭉해집니다. ${K<=2?`K = ${K}에서는 각 훈련 점의 최근접 이웃이 자기 자신이라 훈련 정확도가 ${hitTr[K]}/60 = ${pct(accTr[K])}입니다. `:''}훈련과 검증의 차이(${Math.round(gap*100)}%p)가 큰 것은 <b>과적합</b> 신호입니다.`;
+      sh=`경계가 점마다 들쭉날쭉. 훈련은 ${pct(accTr[K])}, 검증과 차이가 큰 <b>과적합</b>.`;
+    } else if(K>bestK && drop>=0.1){
+      ex=`K가 너무 크면 멀리 있는 다른 덩어리의 점까지 투표에 끼어 작은 덩어리가 지워집니다. 훈련·검증 정확도가 함께 낮아지는 것은 <b>과소적합</b> 신호입니다. 검증 정확도가 가장 높았던 K는 ${bestK}(${pct(accVa[bestK])})입니다.`;
+      sh=`덩어리가 지워질 만큼 매끈. 훈련·검증 모두 낮은 <b>과소적합</b>.`;
+    } else {
+      ex=`경계가 덩어리 모양을 따라가면서도 점 하나에 휘둘리지 않는 구간입니다. 이 검증 세트에서는 K = ${bestK}일 때 ${pct(accVa[bestK])}로 가장 높았습니다. K를 줄이면 과적합, 키우면 과소적합 쪽으로 갑니다.`;
+      sh=`점 하나에 덜 휘둘리고 덩어리 모양은 유지. 검증 최고는 K = ${bestK}.`;
+    }
+    document.getElementById('explain').innerHTML=big?sh:ex;
+  }
+
+  const kr=document.getElementById('kRange');
+  kr.addEventListener('input',()=>{K=+kr.value; draw();});
+  document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>{
+    show=b.dataset.show; document.querySelectorAll('[data-show]').forEach(x=>x.setAttribute('aria-pressed',x===b)); drawMap();
+  }));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on);
+    AM.l=on?110:58; AM.b=on?52:42; AM.r=on?96:64; AM.t=on?48:34; AH=on?215:250; acc.setAttribute('viewBox',`0 0 ${AW} ${AH}`); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?k=1..30 &show=both|train|val &shorts=1
+  const u=new URLSearchParams(location.search);
+  const uk=parseInt(u.get('k'),10); if(uk>=1&&uk<=KMAX){K=uk; kr.value=uk;}
+  if(u.get('show')) document.querySelector(`[data-show="${u.get('show')}"]`)?.click();
+  if(u.get('shorts')==='1') setShorts(true);
+
+  // 검증용: 계산 결과를 노출
+  window.__knn={accTr,accVa,hitTr,hitVa,bestK,TRAIN,VAL};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

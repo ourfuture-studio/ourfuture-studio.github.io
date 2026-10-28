@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-NN 예측 비용</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --teal:#1F6F6F; --orange:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC; --orange:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC; --orange:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:disabled{color:var(--label);cursor:default}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.range{display:flex;align-items:center;gap:10px}
+.range input{accent-color:var(--ink);width:200px;max-width:46vw}
+.range output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:4.5em}
+figure{margin:0;border:1px solid var(--rule)}
+figure + figure{margin-top:14px}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;vertical-align:top}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:22px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-anim{display:none}
+body.shorts .controls{gap:10px 14px}
+body.shorts .range input{width:150px}
+body.shorts .controls{margin:8px 0 10px}
+body.shorts figure + figure{margin-top:8px}
+body.shorts .result{font-size:22px}
+body.shorts h1{font-size:26px;line-height:1.3;margin:4px 0 6px}
+body.shorts .insight{padding:12px 16px;margin:12px 0}
+body.shorts #explain{font-size:16px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-05</div>
+  <h1>K-NN은 정말 학습하지 않을까<span class="dot">.</span></h1>
+  <p class="lede">K-NN의 학습 단계는 데이터를 저장하는 일이 거의 전부입니다. 대신 예측할 때마다 새 점과 저장된 모든 점 사이의 거리를 잽니다. [학습]과 [예측]을 번갈아 눌러 보고, n을 바꿔 예측 1건의 계산량이 어떻게 늘어나는지 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">고정 시드 · 2차원(d = 2) · K = 5 · 완전 탐색 기준</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">단계</span>
+      <span class="seg" role="group" aria-label="단계">
+        <button data-phase="train" aria-pressed="true">학습</button>
+        <button data-phase="predict" aria-pressed="false">예측</button>
+      </span>
+    </div>
+    <div class="range ctl-n"><span class="mono">저장 개수 n</span>
+      <input type="range" id="nRange" min="10" max="1000" step="10" value="200" aria-label="저장 개수 n">
+      <output id="nOut" for="nRange">n = 200</output>
+    </div>
+    <div class="ctl-anim"><span class="seg" role="group" aria-label="애니메이션">
+        <button id="playBtn">재생</button>
+        <button id="stepBtn">한 단계</button>
+        <button id="resetBtn">처음으로</button>
+      </span></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="scene" viewBox="0 0 720 380" role="img" aria-label="저장된 점과 거리 계산"></svg>
+    <figcaption class="mono">회색 점 = 아직 거리를 재지 않은 저장 점 · ● 클래스 A · ■ 클래스 B(거리를 잰 점) · ★ = 새 점 · 붉은 고리 = 가장 가까운 5개</figcaption>
+  </figure>
+  <figure>
+    <svg id="cost" viewBox="0 0 720 200" role="img" aria-label="예측 1건당 기본 연산 수"></svg>
+    <figcaption class="mono">예측 1건당 기본 연산(뺄셈·곱셈·덧셈) 수 · 가로축 0~5,000 고정 · d = 2</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="두 모델의 계산 비교">
+    <thead><tr><th>구분</th><th>K-NN (완전 탐색)</th><th>로지스틱 회귀</th></tr></thead>
+    <tbody>
+      <tr><td>학습 단계</td><td>데이터 n개를 저장(필요하면 색인 구축)</td><td>반복 최적화로 가중치 w, b를 찾음</td></tr>
+      <tr><td>예측 1건</td><td id="tKnn"></td><td>w·x + b: 곱셈 d번 + 덧셈 d번, 그 뒤 시그모이드 1번</td></tr>
+      <tr><td>n에 대한 관계</td><td>n에 비례 (O(n·d))</td><td>n과 무관 (O(d))</td></tr>
+      <tr><td>예측에 필요한 것</td><td>훈련 데이터 전체</td><td>가중치 d + 1개</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <p><b>지연 학습(lazy learning)</b>: 훈련 데이터로 일반화하는 일을 예측 요청이 들어올 때까지 미루는 방식입니다. K-NN은 대표적인 지연 학습기로, 학습 단계에서 하는 일이 데이터 저장(과 선택적인 색인 구축)이고 실제 계산은 예측 때 몰립니다. 로지스틱 회귀처럼 학습 때 모델을 미리 만들어 두는 방식은 즉시 학습(eager learning)이라 부릅니다. 그러니 “K-NN은 학습을 안 한다”기보다 “학습 단계가 가볍고 예측 단계가 무겁다”가 정확합니다. K, 거리 척도, 스케일링을 정하는 일도 학습 과정의 일부입니다.</p>
+    <p>막대는 완전 탐색(brute force) 기준입니다. KD-트리, 볼 트리 같은 색인 구조를 학습 단계에서 만들어 두면 저차원 데이터에서는 예측 때 거리를 재는 점의 수를 크게 줄일 수 있습니다. 다만 차원이 높아지면 이런 색인의 효과는 떨어지고, 이때는 근사 최근접 이웃 탐색을 쓰기도 합니다.</p>
+    <p>연산 수 세는 법: 거리 1번 = d번 뺄셈 + d번 제곱 + (d − 1)번 덧셈 = 3d − 1 = 5회(d = 2). 순위만 필요하므로 제곱근은 생략했고, 가장 가까운 K개를 고르는 비교 연산(이것도 n에 비례)은 막대에 넣지 않았습니다. 로지스틱 회귀는 w·x + b의 곱셈 d번 + 덧셈 d번 = 4회로 셌고 시그모이드는 따로 표시했습니다. 애니메이션 속도는 보기 좋게 조절한 것이며 실제 실행 시간이 아닙니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터 1000점 (고정 시드). n을 바꾸면 앞에서부터 n개를 쓴다.
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const rnd=mulberry32(7);
+  const gauss=()=>{let u=0;while(u===0)u=rnd();const v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+  const ALL=[];
+  for(let i=0;i<1000;i++){const c=i%2; const cx=c?0.64:0.36, cy=c?0.58:0.42;
+    ALL.push([Math.min(0.99,Math.max(0.01,cx+0.13*gauss())), Math.min(0.99,Math.max(0.01,cy+0.13*gauss())), c]);}
+  const Q=[0.53,0.47], KNN=5, D=2, OPS_PER_DIST=3*D-1, LR_OPS=2*D;
+
+  let n=200, phase='train', done=0, playing=false, raf=0, last=0, acc=0;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const scene=document.getElementById('scene'), cost=document.getElementById('cost');
+  const NS='http://www.w3.org/2000/svg';
+  const el=(nm,a,par)=>{const e=document.createElementNS(NS,nm);for(const k in a)e.setAttribute(k,a[k]);par.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d=0)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  const SW=720, SH=380, SM={l:20,t:20,b:20}, PW=SH-SM.t-SM.b; // 정사각형 산점도
+  const sx=x=>SM.l+x*PW, sy=y=>SM.t+(1-y)*PW;
+
+  function dist2(p){return (p[0]-Q[0])*(p[0]-Q[0])+(p[1]-Q[1])*(p[1]-Q[1]);}
+  function nearest(){ // 저장된 n개 중 최근접 K개 (완전 탐색)
+    return ALL.slice(0,n).map((p,i)=>[dist2(p),i]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]).slice(0,KNN).map(d=>d[1]);
+  }
+
+  function drawScene(){
+    scene.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.8:1;
+    const ink=css('--ink'), label=css('--label'), rule=css('--rule'), acc=css('--accent'), bg=css('--bg'), teal=css('--teal'), orange=css('--orange');
+    el('rect',{x:SM.l,y:SM.t,width:PW,height:PW,fill:'none',stroke:rule},scene);
+    const pts=ALL.slice(0,n);
+    const r=(n>500?2.2:n>150?3:4.2)*(big?1.5:1);
+    const shown = phase==='predict' ? done : 0;
+    // 최근 계산한 몇 개는 선으로
+    if(phase==='predict'){
+      for(let i=Math.max(0,shown-10);i<shown;i++){
+        const p=pts[i]; el('line',{x1:sx(Q[0]),y1:sy(Q[1]),x2:sx(p[0]),y2:sy(p[1]),stroke:acc,'stroke-width':1.2*F,opacity:(0.15+0.85*(i-shown+11)/10).toFixed(2)},scene);
+      }
+    }
+    pts.forEach((p,i)=>{
+      const x=sx(p[0]), y=sy(p[1]);
+      if(i<shown){
+        const col=p[2]?orange:teal;
+        if(p[2]) el('rect',{x:x-r*0.9,y:y-r*0.9,width:r*1.8,height:r*1.8,fill:col},scene);
+        else el('circle',{cx:x,cy:y,r:r,fill:col},scene);
+      } else {
+        el('circle',{cx:x,cy:y,r:r*0.85,fill:'none',stroke:label,'stroke-width':0.9,opacity:.55},scene);
+      }
+    });
+    let pred=null;
+    if(phase==='predict' && done>=n){
+      const nb=nearest();
+      nb.forEach(i=>{const p=pts[i]; el('circle',{cx:sx(p[0]),cy:sy(p[1]),r:r+5*F,fill:'none',stroke:acc,'stroke-width':2*F},scene);});
+      const v=nb.reduce((s,i)=>s+pts[i][2],0); pred=2*v>KNN?1:0;
+    }
+    if(phase==='predict'){
+      const s=[]; for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5, rr=(k%2?5:12)*F; s.push((sx(Q[0])+rr*Math.cos(a)).toFixed(1)+','+(sy(Q[1])+rr*Math.sin(a)).toFixed(1));}
+      el('polygon',{points:s.join(' '),fill:acc,stroke:bg,'stroke-width':1.5},scene);
+    }
+    // 오른쪽 계기판
+    const X=SM.l+PW+(big?26:40), lab=(y,t,sz,col,fam)=>{const e=el('text',{x:X,y:y,'font-size':sz,fill:col,'font-family':fam||'IBM Plex Mono'},scene);e.textContent=t;return e;};
+    if(big){
+      lab(70,'저장',24,label); lab(122,fmt(n)+'개',44,ink);
+      lab(200,'거리 계산',24,label); lab(252,fmt(shown)+'회',44,phase==='predict'?acc:ink);
+      if(pred!==null) lab(320,'예측: '+(pred?'B':'A'),28,ink,'IBM Plex Sans KR');
+    } else {
+      lab(60,'저장한 점',13,label); lab(98,fmt(n)+'개',32,ink);
+      lab(124,`숫자 ${fmt(n*D)}개 (n × d)`,12,label);
+      lab(176,phase==='predict'?'이번 예측의 거리 계산':'학습 중 거리 계산',13,label);
+      lab(214,fmt(shown)+(phase==='predict'?` / ${fmt(n)}회`:'회'),32,phase==='predict'?acc:ink);
+      lab(240,`기본 연산 ${fmt(shown*OPS_PER_DIST)}회`,12,label);
+      if(phase==='predict') lab(296, pred!==null ? `최근접 5개 다수결 → 클래스 ${pred?'B':'A'}` : '계산 중…', 14, ink, 'IBM Plex Sans KR');
+      else lab(296,'새 점이 오기 전까지는 할 일이 없음',14,ink,'IBM Plex Sans KR');
+    }
+    return pred;
+  }
+
+  const CW=720; let CH=200; const CM={l:190,r:40,t:30,b:36}, OPSMAX=1000*OPS_PER_DIST;
+  function drawCost(){
+    cost.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?2:1;
+    const ink=css('--ink'), label=css('--label'), rule=css('--rule'), acc=css('--accent'), bg=css('--bg');
+    const L=big?20:CM.l, R=big?20:CM.r;
+    const cx=v=>L+v/OPSMAX*(CW-L-R);
+    const knnOps=n*OPS_PER_DIST;
+    const rows = big
+      ? [{y:50,lab:'K-NN 예측 1건',v:knnOps,txt:fmt(knnOps)+'회'},{y:140,lab:'로지스틱 회귀 1건',v:LR_OPS,txt:LR_OPS+'회 (n과 무관)'}]
+      : [{y:CM.t+18,lab:'K-NN 예측 1건',v:knnOps,txt:`${fmt(n)}개 × ${OPS_PER_DIST} = ${fmt(knnOps)}회`},{y:CM.t+78,lab:'로지스틱 회귀 예측 1건',v:LR_OPS,txt:`${LR_OPS}회 + 시그모이드 1회 (n과 무관)`}];
+    const bh=big?28:24;
+    // 눈금
+    [0,1000,2000,3000,4000,5000].forEach(v=>{
+      el('line',{x1:cx(v),x2:cx(v),y1:big?30:CM.t-6,y2:CH-CM.b+(big?-10:0),stroke:rule},cost);
+      if(!big||v%2500===0||v===0){const t=el('text',{x:cx(v),y:CH-(big?8:14),'text-anchor':v===5000?'end':v===0?'start':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},cost); t.textContent=fmt(v);}
+    });
+    rows.forEach((r0,j)=>{
+      const yb = big ? r0.y+24 : r0.y;
+      const lt=el('text',{x:big?L:L-12,y:big?r0.y+10:yb+bh/2+5,'text-anchor':big?'start':'end','font-size':(big?12:13)*F,fill:ink,'font-family':'IBM Plex Sans KR'},cost); lt.textContent=r0.lab;
+      const w=Math.max(2*F,cx(r0.v)-cx(0));
+      el('rect',{x:cx(0),y:yb,width:w,height:bh,fill:j===0?ink:bg,stroke:ink,'stroke-width':1.2*F},cost);
+      const inside = j===0 && w>(big?330:300);
+      const vt=el('text',{x:inside?cx(0)+w-8:cx(0)+w+8,y:yb+bh/2+4.5*F,'text-anchor':inside?'end':'start','font-size':12*F,fill:inside?bg:(j===0?ink:acc),'font-family':'IBM Plex Mono'},cost); vt.textContent=r0.txt;
+    });
+  }
+
+  function draw(){
+    const pred=drawScene(); drawCost();
+    const big=document.body.classList.contains('shorts');
+    document.getElementById('nOut').textContent='n = '+fmt(n);
+    document.getElementById('tKnn').textContent=`거리 n번 = ${fmt(n)}번, 기본 연산 약 (3d − 1)·n = ${fmt(n*OPS_PER_DIST)}회, 그 뒤 가장 가까운 K개 고르기`;
+    const R=document.getElementById('result'), E=document.getElementById('explain');
+    if(phase==='train'){
+      R.innerHTML=`학습: 점 <b>${fmt(n)}개</b>를 저장, 거리 계산 <b>0회</b>`;
+      E.innerHTML= big ? `학습은 <b>저장</b>뿐. 일은 예측 때 몰립니다.`
+        : `K-NN의 학습 단계는 데이터를 그대로 기억해 두는 일이 거의 전부입니다. 로지스틱 회귀는 이 단계에서 반복 계산으로 가중치를 미리 찾아 둡니다. 이제 [예측]을 눌러 보세요.`;
+    } else {
+      const fin=done>=n;
+      R.innerHTML= fin ? `예측 1건 = 거리 계산 <b>${fmt(n)}회</b>` : `거리 계산 중: <b>${fmt(done)}</b> / ${fmt(n)}회`;
+      E.innerHTML= big ? `n이 2배면 예측 1건의 일도 2배. 로지스틱 회귀는 늘 <b>${LR_OPS}회</b>.`
+        : (fin?`새 점 하나를 분류하려고 저장된 점 ${fmt(n)}개와의 거리를 모두 쟀습니다(완전 탐색).`:`새 점 하나를 분류하려면 저장된 점 ${fmt(n)}개와의 거리를 하나도 빠짐없이 재야 합니다(완전 탐색).`)+` 저장 개수가 2배가 되면 예측 1건의 계산도 2배가 됩니다. 로지스틱 회귀는 n과 상관없이 가중치와 입력을 곱해 더하는 ${LR_OPS}회면 끝납니다.`;
+    }
+    window.__state={n,phase,done,pred,knnOps:n*OPS_PER_DIST,lrOps:LR_OPS,nearest:phase==='predict'&&done>=n?nearest():null};
+  }
+
+  // 애니메이션: 초당 max(10, n/4)개 거리 계산 (보기용 속도)
+  const playBtn=document.getElementById('playBtn');
+  function setPlaying(on){
+    playing=on && phase==='predict' && done<n; playBtn.textContent=playing?'일시정지':'재생';
+    cancelAnimationFrame(raf); if(playing){last=0;acc=0;raf=requestAnimationFrame(tick);}
+  }
+  function tick(t){
+    if(!playing) return;
+    if(last){acc+=(t-last)/1000*Math.max(10,n/4); const k=Math.floor(acc); if(k>0){acc-=k; done=Math.min(n,done+k); draw();}}
+    last=t;
+    if(done>=n){setPlaying(false); return;}
+    raf=requestAnimationFrame(tick);
+  }
+  playBtn.addEventListener('click',()=>{ if(phase!=='predict') setPhase('predict',false); if(done>=n) done=0; setPlaying(!playing); draw(); });
+  document.getElementById('stepBtn').addEventListener('click',()=>{ if(phase!=='predict') setPhase('predict',false); setPlaying(false); done=Math.min(n,done+1); draw(); });
+  document.getElementById('resetBtn').addEventListener('click',()=>{ setPlaying(false); done=0; draw(); });
+
+  function setPhase(ph,auto){
+    phase=ph; document.querySelectorAll('[data-phase]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.phase===ph));
+    done=0; setPlaying(false); draw();
+    if(ph==='predict' && auto && !reduce) setPlaying(true);
+  }
+  document.querySelectorAll('[data-phase]').forEach(b=>b.addEventListener('click',()=>setPhase(b.dataset.phase,true)));
+  const nr=document.getElementById('nRange');
+  nr.addEventListener('input',()=>{ n=+nr.value; const was=playing; setPlaying(false); done=Math.min(done,n); if(phase==='predict'&&!was) done=n; draw(); });
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on);
+    CH=on?230:200; cost.setAttribute('viewBox',`0 0 ${CW} ${CH}`); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?phase=train|predict &n=10~1000 &i=거리 계산 진행 수(주면 정지 화면) &shorts=1
+  const u=new URLSearchParams(location.search);
+  const un=parseInt(u.get('n'),10); if(un>=10&&un<=1000){n=un; nr.value=un;}
+  if(u.get('shorts')==='1') setShorts(true);
+  const ui=u.get('i');
+  if(u.get('phase')==='predict'){
+    setPhase('predict', ui===null);
+    if(ui!==null){ done=Math.min(n,Math.max(0,parseInt(ui,10)||0)); draw(); }
+  } else draw();
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+})();
+</script>
+</body>
+</html>

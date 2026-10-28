@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>데이터 드리프트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#5B3A8C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#A98BE6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#A98BE6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+.slider{display:flex;align-items:center;gap:12px;flex:1 1 300px}
+.slider input{flex:1;accent-color:var(--ink)}
+.slider output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:3.5em}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.check{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);margin:10px 0 0 !important;padding-top:10px;border-top:1px solid var(--rule)}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+td.num{text-align:right}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:24px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .controls, body.shorts .check{display:none}
+body.shorts .result{font-size:21px}
+body.shorts h1{font-size:25px;margin:4px 0 8px}
+body.shorts .insight{padding:12px 16px;margin:10px 0}
+body.shorts #explain{font-size:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 09 과적합·튜닝·활용 · VIZ-28</div>
+  <h1>작년 모델이 올해 틀리는 이유는<span class="dot">.</span></h1>
+  <p class="lede">0월 데이터로 학습한 분류 경계를 고정해 두고, 달이 지나며 들어오는 새 데이터에 겹쳐 봅니다. 시간 슬라이더를 움직이거나 [재생]을 누르고, 정확도가 떨어지면 [재학습]을 눌러 보세요. 위에서 [공변량 이동]과 [개념 이동]을 바꾸면 ‘무엇이’ 변했는지가 달라집니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">월마다 120개 · 고정 시드 · 모델 = 최소제곱 선형 분류기</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">변화</span>
+      <span class="seg" role="group" aria-label="변화 종류">
+        <button data-mode="cov" aria-pressed="true">공변량 이동</button>
+        <button data-mode="concept" aria-pressed="false">개념 이동</button>
+      </span>
+    </div>
+    <label class="slider"><span class="mono">월</span>
+      <input id="t" type="range" min="0" max="24" step="1" value="0" aria-label="월">
+      <output id="tOut">0월</output>
+    </label>
+    <span class="seg" role="group" aria-label="재생">
+      <button id="play" aria-pressed="false">재생</button>
+      <button id="step">한 단계</button>
+      <button id="reset">처음으로</button>
+    </span>
+    <span class="seg" role="group" aria-label="재학습">
+      <button id="retrain">재학습</button>
+    </span>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 690" role="img" aria-label="현재 월 데이터와 분류 경계, 월별 정확도"></svg>
+    <figcaption class="mono">● 정답 1 · ○ 정답 0 · 보라색 점 = 지금 모델이 틀린 점 · 실선 = 지금 모델의 경계 · 점선 = 실제 규칙(모델은 모름) · 작은 회색 점 = 모델이 학습한 달의 데이터</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="check">모니터링 체크: ① 입력 특성의 평균·분포가 학습 때와 달라졌는가 ② 예측 비율이 변했는가 ③ 정답이 들어오는 대로 정확도를 다시 재는가 — ①②만 보면 개념 이동은 놓칩니다.</p>
+  </div>
+
+  <table aria-label="월별 정확도">
+    <thead><tr><th>월</th><th>입력 평균 (x₁, x₂)</th><th style="text-align:right">0월 모델 정확도</th><th style="text-align:right">재학습 반영 정확도</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="notes">
+    <p><b>공변량 이동</b>: 입력 분포 P(x)는 바뀌고, 입력이 주어졌을 때 정답의 분포 P(y|x)는 그대로입니다. 여기서는 점 구름의 중심이 오른쪽 위로 옮겨 가지만, 정답 규칙(x₂ &gt; 0.25·x₁² 이면 1, 잡음 포함)은 24개월 내내 같습니다. 그래도 틀리는 이유는 선형 모델이 0월 데이터 근처에서만 맞는 근사였기 때문입니다 — 규칙이 휘어 있는 곳으로 입력이 옮겨 가면 근사가 깨집니다.</p>
+    <p><b>개념 이동</b>: 입력 분포 P(x)는 그대로이고, P(y|x) — 같은 입력에 대한 정답 — 가 바뀝니다. 여기서는 점 구름은 제자리이고 정답을 가르는 직선이 24개월 동안 70° 돌아갑니다. 입력 통계만 보아서는 알아챌 수 없습니다.</p>
+    <p>데이터: 월마다 고정 시드(mulberry32)로 ‘평가용’ 120개(화면의 점)와 ‘재학습용’ 120개를 따로 만들었습니다. 정확도는 모두 평가용 점으로 잰 값이라, 재학습한 달의 정확도도 학습에 쓰지 않은 데이터로 잰 것입니다. 정답 잡음은 경계로부터의 거리에 더한 표준편차 0.3 정규 잡음입니다.</p>
+    <p>모델: 정답을 −1/+1로 두고 (1, x₁, x₂)에 최소제곱으로 맞춘 선형 분류기(값 ≥ 0 이면 1)입니다. 로지스틱 회귀 대신 닫힌 식으로 풀리는 단순한 방법을 썼습니다. 모든 정확도는 이 페이지가 브라우저에서 직접 계산했습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const T=24, NPT=120, NOISE=0.3, MAXANG=70*Math.PI/180;
+  const g = x => 0.25*x*x;                       // 공변량 이동의 실제 규칙 곡선
+  const center = (mode,t) => mode==='cov' ? (()=>{const cx=-2+4.5*t/T; return [cx, g(cx)];})() : [0,0];
+  const theta = t => MAXANG*t/T;                 // 개념 이동의 경계 회전각
+  function sample(mode,t,kind){                  // kind 0 = 평가용(화면), 1 = 재학습용
+    const r=mulberry32(28000+(mode==='cov'?0:100)+t*2+kind);
+    const gs=()=>{const u1=r(),u2=r();return Math.sqrt(-2*Math.log(1-u1))*Math.cos(2*Math.PI*u2);};
+    const [c1,c2]=center(mode,t), out=[];
+    for(let i=0;i<NPT;i++){
+      const x1=c1+gs(), x2=c2+gs(), e=NOISE*gs();
+      const s = mode==='cov' ? (x2-g(x1)) : (-Math.sin(theta(t))*x1+Math.cos(theta(t))*x2);
+      out.push({x1,x2,y:(s+e>0)?1:0});
+    }
+    return out;
+  }
+  function fit(data){ // 최소제곱: (XᵀX) w = Xᵀy, y ∈ {−1,+1}
+    const A=[[0,0,0],[0,0,0],[0,0,0]], b=[0,0,0];
+    data.forEach(d=>{const f=[1,d.x1,d.x2], yy=d.y?1:-1; for(let i=0;i<3;i++){b[i]+=f[i]*yy; for(let j=0;j<3;j++)A[i][j]+=f[i]*f[j];}});
+    // 가우스 소거
+    const M=A.map((row,i)=>row.concat([b[i]]));
+    for(let c=0;c<3;c++){ let p=c; for(let r=c+1;r<3;r++) if(Math.abs(M[r][c])>Math.abs(M[p][c])) p=r; [M[c],M[p]]=[M[p],M[c]];
+      for(let r=0;r<3;r++) if(r!==c){ const k=M[r][c]/M[c][c]; for(let j=c;j<4;j++) M[r][j]-=k*M[c][j]; } }
+    return [M[0][3]/M[0][0], M[1][3]/M[1][1], M[2][3]/M[2][2]];
+  }
+  const pred=(w,d)=> (w[0]+w[1]*d.x1+w[2]*d.x2)>=0 ? 1 : 0;
+  const accOf=(w,data)=>data.filter(d=>pred(w,d)===d.y).length/data.length;
+
+  let mode='cov', t=0, retrains=[0], playing=false, timer=0;
+  let EVAL={}, TRAIN={}, W={};
+  function build(){ EVAL={}; TRAIN={}; W={}; for(let m=0;m<=T;m++){ EVAL[m]=sample(mode,m,0); } }
+  const trainSet=m=>TRAIN[m]||(TRAIN[m]=sample(mode,m,1));
+  const model=m=>W[m]||(W[m]=fit(trainSet(m)));
+  const modelAt=m=>{ let r=0; retrains.forEach(x=>{ if(x<=m && x>r) r=x; }); return r; };
+  build();
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const txt=(s,a,p)=>{const e=el('text',a,p);e.textContent=s;return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const f2=v=>v.toFixed(2), pct=v=>(v*100).toFixed(0)+'%';
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.8:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css("--lining"), bg=css("--bg"), box=css("--box");
+    const mono={'font-family':'IBM Plex Mono'};
+    // 산점도 영역 (가로세로 같은 축척)
+    const R = mode==='cov' ? {x0:-5, x1:5.5, y0:-3, y1:7.5} : {x0:-4, x1:4, y0:-4, y1:4};
+    const side = big?480:380, L = big?(720-side)/2+20:60, Tp = big?34:20;
+    const span=Math.max(R.x1-R.x0, R.y1-R.y0);
+    const sx=x=>L+(x-R.x0)/span*side, sy=y=>Tp+side-(y-R.y0)/span*side;
+    const VW = L+ (R.x1-R.x0)/span*side, VH = Tp+side;
+    const chT = VH+(big?100:60), chH = big?200:170, chL = big?110:60, chR = 690;
+    svg.setAttribute('viewBox',`0 0 720 ${chT+chH+(big?60:50)}`);
+    el('defs',{}).innerHTML=`<clipPath id="clipS"><rect x="${L}" y="${sy(R.y1)}" width="${VW-L}" height="${sy(R.y0)-sy(R.y1)}"/></clipPath>`;
+    el('rect',{x:L,y:sy(R.y1),width:VW-L,height:sy(R.y0)-sy(R.y1),fill:'none',stroke:rule});
+    for(let v=Math.ceil(R.x0);v<=R.x1;v++) if(v%2===0){ el('line',{x1:sx(v),x2:sx(v),y1:sy(R.y0),y2:sy(R.y1),stroke:rule}); txt(v,{x:sx(v),y:sy(R.y0)+16*F,'text-anchor':'middle','font-size':11*F,fill:label,...mono}); }
+    for(let v=Math.ceil(R.y0);v<=R.y1;v++) if(v%2===0){ el('line',{x1:L,x2:VW,y1:sy(v),y2:sy(v),stroke:rule}); txt(v,{x:L-6,y:sy(v)+4*F,'text-anchor':'end','font-size':11*F,fill:label,...mono}); }
+    txt('x₁',{x:VW+8,y:sy(R.y0)+4*F,'text-anchor':'start','font-size':12*F,fill:label,...mono});
+    txt('x₂',{x:L-6,y:sy(R.y1)-10*F,'text-anchor':'end','font-size':12*F,fill:label,...mono});
+    const gS=el('g',{'clip-path':'url(#clipS)'});
+    const r0=modelAt(t), w=model(r0), cur=EVAL[t];
+    // 모델이 학습한 달의 데이터 (작은 회색 점)
+    trainSet(r0).forEach(d=>el('circle',{cx:sx(d.x1),cy:sy(d.x2),r:1.8*F,fill:label,opacity:.45},gS));
+    // 실제 규칙
+    let tr='';
+    if(mode==='cov'){ for(let i=0;i<=60;i++){ const x=R.x0+(R.x1-R.x0)*i/60; tr+=(i?'L':'M')+sx(x)+','+sy(g(x)); } }
+    else { const th=theta(t), c=Math.cos(th), s=Math.sin(th); tr=`M${sx(-10*c)},${sy(-10*s)}L${sx(10*c)},${sy(10*s)}`; }
+    el('path',{d:tr,fill:'none',stroke:label,'stroke-width':1.8*F/1.3,'stroke-dasharray':'7 5'},gS);
+    // 모델 경계
+    const line=(ww,attrs)=>{ let d; if(Math.abs(ww[2])>1e-9){ const y=x=>-(ww[0]+ww[1]*x)/ww[2]; d=`M${sx(R.x0-20)},${sy(y(R.x0-20))}L${sx(R.x1+20)},${sy(y(R.x1+20))}`; } else { const x=-ww[0]/ww[1]; d=`M${sx(x)},${sy(R.y0-5)}L${sx(x)},${sy(R.y1+5)}`; } el('path',Object.assign({d,fill:'none'},attrs),gS); };
+    if(r0!==0) line(model(0),{stroke:ink,'stroke-width':1.2,'stroke-dasharray':'2 4',opacity:.7});
+    line(w,{stroke:ink,'stroke-width':2.4*F/1.3});
+    // 현재 월 점
+    cur.forEach(d=>{ const ok=pred(w,d)===d.y, c=ok?ink:acc;
+      el('circle',{cx:sx(d.x1),cy:sy(d.x2),r:(ok?3.6:4.4)*F,fill:d.y?c:bg,stroke:c,'stroke-width':(ok?1.2:2)},gS); });
+    // 범례 글자
+    txt(`${t}월 데이터 · 모델 = ${r0}월 학습`,{x:L+8,y:sy(R.y1)+16*F,'font-size':12*F,fill:ink,...mono});
+    if(mode==='cov') txt('실제 규칙',{x:sx(R.x1-0.2),y:sy(g(R.x1-0.2))+ (big?30:18),'text-anchor':'end','font-size':11*F,fill:label,...mono}, gS);
+
+    // 오른쪽 모니터링 패널 (데스크톱)
+    const a0=accOf(model(0),cur), aN=accOf(w,cur);
+    const mean=(a,k)=>a.reduce((s,d)=>s+d[k],0)/a.length;
+    const base=EVAL[0];
+    if(!big){
+      const px=VW+28; let py=Tp+20;
+      txt('모니터링',{x:px,y:py,'font-size':12,fill:label,...mono}); py+=30;
+      const row=(k,v0,v1)=>{ txt(k,{x:px,y:py,'font-size':12,fill:label}); py+=22; txt(`0월 ${v0} → ${t}월 ${v1}`,{x:px,y:py,'font-size':14,fill:ink,...mono}); py+=34; };
+      row('입력 평균 x₁', f2(mean(base,'x1')), f2(mean(cur,'x1')));
+      row('입력 평균 x₂', f2(mean(base,'x2')), f2(mean(cur,'x2')));
+      row('예측 1 비율', pct(base.filter(d=>pred(model(0),d)).length/NPT), pct(cur.filter(d=>pred(w,d)).length/NPT));
+      row('실제 1 비율', pct(mean(base,'y')), pct(mean(cur,'y')));
+      row('정확도', pct(accOf(model(0),base)), pct(aN));
+    }
+
+    // ---- 월별 정확도 ----
+    const X=m=>chL+m/T*(chR-chL), Y=a=>chT+chH-(a-0.4)/0.6*chH;
+    txt(big?'월별 정확도':'월별 정확도 (계산 결과)',{x:chL,y:chT-14*F,'font-size':12*F,fill:label,...mono});
+    [0.4,0.6,0.8,1.0].forEach(a=>{ el('line',{x1:chL,x2:chR,y1:Y(a),y2:Y(a),stroke:rule}); txt(a.toFixed(1),{x:chL-6,y:Y(a)+4*F,'text-anchor':'end','font-size':11*F,fill:label,...mono}); });
+    for(let m=0;m<=T;m+=6) txt(`${m}월`,{x:X(m),y:chT+chH+18*F,'text-anchor':'middle','font-size':11*F,fill:label,...mono});
+    el('line',{x1:X(t),x2:X(t),y1:chT,y2:chT+chH,stroke:label,'stroke-width':1});
+    const fixed=[], live=[];
+    for(let m=0;m<=t;m++){ fixed.push(accOf(model(0),EVAL[m])); live.push(accOf(model(modelAt(m)),EVAL[m])); }
+    const pth=a=>a.map((v,i)=>`${i?'L':'M'}${X(i)},${Y(Math.max(0.4,v))}`).join('');
+    const hasRe=retrains.some(r=>r>0&&r<=t);
+    el('path',{d:pth(fixed),fill:'none',stroke:ink,'stroke-width':1.6*F/1.3,'stroke-dasharray':hasRe?'5 4':''});
+    if(hasRe) el('path',{d:pth(live),fill:'none',stroke:acc,'stroke-width':2.4*F/1.3});
+    retrains.filter(r=>r>0&&r<=t).forEach(r=>{ el('path',{d:`M${X(r)},${chT+chH}l${-5*F},${9*F}h${10*F}z`,fill:acc}); });
+    el('circle',{cx:X(t),cy:Y(Math.max(.4,live[t])),r:4.5*F,fill:hasRe?acc:ink});
+    // 범례
+    const lgY=chT-14*F, lgX=chR;
+    if(hasRe){ txt(big?'— 재학습':'— 재학습 반영',{x:lgX,y:lgY,'text-anchor':'end','font-size':11*F,fill:acc,...mono}); txt(big?'- - 0월 고정':'- - 0월 모델 고정',{x:lgX-(big?150:130),y:lgY,'text-anchor':'end','font-size':11*F,fill:ink,...mono}); }
+    else txt(big?'— 0월 고정':'— 0월 모델 고정',{x:lgX,y:lgY,'text-anchor':'end','font-size':11*F,fill:ink,...mono});
+
+    // ---- 문장 ----
+    document.getElementById('tOut').textContent=`${t}월`;
+    document.getElementById('t').value=t;
+    document.getElementById('result').innerHTML = big ? (r0===0 ? `${t}월: 0월 모델 정확도 <b>${pct(a0)}</b>` : `${t}월 정확도 <b>${pct(aN)}</b> <span style="font-size:.8em;color:var(--label)">(0월 모델 ${pct(a0)})</span>`) : r0===0
+      ? `${t}월: 0월 모델 정확도 <b>${pct(a0)}</b>`
+      : `${t}월: ${r0}월 재학습 모델 <b>${pct(aN)}</b> <span style="font-size:.8em;color:var(--label)">(0월 모델이면 ${pct(a0)})</span>`;
+    let ex;
+    if(mode==='cov'){
+      ex = big ? (t===0?'달이 지나며 입력이 오른쪽 위로 옮겨 갑니다.':`정답 규칙은 그대로, 입력만 옮겨 갔습니다.`)
+        : `점 구름(입력 분포)이 오른쪽 위로 옮겨 가지만 정답 규칙(점선)은 그대로입니다. 직선 모델은 0월 데이터가 있던 곳에서만 휘어진 규칙을 잘 흉내 냈기 때문에, 입력이 규칙의 기울기가 다른 곳으로 가면 틀리기 시작합니다. 입력 평균이 크게 변하므로 입력 모니터링으로 알아챌 수 있습니다.`;
+    } else {
+      ex = big ? (t===0?'달이 지나며 정답 규칙이 돌아갑니다.':`입력은 그대로, 정답 규칙이 돌아갔습니다.`)
+        : `점 구름(입력 분포)은 제자리인데, 같은 위치의 점에 붙는 정답이 바뀝니다(점선이 회전). 입력 평균은 거의 변하지 않으므로 입력만 감시해서는 알 수 없고, 새로 들어온 정답으로 정확도를 다시 재야 드러납니다.`;
+    }
+    if(r0>0 && !big) ex += ` ${r0}월 재학습용 데이터로 경계를 다시 맞춰 정확도가 회복됐습니다. 변화가 계속되면 다시 떨어집니다.`;
+    if(r0>0 && big) ex = `${r0}월에 재학습 → 회복. 변화가 계속되면 다시 떨어집니다.`;
+    document.getElementById('explain').innerHTML=ex;
+
+    // 표 (6개월 간격 + 현재 월)
+    const ms=[...new Set([0,6,12,18,24,t])].sort((a,b)=>a-b);
+    document.getElementById('rows').innerHTML=ms.map(m=>`<tr style="${m===t?'font-weight:500':'color:var(--label)'}"><td>${m}월${m>t?' (미래)':''}</td><td>(${f2(mean(EVAL[m],'x1'))}, ${f2(mean(EVAL[m],'x2'))})</td><td class="num">${pct(accOf(model(0),EVAL[m]))}</td><td class="num">${m>t?'—':pct(accOf(model(modelAt(m)),EVAL[m]))}</td></tr>`).join('');
+  }
+
+  // 조작
+  const slider=document.getElementById('t');
+  function setT(v){ t=Math.max(0,Math.min(T,v)); draw(); }
+  slider.addEventListener('input',()=>{ stop(); setT(+slider.value); });
+  const playBtn=document.getElementById('play');
+  function stop(){ playing=false; clearTimeout(timer); playBtn.setAttribute('aria-pressed',false); playBtn.textContent='재생'; }
+  playBtn.addEventListener('click',()=>{ if(playing){stop();return;} if(t>=T) setT(0); playing=true; playBtn.setAttribute('aria-pressed',true); playBtn.textContent='일시정지';
+    const loop=()=>{ if(!playing) return; if(t>=T){ stop(); return; } setT(t+1); timer=setTimeout(loop,450); }; timer=setTimeout(loop,300); });
+  document.getElementById('step').addEventListener('click',()=>{ stop(); setT(t+1); });
+  document.getElementById('reset').addEventListener('click',()=>{ stop(); retrains=[0]; setT(0); });
+  document.getElementById('retrain').addEventListener('click',()=>{ // 현재 월 이후의 재학습 기록은 지우고 현재 월에서 다시 학습
+    retrains=retrains.filter(r=>r<t).concat(t>0?[t]:[]); if(!retrains.includes(0)) retrains.unshift(0); draw(); });
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{ stop(); mode=b.dataset.mode;
+    document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b)); retrains=[0]; build(); draw(); }));
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?mode=concept&t=18&retrain=12&theme=dark&shorts=1  (retrain은 쉼표로 여러 달)
+  const u=new URLSearchParams(location.search);
+  if(u.get('theme')) document.documentElement.setAttribute('data-theme',u.get('theme'));
+  if(u.get('mode')) document.querySelector(`[data-mode="${u.get('mode')}"]`)?.click();
+  if(u.get('t')){ const v=parseInt(u.get('t'),10); if(Number.isFinite(v)) t=Math.max(0,Math.min(T,v)); }
+  if(u.get('retrain')) u.get('retrain').split(',').map(Number).filter(v=>Number.isInteger(v)&&v>0&&v<=T).forEach(v=>{ if(!retrains.includes(v)) retrains.push(v); });
+  retrains.sort((a,b)=>a-b);
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

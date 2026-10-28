@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>지표의 분모</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg.metrics{border:0;gap:6px}
+.seg.metrics button{border:1px solid var(--ink);padding:4px 12px}
+.ctl-label{margin-right:10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+svg .pm{cursor:pointer}
+svg .pm:focus{outline:none}
+svg .pm:focus-visible rect{stroke:var(--accent);stroke-width:2}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+tbody tr{cursor:pointer}
+td.num{text-align:right}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:10px 0 0}
+.formula span{display:block}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+.short-only{display:none}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .controls, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .pm{display:none}
+body.shorts .short-only{display:block}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+body.shorts .formula{font-size:14px;display:block}
+body.shorts .metric-now{font-size:14px;margin:10px 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 08 검증·성능평가 · VIZ-25</div>
+  <h1>이 지표의 분모는 무엇일까<span class="dot">.</span></h1>
+  <p class="lede">정확도·정밀도·재현율은 모두 같은 혼동행렬의 네 칸에서 나옵니다. 다른 것은 <b>무엇으로 나누느냐</b>, 곧 분모입니다. 지표를 바꿔 보며 어느 칸이 분자이고 어느 칸이 분모인지 확인하고, 칸의 숫자를 +/− 로 바꾸거나 [불균형] 예시를 눌러 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono" id="tagN">직접 만든 예시 혼동행렬</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">지표</span>
+      <span class="seg metrics" role="group" aria-label="지표">
+        <button data-m="acc" aria-pressed="true">정확도</button>
+        <button data-m="prec" aria-pressed="false">정밀도</button>
+        <button data-m="rec" aria-pressed="false">재현율(민감도)</button>
+        <button data-m="spec" aria-pressed="false">특이도</button>
+        <button data-m="f1" aria-pressed="false">F1</button>
+        <button data-m="fpr" aria-pressed="false">위양성률(FPR)</button>
+        <button data-m="npv" aria-pressed="false">음성예측도(NPV)</button>
+        <button data-m="bacc" aria-pressed="false">균형정확도</button>
+      </span>
+    </div>
+    <div><span class="mono ctl-label">예시</span>
+      <span class="seg" role="group" aria-label="예시">
+        <button data-p="bal" aria-pressed="true">균형</button>
+        <button data-p="imb" aria-pressed="false">불균형(양성 5%)</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <p class="mono short-only metric-now" id="metricNow"></p>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 430" role="img" aria-label="2×2 혼동행렬과 선택한 지표의 분자·분모"></svg>
+    <figcaption class="mono">행 = 실제 정답 · 열 = 모델의 예측 · 채운 칸 = 분자 · 굵은 테두리 = 분모 · 각 칸 아래 −/+ 로 숫자 조정(Shift 누르면 ±10)</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="formula" id="formula"></p>
+  </div>
+
+  <table aria-label="모든 지표">
+    <thead><tr><th>지표</th><th>공식</th><th style="text-align:right">계산 결과</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="notes">
+    <p>‘양성’은 찾고 싶은 쪽(예: 질병 있음)입니다. 행은 실제 정답, 열은 모델의 예측입니다(scikit-learn confusion_matrix와 같은 방향이지만, 이 그림은 양성을 첫 행·첫 열에 두었습니다).</p>
+    <p>F1은 정밀도와 재현율의 조화평균이며 2TP / (2TP + FP + FN)과 같습니다. 균형정확도는 재현율과 특이도의 산술평균입니다. 분모가 0이면 값을 ‘정의되지 않음’으로 표시합니다(라이브러리는 이때 0을 돌려주고 경고를 내기도 합니다).</p>
+    <p>모든 값은 이 페이지가 브라우저에서 네 칸의 숫자로 직접 계산한 결과입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: 혼동행렬 네 칸
+  const PRESETS = { bal:{tp:40,fn:10,fp:8,tn:42}, imb:{tp:10,fn:40,fp:15,tn:935} };
+  let C = Object.assign({}, PRESETS.bal);
+  let metric = 'acc';
+
+  const NAMES = {tp:'진양성',fn:'위음성',fp:'위양성',tn:'진음성'};
+  const POS = {tp:[0,0], fn:[1,0], fp:[0,1], tn:[1,1]};   // [열, 행]
+  const fmt = v => v===null ? '정의되지 않음' : v.toFixed(3);
+  const ratio = (a,b) => b===0 ? null : a/b;
+
+  // 지표 정의: num(분자 칸), den(분모 영역), 계산
+  const M = {
+    acc:{name:'정확도', num:['tp','tn'], den:'all', f:'(TP + TN) / (TP + FP + FN + TN)',
+         mean:'전체 사례 중 모델이 맞힌 비율입니다. 분모가 네 칸 전체라서, 많은 쪽 클래스가 값을 좌우합니다.',
+         short:'분모 = 네 칸 전체.'},
+    prec:{name:'정밀도', num:['tp'], den:'predPos', f:'TP / (TP + FP)',
+         mean:'모델이 ‘양성’이라고 한 것 중 실제로 양성인 비율입니다. 분모는 예측 양성 열입니다.',
+         short:'분모 = 예측 양성 열.'},
+    rec:{name:'재현율(민감도)', num:['tp'], den:'actPos', f:'TP / (TP + FN)',
+         mean:'실제 양성 중 모델이 찾아낸 비율입니다. 분모는 실제 양성 행입니다.',
+         short:'분모 = 실제 양성 행.'},
+    spec:{name:'특이도', num:['tn'], den:'actNeg', f:'TN / (TN + FP)',
+         mean:'실제 음성 중 모델이 음성이라고 맞힌 비율입니다. 분모는 실제 음성 행입니다.',
+         short:'분모 = 실제 음성 행.'},
+    f1:{name:'F1', num:['tp'], den:'f1', f:'2 · 정밀도 · 재현율 / (정밀도 + 재현율)',
+         mean:'정밀도와 재현율의 조화평균입니다. 둘 중 작은 쪽에 끌려가며, 진음성(TN)은 전혀 쓰지 않습니다.',
+         short:'분모 = TP·FP·FN. TN은 안 씁니다.'},
+    fpr:{name:'위양성률(FPR)', num:['fp'], den:'actNeg', f:'FP / (FP + TN)',
+         mean:'실제 음성 중 모델이 잘못 양성이라고 한 비율이며, 1 − 특이도와 같습니다. 분모는 실제 음성 행입니다.',
+         short:'분모 = 실제 음성 행. 1 − 특이도.'},
+    npv:{name:'음성예측도(NPV)', num:['tn'], den:'predNeg', f:'TN / (TN + FN)',
+         mean:'모델이 ‘음성’이라고 한 것 중 실제로 음성인 비율입니다. 분모는 예측 음성 열입니다.',
+         short:'분모 = 예측 음성 열.'},
+    bacc:{name:'균형정확도', num:['tp','tn'], den:'two', f:'(재현율 + 특이도) / 2',
+         mean:'실제 양성 행과 실제 음성 행에서 각각 맞힌 비율을 따로 구한 뒤 평균합니다. 분모가 두 개라 클래스 크기 차이의 영향을 덜 받습니다.',
+         short:'분모 ① 실제 양성 행, ② 실제 음성 행.'}
+  };
+  const ORDER = ['acc','prec','rec','spec','f1','fpr','npv','bacc'];
+
+  function compute(c){
+    const {tp,fn,fp,tn} = c, n = tp+fn+fp+tn;
+    const prec = ratio(tp,tp+fp), rec = ratio(tp,tp+fn), spec = ratio(tn,tn+fp);
+    // F1: 조화평균 형태(정밀도·재현율이 정의되고 합>0일 때) / 2TP 형태(분모>0일 때)
+    const f1h = (prec===null||rec===null||prec+rec===0) ? null : 2*prec*rec/(prec+rec);
+    const f1c = ratio(2*tp, 2*tp+fp+fn);
+    return {
+      acc: ratio(tp+tn,n), prec, rec, spec,
+      f1: f1c, f1h, f1c,
+      fpr: ratio(fp,fp+tn), npv: ratio(tn,tn+fn),
+      bacc: (rec===null||spec===null) ? null : (rec+spec)/2
+    };
+  }
+
+  function formulaLines(k, c, v){
+    const {tp,fn,fp,tn} = c;
+    const L = [];
+    const simple = (numS, denS, a, b) => `${M[k].name} = ${M[k].f} = ${numS} / (${denS}) = ${a} / ${b} = ${fmt(ratio(a,b))}`;
+    if(k==='acc') L.push(simple(`${tp} + ${tn}`, `${tp} + ${fp} + ${fn} + ${tn}`, tp+tn, tp+fp+fn+tn));
+    if(k==='prec') L.push(simple(`${tp}`, `${tp} + ${fp}`, tp, tp+fp));
+    if(k==='rec') L.push(simple(`${tp}`, `${tp} + ${fn}`, tp, tp+fn));
+    if(k==='spec') L.push(simple(`${tn}`, `${tn} + ${fp}`, tn, tn+fp));
+    if(k==='fpr') L.push(simple(`${fp}`, `${fp} + ${tn}`, fp, fp+tn));
+    if(k==='npv') L.push(simple(`${tn}`, `${tn} + ${fn}`, tn, tn+fn));
+    if(k==='f1'){
+      L.push(`정밀도 = TP / (TP + FP) = ${tp} / ${tp+fp} = ${fmt(v.prec)} · 재현율 = TP / (TP + FN) = ${tp} / ${tp+fn} = ${fmt(v.rec)}`);
+      if(v.f1h!==null) L.push(`F1 = 2 · ${fmt(v.prec)} · ${fmt(v.rec)} / (${fmt(v.prec)} + ${fmt(v.rec)}) = ${fmt(v.f1h)}`);
+      else L.push(`F1 = 조화평균 식을 쓸 수 없습니다(정밀도·재현율 중 정의되지 않은 값이 있거나 둘 다 0).`);
+      L.push(`같은 값의 다른 형태: 2TP / (2TP + FP + FN) = ${2*tp} / (${2*tp} + ${fp} + ${fn}) = ${fmt(v.f1c)}`);
+    }
+    if(k==='bacc'){
+      L.push(`재현율 = ${tp} / (${tp} + ${fn}) = ${fmt(v.rec)} · 특이도 = ${tn} / (${tn} + ${fp}) = ${fmt(v.spec)}`);
+      L.push(`균형정확도 = (${fmt(v.rec)} + ${fmt(v.spec)}) / 2 = ${fmt(v.bacc)}`);
+    }
+    return L;
+  }
+
+  // SVG
+  const svg = document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el = (n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const txt = (s,a,p)=>{const t=el('text',a,p); t.textContent=s; return t;};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  const X0=170, CW=210, Y0=78, TW=100;
+  let CH=136;
+  const cx = c => X0 + c*CW, cy = r => Y0 + r*CH;
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.7:1;
+    CH = big?225:136;
+    svg.setAttribute('viewBox', `0 0 720 ${Y0+2*CH+(big?80:78)}`);
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box'), lin=css('--lining');
+    const m = M[metric], v = compute(C);
+    const numSet = new Set(m.num);
+    const denCells = {all:['tp','fn','fp','tn'], predPos:['tp','fp'], predNeg:['fn','tn'], actPos:['tp','fn'], actNeg:['fp','tn'], f1:['tp','fp','fn'], two:['tp','fn','fp','tn']}[m.den];
+    const denSet = new Set(denCells);
+    const mono = {'font-family':'IBM Plex Mono'};
+
+    // 머리글
+    txt('예측 (열)', {x:X0+CW, y:20, 'text-anchor':'middle','font-size':12*F, fill:label, ...mono, 'letter-spacing':'.12em'});
+    txt('예측 양성', {x:cx(0)+CW/2, y:Y0-16, 'text-anchor':'middle','font-size':15*F, fill:ink});
+    txt('예측 음성', {x:cx(1)+CW/2, y:Y0-16, 'text-anchor':'middle','font-size':15*F, fill:ink});
+    txt('실제 (행)', {x:22, y:Y0+CH, 'text-anchor':'middle','font-size':12*F, fill:label, ...mono, transform:`rotate(-90 22 ${Y0+CH})`});
+    txt('실제 양성', {x:X0-14, y:cy(0)+CH/2+5*F, 'text-anchor':'end','font-size':15*F, fill:ink});
+    txt('실제 음성', {x:X0-14, y:cy(1)+CH/2+5*F, 'text-anchor':'end','font-size':15*F, fill:ink});
+
+    // 칸
+    for(const k of ['tp','fn','fp','tn']){
+      const [c,r] = POS[k], x=cx(c), y=cy(r);
+      const isNum = numSet.has(k), isDen = denSet.has(k);
+      el('rect',{x, y, width:CW, height:CH, fill:isNum?lin:bg, stroke:rule, 'stroke-width':1});
+      const fg = isNum ? bg : (isDen ? ink : label);
+      txt(`${k.toUpperCase()} · ${NAMES[k]}`, {x:x+12, y:y+20*F, 'font-size':12*F, fill:fg, ...mono, 'letter-spacing':'.08em'});
+      txt(C[k], {x:x+CW/2, y:y+CH/2+(big?24:12), 'text-anchor':'middle','font-size':(big?72:42), fill:fg, 'font-family':'IBM Plex Sans KR', 'font-weight':500});
+      if(isNum && metric==='f1') txt('×2', {x:x+12, y:y+CH-16, 'font-size':14*F, fill:bg, ...mono});
+      if(isNum && metric==='bacc') txt(k==='tp'?'① 분자':'② 분자', {x:x+12, y:y+CH-16, 'font-size':12*F, fill:bg, ...mono});
+      // −/+ 버튼
+      [['−',-1, x+CW-74],['+',1, x+CW-40]].forEach(([s,d,bx])=>{
+        const g = el('g',{class:'pm', role:'button', tabindex:0, 'aria-label':`${k.toUpperCase()} ${d>0?'늘리기':'줄이기'}`});
+        el('rect',{x:bx, y:y+CH-38, width:28, height:26, fill:isNum?lin:bg, stroke:isNum?bg:label, 'stroke-width':1}, g);
+        txt(s,{x:bx+14, y:y+CH-19, 'text-anchor':'middle','font-size':17, fill:isNum?bg:ink}, g);
+        const act = e => { const step=(e.shiftKey?10:1)*d; C[k]=Math.max(0,C[k]+step); syncPreset(); draw(); };
+        g.addEventListener('click', act);
+        g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); act(e);} });
+      });
+    }
+
+    // 합계
+    const P=C.tp+C.fn, N=C.fp+C.tn, PP=C.tp+C.fp, PN=C.fn+C.tn, T=P+N;
+    const hl = {actPos:'r0', actNeg:'r1', predPos:'c0', predNeg:'c1', all:'T', two:'r01'}[m.den] || '';
+    const tStyle = on => ({fill:on?acc:label, 'font-weight':on?600:400});
+    txt('합계', {x:cx(2)+TW/2, y:Y0-16, 'text-anchor':'middle','font-size':12*F, fill:label, ...mono});
+    txt(`P ${P}`, {x:cx(2)+TW/2, y:cy(0)+CH/2+5*F, 'text-anchor':'middle','font-size':14*F, ...mono, ...tStyle(hl==='r0'||hl==='r01')});
+    txt(`N ${N}`, {x:cx(2)+TW/2, y:cy(1)+CH/2+5*F, 'text-anchor':'middle','font-size':14*F, ...mono, ...tStyle(hl==='r1'||hl==='r01')});
+    txt(`${PP}`, {x:cx(0)+CW/2, y:cy(2)+28*F, 'text-anchor':'middle','font-size':14*F, ...mono, ...tStyle(hl==='c0')});
+    txt(`${PN}`, {x:cx(1)+CW/2, y:cy(2)+28*F, 'text-anchor':'middle','font-size':14*F, ...mono, ...tStyle(hl==='c1')});
+    txt(`${T}`, {x:cx(2)+TW/2, y:cy(2)+28*F, 'text-anchor':'middle','font-size':14*F, ...mono, ...tStyle(hl==='T')});
+
+    // 분모 테두리
+    const W=5, d=W/2+1;
+    const rectPath = (c0,r0,c1,r1)=>{ const x0=cx(c0)+d, y0=cy(r0)+d, x1=cx(c1)-d, y1=cy(r1)-d; return `M${x0},${y0}H${x1}V${y1}H${x0}Z`; };
+    const outline = p => el('path',{d:p, fill:'none', stroke:ink, 'stroke-width':W, 'stroke-linejoin':'miter'});
+    const R = {all:[[0,0,2,2]], predPos:[[0,0,1,2]], predNeg:[[1,0,2,2]], actPos:[[0,0,2,1]], actNeg:[[0,1,2,2]], two:[[0,0,2,1],[0,1,2,2]]}[m.den];
+    if(R) R.forEach(q=>outline(rectPath(...q)));
+    if(m.den==='f1'){ // TP·FN(첫 행) + FP(둘째 행 첫 칸)의 L자
+      const a=cx(0)+d, b=cx(1)-d, e=cx(2)-d, t=cy(0)+d, mid=cy(1)-d, bot=cy(2)-d;
+      outline(`M${a},${t}H${e}V${mid}H${b}V${bot}H${a}Z`);
+    }
+    if(m.den==='two'){
+      txt('분모 ①', {x:cx(2)+TW/2, y:cy(0)+CH/2+28*F, 'text-anchor':'middle','font-size':11*F, fill:acc, ...mono});
+      txt('분모 ②', {x:cx(2)+TW/2, y:cy(1)+CH/2+28*F, 'text-anchor':'middle','font-size':11*F, fill:acc, ...mono});
+    }
+
+    // 결과 문장
+    const val = v[metric];
+    const denCount = {all:T, predPos:PP, predNeg:PN, actPos:P, actNeg:N, f1:2*C.tp+C.fp+C.fn}[m.den];
+    const denWord = {all:`네 칸 전체(${T}건)`, predPos:`예측 양성 열(${PP}건)`, predNeg:`예측 음성 열(${PN}건)`, actPos:`실제 양성 행(${P}건)`, actNeg:`실제 음성 행(${N}건)`, f1:`2TP + FP + FN (${denCount})`, two:`실제 양성 행(${P}) · 실제 음성 행(${N})`}[m.den];
+    document.getElementById('result').innerHTML = `${m.name} <b>${fmt(val)}</b>`;
+    document.getElementById('metricNow').textContent = `지표: ${m.name} · 분모 = ${denWord}`;
+
+    let ex = big ? m.short : `${m.mean} 지금 분모: ${denWord}.`;
+    if(val===null) ex = big ? '분모가 0 — 이 지표는 정의되지 않습니다.' : `분모가 0이라 이 지표는 정의되지 않습니다. 예를 들어 모델이 양성을 한 번도 예측하지 않으면 정밀도를 계산할 수 없습니다.`;
+    if(metric==='f1' && v.f1h===null && v.f1c!==null && !big) ex += ` 지금은 TP = 0이라 정밀도·재현율 중 정의되지 않는 값이 있거나 둘 다 0이어서 조화평균 식을 바로 쓸 수 없습니다. 이 페이지는 같은 뜻의 2TP / (2TP + FP + FN) 형태로 계산한 ${fmt(v.f1c)}을 보여 줍니다(라이브러리마다 처리 방식이 다를 수 있습니다).`;
+    // 불균형 경고: 정확도는 높은데 재현율이 낮을 때
+    if(v.acc!==null && v.rec!==null && v.acc>=0.9 && v.rec<0.5){
+      ex += big ? ` 정확도 ${fmt(v.acc)}인데 재현율은 ${fmt(v.rec)}.`
+                : ` <b>정확도는 ${fmt(v.acc)}로 높지만 재현율은 ${fmt(v.rec)}</b>입니다 — 실제 양성 ${P}건 중 ${C.fn}건을 놓쳤습니다. 양성이 드물면 정확도의 대부분은 음성을 맞힌 데서 나옵니다(모두 ‘음성’이라고만 해도 정확도 ${fmt(ratio(N,T))}).`;
+    }
+    document.getElementById('explain').innerHTML = ex;
+    const L = formulaLines(metric, C, v);
+    document.getElementById('formula').innerHTML = (big ? L.slice(-1) : L).map(s=>`<span>${s}</span>`).join('');
+
+    // 표
+    document.getElementById('rows').innerHTML = ORDER.map(k=>{
+      const on = k===metric;
+      const f = k==='f1' ? '2TP / (2TP + FP + FN)' : M[k].f;
+      const vv = v[k];
+      return `<tr data-row="${k}" style="${on?'font-weight:500':'color:var(--label)'}"><td>${on?'▸ ':''}${M[k].name}</td><td class="formula" style="margin:0">${f}</td><td class="num">${fmt(vv)}</td></tr>`;
+    }).join('');
+    document.querySelectorAll('[data-row]').forEach(tr=>tr.addEventListener('click',()=>setMetric(tr.dataset.row)));
+    document.getElementById('tagN').textContent = `직접 만든 예시 혼동행렬 · ${T}건 · 양성 비율 ${(T?P/T*100:0).toFixed(1)}%`;
+  }
+
+  function setMetric(k){
+    if(!M[k]) return; metric=k;
+    document.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===k)); draw();
+  }
+  function syncPreset(){
+    document.querySelectorAll('[data-p]').forEach(x=>{const p=PRESETS[x.dataset.p]; x.setAttribute('aria-pressed', ['tp','fn','fp','tn'].every(k=>p[k]===C[k]));});
+  }
+  document.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>setMetric(b.dataset.m)));
+  document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>{ C=Object.assign({},PRESETS[b.dataset.p]); syncPreset(); draw(); }));
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?metric=prec&preset=imb&tp=10&fp=15&fn=40&tn=935&theme=dark&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('theme')) document.documentElement.setAttribute('data-theme',u.get('theme'));
+  if(PRESETS[u.get('preset')]) C=Object.assign({},PRESETS[u.get('preset')]);
+  ['tp','fn','fp','tn'].forEach(k=>{ const x=parseInt(u.get(k),10); if(Number.isFinite(x)&&x>=0) C[k]=x; });
+  syncPreset();
+  if(u.get('metric')) setMetric(u.get('metric'));
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

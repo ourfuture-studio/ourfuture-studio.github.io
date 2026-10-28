@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>거리 1의 모양</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#7A1F2E; --teal:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#E06A7C; --teal:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.check{margin-top:8px!important;font-weight:500}
+.check .d{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:4px 0}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formulas, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view{display:none}
+body.shorts .controls{margin:12px 0 10px}
+body.shorts .seg button{padding:4px 11px}
+body.shorts .result{font-size:24px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+body.shorts .check{font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 03 거리·K-NN·SVM · VIZ-02</div>
+  <h1>같은 거리 1은 어떤 모양일까<span class="dot">.</span></h1>
+  <p class="lede">원점에서 거리가 정확히 1인 점들을 모으면 도형이 됩니다. 유클리드 거리(L2)로 재면 원, 맨해튼 거리(L1)로 재면 마름모입니다. 그래프 위의 점(◆)을 끌어 옮기고, 민코프스키 p 값을 바꿔 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 계산 예시</span><span class="mono">데이터 없음 · 좌표 평면 위의 거리 정의</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">민코프스키 p</span>
+      <span class="seg" role="group" aria-label="민코프스키 p">
+        <button data-p="1" aria-pressed="false">1</button>
+        <button data-p="1.5" aria-pressed="false">1.5</button>
+        <button data-p="2" aria-pressed="true">2</button>
+        <button data-p="3" aria-pressed="false">3</button>
+        <button data-p="inf" aria-pressed="false">∞</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 480" role="img" aria-label="원점 기준 거리 1인 점 집합"></svg>
+    <figcaption class="mono">실선 원 = L2에서 거리 1 · 점선 마름모 = L1에서 거리 1 · 굵은 강조선 = 선택한 p에서 거리 1 · ◆ = 끌어 옮기는 점 P · 꺾인 점선 = L1 경로(|dx|+|dy|) · 곧은 선 = L2 경로</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="check"><span class="d">▸</span> 문제에서 어떤 노름인지 항상 확인하기.</p>
+  </div>
+
+  <div class="formulas">
+    <p class="formula" id="f1"></p>
+    <p class="formula" id="f2"></p>
+    <p class="formula" id="fp"></p>
+  </div>
+
+  <table aria-label="p별 거리">
+    <thead><tr><th>p</th><th>이름</th><th>P까지의 거리</th><th>거리 1의 모양</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="notes">
+    <p>민코프스키 거리: d<sub>p</sub>(P, O) = (|dx|<sup>p</sup> + |dy|<sup>p</sup>)<sup>1/p</sup>, p ≥ 1. p = 1은 맨해튼(L1), p = 2는 유클리드(L2), p → ∞의 극한은 체비셰프 거리 max(|dx|, |dy|)이며 거리 1의 모양은 정사각형입니다. p &lt; 1이면 삼각부등식이 깨져 거리(노름)가 아니므로 다루지 않았습니다.</p>
+    <p>점 P는 0.05 간격 격자에 맞춰 움직입니다. 모든 수치는 이 페이지가 브라우저에서 직접 계산한 값이며, 곡선은 |x|<sup>p</sup> + |y|<sup>p</sup> = 1을 만족하는 점을 매개변수로 그렸습니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  let P = [0.6, 0.8];
+  let p = 2; // Infinity 허용
+
+  let W=720, HT=480; const M={l:140,r:140,t:20,b:20};
+  const R=1.5; // 좌표 범위 [-R, R]
+  const px = x => M.l + (x+R)/(2*R)*(W-M.l-M.r);
+  const py = y => HT-M.b - (y+R)/(2*R)*(HT-M.t-M.b);
+  const ix = X => (X-M.l)/(W-M.l-M.r)*2*R - R;
+  const iy = Y => (HT-M.b-Y)/(HT-M.t-M.b)*2*R - R;
+
+  const svg = document.getElementById('plot');
+  const NS='http://www.w3.org/2000/svg';
+  const el = (n,a,par)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(par||svg).appendChild(e);return e;};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt = (v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const f2 = v => fmt(v,2);
+  // 글자 뒤에 바탕색 사각형을 깔아 선과 겹쳐도 읽히게 한다
+  function backed(t){
+    const b=t.getBBox(), r=document.createElementNS(NS,'rect');
+    r.setAttribute('x',b.x-2); r.setAttribute('y',b.y); r.setAttribute('width',b.width+4); r.setAttribute('height',b.height);
+    r.setAttribute('fill',css('--bg')); r.setAttribute('opacity',.88);
+    t.parentNode.insertBefore(r,t); return t;
+  }
+
+  function dist(dx,dy,pp){
+    dx=Math.abs(dx); dy=Math.abs(dy);
+    if(pp===Infinity) return Math.max(dx,dy);
+    return Math.pow(Math.pow(dx,pp)+Math.pow(dy,pp),1/pp);
+  }
+  const pName = pp => pp===Infinity?'∞':String(pp);
+  const shapeName = pp => pp===1?'마름모':pp===2?'원':pp===Infinity?'정사각형':(pp<2?'마름모와 원 사이':'원과 정사각형 사이');
+  const normName = pp => pp===1?'L1 · 맨해튼':pp===2?'L2 · 유클리드':pp===Infinity?'L∞ · 체비셰프':'민코프스키';
+
+  // |x|^p + |y|^p = 1 위의 점 (매개변수 t)
+  function unitBall(pp){
+    if(pp===Infinity) return [[1,1],[-1,1],[-1,-1],[1,-1]];
+    if(pp===1) return [[1,0],[0,1],[-1,0],[0,-1]];
+    const pts=[];
+    for(let i=0;i<360;i++){
+      const t=i/360*2*Math.PI, c=Math.cos(t), s=Math.sin(t);
+      pts.push([Math.sign(c)*Math.pow(Math.abs(c),2/pp), Math.sign(s)*Math.pow(Math.abs(s),2/pp)]);
+    }
+    return pts;
+  }
+  const poly = pts => pts.map(q=>px(q[0]).toFixed(2)+','+py(q[1]).toFixed(2)).join(' ');
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.5:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), teal=css('--teal');
+
+    // 격자·축
+    for(let v=-1.5;v<=1.5001;v+=0.5){
+      const major = Math.abs(v)<1e-9;
+      el('line',{x1:px(v),x2:px(v),y1:M.t,y2:HT-M.b,stroke:major?label:rule,'stroke-width':1});
+      el('line',{x1:M.l,x2:W-M.r,y1:py(v),y2:py(v),stroke:major?label:rule,'stroke-width':1});
+    }
+    // 눈금 라벨은 도형과 겹치지 않게 플롯 가장자리에 둔다
+    [-1,0,1].forEach(v=>{
+      const t1=el('text',{x:px(v),y:HT-M.b-6,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t1.textContent=v;
+      if(v!==0){const t2=el('text',{x:M.l+6,y:py(v)+4*F,'text-anchor':'start','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); t2.textContent=v;}
+    });
+    const o=el('text',{x:px(0)-5*F,y:py(0)+15*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'}); o.textContent='O';
+
+    // L2 원(실선), L1 마름모(점선)
+    el('circle',{cx:px(0),cy:py(0),r:px(1)-px(0),fill:'none',stroke:ink,'stroke-width':1.5*F});
+    el('polygon',{points:poly(unitBall(1)),fill:'none',stroke:ink,'stroke-width':1.5*F,'stroke-dasharray':`${6*F} ${5*F}`});
+    // 선택한 p
+    el('polygon',{points:poly(unitBall(p)),fill:'none',stroke:acc,'stroke-width':3.2*F,'stroke-linejoin':'round',opacity:.9});
+
+    // 도형 라벨: 점 P가 없는 세 사분면의 대각선 바깥쪽에 하나씩 배치
+    const qP=[P[0]>=0?1:-1, P[1]>=0?1:-1];
+    const quads=[[-1,1],[-1,-1],[1,-1],[1,1]].filter(q=>!(q[0]===qP[0]&&q[1]===qP[1]));
+    const bp = p===Infinity?1:Math.pow(0.5,1/p); // 대각선(|x|=|y|) 위에서 거리 1인 점의 좌표
+    const labs=[['L1',0.5,ink],['L2',Math.SQRT1_2,ink],[p===Infinity?'L∞':'p='+pName(p),bp,acc]];
+    if(p===1) labs[0][2]=acc; if(p===2) labs[1][2]=acc;
+    labs.forEach((L,i)=>{
+      const q=quads[i], a=L[1]+0.05;
+      const t=el('text',{x:px(q[0]*a),y:py(q[1]*a)+(q[1]<0?14:-4)*F,'text-anchor':q[0]<0?'end':'start','font-size':13*F,fill:L[2],'font-family':'IBM Plex Mono','font-weight':500});
+      t.textContent=L[0]; backed(t);
+    });
+
+    // 점 P까지의 경로
+    const [x,y]=P;
+    const g=el('g',{});
+    // L1: 가로 → 세로
+    el('polyline',{points:`${px(0)},${py(0)} ${px(x)},${py(0)} ${px(x)},${py(y)}`,fill:'none',stroke:teal,'stroke-width':2.2*F,'stroke-dasharray':`${3*F} ${3*F}`},g);
+    // L2: 곧은 선
+    el('line',{x1:px(0),y1:py(0),x2:px(x),y2:py(y),stroke:teal,'stroke-width':2.2*F},g);
+    // 다리 길이 라벨
+    if(Math.abs(x)>0.12){
+      const t=el('text',{x:(px(0)+px(x))/2,y:py(0)+(y>=0?18:-8)*F,'text-anchor':'middle','font-size':12*F,fill:teal,'font-family':'IBM Plex Mono'},g); t.textContent='|dx| '+f2(Math.abs(x)); backed(t);
+    }
+    if(Math.abs(y)>0.12){
+      const t=el('text',{x:px(x)+(x>=0?8:-8)*F,y:(py(0)+py(y))/2+4*F,'text-anchor':x>=0?'start':'end','font-size':12*F,fill:teal,'font-family':'IBM Plex Mono'},g); t.textContent='|dy| '+f2(Math.abs(y)); backed(t);
+    }
+    // 원점, 점 P(◆)
+    el('circle',{cx:px(0),cy:py(0),r:3.5*F,fill:ink});
+    const d=8*F;
+    el('polygon',{points:`${px(x)},${py(y)-d} ${px(x)+d},${py(y)} ${px(x)},${py(y)+d} ${px(x)-d},${py(y)}`,fill:acc,stroke:bg,'stroke-width':1.5});
+    // 라벨은 원점 쪽(안쪽)으로 펼쳐 가장자리 잘림을 막는다
+    const pl=el('text',{x:px(x)+(x>0?-12:12)*F,y:py(y)+(y>1.2?24:-10)*F,'text-anchor':x>0?'end':'start','font-size':13*F,fill:acc,'font-family':'IBM Plex Mono'});
+    pl.textContent=`P(${f2(x)}, ${f2(y)})`; backed(pl);
+
+    // 수치
+    const d1=dist(x,y,1), d2=dist(x,y,2), dp=dist(x,y,p);
+    const where = v => Math.abs(v-1)<0.005?'경계 위(거리 = 1)':v<1?'안쪽(거리 < 1)':'바깥(거리 > 1)';
+    document.getElementById('result').innerHTML =
+      `L1 <b>${f2(d1)}</b> · L2 <b>${f2(d2)}</b>` + (p!==1&&p!==2?` · ${p===Infinity?'L∞':'p='+pName(p)} <b>${f2(dp)}</b>`:'');
+    const sameSide = (d1<1-0.005)===(d2<1-0.005) && (d1>1+0.005)===(d2>1+0.005);
+    const ex = `점 P는 선택한 p = ${pName(p)} 기준으로 ‘거리 1’ 도형의 <b>${where(dp)}</b>에 있습니다. `+
+      (sameSide ? `지금 위치에서는 L1과 L2가 같은 판정을 내리지만, 대각선 쪽으로 옮기면 두 거리가 갈라집니다.`
+                : `같은 점인데 L1으로는 ${where(d1)}, L2로는 ${where(d2)}입니다.`);
+    const exShort = sameSide ? `같은 점, 다른 거리. L1 ≥ L2는 언제나 성립합니다.` : `같은 점이 L1으로는 ${d1>1?'바깥':'안'}, L2로는 ${d2>1?'바깥':d2<1-0.005?'안':'경계'}.`;
+    document.getElementById('explain').innerHTML = big?exShort:ex;
+
+    const ax=Math.abs(x), ay=Math.abs(y);
+    document.getElementById('f1').textContent = `L1 = |dx| + |dy| = ${f2(ax)} + ${f2(ay)} = ${f2(d1)}`;
+    document.getElementById('f2').textContent = `L2 = √(dx² + dy²) = √(${f2(ax)}² + ${f2(ay)}²) = √${fmt(ax*ax+ay*ay,4)} = ${fmt(d2,3)}`;
+    document.getElementById('fp').textContent = p===Infinity
+      ? `L∞ = max(|dx|, |dy|) = max(${f2(ax)}, ${f2(ay)}) = ${f2(dp)}`
+      : `p=${pName(p)}: (|dx|^${pName(p)} + |dy|^${pName(p)})^(1/${pName(p)}) = (${fmt(Math.pow(ax,p),4)} + ${fmt(Math.pow(ay,p),4)})^(1/${pName(p)}) = ${fmt(dp,3)}`;
+
+    document.getElementById('rows').innerHTML = [1,1.5,2,3,Infinity].map(pp=>{
+      const v=dist(x,y,pp), on=pp===p;
+      return `<tr style="${on?'font-weight:500':'color:var(--label)'}"><td>${pName(pp)}${on?' · 선택':''}</td><td>${normName(pp)}</td><td>${fmt(v,3)}</td><td>${shapeName(pp)}</td></tr>`;
+    }).join('');
+  }
+
+  function setP(v){
+    p = v==='inf'?Infinity:+v;
+    document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.p===String(v)));
+    draw();
+  }
+  document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>setP(b.dataset.p)));
+
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); W=on?480:720; HT=on?430:480; M.l=on?45:140; M.r=on?45:140; svg.setAttribute('viewBox',`0 0 ${W} ${HT}`); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  const snap = v => Math.round(v*20)/20;
+  const clampP = v => Math.min(Math.max(v,-1.45),1.45);
+  let dragging=false;
+  function moveTo(e){
+    const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const q=pt.matrixTransform(svg.getScreenCTM().inverse());
+    P=[snap(clampP(ix(q.x))), snap(clampP(iy(q.y)))]; draw();
+  }
+  svg.addEventListener('pointerdown',e=>{dragging=true;svg.setPointerCapture(e.pointerId);moveTo(e);});
+  svg.addEventListener('pointermove',e=>{if(dragging)moveTo(e);});
+  svg.addEventListener('pointerup',()=>dragging=false);
+
+  // URL 옵션: ?p=1|1.5|2|3|inf &x=0.6&y=0.8 &shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('x')!==null && !isNaN(+u.get('x'))) P[0]=snap(clampP(+u.get('x')));
+  if(u.get('y')!==null && !isNaN(+u.get('y'))) P[1]=snap(clampP(+u.get('y')));
+  if(u.get('p') && ['1','1.5','2','3','inf'].includes(u.get('p'))) setP(u.get('p'));
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

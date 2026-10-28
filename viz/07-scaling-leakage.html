@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스케일링과 데이터 누수</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto;touch-action:none}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+@media (max-width:440px){ body:not(.shorts) .slider input{width:140px} body:not(.shorts) table{font-size:13px} body:not(.shorts) th, body:not(.shorts) td{padding:5px 4px} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-label{display:none}
+body.shorts .controls{margin:12px 0 10px}
+body.shorts .seg button{font-size:15px;padding:6px 10px}
+body.shorts .result{font-size:23px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 02 데이터 준비 · VIZ-07</div>
+  <h1>스케일링은 언제 해야 할까<span class="dot">.</span></h1>
+  <p class="lede">표준화에 쓰는 평균과 표준편차를 <b>어느 데이터로 계산하느냐</b>에 따라, 검증 데이터가 모델에게 ‘처음 보는 데이터’로 남는지가 갈립니다. 아래 두 방식을 번갈아 눌러, 계산에 쓰인 블록과 변환된 값이 어떻게 달라지는지 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">하루 걸음 수(천 보) · 훈련 20개 · 검증 8개</span></p>
+
+  <div class="controls">
+    <div><span class="mono ctl-label">fit 시점</span>
+      <span class="seg" role="group" aria-label="변환기를 fit하는 시점">
+        <button data-mode="full" aria-pressed="true">분할 전에 전체로 fit</button>
+        <button data-mode="train" aria-pressed="false">훈련 데이터로만 fit</button>
+      </span>
+    </div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 600" role="img" aria-label="훈련·검증 블록과 표준화 결과"></svg>
+    <figcaption class="mono">● 훈련 · ○ 검증 · 굵은 선 괄호 = 평균·표준편차 계산에 쓴 블록 · 아래 줄 = 변환된 값 z</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="두 방식의 변환 통계">
+    <thead><tr><th>방식</th><th>fit에 쓴 데이터</th><th>평균 μ</th><th>표준편차 σ</th><th>검증 최댓값의 z</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>표준화 z = (x − μ) / σ. 표준편차는 scikit-learn StandardScaler와 같은 모집단 기준(ddof=0)입니다. 표의 μ·σ·z는 이 페이지가 위 28개 가상 값으로 브라우저에서 직접 계산한 값입니다.</p>
+    <p>이 페이지는 모델 점수를 계산하지 않습니다. 누수가 점수를 얼마나 부풀리는지는 모델과 데이터에 따라 다르며, 아주 작거나 없을 수도 있습니다(예: 특성 하나짜리 최소제곱 선형회귀는 표준화 방식과 무관하게 같은 예측을 냅니다). 그래도 검증·시험 데이터가 어떤 ‘학습’ 단계에도 쓰이지 않아야 평가를 믿을 수 있다는 원칙은 같습니다.</p>
+    <p>교차검증에서는 폴드마다 변환기를 새로 fit해야 하므로, scikit-learn에서는 Pipeline으로 변환기와 모델을 묶는 방법이 흔히 쓰입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: 하루 걸음 수(천 보). 검증 블록에 극단값 3개(15.8, 17.5, 16.4)
+  const TR = [6.1,7.4,8.0,9.2,5.8,7.7,8.9,10.3,6.6,7.9,8.4,9.7,7.1,6.9,8.6,9.0,7.3,8.1,10.0,6.4];
+  const VA = [7.6,8.8,6.8,9.4,15.8,8.2,17.5,16.4];
+  const ALL = TR.concat(VA), N=ALL.length, NT=TR.length;
+  let mode='full';
+
+  const mean = a => a.reduce((x,y)=>x+y,0)/a.length;
+  const sd = a => { const m=mean(a); return Math.sqrt(a.reduce((x,y)=>x+(y-m)*(y-m),0)/a.length); };
+  const STAT = { full:{m:mean(ALL), s:sd(ALL)}, train:{m:mean(TR), s:sd(TR)} };
+  const vmax = Math.max(...VA);
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,a,p)=>{const t=el('text',Object.assign({x,y},a),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  const W=720, L=64, R=696, cw=(R-L)/N, cx=i=>L+(i+.5)*cw;
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts'), F=big?1.8:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box'), lin=css('--lining');
+    const st=STAT[mode];
+    const mono={'font-family':'IBM Plex Mono','font-size':12*F,fill:label};
+
+    // ① 데이터 블록 (들어온 순서)
+    let y=big?26:18;
+    tx(L,y,'① 데이터 블록',{...mono,fill:ink,'font-size':13*F});
+    y+=big?40:26;
+    const vEnd=L+NT*cw;
+    tx(L,y,'훈련 20개',{...mono,fill:ink});
+    tx(R,y,'검증 8개',{...mono,fill:ink,'text-anchor':'end'});
+    const top=y+(big?12:10), bot=top+(big?104:140), V0=0, V1=20;
+    const vy=v=>bot-(v-V0)/(V1-V0)*(bot-top);
+    el('rect',{x:L,y:top,width:NT*cw,height:bot-top,fill:box,stroke:'none'});
+    el('rect',{x:vEnd+.5,y:top+.5,width:(N-NT)*cw-1,height:bot-top-1,fill:'none',stroke:ink,'stroke-dasharray':'4 3','stroke-width':1});
+    for(const v of [0,10,20]){
+      el('line',{x1:L,x2:R,y1:vy(v),y2:vy(v),stroke:rule,'stroke-width':1});
+      tx(L-8,vy(v)+4*F,v,{...mono,'text-anchor':'end'});
+    }
+    ALL.forEach((v,i)=>{
+      el('circle',{cx:cx(i),cy:vy(v),r:4*F,fill:i<NT?ink:bg,stroke:ink,'stroke-width':1.5*F});
+    });
+
+    // ② fit에 쓴 블록 괄호 + 화살표
+    const by=bot+(big?22:20), x0=L, x1=mode==='full'?R:vEnd;
+    el('path',{d:`M${x0} ${by-8} V${by} H${x1} V${by-8}`,fill:'none',stroke:acc,'stroke-width':2.2*F});
+    if(mode==='train'){
+      el('path',{d:`M${vEnd} ${by} H${R}`,fill:'none',stroke:label,'stroke-width':1,'stroke-dasharray':'3 4'});
+      tx((vEnd+R)/2,by+16*F,'fit에 안 씀',{...mono,'text-anchor':'middle'});
+    }
+    const boxW=big?560:440, bx=360-boxW/2, boxY=by+(big?44:44), boxH=big?84:56;
+    const mx=(x0+x1)/2, ax=Math.min(Math.max(mx,bx+30),bx+boxW-30);
+    el('line',{x1:mx,y1:by,x2:ax,y2:boxY-4,stroke:acc,'stroke-width':1.5*F});
+    arrowHead(ax,boxY,mx,by,acc,F);
+    el('rect',{x:bx,y:boxY,width:boxW,height:boxH,fill:bg,stroke:acc,'stroke-width':1.5*F});
+    tx(360,boxY+(big?32:22),mode==='full'?'fit(훈련 + 검증 28개)':'fit(훈련 20개)',{...mono,fill:ink,'text-anchor':'middle','font-size':13*F});
+    tx(360,boxY+(big?70:44),`μ = ${fmt(st.m,2)}   σ = ${fmt(st.s,2)}`,{...mono,fill:acc,'text-anchor':'middle','font-size':(big?14:15)*F});
+
+    // ③ transform 결과: z 수직선
+    const zTop=boxY+boxH+(big?44:34);
+    el('line',{x1:360,y1:boxY+boxH,x2:360,y2:zTop-4,stroke:ink,'stroke-width':1.2*F});
+    arrowHead(360,zTop,360,boxY+boxH,ink,F);
+    tx(372,boxY+boxH+(big?30:22),big?'transform':'transform: z = (x − μ) / σ',{...mono,fill:ink});
+    const Z0=-3, Z1=8, zx=z=>L+(z-Z0)/(Z1-Z0)*(R-L);
+    tx(L,zTop+(big?14:10),'③ 변환된 값 z',{...mono,fill:ink,'font-size':13*F});
+    const zt=TR.map(v=>(v-st.m)/st.s), zv=VA.map(v=>(v-st.m)/st.s);
+    const zmin=Math.min(...zt), zmax=Math.max(...zt);
+    const rr=4*F, step=2*rr+1;
+    const sT=stack(zt,rr), sV=stack(zv,rr);
+    const lvT=Math.max(...sT.map(p=>p.lvl)), lvV=Math.max(...sV.map(p=>p.lvl));
+    const bandTop=zTop+(big?34:26);
+    const rowT=bandTop+(big?36:26)+lvT*step;
+    const rowV=rowT+(big?64:52)+lvV*step, axisY=rowV+(big?26:22);
+    el('rect',{x:zx(zmin),y:bandTop,width:zx(zmax)-zx(zmin),height:axisY-bandTop,fill:box});
+    tx(zx(zmax)+6,bandTop+(big?20:14),'훈련 범위',{...mono,'font-size':11*F});
+    el('line',{x1:zx(0),x2:zx(0),y1:bandTop,y2:axisY,stroke:rule,'stroke-width':1});
+    for(let z=Z0;z<=Z1;z++){
+      el('line',{x1:zx(z),x2:zx(z),y1:axisY,y2:axisY+5,stroke:label,'stroke-width':1});
+      if(!big||z%2===0) tx(zx(z),axisY+18*F,z,{...mono,'text-anchor':'middle'});
+    }
+    el('line',{x1:L,x2:R,y1:axisY,y2:axisY,stroke:label,'stroke-width':1});
+    tx(L-8,rowT+4*F,'훈련',{...mono,fill:ink,'text-anchor':'end'});
+    tx(L-8,rowV+4*F,'검증',{...mono,fill:ink,'text-anchor':'end'});
+    sT.forEach(p=>el('circle',{cx:zx(p.z),cy:rowT-p.lvl*step,r:rr,fill:ink,stroke:ink,'stroke-width':1.5*F}));
+    sV.forEach(p=>el('circle',{cx:zx(p.z),cy:rowV-p.lvl*step,r:rr,fill:bg,stroke:ink,'stroke-width':1.5*F}));
+    const zm=(vmax-st.m)/st.s;
+    tx(zx(zm)+(zm>6.5?rr:0),rowV-lvV*step-rr-8,`z = ${fmt(zm,2)}`,{...mono,fill:acc,'text-anchor':zm>6.5?'end':'middle','font-size':13*F});
+    svg.setAttribute('viewBox',`0 0 720 ${Math.ceil(axisY+(big?48:34))}`);
+
+    function stack(zs,r){
+      const placed=[];
+      zs.slice().sort((a,b)=>a-b).forEach(z=>{
+        let lvl=0;
+        while(placed.some(q=>q.lvl===lvl && Math.abs(zx(q.z)-zx(z))<2*r+1)) lvl++;
+        placed.push({z,lvl});
+      });
+      return placed;
+    }
+    // 결과 문구
+    const zf=(vmax-STAT.full.m)/STAT.full.s, ztr=(vmax-STAT.train.m)/STAT.train.s;
+    if(mode==='full'){
+      document.getElementById('result').innerHTML= big?`σ에 섞여 극단값이 <b>z = ${fmt(zf,2)}</b>`:`검증 극단값이 σ 계산에 섞여 <b>z = ${fmt(zf,2)}</b>로 보입니다`;
+      document.getElementById('explain').innerHTML = big
+        ? `검증 데이터가 변환기 ‘학습’에 쓰였습니다. 평가가 <b>낙관적</b>으로 될 수 있습니다.`
+        : `σ가 ${fmt(STAT.train.s,2)}에서 ${fmt(STAT.full.s,2)}로 커져, 훈련 범위를 크게 벗어난 검증 값이 덜 낯설어 보입니다. 검증 데이터의 정보가 이미 변환에 들어갔으므로 검증은 더 이상 ‘처음 보는 데이터’를 흉내 내지 못하고, 평가가 실제보다 <b>낙관적</b>으로 될 수 있습니다.`;
+    } else {
+      document.getElementById('result').innerHTML= big?`transform만 하면 <b>z = ${fmt(ztr,2)}</b>`:`검증에는 transform만, 극단값은 <b>z = ${fmt(ztr,2)}</b>`;
+      document.getElementById('explain').innerHTML = big
+        ? `fit은 훈련 데이터로만. 검증은 실전처럼 <b>처음 보는 값</b>으로 남습니다.`
+        : `변환기는 훈련 데이터 20개로만 fit했고, 검증 8개에는 같은 μ·σ로 transform만 했습니다. 검증 극단값이 훈련 범위를 한참 벗어났다는 사실이 그대로 드러나, 배포 뒤 만날 상황을 <b>정직하게</b> 흉내 냅니다.`;
+    }
+
+    document.getElementById('rows').innerHTML = ['full','train'].map(k=>{
+      const s=STAT[k], on=k===mode;
+      return `<tr style="${on?'font-weight:500':'color:var(--label)'}"><td>${k==='full'?'분할 전 전체 fit':'훈련만 fit'}</td><td>${k==='full'?'훈련 20 + 검증 8':'훈련 20'}</td><td>${fmt(s.m,3)}</td><td>${fmt(s.s,3)}</td><td>${fmt((vmax-s.m)/s.s,2)}</td></tr>`;
+    }).join('');
+    document.getElementById('formula').textContent = mode==='full'
+      ? `scaler.fit(X_전체) → X_train, X_val 분할 → 검증 극단값 ${vmax}: (${vmax} − ${fmt(st.m,3)}) / ${fmt(st.s,3)} = ${fmt(zm,2)}`
+      : `X_train, X_val 분할 → scaler.fit(X_train) → transform(X_train), transform(X_val) → (${vmax} − ${fmt(st.m,3)}) / ${fmt(st.s,3)} = ${fmt(zm,2)}`;
+  }
+  function arrowHead(x,y,fx,fy,color,F){
+    const a=Math.atan2(y-fy,x-fx), s=7*F;
+    el('path',{d:`M${x} ${y} L${x-s*Math.cos(a-0.45)} ${y-s*Math.sin(a-0.45)} L${x-s*Math.cos(a+0.45)} ${y-s*Math.sin(a+0.45)} Z`,fill:color});
+  }
+
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+    mode=b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b)); draw();
+  }));
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){
+    document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on);
+    document.querySelector('[data-mode="full"]').textContent = on?'전체로 fit':'분할 전에 전체로 fit';
+    document.querySelector('[data-mode="train"]').textContent = on?'훈련만 fit':'훈련 데이터로만 fit';
+    draw();
+  }
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?mode=train&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('mode')) document.querySelector(`[data-mode="${u.get('mode')}"]`)?.click();
+  if(u.get('shorts')==='1') setShorts(true);
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>지니로 자르는 나무</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#2F45D8; --lining2:#B5481A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#7F8DFF; --lining2:#EE8A52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#7F8DFF; --lining2:#EE8A52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--accent)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:disabled{color:var(--label);cursor:default}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sl{display:flex;align-items:center;gap:10px}
+.sl input[type=range]{accent-color:var(--ink);width:120px}
+.sl output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:1.5em}
+.params{display:none}
+figure{margin:0 0 16px;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:6px 0}
+figure.scroll{overflow-x:auto}
+figure.scroll svg{min-width:600px}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label);margin:22px 0 8px}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .controls, body.shorts .extra{display:none}
+body.shorts .params{display:block;margin:6px 0 12px;font-size:14px}
+body.shorts .result{font-size:23px}
+body.shorts h1{font-size:26px}
+body.shorts .insight{padding:14px 16px;margin:14px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 05 나무·앙상블 · VIZ-14</div>
+  <h1>나무는 어디를 자를까<span class="dot">.</span></h1>
+  <p class="lede">결정나무는 매번 가로 또는 세로로 한 번 자를 곳을 찾습니다. 기준은 ‘자른 뒤 양쪽이 얼마나 한 범주로 깨끗해지나’, 곧 지니 불순도의 감소량입니다. [한 단계]를 눌러 나무가 어디를 고르는지 보세요. 아래 그래프는 그 마디에서 따져 본 모든 후보입니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">30개 점 · 고정 시드로 만든 예시</span></p>
+
+  <div class="controls">
+    <span class="seg" role="group" aria-label="단계">
+      <button id="stepBtn">한 단계</button>
+      <button id="allBtn">끝까지</button>
+      <button id="resetBtn">처음으로</button>
+    </span>
+    <div class="sl"><label class="mono" for="depth">최대 깊이</label><input type="range" id="depth" min="1" max="4" step="1" value="3" aria-label="최대 깊이"><output id="depthOut"></output></div>
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <p class="mono params" id="params"></p>
+
+  <figure>
+    <svg id="plot" viewBox="0 0 720 560" role="img" aria-label="분할된 영역과 데이터"></svg>
+    <figcaption class="mono">● 범주 A · ○ 범주 B · 영역 바탕 = 그 영역의 다수 범주(파랑 A, 주황 B) · 굵은 강조색 선 = 방금 고른 분할 · 점선 테두리 = 다음에 나눌 영역</figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="선택된 분할">
+    <thead><tr><th>마디</th><th>표본 수</th><th>A / B</th><th>지니</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <p class="sub extra" id="candTitle">분할 후보별 가중 지니</p>
+  <figure class="extra scroll">
+    <svg id="cand" viewBox="0 0 720 250" role="img" aria-label="분할 후보별 가중 지니"></svg>
+    <figcaption class="mono">실선·채운 점 = x₁(가로축)으로 자르기 · 점선·빈 점 = x₂(세로축)로 자르기 · 가로 점선 = 자르기 전 지니 · 강조색 = 가장 낮은 후보(선택)</figcaption>
+  </figure>
+
+  <p class="sub extra">나무 모양</p>
+  <figure class="extra scroll">
+    <svg id="tree" viewBox="0 0 720 300" role="img" aria-label="결정나무 다이어그램"></svg>
+    <figcaption class="mono">각 마디: 표본 수 · A/B 개수 · 지니 · 분할 규칙(왼쪽 = 예) · 강조색 테두리 = 방금 나눈 마디</figcaption>
+  </figure>
+
+  <div class="notes">
+    <p>지니 불순도 G = 1 − Σₖ pₖ² (pₖ는 마디 안 범주 k의 비율). 분할의 가중 지니 = (n왼/n)·G왼 + (n오/n)·G오이고, 감소량 = G부모 − 가중 지니입니다. 후보 임계값은 정렬한 좌표에서 서로 다른 이웃 값의 중간점이며, 왼쪽은 ‘좌표 ≤ 임계값’입니다.</p>
+    <p>CART 방식의 탐욕적 분할입니다. 마디마다 가장 낮은 가중 지니의 분할을 고르고, 동점이면 x₁ 먼저·작은 임계값 먼저를 고릅니다(scikit-learn은 동점일 때 특성 순서를 무작위로 섞으므로 결과가 다를 수 있습니다). 한 단계에 마디 하나를 너비 우선 순서로 나누며, 순수한 마디(G = 0)와 최대 깊이에 닿은 마디는 나누지 않습니다. 가지치기는 하지 않았습니다.</p>
+    <p>scikit-learn의 특성 중요도처럼 감소량에 (n/N)을 곱한 값은 쓰지 않고, 마디 안에서의 감소량을 그대로 표시했습니다. 모든 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 가상 데이터: 고정 시드 mulberry32(21)로 30개 점 생성, 규칙으로 범주를 정한 뒤 2개를 뒤집음(잡음)
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
+  const rnd=mulberry32(21), D=[];
+  for(let i=0;i<30;i++){const x=Math.round((0.5+9*rnd())*10)/10, y=Math.round((0.5+9*rnd())*10)/10;
+    D.push([x,y,((x<4&&y>3.5)||(x>=4&&y>6.5))?1:0]);}
+  {const f1=Math.floor(rnd()*30), f2=Math.floor(rnd()*30); D[f1][2]^=1; if(f2!==f1) D[f2][2]^=1;}
+  // 범주: 1 = A, 0 = B
+
+  const gini = idx => { const n=idx.length; if(!n) return 0; const a=idx.filter(i=>D[i][2]===1).length; const pa=a/n, pb=1-pa; return 1-pa*pa-pb*pb; };
+  const countA = idx => idx.filter(i=>D[i][2]===1).length;
+
+  // 한 마디의 모든 후보 분할 평가
+  function candidates(idx){
+    const out=[[],[]];
+    for(const ax of [0,1]){
+      const vals=[...new Set(idx.map(i=>D[i][ax]))].sort((a,b)=>a-b);
+      for(let k=0;k<vals.length-1;k++){
+        const t=(vals[k]+vals[k+1])/2;
+        const L=idx.filter(i=>D[i][ax]<=t), R=idx.filter(i=>D[i][ax]>t);
+        const w=(L.length*gini(L)+R.length*gini(R))/idx.length;
+        out[ax].push({ax,t,w,L,R});
+      }
+    }
+    return out;
+  }
+  function bestSplit(idx){
+    const c=candidates(idx); let best=null;
+    for(const ax of [0,1]) for(const s of c[ax]) if(!best || s.w < best.w - 1e-12) best=s;
+    return {best,cands:c};
+  }
+
+  // 최대 깊이에 맞춰 전체 나무를 너비 우선으로 미리 계산 → 단계별로 보여 줌
+  let maxDepth=3, step=0, plan=[];
+  function buildPlan(){
+    plan=[];
+    const root={id:0,idx:D.map((_,i)=>i),depth:0,box:[0,10,0,10],parent:null};
+    const queue=[root]; let nid=1;
+    while(queue.length){
+      const nd=queue.shift();
+      const g=gini(nd.idx);
+      if(nd.depth>=maxDepth || g<=1e-12 || nd.idx.length<2) continue;
+      const {best,cands}=bestSplit(nd.idx);
+      if(!best || g-best.w<=1e-12) continue;
+      const b=nd.box;
+      const L={id:nid++,idx:best.L,depth:nd.depth+1,parent:nd,box:best.ax===0?[b[0],best.t,b[2],b[3]]:[b[0],b[1],b[2],best.t]};
+      const R={id:nid++,idx:best.R,depth:nd.depth+1,parent:nd,box:best.ax===0?[best.t,b[1],b[2],b[3]]:[b[0],b[1],best.t,b[3]]};
+      plan.push({node:nd,split:best,cands,L,R,g});
+      queue.push(L,R);
+    }
+    plan.root=root;
+  }
+  // 현재 단계까지의 나무(잎 목록, 자식 연결)
+  function treeAt(s){
+    const kids=new Map();
+    for(let k=0;k<s;k++) kids.set(plan[k].node.id,plan[k]);
+    const leaves=[];
+    (function walk(nd){ const p=kids.get(nd.id); if(p){walk(p.L);walk(p.R);} else leaves.push(nd); })(plan.root);
+    return {kids,leaves};
+  }
+
+  const svg=document.getElementById('plot'), csvg=document.getElementById('cand'), tsvg=document.getElementById('tree');
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const axName=ax=>ax===0?'x₁':'x₂';
+  const f3=v=>fmt(v,3);
+
+  const W=720, M={l:56,r:24,t:22,b:44}, S=46; // 1 단위 = 46px
+  const px=x=>M.l+x*S, py=y=>M.t+(10-y)*S;
+
+  function drawPlot(big){
+    svg.innerHTML='';
+    const F=big?1.5:1;
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), l1=css('--lining'), l2=css('--lining2');
+    const PW=10*S; // 460
+    const ox = 0;
+    const g0=el('g',{transform:`translate(${ox},0)`},svg);
+    const {kids,leaves}=treeAt(step);
+    // 잎 영역
+    leaves.forEach(nd=>{
+      const b=nd.box, a=countA(nd.idx), n=nd.idx.length, maj=a*2>=n?1:0;
+      el('rect',{x:px(b[0]),y:py(b[3]),width:(b[1]-b[0])*S,height:(b[3]-b[2])*S,fill:maj?l1:l2,opacity:a*2===n?0.04:0.10},g0);
+    });
+    // 격자
+    for(let v=0;v<=10;v+=2){
+      el('line',{x1:px(v),x2:px(v),y1:py(10),y2:py(0),stroke:rule,'stroke-width':1},g0);
+      el('line',{x1:px(0),x2:px(10),y1:py(v),y2:py(v),stroke:rule,'stroke-width':1},g0);
+      const t=el('text',{x:px(v),y:py(0)+18*F,'text-anchor':'middle','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},g0); t.textContent=v;
+      const t2=el('text',{x:px(0)-8,y:py(v)+4*F,'text-anchor':'end','font-size':12*F,fill:label,'font-family':'IBM Plex Mono'},g0); t2.textContent=v;
+    }
+    const xl=el('text',{x:px(10)+8,y:py(0)+4,'font-size':13*F,fill:label},g0); xl.textContent='x₁';
+    const yl=el('text',{x:px(0)+4,y:py(10)-4,'text-anchor':'start','font-size':13*F,fill:label},g0); yl.textContent=big?'':'x₂ ↑';
+    el('rect',{x:px(0),y:py(10),width:PW,height:PW,fill:'none',stroke:label,'stroke-width':1},g0);
+    // 분할선
+    for(let k=0;k<step;k++){
+      const p=plan[k], b=p.node.box, last=k===step-1;
+      const at=p.split.ax===0?{x1:px(p.split.t),x2:px(p.split.t),y1:py(b[3]),y2:py(b[2])}:{x1:px(b[0]),x2:px(b[1]),y1:py(p.split.t),y2:py(p.split.t)};
+      el('line',Object.assign(at,{stroke:last?acc:ink,'stroke-width':(last?3:1.6)*F}),g0);
+    }
+    // 다음에 나눌 영역
+    if(step<plan.length){
+      const b=plan[step].node.box;
+      el('rect',{x:px(b[0])+2,y:py(b[3])+2,width:(b[1]-b[0])*S-4,height:(b[3]-b[2])*S-4,fill:'none',stroke:acc,'stroke-width':1.4*F,'stroke-dasharray':`${5*F} ${4*F}`},g0);
+    }
+    // 점
+    D.forEach(d=>{
+      el('circle',{cx:px(d[0]),cy:py(d[1]),r:6*F,fill:d[2]?ink:bg,stroke:ink,'stroke-width':1.5*F},g0);
+    });
+    // 범례(그림 안)
+    const ly=py(0)+(big?50:36);
+    [[1,'범주 A'],[0,'범주 B']].forEach((it,j)=>{
+      const lx=px(0)+j*(big?130:100);
+      el('circle',{cx:lx+6,cy:ly-5*F,r:6*F,fill:it[0]?ink:bg,stroke:ink,'stroke-width':1.5*F},g0);
+      const t=el('text',{x:lx+18*F,y:ly,'font-size':13*F,fill:label},g0); t.textContent=it[1];
+    });
+    svg.setAttribute('viewBox', big? `${px(0)-60} 0 ${PW+110} ${ly+12}` : `0 0 ${W} ${ly+14}`);
+  }
+
+  function drawCand(info){
+    csvg.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    const H=250, m={l:56,r:24,t:18,b:40}, cw=W-m.l-m.r, ch=H-m.t-m.b;
+    const X=t=>m.l+t/10*cw, Y=v=>m.t+(1-v/0.5)*ch;
+    for(let v=0;v<=0.5001;v+=0.1){
+      el('line',{x1:m.l,x2:W-m.r,y1:Y(v),y2:Y(v),stroke:rule,'stroke-width':1},csvg);
+      const t=el('text',{x:m.l-8,y:Y(v)+4,'text-anchor':'end','font-size':12,fill:label,'font-family':'IBM Plex Mono'},csvg); t.textContent=fmt(v,1);
+    }
+    for(let v=0;v<=10;v+=2){const t=el('text',{x:X(v),y:H-m.b+18,'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Mono'},csvg); t.textContent=v;}
+    const tl=el('text',{x:W-m.r,y:H-6,'text-anchor':'end','font-size':12,fill:label},csvg); tl.textContent='임계값';
+    const yl=el('text',{x:m.l,y:m.t-4,'font-size':12,fill:label},csvg); yl.textContent='';
+    if(!info){ const t=el('text',{x:W/2,y:H/2,'text-anchor':'middle','font-size':14,fill:label},csvg); t.textContent='더 나눌 마디가 없습니다'; return; }
+    // 부모 지니
+    el('line',{x1:m.l,x2:W-m.r,y1:Y(info.g),y2:Y(info.g),stroke:label,'stroke-width':1.2,'stroke-dasharray':'2 4'},csvg);
+    const pt=el('text',{x:W-m.r-4,y:Y(info.g)-6,'text-anchor':'end','font-size':12,fill:label},csvg); pt.textContent=`자르기 전 지니 ${f3(info.g)}`;
+    [0,1].forEach(ax=>{
+      const c=info.cands[ax]; if(!c.length) return;
+      el('polyline',{points:c.map(s=>X(s.t)+','+Y(s.w)).join(' '),fill:'none',stroke:ink,'stroke-width':1.4,'stroke-dasharray':ax?'5 4':'none'},csvg);
+      c.forEach(s=>el('circle',{cx:X(s.t),cy:Y(s.w),r:3,fill:ax?bg:ink,stroke:ink,'stroke-width':1.2},csvg));
+    });
+    const b=info.split;
+    el('circle',{cx:X(b.t),cy:Y(b.w),r:8,fill:'none',stroke:acc,'stroke-width':2.4},csvg);
+    const lbl=el('text',{x:X(b.t)+(b.t>7?-12:12),y:Y(b.w)+(Y(b.w)>H-m.b-24?-12:18),'text-anchor':b.t>7?'end':'start','font-size':13,fill:acc},csvg);
+    lbl.textContent=`${axName(b.ax)} ≤ ${fmt(b.t,2)} · 가중 지니 ${f3(b.w)}`;
+  }
+
+  function drawTree(){
+    tsvg.innerHTML='';
+    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
+    const {kids,leaves}=treeAt(step);
+    const nL=leaves.length, colW=Math.min(150,(W-16)/nL), bw=Math.min(128,colW-6), bh=54, lvH=78;
+    const pos=new Map(); let li=0, maxD=0;
+    (function place(nd){
+      maxD=Math.max(maxD,nd.depth);
+      const p=kids.get(nd.id);
+      if(!p){ pos.set(nd.id,8+colW*(li++)+colW/2); return; }
+      place(p.L); place(p.R); pos.set(nd.id,(pos.get(p.L.id)+pos.get(p.R.id))/2);
+    })(plan.root);
+    const H=16+maxD*lvH+bh+12; tsvg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    const yOf=d=>10+d*lvH;
+    const lastId = step>0? plan[step-1].node.id : -1, nextId = step<plan.length? plan[step].node.id : -1;
+    const fs = bw<90?10:12;
+    (function edges(nd){
+      const p=kids.get(nd.id); if(!p) return;
+      [p.L,p.R].forEach((c,j)=>{
+        el('line',{x1:pos.get(nd.id),y1:yOf(nd.depth)+bh,x2:pos.get(c.id),y2:yOf(c.depth),stroke:label,'stroke-width':1},tsvg);
+        const t=el('text',{x:(pos.get(nd.id)+pos.get(c.id))/2+(j?6:-6),y:(yOf(nd.depth)+bh+yOf(c.depth))/2+4,'text-anchor':j?'start':'end','font-size':fs,fill:label},tsvg);
+        t.textContent=j?'아니오':'예';
+        edges(c);
+      });
+    })(plan.root);
+    (function nodes(nd){
+      const x=pos.get(nd.id), y=yOf(nd.depth), p=kids.get(nd.id), a=countA(nd.idx), n=nd.idx.length;
+      const hl = nd.id===lastId, nx = nd.id===nextId;
+      el('rect',{x:x-bw/2,y,width:bw,height:bh,fill:bg,stroke:hl?acc:(nx?acc:ink),'stroke-width':hl?2.4:1,'stroke-dasharray':nx&&!hl?'4 3':'none'},tsvg);
+      const l1=el('text',{x,y:y+16,'text-anchor':'middle','font-size':fs,fill:ink,'font-family':'IBM Plex Mono'},tsvg); l1.textContent=`n=${n} · ${a}/${n-a}`;
+      const l2=el('text',{x,y:y+31,'text-anchor':'middle','font-size':fs,fill:label,'font-family':'IBM Plex Mono'},tsvg); l2.textContent=`G ${f3(gini(nd.idx))}`;
+      const l3=el('text',{x,y:y+47,'text-anchor':'middle','font-size':fs,fill:p?ink:label,'font-weight':p?500:400},tsvg);
+      l3.textContent = p? `${axName(p.split.ax)} ≤ ${fmt(p.split.t,2)}` : (a*2>n?'잎 → A':a*2<n?'잎 → B':'잎 · 동수');
+      if(p){nodes(p.L);nodes(p.R);}
+    })(plan.root);
+  }
+
+  function draw(){
+    const big=document.body.classList.contains('shorts');
+    document.getElementById('depthOut').textContent=maxDepth;
+    document.getElementById('stepBtn').disabled = step>=plan.length;
+    document.getElementById('allBtn').disabled = step>=plan.length;
+    drawPlot(big); drawTree();
+    const {leaves}=treeAt(step);
+    const err=leaves.reduce((s,nd)=>{const a=countA(nd.idx);return s+Math.min(a,nd.idx.length-a);},0);
+    document.getElementById('params').textContent=`깊이 ≤ ${maxDepth} · 분할 ${step}/${plan.length} · 훈련 오분류 ${err}개`;
+
+    const R=document.getElementById('result'), E=document.getElementById('explain');
+    if(step===0){
+      const g=gini(plan.root.idx), a=countA(plan.root.idx);
+      R.innerHTML=`처음 상태: 30개 점, 지니 <b>${f3(g)}</b>`;
+      E.innerHTML= big? `A ${a}개, B ${30-a}개. 어디를 자르면 가장 깨끗해질까요?` :
+        `A ${a}개, B ${30-a}개가 섞여 있어 지니 = 1 − (${a}/30)² − (${30-a}/30)² = ${f3(g)}입니다. 두 범주가 반반일 때 지니는 최댓값 0.5입니다. [한 단계]를 누르면 가로·세로 모든 후보 중 가중 지니가 가장 낮은 분할을 고릅니다.`;
+      document.getElementById('rows').innerHTML=`<tr><td>뿌리</td><td>30</td><td>${a} / ${30-a}</td><td>${f3(g)}</td></tr>`;
+      document.getElementById('formula').textContent='';
+      document.getElementById('candTitle').textContent='다음 분할(뿌리 마디)의 후보별 가중 지니';
+      drawCand(plan[0]?{...plan[0]}:null);
+      return;
+    }
+    const p=plan[step-1], s=p.split;
+    const nL=s.L.length, nR=s.R.length, n=p.node.idx.length, gL=gini(s.L), gR=gini(s.R), aL=countA(s.L), aR=countA(s.R);
+    const dec=p.g-s.w;
+    const nC = p.cands[0].length+p.cands[1].length;
+    R.innerHTML = big
+      ? `<b>${axName(s.ax)} ≤ ${fmt(s.t,2)}</b>에서 자름 <span style="font-size:17px">(분할 ${step})</span><br><span style="font-size:19px">가중 지니 ${f3(p.g)} → ${f3(s.w)}</span>`
+      : `분할 ${step}: <b>${axName(s.ax)} ≤ ${fmt(s.t,2)}</b> · 가중 지니 ${f3(p.g)} → <b>${f3(s.w)}</b> (감소 ${f3(dec)})`;
+    const done = step===plan.length;
+    E.innerHTML = big
+      ? `왼쪽 ${nL}개(G ${f3(gL)}) · 오른쪽 ${nR}개(G ${f3(gR)})${done?' · 완성':''}`
+      : `표본 ${n}개 마디에서 후보 ${nC}개(x₁ ${p.cands[0].length}개, x₂ ${p.cands[1].length}개)를 모두 따져 가중 지니가 가장 낮은 곳을 골랐습니다. 왼쪽 ${nL}개는 지니 ${f3(gL)}, 오른쪽 ${nR}개는 지니 ${f3(gR)}입니다.` +
+        (done? ` 최대 깊이 ${maxDepth}까지 더 나눌 마디가 없어 나무가 완성되었습니다. 깊이를 키우면 더 잘게 나누지만, 잡음 점 하나를 위해 자르는 분할도 생깁니다.` : ` 다음 단계에서는 점선으로 표시한 영역을 나눕니다.`);
+    document.getElementById('rows').innerHTML=
+      `<tr><td>나누기 전</td><td>${n}</td><td>${countA(p.node.idx)} / ${n-countA(p.node.idx)}</td><td>${f3(p.g)}</td></tr>`+
+      `<tr><td>왼쪽 (${axName(s.ax)} ≤ ${fmt(s.t,2)})</td><td>${nL}</td><td>${aL} / ${nL-aL}</td><td>${f3(gL)}</td></tr>`+
+      `<tr><td>오른쪽 (${axName(s.ax)} &gt; ${fmt(s.t,2)})</td><td>${nR}</td><td>${aR} / ${nR-aR}</td><td>${f3(gR)}</td></tr>`+
+      `<tr style="font-weight:500"><td>가중평균 · 감소량</td><td></td><td></td><td>${f3(s.w)} · −${f3(dec)}</td></tr>`;
+    document.getElementById('formula').textContent =
+      `가중 지니 = (${nL}/${n})×${f3(gL)} + (${nR}/${n})×${f3(gR)} = ${fmt(s.w,4)} · 감소량 = ${fmt(p.g,4)} − ${fmt(s.w,4)} = ${fmt(dec,4)}`;
+    document.getElementById('candTitle').textContent=`분할 ${step}의 후보별 가중 지니 (표본 ${n}개 마디)`;
+    drawCand(p);
+  }
+
+  const sD=document.getElementById('depth');
+  sD.addEventListener('input',()=>{maxDepth=+sD.value; buildPlan(); step=Math.min(step,plan.length); draw();});
+  document.getElementById('stepBtn').addEventListener('click',()=>{if(step<plan.length){step++;draw();}});
+  document.getElementById('allBtn').addEventListener('click',()=>{step=plan.length;draw();});
+  document.getElementById('resetBtn').addEventListener('click',()=>{step=0;draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?depth=3&step=2&shorts=1  (step은 분할 횟수, 넘치면 마지막 단계)
+  const u=new URLSearchParams(location.search);
+  if(u.get('depth')){const d=Math.round(+u.get('depth')); if(d>=1&&d<=4){maxDepth=d; sD.value=d;}}
+  buildPlan();
+  if(u.get('step')){const s=Math.round(+u.get('step')); if(s>=0) step=Math.min(s,plan.length);}
+  if(u.get('shorts')==='1') setShorts(true);
+  window.__tree={D,plan:()=>plan.map(p=>({node:p.node.idx.length,depth:p.node.depth,ax:p.split.ax,t:p.split.t,w:p.split.w,g:p.g,nL:p.split.L.length,nR:p.split.R.length}))};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

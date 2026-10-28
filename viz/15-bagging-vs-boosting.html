@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>배깅과 부스팅</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#2F45D8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#7F8DFF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#7F8DFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--accent)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin:20px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sl{display:flex;align-items:center;gap:10px}
+.sl input[type=range]{accent-color:var(--ink);width:100%;min-width:0}
+.sl label{white-space:nowrap}
+.sl output{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:2em;text-align:right;font-variant-numeric:tabular-nums}
+.params{display:none}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.panels{grid-template-columns:1fr}}
+.panel h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:19px;margin:0 0 2px}
+.panel .how{font-size:14px;color:var(--ink2);margin:0 0 8px;line-height:1.6}
+.panel .sl{margin:4px 0 10px}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+figcaption{padding:8px 12px;border-top:1px solid var(--rule);line-height:1.6}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere;margin:6px 0}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:24px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .controls, body.shorts .how, body.shorts .panel .sl, body.shorts .sub2{display:none}
+body.shorts .params{display:none}
+body.shorts .panels{grid-template-columns:1fr;gap:6px}
+body.shorts .panel h2{font-size:17px;margin:0}
+body.shorts .result{font-size:20px}
+body.shorts h1{font-size:25px;margin:4px 0 4px}
+body.shorts .insight{padding:12px 14px;margin:10px 0}
+body.shorts .insight #explain{font-size:15px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 05 나무·앙상블 · VIZ-15</div>
+  <h1>여러 모델은 어떻게 힘을 합칠까<span class="dot">.</span></h1>
+  <p class="lede">같은 데이터에 작은 회귀나무 여러 개를 쓰는 두 가지 방법입니다. 배깅은 서로 다른 부트스트랩 표본으로 나무를 따로따로 키워 평균을 내고, 부스팅은 앞 단계가 못 맞힌 잔차를 다음 나무가 차례로 메웁니다. 두 슬라이더를 움직여 선이 어떻게 변하는지 비교해 보세요.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">40개 점 · 고정 시드 · 참 함수 f(x) = 1.5·sin(0.9x) + 0.25x + 잡음</span></p>
+
+  <div class="controls">
+    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
+      </span></div>
+  </div>
+  <p class="mono params" id="params"></p>
+
+  <div class="panels">
+    <div class="panel">
+      <h2>배깅 · 나란히</h2>
+      <p class="how">부트스트랩 표본마다 깊이 3 회귀나무를 따로 학습 → 예측을 평균</p>
+      <div class="sl"><label class="mono" for="trees">나무 수</label><input type="range" id="trees" min="1" max="50" step="1" value="10" aria-label="나무 수"><output id="treesOut"></output></div>
+      <figure>
+        <svg id="bag" viewBox="0 0 360 300" role="img" aria-label="배깅 예측"></svg>
+        <svg id="bagSub" class="sub2" viewBox="0 0 360 110" role="img" aria-label="마지막 나무의 부트스트랩 표본"></svg>
+        <figcaption class="mono">옅은 선 = 나무 하나 · 굵은 선 = 평균 · 가는 점선 = 참 함수 · 아래 막대 = 마지막 나무의 표본에서 각 점이 뽑힌 횟수</figcaption>
+      </figure>
+    </div>
+    <div class="panel">
+      <h2>부스팅 · 차례로</h2>
+      <p class="how">잔차에 스텀프(깊이 1)를 맞춰 학습률 0.3만큼 더하기를 반복</p>
+      <div class="sl"><label class="mono" for="step">단계</label><input type="range" id="step" min="0" max="50" step="1" value="5" aria-label="부스팅 단계"><output id="stepOut"></output></div>
+      <figure>
+        <svg id="boost" viewBox="0 0 360 300" role="img" aria-label="부스팅 예측"></svg>
+        <svg id="boostSub" class="sub2" viewBox="0 0 360 110" role="img" aria-label="현재 잔차"></svg>
+        <figcaption class="mono">굵은 선 = 현재 예측 · 세로 막대 = 잔차(실제 − 예측) · 아래 = 잔차 막대와 다음 단계 스텀프(점선)</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+  </div>
+
+  <table aria-label="오차 비교">
+    <thead><tr><th>지표</th><th>배깅</th><th>부스팅</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="formula" id="formula"></p>
+
+  <div class="notes">
+    <p>회귀나무는 제곱오차(SSE)를 가장 많이 줄이는 임계값(서로 다른 이웃 x의 중간점)에서 나누고, 잎의 값은 그 잎 표본의 평균입니다. 배깅 나무는 깊이 3, 부스팅은 깊이 1(스텀프)이며 잎당 최소 표본은 1입니다.</p>
+    <p>배깅: 나무 k는 시드 1000 + k의 mulberry32로 40개를 복원추출한 표본으로 학습합니다. 나무 수를 늘려도 앞 나무들은 바뀌지 않습니다. 특성이 x 하나뿐인 1차원 예제라 랜덤 포레스트의 ‘분할마다 특성 무작위 선택’은 적용되지 않습니다. 그래서 이 그림은 엄밀히 랜덤 포레스트가 아니라 회귀나무의 배깅입니다(진짜 랜덤 포레스트는 특성 무작위 선택으로 나무끼리의 상관을 더 낮춥니다).</p>
+    <p>부스팅: 제곱오차 그래디언트 부스팅입니다. F₀ = 평균(y), 단계 m마다 잔차 rᵢ = yᵢ − Fₘ₋₁(xᵢ)(제곱오차의 음의 그래디언트)에 스텀프 hₘ을 맞추고 Fₘ = Fₘ₋₁ + 0.3·hₘ으로 갱신합니다. 표본 추출(확률적 부스팅)은 쓰지 않았습니다.</p>
+    <p>‘참 함수 대비 MSE’는 데이터를 만든 f(x)와 예측의 차이를 x = 0~10의 501개 격자점에서 평균한 값입니다. 실제 문제에서는 f를 모르므로 검증 데이터로 대신 잽니다. 모든 수치는 이 페이지가 브라우저에서 직접 계산한 값입니다.</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
+  const f = x => 1.5*Math.sin(0.9*x) + 0.25*x;
+  // 가상 데이터: x ~ 균등(0,10), 잡음 ~ 정규(0, 0.5²) (Box–Muller), 소수 둘째 자리로 반올림
+  const N=40, r0=mulberry32(5), X=[], Y=[];
+  for(let i=0;i<N;i++){
+    const x=Math.round(r0()*1000)/100;
+    const u1=Math.max(r0(),1e-12), u2=r0();
+    const z=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+    X.push(x); Y.push(Math.round((f(x)+0.5*z)*100)/100);
+  }
+
+  // 회귀나무(SSE 최소, 깊이 제한). 반환: 예측 함수 + 잎 구간 목록
+  function fitTree(xs, ys, depth){
+    function build(idx, d){
+      const n=idx.length, mean=idx.reduce((s,i)=>s+ys[i],0)/n;
+      if(d===0 || n<2) return {leaf:true, v:mean};
+      const ord=idx.slice().sort((a,b)=>xs[a]-xs[b]);
+      let tot=0, tot2=0; ord.forEach(i=>{tot+=ys[i]; tot2+=ys[i]*ys[i];});
+      const sse0 = tot2 - tot*tot/n;
+      let best=null, sl=0, sl2=0;
+      for(let k=0;k<n-1;k++){
+        const i=ord[k]; sl+=ys[i]; sl2+=ys[i]*ys[i];
+        if(xs[ord[k]]===xs[ord[k+1]]) continue;
+        const nl=k+1, nr=n-nl, sr=tot-sl, sr2=tot2-sl2;
+        const sse=(sl2-sl*sl/nl)+(sr2-sr*sr/nr);
+        if(!best || sse<best.sse-1e-12) best={sse, t:(xs[ord[k]]+xs[ord[k+1]])/2};
+      }
+      if(!best || sse0-best.sse<=1e-12) return {leaf:true, v:mean};
+      const L=idx.filter(i=>xs[i]<=best.t), R=idx.filter(i=>xs[i]>best.t);
+      return {leaf:false, t:best.t, l:build(L,d-1), r:build(R,d-1)};
+    }
+    const root=build(xs.map((_,i)=>i), depth);
+    const pred = x => { let nd=root; while(!nd.leaf) nd = x<=nd.t?nd.l:nd.r; return nd.v; };
+    return {root, pred};
+  }
+
+  // 배깅: 나무 50그루 미리 학습
+  const BAG_DEPTH=3, MAXT=50;
+  const bagTrees=[], bagCounts=[];
+  for(let k=1;k<=MAXT;k++){
+    const r=mulberry32(1000+k), bx=[], by=[], cnt=new Array(N).fill(0);
+    for(let i=0;i<N;i++){const j=Math.floor(r()*N); bx.push(X[j]); by.push(Y[j]); cnt[j]++;}
+    bagTrees.push(fitTree(bx,by,BAG_DEPTH)); bagCounts.push(cnt);
+  }
+  // 부스팅: 50단계 미리 계산
+  const ETA=0.3, MAXS=50;
+  const F0 = Y.reduce((a,b)=>a+b,0)/N;
+  const stumps=[]; // 단계 m의 스텀프(잔차에 맞춘 것)
+  {
+    let F=new Array(N).fill(F0);
+    for(let m=1;m<=MAXS;m++){
+      const res=Y.map((y,i)=>y-F[i]);
+      const h=fitTree(X,res,1); stumps.push(h);
+      F=F.map((v,i)=>v+ETA*h.pred(X[i]));
+    }
+  }
+  const boostPred = (x,s) => { let v=F0; for(let m=0;m<s;m++) v+=ETA*stumps[m].pred(x); return v; };
+  const bagPred = (x,B) => { let v=0; for(let k=0;k<B;k++) v+=bagTrees[k].pred(x); return v/B; };
+
+  const GRID=[]; for(let i=0;i<=500;i++) GRID.push(i/50);
+  const mse = (pred,xs,ys) => xs.reduce((s,x,i)=>s+(pred(x)-ys[i])**2,0)/xs.length;
+  const mseTrue = pred => GRID.reduce((s,x)=>s+(pred(x)-f(x))**2,0)/GRID.length;
+
+  const NS='http://www.w3.org/2000/svg';
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  const YR=[-2.5,5.5];
+  function frame(svg, big, H){
+    const F=big?1.35:1, m={l:big?38:32,r:10,t:10,b:big?24:24};
+    const W=360, X0=v=>m.l+v/10*(W-m.l-m.r), Y0=v=>m.t+(YR[1]-v)/(YR[1]-YR[0])*(H-m.t-m.b);
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    const label=css('--label'), rule=css('--rule');
+    for(let v=-2;v<=5;v+=2){
+      el('line',{x1:m.l,x2:W-m.r,y1:Y0(v),y2:Y0(v),stroke:rule,'stroke-width':1},svg);
+      const t=el('text',{x:m.l-5,y:Y0(v)+4*F,'text-anchor':'end','font-size':11*F,fill:label,'font-family':'IBM Plex Mono'},svg); t.textContent=v;
+    }
+    for(let v=0;v<=10;v+=2){const t=el('text',{x:X0(v),y:H-m.b+15*F,'text-anchor':'middle','font-size':11*F,fill:label,'font-family':'IBM Plex Mono'},svg); t.textContent=v;}
+    return {X0,Y0,F,m,W,H};
+  }
+  function stepPath(pred, X0, Y0){
+    // 계단 함수: 격자에서 값이 바뀌는 곳을 수직으로
+    let d='', prev=null;
+    GRID.forEach((x,i)=>{
+      const v=pred(x);
+      if(i===0) d+=`M${X0(x).toFixed(1)},${Y0(v).toFixed(1)}`;
+      else { if(Math.abs(v-prev)>1e-12) d+=`L${X0(x).toFixed(1)},${Y0(prev).toFixed(1)}`; d+=`L${X0(x).toFixed(1)},${Y0(v).toFixed(1)}`; }
+      prev=v;
+    });
+    return d;
+  }
+  function truePath(X0,Y0){ return GRID.map((x,i)=>(i?'L':'M')+X0(x).toFixed(1)+','+Y0(f(x)).toFixed(1)).join(''); }
+
+  let B=10, S=5;
+  function draw(){
+    const big=document.body.classList.contains('shorts');
+    const ink=css('--ink'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), lin=css('--lining'), rule=css('--rule');
+    const H = big?168:300;
+    document.getElementById('treesOut').textContent=B;
+    document.getElementById('stepOut').textContent=S;
+
+    // 배깅
+    const bag=document.getElementById('bag'); bag.innerHTML='';
+    let fr=frame(bag,big,H);
+    for(let k=0;k<B;k++) el('path',{d:stepPath(bagTrees[k].pred,fr.X0,fr.Y0),fill:'none',stroke:lin,'stroke-width':1,opacity:Math.max(0.12,Math.min(0.5,3/B))},bag);
+    el('path',{d:truePath(fr.X0,fr.Y0),fill:'none',stroke:label,'stroke-width':1.2,'stroke-dasharray':'3 3'},bag);
+    X.forEach((x,i)=>el('circle',{cx:fr.X0(x),cy:fr.Y0(Y[i]),r:2.8*fr.F,fill:bg,stroke:ink,'stroke-width':1.1},bag));
+    el('path',{d:stepPath(x=>bagPred(x,B),fr.X0,fr.Y0),fill:'none',stroke:ink,'stroke-width':2.6*fr.F,'stroke-linejoin':'round'},bag);
+    {const t=el('text',{x:fr.m.l+6,y:fr.m.t+14*fr.F,'font-size':12*fr.F,fill:ink,'font-family':'IBM Plex Mono'},bag); t.textContent=B===1?'나무 1그루':`나무 ${B}그루 평균`;}
+
+    // 배깅 아래: 마지막 나무의 부트스트랩 횟수
+    const bs=document.getElementById('bagSub'); bs.innerHTML='';
+    {
+      const W=360, m={l:32,r:10,t:14,b:18}, h=110, X0=v=>m.l+v/10*(W-m.l-m.r), cnt=bagCounts[B-1], mx=5;
+      const Yc=c=>h-m.b-c/mx*(h-m.t-m.b);
+      el('line',{x1:m.l,x2:W-m.r,y1:Yc(0),y2:Yc(0),stroke:label,'stroke-width':1},bs);
+      X.forEach((x,i)=>{ if(!cnt[i]) el('circle',{cx:X0(x),cy:Yc(0),r:2.2,fill:bg,stroke:label,'stroke-width':1},bs); });
+      X.forEach((x,i)=>{ if(cnt[i]) el('line',{x1:X0(x),x2:X0(x),y1:Yc(0),y2:Yc(cnt[i]),stroke:lin,'stroke-width':3},bs); });
+      const zero=cnt.filter(c=>c===0).length;
+      const t=el('text',{x:m.l,y:10,'font-size':11,fill:label},bs); t.textContent=`나무 ${B}의 표본: 안 뽑힌 점 ${zero}개(○) · 최다 ${Math.max(...cnt)}번`;
+      for(const c of [1,3,5]){const tt=el('text',{x:m.l-5,y:Yc(c)+4,'text-anchor':'end','font-size':10,fill:label,'font-family':'IBM Plex Mono'},bs); tt.textContent=c;}
+    }
+
+    // 부스팅
+    const bo=document.getElementById('boost'); bo.innerHTML='';
+    fr=frame(bo,big,H);
+    const Fp=x=>boostPred(x,S);
+    el('path',{d:truePath(fr.X0,fr.Y0),fill:'none',stroke:label,'stroke-width':1.2,'stroke-dasharray':'3 3'},bo);
+    X.forEach((x,i)=>el('line',{x1:fr.X0(x),x2:fr.X0(x),y1:fr.Y0(Y[i]),y2:fr.Y0(Fp(x)),stroke:acc,'stroke-width':1.4*fr.F,opacity:.75},bo));
+    X.forEach((x,i)=>el('circle',{cx:fr.X0(x),cy:fr.Y0(Y[i]),r:2.8*fr.F,fill:bg,stroke:ink,'stroke-width':1.1},bo));
+    el('path',{d:stepPath(Fp,fr.X0,fr.Y0),fill:'none',stroke:ink,'stroke-width':2.6*fr.F,'stroke-linejoin':'round'},bo);
+    {const t=el('text',{x:fr.m.l+6,y:fr.m.t+14*fr.F,'font-size':12*fr.F,fill:ink,'font-family':'IBM Plex Mono'},bo); t.textContent=S===0?'F₀ = 평균(y)':`F₀ + 스텀프 ${S}개`;}
+
+    // 부스팅 아래: 현재 잔차 막대 + 다음 스텀프
+    const bsub=document.getElementById('boostSub'); bsub.innerHTML='';
+    const res=Y.map((y,i)=>y-Fp(X[i]));
+    {
+      const W=360, m={l:32,r:10,t:16,b:10}, h=110, X0=v=>m.l+v/10*(W-m.l-m.r), lim=3;
+      const Yr=v=>m.t+(lim-Math.max(-lim,Math.min(lim,v)))/(2*lim)*(h-m.t-m.b);
+      el('line',{x1:m.l,x2:W-m.r,y1:Yr(0),y2:Yr(0),stroke:label,'stroke-width':1},bsub);
+      X.forEach((x,i)=>el('line',{x1:X0(x),x2:X0(x),y1:Yr(0),y2:Yr(res[i]),stroke:acc,'stroke-width':3,opacity:.8},bsub));
+      if(S<MAXS){
+        const h1=stumps[S];
+        let d=''; GRID.forEach((x,i)=>{const v=h1.pred(x); d+=(i?'L':'M')+X0(x).toFixed(1)+','+Yr(v).toFixed(1);});
+        el('path',{d,fill:'none',stroke:ink,'stroke-width':1.6,'stroke-dasharray':'5 3'},bsub);
+      }
+      for(const c of [-2,0,2]){const tt=el('text',{x:m.l-5,y:Yr(c)+4,'text-anchor':'end','font-size':10,fill:label,'font-family':'IBM Plex Mono'},bsub); tt.textContent=c;}
+      const t=el('text',{x:m.l,y:11,'font-size':11,fill:label},bsub);
+      t.textContent = S<MAXS ? `잔차와 다음 스텀프 h${S+1}(점선, x ≤ ${fmt(stumps[S].root.t??0,2)}에서 나눔)` : '잔차 (마지막 단계)';
+    }
+
+    // 지표
+    const bagTr=mse(x=>bagPred(x,B),X,Y), bagT=mseTrue(x=>bagPred(x,B));
+    const boTr=mse(Fp,X,Y), boT=mseTrue(Fp);
+    const one=mseTrue(bagTrees[0].pred);
+    document.getElementById('params').textContent=`배깅 나무 ${B}그루 · 부스팅 ${S}단계 · 학습률 ${ETA}`;
+    document.getElementById('result').innerHTML = big
+      ? `배깅 ${B}그루 · 부스팅 ${S}단계<br><span style="font-size:16px">참 함수 대비 MSE ${fmt(bagT,3)} · ${fmt(boT,3)}</span>`
+      : `참 함수 대비 MSE · 배깅 ${B}그루 <b>${fmt(bagT,3)}</b> · 부스팅 ${S}단계 <b>${fmt(boT,3)}</b>`;
+    let ex, exS;
+    const bagPart = B===1
+      ? `배깅이 나무 1그루면 그냥 깊이 3 나무 하나입니다. 나무를 늘려 보세요. 나무마다 다른 표본을 봐서 계단 위치가 제각각인데, 평균하면 들쭉날쭉한 부분이 서로 상쇄됩니다.`
+      : `배깅의 나무 ${B}그루는 서로를 모른 채 각자의 부트스트랩 표본으로 학습했고(병렬), 평균을 내자 들쭉날쭉한 계단이 부드러워졌습니다(나무 1그루 ${fmt(one,3)} → 평균 ${fmt(bagT,3)}). 각 나무의 편향은 그대로 두고 분산을 줄이는 방식입니다.`;
+    const boPart = S===0
+      ? ` 부스팅은 아직 평균 하나(F₀)뿐이라 잔차 막대가 깁니다.`
+      : S<15
+      ? ` 부스팅은 앞 단계가 남긴 잔차를 다음 스텀프가 이어받아(순차) ${S}단계째 고쳐 가는 중이며, 잔차 막대가 점점 짧아집니다. 스텀프 하나는 약하지만 쌓이면 곡선을 따라갑니다.`
+      : ` 부스팅은 ${S}단계 동안 잔차를 차례로(순차) 메워 훈련 MSE가 ${fmt(boTr,3)}까지 내려갔습니다. 단계를 계속 늘리면 훈련 오차는 더 줄지만 잡음까지 따라갈 수 있어, 실제로는 검증 데이터로 멈출 때를 정합니다.`;
+    ex = bagPart + boPart;
+    exS = `배깅은 따로 키워 <b>평균</b>, 부스팅은 잔차를 <b>차례로</b> 메웁니다.`;
+    document.getElementById('explain').innerHTML = big?exS:ex;
+    document.getElementById('rows').innerHTML =
+      `<tr><td>훈련 MSE (40개 점)</td><td>${fmt(bagTr,3)}</td><td>${fmt(boTr,3)}</td></tr>`+
+      `<tr><td>참 함수 대비 MSE (격자 501점)</td><td>${fmt(bagT,3)}</td><td>${fmt(boT,3)}</td></tr>`+
+      `<tr><td>쓰인 나무</td><td>깊이 3 × ${B}그루 (병렬, 평균)</td><td>스텀프 × ${S}개 (순차, 누적)</td></tr>`;
+    document.getElementById('formula').textContent =
+      `배깅: f̂(x) = (1/${B}) Σₖ Tₖ(x) (k = 1…${B}) · 부스팅 ${S}단계: F(x) = ${fmt(F0,3)} + 0.3 × Σₘ hₘ(x) (m = 1…${S}), hₘ은 잔차 yᵢ − Fₘ₋₁(xᵢ)에 맞춘 스텀프`;
+  }
+
+  const sT=document.getElementById('trees'), sS=document.getElementById('step');
+  sT.addEventListener('input',()=>{B=+sT.value;draw();});
+  sS.addEventListener('input',()=>{S=+sS.value;draw();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); draw();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?trees=10&step=5&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('trees')){const v=Math.round(+u.get('trees')); if(v>=1&&v<=MAXT){B=v; sT.value=v;}}
+  if(u.get('step')){const v=Math.round(+u.get('step')); if(v>=0&&v<=MAXS){S=v; sS.value=v;}}
+  if(u.get('shorts')==='1') setShorts(true);
+  window.__ens={X,Y,F0,bag:(B)=>GRID.filter((_,i)=>i%50===0).map(x=>bagPred(x,B)),boost:(S)=>GRID.filter((_,i)=>i%50===0).map(x=>boostPred(x,S)),
+    mse:(B,S)=>({bagTr:mse(x=>bagPred(x,B),X,Y),bagT:mseTrue(x=>bagPred(x,B)),boTr:mse(x=>boostPred(x,S),X,Y),boT:mseTrue(x=>boostPred(x,S))})};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>
