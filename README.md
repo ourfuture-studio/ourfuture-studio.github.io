@@ -3,6 +3,7 @@
 블로그 「기계와 생각」·기술 노트·SQLD 공부에 연결되는 정적 체험 모음입니다.
 
 - 첫 화면: https://ourfuture-studio.github.io/
+- AI 수학 체험16개·그림19개: https://ourfuture-studio.github.io/math/
 - 머신러닝과 기술 노트 31개: https://ourfuture-studio.github.io/viz/
 - SQLD 쿼리 실험 12개: https://ourfuture-studio.github.io/sql/
 - 웹 기초 22개 실습: https://ourfuture-studio.github.io/web/

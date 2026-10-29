@@ -1,0 +1,17 @@
+import m0 from './part12/m01-cost.js';
+import m1 from './part12/m02-equation.js';
+import m2 from './part12/m03-domain.js';
+import m3 from './part12/m04-composition.js';
+import m4 from './part12/m05-powers.js';
+import m5 from './part12/m06-roots.js';
+import m6 from './part12/m07-exponential.js';
+import m7 from './part12/m08-logarithm.js';
+import m8 from './part34/m09-polynomial.js';
+import m9 from './part34/m10-unit-circle.js';
+import m10 from './part34/m11-trig-wave.js';
+import m11 from './part34/m12-sum-product.js';
+import m12 from './part34/m13-vector.js';
+import m13 from './part34/m14-matrix-transform.js';
+import m14 from './part34/m15-linear-systems.js';
+import m15 from './part34/m16-projection-svd.js';
+export default [m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15];
