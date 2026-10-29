@@ -1,0 +1,24 @@
+/* Shared, local-only syntax colors. Keep the input and painted layer identical. */
+.code-editor{position:relative;height:440px;min-height:180px;max-width:100%;resize:vertical;overflow:hidden;border:1px solid #bcc8d6;border-radius:6px;background:#f8fafc}
+.code-editor:focus-within{outline:2px solid #2563a6;outline-offset:2px}
+.code-editor .code-highlight,.lab .code-editor textarea{position:absolute;inset:0;display:block;width:100%;height:100%;margin:0!important;border:0!important;border-radius:0;padding:16px!important;font:14px/24px Consolas,'Liberation Mono','Malgun Gothic',monospace!important;letter-spacing:normal;tab-size:2;white-space:pre!important;overflow-wrap:normal!important;word-break:normal!important;text-align:left;box-sizing:border-box}
+.code-editor .code-highlight{pointer-events:none;overflow:hidden;background:transparent;color:#253247}
+.code-highlight code{display:block;min-height:100%;padding:0!important;margin:0!important;background:none!important;font:inherit!important;white-space:inherit!important;letter-spacing:inherit}
+.lab .code-editor textarea{resize:none;background:transparent!important;color:transparent!important;-webkit-text-fill-color:transparent;caret-color:#172033;overflow:auto;outline:0}
+.lab .code-editor textarea::selection{background:rgba(59,130,246,.22);color:transparent}
+.code-editor.is-composing .code-highlight{visibility:hidden}
+.lab .code-editor.is-composing textarea{color:#253247!important;-webkit-text-fill-color:#253247}
+.syntax-code{color:#253247;background:#f8fafc}
+.token.comment,.token.prolog,.token.doctype,.token.cdata{color:#5c6878;font-style:italic}
+.token.punctuation{color:#526078}
+.token.tag,.token.deleted{color:#1756a4}
+.token.attr-name,.token.property,.token.selector{color:#7542a1}
+.token.attr-value,.token.string,.token.char,.token.inserted{color:#18713f}
+.token.keyword,.token.atrule{color:#7b339f}
+.token.number,.token.boolean,.token.constant{color:#a34d09}
+.token.function,.token.class-name{color:#165b87}
+.token.operator,.token.entity,.token.url{color:#734517;background:none}
+.token.regex,.token.important,.token.variable{color:#a34d09}
+.token.important,.token.bold{font-weight:bold}.token.italic{font-style:italic}
+@media(max-width:760px){.code-editor{height:340px}}
+@media(forced-colors:active){.code-editor .code-highlight{display:none}.lab .code-editor textarea{color:CanvasText!important;-webkit-text-fill-color:CanvasText;caret-color:CanvasText}}
