@@ -125,7 +125,7 @@
   let themeMode=0;const themeValues=['auto','light','dark'];const initial=new URLSearchParams(location.search).get('theme');if(themeValues.includes(initial))themeMode=themeValues.indexOf(initial);
   function theme(){const value=themeValues[themeMode];if(value==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=value;$('theme').textContent='테마: '+['자동','밝게','어둡게'][themeMode];}
   theme();$('theme').addEventListener('click',()=>{themeMode=(themeMode+1)%3;theme();});
-  fetch('episodes.json').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
+  fetch('episodes.json?v=topics-20261029-v2').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
     data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=(ep.theoryNumber?'이론 '+String(ep.theoryNumber).padStart(2,'0'):String(ep.number).padStart(2,'0'))+' · '+ep.title;select.append(option);}
     setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true);
   }).catch(error=>{status(error.message+' 페이지를 새로고침해 주세요.','error');});
