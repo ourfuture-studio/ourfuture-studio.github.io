@@ -3,7 +3,7 @@
   const values=['auto','light','dark'];let mode=0;
   theme.addEventListener('click',()=>{mode=(mode+1)%3;const value=values[mode];if(value==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=value;theme.textContent='테마: '+['자동','밝게','어둡게'][mode];});
   const catalog=document.getElementById('catalog');
-  fetch('episodes.json').then(response=>{if(!response.ok)throw new Error('자료를 불러오지 못했습니다.');return response.json();}).then(data=>{
+  fetch('episodes.json?v=topics-20261029-v2').then(response=>{if(!response.ok)throw new Error('자료를 불러오지 못했습니다.');return response.json();}).then(data=>{
     catalog.replaceChildren();
     const groups=[
       {title:'NULL·집계·조인의 핵심 조건',start:0,end:6,label:'01 — 06'},
