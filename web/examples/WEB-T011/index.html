@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 11</title>
+</head>
+<body>
+<h1>함수로 남은 자리 계산</h1>
+<pre id="result"></pre>
+<script>
+function remaining(capacity, enrolled) {
+  if (!Number.isInteger(capacity) || !Number.isInteger(enrolled) ||
+      capacity < 0 || enrolled < 0 || enrolled > capacity) {
+    throw new RangeError("정원과 인원 범위를 확인하세요");
+  }
+  return capacity - enrolled;
+}
+const values = [remaining(10, 8), remaining(8, 5)];
+document.querySelector("#result").textContent = values.join(", ");
+</script>
+</body>
+</html>

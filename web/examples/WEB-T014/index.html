@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 14</title>
+<style>
+input,select { max-width:100%; box-sizing:border-box; }
+</style>
+</head>
+<body>
+<h1>로컬 선택 확인</h1>
+<p>실제 신청이 아닙니다. 서버로 보내지 않습니다.</p>
+<form id="practice">
+<p><label for="student">가상 이름</label>
+<input id="student" name="student" value="연습생" required></p>
+<p><label for="course">강좌</label>
+<select id="course" name="course">
+<option value="web">웹 기초</option>
+<option value="css">CSS 기초</option>
+</select></p>
+<button type="submit">선택 확인</button>
+</form>
+<p id="result" role="status"></p>
+<script>
+const form = document.querySelector("#practice");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(form);
+  const name = String(data.get("student") ?? "").trim();
+  const message = name
+    ? `${name}님, ${data.get("course")} 선택을 확인했습니다. (연습)`
+    : "이름을 확인하세요";
+  document.querySelector("#result").textContent = message;
+});
+</script>
+</body>
+</html>

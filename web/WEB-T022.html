@@ -1,0 +1,51 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>계산을 따로 맡기면 화면은 무엇을 해야 할까 · ourfuture studio</title><link rel="stylesheet" href="web.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header"><a href="../">ourfuture studio</a><nav aria-label="웹 실습 이동"><a href="index.html">22편 목차</a><a href="WEB-T021.html">이전</a></nav></header><main id="main"><p class="eyebrow">기술 노트 · 웹 · 22</p><h1>계산을 따로 맡기면 화면은 무엇을 해야 할까<span class="dot">.</span></h1><div class="answer"><p>전용 Worker에 메시지로 계산 입력을 보내고 결과를 받을 수 있습니다. Worker는 문서 DOM에 직접 접근하지 않으며 화면 변경은 결과를 받은 메인 쪽에서 수행합니다.</p></div><p class="muted">먼저 알면 좋은 것 · 10 배열 · 14 이벤트 · 16 HTTP</p><section class="lab" aria-labelledby="lab-title"><h2 id="lab-title">바꾸면 무엇이 달라질까요<span class="dot">.</span></h2><p class="muted">코드를 수정한 뒤 적용하고 실행 화면을 비교하세요. 파일 이름 오른쪽에서 전체 코드를 복사할 수 있습니다.</p><div class="lab-grid"><div><label for="editor">index.html 전체 코드</label><textarea id="editor" spellcheck="false">&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;웹 기초 · 예제 22&lt;/title&gt;
+&lt;style&gt;
+input { width:110px; max-width:100%; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;전용 Worker 합 계산&lt;/h1&gt;
+&lt;p&gt;이 페이지에서 계산을 실행할 수 있습니다.&lt;/p&gt;
+&lt;label for=&quot;n&quot;&gt;마지막 정수&lt;/label&gt;
+&lt;input id=&quot;n&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;1000000&quot; value=&quot;100000&quot;&gt;
+&lt;button id=&quot;calculate&quot;&gt;계산&lt;/button&gt;
+&lt;button id=&quot;count&quot;&gt;화면 횟수 0&lt;/button&gt;
+&lt;p id=&quot;result&quot; role=&quot;status&quot;&gt;시작 전&lt;/p&gt;
+&lt;script&gt;
+let worker;
+let clicks = 0;
+const result = document.querySelector(&quot;#result&quot;);
+document.querySelector(&quot;#calculate&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+  const raw = document.querySelector(&quot;#n&quot;).value.trim();
+  const n = Number(raw);
+  if (!raw || !Number.isInteger(n) || n &lt; 1 || n &gt; 1000000) {
+    result.textContent = &quot;1~1000000의 정수를 입력하세요&quot;; return;
+  }
+  if (worker) worker.terminate();
+  result.textContent = &quot;계산 중&quot;;
+  try {
+    worker = new Worker(&quot;worker.js&quot;);
+    worker.onmessage = event =&gt; { result.textContent = `합: ${event.data}`; worker.terminate(); };
+    worker.onerror = event =&gt; { event.preventDefault(); result.textContent = &quot;Worker 오류: 경로와 HTTP 실행을 확인하세요&quot;; worker.terminate(); };
+    worker.postMessage(n);
+  } catch { result.textContent = &quot;Worker를 시작할 수 없습니다&quot;; }
+});
+document.querySelector(&quot;#count&quot;).addEventListener(&quot;click&quot;, event =&gt; {
+  event.currentTarget.textContent = `화면 횟수 ${++clicks}`;
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="actions"><button id="apply" type="button">이 코드로 다시 보기</button><button id="reset" type="button">원본 복원</button></div></div><div><p class="preview-label">실행 화면</p><iframe id="demo" title="계산을 따로 맡기면 화면은 무엇을 해야 할까 실행 화면" src="examples/WEB-T022/index.html" allow="autoplay"></iframe><p class="muted"><a href="examples/WEB-T022/index.html" target="_blank" rel="noopener">실행 화면만 새 창에서 열기</a></p><p id="lab-status" class="muted" role="status">원본 예제를 읽었습니다.</p></div></div><details><summary>연결 파일 전체 코드</summary><h3>worker.js</h3><pre><code>self.onmessage = event =&gt; {
+  const n = event.data;
+  if (!Number.isInteger(n) || n &lt; 1 || n &gt; 1000000) throw new RangeError(&quot;입력 범위 오류&quot;);
+  let sum = 0;
+  for (let i = 1; i &lt;= n; i++) sum += i;
+  self.postMessage(sum);
+};
+</code></pre></details></section><section class="exercise reading"><h2>직접 확인</h2><p>입력 n을 10과 100000으로 바꾸어 실행하고 횟수 버튼도 누르세요.</p><p><strong>예상 결과</strong> · 합은 각각 55와 5000050000입니다. 화면 횟수는 별도 버튼 동작에 따라 증가합니다.</p></section><section class="reading"><h2>입력과 출력을 메시지로 연결합니다</h2><p>new Worker(&quot;worker.js&quot;)로 전용 Worker를 만들고 postMessage(n)로 입력을 보냅니다. Worker는 message를 받아 계산하고 postMessage(sum)으로 결과를 보냅니다. 메인 문서는 받은 값을 DOM에 표시합니다. 일반적인 메시지는 구조화된 복제 방식으로 전달되며 Worker에는 document DOM이 없습니다.</p></section><section class="reading"><h2>Worker면 모든 작업이 빨라질까요</h2><p>생성·메시지 전송 비용이 있어 작은 작업의 전체 시간은 오히려 늘 수 있습니다. 브라우저와 기기 조건 없이 배속을 주장하지 않습니다. 오류 시 안내하고 Worker를 종료합니다. 계산을 다른 문맥으로 옮긴 것과 계산 알고리즘 자체를 바꾼 것은 구분합니다.</p></section><section class="reading"><h2>생각해 볼 질문</h2><p>계산 결과가 같다는 사실과 화면 반응·성능이 개선됐다는 주장은 각각 무엇으로 검증해야 할까요?</p></section><section class="reading"><h2>공식 문서에서 확인하기</h2><ul class="sources"><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener">MDN · Using Web Workers · 메시지와 DOM 제약</a></li></ul><p class="muted">강좌·인원·도식·코드는 자체 교육용 예시입니다.</p></section></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결<span class="dot">.</span><p>AI 도구를 활용해 작성한 자체 교육 예제입니다.</p></footer><script src="web.js"></script><script src="copy.js"></script></body></html>

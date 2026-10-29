@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 09</title>
+</head>
+<body>
+<h1>남은 자리 계산</h1>
+<p>가상 정원 10명 · 코드의 enrolled를 바꿉니다.</p>
+<p id="result" role="status"></p>
+<script>
+const capacity = 10;
+let enrolled = 8;
+let message;
+if (!Number.isInteger(enrolled) || enrolled < 0 || enrolled > capacity) {
+  message = "인원 범위를 확인하세요";
+} else if (enrolled < capacity) {
+  message = `${capacity - enrolled}명 신청 가능`;
+} else {
+  message = "마감";
+}
+document.querySelector("#result").textContent = message;
+</script>
+</body>
+</html>

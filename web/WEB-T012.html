@@ -1,0 +1,25 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>입력칸에 적은 값은 무엇으로 전달될까 · ourfuture studio</title><link rel="stylesheet" href="web.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header"><a href="../">ourfuture studio</a><nav aria-label="웹 실습 이동"><a href="index.html">22편 목차</a><a href="WEB-T011.html">이전</a><a href="WEB-T013.html">다음</a></nav></header><main id="main"><p class="eyebrow">기술 노트 · 웹 · 12</p><h1>입력칸에 적은 값은 무엇으로 전달될까<span class="dot">.</span></h1><div class="answer"><p>label은 입력 요소의 이름을 연결하고, name은 폼 데이터의 키, value는 값을 나타냅니다. 입력칸을 그렸다는 사실과 서버에 접수했다는 사실은 다릅니다.</p></div><p class="muted">먼저 알면 좋은 것 · 11 함수와 값</p><section class="lab" aria-labelledby="lab-title"><h2 id="lab-title">바꾸면 무엇이 달라질까요<span class="dot">.</span></h2><p class="muted">코드를 수정한 뒤 적용하고 실행 화면을 비교하세요. 파일 이름 오른쪽에서 전체 코드를 복사할 수 있습니다.</p><div class="lab-grid"><div><label for="editor">index.html 전체 코드</label><textarea id="editor" spellcheck="false">&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;웹 기초 · 예제 12&lt;/title&gt;
+&lt;style&gt;
+input,select { max-width:100%; box-sizing:border-box; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;제출하지 않는 연습 폼&lt;/h1&gt;
+&lt;form id=&quot;practice&quot;&gt;
+&lt;p&gt;&lt;label for=&quot;student&quot;&gt;가상 이름&lt;/label&gt;
+&lt;input id=&quot;student&quot; name=&quot;student&quot; value=&quot;연습생&quot; required&gt;&lt;/p&gt;
+&lt;p&gt;&lt;label for=&quot;course&quot;&gt;강좌&lt;/label&gt;
+&lt;select id=&quot;course&quot; name=&quot;course&quot;&gt;
+&lt;option value=&quot;web&quot;&gt;웹 기초&lt;/option&gt;
+&lt;option value=&quot;css&quot;&gt;CSS 기초&lt;/option&gt;
+&lt;/select&gt;&lt;/p&gt;
+&lt;button type=&quot;button&quot;&gt;제출하지 않는 연습 버튼&lt;/button&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="actions"><button id="apply" type="button">이 코드로 다시 보기</button><button id="reset" type="button">원본 복원</button></div></div><div><p class="preview-label">실행 화면</p><iframe id="demo" title="입력칸에 적은 값은 무엇으로 전달될까 실행 화면" src="examples/WEB-T012/index.html" allow="autoplay"></iframe><p class="muted"><a href="examples/WEB-T012/index.html" target="_blank" rel="noopener">실행 화면만 새 창에서 열기</a></p><p id="lab-status" class="muted" role="status">원본 예제를 읽었습니다.</p></div></div></section><section class="exercise reading"><h2>직접 확인</h2><p>이름 label을 누르고 강좌를 CSS 기초로 바꾸세요.</p><p><strong>예상 결과</strong> · 이름 입력칸에 초점이 가고 선택값은 css가 됩니다. 연습 버튼은 제출하지 않습니다.</p></section><section class="reading"><h2>id와 name의 역할을 나눕니다</h2><p>label의 for와 입력의 id가 같으면 라벨을 그 입력과 연결합니다. name=&quot;student&quot;는 데이터의 키이고 value=&quot;연습생&quot;은 초기값입니다. id를 적었다고 name이 자동으로 생기지는 않습니다. option의 표시 글자와 value도 다를 수 있습니다. 폼 데이터 포함 여부는 name, disabled 등의 조건에 달립니다.</p></section><section class="reading"><h2>placeholder만 있으면 될까요</h2><p>placeholder는 입력 전 힌트이며 값이 들어가면 보이지 않을 수 있습니다. 지속적인 입력 이름이 필요한 자리에 label을 생략하는 이유로 쓰지 않습니다. required 같은 브라우저 검사도 서버 검사를 대신하지 못합니다.</p></section><section class="reading"><h2>생각해 볼 질문</h2><p>표시 이름과 프로그램이 읽는 키는 어디에 적나요?</p></section><section class="reading"><h2>공식 문서에서 확인하기</h2><ul class="sources"><li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Your_first_form" target="_blank" rel="noopener">MDN · Your first form · label·name·제출</a></li></ul><p class="muted">강좌·인원·도식·코드는 자체 교육용 예시입니다.</p></section></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결<span class="dot">.</span><p>AI 도구를 활용해 작성한 자체 교육 예제입니다.</p></footer><script src="web.js"></script><script src="copy.js"></script></body></html>

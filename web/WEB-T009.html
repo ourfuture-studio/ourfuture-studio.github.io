@@ -1,0 +1,27 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>인원이 달라지면 안내도 바뀌게 하려면 · ourfuture studio</title><link rel="stylesheet" href="web.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header"><a href="../">ourfuture studio</a><nav aria-label="웹 실습 이동"><a href="index.html">22편 목차</a><a href="WEB-T008.html">이전</a><a href="WEB-T010.html">다음</a></nav></header><main id="main"><p class="eyebrow">기술 노트 · 웹 · 09</p><h1>인원이 달라지면 안내도 바뀌게 하려면<span class="dot">.</span></h1><div class="answer"><p>JavaScript의 값과 비교식을 사용하면 인원에 따라 다른 안내를 선택할 수 있습니다. 입력 문자열을 숫자로 바꾸는 일과 허용 범위를 확인하는 일은 구분합니다.</p></div><p class="muted">먼저 알면 좋은 것 · 01 문서</p><section class="lab" aria-labelledby="lab-title"><h2 id="lab-title">바꾸면 무엇이 달라질까요<span class="dot">.</span></h2><p class="muted">코드를 수정한 뒤 적용하고 실행 화면을 비교하세요. 파일 이름 오른쪽에서 전체 코드를 복사할 수 있습니다.</p><div class="lab-grid"><div><label for="editor">index.html 전체 코드</label><textarea id="editor" spellcheck="false">&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;웹 기초 · 예제 09&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;남은 자리 계산&lt;/h1&gt;
+&lt;p&gt;가상 정원 10명 · 코드의 enrolled를 바꿉니다.&lt;/p&gt;
+&lt;p id=&quot;result&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+&lt;script&gt;
+const capacity = 10;
+let enrolled = 8;
+let message;
+if (!Number.isInteger(enrolled) || enrolled &lt; 0 || enrolled &gt; capacity) {
+  message = &quot;인원 범위를 확인하세요&quot;;
+} else if (enrolled &lt; capacity) {
+  message = `${capacity - enrolled}명 신청 가능`;
+} else {
+  message = &quot;마감&quot;;
+}
+document.querySelector(&quot;#result&quot;).textContent = message;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="actions"><button id="apply" type="button">이 코드로 다시 보기</button><button id="reset" type="button">원본 복원</button></div></div><div><p class="preview-label">실행 화면</p><iframe id="demo" title="인원이 달라지면 안내도 바뀌게 하려면 실행 화면" src="examples/WEB-T009/index.html" allow="autoplay"></iframe><p class="muted"><a href="examples/WEB-T009/index.html" target="_blank" rel="noopener">실행 화면만 새 창에서 열기</a></p><p id="lab-status" class="muted" role="status">원본 예제를 읽었습니다.</p></div></div></section><section class="exercise reading"><h2>직접 확인</h2><p>enrolled를 8, 10, 11로 바꿔 새로고침하세요.</p><p><strong>예상 결과</strong> · ‘2명 신청 가능’, ‘마감’, ‘인원 범위를 확인하세요’가 차례로 표시됩니다.</p></section><section class="reading"><h2>값을 저장하고 조건을 판단합니다</h2><p>const capacity = 10은 정원을 담는 바인딩을 선언하고 let enrolled = 8은 다시 대입할 수 있는 인원을 선언합니다. enrolled &lt; capacity가 참이면 접수 가능, 거짓이면 마감을 선택합니다. 숫자 8과 문자열 &quot;8&quot;은 자료형이 다릅니다. +에 문자열이 섞이면 이어 붙이기가 될 수 있습니다. Number(&quot;&quot;)는 0이므로 빈 입력은 변환 전에 확인해야 합니다.</p></section><section class="reading"><h2>화면의 인원을 믿어도 될까요</h2><p>브라우저에서 한 값의 검사는 다른 방문자의 동시 신청을 통제하지 못합니다. 이 예제에는 서버의 정원 관리가 없습니다. ‘남은 2명’은 고정 입력의 계산 결과입니다. 실제 접수에서는 서버가 최종 인원과 권한 등을 확인해야 합니다.</p></section><section class="reading"><h2>생각해 볼 질문</h2><p>계산하기 전에 입력에 어떤 조건을 요구해야 할까요?</p></section><section class="reading"><h2>공식 문서에서 확인하기</h2><ul class="sources"><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling" target="_blank" rel="noopener">MDN · Control flow and error handling · if와 오류</a></li></ul><p class="muted">강좌·인원·도식·코드는 자체 교육용 예시입니다.</p></section></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결<span class="dot">.</span><p>AI 도구를 활용해 작성한 자체 교육 예제입니다.</p></footer><script src="web.js"></script><script src="copy.js"></script></body></html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 16</title>
+</head>
+<body>
+<h1>로컬 HTTP 목록 읽기</h1>
+<p>강좌 데이터를 요청합니다. 실제 접수는 하지 않습니다.</p>
+<button id="load">정상 조회</button>
+<button id="missing">없는 파일</button>
+<p id="result" role="status">조회 전</p>
+<script>
+const result = document.querySelector("#result");
+async function load(url) {
+  result.textContent = "불러오는 중";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const courses = await response.json();
+    if (!Array.isArray(courses) || !courses.every(c => c && typeof c.title === "string")) {
+      throw new Error("강좌 데이터 형식 오류");
+    }
+    result.textContent = courses.map(c => c.title).join(", ");
+  } catch (error) { result.textContent = `조회 실패: ${error.message}`; }
+}
+document.querySelector("#load").addEventListener("click", () => load("courses.json"));
+document.querySelector("#missing").addEventListener("click", () => load("missing.json"));
+</script>
+</body>
+</html>

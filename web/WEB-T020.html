@@ -1,0 +1,33 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>재생 버튼을 눌렀는데 소리가 안 나면 · ourfuture studio</title><link rel="stylesheet" href="web.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header"><a href="../">ourfuture studio</a><nav aria-label="웹 실습 이동"><a href="index.html">22편 목차</a><a href="WEB-T019.html">이전</a><a href="WEB-T021.html">다음</a></nav></header><main id="main"><p class="eyebrow">기술 노트 · 웹 · 20</p><h1>재생 버튼을 눌렀는데 소리가 안 나면<span class="dot">.</span></h1><div class="answer"><p>audio·video는 재생할 파일과 제어 기능을 연결합니다. play()의 성공과 실패, 파일 로딩 오류를 구분하고 자동 재생을 보장하지 않습니다.</p></div><p class="muted">먼저 알면 좋은 것 · 14 이벤트 · 17 Promise</p><section class="lab" aria-labelledby="lab-title"><h2 id="lab-title">바꾸면 무엇이 달라질까요<span class="dot">.</span></h2><p class="muted">코드를 수정한 뒤 적용하고 실행 화면을 비교하세요. 파일 이름 오른쪽에서 전체 코드를 복사할 수 있습니다.</p><div class="lab-grid"><div><label for="editor">index.html 전체 코드</label><textarea id="editor" spellcheck="false">&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;웹 기초 · 예제 20&lt;/title&gt;
+&lt;style&gt;
+audio { max-width:100%; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;자체 테스트 음원 재생&lt;/h1&gt;
+&lt;p&gt;1초짜리 합성 신호입니다. 강의 음성이 아닙니다.&lt;/p&gt;
+&lt;audio id=&quot;audio&quot; src=&quot;tone.wav&quot; controls preload=&quot;metadata&quot;&gt;&lt;/audio&gt;
+&lt;p&gt;&lt;button id=&quot;play&quot;&gt;처음부터 재생&lt;/button&gt; &lt;button id=&quot;pause&quot;&gt;일시 정지&lt;/button&gt;&lt;/p&gt;
+&lt;p id=&quot;result&quot; role=&quot;status&quot;&gt;재생 전&lt;/p&gt;
+&lt;script&gt;
+const audio = document.querySelector(&quot;#audio&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+audio.volume = 0.2;
+document.querySelector(&quot;#play&quot;).addEventListener(&quot;click&quot;, async () =&gt; {
+  try { audio.currentTime = 0; await audio.play(); result.textContent = &quot;재생 중&quot;; }
+  catch { result.textContent = &quot;재생 실패: 파일과 브라우저 정책을 확인하세요&quot;; }
+});
+document.querySelector(&quot;#pause&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+  audio.pause(); result.textContent = &quot;일시 정지&quot;;
+});
+audio.addEventListener(&quot;ended&quot;, () =&gt; result.textContent = &quot;재생 끝&quot;);
+audio.addEventListener(&quot;error&quot;, () =&gt; result.textContent = &quot;음원 로딩 오류&quot;);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="actions"><button id="apply" type="button">이 코드로 다시 보기</button><button id="reset" type="button">원본 복원</button></div></div><div><p class="preview-label">실행 화면</p><iframe id="demo" title="재생 버튼을 눌렀는데 소리가 안 나면 실행 화면" src="examples/WEB-T020/index.html" allow="autoplay"></iframe><p class="muted"><a href="examples/WEB-T020/index.html" target="_blank" rel="noopener">실행 화면만 새 창에서 열기</a></p><p id="lab-status" class="muted" role="status">원본 예제를 읽었습니다.</p></div></div><p class="muted">tone.wav는 이 자료에서 합성한 1초짜리 테스트 신호입니다.</p></section><section class="exercise reading"><h2>직접 확인</h2><p>재생이 끝날 때까지 기다린 뒤 다시 재생하고, pause 버튼도 사용해 보세요.</p><p><strong>예상 결과</strong> · 정상 파일은 재생 요청 뒤 ended 상태로 바뀝니다. 음량과 실제 청취는 사용 기기에서 확인합니다.</p></section><section class="reading"><h2>재생 요청과 상태를 봅니다</h2><p>audio의 controls는 브라우저 기본 제어기를 제공합니다. JavaScript의 play()는 Promise를 반환하므로 실패를 처리할 수 있습니다. pause()는 일시 정지, currentTime은 재생 위치입니다. ended와 error 이벤트로 끝남과 로딩 문제를 구분할 수 있습니다.</p></section><section class="reading"><h2>autoplay를 넣으면 해결될까요</h2><p>브라우저는 소리 있는 자동 재생을 제한할 수 있습니다. 파일 경로, 형식 지원, 정책, 음소거와 출력 장치를 구분해 확인합니다. 실제 소리를 들은 검수와 자동 브라우저의 재생 상태 검사는 별개입니다. 영상에는 상황에 맞는 자막과 텍스트 대안도 필요합니다.</p></section><section class="reading"><h2>생각해 볼 질문</h2><p>소리가 없는 원인이 정책인지 파일인지 출력 장치인지 어떻게 나눠 볼까요?</p></section><section class="reading"><h2>공식 문서에서 확인하기</h2><ul class="sources"><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play" target="_blank" rel="noopener">MDN · HTMLMediaElement.play · Promise와 재생 실패</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay" target="_blank" rel="noopener">MDN · Autoplay guide · 브라우저 재생 정책</a></li></ul><p class="muted">강좌·인원·도식·코드는 자체 교육용 예시입니다.</p></section></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결<span class="dot">.</span><p>AI 도구를 활용해 작성한 자체 교육 예제입니다.</p></footer><script src="web.js"></script><script src="copy.js"></script></body></html>

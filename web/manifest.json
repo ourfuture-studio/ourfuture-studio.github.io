@@ -1,0 +1,219 @@
+{
+  "formatVersion": 1,
+  "series": "웹 기초",
+  "episodes": 22,
+  "files": [
+    {
+      "file": "WEB-T001.html",
+      "sha256": "1953b68001b0518c4dfb56ae413748e77ac9b2bafe0fbd8c1dd661064cd1cbbf"
+    },
+    {
+      "file": "WEB-T002.html",
+      "sha256": "6fbcf352fe42aee3d1526ba73f1baa3447ee0a280f8bff2074524995f1f558dd"
+    },
+    {
+      "file": "WEB-T003.html",
+      "sha256": "3535f263b4ee1bd40713aab2d296af3872af757b73890b82ab83a14eabc2dbea"
+    },
+    {
+      "file": "WEB-T004.html",
+      "sha256": "df4eb487fa517d6c7ed4d3783852780f53382c830d2ca91ae757b0562e4e94a2"
+    },
+    {
+      "file": "WEB-T005.html",
+      "sha256": "dd9c227fb8984de6a937cec0b560ba7cf1bca9f19682c9f53e3b4e8ec0f6fa47"
+    },
+    {
+      "file": "WEB-T006.html",
+      "sha256": "cf8ef69c29502b347691cccfd09e22db90ebc52e38d0fe261dea4b3a9ce45cb3"
+    },
+    {
+      "file": "WEB-T007.html",
+      "sha256": "46a7271ed358927d80a11044971c64289ef881e47fd472a3fe05e1b409f773c2"
+    },
+    {
+      "file": "WEB-T008.html",
+      "sha256": "cf0f35486efedbc78318325b7e7e035bf5dba77c04e9428c8f7c1f08cbbc5cd1"
+    },
+    {
+      "file": "WEB-T009.html",
+      "sha256": "51f49eb96cd83d000231a6456b68578aef1d94ad2c05b380f68d1caed430a29e"
+    },
+    {
+      "file": "WEB-T010.html",
+      "sha256": "6a42884e312fd1236ddd393e16e5566a21c8e602d9ca2b1fd5fa15d274a9bcd8"
+    },
+    {
+      "file": "WEB-T011.html",
+      "sha256": "1b168e0acae8fd914ab5318b0ff8145520816785151ef6461d709f2fc7acfb13"
+    },
+    {
+      "file": "WEB-T012.html",
+      "sha256": "3b7ac5a2bffac20b40a013a20a6a334c595b09bdd137714833b3951a6e8a7659"
+    },
+    {
+      "file": "WEB-T013.html",
+      "sha256": "a3c427b1caea178f6a67b3248271f911658a69a7292c5de36cc56f7ab1348197"
+    },
+    {
+      "file": "WEB-T014.html",
+      "sha256": "c67a9381629275bbfa32b5b04b17af96ed3bc576013997193207127c86807fa6"
+    },
+    {
+      "file": "WEB-T015.html",
+      "sha256": "fa1d354dfe796fb107fdfc6137ae9730d97988cd16729b021b40da9117f051e7"
+    },
+    {
+      "file": "WEB-T016.html",
+      "sha256": "9df28580f69a23ccb595d2f0d60bf358f80661354d066b93a85b29fcafff6ff2"
+    },
+    {
+      "file": "WEB-T017.html",
+      "sha256": "956469638c3587af3aad3ff881035e7f01d0a6f7f0c0fa95ae5af0d6e1bcd383"
+    },
+    {
+      "file": "WEB-T018.html",
+      "sha256": "a78e316410826d06090840912bb5b0911278c3c595b32dcc1809ee7c4f155970"
+    },
+    {
+      "file": "WEB-T019.html",
+      "sha256": "2005a3996fabda6cebf9b8efac765ac3b4b69c1997b13bf4b3195d923ea529b1"
+    },
+    {
+      "file": "WEB-T020.html",
+      "sha256": "fbff23fdbc1b1fdb5bb7d031eac2a9c8d8bdface7552f124a0e9dd4f42b234b4"
+    },
+    {
+      "file": "WEB-T021.html",
+      "sha256": "ef1ef2fe2df0a716621f33b49fe60ddc8ffef6eeff253e2b9cfcf16d12ae5b95"
+    },
+    {
+      "file": "WEB-T022.html",
+      "sha256": "18eddcd6e6997be6a54aaa35a9df6caaae10719a69746e70f0d7927e78b77ffc"
+    },
+    {
+      "file": "copy.js",
+      "sha256": "725913e73d91be6f01b60fd9684088c7f2bdddb55bdb7d3610634125b17a3a92"
+    },
+    {
+      "file": "examples/WEB-T001/index.html",
+      "sha256": "7d3ede2e29e5b687c80c1d310acd2033cc99506947c0d8def3904f6b0fe3e276"
+    },
+    {
+      "file": "examples/WEB-T002/index.html",
+      "sha256": "3d7442bf1d2c47ebf0e16a452a8ce57cd82c119c270e9be0616bde030091e690"
+    },
+    {
+      "file": "examples/WEB-T003/details.html",
+      "sha256": "71c1dbfcf119ee54e605e2183b942b04a2b4378013e6c72aa17ea590fe6235d6"
+    },
+    {
+      "file": "examples/WEB-T003/index.html",
+      "sha256": "9494b0284303d3d1e8b7a6f53a869a36b8290c307738afddabdf39eda5cb62f8"
+    },
+    {
+      "file": "examples/WEB-T004/index.html",
+      "sha256": "bbab9fd055c022a64edbbc7fe422f7d387160bf212b72d636cb2661a39aa0e51"
+    },
+    {
+      "file": "examples/WEB-T004/room.svg",
+      "sha256": "ed5a5744a1e103c2b4ba9476fe910a0b80a6dd7792aef6ddf16b94b665ffe636"
+    },
+    {
+      "file": "examples/WEB-T005/index.html",
+      "sha256": "04b964a0bdc0050257a8b8f8b39dadf5e0580ce85d066d75f2d6203fb8103be2"
+    },
+    {
+      "file": "examples/WEB-T006/index.html",
+      "sha256": "ea205ab2315cd37d71dcb469689c1a39028402a785ff0768e198a41f641c1b98"
+    },
+    {
+      "file": "examples/WEB-T007/index.html",
+      "sha256": "67d1a8e8fcdbf745fb4ee5f44123e0fe7e683f4222dfbe034d682b350b87082c"
+    },
+    {
+      "file": "examples/WEB-T008/index.html",
+      "sha256": "4b7b881cf206b272f6b094f19f23a52fb53232e3281befc0c6281faffc98739c"
+    },
+    {
+      "file": "examples/WEB-T009/index.html",
+      "sha256": "167f320dd7eaa64a8ad0a34f1cd7cdb9f9003a2b515cb92d685225be275f77c8"
+    },
+    {
+      "file": "examples/WEB-T010/index.html",
+      "sha256": "b538c38d20a19992c8241b853ee6c98165da90051a2039b2ea569d5ad779b1c4"
+    },
+    {
+      "file": "examples/WEB-T011/index.html",
+      "sha256": "f297477ed5bdff680e3eac463582c442d329d4adcc4cb24661ee805dbdf0bde5"
+    },
+    {
+      "file": "examples/WEB-T012/index.html",
+      "sha256": "4a57699cd96ffe9f7def302296be4867efe5ec35b2103c82da7a995e738c6f5b"
+    },
+    {
+      "file": "examples/WEB-T013/index.html",
+      "sha256": "2a59126743e91a3ae4a618aa6198056a61be22dfe8bb9223e7fce9ea6a687e1e"
+    },
+    {
+      "file": "examples/WEB-T014/index.html",
+      "sha256": "5b874c6d4926b16ea6dc9b859971303a18f7995b3c109486a53d0bfad3b58863"
+    },
+    {
+      "file": "examples/WEB-T015/index.html",
+      "sha256": "678f9e49a96390d58be7586f64ab2e331728ff0a9f5a7a368bb0ef2feb7dcc98"
+    },
+    {
+      "file": "examples/WEB-T016/courses.json",
+      "sha256": "ddc4abc9b8719d1e51767994cce030e2b77352ac8ea2d99502043aace0d81e04"
+    },
+    {
+      "file": "examples/WEB-T016/index.html",
+      "sha256": "dca6ca2b721c8c8599abeebe26e93a2d45fa34880997ba031e1286eeac4454ec"
+    },
+    {
+      "file": "examples/WEB-T017/index.html",
+      "sha256": "be240e8de771185536b9b181cf4561ee91f5e3066d490c7fffe02c17428e9518"
+    },
+    {
+      "file": "examples/WEB-T018/index.html",
+      "sha256": "fa62b5bbd0f60c873b139c7e729d663e716d54b0ff78ad95c487191654c42b7e"
+    },
+    {
+      "file": "examples/WEB-T019/index.html",
+      "sha256": "526911461ab96ec0f66811c0276a7bcf4f26d6de3c54ac810b5b18fe8042cdaf"
+    },
+    {
+      "file": "examples/WEB-T020/index.html",
+      "sha256": "dc65444179d49baf113bb05d223cb571797fb131be97241aa20dd73eb6405cb7"
+    },
+    {
+      "file": "examples/WEB-T020/tone.wav",
+      "sha256": "b103491ef283eb03ca466915a3a8b907d42b4c1d9812ecf5c525023f59609447"
+    },
+    {
+      "file": "examples/WEB-T021/index.html",
+      "sha256": "a20076be1ed39156c5d22dadce5b014a8f1837e53dd4ff22f6c77ce50ffb9dce"
+    },
+    {
+      "file": "examples/WEB-T022/index.html",
+      "sha256": "10d21bcc22856e028b4306dd7fa4aac37b6bd3b236290b2cd337f987277c2bf3"
+    },
+    {
+      "file": "examples/WEB-T022/worker.js",
+      "sha256": "025fcb7b1c62b87eb6ba90cd68c77e0c45b2b18913b5a2c4a1c162817e37e29d"
+    },
+    {
+      "file": "index.html",
+      "sha256": "c7b263c5d94ec152e37837a7e3857d56dec575d5854055107ac88131294da563"
+    },
+    {
+      "file": "web.css",
+      "sha256": "9e11bc4150fa525ff75eb6d1dc79c05449c705662147b504711cc5e4ed6bbe63"
+    },
+    {
+      "file": "web.js",
+      "sha256": "d4714f996edb702b0a0f9d47e627eb37ae2283a5621bdd2b8078f6e1a5a3f829"
+    }
+  ]
+}

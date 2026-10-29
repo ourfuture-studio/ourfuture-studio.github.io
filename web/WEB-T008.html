@@ -1,0 +1,21 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>화면이 좁아지면 카드는 어디로 갈까 · ourfuture studio</title><link rel="stylesheet" href="web.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header"><a href="../">ourfuture studio</a><nav aria-label="웹 실습 이동"><a href="index.html">22편 목차</a><a href="WEB-T007.html">이전</a><a href="WEB-T009.html">다음</a></nav></header><main id="main"><p class="eyebrow">기술 노트 · 웹 · 08</p><h1>화면이 좁아지면 카드는 어디로 갈까<span class="dot">.</span></h1><div class="answer"><p>Flexbox의 줄바꿈과 카드의 크기 조건을 함께 정하면 좁은 화면에서 카드를 다음 줄로 보낼 수 있습니다. 뷰포트 설정과 실제 넘침도 확인해야 합니다.</p></div><p class="muted">먼저 알면 좋은 것 · 07 박스 폭</p><section class="lab" aria-labelledby="lab-title"><h2 id="lab-title">바꾸면 무엇이 달라질까요<span class="dot">.</span></h2><p class="muted">코드를 수정한 뒤 적용하고 실행 화면을 비교하세요. 파일 이름 오른쪽에서 전체 코드를 복사할 수 있습니다.</p><div class="lab-grid"><div><label for="editor">index.html 전체 코드</label><textarea id="editor" spellcheck="false">&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;웹 기초 · 예제 08&lt;/title&gt;
+&lt;style&gt;
+.courses { display:flex; flex-wrap:wrap; gap:16px; }
+article { flex:1 1 200px; min-width:0; padding:16px; border:1px solid #1B2340; box-sizing:border-box; overflow-wrap:anywhere; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;강좌 목록&lt;/h1&gt;
+&lt;div class=&quot;courses&quot;&gt;
+&lt;article&gt;웹 기초&lt;/article&gt;
+&lt;article&gt;CSS 기초&lt;/article&gt;
+&lt;article&gt;JavaScript 기초&lt;/article&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="actions"><button id="apply" type="button">이 코드로 다시 보기</button><button id="reset" type="button">원본 복원</button></div></div><div><p class="preview-label">실행 화면</p><iframe id="demo" title="화면이 좁아지면 카드는 어디로 갈까 실행 화면" src="examples/WEB-T008/index.html" allow="autoplay"></iframe><p class="muted"><a href="examples/WEB-T008/index.html" target="_blank" rel="noopener">실행 화면만 새 창에서 열기</a></p><p id="lab-status" class="muted" role="status">원본 예제를 읽었습니다.</p></div></div></section><section class="exercise reading"><h2>직접 확인</h2><p>브라우저 폭을 줄이고 flex-wrap을 nowrap으로 바꾼 결과와 비교한 뒤 wrap으로 복원하세요.</p><p><strong>예상 결과</strong> · wrap에서는 카드가 새 줄로 내려갑니다. nowrap에서는 한 줄을 유지하려고 카드가 줄거나 내용이 넘칠 수 있습니다.</p></section><section class="reading"><h2>남는 공간과 줄바꿈을 정합니다</h2><p>부모에 display:flex와 flex-wrap:wrap을 적용하고 카드에 flex:1 1 200px를 주면, 기준 크기를 바탕으로 공간을 나누고 필요한 경우 줄바꿈할 수 있습니다. gap은 카드 사이 간격을 지정합니다.</p><p>viewport 메타 태그는 모바일에서 레이아웃 뷰포트를 다루는 기본 설정입니다. CSS의 미디어 쿼리는 폭 등의 조건에 따라 규칙을 적용합니다. Flexbox는 강의자료의 배치 개념에 현대 공식 문서를 보강한 예제입니다.</p></section><section class="reading"><h2>작은 뷰포트가 실제 휴대폰일까요</h2><p>데스크톱 브라우저의 폭을 줄인 검사는 좁은 레이아웃을 보는 방법입니다. 실제 휴대폰의 터치, 화면 확대, 글꼴, 브라우저 주소창까지 확인한 것은 아닙니다. 자동 검사와 실제 기기 읽기 평가는 구분합니다.</p><p>CSS order로 시각 순서를 바꾸는 경우 DOM과 키보드 순서가 어긋날 수 있습니다. 이번 예제는 문서 순서 그대로 배치해 강좌를 읽는 순서를 유지합니다.</p></section><section class="reading"><h2>생각해 볼 질문</h2><p>카드 수를 유지하는 일과 문장을 읽을 수 있게 하는 일 중 무엇을 기준으로 배치할까요?</p></section><section class="reading"><h2>공식 문서에서 확인하기</h2><ul class="sources"><li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts" target="_blank" rel="noopener">MDN · Basic concepts of flexbox · flex-wrap</a></li></ul><p class="muted">강좌·인원·도식·코드는 자체 교육용 예시입니다.</p></section></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결<span class="dot">.</span><p>AI 도구를 활용해 작성한 자체 교육 예제입니다.</p></footer><script src="web.js"></script><script src="copy.js"></script></body></html>
