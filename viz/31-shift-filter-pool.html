@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>옮긴 세로획 따라가기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
+  --accent:#7A1F2E; --lining:#1F6F6F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+    --accent:#E06A7C; --lining:#4DB5AC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
+  --accent:#E06A7C; --lining:#4DB5AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
+.wrap{max-width:760px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
+h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
+h1 .dot{color:var(--accent)}
+.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
+.tag .d{color:var(--lining)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:16px 0}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 12px;cursor:pointer;white-space:nowrap}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ctl-label{margin-right:10px;white-space:nowrap}
+.ctl{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
+.hide{display:none !important}
+figure{margin:0;border:1px solid var(--rule)}
+svg{display:block;width:100%;height:auto}
+svg .hit{cursor:pointer}
+figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
+.insight{background:var(--box);padding:18px 22px;margin:20px 0}
+.insight p{margin:0}
+.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
+.result b{font-weight:600}
+.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
+.notes p{margin:0 0 6px}
+.short-only{display:none}
+@media (max-width:440px){ body:not(.shorts) .seg button{padding:6px 9px;font-size:13px} }
+/* 쇼츠 녹화용 9:16 */
+body.shorts{padding:0;display:flex;justify-content:center}
+body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
+body.shorts .lede, body.shorts .notes, body.shorts figcaption, body.shorts .tagline, body.shorts .controls, body.shorts #explain{display:none}
+body.shorts .short-only{display:block}
+body.shorts h1{font-size:26px;margin-bottom:12px}
+body.shorts .result{font-size:19px;margin:0}
+body.shorts .insight{padding:12px 16px;margin:12px 0 0}
+body.shorts .insight .short-only{font-size:15px;color:var(--ink2);margin-top:4px}
+body.shorts .stagebar{display:block;margin:0 0 8px}
+.stagebar{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-31</div>
+  <h1>같은 세로획을 옮기면 무엇이 남을까<span class="dot">.</span></h1>
+  <p class="lede">위 줄은 「기계와 생각」 13편의 4×4 세로획 A, 아래 줄은 ‘지금 그림’입니다. 처음에는 A를 오른쪽으로 한 칸 옮긴 B가 놓여 있습니다. 단계를 바꿔 가며 두 그림이 ① 한 자리만 보는 규칙 ② 네 자리에 함께 쓰는 필터 ③ 최대 풀링을 거칠 때 무엇이 달라지고 무엇이 남는지 보세요. 아래 줄의 칸을 눌러 직접 그려도 됩니다.</p>
+
+  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">교육용 4×4 격자 · 사람이 고른 규칙과 필터 · 학습한 모델 아님</span></p>
+
+  <div class="controls">
+    <div class="ctl"><span class="mono ctl-label">단계</span><span class="seg" role="group" aria-label="단계">
+      <button data-stage="1">① 고정 위치 규칙</button><button data-stage="2">② 같은 필터</button><button data-stage="3">③ 최대 풀링</button>
+    </span></div>
+    <div class="ctl"><span class="mono ctl-label">지금 그림</span><span class="seg" role="group" aria-label="지금 그림">
+      <button data-pic="a">A 그대로</button><button data-pic="b">B 한 칸 옮김</button><button data-pic="h">가로획</button>
+    </span></div>
+    <div class="ctl"><span class="mono ctl-label">옮기기</span><span class="seg" role="group" aria-label="지금 그림 옮기기">
+      <button data-move="-1">← 한 칸</button><button data-move="1">한 칸 →</button>
+    </span></div>
+    <div class="ctl" id="posCtl"><span class="mono ctl-label">필터 자리</span><span class="seg" role="group" aria-label="필터 자리">
+      <button data-pos="1">1</button><button data-pos="2">2</button><button data-pos="3">3</button><button data-pos="4">4</button>
+    </span></div>
+    <div class="ctl" id="edgeCtl"><span class="seg" role="group" aria-label="경계 반례"><button id="edgeBtn" aria-pressed="false">묶음 경계를 넘으면?</button></span></div>
+    <div class="ctl"><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
+  </div>
+
+  <p class="mono stagebar" id="stagebar"></p>
+  <figure>
+    <svg id="plot" viewBox="0 0 720 520" role="img" aria-label="두 4×4 그림이 규칙·필터·풀링을 거친 결과"></svg>
+    <figcaption class="mono" id="cap"></figcaption>
+  </figure>
+
+  <div class="insight">
+    <p class="result" id="result"></p>
+    <p id="explain"></p>
+    <p class="short-only" id="shortline"></p>
+  </div>
+
+  <div class="notes">
+    <p>격자는 흰 칸 0, 검은 칸 1인 교육용 예시이고, ① 규칙과 ② 필터는 사람이 고른 값입니다. 학습한 신경망이 아니므로 화면의 점수는 어떤 모델의 성능도 뜻하지 않습니다.</p>
+    <p>② 필터 K는 가운데 세로줄만 1인 3×3입니다. 한 칸씩(보폭 1), 바깥을 덧대지 않고(패딩 0) 네 자리에 놓아 겹친 9칸의 곱을 더합니다. 딥러닝 라이브러리의 ‘합성곱’처럼 필터를 뒤집지 않는 교차상관으로 계산했는데, 이 K는 상하·좌우 대칭이라 뒤집어도 결과가 같습니다. 편향과 활성화 함수는 생략했습니다. 양옆까지 검은 넓은 덩어리에도 3이 나오므로 이 필터를 ‘세로선 검출기’라고 단정하지는 않습니다.</p>
+    <p>③ 최대 풀링은 2×2 묶음에서 가장 큰 값 하나를 남깁니다(보폭 2). 4×4 그림의 특징 지도는 2×2라 묶음이 하나뿐이어서, ‘묶음 경계를 넘으면?’은 더 큰 그림에서 나온 4×4 특징 지도를 가정한 별도 예시입니다. 1998년 LeNet-5의 축소 층은 고정된 최댓값이 아니라 평균(합)에 학습하는 계수·편향·비선형 함수를 더한 층이라 이 예시와 다릅니다.</p>
+    <p>근거: LeCun 외(1989) NIPS 2, p.399 — 특징 지도·가중치 공유, 입력이 옮겨 가면 특징 지도의 결과도 같은 만큼 옮겨 감. LeCun 외(1998) Proc. IEEE 86(11), §II-A pp.2283–2285. PyTorch Conv2d·MaxPool2d 문서의 연산 정의. 연결 글: 「기계와 생각」 14편(①), 17편(②), 18편(③).</p>
+    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const A=[[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]];
+  const B=A.map(r=>[0,...r.slice(0,3)]);
+  const H=[[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]];
+  const K=[[0,1,0],[0,1,0],[0,1,0]];
+  // 경계 반례: 더 큰 그림에서 나온 4×4 특징 지도라고 가정
+  const E1=[[0,3,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+  const E2=[[0,0,3,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+  const copy=X=>X.map(r=>r.slice());
+  let X=copy(B), stage=1, pos=1, edge=false;
+
+  const same=(P,Q)=>P.every((r,i)=>r.every((v,j)=>v===Q[i][j]));
+  const conv=G=>[0,1].map(i=>[0,1].map(j=>{let s=0;for(let u=0;u<3;u++)for(let v=0;v<3;v++)s+=G[i+u][j+v]*K[u][v];return s;}));
+  const pool=M=>{const n=M.length/2;return Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>Math.max(M[2*i][2*j],M[2*i][2*j+1],M[2*i+1][2*j],M[2*i+1][2*j+1])));};
+  const col2=G=>G.reduce((s,r)=>s+r[1],0);
+  const flat=M=>M.flat();
+  const mean=M=>flat(M).reduce((a,b)=>a+b,0)/flat(M).length;
+  const fmt=v=>Number.isInteger(v)?String(v):v.toFixed(2).replace(/0$/,'');
+  const mtx=M=>'['+M.map(r=>'['+r.join(',')+']').join(',')+']';
+
+  const svg=document.getElementById('plot'), NS='http://www.w3.org/2000/svg';
+  const el=(n,at,p)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);(p||svg).appendChild(e);return e;};
+  const tx=(x,y,s,at,p)=>{const t=el('text',Object.assign({x,y},at),p);t.textContent=s;return t;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  function draw(){
+    svg.innerHTML='';
+    const big=document.body.classList.contains('shorts');
+    const ink=css('--ink'), ink2=css('--ink2'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), box=css('--box'), lin=css('--lining');
+    // 쇼츠이거나 좁은 화면(휴대폰)이면 촘촘한 배치로 그린다
+    const cmp=big||svg.getBoundingClientRect().width<560;
+    const W=cmp?440:720, F=big?1.15:1;
+    const mono=(sz,fill)=>({'font-family':'IBM Plex Mono','font-size':sz*F,fill:fill||label});
+    const sans=(sz,fill,w)=>({'font-family':'IBM Plex Sans KR','font-size':sz*F,fill:fill||ink,'font-weight':w||400});
+    const serif=(sz,fill)=>({'font-family':'Noto Serif KR','font-weight':600,'font-size':sz*F,fill:fill||ink});
+
+    // 칸 하나: 값 v(0~max)를 진하기로
+    function cell(x,y,c,v,max,opt){
+      opt=opt||{};
+      const t=max?v/max:0;
+      el('rect',{x,y,width:c,height:c,fill:bg,stroke:label,'stroke-width':1});
+      if(t>0) el('rect',{x:x+.5,y:y+.5,width:c-1,height:c-1,fill:ink,'fill-opacity':t>=1?1:.2+.55*t});
+      tx(x+c/2,y+c/2+c*.16,v,{...mono(Math.min(16,c*.38)),fill:t>=.6?bg:ink,'text-anchor':'middle'});
+      if(opt.onClick){const h=el('rect',{x,y,width:c,height:c,fill:'transparent',class:'hit'});h.addEventListener('click',opt.onClick);}
+    }
+    function grid(x,y,c,G,max,click){
+      G.forEach((r,i)=>r.forEach((v,j)=>cell(x+j*c,y+i*c,c,v,max,click?{onClick:()=>{X[i][j]=1-X[i][j];draw();}}:null)));
+    }
+    function arrow(x1,x2,y){
+      el('line',{x1,x2:x2-6,y1:y,y2:y,stroke:label,'stroke-width':1.5});
+      el('path',{d:`M${x2} ${y} l-8 -5 v10 z`,fill:label});
+    }
+    const dash=(x,y,w,h,col)=>el('rect',{x,y,width:w,height:h,fill:'none',stroke:col||acc,'stroke-width':3,'stroke-dasharray':'7 4'});
+
+    const c=cmp?34:44, mc=cmp?44:56, pc=cmp?50:60;
+    const gx=cmp?12:20, ax1=gx+4*c+(cmp?10:18), ax2=ax1+(cmp?30:46);
+    const mx=ax2+(cmp?6:10), bx1=mx+2*mc+(cmp?10:18), bx2=bx1+(cmp?30:46), px=bx2+(cmp?6:10);
+    const rowH=4*c+(cmp?78:92), top=cmp?8:14;
+    let H_=top;
+
+    if(edge && stage===3){
+      // 경계 반례: 4×4 특징 지도 → 2×2 풀링
+      const rows=[['특징 지도 ①  3이 1행 2열',E1],['특징 지도 ②  한 칸 옮김: 1행 3열',E2]];
+      rows.forEach(([name,M],k)=>{
+        const y=top+k*rowH+22;
+        tx(gx,y-8,name,sans(13,ink,500));
+        grid(gx,y,c,M,3,false);
+        // 2×2 묶음 경계
+        el('line',{x1:gx+2*c,x2:gx+2*c,y1:y,y2:y+4*c,stroke:acc,'stroke-width':3});
+        el('line',{x1:gx,x2:gx+4*c,y1:y+2*c,y2:y+2*c,stroke:acc,'stroke-width':3});
+        arrow(ax1,ax2,y+2*c);
+        tx((ax1+ax2)/2,y+2*c-10,'풀링',{...mono(11),'text-anchor':'middle'});
+        const P=pool(M);
+        grid(mx,y+2*c-mc,mc,P,3,false);
+        tx(mx+mc,y+2*c+mc+18*F,mtx(P),{...mono(12,ink),'text-anchor':'middle'});
+      });
+      H_=top+rowH+22+4*c+(cmp?36:44);
+      svg.setAttribute('viewBox',`0 0 ${W} ${H_+(big?0:8)}`);
+      return;
+    }
+
+    const pics=[['A (13편)',A,false],['지금 그림',X,true]];
+    const p0=pos-1, pi=Math.floor(p0/2), pj=p0%2;
+    pics.forEach(([name,G,click],k)=>{
+      const y=top+k*rowH+22, cy=y+2*c;
+      tx(gx,y-8,name+(click&&!big?'  · 칸을 눌러 바꾸기':''),sans(13,ink,500));
+      grid(gx,y,c,G,1,click);
+      if(stage===1){
+        dash(gx+c-2,y-2,c+4,4*c+4);
+        arrow(ax1,ax2,cy);
+        const s=col2(G);
+        tx(mx,cy-14,'두 번째 열의 합',sans(13,label));
+        tx(mx,cy+22,`점수 ${s}`,serif(26,s===4?acc:ink));
+        tx(mx,cy+48,s===4?'→ 1로 판단':'→ 1이 아니라고 판단',sans(14,ink2));
+      }else{
+        const M=conv(G);
+        if(stage===2) dash(gx+pj*c-2,y+pi*c-2,3*c+4,3*c+4);
+        arrow(ax1,ax2,cy);
+        tx((ax1+ax2)/2,cy-10,'필터',{...mono(11),'text-anchor':'middle'});
+        const my=cy-mc;
+        grid(mx,my,mc,M,3,false);
+        if(stage===2){
+          el('rect',{x:mx+pj*mc+1.5,y:my+pi*mc+1.5,width:mc-3,height:mc-3,fill:'none',stroke:acc,'stroke-width':3});
+          tx(mx+mc,my+2*mc+20*F,'특징 지도',{...mono(11),'text-anchor':'middle'});
+        }else{
+          el('rect',{x:mx-2,y:my-2,width:2*mc+4,height:2*mc+4,fill:'none',stroke:acc,'stroke-width':3});
+          arrow(bx1,bx2,cy);
+          tx((bx1+bx2)/2,cy-10,'최대',{...mono(11),'text-anchor':'middle'});
+          const P=pool(M);
+          cell(px,cy-pc/2,pc,P[0][0],3);
+          tx(px+pc/2,cy+pc/2+20*F,`평균 ${fmt(mean(M))}`,{...mono(12),'text-anchor':'middle'});
+        }
+      }
+    });
+    H_=top+rowH+22+4*c+(cmp?36:44);
+    // 필터 K (② 단계, 넓은 화면에서만)
+    if(stage===2 && !cmp){
+      const kc=26, kx=W-3*kc-34, ky=top+rowH-3*kc/2+6;
+      tx(kx+1.5*kc,ky-12,'필터 K · 두 줄 모두 같음',{...mono(11),'text-anchor':'middle'});
+      grid(kx,ky,kc,K,1,false);
+      tx(kx+1.5*kc,ky+3*kc+20,'가중치 9개 공유',{...mono(11,ink),'text-anchor':'middle'});
+    }
+    svg.setAttribute('viewBox',`0 0 ${W} ${H_+(big?0:4)}`);
+  }
+
+  function text(){
+    const R=document.getElementById('result'), E=document.getElementById('explain'), SL=document.getElementById('shortline'), C=document.getElementById('cap'), SB=document.getElementById('stagebar');
+    const diff=flat(A).filter((v,i)=>v!==flat(X)[i]).length, both=flat(A).filter((v,i)=>v&&flat(X)[i]).length;
+    const isB=same(X,B), isA=same(X,A), isH=same(X,H);
+    const nameX=isA?'지금 그림(A)':isB?'B':isH?'가로획':'지금 그림';
+    // 받침이 있으면 ‘은’, 없거나 영문이면 ‘는’
+    const lc=nameX.charCodeAt(nameX.length-1), topic=nameX+(lc>=0xAC00&&lc<=0xD7A3&&(lc-0xAC00)%28?'은':'는');
+    SB.textContent=['① 한 자리만 보는 규칙','② 같은 필터를 네 자리에','③ 최대 풀링'][stage-1]+(edge&&stage===3?' · 묶음 경계 넘기':'');
+    if(stage===1){
+      const s=col2(X);
+      C.textContent='점선 = 점수를 매기는 자리(두 번째 열에 고정) · 진한 칸 = 1';
+      R.innerHTML=`고정 위치 점수: A <b>4</b> · ${nameX} <b>${s}</b>`;
+      E.innerHTML=`입력 16개 가운데 두 번째 열의 가중치만 1인 규칙입니다. ${topic}${isA?' A와 같습니다.':` A와 비교해 값이 다른 칸이 <b>${diff}개</b>, 함께 검은 칸이 <b>${both}개</b>입니다.`} ${s===4?'':'획이 있어도 규칙이 보던 자리에서 벗어나면 점수는 빈 격자와 다르지 않습니다.'}`;
+      SL.innerHTML=isB?'한 칸 옮겼을 뿐인데 8칸이 바뀌고 4점 → 0점':`A 4점 · ${nameX} ${s}점`;
+    }else if(stage===2){
+      const MA=conv(A), MX=conv(X), p0=pos-1, i=Math.floor(p0/2), j=p0%2;
+      const parts=G=>[0,1,2].map(u=>G[i+u][j+1]);
+      const pa=parts(A), px=parts(X);
+      C.textContent='점선 = 지금 필터가 놓인 3×3 자리 · 특징 지도의 테두리 칸 = 그 자리의 값';
+      R.innerHTML=`특징 지도: A <b>${mtx(MA)}</b> · ${nameX} <b>${mtx(MX)}</b>`;
+      E.innerHTML=`자리 ${pos}(위에서 ${i+1}번째, 왼쪽에서 ${j+1}번째)에서 필터의 가운데 세로줄이 겹친 세 칸만 더해집니다. A는 ${pa.join('+')} = ${pa.reduce((a,b)=>a+b)}, ${topic} ${px.join('+')} = ${px.reduce((a,b)=>a+b)}. 나머지 여섯 칸은 필터 값이 0이라 곱하면 0입니다. 같은 가중치 <b>9개</b>를 네 자리에 함께 씁니다. 자리마다 따로 두면 36개입니다.${isB?' 그림이 한 칸 옮겨 가자 높은 값 3도 특징 지도에서 한 칸 옮겨 갔습니다.':''}`;
+      SL.innerHTML=isB?'같은 필터를 네 자리에 → 3이 획을 따라 옮겨 감':`같은 필터 9개를 네 자리에 · ${nameX} ${mtx(MX)}`;
+    }else if(edge){
+      C.textContent='더 큰 그림에서 나온 4×4 특징 지도를 가정한 예시 · 굵은 선으로 나눈 2×2 묶음마다 가장 큰 값을 남김';
+      R.innerHTML=`풀링 결과: ① <b>${mtx(pool(E1))}</b> · ② <b>${mtx(pool(E2))}</b>`;
+      E.innerHTML='3이 같은 묶음 안에서 움직였다면 결과는 같았을 겁니다. 하지만 1행 2열에서 1행 3열로 옮기면 <b>묶음 경계</b>를 넘어, 3이 남는 자리가 왼쪽 칸에서 오른쪽 칸으로 바뀝니다. 최대 풀링은 작은 이동에 덜 민감하게 할 뿐, 어떤 이동에도 같은 결과를 보장하지 않습니다.';
+      SL.innerHTML='경계를 넘으면 풀링 결과도 달라진다';
+    }else{
+      const MA=conv(A), MX=conv(X), mA=pool(MA)[0][0], mX=pool(MX)[0][0];
+      C.textContent='테두리 = 2×2 풀링 묶음 · 오른쪽 칸 = 네 값 중 가장 큰 값';
+      R.innerHTML=`최대 풀링: A <b>${mA}</b> · ${nameX} <b>${mX}</b>`;
+      let ex=`2×2 특징 지도의 네 값 가운데 가장 큰 값 하나만 남깁니다. 평균은 A ${fmt(mean(MA))}, ${nameX} ${fmt(mean(MX))}입니다. `;
+      if(mA===mX && !same(MA,MX)) ex+='특징 지도는 달랐지만 최댓값만 남기면 같아집니다. ‘이 근처에 세로로 이어진 검은 칸이 있었다’는 단서는 남고, 왼쪽이었는지 오른쪽이었는지는 사라집니다.';
+      else if(mA===mX) ex+='두 특징 지도가 같으니 결과도 같습니다.';
+      else ex+=`가장 큰 값이 ${mX<mA?'작아': '커'}서 A와 구별됩니다. 위치를 버리는 풀링도 필터가 본 ‘모양’의 차이는 남깁니다.`;
+      E.innerHTML=ex;
+      SL.innerHTML=isB?'특징 지도는 달라도 최댓값은 둘 다 3':`최댓값 A ${mA} · ${nameX} ${mX}`;
+    }
+    document.querySelectorAll('[data-stage]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.stage===stage));
+    document.querySelectorAll('[data-pic]').forEach(b=>b.setAttribute('aria-pressed',same(X,{a:A,b:B,h:H}[b.dataset.pic])));
+    document.querySelectorAll('[data-pos]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.pos===pos));
+    document.getElementById('posCtl').classList.toggle('hide',stage!==2);
+    document.getElementById('edgeCtl').classList.toggle('hide',stage!==3);
+    document.getElementById('edgeBtn').setAttribute('aria-pressed',edge);
+  }
+
+  // 칸을 눌러 바꿀 때도 문장이 함께 바뀌도록 draw를 감싼다
+  const _draw=draw; draw=function(){_draw();text();};
+  const render=()=>draw();
+
+  document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>{stage=+b.dataset.stage; render();}));
+  document.querySelectorAll('[data-pic]').forEach(b=>b.addEventListener('click',()=>{X=copy({a:A,b:B,h:H}[b.dataset.pic]); edge=false; render();}));
+  document.querySelectorAll('[data-move]').forEach(b=>b.addEventListener('click',()=>{const d=+b.dataset.move; X=X.map(r=>r.map((_,j)=>{const s=j-d; return s>=0&&s<4?r[s]:0;})); edge=false; render();}));
+  document.querySelectorAll('[data-pos]').forEach(b=>b.addEventListener('click',()=>{pos=+b.dataset.pos; render();}));
+  document.getElementById('edgeBtn').addEventListener('click',()=>{edge=!edge; render();});
+  const sb=document.getElementById('shortsBtn');
+  function setShorts(on){document.body.classList.toggle('shorts',on); sb.setAttribute('aria-pressed',on); render();}
+  sb.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
+
+  // URL 옵션: ?shift=0|1&pic=a|b|h&stage=1|2|3&pos=1~4&edge=1&shorts=1
+  const u=new URLSearchParams(location.search);
+  if(u.get('shift')==='0') X=copy(A);
+  if({a:1,b:1,h:1}[u.get('pic')]) X=copy({a:A,b:B,h:H}[u.get('pic')]);
+  if(['1','2','3'].includes(u.get('stage'))) stage=+u.get('stage');
+  if(['1','2','3','4'].includes(u.get('pos'))) pos=+u.get('pos');
+  if(u.get('edge')==='1') edge=true;
+  if(u.get('shorts')==='1') setShorts(true); else render();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',render);
+  let rz=0; addEventListener('resize',()=>{clearTimeout(rz); rz=setTimeout(render,120);});
+})();
+</script>
+</body>
+</html>
