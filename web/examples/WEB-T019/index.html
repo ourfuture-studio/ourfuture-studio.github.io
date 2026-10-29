@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 19</title>
+<style>
+canvas { max-width:100%; height:auto; border:1px solid #E4E4E0; }
+</style>
+</head>
+<body>
+<h1>가상 인원 막대</h1>
+<canvas id="chart" width="300" height="170" aria-label="강좌별 인원, 아래 목록 참고">아래 인원 목록을 읽으세요.</canvas>
+<ul id="values"></ul>
+<script>
+const values = [4, 7, 2];
+const ctx = document.querySelector("#chart").getContext("2d");
+if (ctx) {
+  ctx.fillStyle = "#1F6F6F";
+  values.forEach((value, index) => ctx.fillRect(30, 15 + index * 50, value * 20, 25));
+}
+const list = document.querySelector("#values");
+values.forEach((value, index) => {
+  const li = document.createElement("li");
+  li.textContent = `강좌 ${index + 1}: ${value}명`;
+  list.append(li);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 13</title>
+</head>
+<body>
+<h1>DOM 안내 변경</h1>
+<p id="notice">신청 안내 준비 중</p>
+<script>
+const notice = document.querySelector("#notice");
+if (notice) {
+  notice.textContent = "연습 안내가 열렸습니다.";
+}
+</script>
+</body>
+</html>

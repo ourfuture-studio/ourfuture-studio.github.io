@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 20</title>
+<style>
+audio { max-width:100%; }
+</style>
+</head>
+<body>
+<h1>자체 테스트 음원 재생</h1>
+<p>1초짜리 합성 신호입니다. 강의 음성이 아닙니다.</p>
+<audio id="audio" src="tone.wav" controls preload="metadata"></audio>
+<p><button id="play">처음부터 재생</button> <button id="pause">일시 정지</button></p>
+<p id="result" role="status">재생 전</p>
+<script>
+const audio = document.querySelector("#audio");
+const result = document.querySelector("#result");
+audio.volume = 0.2;
+document.querySelector("#play").addEventListener("click", async () => {
+  try { audio.currentTime = 0; await audio.play(); result.textContent = "재생 중"; }
+  catch { result.textContent = "재생 실패: 파일과 브라우저 정책을 확인하세요"; }
+});
+document.querySelector("#pause").addEventListener("click", () => {
+  audio.pause(); result.textContent = "일시 정지";
+});
+audio.addEventListener("ended", () => result.textContent = "재생 끝");
+audio.addEventListener("error", () => result.textContent = "음원 로딩 오류");
+</script>
+</body>
+</html>

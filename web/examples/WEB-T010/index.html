@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 10</title>
+<style>
+pre { white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<h1>가상 강좌 목록</h1>
+<pre id="result"></pre>
+<script>
+const courses = [
+  { title: "웹 기초", capacity: 10 },
+  { title: "CSS 기초", capacity: 8 },
+  { title: "JavaScript 기초", capacity: 6 }
+];
+const lines = [];
+for (const course of courses) {
+  lines.push(`${course.title}: ${course.capacity}명`);
+}
+document.querySelector("#result").textContent = lines.join("\n");
+</script>
+</body>
+</html>

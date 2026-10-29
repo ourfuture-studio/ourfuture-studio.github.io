@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 기초 · 예제 15</title>
+</head>
+<body>
+<h1>예약과 취소</h1>
+<button id="start">시작</button>
+<button id="cancel">취소</button>
+<p id="result" role="status">시작 전</p>
+<script>
+let timer;
+const result = document.querySelector("#result");
+document.querySelector("#start").addEventListener("click", () => {
+  clearTimeout(timer);
+  result.textContent = "기다리는 중";
+  timer = setTimeout(() => { result.textContent = "안내를 확인하세요"; }, 1000);
+});
+document.querySelector("#cancel").addEventListener("click", () => {
+  clearTimeout(timer);
+  result.textContent = "취소했습니다";
+});
+</script>
+</body>
+</html>
