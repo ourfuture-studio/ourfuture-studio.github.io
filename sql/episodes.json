@@ -35,6 +35,7 @@
                   2
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "COUNT에 포함되는 값 · counted 1=포함, 0=제외",
                 "sql": "SELECT order_id, coupon_amount, CASE WHEN coupon_amount IS NULL THEN 0 ELSE 1 END AS counted FROM orders ORDER BY order_id",
@@ -74,7 +75,8 @@
                   2,
                   1
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "전체 행 3개, NULL이 아닌 값 2개, 서로 다른 값 1종류입니다."
@@ -93,7 +95,8 @@
                   3,
                   2
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "0도 기록된 값이므로 COUNT에 포함됩니다."
@@ -112,7 +115,8 @@
                   0,
                   0
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "값이 없어도 주문 행은 세 개 남습니다."
@@ -131,7 +135,8 @@
                   0,
                   0
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "값이 NULL인 행과 행 자체가 없는 경우는 다릅니다."
@@ -145,7 +150,28 @@
       "boundary": "NULL은 0원이라는 뜻이 아닙니다. NULL을 0으로 바꾸는 실험은 입력 자료를 바꾸는 별도 조건입니다.",
       "challenge": "COUNT(amount + fee)는 어떤 행을 셀까요? 먼저 세 행의 표현식 값을 적어 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c COUNT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html"
+          },
+          {
+            "label": "Oracle 19c 집계 함수",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
+          },
+          {
+            "label": "Oracle 19c NULL과 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E025",
@@ -181,6 +207,7 @@
                   20
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "A · SUM에 들어가기 전의 행별 식",
                 "sql": "SELECT order_id, amount, fee, amount+fee AS sum_input FROM orders ORDER BY order_id",
@@ -214,6 +241,7 @@
                   32
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "B · 따로 계산한 두 열의 합계",
                 "sql": "SELECT SUM(amount) AS amount_total, SUM(fee) AS fee_total FROM orders",
@@ -240,7 +268,8 @@
                 [
                   32
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "B",
@@ -249,7 +278,8 @@
                 [
                   32
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "이 입력에서는 두 방식 모두 32입니다."
@@ -267,7 +297,8 @@
                   20,
                   32
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "이미 NULL이 된 식을 0으로 바꾸는 것과 수수료를 먼저 0으로 바꾸는 것은 다릅니다."
@@ -285,7 +316,8 @@
                   null,
                   0
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "입력이 없을 때 SUM은 NULL, COUNT는 0입니다."
@@ -299,7 +331,32 @@
       "boundary": "일부 NULL을 건너뛰는 경우와 집계 입력이 하나도 없는 경우를 구분합니다.",
       "challenge": "모든 fee가 NULL이면 두 SUM 식은 무엇을 반환할까요? 예상한 뒤 직접 UPDATE로 바꿔 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c SUM",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html"
+          },
+          {
+            "label": "Oracle 19c 집계 함수",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
+          },
+          {
+            "label": "Oracle 19c NULL과 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          },
+          {
+            "label": "Oracle 19c COALESCE",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COALESCE.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E004",
@@ -354,6 +411,7 @@
                   null
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "고객마다 만들어진 행과 실제 주문 수",
                 "sql": "SELECT c.customer_id, COUNT(*) AS result_rows, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
@@ -400,7 +458,8 @@
                   22,
                   203
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "일치 주문이 없는 고객 33은 결과에 없습니다."
@@ -434,7 +493,8 @@
                   33,
                   null
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "고객 수는 그대로지만 22번의 대응 결과가 한 행 늘어납니다."
@@ -463,7 +523,8 @@
                   1,
                   0
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "33번의 COUNT(*)는 1, COUNT(o.order_id)는 0입니다."
@@ -489,7 +550,8 @@
                   33,
                   null
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "LEFT JOIN은 고객마다 NULL 보완 행 하나씩을 남깁니다."
@@ -503,7 +565,24 @@
       "boundary": "이 예제에는 WHERE·DISTINCT·집계가 없습니다. 이를 추가하면 결과 행 수를 다시 판단해야 합니다.",
       "challenge": "고객 11의 주문을 모두 지우면 LEFT JOIN의 결과 행 수와 주문번호는 어떻게 달라질까요?",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c SELECT·조인·DISTINCT·HAVING",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c COUNT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E016",
@@ -555,6 +634,7 @@
                   null
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "A · 금액 조건을 만족해 붙은 주문",
                 "sql": "SELECT c.customer_id,o.order_id,o.amount FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id AND o.amount>=10 ORDER BY c.customer_id,o.order_id",
@@ -586,6 +666,7 @@
                   202
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "B · WHERE 적용 전의 주문과 조건 판정",
                 "sql": "SELECT c.customer_id,o.order_id,o.amount,CASE WHEN o.amount>=10 THEN 'TRUE' WHEN NOT(o.amount>=10) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
@@ -637,7 +718,8 @@
                   33,
                   null
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "33번은 돌아오지만 7천원 주문이 붙은 22번은 돌아오지 않습니다."
@@ -663,12 +745,14 @@
                   33,
                   null
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "B",
               "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id WHERE o.amount>=10 ORDER BY c.customer_id,o.order_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "모든 금액을 0으로 바꾸면 ON은 고객 3행, WHERE는 0행입니다."
@@ -682,7 +766,24 @@
       "boundary": "이 금액 비교 조건에서의 차이입니다. 모든 WHERE 조건이 같은 방식으로 LEFT JOIN을 바꾼다고 일반화하지 않습니다.",
       "challenge": "기준을 10에서 7로 바꾸면 A와 B의 고객 목록은 어떻게 달라질까요?",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c SELECT·조인·DISTINCT·HAVING",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c NULL과 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E019",
@@ -719,6 +820,7 @@
               "label": "A",
               "sql": "SELECT customer_id FROM customers\nWHERE customer_id NOT IN (SELECT customer_id FROM excluded_customers)\nORDER BY customer_id",
               "expected": [],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "WHERE를 통과하려면 TRUE여야 합니다",
                 "sql": "SELECT customer_id,CASE WHEN customer_id NOT IN (SELECT customer_id FROM excluded_customers) THEN 'TRUE' WHEN NOT(customer_id NOT IN (SELECT customer_id FROM excluded_customers)) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM customers ORDER BY customer_id",
@@ -747,25 +849,26 @@
           "setup": "",
           "queries": [
             {
-              "label": "A",
-              "sql": "SELECT customer_id,\ncustomer_id NOT IN (SELECT customer_id FROM excluded_customers) AS predicate\nFROM customers ORDER BY customer_id",
+              "label": "CASE로 조건 판정",
+              "sql": "SELECT customer_id, CASE WHEN customer_id NOT IN (SELECT customer_id FROM excluded_customers) THEN 'TRUE' WHEN customer_id IN (SELECT customer_id FROM excluded_customers) THEN 'FALSE' ELSE 'UNKNOWN' END AS condition_result FROM customers ORDER BY customer_id",
               "expected": [
                 [
                   11,
-                  0
+                  "FALSE"
                 ],
                 [
                   22,
-                  null
+                  "UNKNOWN"
                 ],
                 [
                   33,
-                  null
+                  "UNKNOWN"
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
-          "explanation": "SQLite 표시 0은 FALSE, NULL은 UNKNOWN입니다. TRUE인 1만 WHERE를 통과합니다."
+          "explanation": "CASE로 TRUE·FALSE·UNKNOWN을 표시합니다. WHERE는 TRUE인 행만 남깁니다."
         },
         {
           "id": "filter",
@@ -782,7 +885,8 @@
                 [
                   33
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "식별된 고객 번호만 제외한다는 조건에서는 22·33이 남습니다."
@@ -802,7 +906,8 @@
                 [
                   33
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "현재 바깥 고객 ID는 NULL이 아닙니다. 이 자료에서 일치 행이 없는 고객은 22·33입니다."
@@ -816,7 +921,32 @@
       "boundary": "현재 바깥 ID는 NULL이 아니고 비교는 단일 열입니다. 바깥 NULL·빈 목록·다중 열에서는 따로 검토합니다.",
       "challenge": "제외 목록의 NULL만 지우면 결과가 어떻게 달라질까요? 삭제 전후의 조건값도 비교해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c IN·NOT IN 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/IN-Condition.html"
+          },
+          {
+            "label": "Oracle 19c NULL과 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          },
+          {
+            "label": "Oracle 19c CASE 표현식",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CASE-Expressions.html"
+          },
+          {
+            "label": "Oracle 19c EXISTS 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E026",
@@ -872,7 +1002,8 @@
                   5,
                   24
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "B · RANGE",
@@ -902,7 +1033,8 @@
                   5,
                   24
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "A는 날짜·ID 순서의 ROWS, B는 날짜 순서의 RANGE입니다."
@@ -940,7 +1072,8 @@
                   5,
                   24
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "같은 날짜라도 정렬 키 전체가 달라져 누계가 4·10·19·24가 됩니다."
@@ -978,7 +1111,8 @@
                   5,
                   24
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "이 SUM의 기본 프레임은 날짜 동률을 함께 포함합니다."
@@ -1016,7 +1150,8 @@
                   5,
                   24
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "ORDER BY의 날짜·고유 ID가 같으면 삽입 순서를 바꿔도 이 결과는 같습니다."
@@ -1030,7 +1165,24 @@
       "boundary": "사용한 프레임은 UNBOUNDED PRECEDING부터 CURRENT ROW까지입니다. 모든 윈도우 함수의 프레임 동작으로 확대하지 않습니다.",
       "challenge": "두 번째 날짜의 금액을 바꿔 보세요. 어느 행의 ROWS·RANGE 누계가 함께 변하는지 예상해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c 분석 함수·윈도우 프레임",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
+          },
+          {
+            "label": "Oracle 19c SUM",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E002",
@@ -1061,6 +1213,7 @@
               "label": "A",
               "sql": "SELECT order_id FROM null_orders WHERE coupon = NULL ORDER BY order_id",
               "expected": [],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "등호 비교의 세 논리값",
                 "sql": "SELECT order_id,coupon,CASE WHEN coupon=NULL THEN 'TRUE' WHEN NOT(coupon=NULL) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM null_orders ORDER BY order_id",
@@ -1091,6 +1244,7 @@
                   302
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "IS NULL의 판정",
                 "sql": "SELECT order_id,coupon,CASE WHEN coupon IS NULL THEN 'TRUE' ELSE 'FALSE' END AS predicate FROM null_orders ORDER BY order_id",
@@ -1128,7 +1282,8 @@
                 [
                   303
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "숫자 0은 주문 303에 기록된 값입니다."
@@ -1145,7 +1300,8 @@
                 [
                   303
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "NULL은 일반 부등 비교에서도 TRUE가 되지 않습니다."
@@ -1158,7 +1314,8 @@
             {
               "label": "is-null",
               "sql": "SELECT order_id FROM null_orders WHERE coupon IS NULL",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "302에 100을 기록하면 IS NULL 결과는 0행입니다."
@@ -1172,7 +1329,24 @@
       "boundary": "빈 문자열까지 NULL과 같다고 간주하지 않습니다. 엔진별 문자열 처리 차이는 따로 확인합니다.",
       "challenge": "coupon IS NOT NULL로 찾는 주문 ID와 coupon<>500으로 찾는 주문 ID가 같은지 확인해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c NULL과 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          },
+          {
+            "label": "Oracle 19c CASE 표현식",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CASE-Expressions.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E011",
@@ -1202,7 +1376,7 @@
           "queries": [
             {
               "label": "pairs",
-              "sql": "SELECT DISTINCT customer_id, menu FROM purchases ORDER BY customer_id, menu",
+              "sql": "SELECT DISTINCT customer_id, menu FROM purchases",
               "expected": [
                 [
                   11,
@@ -1216,10 +1390,11 @@
                   22,
                   "커피"
                 ]
-              ]
+              ],
+              "rowOrder": "unordered"
             }
           ],
-          "explanation": "(11,커피)의 중복이 합쳐져 세 행이 남습니다."
+          "explanation": "선택한 값이 같은 행을 합쳐 세 행입니다. 표시 순서는 정답 기준이 아닙니다."
         },
         {
           "id": "customer",
@@ -1236,7 +1411,8 @@
                 [
                   22
                 ]
-              ]
+              ],
+              "rowOrder": "unordered"
             }
           ],
           "explanation": "고객 ID만 보면 11·22 두 행입니다."
@@ -1270,7 +1446,8 @@
                   22,
                   "커피"
                 ]
-              ]
+              ],
+              "rowOrder": "unordered"
             }
           ],
           "explanation": "고유 주문번호를 포함하면 네 행이 모두 다릅니다."
@@ -1288,7 +1465,8 @@
                   11,
                   "커피"
                 ]
-              ]
+              ],
+              "rowOrder": "unordered"
             }
           ],
           "explanation": "선택한 두 값이 모두 같으면 한 행입니다."
@@ -1299,10 +1477,23 @@
         "나머지 (11,차), (22,커피)를 포함해 세 행입니다. 원본의 주문번호가 다르더라도 SELECT하지 않았다면 이번 중복 기준에는 없습니다.",
         "고객만 선택하면 두 행, 주문번호까지 선택하면 네 행입니다. DISTINCT를 특정 한 열의 중복 제거로만 읽지 않습니다."
       ],
-      "boundary": "원 문제는 결과 순서를 묻지 않습니다. 실험실의 ORDER BY는 표시 순서를 고정하기 위한 것입니다.",
+      "boundary": "원 문제는 결과의 값과 행 수를 묻고 문자 정렬 순서는 묻지 않습니다. 표시 순서를 Oracle 결과와 비교하는 문제로 사용하지 않습니다.",
       "challenge": "menu만 SELECT DISTINCT하면 몇 행이 나올까요? 고객·메뉴 두 열의 결과와 비교해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c SELECT·조인·DISTINCT·HAVING",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E005",
@@ -1348,7 +1539,8 @@
                 [
                   33
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "UNION ALL",
@@ -1369,7 +1561,8 @@
                 [
                   33
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "UNION은 11·22·33 세 행, UNION ALL은 다섯 행입니다."
@@ -1389,7 +1582,8 @@
                 [
                   22
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "UNION ALL",
@@ -1404,7 +1598,8 @@
                 [
                   22
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "왼쪽 내부 중복 때문에 두 결과의 행 수는 여전히 다릅니다."
@@ -1417,12 +1612,14 @@
             {
               "label": "UNION",
               "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             },
             {
               "label": "UNION ALL",
               "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "두 방식 모두 0행입니다."
@@ -1448,7 +1645,8 @@
                 [
                   44
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             },
             {
               "label": "UNION ALL",
@@ -1466,7 +1664,8 @@
                 [
                   44
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "두 방식 모두 네 행을 반환합니다."
@@ -1480,7 +1679,20 @@
       "boundary": "이번 입력은 같은 정수형 한 열이고 NULL이 없습니다. ORDER BY는 결과 표시용이며 중복 제거 원리는 아닙니다.",
       "challenge": "A의 11 하나를 44로 바꾸면 UNION과 UNION ALL의 결과 행 수는 각각 어떻게 변할까요?",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c UNION과 UNION ALL",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E003",
@@ -1516,6 +1728,7 @@
                   11
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "HAVING 적용 전 고객별 합계",
                 "sql": "SELECT customer_id,COUNT(*) AS order_count,SUM(amount) AS group_total FROM orders GROUP BY customer_id ORDER BY customer_id",
@@ -1544,7 +1757,8 @@
             {
               "label": "WHERE",
               "sql": "SELECT customer_id FROM orders WHERE amount >= 15 GROUP BY customer_id ORDER BY customer_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "15 이상인 주문은 없어 0행입니다."
@@ -1564,7 +1778,8 @@
                 [
                   22
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "11과 22 두 고객의 그룹이 남습니다."
@@ -1577,7 +1792,8 @@
             {
               "label": "WHERE-then-HAVING",
               "sql": "SELECT customer_id FROM orders WHERE amount >= 10 GROUP BY customer_id HAVING SUM(amount) >= 15 ORDER BY customer_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "10 미만 주문을 먼저 빼면 합계 15 이상인 그룹은 없습니다."
@@ -1591,7 +1807,24 @@
       "boundary": "이번 주문 자료는 앞의 cafe-core-v1과 다릅니다. ID와 합계를 원문 표에서 다시 확인합니다.",
       "challenge": "HAVING SUM(amount)>=10으로 바꾼 뒤 어떤 고객이 남는지 설명해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c SELECT·조인·DISTINCT·HAVING",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c 집계 함수",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E018",
@@ -1637,6 +1870,7 @@
                   22
                 ]
               ],
+              "rowOrder": "ordered",
               "trace": {
                 "title": "고객별 일치 주문 수와 EXISTS 판정",
                 "sql": "SELECT c.customer_id,(SELECT COUNT(*) FROM orders o WHERE o.customer_id=c.customer_id) AS matching_orders,CASE WHEN EXISTS(SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) THEN 'TRUE' ELSE 'FALSE' END AS predicate FROM customers c ORDER BY c.customer_id",
@@ -1677,7 +1911,8 @@
                 [
                   22
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "이번 존재 판단의 결과는 같습니다."
@@ -1690,7 +1925,8 @@
             {
               "label": "empty",
               "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id = c.customer_id) ORDER BY c.customer_id",
-              "expected": []
+              "expected": [],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "서브쿼리가 0행이면 고객이 남지 않습니다."
@@ -1713,7 +1949,8 @@
                 [
                   33
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "전체 주문이 존재하므로 고객 세 명 모두 남습니다."
@@ -1727,7 +1964,20 @@
       "boundary": "SELECT NULL이 언제나 서브쿼리 결과 0행을 뜻하지 않습니다. 조건과 실제 행 존재를 분리합니다.",
       "challenge": "NOT EXISTS로 바꾸면 어떤 고객이 남을까요? 주문을 지운 경우도 비교해 보세요.",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c EXISTS 조건",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     },
     {
       "id": "E021",
@@ -1778,7 +2028,8 @@
                   4,
                   3
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "고객 33은 RANK 3, DENSE_RANK 2입니다."
@@ -1812,7 +2063,8 @@
                   4,
                   4
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "동률이 해소되어 두 함수 모두 1·2·3·4가 됩니다."
@@ -1846,7 +2098,8 @@
                   1,
                   1
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "고유 ID 없는 점수 정렬에서 두 함수 모두 1입니다."
@@ -1880,7 +2133,8 @@
                   1,
                   1
                 ]
-              ]
+              ],
+              "rowOrder": "ordered"
             }
           ],
           "explanation": "정렬 방향이 바뀌면 각 점수의 순위도 달라집니다."
@@ -1894,7 +2148,28 @@
       "boundary": "이번 순위는 점수 내림차순입니다. 단순히 RANK는 언제나 번호를 건너뛴다고 설명하지 않습니다.",
       "challenge": "OVER 안은 그대로 두고 마지막 ORDER BY만 뒤집으면 순위 값도 바뀔까요?",
       "theoryUrl": null,
-      "synthetic": true
+      "synthetic": true,
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
+        "sources": [
+          {
+            "label": "Oracle 19c RANK",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/RANK.html"
+          },
+          {
+            "label": "Oracle 19c DENSE_RANK",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/DENSE_RANK.html"
+          },
+          {
+            "label": "Oracle 19c 분석 함수·윈도우 프레임",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
+          }
+        ],
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+      }
     }
   ],
   "sources": [
