@@ -69,7 +69,7 @@
     const token=++generation;const previous=$('sql').value;
     variant=episode.variants.find(v=>v.id===id)||episode.variants[0];queryIndex=0;reviewedDataset=true;
     for(const button of document.querySelectorAll('#variants button'))button.setAttribute('aria-pressed',String(button.dataset.id===variant.id));
-    $('results').replaceChildren();$('variant-note').textContent=variant.id==='base'?'원래 입력입니다. 결과를 예상한 뒤 SQL을 실행해 보세요.':'원본에서 독립적으로 적용한 조건입니다. 실행 후 아래 풀이와 비교해 보세요.';
+    $('results').replaceChildren();$('variant-note').textContent=episode.topicId?variant.explanation:(variant.id==='base'?'원래 입력입니다. 결과를 예상한 뒤 SQL을 실행해 보세요.':'원본에서 독립적으로 적용한 조건입니다. 실행 후 아래 풀이와 비교해 보세요.');
     queryTabs();if(keepSql)$('sql').value=previous;
     status('입력 자료와 SQL 실행기를 준비하는 중입니다.');$('reload').hidden=true;setBusy(true);createWorker();
     try{
@@ -85,7 +85,9 @@
     episode=data.episodes.find(e=>e.id===id)||data.episodes[0];
     if(id!==episode.id)status('알 수 없는 문제 번호여서 첫 문제를 열었습니다.');
     const url=new URL(location.href);url.searchParams.set('episode',episode.id);history[replace?'replaceState':'pushState']({},'',url);
-    $('episode-select').value=episode.id;$('episode-label').textContent='SQLD · 문제 '+String(episode.number).padStart(2,'0')+' · '+episode.id;
+    $('episode-select').value=episode.id;$('episode-label').textContent='SQLD · '+(episode.theoryNumber?'이론 '+String(episode.theoryNumber).padStart(2,'0'):'문제 '+String(episode.number).padStart(2,'0'))+' · '+episode.id;
+    $('scope-note').textContent=episode.compatibilityNote||'등록된 문제는 Oracle 19c 문서와 동작을 대조한 공통 개념입니다. 고정 입력의 값·행 수·NULL을 비교하며, 자유 편집 결과는 별도 실험입니다.';
+    $('oracle-download').hidden=!episode.oracleDownload;if(episode.oracleDownload)$('oracle-download').href=episode.oracleDownload;
     document.title=episode.title+' · SQL 실험실';$('title').replaceChildren(document.createTextNode(episode.title));const dot=document.createElement('span');dot.className='dot';dot.textContent='.';$('title').append(dot);
     $('lede').textContent=episode.lede;$('question').textContent=episode.question;$('explanation').open=false;
     const body=$('explanation-body');body.replaceChildren();for(const text of episode.explanation){const p=document.createElement('p');p.textContent=text;body.append(p);}
@@ -124,7 +126,7 @@
   function theme(){const value=themeValues[themeMode];if(value==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=value;$('theme').textContent='테마: '+['자동','밝게','어둡게'][themeMode];}
   theme();$('theme').addEventListener('click',()=>{themeMode=(themeMode+1)%3;theme();});
   fetch('episodes.json').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
-    data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=String(ep.number).padStart(2,'0')+' · '+ep.title;select.append(option);}
+    data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=(ep.theoryNumber?'이론 '+String(ep.theoryNumber).padStart(2,'0'):String(ep.number).padStart(2,'0'))+' · '+ep.title;select.append(option);}
     setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true);
   }).catch(error=>{status(error.message+' 페이지를 새로고침해 주세요.','error');});
 })();
