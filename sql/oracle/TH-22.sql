@@ -1,5 +1,6 @@
 -- TH-22 / ROLLUP과 CUBE는 몇 종류의 소계를 만들까
--- Oracle 19c target. Documentation review; NOT executed on an Oracle instance.
+-- Registered fixed-input queries compared with SQLite on Oracle 19c 19.26.0.0.0.
+-- Reproduction SQL uses equivalent fixtures and dedicated practice table names.
 -- Select and execute ONE labeled query block at a time.
 -- Examples use synthetic data.
 

@@ -1,5 +1,6 @@
 -- TH-32 / CONNECT BY PRIOR는 어느 쪽 값을 따라갈까
--- Oracle 19c target. Documentation review; NOT executed on an Oracle instance.
+-- Registered fixed-input queries compared with SQLite on Oracle 19c 19.26.0.0.0.
+-- Reproduction SQL uses equivalent fixtures and dedicated practice table names.
 -- Select and execute ONE labeled query block at a time.
 -- Examples use synthetic data.
 

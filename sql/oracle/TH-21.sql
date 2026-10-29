@@ -1,5 +1,6 @@
 -- TH-21 / GROUP BY의 열 순서는 출력 순서일까
--- Oracle 19c target. Documentation review; NOT executed on an Oracle instance.
+-- Registered fixed-input queries compared with SQLite on Oracle 19c 19.26.0.0.0.
+-- Reproduction SQL uses equivalent fixtures and dedicated practice table names.
 -- Select and execute ONE labeled query block at a time.
 -- Examples use synthetic data.
 

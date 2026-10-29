@@ -1,5 +1,6 @@
 -- TH-23 / 소계의 NULL과 원래 NULL은 어떻게 구분할까
--- Oracle 19c target. Documentation review; NOT executed on an Oracle instance.
+-- Registered fixed-input queries compared with SQLite on Oracle 19c 19.26.0.0.0.
+-- Reproduction SQL uses equivalent fixtures and dedicated practice table names.
 -- Select and execute ONE labeled query block at a time.
 -- Examples use synthetic data.
 

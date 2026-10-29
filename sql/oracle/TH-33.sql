@@ -1,5 +1,6 @@
 -- TH-33 / 고객과 고객 한 명과 고객 이름은 어떻게 다를까
--- Oracle 19c target. Documentation review; NOT executed on an Oracle instance.
+-- Registered fixed-input queries compared with SQLite on Oracle 19c 19.26.0.0.0.
+-- Reproduction SQL uses equivalent fixtures and dedicated practice table names.
 -- Select and execute ONE labeled query block at a time.
 -- Examples use synthetic data.
 

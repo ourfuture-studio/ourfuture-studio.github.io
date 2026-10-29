@@ -44,7 +44,7 @@
     const target=$('results');if(!append)target.replaceChildren();
     const section=document.createElement('section');section.className='result-block';
     const heading=document.createElement('div');heading.className='result-heading';const title=document.createElement('h2');title.textContent=label+' 실행 결과';heading.append(title);section.append(heading);
-    const scope=document.createElement('p');scope.className='muted result-scope';scope.dataset.scope=reviewed?'reviewed':'custom';scope.textContent=reviewed?'등록 문제 · Oracle 19c 문서 대조 범위의 고정 입력':'자유 실험 · Oracle 결과 미대조';section.append(scope);
+    const scope=document.createElement('p');scope.className='muted result-scope';scope.dataset.scope=reviewed?'reviewed':'custom';scope.textContent=reviewed?(episode.oracleReview.oracleExecutionPerformed?'등록 문제 · Oracle 19c 실제 결과 대조를 완료한 고정 입력':'등록 문제 · Oracle 19c 문서 대조 범위의 고정 입력'):'자유 실험 · Oracle 결과 미대조';section.append(scope);
     const executed=document.createElement('pre');executed.className='result-sql';executed.textContent=sql;section.append(executed);
     if(!response.ok){const error=document.createElement('p');error.className='sql-error';error.textContent='SQL 오류: '+response.error;section.append(error);}
     else if(!response.results.length){const text=document.createElement('p');text.className='empty-result';text.textContent='실행했습니다. 조회 결과 표가 없는 문장입니다. 왼쪽 입력 자료의 변화를 확인하세요.';section.append(text);}
@@ -87,6 +87,10 @@
     const url=new URL(location.href);url.searchParams.set('episode',episode.id);history[replace?'replaceState':'pushState']({},'',url);
     $('episode-select').value=episode.id;$('episode-label').textContent='SQLD · '+(episode.theoryNumber?'이론 '+String(episode.theoryNumber).padStart(2,'0'):'문제 '+String(episode.number).padStart(2,'0'))+' · '+episode.id;
     $('scope-note').textContent=episode.compatibilityNote||'등록된 문제는 Oracle 19c 문서와 동작을 대조한 공통 개념입니다. 고정 입력의 값·행 수·NULL을 비교하며, 자유 편집 결과는 별도 실험입니다.';
+    if(episode.oracleReview.oracleExecutionPerformed){
+      $('scope-note').textContent='등록된 입력·SQL 조합 '+episode.oracleReview.checkedQueries+'건을 Oracle 19c '+episode.oracleReview.runtimeVersion+'에서 SQLite와 실제 비교했습니다. 자유 편집 결과는 별도 실험입니다.'+(episode.topicId?' '+episode.boundary:'');
+      $('oracle-runtime-status').textContent='Oracle 19c '+episode.oracleReview.runtimeVersion+' 실제 실행 결과를 대조했습니다. 검증한 입력·SQL·결과는 실행 검증 기록에서 확인할 수 있습니다.';
+    }else $('oracle-runtime-status').textContent='Oracle 공식 문서와 대조한 예제입니다. Oracle 직접 실행 비교는 아직 수행하지 않았습니다.';
     $('oracle-download').hidden=!episode.oracleDownload;if(episode.oracleDownload)$('oracle-download').href=episode.oracleDownload;
     document.title=episode.title+' · SQL 실험실';$('title').replaceChildren(document.createTextNode(episode.title));const dot=document.createElement('span');dot.className='dot';dot.textContent='.';$('title').append(dot);
     $('lede').textContent=episode.lede;$('question').textContent=episode.question;$('explanation').open=false;
@@ -125,7 +129,7 @@
   let themeMode=0;const themeValues=['auto','light','dark'];const initial=new URLSearchParams(location.search).get('theme');if(themeValues.includes(initial))themeMode=themeValues.indexOf(initial);
   function theme(){const value=themeValues[themeMode];if(value==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=value;$('theme').textContent='테마: '+['자동','밝게','어둡게'][themeMode];}
   theme();$('theme').addEventListener('click',()=>{themeMode=(themeMode+1)%3;theme();});
-  fetch('episodes.json?v=topics-20261029-v2').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
+  fetch('episodes.json?v=oracle-runtime-20261029-v1').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
     data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=(ep.theoryNumber?'이론 '+String(ep.theoryNumber).padStart(2,'0'):String(ep.number).padStart(2,'0'))+' · '+ep.title;select.append(option);}
     setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true);
   }).catch(error=>{status(error.message+' 페이지를 새로고침해 주세요.','error');});

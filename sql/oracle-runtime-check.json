@@ -1,0 +1,5549 @@
+{
+  "date": "2026-10-29",
+  "provider": "Oracle FreeSQL",
+  "databaseProduct": "Oracle Database 19c EE Extreme Perf",
+  "databaseVersion": "19.26.0.0.0",
+  "sqliteEngine": "sql.js / SQLite 3.49.1",
+  "experienceCount": 34,
+  "queryChecks": 122,
+  "traceChecks": 11,
+  "totalChecks": 133,
+  "resultSetChecks": 136,
+  "mismatches": 0,
+  "oracleExecutionPerformed": true,
+  "sourceSnapshotSha256": "91f78a6612066c54921ab6ae1143c117dece50a09e04b548e1de6ed4702fcd99",
+  "scope": "Registered fixed fixtures and SQL only. SELECT queries ran against equivalent WITH fixtures. Four DML/savepoint cases ran in one session on a dedicated private practice table. Free edits, arbitrary data, datatype metadata, and all Tistory-only Oracle code blocks are outside this evidence.",
+  "cases": [
+    {
+      "caseId": "C000",
+      "episode": "E001",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "COUNT(coupon_amount)",
+      "sourceSignature": "3f70ee779ad7de6120805c84b18de86bf25f1c2746631d1f60d7fd66f44171a3",
+      "sql": "SELECT COUNT(coupon_amount) AS coupon_count FROM orders",
+      "expected": [
+        [
+          [
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C001",
+      "episode": "E001",
+      "variant": "three",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "6ba5e7015f0ac9c4a91a36feabe12be58e5e29c37ae1ee719afcac52ba79d061",
+      "sql": "SELECT COUNT(*),COUNT(coupon_amount),\nCOUNT(DISTINCT coupon_amount) FROM orders",
+      "expected": [
+        [
+          [
+            3,
+            2,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3,
+            2,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C002",
+      "episode": "E001",
+      "variant": "zero",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "세 종류 비교",
+      "sourceSignature": "7019253a173f7bb2ef5d8d71fc9e25983e28c3bdd7bae46a76d6ca47c8fdd3e5",
+      "sql": "SELECT COUNT(*) AS rows_n, COUNT(coupon_amount) AS values_n, COUNT(DISTINCT coupon_amount) AS distinct_n FROM orders",
+      "expected": [
+        [
+          [
+            3,
+            3,
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3,
+            3,
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C003",
+      "episode": "E001",
+      "variant": "null",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "39062dcec540a35d8e6f6ba21d209455fa9993c391a96ba0b90e84a0a955d04d",
+      "sql": "SELECT COUNT(*),COUNT(coupon_amount),\nCOUNT(DISTINCT coupon_amount) FROM orders",
+      "expected": [
+        [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C004",
+      "episode": "E001",
+      "variant": "empty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "세 종류 비교",
+      "sourceSignature": "260b8646a9df006078a95e6305563c5142d800025587e1da47df00052b1fd4fc",
+      "sql": "SELECT COUNT(*),COUNT(coupon_amount),COUNT(DISTINCT coupon_amount) FROM orders",
+      "expected": [
+        [
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C005",
+      "episode": "E025",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A · 행별 덧셈 후 합계",
+      "sourceSignature": "d1e91d5bbe1e9246e41c02c10c17bc121e7072b0bbd4ca1deab2a274b425b415",
+      "sql": "SELECT SUM(amount + fee) AS total FROM orders",
+      "expected": [
+        [
+          [
+            20
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            20
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C006",
+      "episode": "E025",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B · 열별 합계 후 덧셈",
+      "sourceSignature": "e8a4e77cecc182e5eed9e957b439ed029a96c0a237dc6ca3f6f798f15a8430a1",
+      "sql": "SELECT SUM(amount) + SUM(fee) AS total FROM orders",
+      "expected": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C007",
+      "episode": "E025",
+      "variant": "zero",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "d0b737eedf1d8d2950603e1332ebf7838cbad633bd705987c83811b43e8337fa",
+      "sql": "SELECT SUM(amount+fee) AS total FROM orders",
+      "expected": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C008",
+      "episode": "E025",
+      "variant": "zero",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B",
+      "sourceSignature": "2add91678a38c322b63e9fb5a73ce2e54302c7ed0a938518526268a577373b2f",
+      "sql": "SELECT SUM(amount)+SUM(fee) AS total FROM orders",
+      "expected": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            32
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C009",
+      "episode": "E025",
+      "variant": "coalesce",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "ac2de69bb283088ba28e6bc84cb466b11e60cb66def47ee48b52dd4375978e95",
+      "sql": "SELECT\nSUM(COALESCE(amount+fee,0)),\nSUM(COALESCE(amount,0)+COALESCE(fee,0)) FROM orders",
+      "expected": [
+        [
+          [
+            20,
+            32
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            20,
+            32
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C010",
+      "episode": "E025",
+      "variant": "empty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "2c94178a7457a5a5a99f27c9237dfab015665876df1484a6d14f8246cb195f96",
+      "sql": "SELECT SUM(amount),COUNT(*) FROM orders WHERE 1=0",
+      "expected": [
+        [
+          [
+            null,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            null,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C011",
+      "episode": "E004",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "3a7df922b8339486a52d2a087c5b89b5916a2e3b7206da8702a53d2cd18d27df",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C012",
+      "episode": "E004",
+      "variant": "inner",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "f49a3042baaeef139b557abd38618c36cbb35e3d8881113638297fb65e1bc1ba",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c INNER JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C013",
+      "episode": "E004",
+      "variant": "add",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "LEFT JOIN",
+      "sourceSignature": "efbe94ff26add9eeba483b3f1c2d446ae01abe1b43f76f9881ab89000c69ff05",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ],
+          [
+            22,
+            204
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            201
+          ],
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            203
+          ],
+          [
+            22,
+            204
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C014",
+      "episode": "E004",
+      "variant": "counts",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "e3f91e856300623cc4bcda713434ebc4ad1622bf60f058d7d56dc9b0edbba11e",
+      "sql": "SELECT c.customer_id,\nCOUNT(*),COUNT(o.order_id) FROM customers c LEFT JOIN orders o\nON c.customer_id=o.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11,
+            2,
+            2
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            2,
+            2
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C015",
+      "episode": "E004",
+      "variant": "none",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "b005243fb4595e16d48ef1e417bf45350b59c4e09c592ecb7dea76b77a225c83",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            null
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            null
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C016",
+      "episode": "E016",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "fc7b155da72832958f3cae9ab280fb064547efecea0c6a24369ea768dd511d6c",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id AND o.amount>=10 ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            202
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C017",
+      "episode": "E016",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B",
+      "sourceSignature": "8c284e09fa03e587b28e365b6402c6bcf1df12c44e99ab59b95276fb6adcf77e",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id WHERE o.amount>=10 ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            202
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            202
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C018",
+      "episode": "E016",
+      "variant": "repair",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "53fdab6dcc450ace51c7fa7af3a8c8daa22153bbba8c61164fafb62aeec7314b",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id WHERE o.amount>=10 OR o.order_id IS NULL ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            202
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            202
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C019",
+      "episode": "E016",
+      "variant": "no-match",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "31c64b26a25a035858fb602ffcd69c7ab8ae9c5f4ed286b967b3b9670208cb5e",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id AND o.amount>=10 ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            null
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            null
+          ],
+          [
+            22,
+            null
+          ],
+          [
+            33,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C020",
+      "episode": "E016",
+      "variant": "no-match",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B",
+      "sourceSignature": "afa02ed52a8a48936354966bb1de8ac696e8bd7b2f7fc4a9a533cf1b152016d5",
+      "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id WHERE o.amount>=10 ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C021",
+      "episode": "E019",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "4c6be1e036a70fb6c68e8745220d8538a70cae82e412070c02fc561d9e9a1c54",
+      "sql": "SELECT customer_id FROM customers\nWHERE customer_id NOT IN (SELECT customer_id FROM excluded_customers)\nORDER BY customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C022",
+      "episode": "E019",
+      "variant": "truth",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "CASE로 조건 판정",
+      "sourceSignature": "fd849abf8c3bce31c94831c3e226a19779fc9e0073331e74da8755b94d336e4b",
+      "sql": "SELECT customer_id, CASE WHEN customer_id NOT IN (SELECT customer_id FROM excluded_customers) THEN 'TRUE' WHEN customer_id IN (SELECT customer_id FROM excluded_customers) THEN 'FALSE' ELSE 'UNKNOWN' END AS condition_result FROM customers ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            "FALSE"
+          ],
+          [
+            22,
+            "UNKNOWN"
+          ],
+          [
+            33,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            "FALSE"
+          ],
+          [
+            22,
+            "UNKNOWN"
+          ],
+          [
+            33,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C023",
+      "episode": "E019",
+      "variant": "filter",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "cfb85c0e72b26d6c1584a5367f6bea13003ad5606843205986afd144f96b2605",
+      "sql": "SELECT customer_id\nFROM customers WHERE customer_id NOT IN (SELECT customer_id\nFROM excluded_customers WHERE customer_id IS NOT NULL) ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C024",
+      "episode": "E019",
+      "variant": "exists",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "66b9c12edf36be2fa696f30638420ab0dbde93e9787913ec0e488d699bcfc327",
+      "sql": "SELECT c.customer_id FROM customers c\nWHERE NOT EXISTS (SELECT 1 FROM excluded_customers x\nWHERE x.customer_id=c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C025",
+      "episode": "E026",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A · ROWS",
+      "sourceSignature": "07cc52b03bee0c0a7ab061546360f2f3616e0a73d90900dc788c906a5a311922",
+      "sql": "SELECT receipt_id,day_no,amount,\nSUM(amount) OVER (ORDER BY day_no,receipt_id\nROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total\nFROM receipts ORDER BY day_no,receipt_id",
+      "expected": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C026",
+      "episode": "E026",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B · RANGE",
+      "sourceSignature": "8b10305a476869c9410b09e870961fd243d62199c206b048a69a7fcda1f0f90f",
+      "sql": "SELECT receipt_id,day_no,amount,\nSUM(amount) OVER (ORDER BY day_no\nRANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total\nFROM receipts ORDER BY day_no,receipt_id",
+      "expected": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            19
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            19
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C027",
+      "episode": "E026",
+      "variant": "unique",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "05a0db3293da092b2cab723d6f12532dd14141d7fde4b4aa084d471294034787",
+      "sql": "SELECT receipt_id,day_no,amount,\nSUM(amount) OVER (ORDER BY day_no,receipt_id\nRANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total\nFROM receipts ORDER BY day_no,receipt_id",
+      "expected": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C028",
+      "episode": "E026",
+      "variant": "default",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "f282e5b5398cb477a54a111f3c964f5d79a9bce810569acafddb30287a95789b",
+      "sql": "SELECT receipt_id,day_no,amount,\nSUM(amount) OVER (ORDER BY day_no) AS running_total\nFROM receipts ORDER BY day_no,receipt_id",
+      "expected": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            19
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            19
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C029",
+      "episode": "E026",
+      "variant": "shuffle",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "18802911d272a0814d105c9771acd7e624ad58d129d3484e90a9fe8d354e0ad3",
+      "sql": "SELECT receipt_id,day_no,amount,\nSUM(amount) OVER (ORDER BY day_no,receipt_id\nROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total\nFROM receipts ORDER BY day_no,receipt_id",
+      "expected": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            1,
+            4,
+            4
+          ],
+          [
+            402,
+            2,
+            6,
+            10
+          ],
+          [
+            403,
+            2,
+            9,
+            19
+          ],
+          [
+            404,
+            3,
+            5,
+            24
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C030",
+      "episode": "E002",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "A",
+      "sourceSignature": "84525f8d8eed4698f2aee0849fa6f7871f83b4ea99cdadeaae5786c38b1e26c8",
+      "sql": "SELECT order_id FROM null_orders WHERE coupon = NULL ORDER BY order_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C031",
+      "episode": "E002",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "B",
+      "sourceSignature": "b125787ae5cdc50ee69bd3f7c51ae422b13c7ba9f42b9c2234c4b85abfd2d775",
+      "sql": "SELECT order_id FROM null_orders WHERE coupon IS NULL ORDER BY order_id",
+      "expected": [
+        [
+          [
+            302
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            302
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C032",
+      "episode": "E002",
+      "variant": "zero",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "zero",
+      "sourceSignature": "5f73fc57764fbc4421ce275ff47ac6412702b67817d5a92f2adcf989add793e0",
+      "sql": "SELECT order_id FROM null_orders WHERE coupon = 0 ORDER BY order_id",
+      "expected": [
+        [
+          [
+            303
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            303
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C033",
+      "episode": "E002",
+      "variant": "ne",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "not-equal",
+      "sourceSignature": "d242cbe3dc36f7d6e9a93da07641975b822c1294037514fa17e4ddaf0e2c943e",
+      "sql": "SELECT order_id FROM null_orders WHERE coupon <> 500 ORDER BY order_id",
+      "expected": [
+        [
+          [
+            303
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            303
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C034",
+      "episode": "E002",
+      "variant": "filled",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "is-null",
+      "sourceSignature": "d54b4ae067d02a76ff4942c80de45bcba9706ceb7c938c3a3e71ab89ccfd9562",
+      "sql": "SELECT order_id FROM null_orders WHERE coupon IS NULL",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C035",
+      "episode": "E011",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "pairs",
+      "sourceSignature": "2ac96ee5e3991bc46e16184dc3e9ebd613000b5a13b5c628a119a980a378c558",
+      "sql": "SELECT DISTINCT customer_id, menu FROM purchases",
+      "expected": [
+        [
+          [
+            11,
+            "차"
+          ],
+          [
+            11,
+            "커피"
+          ],
+          [
+            22,
+            "커피"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            22,
+            "커피"
+          ],
+          [
+            11,
+            "커피"
+          ],
+          [
+            11,
+            "차"
+          ]
+        ]
+      ],
+      "rowOrder": "unordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C036",
+      "episode": "E011",
+      "variant": "customer",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "customers",
+      "sourceSignature": "9276cad65ab4b29aac7d233ea951cc81f0423a76b2a52123bd7a036e862b1f17",
+      "sql": "SELECT DISTINCT customer_id FROM purchases ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "unordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C037",
+      "episode": "E011",
+      "variant": "key",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "with-id",
+      "sourceSignature": "28cab8e7d0f9df43f04ab0869b05912b93945a4c7687e99ad984ea892b231566",
+      "sql": "SELECT DISTINCT order_id, customer_id, menu FROM purchases ORDER BY order_id",
+      "expected": [
+        [
+          [
+            401,
+            11,
+            "커피"
+          ],
+          [
+            402,
+            11,
+            "커피"
+          ],
+          [
+            403,
+            11,
+            "차"
+          ],
+          [
+            404,
+            22,
+            "커피"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            401,
+            11,
+            "커피"
+          ],
+          [
+            402,
+            11,
+            "커피"
+          ],
+          [
+            403,
+            11,
+            "차"
+          ],
+          [
+            404,
+            22,
+            "커피"
+          ]
+        ]
+      ],
+      "rowOrder": "unordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C038",
+      "episode": "E011",
+      "variant": "same",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "identical",
+      "sourceSignature": "e15fd197a898f93ce86d332a6d26dd99b1dd61a7c89ab8aa68cd02ce9c00b46a",
+      "sql": "SELECT DISTINCT customer_id, menu FROM purchases",
+      "expected": [
+        [
+          [
+            11,
+            "커피"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            "커피"
+          ]
+        ]
+      ],
+      "rowOrder": "unordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C039",
+      "episode": "E005",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "UNION",
+      "sourceSignature": "94a87560b092447a1f8a04c939e77fc90292b6e41fe921a84504a8fb98f01ba0",
+      "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C040",
+      "episode": "E005",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "UNION ALL",
+      "sourceSignature": "98f540e1d4d70a3dc776d9d2e09a91db2e077626ee07888460e86d0b4a43af3c",
+      "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C041",
+      "episode": "E005",
+      "variant": "right-empty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "UNION",
+      "sourceSignature": "7138dfa8076051acd44399807bfd862a34c19af6f957c77cb72a6c2e772ffc1d",
+      "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C042",
+      "episode": "E005",
+      "variant": "right-empty",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "UNION ALL",
+      "sourceSignature": "5e18317fcbd600d368cdd819be050548f6721803dfb340a02512c29694dac11a",
+      "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C043",
+      "episode": "E005",
+      "variant": "empty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "UNION",
+      "sourceSignature": "4a16c0082a9458a6932b52abad95b5b55b7b265d7143f77fea07168e8dd189fc",
+      "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C044",
+      "episode": "E005",
+      "variant": "empty",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "UNION ALL",
+      "sourceSignature": "5bfd3a4650ad84715f70a569f8abcc3af8065b0c83200a1d4de921beadbd89bc",
+      "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C045",
+      "episode": "E005",
+      "variant": "disjoint",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "UNION",
+      "sourceSignature": "b459fa7109701d6614957963c51671094c728094f5094872e8f131c2eb9b29b5",
+      "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ],
+          [
+            44
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ],
+          [
+            44
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C046",
+      "episode": "E005",
+      "variant": "disjoint",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "UNION ALL",
+      "sourceSignature": "f363616e9b735bf35ca240ecd67cbe687297aff3b0a2c93e8dbefa8d93f24ae4",
+      "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ],
+          [
+            44
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ],
+          [
+            44
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C047",
+      "episode": "E003",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "HAVING",
+      "sourceSignature": "4ae7a3df92941efd8e721832f9df267092adfe767a3afbdf25c9fdc85de74ace",
+      "sql": "SELECT customer_id FROM orders GROUP BY customer_id HAVING SUM(amount) >= 15 ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C048",
+      "episode": "E003",
+      "variant": "where",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "WHERE",
+      "sourceSignature": "d6d92fb92d582ac4bbf0d185945c60cb2dd11325ef6d0ee352c29f91992839aa",
+      "sql": "SELECT customer_id FROM orders WHERE amount >= 15 GROUP BY customer_id ORDER BY customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C049",
+      "episode": "E003",
+      "variant": "lower",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "HAVING-12",
+      "sourceSignature": "68cdfa9e5ea16627beb9275ea3a149caccea82023decdb56d67c082c471a42e0",
+      "sql": "SELECT customer_id FROM orders GROUP BY customer_id HAVING SUM(amount) >= 12 ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C050",
+      "episode": "E003",
+      "variant": "both",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "WHERE-then-HAVING",
+      "sourceSignature": "b6c900dc9028118945cf47c44ec97219d9e30ca152cfebf715fced3a2f289036",
+      "sql": "SELECT customer_id FROM orders WHERE amount >= 10 GROUP BY customer_id HAVING SUM(amount) >= 15 ORDER BY customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C051",
+      "episode": "E018",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "EXISTS-NULL",
+      "sourceSignature": "ec282db548ba32086c040a5871267ced160010b25af01bdccff905f7ed6e48a6",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id = c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C052",
+      "episode": "E018",
+      "variant": "one",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "EXISTS-1",
+      "sourceSignature": "e691bc92931e8dc2a56b5bceecbc6cefcf1463d80483c723afab9178681cffdb",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C053",
+      "episode": "E018",
+      "variant": "empty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "empty",
+      "sourceSignature": "a66d961452630f25e04caa4e493b495c2c6acec2a74ebaeb9faee56e48dc83bb",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id = c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C054",
+      "episode": "E018",
+      "variant": "uncorrelated",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "uncorrelated",
+      "sourceSignature": "95ff78ff9f34346560572f5b35129fd4796818c882001ec6b1cbc7acb6dae4f5",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11
+          ],
+          [
+            22
+          ],
+          [
+            33
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C055",
+      "episode": "E021",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "rank",
+      "sourceSignature": "649b7b8e96bb2433af4fb385507b8ed53a3d7c9ea51d0796d9da88f056b9f4a6",
+      "sql": "SELECT customer_id, RANK() OVER (ORDER BY score DESC) AS r, DENSE_RANK() OVER (ORDER BY score DESC) AS d FROM scores ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            3,
+            2
+          ],
+          [
+            44,
+            4,
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            3,
+            2
+          ],
+          [
+            44,
+            4,
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C056",
+      "episode": "E021",
+      "variant": "unique",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "unique-key",
+      "sourceSignature": "79909e6aa51ccc77ff89bbd8305fc1c4e3cb249f71dae480950676da1db4a6aa",
+      "sql": "SELECT customer_id, RANK() OVER (ORDER BY score DESC, customer_id) AS r, DENSE_RANK() OVER (ORDER BY score DESC, customer_id) AS d FROM scores ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            2,
+            2
+          ],
+          [
+            33,
+            3,
+            3
+          ],
+          [
+            44,
+            4,
+            4
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            2,
+            2
+          ],
+          [
+            33,
+            3,
+            3
+          ],
+          [
+            44,
+            4,
+            4
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C057",
+      "episode": "E021",
+      "variant": "ties",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "all-ties",
+      "sourceSignature": "7ad9afc7155ad2e3593e975533135cbc544ddc9b18280f4a96a29e9292e21b63",
+      "sql": "SELECT customer_id, RANK() OVER (ORDER BY score DESC) AS r, DENSE_RANK() OVER (ORDER BY score DESC) AS d FROM scores ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            1
+          ],
+          [
+            44,
+            1,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            1,
+            1
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            1
+          ],
+          [
+            44,
+            1,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C058",
+      "episode": "E021",
+      "variant": "asc",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "ascending",
+      "sourceSignature": "32c591b2d0855852fa7bf25ecc65d75ff0efdb26c9d4612c3fac82757358e7be",
+      "sql": "SELECT customer_id, RANK() OVER (ORDER BY score ASC) AS r, DENSE_RANK() OVER (ORDER BY score ASC) AS d FROM scores ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            3,
+            3
+          ],
+          [
+            22,
+            3,
+            3
+          ],
+          [
+            33,
+            2,
+            2
+          ],
+          [
+            44,
+            1,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            3,
+            3
+          ],
+          [
+            22,
+            3,
+            3
+          ],
+          [
+            33,
+            2,
+            2
+          ],
+          [
+            44,
+            1,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C059",
+      "episode": "TH-05",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "주문 목록",
+      "sourceSignature": "68d063e12730a961b7521d23d855bb81fd81b76bcb4fa4dbba9503ddb360173a",
+      "sql": "SELECT order_id, amount FROM orders WHERE amount > 100 ORDER BY order_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C060",
+      "episode": "TH-05",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "전체 집계",
+      "sourceSignature": "a2c75e089aca211330d21803f50ce6fa336225efc5cc80d98e018a0476831587",
+      "sql": "SELECT COUNT(*) AS row_count, SUM(amount) AS total FROM orders WHERE amount > 100",
+      "expected": [
+        [
+          [
+            0,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C061",
+      "episode": "TH-05",
+      "variant": "base",
+      "queryIndex": 2,
+      "kind": "query",
+      "label": "HAVING 적용",
+      "sourceSignature": "f9c22437fb428951590f6c0dd6ecc3c5d4b321bde469d8ded150cb1067a6b7d8",
+      "sql": "SELECT COUNT(*) AS row_count FROM orders WHERE amount > 100 HAVING COUNT(*) > 0",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C062",
+      "episode": "TH-05",
+      "variant": "match",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "주문 목록",
+      "sourceSignature": "74bef34a21486a7a4ba77e6a0a9b48350fee5eaaae5aac096fd97141459f71c1",
+      "sql": "SELECT order_id, amount FROM orders WHERE amount > 100 ORDER BY order_id",
+      "expected": [
+        [
+          [
+            104,
+            150
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            104,
+            150
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C063",
+      "episode": "TH-05",
+      "variant": "match",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "전체 집계",
+      "sourceSignature": "9549c1ffc8f1f173e92259f90f45d791308e846d41724cb7f43b91852f9bf0dd",
+      "sql": "SELECT COUNT(*) AS row_count, SUM(amount) AS total FROM orders WHERE amount > 100",
+      "expected": [
+        [
+          [
+            1,
+            150
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            150
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C064",
+      "episode": "TH-15",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "IN",
+      "sourceSignature": "aee390af7298c1cea0cbb827422225c9a983098113e44b9ed1822e2f67b838a7",
+      "sql": "SELECT customer_id FROM customers WHERE customer_id IN (SELECT customer_id FROM orders) ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C065",
+      "episode": "TH-15",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "EXISTS",
+      "sourceSignature": "44fb7b304879aa9dd433aef7eac16ac74fea0a47d758d30dfcfbe677ce8f2b06",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C066",
+      "episode": "TH-15",
+      "variant": "base",
+      "queryIndex": 2,
+      "kind": "query",
+      "label": "NOT EXISTS",
+      "sourceSignature": "caa93ee6675eb3d93f70ded71b59804b5fe5d5c60cae2d8c662eca2dab911247",
+      "sql": "SELECT c.customer_id FROM customers c WHERE NOT EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C067",
+      "episode": "TH-15",
+      "variant": "extra",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "IN",
+      "sourceSignature": "18c2f2f195cb307423a22ed89568aece9af30a3afeffce1d67f938bd699d5ce0",
+      "sql": "SELECT customer_id FROM customers WHERE customer_id IN (SELECT customer_id FROM orders) ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C068",
+      "episode": "TH-15",
+      "variant": "extra",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "EXISTS",
+      "sourceSignature": "32e922c403015e31c86b4c6ace9a66dfacc785263f065234c8d5a4367d743254",
+      "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C069",
+      "episode": "TH-15",
+      "variant": "extra",
+      "queryIndex": 2,
+      "kind": "query",
+      "label": "NOT EXISTS",
+      "sourceSignature": "93459e88dcd01a128a41d09fcda45f9709ec32cbe8420ca16b7b0b5938dce3b1",
+      "sql": "SELECT c.customer_id FROM customers c WHERE NOT EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C070",
+      "episode": "TH-16",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "0행 또는 1행",
+      "sourceSignature": "6f78f8c07b22134551662aaa79a1afa903313807aa13a1ded9e9bc25debb5547",
+      "sql": "SELECT c.customer_id, (SELECT o.amount FROM orders o WHERE o.customer_id=c.customer_id AND o.order_id=103) AS one_amount FROM customers c ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1,
+            null
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            null
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C071",
+      "episode": "TH-16",
+      "variant": "one",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "대상 주문 변경",
+      "sourceSignature": "78af3fd8d09a9795a4376b12934546ec00de115f7720512219b829bf3b609d67",
+      "sql": "SELECT c.customer_id, (SELECT o.amount FROM orders o WHERE o.customer_id=c.customer_id AND o.order_id=104) AS one_amount FROM customers c ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1,
+            null
+          ],
+          [
+            2,
+            null
+          ],
+          [
+            3,
+            7
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            null
+          ],
+          [
+            2,
+            null
+          ],
+          [
+            3,
+            7
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C072",
+      "episode": "TH-21",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "지역·상품",
+      "sourceSignature": "77b4ce4dedebcabd4e29866ae921bab980d9a9bf9efca9c4a719b45a706722fb",
+      "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id ORDER BY region_id, product_id",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            10
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            2,
+            10,
+            5
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            10
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            2,
+            10,
+            5
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C073",
+      "episode": "TH-21",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "상품·지역",
+      "sourceSignature": "c7efc369883b35d585800b7feccbf2b1fa49a6919b7d47cc9e16c058aa663094",
+      "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id, region_id ORDER BY region_id, product_id",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            10
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            2,
+            10,
+            5
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            10
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            2,
+            10,
+            5
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C074",
+      "episode": "TH-21",
+      "variant": "reverse",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "ORDER BY 변경",
+      "sourceSignature": "f6ef95450c19339d8d433997522cbc7df5151d7275d387254c89ec80d97b854b",
+      "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id ORDER BY region_id DESC, product_id DESC",
+      "expected": [
+        [
+          [
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            1,
+            10,
+            10
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            20,
+            20
+          ],
+          [
+            1,
+            10,
+            10
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C075",
+      "episode": "TH-22",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "ROLLUP의 그룹 구성",
+      "sourceSignature": "98d24661f906d1e5936b6b449ed2c51a7a43e9325a51bd3bd30df707643f2410",
+      "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+      "expected": [
+        [
+          [
+            0,
+            1,
+            10,
+            10
+          ],
+          [
+            0,
+            1,
+            20,
+            20
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            1,
+            10,
+            10
+          ],
+          [
+            0,
+            1,
+            20,
+            20
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C076",
+      "episode": "TH-22",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "CUBE의 그룹 구성",
+      "sourceSignature": "bf67c23ab5df2c7f6e9061bd593965e51b599b96204197dbdce41f7d9856f614",
+      "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 2 AS level_no, CAST(NULL AS INTEGER) AS region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+      "expected": [
+        [
+          [
+            0,
+            1,
+            10,
+            10
+          ],
+          [
+            0,
+            1,
+            20,
+            20
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            2,
+            null,
+            10,
+            15
+          ],
+          [
+            2,
+            null,
+            20,
+            20
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            1,
+            10,
+            10
+          ],
+          [
+            0,
+            1,
+            20,
+            20
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            2,
+            null,
+            10,
+            15
+          ],
+          [
+            2,
+            null,
+            20,
+            20
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C077",
+      "episode": "TH-22",
+      "variant": "one_product",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "CUBE 구성",
+      "sourceSignature": "4e1beca681355e2cc9de36a35157afedfaefddce1a831e08962f7c48202affb4",
+      "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 2 AS level_no, CAST(NULL AS INTEGER) AS region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+      "expected": [
+        [
+          [
+            0,
+            1,
+            10,
+            30
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            2,
+            null,
+            10,
+            35
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            1,
+            10,
+            30
+          ],
+          [
+            0,
+            2,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            null,
+            30
+          ],
+          [
+            1,
+            2,
+            null,
+            5
+          ],
+          [
+            2,
+            null,
+            10,
+            35
+          ],
+          [
+            3,
+            null,
+            null,
+            35
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C078",
+      "episode": "TH-23",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "구분 표지 함께 보기",
+      "sourceSignature": "c2de0b7656da69ca0fe7fbb5298ee73109389f6ac9d6a1ebe6b19e4379cc7aaa",
+      "sql": "SELECT subtotal_flag, region_id, total FROM (SELECT 0 AS subtotal_flag, region_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 1 AS subtotal_flag, CAST(NULL AS INTEGER) AS region_id, SUM(amount) AS total FROM sales) x ORDER BY subtotal_flag, CASE WHEN region_id IS NULL THEN 1 ELSE 0 END, region_id",
+      "expected": [
+        [
+          [
+            0,
+            1,
+            30
+          ],
+          [
+            0,
+            null,
+            5
+          ],
+          [
+            1,
+            null,
+            35
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            1,
+            30
+          ],
+          [
+            0,
+            null,
+            5
+          ],
+          [
+            1,
+            null,
+            35
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C079",
+      "episode": "TH-23",
+      "variant": "known",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "구분 표지 유지",
+      "sourceSignature": "aeb71e038119d2c8e45e78c20351d2bf3562f3a1480bb703cbe217db09b18804",
+      "sql": "SELECT subtotal_flag, region_id, total FROM (SELECT 0 AS subtotal_flag, region_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 1 AS subtotal_flag, CAST(NULL AS INTEGER) AS region_id, SUM(amount) AS total FROM sales) x ORDER BY subtotal_flag, CASE WHEN region_id IS NULL THEN 1 ELSE 0 END, region_id",
+      "expected": [
+        [
+          [
+            0,
+            1,
+            30
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            null,
+            35
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0,
+            1,
+            30
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            null,
+            35
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C080",
+      "episode": "TH-28",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "PARTITION BY",
+      "sourceSignature": "853010dd2d3af9b5de21fcdfb762668cbf0b64fc3dbe4623ac55b76c3afe9544",
+      "sql": "SELECT order_id, customer_id, amount, SUM(amount) OVER (PARTITION BY customer_id) AS customer_total FROM orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            101,
+            1,
+            10,
+            30
+          ],
+          [
+            102,
+            1,
+            20,
+            30
+          ],
+          [
+            103,
+            2,
+            5,
+            5
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            101,
+            1,
+            10,
+            30
+          ],
+          [
+            102,
+            1,
+            20,
+            30
+          ],
+          [
+            103,
+            2,
+            5,
+            5
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C081",
+      "episode": "TH-28",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "GROUP BY",
+      "sourceSignature": "5b6f3a89c1a21ef3e06e49827dfb4422620e737f3ef7cf68189e03cf14e88d82",
+      "sql": "SELECT customer_id, SUM(amount) AS customer_total FROM orders GROUP BY customer_id ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            1,
+            30
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            30
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C082",
+      "episode": "TH-28",
+      "variant": "move",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "PARTITION BY",
+      "sourceSignature": "423d557314d9ed81a4f4c91b86528d90bfd35c76d6defc19407cdfe290b95831",
+      "sql": "SELECT order_id, customer_id, amount, SUM(amount) OVER (PARTITION BY customer_id) AS customer_total FROM orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            101,
+            1,
+            10,
+            10
+          ],
+          [
+            102,
+            2,
+            20,
+            25
+          ],
+          [
+            103,
+            2,
+            5,
+            25
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            101,
+            1,
+            10,
+            10
+          ],
+          [
+            102,
+            2,
+            20,
+            25
+          ],
+          [
+            103,
+            2,
+            5,
+            25
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C083",
+      "episode": "TH-31",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "날짜·번호 순",
+      "sourceSignature": "a1166f2af6644a249621785677e996c5584a6b7cd25693fb71c06fc818038411",
+      "sql": "SELECT receipt_id, day_no, amount, LAG(amount) OVER (ORDER BY day_no, receipt_id) AS previous_amount, LEAD(amount) OVER (ORDER BY day_no, receipt_id) AS next_amount FROM receipts ORDER BY day_no, receipt_id",
+      "expected": [
+        [
+          [
+            402,
+            1,
+            4,
+            null,
+            6
+          ],
+          [
+            401,
+            2,
+            6,
+            4,
+            9
+          ],
+          [
+            403,
+            2,
+            9,
+            6,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            402,
+            1,
+            4,
+            null,
+            6
+          ],
+          [
+            401,
+            2,
+            6,
+            4,
+            9
+          ],
+          [
+            403,
+            2,
+            9,
+            6,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C084",
+      "episode": "TH-31",
+      "variant": "day",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "바뀐 순서",
+      "sourceSignature": "d004fc228ceb708073292ff78fe31c0c827883ea3f3cbe4beab23483bbdce97d",
+      "sql": "SELECT receipt_id, day_no, amount, LAG(amount) OVER (ORDER BY day_no, receipt_id) AS previous_amount, LEAD(amount) OVER (ORDER BY day_no, receipt_id) AS next_amount FROM receipts ORDER BY day_no, receipt_id",
+      "expected": [
+        [
+          [
+            402,
+            1,
+            4,
+            null,
+            9
+          ],
+          [
+            403,
+            2,
+            9,
+            4,
+            6
+          ],
+          [
+            401,
+            3,
+            6,
+            9,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            402,
+            1,
+            4,
+            null,
+            9
+          ],
+          [
+            403,
+            2,
+            9,
+            4,
+            6
+          ],
+          [
+            401,
+            3,
+            6,
+            9,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C085",
+      "episode": "TH-32",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "부모 → 자식",
+      "sourceSignature": "d8feda87bc273b072a1f40e26ba30152b61a1b807159718fc928bb19a39bf733",
+      "sql": "SELECT p.node_id AS parent_node, c.node_id AS child_node FROM nodes p JOIN nodes c ON c.parent_id=p.node_id ORDER BY p.node_id, c.node_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C086",
+      "episode": "TH-32",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "자식 → 부모",
+      "sourceSignature": "995fe015a934031e833613723cf4b9e98029ee698a15ae37063e0326809264e5",
+      "sql": "SELECT c.node_id AS child_node, p.node_id AS parent_node FROM nodes c JOIN nodes p ON c.parent_id=p.node_id ORDER BY c.node_id",
+      "expected": [
+        [
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C087",
+      "episode": "TH-32",
+      "variant": "reparent",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "변경된 연결",
+      "sourceSignature": "4092bf22418ea4cbbf03e27bf96fc97c06408e396087e09ee8d49dc425f64f21",
+      "sql": "SELECT p.node_id AS parent_node, c.node_id AS child_node FROM nodes p JOIN nodes c ON c.parent_id=p.node_id ORDER BY p.node_id, c.node_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C088",
+      "episode": "TH-33",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "고객 인스턴스",
+      "sourceSignature": "8d54b51995aed8cdd9c97ba16432f524910032ac43fe2252c700b7b1a74c334c",
+      "sql": "SELECT customer_id, customer_name FROM customers ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            1,
+            "MIN"
+          ],
+          [
+            2,
+            "JUN"
+          ],
+          [
+            3,
+            "SOL"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            "MIN"
+          ],
+          [
+            2,
+            "JUN"
+          ],
+          [
+            3,
+            "SOL"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C089",
+      "episode": "TH-33",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "인스턴스 수",
+      "sourceSignature": "2d54b6343fe48075328e6bdd854b7e455b8aa2df7cb2abd78925fd55e3215c29",
+      "sql": "SELECT COUNT(*) AS instance_count FROM customers",
+      "expected": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C090",
+      "episode": "TH-33",
+      "variant": "new",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "동명이인도 별도 행",
+      "sourceSignature": "037e28c06ac05cce24a48b2eea22487b275f23e609761dace35d2aa3eef7b9ee",
+      "sql": "SELECT customer_id, customer_name FROM customers ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            1,
+            "MIN"
+          ],
+          [
+            2,
+            "JUN"
+          ],
+          [
+            3,
+            "SOL"
+          ],
+          [
+            4,
+            "MIN"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            "MIN"
+          ],
+          [
+            2,
+            "JUN"
+          ],
+          [
+            3,
+            "SOL"
+          ],
+          [
+            4,
+            "MIN"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C091",
+      "episode": "TH-33",
+      "variant": "new",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "인스턴스 수",
+      "sourceSignature": "b5da81d24970814334b87072466a846a4ba2e62d4d3ada4dabdc19d8d495f5fb",
+      "sql": "SELECT COUNT(*) AS instance_count FROM customers",
+      "expected": [
+        [
+          [
+            4
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            4
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C092",
+      "episode": "TH-34",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "기본 값에서 계산",
+      "sourceSignature": "fe5cc8d97cb670ec5bf98ede5aae3d89a3f482b715fd8e8367c50dafdbd6f151",
+      "sql": "SELECT item_id, quantity, unit_price, quantity*unit_price AS amount FROM items ORDER BY item_id",
+      "expected": [
+        [
+          [
+            1,
+            2,
+            30,
+            60
+          ],
+          [
+            2,
+            3,
+            20,
+            60
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2,
+            30,
+            60
+          ],
+          [
+            2,
+            3,
+            20,
+            60
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C093",
+      "episode": "TH-34",
+      "variant": "qty",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "계산 금액 변화",
+      "sourceSignature": "825ff482f0bbcfefd3717bb8a917df3c53af32b8c1d8df254ce46ed7780f260c",
+      "sql": "SELECT item_id, quantity, unit_price, quantity*unit_price AS amount FROM items ORDER BY item_id",
+      "expected": [
+        [
+          [
+            1,
+            4,
+            30,
+            120
+          ],
+          [
+            2,
+            3,
+            20,
+            60
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            4,
+            30,
+            120
+          ],
+          [
+            2,
+            3,
+            20,
+            60
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C094",
+      "episode": "TH-35",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "조합 중복",
+      "sourceSignature": "837ed0b7805a7ae07b52f169ec1e71fc81b1cd13dc5fcfe9a7a0e9e290025e61",
+      "sql": "SELECT student_id, course_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id, course_id HAVING COUNT(*)>1 ORDER BY student_id, course_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C095",
+      "episode": "TH-35",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "학생 ID만 비교",
+      "sourceSignature": "dfefdc19ac2bd587de18496096f41f9d03f8bd9fed13953ce27dfddf840464f8",
+      "sql": "SELECT student_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id HAVING COUNT(*)>1 ORDER BY student_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C096",
+      "episode": "TH-35",
+      "variant": "duplicate",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "조합 중복",
+      "sourceSignature": "383d38fb7b5f830a7dd665bccc1d8c77081adf8102bc63764c1401ea712ae1b2",
+      "sql": "SELECT student_id, course_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id, course_id HAVING COUNT(*)>1 ORDER BY student_id, course_id",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C097",
+      "episode": "TH-36",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "두 가지 식별 후보",
+      "sourceSignature": "44f736db46632fac49ff3ab60ac438006d761b50db32d0b3ebcdd8981a9069fd",
+      "sql": "SELECT order_id, line_no, line_id FROM order_lines ORDER BY order_id, line_no",
+      "expected": [
+        [
+          [
+            101,
+            1,
+            1
+          ],
+          [
+            101,
+            2,
+            2
+          ],
+          [
+            102,
+            1,
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            101,
+            1,
+            1
+          ],
+          [
+            101,
+            2,
+            2
+          ],
+          [
+            102,
+            1,
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C098",
+      "episode": "TH-36",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "부모 없는 후보 행",
+      "sourceSignature": "0965fdb751d7ded5ca03557b7d9971b1f6982e117d01c412c6d695f10f67f94e",
+      "sql": "SELECT l.line_id FROM order_lines l WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.order_id=l.order_id) ORDER BY l.line_id",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C099",
+      "episode": "TH-36",
+      "variant": "orphan",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "부모 없는 후보 행",
+      "sourceSignature": "63462cd4dc4123f9abe5552cd14aba0c1dbc5d4b35b2f61577744c4716e525c2",
+      "sql": "SELECT l.line_id FROM order_lines l WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.order_id=l.order_id) ORDER BY l.line_id",
+      "expected": [
+        [
+          [
+            4
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            4
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C100",
+      "episode": "TH-37",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "고객별 자식 수",
+      "sourceSignature": "3ded862f4d30a1fbb9c5fb2c81f466fedfb2a038c67be797d2478a3d84b7c30f",
+      "sql": "SELECT c.customer_id, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON o.customer_id=c.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C101",
+      "episode": "TH-37",
+      "variant": "new_order",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "참여 상태 변화",
+      "sourceSignature": "c73b59e41fac58d426a8e11d975c39e7d5d01d15be444ed3ff56c96849b9f233",
+      "sql": "SELECT c.customer_id, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON o.customer_id=c.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C102",
+      "episode": "TH-38",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "상품 → 이름 확인",
+      "sourceSignature": "41569082b7fe322c1768990667c39c97d1432dfb2a765b17733b07edc440471b",
+      "sql": "SELECT product_id, COUNT(DISTINCT product_name) AS name_count FROM flat_orders GROUP BY product_id ORDER BY product_id",
+      "expected": [
+        [
+          [
+            10,
+            1
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            10,
+            1
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C103",
+      "episode": "TH-38",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "분류 → 이름 확인",
+      "sourceSignature": "061dc0766887355c1f74d72a5a0675f6402f1ad7399a7064ad27e4727782f269",
+      "sql": "SELECT category_id, COUNT(DISTINCT category_name) AS name_count FROM flat_orders GROUP BY category_id ORDER BY category_id",
+      "expected": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C104",
+      "episode": "TH-38",
+      "variant": "mismatch",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "같은 분류, 두 이름",
+      "sourceSignature": "17f726e10e9ad147eab08ed67de323aed2ee22b7d55138040e7b5f529661f234",
+      "sql": "SELECT category_id, COUNT(DISTINCT category_name) AS name_count FROM flat_orders GROUP BY category_id ORDER BY category_id",
+      "expected": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C105",
+      "episode": "TH-39",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "번호의 유일성",
+      "sourceSignature": "5cb8c324da07b448e3aa6ee4eb8ac22a86f3dceeec294da4d6102790baa241a3",
+      "sql": "SELECT COUNT(*) AS rows_n, COUNT(DISTINCT booking_id) AS id_count FROM bookings",
+      "expected": [
+        [
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C106",
+      "episode": "TH-39",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "업무 조합 중복",
+      "sourceSignature": "9c952fb4dab6b2cab4fc81d5eac7a8dafdc2f9ed6ff0e8981035f6908bbdfc4f",
+      "sql": "SELECT customer_id, slot_no, COUNT(*) AS row_count FROM bookings GROUP BY customer_id, slot_no HAVING COUNT(*)>1 ORDER BY customer_id, slot_no",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            2
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            2
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C107",
+      "episode": "TH-39",
+      "variant": "fix",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "번호 그대로",
+      "sourceSignature": "976fda1d94c09951cfb8bc8c00dab5a1e1fd152616e40001676d4cf0b06d3628",
+      "sql": "SELECT COUNT(*) AS rows_n, COUNT(DISTINCT booking_id) AS id_count FROM bookings",
+      "expected": [
+        [
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C108",
+      "episode": "TH-39",
+      "variant": "fix",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "업무 중복 제거",
+      "sourceSignature": "7be013c109d25f1679a0aad61f6dab75d2bc7af4a423993c86ec8a69653736f5",
+      "sql": "SELECT customer_id, slot_no, COUNT(*) AS row_count FROM bookings GROUP BY customer_id, slot_no HAVING COUNT(*)>1 ORDER BY customer_id, slot_no",
+      "expected": [
+        []
+      ],
+      "actual": [
+        []
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C109",
+      "episode": "TH-40",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "구현 전 참조 검사",
+      "sourceSignature": "e54367fc7d7c5195b30a137ed9a6cfabe80da6f25b280ad0faf166f1a9d98bbb",
+      "sql": "SELECT x.order_id, x.customer_id, x.amount, CASE WHEN c.customer_id IS NULL THEN 'INVALID_PARENT' ELSE 'VALID_PARENT' END AS reference_status FROM candidate_orders x LEFT JOIN customers c ON c.customer_id=x.customer_id ORDER BY x.order_id",
+      "expected": [
+        [
+          [
+            201,
+            1,
+            10,
+            "VALID_PARENT"
+          ],
+          [
+            202,
+            3,
+            5,
+            "VALID_PARENT"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            201,
+            1,
+            10,
+            "VALID_PARENT"
+          ],
+          [
+            202,
+            3,
+            5,
+            "VALID_PARENT"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C110",
+      "episode": "TH-40",
+      "variant": "unknown",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "참조 대상 확인",
+      "sourceSignature": "61d65f90b7d29474519935e78bc311cbd2303ea383c2d892d4192184f5ae0b3f",
+      "sql": "SELECT x.order_id, x.customer_id, x.amount, CASE WHEN c.customer_id IS NULL THEN 'INVALID_PARENT' ELSE 'VALID_PARENT' END AS reference_status FROM candidate_orders x LEFT JOIN customers c ON c.customer_id=x.customer_id ORDER BY x.order_id",
+      "expected": [
+        [
+          [
+            201,
+            1,
+            10,
+            "VALID_PARENT"
+          ],
+          [
+            202,
+            99,
+            5,
+            "INVALID_PARENT"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            201,
+            1,
+            10,
+            "VALID_PARENT"
+          ],
+          [
+            202,
+            99,
+            5,
+            "INVALID_PARENT"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C111",
+      "episode": "TH-41",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "CHECK의 논리값",
+      "sourceSignature": "4bb713cecbb8e1f2867ab3c061237fc90df2b2a6eaa643f9e5b4163505df349b",
+      "sql": "SELECT candidate_id, quantity, CASE WHEN quantity>0 THEN 'TRUE' WHEN NOT(quantity>0) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate, CASE WHEN NOT(quantity>0) THEN 'REJECT' ELSE 'PASS_CHECK' END AS check_status FROM candidates ORDER BY candidate_id",
+      "expected": [
+        [
+          [
+            1,
+            2,
+            "TRUE",
+            "PASS_CHECK"
+          ],
+          [
+            2,
+            0,
+            "FALSE",
+            "REJECT"
+          ],
+          [
+            3,
+            null,
+            "UNKNOWN",
+            "PASS_CHECK"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2,
+            "TRUE",
+            "PASS_CHECK"
+          ],
+          [
+            2,
+            0,
+            "FALSE",
+            "REJECT"
+          ],
+          [
+            3,
+            null,
+            "UNKNOWN",
+            "PASS_CHECK"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C112",
+      "episode": "TH-41",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "query",
+      "label": "NOT NULL까지 검사",
+      "sourceSignature": "8bf01e06069afe251fed6083e551ff35f2fa7950d3f79bc77c5a80b8bba3bfc9",
+      "sql": "SELECT candidate_id, CASE WHEN quantity IS NOT NULL AND quantity>0 THEN 'PASS' ELSE 'REJECT' END AS combined_status FROM candidates ORDER BY candidate_id",
+      "expected": [
+        [
+          [
+            1,
+            "PASS"
+          ],
+          [
+            2,
+            "REJECT"
+          ],
+          [
+            3,
+            "REJECT"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            "PASS"
+          ],
+          [
+            2,
+            "REJECT"
+          ],
+          [
+            3,
+            "REJECT"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C113",
+      "episode": "TH-41",
+      "variant": "fill",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "FALSE로 바뀐 행",
+      "sourceSignature": "79dec13afcb64f5243d8be703702ee48f5acdad9599b043da70097eb1f011c2e",
+      "sql": "SELECT candidate_id, quantity, CASE WHEN quantity>0 THEN 'TRUE' WHEN NOT(quantity>0) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate, CASE WHEN NOT(quantity>0) THEN 'REJECT' ELSE 'PASS_CHECK' END AS check_status FROM candidates ORDER BY candidate_id",
+      "expected": [
+        [
+          [
+            1,
+            2,
+            "TRUE",
+            "PASS_CHECK"
+          ],
+          [
+            2,
+            0,
+            "FALSE",
+            "REJECT"
+          ],
+          [
+            3,
+            -1,
+            "FALSE",
+            "REJECT"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            2,
+            "TRUE",
+            "PASS_CHECK"
+          ],
+          [
+            2,
+            0,
+            "FALSE",
+            "REJECT"
+          ],
+          [
+            3,
+            -1,
+            "FALSE",
+            "REJECT"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C114",
+      "episode": "TH-42",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "명시적 NULL·공백 비교",
+      "sourceSignature": "d1570ebb33e18421d1b03d88e9204c3b2d6bd977dff75ad8ffc15f543aa5ceb0",
+      "sql": "SELECT row_id, CASE WHEN text_value IS NULL THEN 'NULL' ELSE 'VALUE' END AS value_kind, LENGTH(text_value) AS char_count FROM texts ORDER BY row_id",
+      "expected": [
+        [
+          [
+            1,
+            "NULL",
+            null
+          ],
+          [
+            2,
+            "VALUE",
+            1
+          ],
+          [
+            3,
+            "VALUE",
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            "NULL",
+            null
+          ],
+          [
+            2,
+            "VALUE",
+            1
+          ],
+          [
+            3,
+            "VALUE",
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C115",
+      "episode": "TH-42",
+      "variant": "two",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "길이 변화",
+      "sourceSignature": "30db79205b0415061401cb651d642564fe30504b7eae8cd89d276374195643ac",
+      "sql": "SELECT row_id, CASE WHEN text_value IS NULL THEN 'NULL' ELSE 'VALUE' END AS value_kind, LENGTH(text_value) AS char_count FROM texts ORDER BY row_id",
+      "expected": [
+        [
+          [
+            1,
+            "NULL",
+            null
+          ],
+          [
+            2,
+            "VALUE",
+            2
+          ],
+          [
+            3,
+            "VALUE",
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            "NULL",
+            null
+          ],
+          [
+            2,
+            "VALUE",
+            2
+          ],
+          [
+            3,
+            "VALUE",
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C116",
+      "episode": "TH-43",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "후보 열의 세 조건",
+      "sourceSignature": "a1ccc35eb76eb23c1017cab03c813cc758d776000b78b61e81ba2172cab18e52",
+      "sql": "SELECT k.row_id, k.code, CASE WHEN k.code IS NULL THEN 'FAIL' ELSE 'PASS' END AS not_null_status, CASE WHEN k.code IS NOT NULL AND EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS unique_status, CASE WHEN k.code IS NULL OR EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS primary_key_status FROM key_candidates k ORDER BY k.row_id",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            "PASS",
+            "FAIL",
+            "FAIL"
+          ],
+          [
+            2,
+            10,
+            "PASS",
+            "FAIL",
+            "FAIL"
+          ],
+          [
+            3,
+            null,
+            "FAIL",
+            "PASS",
+            "FAIL"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            "PASS",
+            "FAIL",
+            "FAIL"
+          ],
+          [
+            2,
+            10,
+            "PASS",
+            "FAIL",
+            "FAIL"
+          ],
+          [
+            3,
+            null,
+            "FAIL",
+            "PASS",
+            "FAIL"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C117",
+      "episode": "TH-43",
+      "variant": "unique",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "중복 해소 후",
+      "sourceSignature": "3091b555d4b5143942c061fa2f35e4f1e6c1edb34a907848f97141b6a4c0d0f8",
+      "sql": "SELECT k.row_id, k.code, CASE WHEN k.code IS NULL THEN 'FAIL' ELSE 'PASS' END AS not_null_status, CASE WHEN k.code IS NOT NULL AND EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS unique_status, CASE WHEN k.code IS NULL OR EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS primary_key_status FROM key_candidates k ORDER BY k.row_id",
+      "expected": [
+        [
+          [
+            1,
+            10,
+            "PASS",
+            "PASS",
+            "PASS"
+          ],
+          [
+            2,
+            20,
+            "PASS",
+            "PASS",
+            "PASS"
+          ],
+          [
+            3,
+            null,
+            "FAIL",
+            "PASS",
+            "FAIL"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1,
+            10,
+            "PASS",
+            "PASS",
+            "PASS"
+          ],
+          [
+            2,
+            20,
+            "PASS",
+            "PASS",
+            "PASS"
+          ],
+          [
+            3,
+            null,
+            "FAIL",
+            "PASS",
+            "FAIL"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C118",
+      "episode": "TH-44",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "삭제·조회·되돌리기",
+      "sourceSignature": "329945931ef9b0ec4ab2b9b79302d8b7451ef12c1e46b8f53830cc4f1b537186",
+      "sql": "SAVEPOINT lab_delete; DELETE FROM orders WHERE customer_id=1; SELECT COUNT(*) AS remaining FROM orders; ROLLBACK TO lab_delete; SELECT COUNT(*) AS restored FROM orders;",
+      "expected": [
+        [
+          [
+            1
+          ]
+        ],
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            1
+          ]
+        ],
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C119",
+      "episode": "TH-44",
+      "variant": "all",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "전체 DELETE·되돌리기",
+      "sourceSignature": "7db32213eb72da243afb80a6159ee656a8f33eced63cb3efc5a2e8010511dda6",
+      "sql": "SAVEPOINT lab_delete; DELETE FROM orders; SELECT COUNT(*) AS remaining FROM orders; ROLLBACK TO lab_delete; SELECT COUNT(*) AS restored FROM orders;",
+      "expected": [
+        [
+          [
+            0
+          ]
+        ],
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0
+          ]
+        ],
+        [
+          [
+            3
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C120",
+      "episode": "TH-45",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "저장점 경계 비교",
+      "sourceSignature": "78c870865e25ecb450e59c063fc47bbfab61ed5ba09dc75546216bf214aed8b6",
+      "sql": "SAVEPOINT lab_start; UPDATE orders SET amount=20 WHERE order_id=101; SAVEPOINT lab_second; UPDATE orders SET amount=30 WHERE order_id=101; ROLLBACK TO lab_second; SELECT order_id, amount FROM orders WHERE order_id=101; ROLLBACK TO lab_start; SELECT order_id, amount FROM orders WHERE order_id=101;",
+      "expected": [
+        [
+          [
+            101,
+            20
+          ]
+        ],
+        [
+          [
+            101,
+            10
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            101,
+            20
+          ]
+        ],
+        [
+          [
+            101,
+            10
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "C121",
+      "episode": "TH-45",
+      "variant": "first",
+      "queryIndex": 0,
+      "kind": "query",
+      "label": "수정 두 개 함께 취소",
+      "sourceSignature": "49675148741c9374b3418f112e04e186d62b4afcd84f3eee8c34e7c340183057",
+      "sql": "SAVEPOINT lab_start; UPDATE orders SET amount=20 WHERE order_id=101; UPDATE orders SET amount=30 WHERE order_id=101; ROLLBACK TO lab_start; SELECT order_id, amount FROM orders WHERE order_id=101;",
+      "expected": [
+        [
+          [
+            101,
+            10
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            101,
+            10
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T000",
+      "episode": "E001",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "COUNT에 포함되는 값 · counted 1=포함, 0=제외",
+      "sourceSignature": "e5941246631cd93b2344a5a9590d64e2076706aa931fc309a7ffe01402dee8cb",
+      "sql": "SELECT order_id, coupon_amount, CASE WHEN coupon_amount IS NULL THEN 0 ELSE 1 END AS counted FROM orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            201,
+            500,
+            1
+          ],
+          [
+            202,
+            null,
+            0
+          ],
+          [
+            203,
+            500,
+            1
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            201,
+            500,
+            1
+          ],
+          [
+            202,
+            null,
+            0
+          ],
+          [
+            203,
+            500,
+            1
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T001",
+      "episode": "E025",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "A · SUM에 들어가기 전의 행별 식",
+      "sourceSignature": "dc983368598173672b750f9aa718765fcf3d2f687fa4e79891e47ba76803ea0e",
+      "sql": "SELECT order_id, amount, fee, amount+fee AS sum_input FROM orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            201,
+            8,
+            2,
+            10
+          ],
+          [
+            202,
+            12,
+            null,
+            null
+          ],
+          [
+            203,
+            7,
+            3,
+            10
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            201,
+            8,
+            2,
+            10
+          ],
+          [
+            202,
+            12,
+            null,
+            null
+          ],
+          [
+            203,
+            7,
+            3,
+            10
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T002",
+      "episode": "E025",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "trace",
+      "label": "B · 따로 계산한 두 열의 합계",
+      "sourceSignature": "258793ed43615579b40fa4267c10b7210d2f77fb5490c45ea9e9c668dbf627c8",
+      "sql": "SELECT SUM(amount) AS amount_total, SUM(fee) AS fee_total FROM orders",
+      "expected": [
+        [
+          [
+            27,
+            5
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            27,
+            5
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T003",
+      "episode": "E004",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "고객마다 만들어진 행과 실제 주문 수",
+      "sourceSignature": "081c1f4549f26159614901965233399e3852a4ff13fffdc517db933c36c29b57",
+      "sql": "SELECT c.customer_id, COUNT(*) AS result_rows, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11,
+            2,
+            2
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            0
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            2,
+            2
+          ],
+          [
+            22,
+            1,
+            1
+          ],
+          [
+            33,
+            1,
+            0
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T004",
+      "episode": "E016",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "A · 금액 조건을 만족해 붙은 주문",
+      "sourceSignature": "049d35467c122a0eea7ff98e8770a0d47832f1968412fa5060c715fbea66a032",
+      "sql": "SELECT c.customer_id,o.order_id,o.amount FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id AND o.amount>=10 ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            202,
+            12
+          ],
+          [
+            22,
+            null,
+            null
+          ],
+          [
+            33,
+            null,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            202,
+            12
+          ],
+          [
+            22,
+            null,
+            null
+          ],
+          [
+            33,
+            null,
+            null
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T005",
+      "episode": "E016",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "trace",
+      "label": "B · WHERE 적용 전의 주문과 조건 판정",
+      "sourceSignature": "8951afcba140dc2022c13d66d29a34388baf9f216346b2c21cdc9bf46679d6f5",
+      "sql": "SELECT c.customer_id,o.order_id,o.amount,CASE WHEN o.amount>=10 THEN 'TRUE' WHEN NOT(o.amount>=10) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id ORDER BY c.customer_id,o.order_id",
+      "expected": [
+        [
+          [
+            11,
+            201,
+            8,
+            "FALSE"
+          ],
+          [
+            11,
+            202,
+            12,
+            "TRUE"
+          ],
+          [
+            22,
+            203,
+            7,
+            "FALSE"
+          ],
+          [
+            33,
+            null,
+            null,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            201,
+            8,
+            "FALSE"
+          ],
+          [
+            11,
+            202,
+            12,
+            "TRUE"
+          ],
+          [
+            22,
+            203,
+            7,
+            "FALSE"
+          ],
+          [
+            33,
+            null,
+            null,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T006",
+      "episode": "E019",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "WHERE를 통과하려면 TRUE여야 합니다",
+      "sourceSignature": "6c6469be282ce70b11f9744bf2c2fac3f28d8ffdc38dbcbf2cae76c7136034dc",
+      "sql": "SELECT customer_id,CASE WHEN customer_id NOT IN (SELECT customer_id FROM excluded_customers) THEN 'TRUE' WHEN NOT(customer_id NOT IN (SELECT customer_id FROM excluded_customers)) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM customers ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            "FALSE"
+          ],
+          [
+            22,
+            "UNKNOWN"
+          ],
+          [
+            33,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            "FALSE"
+          ],
+          [
+            22,
+            "UNKNOWN"
+          ],
+          [
+            33,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T007",
+      "episode": "E002",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "등호 비교의 세 논리값",
+      "sourceSignature": "b94de060d691044ad2557304405826c00ab02673f8259e10a15e1038985b39c0",
+      "sql": "SELECT order_id,coupon,CASE WHEN coupon=NULL THEN 'TRUE' WHEN NOT(coupon=NULL) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate FROM null_orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            301,
+            500,
+            "UNKNOWN"
+          ],
+          [
+            302,
+            null,
+            "UNKNOWN"
+          ],
+          [
+            303,
+            0,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            301,
+            500,
+            "UNKNOWN"
+          ],
+          [
+            302,
+            null,
+            "UNKNOWN"
+          ],
+          [
+            303,
+            0,
+            "UNKNOWN"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T008",
+      "episode": "E002",
+      "variant": "base",
+      "queryIndex": 1,
+      "kind": "trace",
+      "label": "IS NULL의 판정",
+      "sourceSignature": "80642c212718e443ed8b6ffb161486a1df046d5e70959bb648857da856c1d309",
+      "sql": "SELECT order_id,coupon,CASE WHEN coupon IS NULL THEN 'TRUE' ELSE 'FALSE' END AS predicate FROM null_orders ORDER BY order_id",
+      "expected": [
+        [
+          [
+            301,
+            500,
+            "FALSE"
+          ],
+          [
+            302,
+            null,
+            "TRUE"
+          ],
+          [
+            303,
+            0,
+            "FALSE"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            301,
+            500,
+            "FALSE"
+          ],
+          [
+            302,
+            null,
+            "TRUE"
+          ],
+          [
+            303,
+            0,
+            "FALSE"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T009",
+      "episode": "E003",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "HAVING 적용 전 고객별 합계",
+      "sourceSignature": "0a1cc39e67a6cbd6fd7f1e0a82896fa371556c3151015227703834f996da0c23",
+      "sql": "SELECT customer_id,COUNT(*) AS order_count,SUM(amount) AS group_total FROM orders GROUP BY customer_id ORDER BY customer_id",
+      "expected": [
+        [
+          [
+            11,
+            2,
+            15
+          ],
+          [
+            22,
+            1,
+            12
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            2,
+            15
+          ],
+          [
+            22,
+            1,
+            12
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    },
+    {
+      "caseId": "T010",
+      "episode": "E018",
+      "variant": "base",
+      "queryIndex": 0,
+      "kind": "trace",
+      "label": "고객별 일치 주문 수와 EXISTS 판정",
+      "sourceSignature": "ec7b4b9068cb6c24552a2b9435c5a0114fcc76fe975955178a1aced71ac9f81b",
+      "sql": "SELECT c.customer_id,(SELECT COUNT(*) FROM orders o WHERE o.customer_id=c.customer_id) AS matching_orders,CASE WHEN EXISTS(SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) THEN 'TRUE' ELSE 'FALSE' END AS predicate FROM customers c ORDER BY c.customer_id",
+      "expected": [
+        [
+          [
+            11,
+            2,
+            "TRUE"
+          ],
+          [
+            22,
+            1,
+            "TRUE"
+          ],
+          [
+            33,
+            0,
+            "FALSE"
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            11,
+            2,
+            "TRUE"
+          ],
+          [
+            22,
+            1,
+            "TRUE"
+          ],
+          [
+            33,
+            0,
+            "FALSE"
+          ]
+        ]
+      ],
+      "rowOrder": "ordered",
+      "passed": true,
+      "databaseVersion": "19.26.0.0.0"
+    }
+  ]
+}
