@@ -328,8 +328,8 @@
     },
     {
       "file": "assets/katex/NOTICE.md",
-      "sha256": "a609ee96bbca416736ba6cbd40c927856267aaaac3638471f7fd76b71e56ac39",
-      "bytes": 313
+      "sha256": "efcfebaab189f0fc6eea1a5f1b7862a1fad24b3deff7dec78cc3a8479c87438c",
+      "bytes": 308
     },
     {
       "file": "assets/snapshots/M01.png",
@@ -493,48 +493,48 @@
     },
     {
       "file": "modules/part34/m09-polynomial.js",
-      "sha256": "e2813cda3a7f7132e73efdb9ac3cd155bd38e9d8a943e96a7a063257f0c7c89b",
-      "bytes": 4578
+      "sha256": "d4a10e501410bcab6316d610ed373fab30d8413f24848f47f2c8bdf4d77db194",
+      "bytes": 4531
     },
     {
       "file": "modules/part34/m10-unit-circle.js",
-      "sha256": "ca288bfdf38fdfc0cc81df83c693cc67719ee5c050bfc195013e2d881df5d4b0",
-      "bytes": 4469
+      "sha256": "7149243f0b0289e933cac4e838a0d03983e23b9a6c3fbf54018186462aef7e8b",
+      "bytes": 4430
     },
     {
       "file": "modules/part34/m11-trig-wave.js",
-      "sha256": "5dcd0e6c95b66889054f96a80198184df5818c4e3e23b1add5c66c1bb94c0830",
-      "bytes": 5438
+      "sha256": "206b4bfee2c014308c7dc453080e985c29c47581b5f3b6648325fc0a7f099f60",
+      "bytes": 5392
     },
     {
       "file": "modules/part34/m12-sum-product.js",
-      "sha256": "97cfadf9a6a81f867a165e2cda01d1932bd283517fc3e17ed1b6bee84ec97db6",
-      "bytes": 6693
+      "sha256": "12cb5644d703c14d07b96731a197774ccbc3f1506d65c973ff8c16a2eeac0bef",
+      "bytes": 6647
     },
     {
       "file": "modules/part34/m13-vector.js",
-      "sha256": "d1936e71b6484eb3ea5f07fb4f0959e9559261dbaa8496671742400a70f437c8",
-      "bytes": 5679
+      "sha256": "21dcb55c975863bbb384cb42f6a188def15b3e5d1252c8a996485a15ae98c2ce",
+      "bytes": 5636
     },
     {
       "file": "modules/part34/m14-matrix-transform.js",
-      "sha256": "f85f0c7f0eeca2b5fb13691d4d7d72599647efe9491a3d6bdfb0756c87ac9bb8",
-      "bytes": 5939
+      "sha256": "0aa3371017fc938ee3a76ed7aa9f31855105a31bc66c64260fef0d8a3187fd13",
+      "bytes": 5894
     },
     {
       "file": "modules/part34/m15-linear-systems.js",
-      "sha256": "08d84faaa08eb6ad84cc45ac06fdfcfa4f4ad42027d3ff4a85ce72234357dbf5",
-      "bytes": 8860
+      "sha256": "375ea6ed25210e1a2d2efa4753befdd63933b9946d52d25fd13e29368d1bcb3d",
+      "bytes": 8796
     },
     {
       "file": "modules/part34/m16-projection-svd.js",
-      "sha256": "753fcd813b95d7f7ad7772de2153339ce649fdc0f64da5ed652a5cfc1770ba99",
-      "bytes": 11910
+      "sha256": "5decf5540de819048179e97c17f6983dd5c663a53bfe8e31edf7f2639114ce11",
+      "bytes": 11840
     },
     {
       "file": "modules/registry.js",
-      "sha256": "b666e16226a2049d0312f33fb0142a5764af5ce77aef160ac57be746f49cbf8a",
-      "bytes": 806
+      "sha256": "5e30f345522b46d852a3e19ff0902763f8321aeb6efe5a904423da01d1a43f7d",
+      "bytes": 789
     },
     {
       "file": "README.md",
@@ -543,8 +543,8 @@
     },
     {
       "file": "style.css",
-      "sha256": "c7c82f3affe78e7f5382acbed63a950f80bb3b4a3e853ecf27d5fe78e8b8b101",
-      "bytes": 8344
+      "sha256": "34d66d8497bb3c93ffc17a7218b8163cd862757bbe99899aead8fbe630c80f17",
+      "bytes": 8338
     }
   ]
 }
