@@ -63,7 +63,7 @@
   function queryTabs(){
     const tabs=$('query-tabs');tabs.replaceChildren();
     variant.queries.forEach((q,index)=>{const button=document.createElement('button');button.type='button';button.textContent=q.label;button.setAttribute('aria-pressed',String(index===queryIndex));button.addEventListener('click',()=>{queryIndex=index;syncQuery();});tabs.append(button);});
-    $('run-all').hidden=variant.queries.length<2;syncQuery();
+    $('run-all').hidden=variant.queries.length<2;$('run-all').textContent=episode.topicId?'등록 쿼리 모두 실행':'기본 A/B 함께 실행';syncQuery();
   }
   async function loadVariant(id,{keepSql=false}={}){
     const token=++generation;const previous=$('sql').value;
