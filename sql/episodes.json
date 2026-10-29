@@ -2170,6 +2170,4039 @@
         ],
         "valueComparison": "fixed-input-values-row-count-multiplicity-null"
       }
+    },
+    {
+      "id": "TH-05",
+      "topicId": "TH-05",
+      "title": "결과가 없다는 것은 0행일까 NULL 한 칸일까",
+      "question": "조건에 맞는 주문이 0건이면 전체 집계도 0행일까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "주문 목록",
+              "sql": "SELECT order_id, amount FROM orders WHERE amount > 100 ORDER BY order_id",
+              "expected": [],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "amount"
+                  ],
+                  "values": []
+                }
+              ]
+            },
+            {
+              "label": "전체 집계",
+              "sql": "SELECT COUNT(*) AS row_count, SUM(amount) AS total FROM orders WHERE amount > 100",
+              "expected": [
+                [
+                  0,
+                  null
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_count",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      null
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "HAVING 적용",
+              "sql": "SELECT COUNT(*) AS row_count FROM orders WHERE amount > 100 HAVING COUNT(*) > 0",
+              "expected": [],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_count"
+                  ],
+                  "values": []
+                }
+              ]
+            }
+          ],
+          "explanation": "조회 대상이 비어도 GROUP BY 없는 전체 집계는 한 행을 반환합니다. COUNT는 0, SUM은 NULL입니다."
+        },
+        {
+          "id": "match",
+          "label": "150천원 주문 추가",
+          "setup": "INSERT INTO orders VALUES (104,3,150);",
+          "queries": [
+            {
+              "label": "주문 목록",
+              "sql": "SELECT order_id, amount FROM orders WHERE amount > 100 ORDER BY order_id",
+              "expected": [
+                [
+                  104,
+                  150
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      104,
+                      150
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "전체 집계",
+              "sql": "SELECT COUNT(*) AS row_count, SUM(amount) AS total FROM orders WHERE amount > 100",
+              "expected": [
+                [
+                  1,
+                  150
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_count",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      150
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "100을 넘는 행 하나가 생겼습니다."
+        }
+      ],
+      "explanation": [
+        "조회 대상이 비어도 GROUP BY 없는 전체 집계는 한 행을 반환합니다. COUNT는 0, SUM은 NULL입니다.",
+        "목록 조회의 행 수와 집계 값이 들어 있는 결과 행의 수를 구분하세요. HAVING은 집계 행 자체도 제외할 수 있습니다."
+      ],
+      "boundary": "표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
+      "challenge": "조건을 amount > 200으로 바꾸면 각 결과는 어떻게 될까요?",
+      "number": 13,
+      "datasetVersion": "th-05-v1",
+      "schema": "CREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-05.sql",
+      "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
+      "theoryNumber": 2,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-15",
+      "topicId": "TH-15",
+      "title": "IN과 EXISTS와 NOT EXISTS는 무엇을 물을까",
+      "question": "같은 주문을 한 번 더 넣으면 IN과 EXISTS의 고객 수가 늘어날까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "IN",
+              "sql": "SELECT customer_id FROM customers WHERE customer_id IN (SELECT customer_id FROM orders) ORDER BY customer_id",
+              "expected": [
+                [
+                  1
+                ],
+                [
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      1
+                    ],
+                    [
+                      2
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "EXISTS",
+              "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1
+                ],
+                [
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      1
+                    ],
+                    [
+                      2
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "NOT EXISTS",
+              "sql": "SELECT c.customer_id FROM customers c WHERE NOT EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+              "expected": [
+                [
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      3
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "IN은 값이 목록에 포함되는지, EXISTS는 일치하는 행이 있는지 묻습니다."
+        },
+        {
+          "id": "extra",
+          "label": "1번 고객 주문 추가",
+          "setup": "INSERT INTO orders VALUES (104,1,30);",
+          "queries": [
+            {
+              "label": "IN",
+              "sql": "SELECT customer_id FROM customers WHERE customer_id IN (SELECT customer_id FROM orders) ORDER BY customer_id",
+              "expected": [
+                [
+                  1
+                ],
+                [
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      1
+                    ],
+                    [
+                      2
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "EXISTS",
+              "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1
+                ],
+                [
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      1
+                    ],
+                    [
+                      2
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "NOT EXISTS",
+              "sql": "SELECT c.customer_id FROM customers c WHERE NOT EXISTS (SELECT NULL FROM orders o WHERE o.customer_id=c.customer_id) ORDER BY c.customer_id",
+              "expected": [
+                [
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id"
+                  ],
+                  "values": [
+                    [
+                      3
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "중복 주문을 추가해도 고객 표의 일치 행은 두 개입니다."
+        }
+      ],
+      "explanation": [
+        "IN은 값이 목록에 포함되는지, EXISTS는 일치하는 행이 있는지 묻습니다.",
+        "이 고정 입력에서는 두 조건이 같은 고객 1, 2를 반환하고 NOT EXISTS는 3을 반환합니다."
+      ],
+      "boundary": "외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
+      "challenge": "3번 고객 주문을 추가하면 NOT EXISTS는 몇 행일까요?",
+      "number": 14,
+      "datasetVersion": "th-15-v1",
+      "schema": "CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR(40));\nINSERT INTO customers VALUES (1, 'MIN');\nINSERT INTO customers VALUES (2, 'JUN');\nINSERT INTO customers VALUES (3, 'SOL');\nCREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        },
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-15.sql",
+      "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
+      "theoryNumber": 6,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · IN-Condition",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/IN-Condition.html"
+          },
+          {
+            "label": "Oracle 19c · EXISTS-Condition",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-16",
+      "topicId": "TH-16",
+      "title": "스칼라 서브쿼리가 0행이면 오류일까",
+      "question": "스칼라 서브쿼리가 행을 찾지 못하면 고객 행도 사라질까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "0행 또는 1행",
+              "sql": "SELECT c.customer_id, (SELECT o.amount FROM orders o WHERE o.customer_id=c.customer_id AND o.order_id=103) AS one_amount FROM customers c ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1,
+                  null
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  null
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "one_amount"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      null
+                    ],
+                    [
+                      2,
+                      5
+                    ],
+                    [
+                      3,
+                      null
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "외부 고객 세 행은 유지됩니다. 내부에서 찾은 한 값이 없으면 그 칸이 NULL입니다."
+        },
+        {
+          "id": "one",
+          "label": "3번 고객의 대상 주문 추가",
+          "setup": "INSERT INTO orders VALUES (104,3,7);",
+          "queries": [
+            {
+              "label": "대상 주문 변경",
+              "sql": "SELECT c.customer_id, (SELECT o.amount FROM orders o WHERE o.customer_id=c.customer_id AND o.order_id=104) AS one_amount FROM customers c ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1,
+                  null
+                ],
+                [
+                  2,
+                  null
+                ],
+                [
+                  3,
+                  7
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "one_amount"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      null
+                    ],
+                    [
+                      2,
+                      null
+                    ],
+                    [
+                      3,
+                      7
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "대상 주문 번호를 104로 바꿉니다."
+        }
+      ],
+      "explanation": [
+        "외부 고객 세 행은 유지됩니다. 내부에서 찾은 한 값이 없으면 그 칸이 NULL입니다.",
+        "내부 조건은 최대 한 행만 찾도록 주문 번호까지 제한했습니다."
+      ],
+      "boundary": "여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
+      "challenge": "없는 주문 번호 999를 찾으면 결과가 몇 행일까요?",
+      "number": 15,
+      "datasetVersion": "th-16-v1",
+      "schema": "CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR(40));\nINSERT INTO customers VALUES (1, 'MIN');\nINSERT INTO customers VALUES (2, 'JUN');\nINSERT INTO customers VALUES (3, 'SOL');\nCREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        },
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-16.sql",
+      "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
+      "theoryNumber": 7,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · Scalar-Subquery-Expressions",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Scalar-Subquery-Expressions.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-21",
+      "topicId": "TH-21",
+      "title": "GROUP BY의 열 순서는 출력 순서일까",
+      "question": "GROUP BY의 열 순서를 바꾸면 같은 조합의 합계가 달라질까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "지역·상품",
+              "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id ORDER BY region_id, product_id",
+              "expected": [
+                [
+                  1,
+                  10,
+                  10
+                ],
+                [
+                  1,
+                  20,
+                  20
+                ],
+                [
+                  2,
+                  10,
+                  5
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      10
+                    ],
+                    [
+                      1,
+                      20,
+                      20
+                    ],
+                    [
+                      2,
+                      10,
+                      5
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "상품·지역",
+              "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id, region_id ORDER BY region_id, product_id",
+              "expected": [
+                [
+                  1,
+                  10,
+                  10
+                ],
+                [
+                  1,
+                  20,
+                  20
+                ],
+                [
+                  2,
+                  10,
+                  5
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      10
+                    ],
+                    [
+                      1,
+                      20,
+                      20
+                    ],
+                    [
+                      2,
+                      10,
+                      5
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "GROUP BY는 열 값의 조합으로 그룹을 만듭니다. 같은 두 열의 나열 순서를 바꾸어도 그룹 조합은 같습니다."
+        },
+        {
+          "id": "reverse",
+          "label": "출력 순서만 반대로",
+          "setup": "",
+          "queries": [
+            {
+              "label": "ORDER BY 변경",
+              "sql": "SELECT region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id ORDER BY region_id DESC, product_id DESC",
+              "expected": [
+                [
+                  2,
+                  10,
+                  5
+                ],
+                [
+                  1,
+                  20,
+                  20
+                ],
+                [
+                  1,
+                  10,
+                  10
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      2,
+                      10,
+                      5
+                    ],
+                    [
+                      1,
+                      20,
+                      20
+                    ],
+                    [
+                      1,
+                      10,
+                      10
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "그룹 구성은 같고 마지막 ORDER BY만 달라집니다."
+        }
+      ],
+      "explanation": [
+        "GROUP BY는 열 값의 조합으로 그룹을 만듭니다. 같은 두 열의 나열 순서를 바꾸어도 그룹 조합은 같습니다.",
+        "최종 결과의 행 순서는 ORDER BY로 명시합니다."
+      ],
+      "boundary": "ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
+      "challenge": "지역 합계만 구하려면 SELECT와 GROUP BY에서 무엇을 바꿔야 할까요?",
+      "number": 16,
+      "datasetVersion": "th-21-v1",
+      "schema": "CREATE TABLE sales (sale_id INTEGER, region_id INTEGER, product_id INTEGER, amount INTEGER);\nINSERT INTO sales VALUES (1, 1, 10, 10);\nINSERT INTO sales VALUES (2, 1, 20, 20);\nINSERT INTO sales VALUES (3, 2, 10, 5);\n",
+      "tables": [
+        {
+          "name": "sales",
+          "columns": [
+            "sale_id",
+            "region_id",
+            "product_id",
+            "amount"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-21.sql",
+      "schemaSha256": "4ed77ae9651e64548aa6cb0dd49d77b4a93deb6770bb6b4e48b8aee72a8e41d8",
+      "theoryNumber": 11,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-22",
+      "topicId": "TH-22",
+      "title": "ROLLUP과 CUBE는 몇 종류의 소계를 만들까",
+      "question": "지역·상품 두 기준에서 상품별 소계가 추가되면 몇 행 늘어날까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "ROLLUP의 그룹 구성",
+              "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+              "expected": [
+                [
+                  0,
+                  1,
+                  10,
+                  10
+                ],
+                [
+                  0,
+                  1,
+                  20,
+                  20
+                ],
+                [
+                  0,
+                  2,
+                  10,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  null,
+                  30
+                ],
+                [
+                  1,
+                  2,
+                  null,
+                  5
+                ],
+                [
+                  3,
+                  null,
+                  null,
+                  35
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "level_no",
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      1,
+                      10,
+                      10
+                    ],
+                    [
+                      0,
+                      1,
+                      20,
+                      20
+                    ],
+                    [
+                      0,
+                      2,
+                      10,
+                      5
+                    ],
+                    [
+                      1,
+                      1,
+                      null,
+                      30
+                    ],
+                    [
+                      1,
+                      2,
+                      null,
+                      5
+                    ],
+                    [
+                      3,
+                      null,
+                      null,
+                      35
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "CUBE의 그룹 구성",
+              "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 2 AS level_no, CAST(NULL AS INTEGER) AS region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+              "expected": [
+                [
+                  0,
+                  1,
+                  10,
+                  10
+                ],
+                [
+                  0,
+                  1,
+                  20,
+                  20
+                ],
+                [
+                  0,
+                  2,
+                  10,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  null,
+                  30
+                ],
+                [
+                  1,
+                  2,
+                  null,
+                  5
+                ],
+                [
+                  2,
+                  null,
+                  10,
+                  15
+                ],
+                [
+                  2,
+                  null,
+                  20,
+                  20
+                ],
+                [
+                  3,
+                  null,
+                  null,
+                  35
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "level_no",
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      1,
+                      10,
+                      10
+                    ],
+                    [
+                      0,
+                      1,
+                      20,
+                      20
+                    ],
+                    [
+                      0,
+                      2,
+                      10,
+                      5
+                    ],
+                    [
+                      1,
+                      1,
+                      null,
+                      30
+                    ],
+                    [
+                      1,
+                      2,
+                      null,
+                      5
+                    ],
+                    [
+                      2,
+                      null,
+                      10,
+                      15
+                    ],
+                    [
+                      2,
+                      null,
+                      20,
+                      20
+                    ],
+                    [
+                      3,
+                      null,
+                      null,
+                      35
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "상세·지역 소계·전체 합계는 ROLLUP의 그룹 구성을 나타냅니다. CUBE 구성에는 상품 소계도 더해집니다."
+        },
+        {
+          "id": "one_product",
+          "label": "상품을 10번으로 통일",
+          "setup": "UPDATE sales SET product_id=10;",
+          "queries": [
+            {
+              "label": "CUBE 구성",
+              "sql": "SELECT 0 AS level_no, region_id, product_id, SUM(amount) AS total FROM sales GROUP BY region_id, product_id UNION ALL SELECT 1 AS level_no, region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 2 AS level_no, CAST(NULL AS INTEGER) AS region_id, product_id, SUM(amount) AS total FROM sales GROUP BY product_id UNION ALL SELECT 3 AS level_no, CAST(NULL AS INTEGER) AS region_id, CAST(NULL AS INTEGER) AS product_id, SUM(amount) AS total FROM sales ORDER BY level_no, region_id, product_id",
+              "expected": [
+                [
+                  0,
+                  1,
+                  10,
+                  30
+                ],
+                [
+                  0,
+                  2,
+                  10,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  null,
+                  30
+                ],
+                [
+                  1,
+                  2,
+                  null,
+                  5
+                ],
+                [
+                  2,
+                  null,
+                  10,
+                  35
+                ],
+                [
+                  3,
+                  null,
+                  null,
+                  35
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "level_no",
+                    "region_id",
+                    "product_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      1,
+                      10,
+                      30
+                    ],
+                    [
+                      0,
+                      2,
+                      10,
+                      5
+                    ],
+                    [
+                      1,
+                      1,
+                      null,
+                      30
+                    ],
+                    [
+                      1,
+                      2,
+                      null,
+                      5
+                    ],
+                    [
+                      2,
+                      null,
+                      10,
+                      35
+                    ],
+                    [
+                      3,
+                      null,
+                      null,
+                      35
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "그룹 종류 수와 실제 결과 행 수는 다른 수입니다."
+        }
+      ],
+      "explanation": [
+        "상세·지역 소계·전체 합계는 ROLLUP의 그룹 구성을 나타냅니다. CUBE 구성에는 상품 소계도 더해집니다.",
+        "level_no는 이 예제에서 붙인 행 구분 번호입니다. 0=상세, 1=지역 소계, 2=상품 소계, 3=전체 합계입니다."
+      ],
+      "boundary": "ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
+      "challenge": "지역을 하나로 합치면 그룹 종류와 결과 행 수는 각각 어떻게 바뀔까요?",
+      "number": 17,
+      "datasetVersion": "th-22-v1",
+      "schema": "CREATE TABLE sales (sale_id INTEGER, region_id INTEGER, product_id INTEGER, amount INTEGER);\nINSERT INTO sales VALUES (1, 1, 10, 10);\nINSERT INTO sales VALUES (2, 1, 20, 20);\nINSERT INTO sales VALUES (3, 2, 10, 5);\n",
+      "tables": [
+        {
+          "name": "sales",
+          "columns": [
+            "sale_id",
+            "region_id",
+            "product_id",
+            "amount"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-22.sql",
+      "schemaSha256": "4ed77ae9651e64548aa6cb0dd49d77b4a93deb6770bb6b4e48b8aee72a8e41d8",
+      "theoryNumber": 12,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-23",
+      "topicId": "TH-23",
+      "title": "소계의 NULL과 원래 NULL은 어떻게 구분할까",
+      "question": "지역 NULL인 상세 그룹과 전체 합계의 NULL을 어떻게 나눌까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "구분 표지 함께 보기",
+              "sql": "SELECT subtotal_flag, region_id, total FROM (SELECT 0 AS subtotal_flag, region_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 1 AS subtotal_flag, CAST(NULL AS INTEGER) AS region_id, SUM(amount) AS total FROM sales) x ORDER BY subtotal_flag, CASE WHEN region_id IS NULL THEN 1 ELSE 0 END, region_id",
+              "expected": [
+                [
+                  0,
+                  1,
+                  30
+                ],
+                [
+                  0,
+                  null,
+                  5
+                ],
+                [
+                  1,
+                  null,
+                  35
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "subtotal_flag",
+                    "region_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      1,
+                      30
+                    ],
+                    [
+                      0,
+                      null,
+                      5
+                    ],
+                    [
+                      1,
+                      null,
+                      35
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "상세 그룹의 NULL과 집계 과정에서 붙인 NULL은 같은 표시라도 생긴 이유가 다릅니다."
+        },
+        {
+          "id": "known",
+          "label": "원래 NULL을 2번 지역으로",
+          "setup": "UPDATE sales SET region_id=2 WHERE sale_id=2;",
+          "queries": [
+            {
+              "label": "구분 표지 유지",
+              "sql": "SELECT subtotal_flag, region_id, total FROM (SELECT 0 AS subtotal_flag, region_id, SUM(amount) AS total FROM sales GROUP BY region_id UNION ALL SELECT 1 AS subtotal_flag, CAST(NULL AS INTEGER) AS region_id, SUM(amount) AS total FROM sales) x ORDER BY subtotal_flag, CASE WHEN region_id IS NULL THEN 1 ELSE 0 END, region_id",
+              "expected": [
+                [
+                  0,
+                  1,
+                  30
+                ],
+                [
+                  0,
+                  2,
+                  5
+                ],
+                [
+                  1,
+                  null,
+                  35
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "subtotal_flag",
+                    "region_id",
+                    "total"
+                  ],
+                  "values": [
+                    [
+                      0,
+                      1,
+                      30
+                    ],
+                    [
+                      0,
+                      2,
+                      5
+                    ],
+                    [
+                      1,
+                      null,
+                      35
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "원래 데이터의 NULL만 2로 바꿨습니다."
+        }
+      ],
+      "explanation": [
+        "상세 그룹의 NULL과 집계 과정에서 붙인 NULL은 같은 표시라도 생긴 이유가 다릅니다.",
+        "이 체험은 subtotal_flag를 직접 붙입니다. Oracle GROUPING이 주는 구분 정보를 이해하기 위한 공통 SQL 예제입니다."
+      ],
+      "boundary": "subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
+      "challenge": "원래 지역이 전부 NULL이어도 두 종류의 행을 구분할 수 있을까요?",
+      "number": 18,
+      "datasetVersion": "th-23-v1",
+      "schema": "CREATE TABLE sales (sale_id INTEGER, region_id INTEGER, amount INTEGER);\nINSERT INTO sales VALUES (1, 1, 10);\nINSERT INTO sales VALUES (2, NULL, 5);\nINSERT INTO sales VALUES (3, 1, 20);\n",
+      "tables": [
+        {
+          "name": "sales",
+          "columns": [
+            "sale_id",
+            "region_id",
+            "amount"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-23.sql",
+      "schemaSha256": "8572fd20f95f6435f99ba7209241469246461788f25a6538dc9c9c6c4d83c311",
+      "theoryNumber": 13,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · GROUPING",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/GROUPING.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-28",
+      "topicId": "TH-28",
+      "title": "PARTITION BY는 왜 주문 행을 줄이지 않을까",
+      "question": "고객별 합계를 계산하면 주문 세 행이 두 행으로 줄어들까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "PARTITION BY",
+              "sql": "SELECT order_id, customer_id, amount, SUM(amount) OVER (PARTITION BY customer_id) AS customer_total FROM orders ORDER BY order_id",
+              "expected": [
+                [
+                  101,
+                  1,
+                  10,
+                  30
+                ],
+                [
+                  102,
+                  1,
+                  20,
+                  30
+                ],
+                [
+                  103,
+                  2,
+                  5,
+                  5
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "customer_id",
+                    "amount",
+                    "customer_total"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      1,
+                      10,
+                      30
+                    ],
+                    [
+                      102,
+                      1,
+                      20,
+                      30
+                    ],
+                    [
+                      103,
+                      2,
+                      5,
+                      5
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "GROUP BY",
+              "sql": "SELECT customer_id, SUM(amount) AS customer_total FROM orders GROUP BY customer_id ORDER BY customer_id",
+              "expected": [
+                [
+                  1,
+                  30
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "customer_total"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      30
+                    ],
+                    [
+                      2,
+                      5
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "분석 함수는 각 주문 행에 고객별 합계를 붙입니다."
+        },
+        {
+          "id": "move",
+          "label": "102번 주문 고객 변경",
+          "setup": "UPDATE orders SET customer_id=2 WHERE order_id=102;",
+          "queries": [
+            {
+              "label": "PARTITION BY",
+              "sql": "SELECT order_id, customer_id, amount, SUM(amount) OVER (PARTITION BY customer_id) AS customer_total FROM orders ORDER BY order_id",
+              "expected": [
+                [
+                  101,
+                  1,
+                  10,
+                  10
+                ],
+                [
+                  102,
+                  2,
+                  20,
+                  25
+                ],
+                [
+                  103,
+                  2,
+                  5,
+                  25
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "customer_id",
+                    "amount",
+                    "customer_total"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      1,
+                      10,
+                      10
+                    ],
+                    [
+                      102,
+                      2,
+                      20,
+                      25
+                    ],
+                    [
+                      103,
+                      2,
+                      5,
+                      25
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "주문 행 수는 같고 합계를 계산하는 구간만 바뀝니다."
+        }
+      ],
+      "explanation": [
+        "분석 함수는 각 주문 행에 고객별 합계를 붙입니다.",
+        "GROUP BY 조회는 고객별 그룹마다 한 행을 반환합니다."
+      ],
+      "boundary": "정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
+      "challenge": "PARTITION BY를 빼면 각 행의 합계는 얼마일까요?",
+      "number": 19,
+      "datasetVersion": "th-28-v1",
+      "schema": "CREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-28.sql",
+      "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
+      "theoryNumber": 16,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · Analytic-Functions",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-31",
+      "topicId": "TH-31",
+      "title": "이전 행은 저장 순서일까 정렬 순서일까",
+      "question": "이전 행은 입력 순서일까요, OVER 안의 정렬 순서일까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "날짜·번호 순",
+              "sql": "SELECT receipt_id, day_no, amount, LAG(amount) OVER (ORDER BY day_no, receipt_id) AS previous_amount, LEAD(amount) OVER (ORDER BY day_no, receipt_id) AS next_amount FROM receipts ORDER BY day_no, receipt_id",
+              "expected": [
+                [
+                  402,
+                  1,
+                  4,
+                  null,
+                  6
+                ],
+                [
+                  401,
+                  2,
+                  6,
+                  4,
+                  9
+                ],
+                [
+                  403,
+                  2,
+                  9,
+                  6,
+                  null
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "receipt_id",
+                    "day_no",
+                    "amount",
+                    "previous_amount",
+                    "next_amount"
+                  ],
+                  "values": [
+                    [
+                      402,
+                      1,
+                      4,
+                      null,
+                      6
+                    ],
+                    [
+                      401,
+                      2,
+                      6,
+                      4,
+                      9
+                    ],
+                    [
+                      403,
+                      2,
+                      9,
+                      6,
+                      null
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "LAG와 LEAD는 OVER 안에서 정한 순서를 기준으로 앞뒤 값을 읽습니다."
+        },
+        {
+          "id": "day",
+          "label": "401번 날짜 변경",
+          "setup": "UPDATE receipts SET day_no=3 WHERE receipt_id=401;",
+          "queries": [
+            {
+              "label": "바뀐 순서",
+              "sql": "SELECT receipt_id, day_no, amount, LAG(amount) OVER (ORDER BY day_no, receipt_id) AS previous_amount, LEAD(amount) OVER (ORDER BY day_no, receipt_id) AS next_amount FROM receipts ORDER BY day_no, receipt_id",
+              "expected": [
+                [
+                  402,
+                  1,
+                  4,
+                  null,
+                  9
+                ],
+                [
+                  403,
+                  2,
+                  9,
+                  4,
+                  6
+                ],
+                [
+                  401,
+                  3,
+                  6,
+                  9,
+                  null
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "receipt_id",
+                    "day_no",
+                    "amount",
+                    "previous_amount",
+                    "next_amount"
+                  ],
+                  "values": [
+                    [
+                      402,
+                      1,
+                      4,
+                      null,
+                      9
+                    ],
+                    [
+                      403,
+                      2,
+                      9,
+                      4,
+                      6
+                    ],
+                    [
+                      401,
+                      3,
+                      6,
+                      9,
+                      null
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "물리적 입력 순서 대신 날짜와 고유 번호로 순서를 정했습니다."
+        }
+      ],
+      "explanation": [
+        "LAG와 LEAD는 OVER 안에서 정한 순서를 기준으로 앞뒤 값을 읽습니다.",
+        "같은 날짜는 receipt_id로 순서를 결정하므로 동률의 임의 선택을 피합니다."
+      ],
+      "boundary": "경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
+      "challenge": "OVER의 순서만 DESC로 바꾸고 최종 출력 순서를 유지하면 어떤 값이 바뀔까요?",
+      "number": 20,
+      "datasetVersion": "th-31-v1",
+      "schema": "CREATE TABLE receipts (receipt_id INTEGER, day_no INTEGER, amount INTEGER);\nINSERT INTO receipts VALUES (401, 2, 6);\nINSERT INTO receipts VALUES (402, 1, 4);\nINSERT INTO receipts VALUES (403, 2, 9);\n",
+      "tables": [
+        {
+          "name": "receipts",
+          "columns": [
+            "receipt_id",
+            "day_no",
+            "amount"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-31.sql",
+      "schemaSha256": "7f3e8dcfe3b7556810eae2782d2aa1d047402a5a6a3377e2eb860d5f19673745",
+      "theoryNumber": 17,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · LAG",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LAG.html"
+          },
+          {
+            "label": "Oracle 19c · LEAD",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LEAD.html"
+          },
+          {
+            "label": "Oracle 19c · Analytic-Functions",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-32",
+      "topicId": "TH-32",
+      "title": "CONNECT BY PRIOR는 어느 쪽 값을 따라갈까",
+      "question": "부모 ID를 어느 쪽 노드 ID와 비교해야 자식을 찾을까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "부모 → 자식",
+              "sql": "SELECT p.node_id AS parent_node, c.node_id AS child_node FROM nodes p JOIN nodes c ON c.parent_id=p.node_id ORDER BY p.node_id, c.node_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "parent_node",
+                    "child_node"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      1,
+                      3
+                    ],
+                    [
+                      2,
+                      4
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "자식 → 부모",
+              "sql": "SELECT c.node_id AS child_node, p.node_id AS parent_node FROM nodes c JOIN nodes p ON c.parent_id=p.node_id ORDER BY c.node_id",
+              "expected": [
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "child_node",
+                    "parent_node"
+                  ],
+                  "values": [
+                    [
+                      2,
+                      1
+                    ],
+                    [
+                      3,
+                      1
+                    ],
+                    [
+                      4,
+                      2
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "자식의 parent_id가 부모의 node_id와 일치하는 쌍을 조회합니다."
+        },
+        {
+          "id": "reparent",
+          "label": "4번의 부모를 3번으로",
+          "setup": "UPDATE nodes SET parent_id=3 WHERE node_id=4;",
+          "queries": [
+            {
+              "label": "변경된 연결",
+              "sql": "SELECT p.node_id AS parent_node, c.node_id AS child_node FROM nodes p JOIN nodes c ON c.parent_id=p.node_id ORDER BY p.node_id, c.node_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "parent_node",
+                    "child_node"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      1,
+                      3
+                    ],
+                    [
+                      3,
+                      4
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "한 행의 parent_id만 바꾸어 연결을 비교합니다."
+        }
+      ],
+      "explanation": [
+        "자식의 parent_id가 부모의 node_id와 일치하는 쌍을 조회합니다.",
+        "방향을 바꾸면 출력에서 출발점과 도착점을 해석하는 기준도 바뀝니다."
+      ],
+      "boundary": "Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
+      "challenge": "한 번 더 자기 조인하면 1번 노드의 두 단계 아래 노드를 찾을 수 있을까요?",
+      "number": 21,
+      "datasetVersion": "th-32-v1",
+      "schema": "CREATE TABLE nodes (node_id INTEGER, parent_id INTEGER);\nINSERT INTO nodes VALUES (1, NULL);\nINSERT INTO nodes VALUES (2, 1);\nINSERT INTO nodes VALUES (3, 1);\nINSERT INTO nodes VALUES (4, 2);\n",
+      "tables": [
+        {
+          "name": "nodes",
+          "columns": [
+            "node_id",
+            "parent_id"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-32.sql",
+      "schemaSha256": "6c0b9c1e11ae040cb8cc35d0e31a4f2a2d30cd05f267caad9be836dba5557da5",
+      "theoryNumber": 18,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · Hierarchical-Queries",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Hierarchical-Queries.html"
+          },
+          {
+            "label": "Oracle 19c · Joins",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-33",
+      "topicId": "TH-33",
+      "title": "고객과 고객 한 명과 고객 이름은 어떻게 다를까",
+      "question": "고객 한 명을 추가하면 엔터티 종류가 늘어날까요, 인스턴스가 늘어날까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "고객 인스턴스",
+              "sql": "SELECT customer_id, customer_name FROM customers ORDER BY customer_id",
+              "expected": [
+                [
+                  1,
+                  "MIN"
+                ],
+                [
+                  2,
+                  "JUN"
+                ],
+                [
+                  3,
+                  "SOL"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "customer_name"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      "MIN"
+                    ],
+                    [
+                      2,
+                      "JUN"
+                    ],
+                    [
+                      3,
+                      "SOL"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "인스턴스 수",
+              "sql": "SELECT COUNT(*) AS instance_count FROM customers",
+              "expected": [
+                [
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "instance_count"
+                  ],
+                  "values": [
+                    [
+                      3
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "고객은 엔터티 종류, 고객 표의 각 행은 인스턴스, ID와 이름은 속성에 대응합니다."
+        },
+        {
+          "id": "new",
+          "label": "고객 한 명 추가",
+          "setup": "INSERT INTO customers VALUES (4,'MIN');",
+          "queries": [
+            {
+              "label": "동명이인도 별도 행",
+              "sql": "SELECT customer_id, customer_name FROM customers ORDER BY customer_id",
+              "expected": [
+                [
+                  1,
+                  "MIN"
+                ],
+                [
+                  2,
+                  "JUN"
+                ],
+                [
+                  3,
+                  "SOL"
+                ],
+                [
+                  4,
+                  "MIN"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "customer_name"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      "MIN"
+                    ],
+                    [
+                      2,
+                      "JUN"
+                    ],
+                    [
+                      3,
+                      "SOL"
+                    ],
+                    [
+                      4,
+                      "MIN"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "인스턴스 수",
+              "sql": "SELECT COUNT(*) AS instance_count FROM customers",
+              "expected": [
+                [
+                  4
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "instance_count"
+                  ],
+                  "values": [
+                    [
+                      4
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "이름이 같아도 고객 ID가 다르면 별도 고객으로 정한 예제입니다."
+        }
+      ],
+      "explanation": [
+        "고객은 엔터티 종류, 고객 표의 각 행은 인스턴스, ID와 이름은 속성에 대응합니다.",
+        "고객을 추가하면 속성이나 엔터티 종류가 늘어나는 것이 아니라 인스턴스가 늘어납니다."
+      ],
+      "boundary": "이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
+      "challenge": "이름의 종류 수와 고객 수는 항상 같을까요?",
+      "number": 22,
+      "datasetVersion": "th-33-v1",
+      "schema": "CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR(40));\nINSERT INTO customers VALUES (1, 'MIN');\nINSERT INTO customers VALUES (2, 'JUN');\nINSERT INTO customers VALUES (3, 'SOL');\n",
+      "tables": [
+        {
+          "name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-33.sql",
+      "schemaSha256": "90f03ffae515c1c01d4ffd0c006c02bb71b23333427e1170068482fb9f6357d4",
+      "theoryNumber": 19,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-34",
+      "topicId": "TH-34",
+      "title": "입력한 수량과 계산한 금액은 같은 속성일까",
+      "question": "수량만 바꾸면 계산 금액도 바뀔까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "기본 값에서 계산",
+              "sql": "SELECT item_id, quantity, unit_price, quantity*unit_price AS amount FROM items ORDER BY item_id",
+              "expected": [
+                [
+                  1,
+                  2,
+                  30,
+                  60
+                ],
+                [
+                  2,
+                  3,
+                  20,
+                  60
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "item_id",
+                    "quantity",
+                    "unit_price",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2,
+                      30,
+                      60
+                    ],
+                    [
+                      2,
+                      3,
+                      20,
+                      60
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "수량과 단가를 입력 값으로 정하고 금액은 두 값의 곱으로 계산합니다."
+        },
+        {
+          "id": "qty",
+          "label": "1번 수량을 4로",
+          "setup": "UPDATE items SET quantity=4 WHERE item_id=1;",
+          "queries": [
+            {
+              "label": "계산 금액 변화",
+              "sql": "SELECT item_id, quantity, unit_price, quantity*unit_price AS amount FROM items ORDER BY item_id",
+              "expected": [
+                [
+                  1,
+                  4,
+                  30,
+                  120
+                ],
+                [
+                  2,
+                  3,
+                  20,
+                  60
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "item_id",
+                    "quantity",
+                    "unit_price",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      4,
+                      30,
+                      120
+                    ],
+                    [
+                      2,
+                      3,
+                      20,
+                      60
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "저장된 수량만 바꾸고 금액 식은 유지합니다."
+        }
+      ],
+      "explanation": [
+        "수량과 단가를 입력 값으로 정하고 금액은 두 값의 곱으로 계산합니다.",
+        "SELECT에서 계산한 별칭 amount는 이 예제 표에 저장된 열이 아닙니다."
+      ],
+      "boundary": "작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
+      "challenge": "단가를 바꾸면 어떤 입력 값과 결과 값이 달라질까요?",
+      "number": 23,
+      "datasetVersion": "th-34-v1",
+      "schema": "CREATE TABLE items (item_id INTEGER, quantity INTEGER, unit_price INTEGER);\nINSERT INTO items VALUES (1, 2, 30);\nINSERT INTO items VALUES (2, 3, 20);\n",
+      "tables": [
+        {
+          "name": "items",
+          "columns": [
+            "item_id",
+            "quantity",
+            "unit_price"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-34.sql",
+      "schemaSha256": "28ea9b4afa6d0c8db7e2cd20082b5a4c4cacbd9a0a64a9194bdb8895fc063785",
+      "theoryNumber": 20,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-35",
+      "topicId": "TH-35",
+      "title": "유일하기만 하면 모두 후보 키일까",
+      "question": "두 열의 조합이 유일해도 그중 한 열만으로 학생 수강을 구분할 수 있을까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "조합 중복",
+              "sql": "SELECT student_id, course_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id, course_id HAVING COUNT(*)>1 ORDER BY student_id, course_id",
+              "expected": [],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "student_id",
+                    "course_id",
+                    "row_count"
+                  ],
+                  "values": []
+                }
+              ]
+            },
+            {
+              "label": "학생 ID만 비교",
+              "sql": "SELECT student_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id HAVING COUNT(*)>1 ORDER BY student_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "student_id",
+                    "row_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "학생 ID만으로는 서로 다른 수강을 구분하지 못합니다. 학생·과목 조합에는 원래 중복이 없습니다."
+        },
+        {
+          "id": "duplicate",
+          "label": "같은 수강 한 행 추가",
+          "setup": "INSERT INTO enrollments VALUES (1,10);",
+          "queries": [
+            {
+              "label": "조합 중복",
+              "sql": "SELECT student_id, course_id, COUNT(*) AS row_count FROM enrollments GROUP BY student_id, course_id HAVING COUNT(*)>1 ORDER BY student_id, course_id",
+              "expected": [
+                [
+                  1,
+                  10,
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "student_id",
+                    "course_id",
+                    "row_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      2
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "제약을 걸기 전 후보 데이터에 같은 조합을 추가했습니다."
+        }
+      ],
+      "explanation": [
+        "학생 ID만으로는 서로 다른 수강을 구분하지 못합니다. 학생·과목 조합에는 원래 중복이 없습니다.",
+        "후보 키에는 유일성과 최소성이 필요합니다. 수강 한 건을 학생·과목으로 구분한다는 업무 규칙을 전제로 봅니다."
+      ],
+      "boundary": "이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
+      "challenge": "학생 ID·과목 ID·이름 세 열 조합이 유일하면 항상 후보 키일까요?",
+      "number": 24,
+      "datasetVersion": "th-35-v1",
+      "schema": "CREATE TABLE enrollments (student_id INTEGER, course_id INTEGER);\nINSERT INTO enrollments VALUES (1, 10);\nINSERT INTO enrollments VALUES (1, 20);\nINSERT INTO enrollments VALUES (2, 10);\n",
+      "tables": [
+        {
+          "name": "enrollments",
+          "columns": [
+            "student_id",
+            "course_id"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-35.sql",
+      "schemaSha256": "5ea58f12ba200d5482270d5fbfed0e3e20342c2c4a4cfa537904db5a3773d078",
+      "theoryNumber": 21,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-36",
+      "topicId": "TH-36",
+      "title": "외래 키가 있으면 모두 식별 관계일까",
+      "question": "외래 키가 있으면 부모 키가 반드시 자식의 기본 키에 포함될까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "두 가지 식별 후보",
+              "sql": "SELECT order_id, line_no, line_id FROM order_lines ORDER BY order_id, line_no",
+              "expected": [
+                [
+                  101,
+                  1,
+                  1
+                ],
+                [
+                  101,
+                  2,
+                  2
+                ],
+                [
+                  102,
+                  1,
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "line_no",
+                    "line_id"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      1,
+                      1
+                    ],
+                    [
+                      101,
+                      2,
+                      2
+                    ],
+                    [
+                      102,
+                      1,
+                      3
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "부모 없는 후보 행",
+              "sql": "SELECT l.line_id FROM order_lines l WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.order_id=l.order_id) ORDER BY l.line_id",
+              "expected": [],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "line_id"
+                  ],
+                  "values": []
+                }
+              ]
+            }
+          ],
+          "explanation": "(order_id,line_no)를 기본 키로 정하면 부모 ID가 자식 식별자에 포함됩니다. line_id만 기본 키로 정하는 설계에서는 포함되지 않습니다."
+        },
+        {
+          "id": "orphan",
+          "label": "부모 없는 후보 행",
+          "setup": "INSERT INTO order_lines VALUES (999,1,4,30);",
+          "queries": [
+            {
+              "label": "부모 없는 후보 행",
+              "sql": "SELECT l.line_id FROM order_lines l WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.order_id=l.order_id) ORDER BY l.line_id",
+              "expected": [
+                [
+                  4
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "line_id"
+                  ],
+                  "values": [
+                    [
+                      4
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "실제 FK를 걸기 전 후보 데이터에서 참조 위반을 찾아봅니다."
+        }
+      ],
+      "explanation": [
+        "(order_id,line_no)를 기본 키로 정하면 부모 ID가 자식 식별자에 포함됩니다. line_id만 기본 키로 정하는 설계에서는 포함되지 않습니다.",
+        "부모 참조의 유효성과 부모 키가 자식 기본 키에 포함되는지는 서로 다른 질문입니다."
+      ],
+      "boundary": "조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
+      "challenge": "line_no가 주문마다 다시 1부터 시작할 때, 그것만 기본 키로 정할 수 있을까요?",
+      "number": 25,
+      "datasetVersion": "th-36-v1",
+      "schema": "CREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\nCREATE TABLE order_lines (order_id INTEGER, line_no INTEGER, line_id INTEGER, product_id INTEGER);\nINSERT INTO order_lines VALUES (101, 1, 1, 10);\nINSERT INTO order_lines VALUES (101, 2, 2, 20);\nINSERT INTO order_lines VALUES (102, 1, 3, 10);\n",
+      "tables": [
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        },
+        {
+          "name": "order_lines",
+          "columns": [
+            "order_id",
+            "line_no",
+            "line_id",
+            "product_id"
+          ],
+          "note": "두 가지 키 설계를 비교하기 위한 제약 적용 전 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-36.sql",
+      "schemaSha256": "0e36e4365b034e49c7fcb385308002ba633f2f30e1fa119c247da6f7b9777a27",
+      "theoryNumber": 22,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-37",
+      "topicId": "TH-37",
+      "title": "일대다 관계이면 자식이 반드시 있어야 할까",
+      "question": "일대다 관계라면 모든 고객에게 주문이 하나 이상 있어야 할까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "고객별 자식 수",
+              "sql": "SELECT c.customer_id, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON o.customer_id=c.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "order_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1
+                    ],
+                    [
+                      3,
+                      0
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "한 고객에게 여러 주문이 가능하다는 최대 대응 수와 주문 참여가 필수라는 최소 조건을 구분합니다."
+        },
+        {
+          "id": "new_order",
+          "label": "3번 고객 첫 주문",
+          "setup": "INSERT INTO orders VALUES (104,3,8);",
+          "queries": [
+            {
+              "label": "참여 상태 변화",
+              "sql": "SELECT c.customer_id, COUNT(o.order_id) AS order_count FROM customers c LEFT JOIN orders o ON o.customer_id=c.customer_id GROUP BY c.customer_id ORDER BY c.customer_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "order_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1
+                    ],
+                    [
+                      3,
+                      1
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "고객 수와 관계의 최대 대응 수는 바뀌지 않았습니다."
+        }
+      ],
+      "explanation": [
+        "한 고객에게 여러 주문이 가능하다는 최대 대응 수와 주문 참여가 필수라는 최소 조건을 구분합니다.",
+        "이 예제의 고객 3은 주문 0건도 허용된 선택 참여 고객입니다."
+      ],
+      "boundary": "한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
+      "challenge": "모든 고객에게 주문이 필수라면 어느 시점에 어떤 업무 검사를 해야 할까요?",
+      "number": 26,
+      "datasetVersion": "th-37-v1",
+      "schema": "CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR(40));\nINSERT INTO customers VALUES (1, 'MIN');\nINSERT INTO customers VALUES (2, 'JUN');\nINSERT INTO customers VALUES (3, 'SOL');\nCREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        },
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-37.sql",
+      "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
+      "theoryNumber": 23,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-38",
+      "topicId": "TH-38",
+      "title": "2정규형과 3정규형은 어떤 종속을 나눌까",
+      "question": "상품 이름과 분류 이름을 여러 주문 행에 반복하면 어떤 불일치가 생길까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "상품 → 이름 확인",
+              "sql": "SELECT product_id, COUNT(DISTINCT product_name) AS name_count FROM flat_orders GROUP BY product_id ORDER BY product_id",
+              "expected": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  20,
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "product_id",
+                    "name_count"
+                  ],
+                  "values": [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      20,
+                      1
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "분류 → 이름 확인",
+              "sql": "SELECT category_id, COUNT(DISTINCT category_name) AS name_count FROM flat_orders GROUP BY category_id ORDER BY category_id",
+              "expected": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "category_id",
+                    "name_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      1
+                    ],
+                    [
+                      2,
+                      1
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "주문·상품 복합 키를 전제로 상품 이름은 상품 ID에 부분 종속되고, 분류 이름은 분류 ID를 거쳐 종속됩니다."
+        },
+        {
+          "id": "mismatch",
+          "label": "한 행의 분류 이름만 변경",
+          "setup": "UPDATE flat_orders SET category_name='BEVERAGE' WHERE order_id=102 AND product_id=10;",
+          "queries": [
+            {
+              "label": "같은 분류, 두 이름",
+              "sql": "SELECT category_id, COUNT(DISTINCT category_name) AS name_count FROM flat_orders GROUP BY category_id ORDER BY category_id",
+              "expected": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  2,
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "category_id",
+                    "name_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "같은 분류 ID에 서로 다른 이름이 남습니다."
+        }
+      ],
+      "explanation": [
+        "주문·상품 복합 키를 전제로 상품 이름은 상품 ID에 부분 종속되고, 분류 이름은 분류 ID를 거쳐 종속됩니다.",
+        "해당 업무 종속을 상품·분류 표로 분리하면 같은 이름을 여러 주문에서 수정하는 부담을 줄일 수 있습니다."
+      ],
+      "boundary": "함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
+      "challenge": "상품 이름만 한 주문에서 바꾸면 어느 조회에 불일치가 나타날까요?",
+      "number": 27,
+      "datasetVersion": "th-38-v1",
+      "schema": "CREATE TABLE flat_orders (order_id INTEGER, product_id INTEGER, product_name VARCHAR(40), category_id INTEGER, category_name VARCHAR(40), quantity INTEGER);\nINSERT INTO flat_orders VALUES (101, 10, 'TEA', 1, 'DRINK', 2);\nINSERT INTO flat_orders VALUES (101, 20, 'CAKE', 2, 'FOOD', 1);\nINSERT INTO flat_orders VALUES (102, 10, 'TEA', 1, 'DRINK', 3);\n",
+      "tables": [
+        {
+          "name": "flat_orders",
+          "columns": [
+            "order_id",
+            "product_id",
+            "product_name",
+            "category_id",
+            "category_name",
+            "quantity"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-38.sql",
+      "schemaSha256": "04256d80d99c8902840d4ffd589b69877571ec7f099c0e8c8f2b8cffe6ab24db",
+      "theoryNumber": 24,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SELECT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-39",
+      "topicId": "TH-39",
+      "title": "새 번호를 붙이면 업무 중복도 없어질까",
+      "question": "예약 번호가 모두 달라도 같은 고객의 같은 시간 예약이 중복될 수 있을까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "번호의 유일성",
+              "sql": "SELECT COUNT(*) AS rows_n, COUNT(DISTINCT booking_id) AS id_count FROM bookings",
+              "expected": [
+                [
+                  3,
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "rows_n",
+                    "id_count"
+                  ],
+                  "values": [
+                    [
+                      3,
+                      3
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "업무 조합 중복",
+              "sql": "SELECT customer_id, slot_no, COUNT(*) AS row_count FROM bookings GROUP BY customer_id, slot_no HAVING COUNT(*)>1 ORDER BY customer_id, slot_no",
+              "expected": [
+                [
+                  1,
+                  10,
+                  2
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "slot_no",
+                    "row_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      2
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "대리 키가 유일한 것과 업무상 중복이 없는 것은 다른 조건입니다."
+        },
+        {
+          "id": "fix",
+          "label": "2번 예약 시간 변경",
+          "setup": "UPDATE bookings SET slot_no=11 WHERE booking_id=2;",
+          "queries": [
+            {
+              "label": "번호 그대로",
+              "sql": "SELECT COUNT(*) AS rows_n, COUNT(DISTINCT booking_id) AS id_count FROM bookings",
+              "expected": [
+                [
+                  3,
+                  3
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "rows_n",
+                    "id_count"
+                  ],
+                  "values": [
+                    [
+                      3,
+                      3
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "업무 중복 제거",
+              "sql": "SELECT customer_id, slot_no, COUNT(*) AS row_count FROM bookings GROUP BY customer_id, slot_no HAVING COUNT(*)>1 ORDER BY customer_id, slot_no",
+              "expected": [],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "customer_id",
+                    "slot_no",
+                    "row_count"
+                  ],
+                  "values": []
+                }
+              ]
+            }
+          ],
+          "explanation": "대리 번호를 바꾸지 않고 업무 조합을 바꿨습니다."
+        }
+      ],
+      "explanation": [
+        "대리 키가 유일한 것과 업무상 중복이 없는 것은 다른 조건입니다.",
+        "이 예제는 고객 한 명이 같은 시간에 예약 한 건만 가질 수 있다고 정했습니다."
+      ],
+      "boundary": "번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
+      "challenge": "(고객,시간) 조합에 UNIQUE를 선언하면 어떤 후보 행이 거절될까요?",
+      "number": 28,
+      "datasetVersion": "th-39-v1",
+      "schema": "CREATE TABLE bookings (booking_id INTEGER, customer_id INTEGER, slot_no INTEGER);\nINSERT INTO bookings VALUES (1, 1, 10);\nINSERT INTO bookings VALUES (2, 1, 10);\nINSERT INTO bookings VALUES (3, 2, 20);\n",
+      "tables": [
+        {
+          "name": "bookings",
+          "columns": [
+            "booking_id",
+            "customer_id",
+            "slot_no"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-39.sql",
+      "schemaSha256": "74a80b54d38e7edbe5ae88e0c5acfb136d924448c52b297e36fd963cbd65d72b",
+      "theoryNumber": 25,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-40",
+      "topicId": "TH-40",
+      "title": "개념 모델에서 실제 Oracle 표까지 무엇을 정할까",
+      "question": "고객과 주문이라는 개념을 표로 만들 때 어떤 열과 참조를 정해야 할까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "구현 전 참조 검사",
+              "sql": "SELECT x.order_id, x.customer_id, x.amount, CASE WHEN c.customer_id IS NULL THEN 'INVALID_PARENT' ELSE 'VALID_PARENT' END AS reference_status FROM candidate_orders x LEFT JOIN customers c ON c.customer_id=x.customer_id ORDER BY x.order_id",
+              "expected": [
+                [
+                  201,
+                  1,
+                  10,
+                  "VALID_PARENT"
+                ],
+                [
+                  202,
+                  3,
+                  5,
+                  "VALID_PARENT"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "customer_id",
+                    "amount",
+                    "reference_status"
+                  ],
+                  "values": [
+                    [
+                      201,
+                      1,
+                      10,
+                      "VALID_PARENT"
+                    ],
+                    [
+                      202,
+                      3,
+                      5,
+                      "VALID_PARENT"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "고객과 주문의 개념을 구분한 뒤 고객 ID, 주문 ID, 수량·금액 같은 열과 참조 규칙을 정합니다."
+        },
+        {
+          "id": "unknown",
+          "label": "정의되지 않은 고객으로 변경",
+          "setup": "UPDATE candidate_orders SET customer_id=99 WHERE order_id=202;",
+          "queries": [
+            {
+              "label": "참조 대상 확인",
+              "sql": "SELECT x.order_id, x.customer_id, x.amount, CASE WHEN c.customer_id IS NULL THEN 'INVALID_PARENT' ELSE 'VALID_PARENT' END AS reference_status FROM candidate_orders x LEFT JOIN customers c ON c.customer_id=x.customer_id ORDER BY x.order_id",
+              "expected": [
+                [
+                  201,
+                  1,
+                  10,
+                  "VALID_PARENT"
+                ],
+                [
+                  202,
+                  99,
+                  5,
+                  "INVALID_PARENT"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "customer_id",
+                    "amount",
+                    "reference_status"
+                  ],
+                  "values": [
+                    [
+                      201,
+                      1,
+                      10,
+                      "VALID_PARENT"
+                    ],
+                    [
+                      202,
+                      99,
+                      5,
+                      "INVALID_PARENT"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "후보 데이터를 바꾸어 FK가 검사해야 할 대상을 확인합니다."
+        }
+      ],
+      "explanation": [
+        "고객과 주문의 개념을 구분한 뒤 고객 ID, 주문 ID, 수량·금액 같은 열과 참조 규칙을 정합니다.",
+        "이 화면은 제약 선언 전의 후보 데이터를 조회합니다. 실제 표를 만들 때는 자료형·키·NOT NULL·FK를 별도로 선언합니다."
+      ],
+      "boundary": "개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
+      "challenge": "고객 삭제를 허용할 때 기존 주문은 어떻게 처리할지 어떤 규칙이 필요할까요?",
+      "number": 29,
+      "datasetVersion": "th-40-v1",
+      "schema": "CREATE TABLE customers (customer_id INTEGER, customer_name VARCHAR(40));\nINSERT INTO customers VALUES (1, 'MIN');\nINSERT INTO customers VALUES (2, 'JUN');\nINSERT INTO customers VALUES (3, 'SOL');\nCREATE TABLE candidate_orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO candidate_orders VALUES (201, 1, 10);\nINSERT INTO candidate_orders VALUES (202, 3, 5);\n",
+      "tables": [
+        {
+          "name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        },
+        {
+          "name": "candidate_orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-40.sql",
+      "schemaSha256": "791253fca06c2a7e57a02320e6943634223883c1389fd918a98ee61ec8bd5ba9",
+      "theoryNumber": 26,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · CREATE-TABLE",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-TABLE.html"
+          },
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-41",
+      "topicId": "TH-41",
+      "title": "CHECK가 있으면 NULL도 막을 수 있을까",
+      "question": "CHECK(quantity > 0)는 NULL을 FALSE로 판정할까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "CHECK의 논리값",
+              "sql": "SELECT candidate_id, quantity, CASE WHEN quantity>0 THEN 'TRUE' WHEN NOT(quantity>0) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate, CASE WHEN NOT(quantity>0) THEN 'REJECT' ELSE 'PASS_CHECK' END AS check_status FROM candidates ORDER BY candidate_id",
+              "expected": [
+                [
+                  1,
+                  2,
+                  "TRUE",
+                  "PASS_CHECK"
+                ],
+                [
+                  2,
+                  0,
+                  "FALSE",
+                  "REJECT"
+                ],
+                [
+                  3,
+                  null,
+                  "UNKNOWN",
+                  "PASS_CHECK"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "candidate_id",
+                    "quantity",
+                    "predicate",
+                    "check_status"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2,
+                      "TRUE",
+                      "PASS_CHECK"
+                    ],
+                    [
+                      2,
+                      0,
+                      "FALSE",
+                      "REJECT"
+                    ],
+                    [
+                      3,
+                      null,
+                      "UNKNOWN",
+                      "PASS_CHECK"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "NOT NULL까지 검사",
+              "sql": "SELECT candidate_id, CASE WHEN quantity IS NOT NULL AND quantity>0 THEN 'PASS' ELSE 'REJECT' END AS combined_status FROM candidates ORDER BY candidate_id",
+              "expected": [
+                [
+                  1,
+                  "PASS"
+                ],
+                [
+                  2,
+                  "REJECT"
+                ],
+                [
+                  3,
+                  "REJECT"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "candidate_id",
+                    "combined_status"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      "PASS"
+                    ],
+                    [
+                      2,
+                      "REJECT"
+                    ],
+                    [
+                      3,
+                      "REJECT"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "CHECK는 조건이 FALSE인 값을 거절하고 UNKNOWN은 통과시킵니다."
+        },
+        {
+          "id": "fill",
+          "label": "NULL을 -1로 변경",
+          "setup": "UPDATE candidates SET quantity=-1 WHERE candidate_id=3;",
+          "queries": [
+            {
+              "label": "FALSE로 바뀐 행",
+              "sql": "SELECT candidate_id, quantity, CASE WHEN quantity>0 THEN 'TRUE' WHEN NOT(quantity>0) THEN 'FALSE' ELSE 'UNKNOWN' END AS predicate, CASE WHEN NOT(quantity>0) THEN 'REJECT' ELSE 'PASS_CHECK' END AS check_status FROM candidates ORDER BY candidate_id",
+              "expected": [
+                [
+                  1,
+                  2,
+                  "TRUE",
+                  "PASS_CHECK"
+                ],
+                [
+                  2,
+                  0,
+                  "FALSE",
+                  "REJECT"
+                ],
+                [
+                  3,
+                  -1,
+                  "FALSE",
+                  "REJECT"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "candidate_id",
+                    "quantity",
+                    "predicate",
+                    "check_status"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      2,
+                      "TRUE",
+                      "PASS_CHECK"
+                    ],
+                    [
+                      2,
+                      0,
+                      "FALSE",
+                      "REJECT"
+                    ],
+                    [
+                      3,
+                      -1,
+                      "FALSE",
+                      "REJECT"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "UNKNOWN과 FALSE의 차이를 비교합니다."
+        }
+      ],
+      "explanation": [
+        "CHECK는 조건이 FALSE인 값을 거절하고 UNKNOWN은 통과시킵니다.",
+        "NULL 자체를 막으려면 NOT NULL 조건도 별도로 필요합니다."
+      ],
+      "boundary": "실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
+      "challenge": "CHECK(quantity <> 0)만으로 음수도 막을 수 있을까요?",
+      "number": 30,
+      "datasetVersion": "th-41-v1",
+      "schema": "CREATE TABLE candidates (candidate_id INTEGER, quantity INTEGER);\nINSERT INTO candidates VALUES (1, 2);\nINSERT INTO candidates VALUES (2, 0);\nINSERT INTO candidates VALUES (3, NULL);\n",
+      "tables": [
+        {
+          "name": "candidates",
+          "columns": [
+            "candidate_id",
+            "quantity"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-41.sql",
+      "schemaSha256": "6a7b9b5372b4a45ab1550d9edce3066d03d6f7a35a6f871a693e7dd4d6211c23",
+      "theoryNumber": 27,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          },
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-42",
+      "topicId": "TH-42",
+      "title": "빈 문자열과 공백 한 칸은 같은 값일까",
+      "question": "NULL과 공백 한 칸의 길이는 둘 다 0일까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "명시적 NULL·공백 비교",
+              "sql": "SELECT row_id, CASE WHEN text_value IS NULL THEN 'NULL' ELSE 'VALUE' END AS value_kind, LENGTH(text_value) AS char_count FROM texts ORDER BY row_id",
+              "expected": [
+                [
+                  1,
+                  "NULL",
+                  null
+                ],
+                [
+                  2,
+                  "VALUE",
+                  1
+                ],
+                [
+                  3,
+                  "VALUE",
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_id",
+                    "value_kind",
+                    "char_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      "NULL",
+                      null
+                    ],
+                    [
+                      2,
+                      "VALUE",
+                      1
+                    ],
+                    [
+                      3,
+                      "VALUE",
+                      1
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "NULL은 값이 없다는 표시이고 공백은 실제 문자입니다. LENGTH(NULL)은 NULL, 공백 한 칸의 길이는 1입니다."
+        },
+        {
+          "id": "two",
+          "label": "공백 두 칸으로 변경",
+          "setup": "UPDATE texts SET text_value='  ' WHERE row_id=2;",
+          "queries": [
+            {
+              "label": "길이 변화",
+              "sql": "SELECT row_id, CASE WHEN text_value IS NULL THEN 'NULL' ELSE 'VALUE' END AS value_kind, LENGTH(text_value) AS char_count FROM texts ORDER BY row_id",
+              "expected": [
+                [
+                  1,
+                  "NULL",
+                  null
+                ],
+                [
+                  2,
+                  "VALUE",
+                  2
+                ],
+                [
+                  3,
+                  "VALUE",
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_id",
+                    "value_kind",
+                    "char_count"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      "NULL",
+                      null
+                    ],
+                    [
+                      2,
+                      "VALUE",
+                      2
+                    ],
+                    [
+                      3,
+                      "VALUE",
+                      1
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "공백을 두 칸으로 늘려도 NULL이 되지는 않습니다."
+        }
+      ],
+      "explanation": [
+        "NULL은 값이 없다는 표시이고 공백은 실제 문자입니다. LENGTH(NULL)은 NULL, 공백 한 칸의 길이는 1입니다.",
+        "입력과 결과 모두 빈 문자열을 사용하지 않습니다."
+      ],
+      "boundary": "빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
+      "challenge": "공백을 문자 X로 바꾸면 길이와 NULL 판정은 각각 바뀔까요?",
+      "number": 31,
+      "datasetVersion": "th-42-v1",
+      "schema": "CREATE TABLE texts (row_id INTEGER, text_value VARCHAR(40));\nINSERT INTO texts VALUES (1, NULL);\nINSERT INTO texts VALUES (2, ' ');\nINSERT INTO texts VALUES (3, 'A');\n",
+      "tables": [
+        {
+          "name": "texts",
+          "columns": [
+            "row_id",
+            "text_value"
+          ],
+          "note": "직접 만든 교육용 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-42.sql",
+      "schemaSha256": "2ff6c724f7996be0f2ac61e3bb229ed20e6dfe96ec8c5b090b79ed9c65c09e1e",
+      "theoryNumber": 28,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · Nulls",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+          },
+          {
+            "label": "Oracle 19c · LENGTH",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LENGTH.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-43",
+      "topicId": "TH-43",
+      "title": "PRIMARY KEY와 UNIQUE와 NOT NULL은 무엇을 막을까",
+      "question": "NULL 검사와 중복 검사는 같은 규칙일까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "후보 열의 세 조건",
+              "sql": "SELECT k.row_id, k.code, CASE WHEN k.code IS NULL THEN 'FAIL' ELSE 'PASS' END AS not_null_status, CASE WHEN k.code IS NOT NULL AND EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS unique_status, CASE WHEN k.code IS NULL OR EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS primary_key_status FROM key_candidates k ORDER BY k.row_id",
+              "expected": [
+                [
+                  1,
+                  10,
+                  "PASS",
+                  "FAIL",
+                  "FAIL"
+                ],
+                [
+                  2,
+                  10,
+                  "PASS",
+                  "FAIL",
+                  "FAIL"
+                ],
+                [
+                  3,
+                  null,
+                  "FAIL",
+                  "PASS",
+                  "FAIL"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_id",
+                    "code",
+                    "not_null_status",
+                    "unique_status",
+                    "primary_key_status"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      "PASS",
+                      "FAIL",
+                      "FAIL"
+                    ],
+                    [
+                      2,
+                      10,
+                      "PASS",
+                      "FAIL",
+                      "FAIL"
+                    ],
+                    [
+                      3,
+                      null,
+                      "FAIL",
+                      "PASS",
+                      "FAIL"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "NOT NULL은 값의 존재, 단일 열 UNIQUE는 NULL이 아닌 값의 중복, 기본 키는 두 조건을 함께 봅니다."
+        },
+        {
+          "id": "unique",
+          "label": "중복 코드만 변경",
+          "setup": "UPDATE key_candidates SET code=20 WHERE row_id=2;",
+          "queries": [
+            {
+              "label": "중복 해소 후",
+              "sql": "SELECT k.row_id, k.code, CASE WHEN k.code IS NULL THEN 'FAIL' ELSE 'PASS' END AS not_null_status, CASE WHEN k.code IS NOT NULL AND EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS unique_status, CASE WHEN k.code IS NULL OR EXISTS (SELECT 1 FROM key_candidates x WHERE x.row_id<>k.row_id AND x.code=k.code) THEN 'FAIL' ELSE 'PASS' END AS primary_key_status FROM key_candidates k ORDER BY k.row_id",
+              "expected": [
+                [
+                  1,
+                  10,
+                  "PASS",
+                  "PASS",
+                  "PASS"
+                ],
+                [
+                  2,
+                  20,
+                  "PASS",
+                  "PASS",
+                  "PASS"
+                ],
+                [
+                  3,
+                  null,
+                  "FAIL",
+                  "PASS",
+                  "FAIL"
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "row_id",
+                    "code",
+                    "not_null_status",
+                    "unique_status",
+                    "primary_key_status"
+                  ],
+                  "values": [
+                    [
+                      1,
+                      10,
+                      "PASS",
+                      "PASS",
+                      "PASS"
+                    ],
+                    [
+                      2,
+                      20,
+                      "PASS",
+                      "PASS",
+                      "PASS"
+                    ],
+                    [
+                      3,
+                      null,
+                      "FAIL",
+                      "PASS",
+                      "FAIL"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "중복을 없애도 NULL 후보 행은 기본 키 조건을 통과하지 못합니다."
+        }
+      ],
+      "explanation": [
+        "NOT NULL은 값의 존재, 단일 열 UNIQUE는 NULL이 아닌 값의 중복, 기본 키는 두 조건을 함께 봅니다.",
+        "표에 제약을 직접 걸기 전에 후보 열이 만족하는 조건을 CASE로 비교합니다."
+      ],
+      "boundary": "단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
+      "challenge": "3번 code를 30으로 바꾸면 어느 조건이 달라질까요?",
+      "number": 32,
+      "datasetVersion": "th-43-v1",
+      "schema": "CREATE TABLE key_candidates (row_id INTEGER, code INTEGER);\nINSERT INTO key_candidates VALUES (1, 10);\nINSERT INTO key_candidates VALUES (2, 10);\nINSERT INTO key_candidates VALUES (3, NULL);\n",
+      "tables": [
+        {
+          "name": "key_candidates",
+          "columns": [
+            "row_id",
+            "code"
+          ],
+          "note": "제약 선언 전 검사할 후보 데이터"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-43.sql",
+      "schemaSha256": "a8d2c5670734e0129b8dca1a835f17a2789de61f143937b4bedccaeb46bae8d4",
+      "theoryNumber": 29,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · constraint",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-44",
+      "topicId": "TH-44",
+      "title": "DELETE와 TRUNCATE와 DROP은 무엇을 지울까",
+      "question": "조건부 DELETE는 대상 행만 지우고 되돌릴 수 있을까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "삭제·조회·되돌리기",
+              "sql": "SAVEPOINT lab_delete; DELETE FROM orders WHERE customer_id=1; SELECT COUNT(*) AS remaining FROM orders; ROLLBACK TO lab_delete; SELECT COUNT(*) AS restored FROM orders;",
+              "expected": [
+                [
+                  1
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResults": [
+                [
+                  [
+                    1
+                  ]
+                ],
+                [
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "remaining"
+                  ],
+                  "values": [
+                    [
+                      1
+                    ]
+                  ]
+                },
+                {
+                  "columns": [
+                    "restored"
+                  ],
+                  "values": [
+                    [
+                      3
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "첫 결과는 DELETE 직후 남은 행 수, 두 번째 결과는 ROLLBACK TO 뒤 복원된 행 수입니다."
+        },
+        {
+          "id": "all",
+          "label": "조건을 빼고 비교",
+          "setup": "",
+          "queries": [
+            {
+              "label": "전체 DELETE·되돌리기",
+              "sql": "SAVEPOINT lab_delete; DELETE FROM orders; SELECT COUNT(*) AS remaining FROM orders; ROLLBACK TO lab_delete; SELECT COUNT(*) AS restored FROM orders;",
+              "expected": [
+                [
+                  0
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResults": [
+                [
+                  [
+                    0
+                  ]
+                ],
+                [
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "remaining"
+                  ],
+                  "values": [
+                    [
+                      0
+                    ]
+                  ]
+                },
+                {
+                  "columns": [
+                    "restored"
+                  ],
+                  "values": [
+                    [
+                      3
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "DELETE 조건만 제거합니다. 두 번째 결과는 되돌린 뒤의 행 수입니다."
+        }
+      ],
+      "explanation": [
+        "첫 결과는 DELETE 직후 남은 행 수, 두 번째 결과는 ROLLBACK TO 뒤 복원된 행 수입니다.",
+        "각 실행은 저장점으로 되돌아와 원래 세 행을 유지합니다. 삭제와 표 구조 삭제를 구분하세요."
+      ],
+      "boundary": "DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
+      "challenge": "customer_id=2만 지운다면 첫 결과는 몇 행일까요?",
+      "number": 33,
+      "datasetVersion": "th-44-v1",
+      "schema": "CREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-44.sql",
+      "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
+      "theoryNumber": 30,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · DELETE",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/DELETE.html"
+          },
+          {
+            "label": "Oracle 19c · ROLLBACK",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html"
+          },
+          {
+            "label": "Oracle 19c · SAVEPOINT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SAVEPOINT.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TH-45",
+      "topicId": "TH-45",
+      "title": "ROLLBACK은 어느 시점까지 되돌릴까",
+      "question": "두 번째 저장점으로 돌아가면 첫 번째 수정도 없어질까요?",
+      "variants": [
+        {
+          "id": "base",
+          "label": "원래 조건",
+          "setup": "",
+          "queries": [
+            {
+              "label": "저장점 경계 비교",
+              "sql": "SAVEPOINT lab_start; UPDATE orders SET amount=20 WHERE order_id=101; SAVEPOINT lab_second; UPDATE orders SET amount=30 WHERE order_id=101; ROLLBACK TO lab_second; SELECT order_id, amount FROM orders WHERE order_id=101; ROLLBACK TO lab_start; SELECT order_id, amount FROM orders WHERE order_id=101;",
+              "expected": [
+                [
+                  101,
+                  20
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResults": [
+                [
+                  [
+                    101,
+                    20
+                  ]
+                ],
+                [
+                  [
+                    101,
+                    10
+                  ]
+                ]
+              ],
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      20
+                    ]
+                  ]
+                },
+                {
+                  "columns": [
+                    "order_id",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      10
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "두 번째 저장점으로 되돌리면 그 저장점 뒤의 수정 30만 취소되어 20이 남습니다."
+        },
+        {
+          "id": "first",
+          "label": "처음 저장점으로 바로 복귀",
+          "setup": "",
+          "queries": [
+            {
+              "label": "수정 두 개 함께 취소",
+              "sql": "SAVEPOINT lab_start; UPDATE orders SET amount=20 WHERE order_id=101; UPDATE orders SET amount=30 WHERE order_id=101; ROLLBACK TO lab_start; SELECT order_id, amount FROM orders WHERE order_id=101;",
+              "expected": [
+                [
+                  101,
+                  10
+                ]
+              ],
+              "rowOrder": "ordered",
+              "expectedResultSets": [
+                {
+                  "columns": [
+                    "order_id",
+                    "amount"
+                  ],
+                  "values": [
+                    [
+                      101,
+                      10
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "explanation": "최초 저장점 뒤의 수정을 모두 되돌립니다."
+        }
+      ],
+      "explanation": [
+        "두 번째 저장점으로 되돌리면 그 저장점 뒤의 수정 30만 취소되어 20이 남습니다.",
+        "최초 저장점으로 되돌리면 원래 10이 복원됩니다. 저장점은 해당 연결의 트랜잭션 안에서 해석합니다."
+      ],
+      "boundary": "COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
+      "challenge": "첫 저장점 뒤의 값을 25로 바꾸면 첫 번째 결과는 어떻게 될까요?",
+      "number": 34,
+      "datasetVersion": "th-45-v1",
+      "schema": "CREATE TABLE orders (order_id INTEGER, customer_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (101, 1, 10);\nINSERT INTO orders VALUES (102, 1, 20);\nINSERT INTO orders VALUES (103, 2, 5);\n",
+      "tables": [
+        {
+          "name": "orders",
+          "columns": [
+            "order_id",
+            "customer_id",
+            "amount"
+          ],
+          "note": "amount 단위: 천원"
+        }
+      ],
+      "theoryUrl": null,
+      "synthetic": true,
+      "oracleDownload": "oracle/TH-45.sql",
+      "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
+      "theoryNumber": 31,
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
+      "oracleReview": {
+        "target": "Oracle Database 19c",
+        "method": "official-documentation-comparison",
+        "oracleExecutionPerformed": false,
+        "scope": "COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "sources": [
+          {
+            "label": "Oracle 19c · SAVEPOINT",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SAVEPOINT.html"
+          },
+          {
+            "label": "Oracle 19c · ROLLBACK",
+            "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html"
+          }
+        ]
+      }
     }
   ],
   "sources": [
