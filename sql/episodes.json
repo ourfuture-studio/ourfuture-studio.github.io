@@ -55,7 +55,19 @@
                     500,
                     1
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "e5941246631cd93b2344a5a9590d64e2076706aa931fc309a7ffe01402dee8cb"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "3f70ee779ad7de6120805c84b18de86bf25f1c2746631d1f60d7fd66f44171a3"
               }
             }
           ],
@@ -76,7 +88,13 @@
                   1
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "6ba5e7015f0ac9c4a91a36feabe12be58e5e29c37ae1ee719afcac52ba79d061"
+              }
             }
           ],
           "explanation": "전체 행 3개, NULL이 아닌 값 2개, 서로 다른 값 1종류입니다."
@@ -96,7 +114,13 @@
                   2
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "7019253a173f7bb2ef5d8d71fc9e25983e28c3bdd7bae46a76d6ca47c8fdd3e5"
+              }
             }
           ],
           "explanation": "0도 기록된 값이므로 COUNT에 포함됩니다."
@@ -116,7 +140,13 @@
                   0
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "39062dcec540a35d8e6f6ba21d209455fa9993c391a96ba0b90e84a0a955d04d"
+              }
             }
           ],
           "explanation": "값이 없어도 주문 행은 세 개 남습니다."
@@ -136,7 +166,13 @@
                   0
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "260b8646a9df006078a95e6305563c5142d800025587e1da47df00052b1fd4fc"
+              }
             }
           ],
           "explanation": "값이 NULL인 행과 행 자체가 없는 경우는 다릅니다."
@@ -153,8 +189,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -170,7 +206,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 1,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -230,7 +272,19 @@
                     3,
                     10
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "dc983368598173672b750f9aa718765fcf3d2f687fa4e79891e47ba76803ea0e"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d1e91d5bbe1e9246e41c02c10c17bc121e7072b0bbd4ca1deab2a274b425b415"
               }
             },
             {
@@ -250,7 +304,19 @@
                     27,
                     5
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "258793ed43615579b40fa4267c10b7210d2f77fb5490c45ea9e9c668dbf627c8"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "e8a4e77cecc182e5eed9e957b439ed029a96c0a237dc6ca3f6f798f15a8430a1"
               }
             }
           ],
@@ -269,7 +335,13 @@
                   32
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d0b737eedf1d8d2950603e1332ebf7838cbad633bd705987c83811b43e8337fa"
+              }
             },
             {
               "label": "B",
@@ -279,7 +351,13 @@
                   32
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "2add91678a38c322b63e9fb5a73ce2e54302c7ed0a938518526268a577373b2f"
+              }
             }
           ],
           "explanation": "이 입력에서는 두 방식 모두 32입니다."
@@ -298,7 +376,13 @@
                   32
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "ac2de69bb283088ba28e6bc84cb466b11e60cb66def47ee48b52dd4375978e95"
+              }
             }
           ],
           "explanation": "이미 NULL이 된 식을 0으로 바꾸는 것과 수수료를 먼저 0으로 바꾸는 것은 다릅니다."
@@ -317,7 +401,13 @@
                   0
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "2c94178a7457a5a5a99f27c9237dfab015665876df1484a6d14f8246cb195f96"
+              }
             }
           ],
           "explanation": "입력이 없을 때 SUM은 NULL, COUNT는 0입니다."
@@ -334,8 +424,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -355,7 +445,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COALESCE.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 6,
+        "checkedTraceQueries": 2,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -431,7 +527,19 @@
                     1,
                     0
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "081c1f4549f26159614901965233399e3852a4ff13fffdc517db933c36c29b57"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "3a7df922b8339486a52d2a087c5b89b5916a2e3b7206da8702a53d2cd18d27df"
               }
             }
           ],
@@ -459,7 +567,13 @@
                   203
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "f49a3042baaeef139b557abd38618c36cbb35e3d8881113638297fb65e1bc1ba"
+              }
             }
           ],
           "explanation": "일치 주문이 없는 고객 33은 결과에 없습니다."
@@ -494,7 +608,13 @@
                   null
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "efbe94ff26add9eeba483b3f1c2d446ae01abe1b43f76f9881ab89000c69ff05"
+              }
             }
           ],
           "explanation": "고객 수는 그대로지만 22번의 대응 결과가 한 행 늘어납니다."
@@ -524,7 +644,13 @@
                   0
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "e3f91e856300623cc4bcda713434ebc4ad1622bf60f058d7d56dc9b0edbba11e"
+              }
             }
           ],
           "explanation": "33번의 COUNT(*)는 1, COUNT(o.order_id)는 0입니다."
@@ -551,7 +677,13 @@
                   null
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "b005243fb4595e16d48ef1e417bf45350b59c4e09c592ecb7dea76b77a225c83"
+              }
             }
           ],
           "explanation": "LEFT JOIN은 고객마다 NULL 보완 행 하나씩을 남깁니다."
@@ -568,8 +700,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -581,7 +713,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 1,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -654,7 +792,19 @@
                     null,
                     null
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "049d35467c122a0eea7ff98e8770a0d47832f1968412fa5060c715fbea66a032"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "fc7b155da72832958f3cae9ab280fb064547efecea0c6a24369ea768dd511d6c"
               }
             },
             {
@@ -695,7 +845,19 @@
                     null,
                     "UNKNOWN"
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "8951afcba140dc2022c13d66d29a34388baf9f216346b2c21cdc9bf46679d6f5"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "8c284e09fa03e587b28e365b6402c6bcf1df12c44e99ab59b95276fb6adcf77e"
               }
             }
           ],
@@ -719,7 +881,13 @@
                   null
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "53fdab6dcc450ace51c7fa7af3a8c8daa22153bbba8c61164fafb62aeec7314b"
+              }
             }
           ],
           "explanation": "33번은 돌아오지만 7천원 주문이 붙은 22번은 돌아오지 않습니다."
@@ -746,13 +914,25 @@
                   null
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "31c64b26a25a035858fb602ffcd69c7ab8ae9c5f4ed286b967b3b9670208cb5e"
+              }
             },
             {
               "label": "B",
               "sql": "SELECT c.customer_id,o.order_id\nFROM customers c LEFT JOIN orders o ON c.customer_id=o.customer_id WHERE o.amount>=10 ORDER BY c.customer_id,o.order_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "afa02ed52a8a48936354966bb1de8ac696e8bd7b2f7fc4a9a533cf1b152016d5"
+              }
             }
           ],
           "explanation": "모든 금액을 0으로 바꾸면 ON은 고객 3행, WHERE는 0행입니다."
@@ -769,8 +949,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -782,7 +962,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 2,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -837,7 +1023,19 @@
                     33,
                     "UNKNOWN"
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "6c6469be282ce70b11f9744bf2c2fac3f28d8ffdc38dbcbf2cae76c7136034dc"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4c6be1e036a70fb6c68e8745220d8538a70cae82e412070c02fc561d9e9a1c54"
               }
             }
           ],
@@ -865,7 +1063,13 @@
                   "UNKNOWN"
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "fd849abf8c3bce31c94831c3e226a19779fc9e0073331e74da8755b94d336e4b"
+              }
             }
           ],
           "explanation": "CASE로 TRUE·FALSE·UNKNOWN을 표시합니다. WHERE는 TRUE인 행만 남깁니다."
@@ -886,7 +1090,13 @@
                   33
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "cfb85c0e72b26d6c1584a5367f6bea13003ad5606843205986afd144f96b2605"
+              }
             }
           ],
           "explanation": "식별된 고객 번호만 제외한다는 조건에서는 22·33이 남습니다."
@@ -907,7 +1117,13 @@
                   33
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "66b9c12edf36be2fa696f30638420ab0dbde93e9787913ec0e488d699bcfc327"
+              }
             }
           ],
           "explanation": "현재 바깥 고객 ID는 NULL이 아닙니다. 이 자료에서 일치 행이 없는 고객은 22·33입니다."
@@ -924,8 +1140,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -945,7 +1161,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 1,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1003,7 +1225,13 @@
                   24
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "07cc52b03bee0c0a7ab061546360f2f3616e0a73d90900dc788c906a5a311922"
+              }
             },
             {
               "label": "B · RANGE",
@@ -1034,7 +1262,13 @@
                   24
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "8b10305a476869c9410b09e870961fd243d62199c206b048a69a7fcda1f0f90f"
+              }
             }
           ],
           "explanation": "A는 날짜·ID 순서의 ROWS, B는 날짜 순서의 RANGE입니다."
@@ -1073,7 +1307,13 @@
                   24
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "05a0db3293da092b2cab723d6f12532dd14141d7fde4b4aa084d471294034787"
+              }
             }
           ],
           "explanation": "같은 날짜라도 정렬 키 전체가 달라져 누계가 4·10·19·24가 됩니다."
@@ -1112,7 +1352,13 @@
                   24
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "f282e5b5398cb477a54a111f3c964f5d79a9bce810569acafddb30287a95789b"
+              }
             }
           ],
           "explanation": "이 SUM의 기본 프레임은 날짜 동률을 함께 포함합니다."
@@ -1151,7 +1397,13 @@
                   24
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "18802911d272a0814d105c9771acd7e624ad58d129d3484e90a9fe8d354e0ad3"
+              }
             }
           ],
           "explanation": "ORDER BY의 날짜·고유 ID가 같으면 삽입 순서를 바꿔도 이 결과는 같습니다."
@@ -1168,8 +1420,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1181,7 +1433,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1233,7 +1491,19 @@
                     0,
                     "UNKNOWN"
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "b94de060d691044ad2557304405826c00ab02673f8259e10a15e1038985b39c0"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "84525f8d8eed4698f2aee0849fa6f7871f83b4ea99cdadeaae5786c38b1e26c8"
               }
             },
             {
@@ -1264,7 +1534,19 @@
                     0,
                     "FALSE"
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "80642c212718e443ed8b6ffb161486a1df046d5e70959bb648857da856c1d309"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "b125787ae5cdc50ee69bd3f7c51ae422b13c7ba9f42b9c2234c4b85abfd2d775"
               }
             }
           ],
@@ -1283,7 +1565,13 @@
                   303
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "5f73fc57764fbc4421ce275ff47ac6412702b67817d5a92f2adcf989add793e0"
+              }
             }
           ],
           "explanation": "숫자 0은 주문 303에 기록된 값입니다."
@@ -1301,7 +1589,13 @@
                   303
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d242cbe3dc36f7d6e9a93da07641975b822c1294037514fa17e4ddaf0e2c943e"
+              }
             }
           ],
           "explanation": "NULL은 일반 부등 비교에서도 TRUE가 되지 않습니다."
@@ -1315,7 +1609,13 @@
               "label": "is-null",
               "sql": "SELECT order_id FROM null_orders WHERE coupon IS NULL",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d54b4ae067d02a76ff4942c80de45bcba9706ceb7c938c3a3e71ab89ccfd9562"
+              }
             }
           ],
           "explanation": "302에 100을 기록하면 IS NULL 결과는 0행입니다."
@@ -1332,8 +1632,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1345,7 +1645,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CASE-Expressions.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 2,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1391,7 +1697,13 @@
                   "커피"
                 ]
               ],
-              "rowOrder": "unordered"
+              "rowOrder": "unordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "2ac96ee5e3991bc46e16184dc3e9ebd613000b5a13b5c628a119a980a378c558"
+              }
             }
           ],
           "explanation": "선택한 값이 같은 행을 합쳐 세 행입니다. 표시 순서는 정답 기준이 아닙니다."
@@ -1412,7 +1724,13 @@
                   22
                 ]
               ],
-              "rowOrder": "unordered"
+              "rowOrder": "unordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "9276cad65ab4b29aac7d233ea951cc81f0423a76b2a52123bd7a036e862b1f17"
+              }
             }
           ],
           "explanation": "고객 ID만 보면 11·22 두 행입니다."
@@ -1447,7 +1765,13 @@
                   "커피"
                 ]
               ],
-              "rowOrder": "unordered"
+              "rowOrder": "unordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "28cab8e7d0f9df43f04ab0869b05912b93945a4c7687e99ad984ea892b231566"
+              }
             }
           ],
           "explanation": "고유 주문번호를 포함하면 네 행이 모두 다릅니다."
@@ -1466,7 +1790,13 @@
                   "커피"
                 ]
               ],
-              "rowOrder": "unordered"
+              "rowOrder": "unordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "e15fd197a898f93ce86d332a6d26dd99b1dd61a7c89ab8aa68cd02ce9c00b46a"
+              }
             }
           ],
           "explanation": "선택한 두 값이 모두 같으면 한 행입니다."
@@ -1483,8 +1813,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1492,7 +1822,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1540,7 +1876,13 @@
                   33
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "94a87560b092447a1f8a04c939e77fc90292b6e41fe921a84504a8fb98f01ba0"
+              }
             },
             {
               "label": "UNION ALL",
@@ -1562,7 +1904,13 @@
                   33
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "98f540e1d4d70a3dc776d9d2e09a91db2e077626ee07888460e86d0b4a43af3c"
+              }
             }
           ],
           "explanation": "UNION은 11·22·33 세 행, UNION ALL은 다섯 행입니다."
@@ -1583,7 +1931,13 @@
                   22
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "7138dfa8076051acd44399807bfd862a34c19af6f957c77cb72a6c2e772ffc1d"
+              }
             },
             {
               "label": "UNION ALL",
@@ -1599,7 +1953,13 @@
                   22
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "5e18317fcbd600d368cdd819be050548f6721803dfb340a02512c29694dac11a"
+              }
             }
           ],
           "explanation": "왼쪽 내부 중복 때문에 두 결과의 행 수는 여전히 다릅니다."
@@ -1613,13 +1973,25 @@
               "label": "UNION",
               "sql": "SELECT customer_id FROM campaign_a UNION SELECT customer_id FROM campaign_b ORDER BY customer_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4a16c0082a9458a6932b52abad95b5b55b7b265d7143f77fea07168e8dd189fc"
+              }
             },
             {
               "label": "UNION ALL",
               "sql": "SELECT customer_id FROM campaign_a UNION ALL SELECT customer_id FROM campaign_b ORDER BY customer_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "5bfd3a4650ad84715f70a569f8abcc3af8065b0c83200a1d4de921beadbd89bc"
+              }
             }
           ],
           "explanation": "두 방식 모두 0행입니다."
@@ -1646,7 +2018,13 @@
                   44
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "b459fa7109701d6614957963c51671094c728094f5094872e8f131c2eb9b29b5"
+              }
             },
             {
               "label": "UNION ALL",
@@ -1665,7 +2043,13 @@
                   44
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "f363616e9b735bf35ca240ecd67cbe687297aff3b0a2c93e8dbefa8d93f24ae4"
+              }
             }
           ],
           "explanation": "두 방식 모두 네 행을 반환합니다."
@@ -1682,8 +2066,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1691,7 +2075,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 8,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1743,7 +2133,19 @@
                     1,
                     12
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "0a1cc39e67a6cbd6fd7f1e0a82896fa371556c3151015227703834f996da0c23"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4ae7a3df92941efd8e721832f9df267092adfe767a3afbdf25c9fdc85de74ace"
               }
             }
           ],
@@ -1758,7 +2160,13 @@
               "label": "WHERE",
               "sql": "SELECT customer_id FROM orders WHERE amount >= 15 GROUP BY customer_id ORDER BY customer_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d6d92fb92d582ac4bbf0d185945c60cb2dd11325ef6d0ee352c29f91992839aa"
+              }
             }
           ],
           "explanation": "15 이상인 주문은 없어 0행입니다."
@@ -1779,7 +2187,13 @@
                   22
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "68cdfa9e5ea16627beb9275ea3a149caccea82023decdb56d67c082c471a42e0"
+              }
             }
           ],
           "explanation": "11과 22 두 고객의 그룹이 남습니다."
@@ -1793,7 +2207,13 @@
               "label": "WHERE-then-HAVING",
               "sql": "SELECT customer_id FROM orders WHERE amount >= 10 GROUP BY customer_id HAVING SUM(amount) >= 15 ORDER BY customer_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "b6c900dc9028118945cf47c44ec97219d9e30ca152cfebf715fced3a2f289036"
+              }
             }
           ],
           "explanation": "10 미만 주문을 먼저 빼면 합계 15 이상인 그룹은 없습니다."
@@ -1810,8 +2230,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1823,7 +2243,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 1,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -1890,7 +2316,19 @@
                     0,
                     "FALSE"
                   ]
-                ]
+                ],
+                "oracleRuntimeCheck": {
+                  "passed": true,
+                  "date": "2026-10-29",
+                  "version": "19.26.0.0.0",
+                  "signature": "ec7b4b9068cb6c24552a2b9435c5a0114fcc76fe975955178a1aced71ac9f81b"
+                }
+              },
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "ec282db548ba32086c040a5871267ced160010b25af01bdccff905f7ed6e48a6"
               }
             }
           ],
@@ -1912,7 +2350,13 @@
                   22
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "e691bc92931e8dc2a56b5bceecbc6cefcf1463d80483c723afab9178681cffdb"
+              }
             }
           ],
           "explanation": "이번 존재 판단의 결과는 같습니다."
@@ -1926,7 +2370,13 @@
               "label": "empty",
               "sql": "SELECT c.customer_id FROM customers c WHERE EXISTS (SELECT NULL FROM orders o WHERE o.customer_id = c.customer_id) ORDER BY c.customer_id",
               "expected": [],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "a66d961452630f25e04caa4e493b495c2c6acec2a74ebaeb9faee56e48dc83bb"
+              }
             }
           ],
           "explanation": "서브쿼리가 0행이면 고객이 남지 않습니다."
@@ -1950,7 +2400,13 @@
                   33
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "95ff78ff9f34346560572f5b35129fd4796818c882001ec6b1cbc7acb6dae4f5"
+              }
             }
           ],
           "explanation": "전체 주문이 존재하므로 고객 세 명 모두 남습니다."
@@ -1967,8 +2423,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -1976,7 +2432,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 1,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -2029,7 +2491,13 @@
                   3
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "649b7b8e96bb2433af4fb385507b8ed53a3d7c9ea51d0796d9da88f056b9f4a6"
+              }
             }
           ],
           "explanation": "고객 33은 RANK 3, DENSE_RANK 2입니다."
@@ -2064,7 +2532,13 @@
                   4
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "79909e6aa51ccc77ff89bbd8305fc1c4e3cb249f71dae480950676da1db4a6aa"
+              }
             }
           ],
           "explanation": "동률이 해소되어 두 함수 모두 1·2·3·4가 됩니다."
@@ -2099,7 +2573,13 @@
                   1
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "7ad9afc7155ad2e3593e975533135cbc544ddc9b18280f4a96a29e9292e21b63"
+              }
             }
           ],
           "explanation": "고유 ID 없는 점수 정렬에서 두 함수 모두 1입니다."
@@ -2134,7 +2614,13 @@
                   1
                 ]
               ],
-              "rowOrder": "ordered"
+              "rowOrder": "ordered",
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "32c591b2d0855852fa7bf25ecc65d75ff0efdb26c9d4612c3fac82757358e7be"
+              }
             }
           ],
           "explanation": "정렬 방향이 바뀌면 각 점수의 순위도 달라집니다."
@@ -2151,8 +2637,8 @@
       "synthetic": true,
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "등록된 문제는 작은 정수·NULL·비어 있지 않은 문자열을 사용하고, 값·행 수·중복·NULL을 비교합니다. 문자열 정렬·암묵적 형 변환·빈 문자열·NULL 정렬 차이는 출제하지 않습니다.",
         "sources": [
           {
@@ -2168,7 +2654,13 @@
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
           }
         ],
-        "valueComparison": "fixed-input-values-row-count-multiplicity-null"
+        "valueComparison": "fixed-input-values-row-count-multiplicity-null",
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -2196,7 +2688,13 @@
                   ],
                   "values": []
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "68d063e12730a961b7521d23d855bb81fd81b76bcb4fa4dbba9503ddb360173a"
+              }
             },
             {
               "label": "전체 집계",
@@ -2221,7 +2719,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "a2c75e089aca211330d21803f50ce6fa336225efc5cc80d98e018a0476831587"
+              }
             },
             {
               "label": "HAVING 적용",
@@ -2235,7 +2739,13 @@
                   ],
                   "values": []
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "f9c22437fb428951590f6c0dd6ecc3c5d4b321bde469d8ded150cb1067a6b7d8"
+              }
             }
           ],
           "explanation": "조회 대상이 비어도 GROUP BY 없는 전체 집계는 한 행을 반환합니다. COUNT는 0, SUM은 NULL입니다."
@@ -2268,7 +2778,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "74bef34a21486a7a4ba77e6a0a9b48350fee5eaaae5aac096fd97141459f71c1"
+              }
             },
             {
               "label": "전체 집계",
@@ -2293,7 +2809,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "9549c1ffc8f1f173e92259f90f45d791308e846d41724cb7f43b91852f9bf0dd"
+              }
             }
           ],
           "explanation": "100을 넘는 행 하나가 생겼습니다."
@@ -2324,11 +2846,11 @@
       "oracleDownload": "oracle/TH-05.sql",
       "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
       "theoryNumber": 2,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "표시 단위는 천원입니다. 빈 집합의 합계 NULL을 0이라고 바꾸어 읽지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -2340,7 +2862,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 5,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -2381,7 +2909,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "aee390af7298c1cea0cbb827422225c9a983098113e44b9ed1822e2f67b838a7"
+              }
             },
             {
               "label": "EXISTS",
@@ -2409,7 +2943,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "44fb7b304879aa9dd433aef7eac16ac74fea0a47d758d30dfcfbe677ce8f2b06"
+              }
             },
             {
               "label": "NOT EXISTS",
@@ -2431,7 +2971,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "caa93ee6675eb3d93f70ded71b59804b5fe5d5c60cae2d8c662eca2dab911247"
+              }
             }
           ],
           "explanation": "IN은 값이 목록에 포함되는지, EXISTS는 일치하는 행이 있는지 묻습니다."
@@ -2467,7 +3013,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "18c2f2f195cb307423a22ed89568aece9af30a3afeffce1d67f938bd699d5ce0"
+              }
             },
             {
               "label": "EXISTS",
@@ -2495,7 +3047,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "32e922c403015e31c86b4c6ace9a66dfacc785263f065234c8d5a4367d743254"
+              }
             },
             {
               "label": "NOT EXISTS",
@@ -2517,7 +3075,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "93459e88dcd01a128a41d09fcda45f9709ec32cbe8420ca16b7b0b5938dce3b1"
+              }
             }
           ],
           "explanation": "중복 주문을 추가해도 고객 표의 일치 행은 두 개입니다."
@@ -2556,11 +3120,11 @@
       "oracleDownload": "oracle/TH-15.sql",
       "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
       "theoryNumber": 6,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "외부 고객 ID는 NULL이 아닙니다. 임의의 NULL 포함 조건에서 IN과 EXISTS가 항상 동치라고 일반화하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -2572,7 +3136,13 @@
             "label": "Oracle 19c · EXISTS-Condition",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 6,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -2626,7 +3196,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "6f78f8c07b22134551662aaa79a1afa903313807aa13a1ded9e9bc25debb5547"
+              }
             }
           ],
           "explanation": "외부 고객 세 행은 유지됩니다. 내부에서 찾은 한 값이 없으면 그 칸이 NULL입니다."
@@ -2675,7 +3251,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "78af3fd8d09a9795a4376b12934546ec00de115f7720512219b829bf3b609d67"
+              }
             }
           ],
           "explanation": "대상 주문 번호를 104로 바꿉니다."
@@ -2714,11 +3296,11 @@
       "oracleDownload": "oracle/TH-16.sql",
       "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
       "theoryNumber": 7,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "여러 행을 반환하는 스칼라 서브쿼리는 Oracle에서 오류이고 SQLite와 다릅니다. 이 체험에서는 0행·1행만 실행합니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -2726,7 +3308,13 @@
             "label": "Oracle 19c · Scalar-Subquery-Expressions",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Scalar-Subquery-Expressions.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -2787,7 +3375,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "77b4ce4dedebcabd4e29866ae921bab980d9a9bf9efca9c4a719b45a706722fb"
+              }
             },
             {
               "label": "상품·지역",
@@ -2835,7 +3429,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "c7efc369883b35d585800b7feccbf2b1fa49a6919b7d47cc9e16c058aa663094"
+              }
             }
           ],
           "explanation": "GROUP BY는 열 값의 조합으로 그룹을 만듭니다. 같은 두 열의 나열 순서를 바꾸어도 그룹 조합은 같습니다."
@@ -2891,7 +3491,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "f6ef95450c19339d8d433997522cbc7df5151d7275d387254c89ec80d97b854b"
+              }
             }
           ],
           "explanation": "그룹 구성은 같고 마지막 ORDER BY만 달라집니다."
@@ -2923,11 +3529,11 @@
       "oracleDownload": "oracle/TH-21.sql",
       "schemaSha256": "4ed77ae9651e64548aa6cb0dd49d77b4a93deb6770bb6b4e48b8aee72a8e41d8",
       "theoryNumber": 11,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "ORDER BY 없는 실행의 우연한 행 순서는 정답 비교 대상으로 삼지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -2939,7 +3545,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -3043,7 +3655,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "98d24661f906d1e5936b6b449ed2c51a7a43e9325a51bd3bd30df707643f2410"
+              }
             },
             {
               "label": "CUBE의 그룹 구성",
@@ -3158,7 +3776,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "bf67c23ab5df2c7f6e9061bd593965e51b599b96204197dbdce41f7d9856f614"
+              }
             }
           ],
           "explanation": "상세·지역 소계·전체 합계는 ROLLUP의 그룹 구성을 나타냅니다. CUBE 구성에는 상품 소계도 더해집니다."
@@ -3257,7 +3881,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4e1beca681355e2cc9de36a35157afedfaefddce1a831e08962f7c48202affb4"
+              }
             }
           ],
           "explanation": "그룹 종류 수와 실제 결과 행 수는 다른 수입니다."
@@ -3289,11 +3919,11 @@
       "oracleDownload": "oracle/TH-22.sql",
       "schemaSha256": "4ed77ae9651e64548aa6cb0dd49d77b4a93deb6770bb6b4e48b8aee72a8e41d8",
       "theoryNumber": 12,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "ROLLUP·CUBE 함수를 SQLite에서 실행하지 않습니다. GROUP BY와 UNION ALL로 해당 그룹 구성만 명시적으로 만듭니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -3301,7 +3931,13 @@
             "label": "Oracle 19c · SELECT",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -3362,7 +3998,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "c2de0b7656da69ca0fe7fbb5298ee73109389f6ac9d6a1ebe6b19e4379cc7aaa"
+              }
             }
           ],
           "explanation": "상세 그룹의 NULL과 집계 과정에서 붙인 NULL은 같은 표시라도 생긴 이유가 다릅니다."
@@ -3418,7 +4060,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "aeb71e038119d2c8e45e78c20351d2bf3562f3a1480bb703cbe217db09b18804"
+              }
             }
           ],
           "explanation": "원래 데이터의 NULL만 2로 바꿨습니다."
@@ -3449,11 +4097,11 @@
       "oracleDownload": "oracle/TH-23.sql",
       "schemaSha256": "8572fd20f95f6435f99ba7209241469246461788f25a6538dc9c9c6c4d83c311",
       "theoryNumber": 13,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -3465,7 +4113,13 @@
             "label": "Oracle 19c · GROUPING",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/GROUPING.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -3533,7 +4187,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "853010dd2d3af9b5de21fcdfb762668cbf0b64fc3dbe4623ac55b76c3afe9544"
+              }
             },
             {
               "label": "GROUP BY",
@@ -3566,7 +4226,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "5b6f3a89c1a21ef3e06e49827dfb4422620e737f3ef7cf68189e03cf14e88d82"
+              }
             }
           ],
           "explanation": "분석 함수는 각 주문 행에 고객별 합계를 붙입니다."
@@ -3629,7 +4295,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "423d557314d9ed81a4f4c91b86528d90bfd35c76d6defc19407cdfe290b95831"
+              }
             }
           ],
           "explanation": "주문 행 수는 같고 합계를 계산하는 구간만 바뀝니다."
@@ -3660,11 +4332,11 @@
       "oracleDownload": "oracle/TH-28.sql",
       "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
       "theoryNumber": 16,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "정수 합계만 사용합니다. 분석 함수의 구간과 최종 결과 행 수를 구분하세요.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -3672,7 +4344,13 @@
             "label": "Oracle 19c · Analytic-Functions",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -3747,7 +4425,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "a1166f2af6644a249621785677e996c5584a6b7cd25693fb71c06fc818038411"
+              }
             }
           ],
           "explanation": "LAG와 LEAD는 OVER 안에서 정한 순서를 기준으로 앞뒤 값을 읽습니다."
@@ -3817,7 +4501,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d004fc228ceb708073292ff78fe31c0c827883ea3f3cbe4beab23483bbdce97d"
+              }
             }
           ],
           "explanation": "물리적 입력 순서 대신 날짜와 고유 번호로 순서를 정했습니다."
@@ -3848,11 +4538,11 @@
       "oracleDownload": "oracle/TH-31.sql",
       "schemaSha256": "7f3e8dcfe3b7556810eae2782d2aa1d047402a5a6a3377e2eb860d5f19673745",
       "theoryNumber": 17,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -3868,7 +4558,13 @@
             "label": "Oracle 19c · Analytic-Functions",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -3922,7 +4618,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d8feda87bc273b072a1f40e26ba30152b61a1b807159718fc928bb19a39bf733"
+              }
             },
             {
               "label": "자식 → 부모",
@@ -3963,7 +4665,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "995fe015a934031e833613723cf4b9e98029ee698a15ae37063e0326809264e5"
+              }
             }
           ],
           "explanation": "자식의 parent_id가 부모의 node_id와 일치하는 쌍을 조회합니다."
@@ -4012,7 +4720,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4092bf22418ea4cbbf03e27bf96fc97c06408e396087e09ee8d49dc425f64f21"
+              }
             }
           ],
           "explanation": "한 행의 parent_id만 바꾸어 연결을 비교합니다."
@@ -4042,11 +4756,11 @@
       "oracleDownload": "oracle/TH-32.sql",
       "schemaSha256": "6c0b9c1e11ae040cb8cc35d0e31a4f2a2d30cd05f267caad9be836dba5557da5",
       "theoryNumber": 18,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "Oracle CONNECT BY PRIOR를 실행하는 체험은 아닙니다. 공통 자기 조인으로 한 단계 부모·자식 연결만 확인하며 재귀·순환 처리는 다루지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4058,7 +4772,13 @@
             "label": "Oracle 19c · Joins",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4112,7 +4832,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "8d54b51995aed8cdd9c97ba16432f524910032ac43fe2252c700b7b1a74c334c"
+              }
             },
             {
               "label": "인스턴스 수",
@@ -4134,7 +4860,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "2d54b6343fe48075328e6bdd854b7e455b8aa2df7cb2abd78925fd55e3215c29"
+              }
             }
           ],
           "explanation": "고객은 엔터티 종류, 고객 표의 각 행은 인스턴스, ID와 이름은 속성에 대응합니다."
@@ -4191,7 +4923,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "037e28c06ac05cce24a48b2eea22487b275f23e609761dace35d2aa3eef7b9ee"
+              }
             },
             {
               "label": "인스턴스 수",
@@ -4213,7 +4951,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "b5da81d24970814334b87072466a846a4ba2e62d4d3ada4dabdc19d8d495f5fb"
+              }
             }
           ],
           "explanation": "이름이 같아도 고객 ID가 다르면 별도 고객으로 정한 예제입니다."
@@ -4243,11 +4987,11 @@
       "oracleDownload": "oracle/TH-33.sql",
       "schemaSha256": "90f03ffae515c1c01d4ffd0c006c02bb71b23333427e1170068482fb9f6357d4",
       "theoryNumber": 19,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "이 대응은 이 예제의 논리 모델에서 정한 것입니다. 모든 현실 개념을 무조건 표 하나로 만드는 규칙은 아닙니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4259,7 +5003,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4315,7 +5065,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "fe5cc8d97cb670ec5bf98ede5aae3d89a3f482b715fd8e8367c50dafdbd6f151"
+              }
             }
           ],
           "explanation": "수량과 단가를 입력 값으로 정하고 금액은 두 값의 곱으로 계산합니다."
@@ -4366,7 +5122,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "825ff482f0bbcfefd3717bb8a917df3c53af32b8c1d8df254ce46ed7780f260c"
+              }
             }
           ],
           "explanation": "저장된 수량만 바꾸고 금액 식은 유지합니다."
@@ -4397,11 +5159,11 @@
       "oracleDownload": "oracle/TH-34.sql",
       "schemaSha256": "28ea9b4afa6d0c8db7e2cd20082b5a4c4cacbd9a0a64a9194bdb8895fc063785",
       "theoryNumber": 20,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4413,7 +5175,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4442,7 +5210,13 @@
                   ],
                   "values": []
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "837ed0b7805a7ae07b52f169ec1e71fc81b1cd13dc5fcfe9a7a0e9e290025e61"
+              }
             },
             {
               "label": "학생 ID만 비교",
@@ -4467,7 +5241,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "dfefdc19ac2bd587de18496096f41f9d03f8bd9fed13953ce27dfddf840464f8"
+              }
             }
           ],
           "explanation": "학생 ID만으로는 서로 다른 수강을 구분하지 못합니다. 학생·과목 조합에는 원래 중복이 없습니다."
@@ -4503,7 +5283,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "383d38fb7b5f830a7dd665bccc1d8c77081adf8102bc63764c1401ea712ae1b2"
+              }
             }
           ],
           "explanation": "제약을 걸기 전 후보 데이터에 같은 조합을 추가했습니다."
@@ -4533,11 +5319,11 @@
       "oracleDownload": "oracle/TH-35.sql",
       "schemaSha256": "5ea58f12ba200d5482270d5fbfed0e3e20342c2c4a4cfa537904db5a3773d078",
       "theoryNumber": 21,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "이 표에는 제약을 선언하지 않았습니다. 현재 표본에 중복이 없다는 관찰만으로 앞으로의 후보 키를 증명하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4545,7 +5331,13 @@
             "label": "Oracle 19c · constraint",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4606,7 +5398,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "44f736db46632fac49ff3ab60ac438006d761b50db32d0b3ebcdd8981a9069fd"
+              }
             },
             {
               "label": "부모 없는 후보 행",
@@ -4620,7 +5418,13 @@
                   ],
                   "values": []
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "0965fdb751d7ded5ca03557b7d9971b1f6982e117d01c412c6d695f10f67f94e"
+              }
             }
           ],
           "explanation": "(order_id,line_no)를 기본 키로 정하면 부모 ID가 자식 식별자에 포함됩니다. line_id만 기본 키로 정하는 설계에서는 포함되지 않습니다."
@@ -4650,7 +5454,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "63462cd4dc4123f9abe5552cd14aba0c1dbc5d4b35b2f61577744c4716e525c2"
+              }
             }
           ],
           "explanation": "실제 FK를 걸기 전 후보 데이터에서 참조 위반을 찾아봅니다."
@@ -4691,11 +5501,11 @@
       "oracleDownload": "oracle/TH-36.sql",
       "schemaSha256": "0e36e4365b034e49c7fcb385308002ba633f2f30e1fa119c247da6f7b9777a27",
       "theoryNumber": 22,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "조회 결과에서 두 설계의 식별 후보를 비교합니다. SQLite에서 Oracle의 관계 표기나 FK 예외를 실행한 것으로 해석하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4703,7 +5513,13 @@
             "label": "Oracle 19c · constraint",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4757,7 +5573,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "3ded862f4d30a1fbb9c5fb2c81f466fedfb2a038c67be797d2478a3d84b7c30f"
+              }
             }
           ],
           "explanation": "한 고객에게 여러 주문이 가능하다는 최대 대응 수와 주문 참여가 필수라는 최소 조건을 구분합니다."
@@ -4806,7 +5628,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "c73b59e41fac58d426a8e11d975c39e7d5d01d15be444ed3ff56c96849b9f233"
+              }
             }
           ],
           "explanation": "고객 수와 관계의 최대 대응 수는 바뀌지 않았습니다."
@@ -4845,11 +5673,11 @@
       "oracleDownload": "oracle/TH-37.sql",
       "schemaSha256": "d2cbb323c55af9e3811c05918e38f934148ee81f2b779cf6e2e805e6dcacfb58",
       "theoryNumber": 23,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -4861,7 +5689,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -4907,7 +5741,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "41569082b7fe322c1768990667c39c97d1432dfb2a765b17733b07edc440471b"
+              }
             },
             {
               "label": "분류 → 이름 확인",
@@ -4940,7 +5780,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "061dc0766887355c1f74d72a5a0675f6402f1ad7399a7064ad27e4727782f269"
+              }
             }
           ],
           "explanation": "주문·상품 복합 키를 전제로 상품 이름은 상품 ID에 부분 종속되고, 분류 이름은 분류 ID를 거쳐 종속됩니다."
@@ -4981,7 +5827,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "17f726e10e9ad147eab08ed67de323aed2ee22b7d55138040e7b5f529661f234"
+              }
             }
           ],
           "explanation": "같은 분류 ID에 서로 다른 이름이 남습니다."
@@ -5015,11 +5867,11 @@
       "oracleDownload": "oracle/TH-38.sql",
       "schemaSha256": "04256d80d99c8902840d4ffd589b69877571ec7f099c0e8c8f2b8cffe6ab24db",
       "theoryNumber": 24,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "함수 종속은 업무 규칙으로 먼저 정해야 합니다. COUNT(DISTINCT)는 현재 데이터의 불일치 탐지이며 정규형의 자동 증명기가 아닙니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5031,7 +5883,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5069,7 +5927,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "5cb8c324da07b448e3aa6ee4eb8ac22a86f3dceeec294da4d6102790baa241a3"
+              }
             },
             {
               "label": "업무 조합 중복",
@@ -5097,7 +5961,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "9c952fb4dab6b2cab4fc81d5eac7a8dafdc2f9ed6ff0e8981035f6908bbdfc4f"
+              }
             }
           ],
           "explanation": "대리 키가 유일한 것과 업무상 중복이 없는 것은 다른 조건입니다."
@@ -5130,7 +6000,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "976fda1d94c09951cfb8bc8c00dab5a1e1fd152616e40001676d4cf0b06d3628"
+              }
             },
             {
               "label": "업무 중복 제거",
@@ -5146,7 +6022,13 @@
                   ],
                   "values": []
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "7be013c109d25f1679a0aad61f6dab75d2bc7af4a423993c86ec8a69653736f5"
+              }
             }
           ],
           "explanation": "대리 번호를 바꾸지 않고 업무 조합을 바꿨습니다."
@@ -5177,11 +6059,11 @@
       "oracleDownload": "oracle/TH-39.sql",
       "schemaSha256": "74a80b54d38e7edbe5ae88e0c5acfb136d924448c52b297e36fd963cbd65d72b",
       "theoryNumber": 25,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "번호만 부여해도 이 업무 규칙이 자동 보장되지는 않습니다. 업무 조합을 실제로 제한하려면 별도 제약이 필요합니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5189,7 +6071,13 @@
             "label": "Oracle 19c · constraint",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 4,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5245,7 +6133,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "e54367fc7d7c5195b30a137ed9a6cfabe80da6f25b280ad0faf166f1a9d98bbb"
+              }
             }
           ],
           "explanation": "고객과 주문의 개념을 구분한 뒤 고객 ID, 주문 ID, 수량·금액 같은 열과 참조 규칙을 정합니다."
@@ -5296,7 +6190,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "61d65f90b7d29474519935e78bc311cbd2303ea383c2d892d4192184f5ae0b3f"
+              }
             }
           ],
           "explanation": "후보 데이터를 바꾸어 FK가 검사해야 할 대상을 확인합니다."
@@ -5335,11 +6235,11 @@
       "oracleDownload": "oracle/TH-40.sql",
       "schemaSha256": "791253fca06c2a7e57a02320e6943634223883c1389fd918a98ee61ec8bd5ba9",
       "theoryNumber": 26,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "개념 모델이 물리 구현의 자료형·인덱스·권한까지 자동 결정하지 않습니다. Oracle과 SQLite의 저장 방식 차이를 같은 동작으로 표시하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5351,7 +6251,13 @@
             "label": "Oracle 19c · constraint",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5419,7 +6325,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "4bb713cecbb8e1f2867ab3c061237fc90df2b2a6eaa643f9e5b4163505df349b"
+              }
             },
             {
               "label": "NOT NULL까지 검사",
@@ -5460,7 +6372,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "8bf01e06069afe251fed6083e551ff35f2fa7950d3f79bc77c5a80b8bba3bfc9"
+              }
             }
           ],
           "explanation": "CHECK는 조건이 FALSE인 값을 거절하고 UNKNOWN은 통과시킵니다."
@@ -5523,7 +6441,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "79dec13afcb64f5243d8be703702ee48f5acdad9599b043da70097eb1f011c2e"
+              }
             }
           ],
           "explanation": "UNKNOWN과 FALSE의 차이를 비교합니다."
@@ -5553,11 +6477,11 @@
       "oracleDownload": "oracle/TH-41.sql",
       "schemaSha256": "6a7b9b5372b4a45ab1550d9edce3066d03d6f7a35a6f871a693e7dd4d6211c23",
       "theoryNumber": 27,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "실패 INSERT를 실행하지 않고 CASE로 제약의 판정 규칙을 조회합니다. PASS_CHECK는 이 조건만 통과한다는 뜻이며 모든 제약 통과를 뜻하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5569,7 +6493,13 @@
             "label": "Oracle 19c · Nulls",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 3,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5630,7 +6560,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "d1570ebb33e18421d1b03d88e9204c3b2d6bd977dff75ad8ffc15f543aa5ceb0"
+              }
             }
           ],
           "explanation": "NULL은 값이 없다는 표시이고 공백은 실제 문자입니다. LENGTH(NULL)은 NULL, 공백 한 칸의 길이는 1입니다."
@@ -5686,7 +6622,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "30db79205b0415061401cb651d642564fe30504b7eae8cd89d276374195643ac"
+              }
             }
           ],
           "explanation": "공백을 두 칸으로 늘려도 NULL이 되지는 않습니다."
@@ -5716,11 +6658,11 @@
       "oracleDownload": "oracle/TH-42.sql",
       "schemaSha256": "2ff6c724f7996be0f2ac61e3bb229ed20e6dfe96ec8c5b090b79ed9c65c09e1e",
       "theoryNumber": 28,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "빈 문자열은 Oracle에서 NULL로 취급되지만 SQLite에서는 다릅니다. 이 체험은 동일 결과를 위해 명시적 NULL과 공백만 비교하며 TRIM으로 빈 문자열을 만드는 실험도 포함하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5732,7 +6674,13 @@
             "label": "Oracle 19c · LENGTH",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LENGTH.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5807,7 +6755,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "a1ccc35eb76eb23c1017cab03c813cc758d776000b78b61e81ba2172cab18e52"
+              }
             }
           ],
           "explanation": "NOT NULL은 값의 존재, 단일 열 UNIQUE는 NULL이 아닌 값의 중복, 기본 키는 두 조건을 함께 봅니다."
@@ -5877,7 +6831,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "3091b555d4b5143942c061fa2f35e4f1e6c1edb34a907848f97141b6a4c0d0f8"
+              }
             }
           ],
           "explanation": "중복을 없애도 NULL 후보 행은 기본 키 조건을 통과하지 못합니다."
@@ -5907,11 +6867,11 @@
       "oracleDownload": "oracle/TH-43.sql",
       "schemaSha256": "a8d2c5670734e0129b8dca1a835f17a2789de61f143937b4bedccaeb46bae8d4",
       "theoryNumber": 29,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. 단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. 단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -5919,7 +6879,13 @@
             "label": "Oracle 19c · constraint",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -5976,7 +6942,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "329945931ef9b0ec4ab2b9b79302d8b7451ef12c1e46b8f53830cc4f1b537186"
+              }
             }
           ],
           "explanation": "첫 결과는 DELETE 직후 남은 행 수, 두 번째 결과는 ROLLBACK TO 뒤 복원된 행 수입니다."
@@ -6028,7 +7000,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "7db32213eb72da243afb80a6159ee656a8f33eced63cb3efc5a2e8010511dda6"
+              }
             }
           ],
           "explanation": "DELETE 조건만 제거합니다. 두 번째 결과는 되돌린 뒤의 행 수입니다."
@@ -6059,11 +7037,11 @@
       "oracleDownload": "oracle/TH-44.sql",
       "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
       "theoryNumber": 30,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "DELETE와 저장점만 실제 실행합니다. Oracle TRUNCATE·DROP의 암묵적 커밋이나 구조 삭제는 SQLite 결과로 대신 검증하지 않습니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -6079,7 +7057,13 @@
             "label": "Oracle 19c · SAVEPOINT",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SAVEPOINT.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     },
     {
@@ -6143,7 +7127,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "78c870865e25ecb450e59c063fc47bbfab61ed5ba09dc75546216bf214aed8b6"
+              }
             }
           ],
           "explanation": "두 번째 저장점으로 되돌리면 그 저장점 뒤의 수정 30만 취소되어 20이 남습니다."
@@ -6176,7 +7166,13 @@
                     ]
                   ]
                 }
-              ]
+              ],
+              "oracleRuntimeCheck": {
+                "passed": true,
+                "date": "2026-10-29",
+                "version": "19.26.0.0.0",
+                "signature": "49675148741c9374b3418f112e04e186d62b4afcd84f3eee8c34e7c340183057"
+              }
             }
           ],
           "explanation": "최초 저장점 뒤의 수정을 모두 되돌립니다."
@@ -6207,11 +7203,11 @@
       "oracleDownload": "oracle/TH-45.sql",
       "schemaSha256": "476c0a7e558c87f2e0e7715db9e63d973eb49884be9a7ee741130154859e1526",
       "theoryNumber": 31,
-      "compatibilityNote": "고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 직접 실행 비교는 미수행. COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
+      "compatibilityNote": "고정 입력의 공통 SQL 예제 · Oracle 19c 19.26에서 SQLite와 실제 결과 대조 완료. COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
       "oracleReview": {
         "target": "Oracle Database 19c",
-        "method": "official-documentation-comparison",
-        "oracleExecutionPerformed": false,
+        "method": "official-documentation-and-runtime-comparison",
+        "oracleExecutionPerformed": true,
         "scope": "COMMIT이나 DDL을 사이에 넣지 않은 명시적 저장점 예제입니다. 두 DB의 자동 커밋·DDL 처리 전체가 같다는 뜻은 아닙니다.",
         "valueComparison": "fixed-input-values-row-count-multiplicity-null",
         "sources": [
@@ -6223,7 +7219,13 @@
             "label": "Oracle 19c · ROLLBACK",
             "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html"
           }
-        ]
+        ],
+        "runtimeVersion": "19.26.0.0.0",
+        "runtimeProvider": "Oracle FreeSQL",
+        "runtimeDate": "2026-10-29",
+        "checkedQueries": 2,
+        "checkedTraceQueries": 0,
+        "evidenceUrl": "oracle-validation.html"
       }
     }
   ],
@@ -6248,5 +7250,13 @@
       "label": "SQLite IN·EXISTS·논리식",
       "url": "https://www.sqlite.org/lang_expr.html"
     }
-  ]
+  ],
+  "oracleRuntimeValidation": {
+    "date": "2026-10-29",
+    "databaseVersion": "19.26.0.0.0",
+    "queryChecks": 122,
+    "traceChecks": 11,
+    "totalChecks": 133,
+    "mismatches": 0
+  }
 }
