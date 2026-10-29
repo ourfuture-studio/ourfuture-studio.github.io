@@ -1,6 +1,6 @@
 (() => {
   const $=id=>document.getElementById(id);
-  let data,episode,variant,queryIndex=0,worker=null,serial=0,generation=0,busy=false,pending=new Map();
+  let data,episode,variant,queryIndex=0,worker=null,serial=0,generation=0,busy=false,pending=new Map(),reviewedDataset=true;
   function status(text,type=''){ $('status').textContent=text;$('status').className='status '+type; }
   function setBusy(value){busy=value;for(const id of ['run','run-all','reset-data','reset-sql','prev','next'])$(id).disabled=value;$('episode-select').disabled=value;$('sql').disabled=value;for(const b of document.querySelectorAll('#variants button,#query-tabs button'))b.disabled=value;}
   function stopWorker(){if(worker)worker.terminate();worker=null;for(const p of pending.values()){clearTimeout(p.timer);p.reject(new Error('실행기를 다시 시작했습니다.'));}pending.clear();}
@@ -40,10 +40,11 @@
       else{target.append(makeTable(table.columns,table.values,table.name+' 원본 자료'));if(!table.values.length){const empty=document.createElement('p');empty.className='muted';empty.textContent='이 표에는 행이 없습니다.';target.append(empty);}}
     }
   }
-  function showResult(sql,response,label,append=false){
+  function showResult(sql,response,label,append=false,reviewed=false){
     const target=$('results');if(!append)target.replaceChildren();
     const section=document.createElement('section');section.className='result-block';
     const heading=document.createElement('div');heading.className='result-heading';const title=document.createElement('h2');title.textContent=label+' 실행 결과';heading.append(title);section.append(heading);
+    const scope=document.createElement('p');scope.className='muted result-scope';scope.dataset.scope=reviewed?'reviewed':'custom';scope.textContent=reviewed?'등록 문제 · Oracle 19c 문서 대조 범위의 고정 입력':'자유 실험 · Oracle 결과 미대조';section.append(scope);
     const executed=document.createElement('pre');executed.className='result-sql';executed.textContent=sql;section.append(executed);
     if(!response.ok){const error=document.createElement('p');error.className='sql-error';error.textContent='SQL 오류: '+response.error;section.append(error);}
     else if(!response.results.length){const text=document.createElement('p');text.className='empty-result';text.textContent='실행했습니다. 조회 결과 표가 없는 문장입니다. 왼쪽 입력 자료의 변화를 확인하세요.';section.append(text);}
@@ -66,7 +67,7 @@
   }
   async function loadVariant(id,{keepSql=false}={}){
     const token=++generation;const previous=$('sql').value;
-    variant=episode.variants.find(v=>v.id===id)||episode.variants[0];queryIndex=0;
+    variant=episode.variants.find(v=>v.id===id)||episode.variants[0];queryIndex=0;reviewedDataset=true;
     for(const button of document.querySelectorAll('#variants button'))button.setAttribute('aria-pressed',String(button.dataset.id===variant.id));
     $('results').replaceChildren();$('variant-note').textContent=variant.id==='base'?'원래 입력입니다. 결과를 예상한 뒤 SQL을 실행해 보세요.':'원본에서 독립적으로 적용한 조건입니다. 실행 후 아래 풀이와 비교해 보세요.';
     queryTabs();if(keepSql)$('sql').value=previous;
@@ -89,6 +90,7 @@
     $('lede').textContent=episode.lede;$('question').textContent=episode.question;$('explanation').open=false;
     const body=$('explanation-body');body.replaceChildren();for(const text of episode.explanation){const p=document.createElement('p');p.textContent=text;body.append(p);}
     $('boundary').textContent=episode.boundary;$('challenge').textContent=episode.challenge;
+    const sources=$('sources');sources.replaceChildren();for(const source of episode.oracleReview.sources){const a=document.createElement('a');a.href=source.url;a.textContent=source.label;a.target='_blank';a.rel='noopener noreferrer';sources.append(a);}
     $('theory-preview').href='theory/'+episode.id+'.html';
     $('theory-link').hidden=!episode.theoryUrl;if(episode.theoryUrl)$('theory-link').href=episode.theoryUrl;
     const variants=$('variants');variants.replaceChildren();for(const v of episode.variants){const button=document.createElement('button');button.type='button';button.textContent=v.label;button.dataset.id=v.id;button.setAttribute('aria-pressed',String(v.id==='base'));button.addEventListener('click',()=>loadVariant(v.id));variants.append(button);}
@@ -97,11 +99,13 @@
   async function run(all=false){
     if(busy)return;if(!$('sql').value.trim()){status('실행할 SQL을 입력해 주세요.','error');return;}
     const known=variant.queries.find(q=>q.sql.trim()===$('sql').value.trim());
+    if(!all&&!known)reviewedDataset=false;
+    const reviewed=reviewedDataset&&(all||Boolean(known));
     const queries=all?variant.queries.map(q=>({sql:q.sql,label:q.label,trace:q.trace})):[{sql:$('sql').value,label:'SQL',trace:known?.trace}];
     setBusy(true);status('SQL을 실행하는 중입니다.');$('results').replaceChildren();let success=true;
     try{
       for(let i=0;i<queries.length;i++){
-        const q=queries[i],response=await request('run',{sql:q.sql,trace:q.trace});showResult(q.sql,response,q.label,true);
+        const q=queries[i],response=await request('run',{sql:q.sql,trace:q.trace});showResult(q.sql,response,q.label,true,reviewed);
         if(!response.ok){success=false;status('SQL 오류가 있습니다. 실행한 문장과 오류를 확인해 주세요.','error');break;}
       }
       if(success)status('실행 완료 · 아래 표는 방금 실행한 SQL의 결과입니다.');
@@ -121,7 +125,6 @@
   theme();$('theme').addEventListener('click',()=>{themeMode=(themeMode+1)%3;theme();});
   fetch('episodes.json').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
     data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=String(ep.number).padStart(2,'0')+' · '+ep.title;select.append(option);}
-    for(const source of data.sources){const a=document.createElement('a');a.href=source.url;a.textContent=source.label;a.target='_blank';a.rel='noopener noreferrer';$('sources').append(a);}
     setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true);
   }).catch(error=>{status(error.message+' 페이지를 새로고침해 주세요.','error');});
 })();
