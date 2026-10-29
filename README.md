@@ -3,7 +3,7 @@
 블로그 「기계와 생각」·기술 노트·SQLD 공부에 연결되는 정적 체험 모음입니다.
 
 - 첫 화면: https://ourfuture-studio.github.io/
-- 머신러닝과 기술 노트 30개: https://ourfuture-studio.github.io/viz/
+- 머신러닝과 기술 노트 31개: https://ourfuture-studio.github.io/viz/
 - SQLD 쿼리 실험 12개: https://ourfuture-studio.github.io/sql/
 
 VIZ는 자체 가상 데이터를 JavaScript로 계산하는 독립 HTML입니다. `?shorts=1`로 녹화용 화면을 엽니다.
