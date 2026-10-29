@@ -47,7 +47,7 @@
       }
     });
   }
-  document.querySelectorAll('pre > code').forEach(code => {
+  document.querySelectorAll('pre:not(.code-highlight) > code').forEach(code => {
     const pre = code.parentElement;
     let label = pre.previousElementSibling;
     const isFilename = label && /\.(html|js|json|svg|css)$/i.test(label.textContent.trim());
