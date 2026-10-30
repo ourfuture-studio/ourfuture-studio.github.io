@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">베이즈는 관찰 뒤 분모를 다시 정한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사전과 가능도의 곱을 관찰 뒤 분모로 모은다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">사전</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">경고 가능도</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">결합확률</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">사후확률</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집단</text>
+<line x1="270.0" y1="451.3" x2="270.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">사전확률</text>
+<line x1="490.0" y1="451.3" x2="490.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">가능도</text>
+<line x1="710.0" y1="451.3" x2="710.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">결합확률</text>
+<line x1="930.0" y1="451.3" x2="930.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">사후확률</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<line x1="270.0" y1="536.3" x2="270.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.25</text>
+<line x1="490.0" y1="536.3" x2="490.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.2</text>
+<line x1="710.0" y1="536.3" x2="710.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.05</text>
+<line x1="930.0" y1="536.3" x2="930.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.625</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<line x1="270.0" y1="621.3" x2="270.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.75</text>
+<line x1="490.0" y1="621.3" x2="490.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.04</text>
+<line x1="710.0" y1="621.3" x2="710.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.03</text>
+<line x1="930.0" y1="621.3" x2="930.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.375</text>
+<text x="50" y="767.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A의 결합확률.05와 B의.03 중 A몫은.05/.08=.625다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

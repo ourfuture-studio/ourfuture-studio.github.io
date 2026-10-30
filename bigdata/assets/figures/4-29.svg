@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">버블의 값 비율과 반지름 비율은 다르다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">면적에 맞춘 원과 반지름에 값을 직접 대입한 원을 비교한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">면적 비례</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">반지름 직접 비례</text>
+<rect x="50" y="331.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="416.6666666666667" y1="331.3" x2="416.6666666666667" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">radius_ratio</text>
+<line x1="783.3333333333334" y1="331.3" x2="783.3333333333334" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">area_ratio</text>
+<rect x="50" y="416.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">면적 비례</text>
+<line x1="416.6666666666667" y1="416.3" x2="416.6666666666667" y2="501.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="783.3333333333334" y1="416.3" x2="783.3333333333334" y2="501.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<rect x="50" y="501.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">반지름 직접 비례</text>
+<line x1="416.6666666666667" y1="501.3" x2="416.6666666666667" y2="586.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="783.3333333333334" y1="501.3" x2="783.3333333333334" y2="586.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">16</text>
+<text x="50" y="647.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">값10·40의 올바른 면적비4는 반지름비2이며 반지름비4로 그리면 면적비16이다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

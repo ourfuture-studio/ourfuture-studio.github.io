@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>일반화·집계·마스킹의 차이 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">1과목 · 빅데이터 분석 기획 · 1-21</p><h1 class="lesson-title">일반화·집계·마스킹의 차이</h1>
+<p>같은 두 나이를 어떤 출력으로 바꾸는지 비교한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">처리 연산을 비교하는 자체 자료다. 출력만으로 법적 익명성이나 재식별 방지를 판정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/1-21.png" target="_blank" rel="noopener"><img src="assets/figures/1-21.png" alt="자체 예제의 같은 입력에서 개인 행 유지와 집단 요약의 차이를 보여준다.. 일반화는 두 행의 20대·20대, 집계는 평균 28세 한 값이다." width="1200" height="957"/></a><figcaption>일반화는 두 행의 20대·20대, 집계는 평균 28세 한 값이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>각 개인 행의 나이 27세·29세를 모두 “20대”로 바꿨다.</p><fieldset><legend>주된 처리는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 집계 평균 산출</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 일반화</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 무작위 표본 추출</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 회귀 예측</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>개인 행을 공개하지 않고 두 사람 평균 28세만 제시하면?</p>
+<details><summary>변형 풀이 확인</summary><p>집계다.</p><p>개별 값의 범주를 넓힌 것이 아니라 여러 사람의 값을 하나의 집단 요약으로 바꾸었다.</p></details>
+<p>넓히기·요약하기·가리기의 출력을 비교한다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://csrc.nist.gov/pubs/sp/800/188/final" target="_blank" rel="noopener noreferrer">NIST SP 800-188: De-Identifying Government Datasets</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="1-20.html">← 이전 체험</a>
+<a href="1-22.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "1-21", "title": "일반화·집계·마스킹의 차이", "question": {"givens": "각 개인 행의 나이 27세·29세를 모두 “20대”로 바꿨다.", "stem": "주된 처리는?", "choices": ["집계 평균 산출", "일반화", "무작위 표본 추출", "회귀 예측"], "answer": 2, "reason": "개별 값을 더 넓은 연령 범주로 바꾸었으므로 일반화다.", "wrong_reasons": ["1번은 여러 행을 하나의 평균으로 요약하는 처리이며 여기서는 각 행이 남는다.", "3번은 일부 관측치를 선택하는 일이다.", "4번은 입력에서 결과를 예측하는 일이다."]}, "experience": {"kind": "decision", "goal": "같은 두 나이를 어떤 출력으로 바꾸는지 비교한다.", "inputs": [{"id": "method", "label": "처리 방식", "type": "select", "default": "generalize", "options": [{"value": "generalize", "label": "각 행을 연령대로"}, {"value": "aggregate", "label": "평균 하나만 공개"}, {"value": "mask", "label": "전화번호 끝 네 자리 가림"}]}, {"id": "age1", "label": "첫 나이", "type": "number", "default": 27, "min": 0, "max": 120}, {"id": "age2", "label": "둘째 나이", "type": "number", "default": 29, "min": 0, "max": 120}], "cases": [{"name": "원 문제", "inputs": {"method": "generalize", "age1": 27, "age2": 29}, "expected_answer": "일반화: 20대 · 20대", "reason": "각 행의 세밀함을 줄인다."}, {"name": "원고 변형", "inputs": {"method": "aggregate", "age1": 27, "age2": 29}, "expected_answer": "집계: 평균 28세", "reason": "평균 하나로 요약한다."}, {"name": "마스킹", "inputs": {"method": "mask", "age1": 27, "age2": 29}, "expected_answer": "마스킹: 끝 네 자리 ****", "reason": "나이를 평균내는 것과 다르다."}], "boundary": "처리 연산을 비교하는 자체 자료다. 출력만으로 법적 익명성이나 재식별 방지를 판정하지 않는다.", "related_codes": ["1-20", "1-22"]}}</script><script type="module" src="app.mjs"></script></body></html>

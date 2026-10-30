@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HMM은 상태의 이동과 관측의 발생을 나눈다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-38</p><h1 class="lesson-title">HMM은 상태의 이동과 관측의 발생을 나눈다</h1>
+<p>한 경로의 전이확률을 바꿔 지정 경로·관측의 결합확률을 계산한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">1차 HMM의 지정 경로 N,W와 관측 낮음,높음만 다룬다. 관측열 가능도·상태 사후확률·Viterbi 경로를 계산하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-38.png" target="_blank" rel="noopener"><img src="assets/figures/3-38.png" alt="자체 예제의 전이 화살표와 방출 화살표를 분리한다.. 정상→마모는 전이. 정상→낮음과 마모→높음은 관측 방출이다." width="1200" height="1162"/></a><figcaption>정상→마모는 전이. 정상→낮음과 마모→높음은 관측 방출이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>장비의 내부 상태는 정상·마모, 센서는 낮음·높음이다.</p><fieldset><legend>전이확률이 설명하는 것은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 상태가 주어졌을 때 센서값의 확률</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 현재 상태에서 다음 상태로 갈 확률</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 첫 상태의 확률만</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 관측 뒤 특정 상태일 확률</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>예제에서 정상→마모 전이확률만 0.1에서 0.2로 바꾸고 초기·방출확률은 유지한다. 지정 경로 N,W와 관측 낮음,높음의 결합확률은?</p>
+<details><summary>변형 풀이 확인</summary><p>0.1008.</p><p>0.8×0.9×0.2×0.7=0.1008이다. 지정 경로의 전이가 두 배이므로 이 경로의 결합확률도 두 배다. 다른 경로를 합산하지 않았으므로 관측열 전체 가능도가 아니다.</p></details>
+<p>전이는 상태에서 상태, 방출은 상태에서 관측.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://hmmlearn.readthedocs.io/en/latest/tutorial.html" target="_blank" rel="noopener noreferrer">hmmlearn Tutorial</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-37.html">← 이전 체험</a>
+<a href="4-01.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-38", "title": "HMM은 상태의 이동과 관측의 발생을 나눈다", "question": {"givens": "장비의 내부 상태는 정상·마모, 센서는 낮음·높음이다.", "stem": "전이확률이 설명하는 것은?", "choices": ["상태가 주어졌을 때 센서값의 확률", "현재 상태에서 다음 상태로 갈 확률", "첫 상태의 확률만", "관측 뒤 특정 상태일 확률"], "answer": 2, "reason": "전이는 숨은 상태 사이의 이동이다. 관측값이 나올 조건부 확률은 방출이다.", "wrong_reasons": ["1번: 방출확률의 역할이다.", "3번: 초기분포의 역할이다.", "4번: 관측을 조건으로 한 사후 상태 추론과 다르다."]}, "experience": {"kind": "calculation", "goal": "한 경로의 전이확률을 바꿔 지정 경로·관측의 결합확률을 계산한다.", "inputs": [{"id": "transition", "label": "정상→마모 전이확률", "type": "number", "default": 0.1, "min": 0, "max": 1}], "cases": [{"name": "원전이", "inputs": {"transition": 0.1}, "expected_answer": 0.0504, "reason": "초기×방출×전이×방출"}, {"name": "전이2배", "inputs": {"transition": 0.2}, "expected_answer": 0.1008, "reason": "지정경로기여2배"}, {"name": "불가능전이", "inputs": {"transition": 0}, "expected_answer": 0, "reason": "지정경로기여0"}], "boundary": "1차 HMM의 지정 경로 N,W와 관측 낮음,높음만 다룬다. 관측열 가능도·상태 사후확률·Viterbi 경로를 계산하지 않는다.", "related_codes": ["3-28"]}}</script><script type="module" src="app.mjs"></script></body></html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-38</p><h1 class="lesson-title">p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다</h1>
+<p>같은 p값에 서로 다른 사전 유의수준을 적용하고 등호 경계를 확인한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">서로 다른 사전 설계를 비교한다. 관측 뒤 유리한 α로 바꾸는 절차를 권하지 않는다. 다중검정·효과크기는 계산하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<p>p값은 가설의 확률이 아니라 가설 아래 결과의 극단성이다.</p>
+<p>같은 p값에 서로 다른 사전 유의수준을 적용하는 자체 판단 예제다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">p값</th>
+<th style="text-align: right;">사전에 정한 α</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.05</td>
+<td>기각</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.01</td>
+<td>기각하지 못함</td>
+</tr>
+</tbody>
+</table>
+<p>유리한 결론을 얻으려고 p값을 본 뒤 α를 바꾸는 절차를 권하는 예제가 아니다. 기준이 이미 다르게 정해진 두 상황을 비교한다.</p>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>가정이 맞는 검정에서 p=0.03이다. 유의수준 α=0.05를 사전에 정했다.</p><fieldset><legend>맞는 결론은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 귀무가설이 참일 확률은 3%다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 0.03&lt;0.05이므로 귀무가설을 기각한다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 차이가 전혀 없다고 확정한다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 제2종 오류 확률은 항상 3%다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>같은 p=0.03이지만 α=0.01을 사전에 정한 다른 설계라면?</p>
+<details><summary>변형 풀이 확인</summary><p>귀무가설을 기각하지 못한다.</p><p>0.03&gt;0.01이다. 이 결과도 귀무가설의 참이나 효과의 부재를 증명하지 않는다.</p></details>
+<p>p값은 가설의 확률이 아니라 가설 아래 결과의 극단성이다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat200/Lesson05" target="_blank" rel="noopener noreferrer">Penn State STAT 200: Hypothesis Testing Part 1</a></li>
+<li><a href="https://online.stat.psu.edu/stat200/Lesson06" target="_blank" rel="noopener noreferrer">Penn State STAT 200: Hypothesis Testing Part 2</a></li>
+<li><a href="https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf" target="_blank" rel="noopener noreferrer">ASA Statement on Statistical Significance and P-Values</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-37.html">← 이전 체험</a>
+<a href="3-01.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-38", "title": "p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다", "question": {"givens": "가정이 맞는 검정에서 p=0.03이다. 유의수준 α=0.05를 사전에 정했다.", "stem": "맞는 결론은?", "choices": ["귀무가설이 참일 확률은 3%다", "0.03\u003c0.05이므로 귀무가설을 기각한다", "차이가 전혀 없다고 확정한다", "제2종 오류 확률은 항상 3%다"], "answer": 2, "reason": "정한 기준에서 p값이 α보다 작아 기각한다. 이 결정은 가설의 사후확률이나 효과 크기를 직접 말하지 않는다.", "wrong_reasons": ["① p값의 조건부 방향을 뒤집었다.", "③ 기각 결과와도 맞지 않고 차이의 부재를 증명하는 절차도 아니다.", "④ β는 특정 대립가설·표본 설계 등에 따라 달라지며 p값과 같지 않다."]}, "experience": {"kind": "hypothesis-decision", "goal": "같은 p값에 서로 다른 사전 유의수준을 적용하고 등호 경계를 확인한다.", "inputs": [{"id": "p", "label": "제공된 반올림 전 p값", "type": "number", "default": 0.03, "min": 0, "max": 1}, {"id": "alpha", "label": "사전에 정한 α", "type": "number", "default": 0.05, "min": 0.001, "max": 0.5}], "cases": [{"name": "원문제", "inputs": {"p": 0.03, "alpha": 0.05}, "expected_answer": "귀무가설 기각", "reason": "0.03≤0.05"}, {"name": "다른설계변형", "inputs": {"p": 0.03, "alpha": 0.01}, "expected_answer": "귀무가설을 기각하지 못함", "reason": "0.03\u003e0.01"}, {"name": "명시경계", "inputs": {"p": 0.05, "alpha": 0.05}, "expected_answer": "귀무가설 기각", "reason": "반올림전값과≤규칙을명시"}], "boundary": "서로 다른 사전 설계를 비교한다. 관측 뒤 유리한 α로 바꾸는 절차를 권하지 않는다. 다중검정·효과크기는 계산하지 않는다.", "related_codes": ["2-02", "4-14"]}}</script><script type="module" src="app.mjs"></script></body></html>

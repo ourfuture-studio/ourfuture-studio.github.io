@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">이상값의 표시 기준을 바꾸면 선택되는 점도 달라진다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측값과 IQR 배수를 바꿔 엄격한 울타리의 경계 포함 여부를 계산한다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">q1</text>
+<circle cx="1080.0" cy="440.79999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40</text>
+<line x1="1080.0" y1="440.79999999999995" x2="150.0" y2="440.79999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="150.0" cy="440.79999999999995" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">35</text>
+<text x="470" y="208.5" fill="#7a1f2e" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">q3</text>
+<circle cx="1080.0" cy="365.79999999999995" r="9" fill="#7a1f2e"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40</text>
+<line x1="1080.0" y1="365.79999999999995" x2="150.0" y2="365.79999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="150.0" cy="365.79999999999995" r="9" fill="#7a1f2e"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">35</text>
+<text x="770" y="208.5" fill="#526da4" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">lower</text>
+<circle cx="1080.0" cy="553.3" r="9" fill="#526da4"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40</text>
+<line x1="1080.0" y1="553.3" x2="150.0" y2="553.3" stroke="#526da4" stroke-width="3"/>
+<circle cx="150.0" cy="553.3" r="9" fill="#526da4"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">35</text>
+<text x="1070" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">upper</text>
+<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40</text>
+<line x1="1080.0" y1="253.29999999999995" x2="150.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="150.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">35</text>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-5</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">15</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">25</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">35</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원래 관측값 단위</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">Q1=10, Q3=20에서 위 울타리는35다. 40은 밖이고35는 엄격한 바깥이 아니다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">평균이 다른 두 제품의 상대 산포를 비교하는 법</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균과 표준편차를 바꾸어 절대 산포와 상대 산포의 순위를 비교한다.</text>
+<text x="65" y="226.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표준편차 (g)</text>
+<line x1="100" y1="543.3" x2="565" y2="543.3" stroke="#929b98" stroke-width="3"/>
+<rect x="155" y="303.29999999999995" width="120" height="240.0" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="155" y="283.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">10</text>
+<text x="155" y="587.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<rect x="375" y="447.29999999999995" width="120" height="96.0" rx="2" fill="#7a1f2e" stroke="#dcded7" stroke-width="2"/>
+<text x="375" y="427.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<text x="375" y="587.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<text x="650" y="226.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">변동계수 (%)</text>
+<line x1="685" y1="543.3" x2="1150" y2="543.3" stroke="#929b98" stroke-width="3"/>
+<rect x="740" y="423.29999999999995" width="120" height="120.0" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="740" y="403.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">10</text>
+<text x="740" y="587.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<rect x="960" y="303.29999999999995" width="120" height="240.0" rx="2" fill="#7a1f2e" stroke="#dcded7" stroke-width="2"/>
+<text x="960" y="283.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<text x="960" y="587.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<text x="50" y="682.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A의 표준편차는10g, B는4g이지만 평균에 대한 비율은 각각10%,20%다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

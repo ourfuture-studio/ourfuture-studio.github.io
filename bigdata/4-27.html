@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>시간 추세와 공간 분포는 먼저 묻는 질문이 다르다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">4과목 · 빅데이터 결과 해석 · 4-27</p><h1 class="lesson-title">시간 추세와 공간 분포는 먼저 묻는 질문이 다르다</h1>
+<p>동일 자료에서 먼저 답할 질문을 바꾸어 표현을 선택한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">표현 선택의 교육용 판단이다. 실제 지역 자료·상업 성과나 지도 품질을 평가하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/4-27.png" target="_blank" rel="noopener"><img src="assets/figures/4-27.png" alt="자체 예제의 같은 증가량4가 다른 증가율로 읽힘을 두 지역의 시간축에서 보인다.. A10→12→14와 B8→8→12는 전체 증가량4가 같지만 증가율은40%·50%다." width="1200" height="900"/></a><figcaption>A10→12→14와 B8→8→12는 전체 증가량4가 같지만 증가율은40%·50%다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>가상 지역 A의 1·2·3월 매출은 각각 10·12·14다. 목적은 A의 월별 추세와 변화 시점 확인이다.</p><fieldset><legend>이 목적에 가장 직접 맞는 표현은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 한 달의 지역별 면적 지도만</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 시간 순서가 있는 선그래프</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 합계만 나타낸 원그래프</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 지역 이름의 가나다순 목록만</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>A는 1월 10→3월 14, B는 8→12다. 증가량과 증가율이 모두 같은가?</p>
+<details><summary>변형 풀이 확인</summary><p>증가량은 둘 다 4지만 증가율은 A40%, B50%로 다르다.</p><p>시간 그래프를 해석할 때도 변화량의 분모를 확인한다. 같은 절대 증가를 같은 비율 증가로 읽지 않는다.</p></details>
+<p>어디의 차이인가, 언제의 변화인가.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://service-manual.ons.gov.uk/data-visualisation/chart-types/line-chart" target="_blank" rel="noopener noreferrer">ONS Line chart</a></li>
+<li><a href="https://service-manual.ons.gov.uk/data-visualisation/chart-types/choropleth-maps" target="_blank" rel="noopener noreferrer">ONS Choropleth maps</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="4-25.html">← 이전 체험</a>
+<a href="4-28.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "4-27", "title": "시간 추세와 공간 분포는 먼저 묻는 질문이 다르다", "question": {"givens": "가상 지역 A의 1·2·3월 매출은 각각 10·12·14다. 목적은 A의 월별 추세와 변화 시점 확인이다.", "stem": "이 목적에 가장 직접 맞는 표현은?", "choices": ["한 달의 지역별 면적 지도만", "시간 순서가 있는 선그래프", "합계만 나타낸 원그래프", "지역 이름의 가나다순 목록만"], "answer": 2, "reason": "월별 값과 시간 순서를 같은 축에 놓은 선그래프는 추세와 변화 시점을 직접 보여준다. 지도나 합계만으로는 이 질문의 시간 변화를 충분히 나타내지 못한다.", "wrong_reasons": ["1번: 한 달의 공간 배치만 보여주면 A의 월별 변화가 빠진다.", "3번: 합계를 부분 비중으로 바꾸면 언제 값이 달라졌는지 보이지 않는다.", "4번: 지역 이름의 순서는 시간 순서나 월별 값의 변화가 아니다."]}, "experience": {"kind": "decision", "goal": "동일 자료에서 먼저 답할 질문을 바꾸어 표현을 선택한다.", "inputs": [{"id": "goal", "label": "먼저 답할 질문", "type": "select", "default": "time", "options": [{"value": "time", "label": "한 지역의 월별 추세·변화 시점"}, {"value": "space", "label": "같은 달의 위치·인접 분포"}, {"value": "numbers", "label": "같은 달 지역별 정확한 수치 차이"}]}], "cases": [{"name": "원 문제", "inputs": {"goal": "time"}, "expected_answer": "시간축 선그래프", "reason": "한 지역의 시간 추세다."}, {"name": "공간 질문", "inputs": {"goal": "space"}, "expected_answer": "위치 관계가 드러나는 지도 검토", "reason": "위치가 질문에 필요하다."}, {"name": "정확한 수치 비교", "inputs": {"goal": "numbers"}, "expected_answer": "정렬한 막대 또는 표 검토", "reason": "지도가 항상 최선은 아니다."}], "boundary": "표현 선택의 교육용 판단이다. 실제 지역 자료·상업 성과나 지도 품질을 평가하지 않는다.", "related_codes": ["4-28", "4-32"]}}</script><script type="module" src="app.mjs"></script></body></html>

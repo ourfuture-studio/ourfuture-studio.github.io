@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="980" viewBox="0 0 1200 980" role="img">
+<rect width="1200" height="980" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표본을 늘려도 표본틀에서 빠진 사람은 돌아오지 않는</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">같은 표본틀의 표본 수 증가와 누락 집단을 틀에 포함하는 변화를 비교한다.</text>
+<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">전화 있음1000명·값100</text>
+<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">전화 없음1000명·값0</text>
+<rect x="50" y="377.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="424.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">전체 평균50</text>
+<rect x="625" y="377.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="424.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">틀 안 평균100</text>
+<rect x="50" y="515.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집단</text>
+<line x1="325.0" y1="515.1" x2="325.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">수</text>
+<line x1="600.0" y1="515.1" x2="600.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
+<line x1="875.0" y1="515.1" x2="875.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표본틀 포함</text>
+<rect x="50" y="600.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전화있음</text>
+<line x1="325.0" y1="600.1" x2="325.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1000</text>
+<line x1="600.0" y1="600.1" x2="600.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">100</text>
+<line x1="875.0" y1="600.1" x2="875.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">예</text>
+<rect x="50" y="685.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전화없음</text>
+<line x1="325.0" y1="685.1" x2="325.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1000</text>
+<line x1="600.0" y1="685.1" x2="600.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="875.0" y1="685.1" x2="875.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">아니오</text>
+<text x="50" y="831.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전화 있음1000명은 값100, 없음1000명은 값0인 자체 예다. 목표평균50과 전화</text>
+<text x="50" y="874.7" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">표본틀 평균100을 구분한다.</text>
+<text x="50" y="951.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

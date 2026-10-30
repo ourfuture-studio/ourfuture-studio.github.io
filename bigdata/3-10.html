@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>XOR는 비선형 표현이 필요한 이유를 보여 준다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-10</p><h1 class="lesson-title">XOR는 비선형 표현이 필요한 이유를 보여 준다</h1>
+<p>같은 고정 가중치에서 중간 비선형을 제거했을 때 XOR 네 점 결과를 비교한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">문턱은 0.5 이상을1로 한다. 한 고정 가중치의 확인이며 새 자료 성능이나 최적화 성공을 측정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-10.png" target="_blank" rel="noopener"><img src="assets/figures/3-10.png" alt="자체 예제의 대각선 클래스와 비선형 표현을 함께 본다.. XOR 네 점은 대각선끼리 같은 클래스다. 원 좌표와 은닉 표현의 차이를 비교한다." width="1200" height="900"/></a><figcaption>XOR 네 점은 대각선끼리 같은 클래스다. 원 좌표와 은닉 표현의 차이를 비교한다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>XOR 네 점을 분류한다. 은닉층과 출력층이 모두 아핀 연산이며 비선형 활성화가 없다.</p><fieldset><legend>층을 더 쌓으면 직선 한계를 없앨 수 있는가?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 항상 가능하다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 입력 표본 수만 늘면 가능하다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 합성이 다시 아핀식이므로 이 구성만으로는 어렵다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 편향을 없애면 반드시 가능하다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>s=x₁+x₂, f=ReLU(s)−2ReLU(s−1)로 바꾸면 (1,1)의 f와 문턱 0.5에서의 범주는?</p>
+<details><summary>변형 풀이 확인</summary><p>f=0, 범주 0.</p><p>s=2이고 2−2×1=0이다. 비선형 표현이 네 점을 구분할 수 있게 만든다.</p></details>
+<p>깊이보다 먼저 중간의 비선형을 확인한다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener noreferrer">Stanford CS231n Neural Networks 1</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-09.html">← 이전 체험</a>
+<a href="3-11.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-10", "title": "XOR는 비선형 표현이 필요한 이유를 보여 준다", "question": {"givens": "XOR 네 점을 분류한다. 은닉층과 출력층이 모두 아핀 연산이며 비선형 활성화가 없다.", "stem": "층을 더 쌓으면 직선 한계를 없앨 수 있는가?", "choices": ["항상 가능하다", "입력 표본 수만 늘면 가능하다", "합성이 다시 아핀식이므로 이 구성만으로는 어렵다", "편향을 없애면 반드시 가능하다"], "answer": 3, "reason": "아핀 함수의 합성은 아핀 함수다. 직선 하나로 분리할 수 없는 XOR를 이 구조만으로 완전 분류할 수 없다.", "wrong_reasons": ["1번: 깊이와 비선형 표현을 같은 것으로 보았다.", "2번: 표본 수가 함수족의 선형성을 바꾸지는 않는다.", "4번: 편향 제거는 표현을 더 제한하며 XOR 해결을 보장하지 않는다."]}, "experience": {"kind": "decision", "goal": "같은 고정 가중치에서 중간 비선형을 제거했을 때 XOR 네 점 결과를 비교한다.", "inputs": [{"id": "mode", "label": "은닉 연산", "type": "select", "default": "relu", "options": [{"value": "relu", "label": "ReLU"}, {"value": "linear", "label": "항등함수"}]}], "cases": [{"name": "비선형 구성", "inputs": {"mode": "relu"}, "expected_answer": 0, "reason": "네 출력0,1,1,0"}, {"name": "항등 구성", "inputs": {"mode": "linear"}, "expected_answer": 1, "reason": "고정식2−x1−x2"}], "boundary": "문턱은 0.5 이상을1로 한다. 한 고정 가중치의 확인이며 새 자료 성능이나 최적화 성공을 측정하지 않는다.", "related_codes": ["3-09", "3-11"]}}</script><script type="module" src="app.mjs"></script></body></html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>같은 숫자라도 척도에 따라 가능한 해석이 다르다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-23</p><h1 class="lesson-title">같은 숫자라도 척도에 따라 가능한 해석이 다르다</h1>
+<p>측정척도를 바꾸어 배율 해석과 코드의 산술 연산을 구분한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">문제의 측정 정의를 따른다. 서열 응답을 특정 모형에서 근사 등간으로 취급하는 별도 결정을 자동 인정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<p>번호인가, 순서인가, 차이인가, 비율인가.</p>
+<p>서로 다른 척도를 나란히 둔 자체 예제다.</p>
+<table>
+<thead>
+<tr>
+<th>기록</th>
+<th>척도</th>
+<th>가능한 해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>색상 코드 1·2</td>
+<td>명목</td>
+<td>다른 범주</td>
+</tr>
+<tr>
+<td>만족도 낮음·높음</td>
+<td>서열</td>
+<td>순서</td>
+</tr>
+<tr>
+<td>섭씨 10·20도</td>
+<td>등간</td>
+<td>10도 차이</td>
+</tr>
+<tr>
+<td>중량 10·20kg</td>
+<td>비율</td>
+<td>두 배 중량</td>
+</tr>
+</tbody>
+</table>
+<p>등간과 비율은 모두 차이를 해석하지만 비율 해석을 똑같이 적용하지 않는다.</p>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>색상은 명목 코드, 만족도는 순위, 온도는 섭씨, 중량은 kg이다.</p><fieldset><legend>정당한 해석은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 색상 코드 2는 1의 두 배 색이다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 만족도 4와 2의 차이는 항상 2와 0의 차이와 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 20℃는 10℃의 두 배 온도다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 20kg은 10kg의 두 배 중량이다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>온도를 절대온도 Kelvin으로 정의하고 15K와 30K를 비교하면 비율 해석은 가능한가?</p>
+<details><summary>변형 풀이 확인</summary><p>절대온도 척도에서는 30K가 15K의 두 배라는 온도 비율을 해석할 수 있다.</p><p>Kelvin은 절대 영점을 기준으로 하는 비율척도다. 온도 차이와 온도 자체의 비율도 구분한다.</p></details>
+<p>번호인가, 순서인가, 차이인가, 비율인가.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat857/node/31/" target="_blank" rel="noopener noreferrer">Penn State STAT 897D: What is Data</a></li>
+<li><a href="https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm" target="_blank" rel="noopener noreferrer">NIST Dataplot: Coefficient of Variation</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-22.html">← 이전 체험</a>
+<a href="2-24.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-23", "title": "같은 숫자라도 척도에 따라 가능한 해석이 다르다", "question": {"givens": "색상은 명목 코드, 만족도는 순위, 온도는 섭씨, 중량은 kg이다.", "stem": "정당한 해석은?", "choices": ["색상 코드 2는 1의 두 배 색이다", "만족도 4와 2의 차이는 항상 2와 0의 차이와 같다", "20℃는 10℃의 두 배 온도다", "20kg은 10kg의 두 배 중량이다"], "answer": 4, "reason": "중량은 의미 있는 영점을 가진 비율척도라 같은 단위에서 배율을 해석할 수 있다.", "wrong_reasons": ["① 명목 코드는 식별자이지 수량이 아니다.", "② 서열 단계 사이의 같은 간격이 보장되지 않는다.", "③ 섭씨의 0은 절대 영점이 아니므로 온도 비율을 그렇게 해석하지 않는다."]}, "experience": {"kind": "scale-interpretation", "goal": "측정척도를 바꾸어 배율 해석과 코드의 산술 연산을 구분한다.", "inputs": [{"id": "scale", "label": "측정 정의", "type": "select", "default": "섭씨온도", "options": ["색상 코드", "만족도 순위", "섭씨온도", "절대온도 K", "중량 kg"]}, {"id": "a", "label": "첫 수치", "type": "number", "default": 10, "min": 0, "max": 1000}, {"id": "b", "label": "두 번째 수치", "type": "number", "default": 20, "min": 0, "max": 1000}], "cases": [{"name": "섭씨", "inputs": {"scale": "섭씨온도", "a": 10, "b": 20}, "expected_answer": "배율 해석 불가 · 등간", "reason": "영점임의"}, {"name": "중량정답", "inputs": {"scale": "중량 kg", "a": 10, "b": 20}, "expected_answer": "비율척도 · 2.00배", "reason": "의미있는영점"}, {"name": "Kelvin변형", "inputs": {"scale": "절대온도 K", "a": 15, "b": 30}, "expected_answer": "비율척도 · 2.00배", "reason": "절대온도"}, {"name": "명목", "inputs": {"scale": "색상 코드", "a": 1, "b": 2}, "expected_answer": "배율 해석 불가 · 명목", "reason": "코드연산과의미구분"}], "boundary": "문제의 측정 정의를 따른다. 서열 응답을 특정 모형에서 근사 등간으로 취급하는 별도 결정을 자동 인정하지 않는다.", "related_codes": ["2-01", "2-16"]}}</script><script type="module" src="app.mjs"></script></body></html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">훈련의 두 결과와 기대값을 나누어 표시한다.</text>
+<text x="55" y="224.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">드롭</text>
+<rect x="320" y="198.3" width="2" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="990" y="222.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<text x="55" y="314.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">유지</text>
+<rect x="320" y="288.3" width="650.0" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="990" y="312.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<text x="55" y="404.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">기대값</text>
+<rect x="320" y="378.3" width="325.0" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="990" y="402.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<text x="50" y="532.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">활성값2·드롭 확률0.5의 훈련 출력은0 또는4이며 기대값2다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

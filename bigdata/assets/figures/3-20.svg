@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1187" viewBox="0 0 1200 1187" role="img">
+<rect width="1200" height="1187" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">K-means의 중심과 DBSCAN의 이웃을 구별한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">반경과 자기 포함 이웃 수를 보인다.</text>
+<text x="70" y="223.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">eps=0.11 · 최소 3개 (자기 자신 포함)</text>
+<text x="70" y="274.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전체 위치: 같은 거리 단위의 공통 축</text>
+<line x1="150" y1="348.3" x2="1100" y2="348.3" stroke="#1b2340" stroke-width="3"/>
+<circle cx="150.0" cy="348.3" r="10" fill="#a36c25"/>
+<circle cx="190.9090909090909" cy="348.3" r="21" fill="#2e6b60"/>
+<circle cx="190.9090909090909" cy="348.3" r="15" fill="#fbfaf6"/>
+<circle cx="190.9090909090909" cy="348.3" r="10" fill="#2e6b60"/>
+<circle cx="231.8181818181818" cy="348.3" r="10" fill="#a36c25"/>
+<circle cx="968.1818181818181" cy="348.3" r="10" fill="#8c3444"/>
+<line x1="150.0" y1="361.3" x2="150.0" y2="371.3" stroke="#1b2340" stroke-width="2"/>
+<text x="130.0" y="402.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="231.8181818181818" y1="361.3" x2="231.8181818181818" y2="371.3" stroke="#1b2340" stroke-width="2"/>
+<text x="211.8181818181818" y="402.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.2</text>
+<line x1="559.090909090909" y1="361.3" x2="559.090909090909" y2="371.3" stroke="#1b2340" stroke-width="2"/>
+<text x="539.090909090909" y="402.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="968.1818181818181" y1="361.3" x2="968.1818181818181" y2="371.3" stroke="#1b2340" stroke-width="2"/>
+<text x="948.1818181818181" y="402.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<text x="140" y="444.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0·0.1·0.2가 가까이 모임</text>
+<text x="915" y="444.5" fill="#8c3444" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2: 잡음</text>
+<text x="70" y="521.4" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">부분 확대: -0.05 ~ 0.25 (아래는 별도 확대 축)</text>
+<rect x="270.0" y="653.3" width="660.0" height="135" rx="0" fill="#e2efe8" stroke="#e2efe8" stroke-width="2"/>
+<line x1="150" y1="718.3" x2="1080" y2="718.3" stroke="#1b2340" stroke-width="3"/>
+<line x1="270.0" y1="643.3" x2="270.0" y2="653.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="661.3" x2="270.0" y2="671.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="679.3" x2="270.0" y2="689.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="697.3" x2="270.0" y2="707.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="715.3" x2="270.0" y2="725.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="733.3" x2="270.0" y2="743.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="751.3" x2="270.0" y2="761.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="769.3" x2="270.0" y2="779.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="270.0" y1="787.3" x2="270.0" y2="793.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="643.3" x2="930.0" y2="653.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="661.3" x2="930.0" y2="671.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="679.3" x2="930.0" y2="689.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="697.3" x2="930.0" y2="707.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="715.3" x2="930.0" y2="725.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="733.3" x2="930.0" y2="743.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="751.3" x2="930.0" y2="761.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="769.3" x2="930.0" y2="779.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="787.3" x2="930.0" y2="793.3" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="300.0" cy="718.3" r="10" fill="#a36c25"/>
+<text x="267.0" y="829.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<text x="210.0" y="880.5" fill="#a36c25" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">경계 · 2개</text>
+<circle cx="600.0000000000001" cy="718.3" r="21" fill="#2e6b60"/>
+<circle cx="600.0000000000001" cy="718.3" r="15" fill="#fbfaf6"/>
+<circle cx="600.0000000000001" cy="718.3" r="10" fill="#2e6b60"/>
+<text x="567.0000000000001" y="829.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.1</text>
+<text x="510.0000000000001" y="880.5" fill="#2e6b60" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">핵심 · 3개</text>
+<circle cx="900.0" cy="718.3" r="10" fill="#a36c25"/>
+<text x="867.0" y="829.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.2</text>
+<text x="810.0" y="880.5" fill="#a36c25" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">경계 · 2개</text>
+<line x1="600.0000000000001" y1="603.3" x2="930.0" y2="603.3" stroke="#2e6b60" stroke-width="4"/>
+<line x1="600.0000000000001" y1="593.3" x2="600.0000000000001" y2="613.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="930.0" y1="593.3" x2="930.0" y2="613.3" stroke="#2e6b60" stroke-width="3"/>
+<text x="630.0000000000001" y="581.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">반경 0.11</text>
+<text x="70" y="939.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">음영은 0.1의 이웃 구간 [-0.01, 0.21]이다. 0·0.1·0.2가 모두 포함된다.</text>
+<text x="70" y="998.5" fill="#626a73" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">위·아래 축 모두 위치의 임의 단위이며, 확대 축의 축척은 위와 다르다.</text>
+<text x="50" y="1082.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">eps.11에서 가운데.1은 자기 포함3개 이웃, 0과.2는 경계, 좌표2는 잡음이다.</text>
+<text x="50" y="1158.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

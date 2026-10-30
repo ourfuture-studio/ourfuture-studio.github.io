@@ -19,3 +19,6 @@ SQL은 sql.js 1.13.0 / WebAssembly로 브라우저 메모리의 SQLite에서 실
 ourfuture studio · 새로운 지식, 뜻밖의 연결.
 
 - 머신러닝 코드 실습15개: https://ourfuture-studio.github.io/ml/
+
+
+- [빅분기 필기 조건 실험실](https://ourfuture-studio.github.io/bigdata/) — 네 과목108개 자체 교육 질문과 조건 변경 체험.

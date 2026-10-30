@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>분류 트리와 회귀 트리의 잎을 구별한다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-08</p><h1 class="lesson-title">분류 트리와 회귀 트리의 잎을 구별한다</h1>
+<p>극단값을 넣고 손실을 바꿔 평균과 중앙값의 차이를 본다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">이미 한 잎에 배정된 반응값이다. 군집이나 최적 트리 구조를 적합하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-08.png" target="_blank" rel="noopener"><img src="assets/figures/3-08.png" alt="자체 예제의 극단값이 평균을 옮기는 장면을 비교한다.. 값 2·4·20에서 제곱오차의 평균은 약8.667, 절대오차의 중앙값은4다." width="1200" height="1127"/></a><figcaption>값 2·4·20에서 제곱오차의 평균은 약8.667, 절대오차의 중앙값은4다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>회귀 트리의 한 잎에 반응값 2·4·6이 있다. 제곱오차 기준이다.</p><fieldset><legend>이 잎의 예측값과 제곱오차 합은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 4, 8</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 4, 0</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 2, 8</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 6, 20</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>같은 잎의 값이 2·4·20이고 절대오차 기준으로 바꾸면 잎의 예측값은?</p>
+<details><summary>변형 풀이 확인</summary><p>중앙값 4.</p><p>절대오차 합은 2+0+16=18이다. 평균 26/3은 제곱오차의 기준이며 여기서는 목표가 달라졌다.</p></details>
+<p>수치 잎은 손실을 확인한다: 제곱은 평균.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/tree.html" target="_blank" rel="noopener noreferrer">scikit-learn Decision Trees</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-07.html">← 이전 체험</a>
+<a href="3-09.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-08", "title": "분류 트리와 회귀 트리의 잎을 구별한다", "question": {"givens": "회귀 트리의 한 잎에 반응값 2·4·6이 있다. 제곱오차 기준이다.", "stem": "이 잎의 예측값과 제곱오차 합은?", "choices": ["4, 8", "4, 0", "2, 8", "6, 20"], "answer": 1, "reason": "평균 (2+4+6)/3=4이고, (2−4)²+(4−4)²+(6−4)²=8이다.", "wrong_reasons": ["2번: 평균을 예측해도 서로 다른 실제 값의 잔차가 모두 0이 되지는 않는다.", "3번: 최소제곱 잎 예측은 최소값 2가 아니라 평균이다.", "4번: 6에서의 제곱오차는 20이지만 기준을 최소화하지 못한다."]}, "experience": {"kind": "calculation", "goal": "극단값을 넣고 손실을 바꿔 평균과 중앙값의 차이를 본다.", "inputs": [{"id": "last", "label": "세 번째 반응값", "type": "number", "default": 6, "min": 6, "max": 20}, {"id": "loss", "label": "잎의 손실", "type": "select", "default": "squared", "options": [{"value": "squared", "label": "제곱오차"}, {"value": "absolute", "label": "절대오차"}]}], "cases": [{"name": "대칭 자료 L2", "inputs": {"last": 6, "loss": "squared"}, "expected_answer": 4, "reason": "평균4"}, {"name": "극단값 L2", "inputs": {"last": 20, "loss": "squared"}, "expected_answer": 8.666667, "reason": "평균26/3"}, {"name": "극단값 L1", "inputs": {"last": 20, "loss": "absolute"}, "expected_answer": 4, "reason": "중앙값4"}], "boundary": "이미 한 잎에 배정된 반응값이다. 군집이나 최적 트리 구조를 적합하지 않는다.", "related_codes": ["3-05"]}}</script><script type="module" src="app.mjs"></script></body></html>

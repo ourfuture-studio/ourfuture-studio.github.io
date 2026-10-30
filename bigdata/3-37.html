@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>오토인코더는 입력을 복원하는 표현을 배운다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-37</p><h1 class="lesson-title">오토인코더는 입력을 복원하는 표현을 배운다</h1>
+<p>복원 두 좌표를 직접 바꿔 부호 상쇄와 평균제곱오차를 비교한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">좌표 평균 손실이며 표본 평균과 구분한다. MSE만으로 실제 고장을 확정하거나 탐지성능을 평가하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-37.png" target="_blank" rel="noopener"><img src="assets/figures/3-37.png" alt="자체 예제의 원본과 복원의 차이를 좌표마다 보인다.. 두 좌표에서 원본(2,4)과 복원(1,5)은 반대 방향으로1씩 틀리며 MSE는1이다." width="1200" height="900"/></a><figcaption>두 좌표에서 원본(2,4)과 복원(1,5)은 반대 방향으로1씩 틀리며 MSE는1이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>x=(2,4), 복원 x̂=(1,5). 손실은 두 좌표의 평균제곱오차다.</p><fieldset><legend>복원 MSE는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 0</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 1</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 2</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 4</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>복원값이 x̂=(2,4)로 바뀌면 MSE는? 이 한 표본으로 이상 탐지 성능을 평가할 수 있는가?</p>
+<details><summary>변형 풀이 확인</summary><p>MSE=0. 이상 탐지 성능은 판단할 수 없다.</p><p>해당 입력은 정확히 복원했지만 다른 정상·이상 자료의 점수 분포와 오류율을 확인하지 않았다.</p></details>
+<p>라벨 대신 입력 복원, 오차와 고장은 구별.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://www.tensorflow.org/tutorials/generative/autoencoder" target="_blank" rel="noopener noreferrer">TensorFlow Intro to Autoencoders</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-36.html">← 이전 체험</a>
+<a href="3-38.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-37", "title": "오토인코더는 입력을 복원하는 표현을 배운다", "question": {"givens": "x=(2,4), 복원 x̂=(1,5). 손실은 두 좌표의 평균제곱오차다.", "stem": "복원 MSE는?", "choices": ["0", "1", "2", "4"], "answer": 2, "reason": "좌표별 차이 1과 −1을 제곱해 합한 2를 좌표 수 2로 나누면 1이다.", "wrong_reasons": ["1번: 부호가 있는 오차를 그대로 더했다.", "3번: 제곱합 2를 평균으로 나누지 않았다.", "4번: 손실 정의에 없는 추가 제곱을 했다."]}, "experience": {"kind": "calculation", "goal": "복원 두 좌표를 직접 바꿔 부호 상쇄와 평균제곱오차를 비교한다.", "inputs": [{"id": "r1", "label": "첫 좌표 복원값", "type": "number", "default": 1, "min": -2, "max": 8}, {"id": "r2", "label": "둘째 좌표 복원값", "type": "number", "default": 5, "min": -2, "max": 8}], "cases": [{"name": "상쇄오차", "inputs": {"r1": 1, "r2": 5}, "expected_answer": 1, "reason": "오차1,−1"}, {"name": "정확복원", "inputs": {"r1": 2, "r2": 4}, "expected_answer": 0, "reason": "모든차이0"}, {"name": "같은방향오차", "inputs": {"r1": 1, "r2": 3}, "expected_answer": 1, "reason": "오차1,1"}], "boundary": "좌표 평균 손실이며 표본 평균과 구분한다. MSE만으로 실제 고장을 확정하거나 탐지성능을 평가하지 않는다.", "related_codes": []}}</script><script type="module" src="app.mjs"></script></body></html>

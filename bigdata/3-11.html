@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>활성화 함수의 값과 범위를 따로 본다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-11</p><h1 class="lesson-title">활성화 함수의 값과 범위를 따로 본다</h1>
+<p>입력 부호와 함수 선택을 바꿔 값·상한을 비교한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">함수값만 계산한다. 원점의 ReLU 미분을 정의하거나 보정 확률을 주장하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-11.png" target="_blank" rel="noopener"><img src="assets/figures/3-11.png" alt="자체 예제의 같은 입력에서 세 함수의 범위를 비교한다.. x축 입력, y축 함수값이다. ReLU는 음수0·양수 선형이고 sigmoid·tanh는 포화한다." width="1200" height="900"/></a><figcaption>x축 입력, y축 함수값이다. ReLU는 음수0·양수 선형이고 sigmoid·tanh는 포화한다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>입력 z=0. 순서는 sigmoid, tanh, ReLU다.</p><fieldset><legend>세 함수값의 순서는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. (0,0,0)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. (0.5,0,0)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. (1,0,1)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. (0.5,0.5,0.5)</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>입력을 z=2로 바꿨다. 세 함수 중 출력이 1을 넘는 함수는?</p>
+<details><summary>변형 풀이 확인</summary><p>ReLU만 해당한다.</p><p>ReLU(2)=2다. sigmoid와 tanh는 각각 상한 1 아래에 있다.</p></details>
+<p>시그모이드는 반, 나머지 둘은 원점에서 영.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener noreferrer">Stanford CS231n Neural Networks 1</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-10.html">← 이전 체험</a>
+<a href="3-12.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-11", "title": "활성화 함수의 값과 범위를 따로 본다", "question": {"givens": "입력 z=0. 순서는 sigmoid, tanh, ReLU다.", "stem": "세 함수값의 순서는?", "choices": ["(0,0,0)", "(0.5,0,0)", "(1,0,1)", "(0.5,0.5,0.5)"], "answer": 2, "reason": "sigmoid(0)=1/(1+1)=0.5, tanh(0)=0, ReLU(0)=0이다.", "wrong_reasons": ["1번: sigmoid가 원점에서 0.5라는 점을 놓쳤다.", "3번: 함수값을 이진 레이블처럼 취급했다.", "4번: 서로 다른 세 함수에 sigmoid의 값을 모두 적용했다."]}, "experience": {"kind": "calculation", "goal": "입력 부호와 함수 선택을 바꿔 값·상한을 비교한다.", "inputs": [{"id": "z", "label": "입력 z", "type": "number", "default": 0, "min": -4, "max": 4}, {"id": "fn", "label": "활성화", "type": "select", "default": "sigmoid", "options": [{"value": "sigmoid", "label": "sigmoid"}, {"value": "tanh", "label": "tanh"}, {"value": "relu", "label": "ReLU"}]}], "cases": [{"name": "원점시그모이드", "inputs": {"z": 0, "fn": "sigmoid"}, "expected_answer": 0.5, "reason": "1/(1+1)"}, {"name": "원점탄젠트", "inputs": {"z": 0, "fn": "tanh"}, "expected_answer": 0, "reason": "tanh0"}, {"name": "ReLU상한비교", "inputs": {"z": 2, "fn": "relu"}, "expected_answer": 2, "reason": "1보다큼"}, {"name": "음수차단", "inputs": {"z": -2, "fn": "relu"}, "expected_answer": 0, "reason": "max(0,-2)"}], "boundary": "함수값만 계산한다. 원점의 ReLU 미분을 정의하거나 보정 확률을 주장하지 않는다.", "related_codes": ["3-09", "3-13"]}}</script><script type="module" src="app.mjs"></script></body></html>

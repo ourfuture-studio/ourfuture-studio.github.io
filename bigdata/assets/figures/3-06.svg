@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="901" viewBox="0 0 1200 901" role="img">
+<rect width="1200" height="901" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">로지스틱 계수는 확률보다 오즈에 붙는다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">로그오즈와 확률의 비선형 대응을 보인다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사건 확률 p(0~1)</text>
+<circle cx="150.0" cy="547.8053083333797" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-4</text>
+<line x1="150.0" y1="547.8053083333797" x2="382.5" y2="516.884140091093" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="382.5" cy="516.884140091093" r="9" fill="#2e6b60"/>
+<text x="367.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-2</text>
+<line x1="382.5" y1="516.884140091093" x2="498.75" y2="471.1398234021907" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="498.75" cy="471.1398234021907" r="9" fill="#2e6b60"/>
+<text x="483.75" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-1</text>
+<line x1="498.75" y1="471.1398234021907" x2="615.0" y2="400.5526541666898" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="615.0" cy="400.5526541666898" r="9" fill="#2e6b60"/>
+<text x="600.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="615.0" y1="400.5526541666898" x2="731.25" y2="329.96548493118894" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="731.25" cy="329.96548493118894" r="9" fill="#2e6b60"/>
+<text x="716.25" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="731.25" y1="329.96548493118894" x2="847.5" y2="284.2211682422867" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="847.5" cy="284.2211682422867" r="9" fill="#2e6b60"/>
+<text x="832.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="847.5" y1="284.2211682422867" x2="1080.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.24550</text>
+<text x="50" y="523.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">34</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.49100</text>
+<text x="50" y="448.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">69</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.73651</text>
+<text x="50" y="373.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">03</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.98201</text>
+<text x="50" y="298.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">38</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">선형식 η(로그오즈, 무차원)</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">η의 같은 증가가 확률의 같은 증가량을 뜻하지 않는다. x축 로그오즈, y축 사건 확</text>
+<text x="50" y="795.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">률.</text>
+<text x="50" y="872.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

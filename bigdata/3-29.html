@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>나이브 베이즈는 클래스 안에서 곱으로 나눈다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-29</p><h1 class="lesson-title">나이브 베이즈는 클래스 안에서 곱으로 나눈다</h1>
+<p>사전 또는 특성 가능도를 바꾸어 점수와 사후확률을 분리한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">A/B가 전체이며 두 이진 관찰값이1인 경우다. 조건부 독립의 타당성·확률 보정·분류성능을 검증하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-29.png" target="_blank" rel="noopener"><img src="assets/figures/3-29.png" alt="자체 예제의 곱으로 계산한 점수와 정규화된 사후를 구별한다.. A=.5×.8×.5=.2, B=.5×.4×.5=.1을 합으로 나눠 A사후2/3을 얻는다." width="1200" height="900"/></a><figcaption>A=.5×.8×.5=.2, B=.5×.4×.5=.1을 합으로 나눠 A사후2/3을 얻는다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>사전 A/B 각 0.5. 두 관찰 특성의 가능도는 A=(0.8,0.5), B=(0.4,0.5). 조건부 독립을 가정한다.</p><fieldset><legend>A의 비정규화 점수는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 0.20</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 0.40</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 0.65</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 0.80</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>A/B 점수가 각각 0.20,0.10일 때 A의 정규화된 사후확률은?</p>
+<details><summary>변형 풀이 확인</summary><p>2/3, 약 0.667.</p><p>공통 관찰 확률에 해당하는 점수 합 0.30으로 A 점수 0.20을 나눈다. 두 클래스가 전체라는 조건을 쓴다.</p></details>
+<p>클래스를 고정한 뒤, 특성 가능도를 곱한다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank" rel="noopener noreferrer">scikit-learn Naive Bayes</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-28.html">← 이전 체험</a>
+<a href="3-30.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-29", "title": "나이브 베이즈는 클래스 안에서 곱으로 나눈다", "question": {"givens": "사전 A/B 각 0.5. 두 관찰 특성의 가능도는 A=(0.8,0.5), B=(0.4,0.5). 조건부 독립을 가정한다.", "stem": "A의 비정규화 점수는?", "choices": ["0.20", "0.40", "0.65", "0.80"], "answer": 1, "reason": "사전까지 곱해 0.5×0.8×0.5=0.20이다.", "wrong_reasons": ["2번: 두 가능도만 곱하고 사전 0.5를 빠뜨렸다.", "3번: 제시된 곱셈 모형 대신 확률을 임의로 더하거나 평균했다.", "4번: 첫 특성 가능도만 사용했다."]}, "experience": {"kind": "calculation", "goal": "사전 또는 특성 가능도를 바꾸어 점수와 사후확률을 분리한다.", "inputs": [{"id": "prior", "label": "A 사전확률", "type": "number", "default": 0.5, "min": 0, "max": 1}, {"id": "a1", "label": "A에서 첫 관찰 특성 가능도", "type": "number", "default": 0.8, "min": 0, "max": 1}, {"id": "b1", "label": "B에서 첫 관찰 특성 가능도", "type": "number", "default": 0.4, "min": 0, "max": 1}], "cases": [{"name": "본문점수", "inputs": {"prior": 0.5, "a1": 0.8, "b1": 0.4}, "expected_answer": 0.666667, "reason": ".2/(.2+.1)"}, {"name": "사전변경", "inputs": {"prior": 0.25, "a1": 0.8, "b1": 0.4}, "expected_answer": 0.4, "reason": ".1/(.1+.15)"}, {"name": "첫특성동일", "inputs": {"prior": 0.5, "a1": 0.4, "b1": 0.4}, "expected_answer": 0.5, "reason": "양점수같음"}], "boundary": "A/B가 전체이며 두 이진 관찰값이1인 경우다. 조건부 독립의 타당성·확률 보정·분류성능을 검증하지 않는다.", "related_codes": ["3-28"]}}</script><script type="module" src="app.mjs"></script></body></html>

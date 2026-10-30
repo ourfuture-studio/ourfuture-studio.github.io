@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>표준점수 0은 원자료의 0이 아니라 기준 평균이다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-13</p><h1 class="lesson-title">표준점수 0은 원자료의 0이 아니라 기준 평균이다</h1>
+<p>기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">주어진 기준으로 계산한다. 분산 추정법과 정규성은 별도이며 운영 입력에서 다시 fit하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-13.png" target="_blank" rel="noopener"><img src="assets/figures/2-13.png" alt="자체 예제의 기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.. 평균50·표준편차5에서45·50·55는 z=−1·0·1이다. 이 산술은 정규분포를 가정하지 않는다." width="1200" height="901"/></a><figcaption>평균50·표준편차5에서45·50·55는 z=−1·0·1이다. 이 산술은 정규분포를 가정하지 않는다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>기준 평균 50, 표준편차 5이며 x=50이다. z=(x−평균)/표준편차를 사용한다.</p><fieldset><legend>z와 그 의미로 옳은 것은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 0·원래 측정값이 0이다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 1·평균과 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 0·기준 평균과 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. −1·기준 평균보다 크다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>기준을 유지하고 x만 55로 바꾸면?</p>
+<details><summary>변형 풀이 확인</summary><p>z=1</p><p>평균보다 5 크고 표준편차가 5이므로 5/5=1이다.</p></details>
+<p>표준점수 0은 그 자료의 출발점이 아니라 평균 위치다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank" rel="noopener noreferrer">scikit-learn: Preprocessing data</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-12.html">← 이전 체험</a>
+<a href="2-14.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-13", "title": "표준점수 0은 원자료의 0이 아니라 기준 평균이다", "question": {"givens": "기준 평균 50, 표준편차 5이며 x=50이다. z=(x−평균)/표준편차를 사용한다.", "stem": "z와 그 의미로 옳은 것은?", "choices": ["0·원래 측정값이 0이다", "1·평균과 같다", "0·기준 평균과 같다", "−1·기준 평균보다 크다"], "answer": 3, "reason": "(50−50)/5=0이고 이는 기준 평균과 같은 위치라는 뜻이다.", "wrong_reasons": ["① 원자료는 50이며 변환 후 0의 뜻을 혼동했다.", "② 평균에서 표준편차만큼 커야 z=1이다.", "④ z=−1은 여기서는 원자료 45의 위치다."]}, "experience": {"kind": "numeric-transform", "goal": "기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.", "inputs": [{"id": "mean", "label": "기준 평균", "type": "number", "default": 50, "min": -1000, "max": 1000}, {"id": "sd", "label": "기준 표준편차", "type": "number", "default": 5, "min": 0, "max": 1000}, {"id": "x", "label": "관측값", "type": "number", "default": 50, "min": -1000, "max": 1000}], "cases": [{"name": "기본", "inputs": {"mean": 50, "sd": 5, "x": 50}, "expected_answer": "z=0.00", "reason": "원고기본"}, {"name": "변형", "inputs": {"mean": 50, "sd": 5, "x": 55}, "expected_answer": "z=1.00", "reason": "원고변형"}, {"name": "평균아래", "inputs": {"mean": 50, "sd": 5, "x": 45}, "expected_answer": "z=-1.00", "reason": "음수점수는오류아님"}, {"name": "0표준편차", "inputs": {"mean": 50, "sd": 0, "x": 50}, "expected_answer": "양수 표준편차가 필요합니다", "reason": "상수열단순식거부"}], "boundary": "주어진 기준으로 계산한다. 분산 추정법과 정규성은 별도이며 운영 입력에서 다시 fit하지 않는다.", "related_codes": ["2-12", "2-25"]}}</script><script type="module" src="app.mjs"></script></body></html>

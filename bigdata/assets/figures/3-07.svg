@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1041" viewBox="0 0 1200 1041" role="img">
+<rect width="1200" height="1041" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">트리 분할은 자식 전체의 엔트로피를 본다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">자식 크기와 클래스 혼합을 함께 보여 준다.</text>
+<circle cx="82" cy="214.3" r="9" fill="#2e6b60"/>
+<text x="102" y="220.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">양성</text>
+<circle cx="242" cy="214.3" r="9" fill="#8c3444"/>
+<text x="262" y="220.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">음성</text>
+<text x="730" y="219.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">엔트로피 단위: 비트 (log_2)</text>
+<rect x="385" y="263.3" width="430" height="174" rx="14" fill="#ffffff" stroke="#dcded7" stroke-width="2"/>
+<text x="407" y="307.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">부모 · 8명</text>
+<text x="407" y="350.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">양성 3 · 음성 5</text>
+<rect x="409" y="375.3" width="143.25" height="18" rx="0" fill="#2e6b60" stroke="#2e6b60" stroke-width="2"/>
+<rect x="552.25" y="375.3" width="238.75" height="18" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="407" y="427.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">H = 0.954434</text>
+<line x1="510" y1="439.3" x2="290" y2="528.3" stroke="#626a73" stroke-width="4"/>
+<line x1="290" y1="528.3" x2="299.5060888341207" y2="516.6967989297002" stroke="#626a73" stroke-width="4"/>
+<line x1="290" y1="528.3" x2="304.899918748412" y2="530.0298616391842" stroke="#626a73" stroke-width="4"/>
+<line x1="690" y1="439.3" x2="910" y2="528.3" stroke="#626a73" stroke-width="4"/>
+<line x1="910" y1="528.3" x2="895.100081251588" y2="530.0298616391842" stroke="#626a73" stroke-width="4"/>
+<line x1="910" y1="528.3" x2="900.4939111658792" y2="516.6967989297002" stroke="#626a73" stroke-width="4"/>
+<rect x="70" y="533.3" width="440" height="174" rx="14" fill="#ffffff" stroke="#dcded7" stroke-width="2"/>
+<text x="92" y="577.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">왼쪽 · 2명</text>
+<text x="92" y="620.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">양성 0 · 음성 2</text>
+<rect x="94.0" y="645.3" width="392.0" height="18" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="92" y="697.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">H = 0</text>
+<rect x="690" y="533.3" width="440" height="174" rx="14" fill="#ffffff" stroke="#dcded7" stroke-width="2"/>
+<text x="712" y="577.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">오른쪽 · 6명</text>
+<text x="712" y="620.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">양성 3 · 음성 3</text>
+<rect x="714" y="645.3" width="196.0" height="18" rx="0" fill="#2e6b60" stroke="#2e6b60" stroke-width="2"/>
+<rect x="910.0" y="645.3" width="196.0" height="18" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="712" y="697.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">H = 1</text>
+<text x="92" y="785.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">가중 자식 H = 2/8 × 0 + 6/8 × 1 = 0.75</text>
+<text x="92" y="847.3" fill="#2e6b60" font-size="33" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정보이득 = 0.954434 - 0.75 = 0.204434 비트</text>
+<text x="50" y="936.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">부모 음성5·양성3을 음성2의 순수 자식과 음성3·양성3의 혼합 자식으로 나눈다.</text>
+<text x="50" y="1012.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

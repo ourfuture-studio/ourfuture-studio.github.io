@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">희귀 양성에서는 정확도와 놓친 양성을 함께 본다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">99% 정확도와 0% 탐지를 나란히 보여 다수 클래스 영향을 드러낸다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A 모두 음성</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B 양성 탐지+오경보3</text>
+<rect x="50" y="331.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="368.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="270.0" y1="331.3" x2="270.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="368.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">accuracy</text>
+<line x1="490.0" y1="331.3" x2="490.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="368.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">recall</text>
+<line x1="710.0" y1="331.3" x2="710.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="368.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
+<line x1="930.0" y1="331.3" x2="930.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="368.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">precision</text>
+<rect x="50" y="416.3" width="1100" height="100.39999999999999" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="453.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<line x1="270.0" y1="416.3" x2="270.0" y2="516.7" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="453.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">99</text>
+<line x1="490.0" y1="416.3" x2="490.0" y2="516.7" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="453.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="710.0" y1="416.3" x2="710.0" y2="516.7" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="453.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">TP0 FN1 FP0 TN</text>
+<text x="722.0" y="491.2" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">99</text>
+<line x1="930.0" y1="416.3" x2="930.0" y2="516.7" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="453.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<rect x="50" y="516.7" width="1100" height="100.39999999999999" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="553.9" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<line x1="270.0" y1="516.7" x2="270.0" y2="617.1" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="553.9" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">97</text>
+<line x1="490.0" y1="516.7" x2="490.0" y2="617.1" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="553.9" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">100</text>
+<line x1="710.0" y1="516.7" x2="710.0" y2="617.1" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="553.9" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">TP1 FN0 FP3 TN</text>
+<text x="722.0" y="591.6" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">96</text>
+<line x1="930.0" y1="516.7" x2="930.0" y2="617.1" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="553.9" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">25</text>
+<text x="50" y="678.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">실제 양성1·음성99에서 A는 정확도99%·재현율0%, B는97%·100%지만 정밀도25%</text>
+<text x="50" y="721.7" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

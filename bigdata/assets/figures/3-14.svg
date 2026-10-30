@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="981" viewBox="0 0 1200 981" role="img">
+<rect width="1200" height="981" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">서포트벡터는 경계에 가까운 제약을 만든다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">결정 경계와 양쪽 지지점을 구분한다.</text>
+<text x="72" y="223.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">1차원 · 하드 마진 · 경계 x=0</text>
+<rect x="473.57142857142856" y="288.3" width="262.8571428571429" height="210" rx="0" fill="#e2efe8" stroke="#e2efe8" stroke-width="2"/>
+<line x1="473.57142857142856" y1="288.3" x2="473.57142857142856" y2="298.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="306.3" x2="473.57142857142856" y2="316.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="324.3" x2="473.57142857142856" y2="334.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="342.3" x2="473.57142857142856" y2="352.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="360.3" x2="473.57142857142856" y2="370.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="378.3" x2="473.57142857142856" y2="388.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="396.3" x2="473.57142857142856" y2="406.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="414.3" x2="473.57142857142856" y2="424.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="432.3" x2="473.57142857142856" y2="442.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="450.3" x2="473.57142857142856" y2="460.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="468.3" x2="473.57142857142856" y2="478.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="486.3" x2="473.57142857142856" y2="496.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="473.57142857142856" y1="504.3" x2="473.57142857142856" y2="508.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="288.3" x2="736.4285714285714" y2="298.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="306.3" x2="736.4285714285714" y2="316.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="324.3" x2="736.4285714285714" y2="334.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="342.3" x2="736.4285714285714" y2="352.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="360.3" x2="736.4285714285714" y2="370.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="378.3" x2="736.4285714285714" y2="388.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="396.3" x2="736.4285714285714" y2="406.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="414.3" x2="736.4285714285714" y2="424.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="432.3" x2="736.4285714285714" y2="442.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="450.3" x2="736.4285714285714" y2="460.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="468.3" x2="736.4285714285714" y2="478.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="486.3" x2="736.4285714285714" y2="496.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="736.4285714285714" y1="504.3" x2="736.4285714285714" y2="508.3" stroke="#2e6b60" stroke-width="3"/>
+<line x1="605.0" y1="248.3" x2="605.0" y2="258.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="266.3" x2="605.0" y2="276.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="284.3" x2="605.0" y2="294.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="302.3" x2="605.0" y2="312.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="320.3" x2="605.0" y2="330.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="338.3" x2="605.0" y2="348.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="356.3" x2="605.0" y2="366.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="374.3" x2="605.0" y2="384.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="392.3" x2="605.0" y2="402.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="410.3" x2="605.0" y2="420.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="428.3" x2="605.0" y2="438.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="446.3" x2="605.0" y2="456.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="464.3" x2="605.0" y2="474.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="482.3" x2="605.0" y2="492.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="500.3" x2="605.0" y2="510.3" stroke="#8c3444" stroke-width="4"/>
+<line x1="605.0" y1="518.3" x2="605.0" y2="523.3" stroke="#8c3444" stroke-width="4"/>
+<text x="540.0" y="237.5" fill="#8c3444" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">경계 0</text>
+<line x1="145" y1="438.3" x2="1085" y2="438.3" stroke="#1b2340" stroke-width="3"/>
+<line x1="210.71428571428572" y1="450.3" x2="210.71428571428572" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="188.71428571428572" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-3</text>
+<line x1="342.1428571428571" y1="450.3" x2="342.1428571428571" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="320.1428571428571" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-2</text>
+<line x1="473.57142857142856" y1="450.3" x2="473.57142857142856" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="451.57142857142856" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-1</text>
+<line x1="605.0" y1="450.3" x2="605.0" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="583.0" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="736.4285714285714" y1="450.3" x2="736.4285714285714" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="714.4285714285714" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="867.8571428571429" y1="450.3" x2="867.8571428571429" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="845.8571428571429" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="999.2857142857143" y1="450.3" x2="999.2857142857143" y2="460.3" stroke="#1b2340" stroke-width="2"/>
+<text x="977.2857142857143" y="495.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<circle cx="210.71428571428572" cy="438.3" r="10" fill="#8c3444"/>
+<circle cx="473.57142857142856" cy="438.3" r="21" fill="#8c3444"/>
+<circle cx="473.57142857142856" cy="438.3" r="15" fill="#fbfaf6"/>
+<circle cx="473.57142857142856" cy="438.3" r="10" fill="#8c3444"/>
+<circle cx="736.4285714285714" cy="438.3" r="21" fill="#2e6b60"/>
+<circle cx="736.4285714285714" cy="438.3" r="15" fill="#fbfaf6"/>
+<circle cx="736.4285714285714" cy="438.3" r="10" fill="#2e6b60"/>
+<circle cx="999.2857142857143" cy="438.3" r="10" fill="#2e6b60"/>
+<text x="365" y="579.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">지지점 -1 ↔ 1</text>
+<line x1="473.57142857142856" y1="623.3" x2="736.4285714285714" y2="623.3" stroke="#2e6b60" stroke-width="4"/>
+<line x1="473.57142857142856" y1="609.3" x2="473.57142857142856" y2="637.3" stroke="#2e6b60" stroke-width="4"/>
+<line x1="736.4285714285714" y1="609.3" x2="736.4285714285714" y2="637.3" stroke="#2e6b60" stroke-width="4"/>
+<text x="408.57142857142856" y="675.4" fill="#2e6b60" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">총 마진 2</text>
+<text x="72" y="745.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">좌표: 임의 단위 · 빨강=음성 · 초록=양성 · 고리=서포트벡터</text>
+<text x="50" y="832.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">경계0, 지지점-1·1, 두 지지점 사이 총 마진2다. 먼 점-3·3은 이 하드 마진을 제한</text>
+<text x="50" y="875.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">하지 않는다.</text>
+<text x="50" y="952.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

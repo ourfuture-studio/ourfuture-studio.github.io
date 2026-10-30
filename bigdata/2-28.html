@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>공분산의 크기와 상관계수의 크기는 단위 변화에 다르게 반응한다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-28</p><h1 class="lesson-title">공분산의 크기와 상관계수의 크기는 단위 변화에 다르게 반응한다</h1>
+<p>y의 배율을 양수·음수·0으로 바꾸어 공분산과 상관계수의 차이를 확인한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">세 점의 계산 예다. 상관의 유의성이나 인과관계는 검증하지 않는다. 표본공분산은 n−1로 나눈다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-28.png" target="_blank" rel="noopener"><img src="assets/figures/2-28.png" alt="자체 예제의 y의 배율을 양수·음수·0으로 바꾸어 공분산과 상관계수의 차이를 확인한다.. y를100배하면 공분산2→200, r=1은 유지된다. y를−1배하면 r=−1이다." width="1200" height="921"/></a><figcaption>y를100배하면 공분산2→200, r=1은 유지된다. y를−1배하면 r=−1이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>x=[1,2,3], y=[2,4,6]. 표본공분산은 n−1로 나눈다. y만 100배 한다.</p><fieldset><legend>변환 후 공분산과 피어슨 상관계수는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 2와 1</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 200과 100</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 2와 100</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 200과 1</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>원래 y를 −1배 하여 [−2,−4,−6]으로 바꾸면?</p>
+<details><summary>변형 풀이 확인</summary><p>표본공분산 −2, 상관계수 −1</p><p>한 변수의 부호만 반대로 하면 선형 관계의 방향이 뒤집히고 표준편차의 크기는 그대로다.</p></details>
+<p>공분산에는 단위가 남고 상관계수에서는 산포 단위가 나뉜다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html" target="_blank" rel="noopener noreferrer">SciPy: pearsonr</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-26.html">← 이전 체험</a>
+<a href="2-31.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-28", "title": "공분산의 크기와 상관계수의 크기는 단위 변화에 다르게 반응한다", "question": {"givens": "x=[1,2,3], y=[2,4,6]. 표본공분산은 n−1로 나눈다. y만 100배 한다.", "stem": "변환 후 공분산과 피어슨 상관계수는?", "choices": ["2와 1", "200과 100", "2와 100", "200과 1"], "answer": 4, "reason": "공분산은 100배인 200이 되고 표준편차 배율이 상쇄되어 상관계수는 1로 유지된다.", "wrong_reasons": ["① 공분산의 단위 배율을 반영하지 않았다.", "② 상관계수는 100이 될 수 없고 이 경우 배율은 상쇄된다.", "③ 공분산과 상관계수 양쪽의 변화를 잘못 적용했다."]}, "experience": {"kind": "covariance-correlation", "goal": "y의 배율을 양수·음수·0으로 바꾸어 공분산과 상관계수의 차이를 확인한다.", "inputs": [{"id": "factor", "label": "y 배율", "type": "number", "default": 100, "min": -100, "max": 100}], "cases": [{"name": "원문제", "inputs": {"factor": 100}, "expected_answer": "공분산 200.00 · r=1.00", "reason": "100배"}, {"name": "음수변형", "inputs": {"factor": -1}, "expected_answer": "공분산 -2.00 · r=-1.00", "reason": "부호반전"}, {"name": "원자료", "inputs": {"factor": 1}, "expected_answer": "공분산 2.00 · r=1.00", "reason": "원자료"}, {"name": "상수경계", "inputs": {"factor": 0}, "expected_answer": "공분산 0.00 · r 정의 불가", "reason": "분모0"}], "boundary": "세 점의 계산 예다. 상관의 유의성이나 인과관계는 검증하지 않는다. 표본공분산은 n−1로 나눈다.", "related_codes": ["2-25", "2-13"]}}</script><script type="module" src="app.mjs"></script></body></html>

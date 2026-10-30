@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>같은 오차도 제곱하면 큰 오차의 영향이 커진다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">4과목 · 빅데이터 결과 해석 · 4-08</p><h1 class="lesson-title">같은 오차도 제곱하면 큰 오차의 영향이 커진다</h1>
+<p>세 오차에서 MAE·MSE·RMSE를 계산하고 큰 오차만 바꾼다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">가중치 없는 단일 출력·같은 세 관측의 자체 오차다. 손실 선택의 보편적 우월성을 판정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/4-08.png" target="_blank" rel="noopener"><img src="assets/figures/4-08.png" alt="자체 예제의 절대오차와 제곱오차 항을 별도로 보여 단위가 다른 지표를 한 축에서 혼합하지 않는다.. 절대오차1·1·4는 합6, 제곱오차1·1·16은 합18이다." width="1200" height="1000"/></a><figcaption>절대오차1·1·4는 합6, 제곱오차1·1·16은 합18이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>평가 3건의 오차 e=y−ŷ는 −1·1·4이며 모든 관측의 가중치는 같다.</p><fieldset><legend>이 예측의 MSE는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 2</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 6</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. √6</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 18</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>마지막 오차 4만 8로 커지고 나머지−1·1은 유지된다. 새 MAE와 MSE를 계산하라.</p>
+<details><summary>변형 풀이 확인</summary><p>MAE=10/3≈3.333, MSE=66/3=22다.</p><p>큰 오차 항은 절댓값 4→8로 2배가 되지만 제곱오차 16→64로 4배가 된다. 큰 오차가 지표에 미치는 차이를 항별로 확인한다.</p></details>
+<p>제곱을 먼저 했는지, 평균을 먼저 했는지.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html" target="_blank" rel="noopener noreferrer">scikit-learn mean_squared_error</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener noreferrer">scikit-learn Metrics and scoring</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="4-07.html">← 이전 체험</a>
+<a href="4-14.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "4-08", "title": "같은 오차도 제곱하면 큰 오차의 영향이 커진다", "question": {"givens": "평가 3건의 오차 e=y−ŷ는 −1·1·4이며 모든 관측의 가중치는 같다.", "stem": "이 예측의 MSE는?", "choices": ["2", "6", "√6", "18"], "answer": 2, "reason": "오차를 먼저 제곱해 1·1·16을 만든 뒤 3으로 나누므로 MSE=18/3=6이다. 2는 MAE,√6은 RMSE,18은 제곱오차의 합이다.", "wrong_reasons": ["1번: 절대오차 평균 2를 구했으며 제곱오차 평균과 다르다.", "3번: MSE에 다시 제곱근을 씌운 RMSE다.", "4번: 세 관측의 제곱오차를 합한 뒤 평가 건수 3으로 나누지 않았다."]}, "experience": {"kind": "numeric", "goal": "세 오차에서 MAE·MSE·RMSE를 계산하고 큰 오차만 바꾼다.", "inputs": [{"id": "e1", "label": "오차1", "type": "number", "default": -1, "min": -20, "max": 20}, {"id": "e2", "label": "오차2", "type": "number", "default": 1, "min": -20, "max": 20}, {"id": "e3", "label": "오차3", "type": "number", "default": 4, "min": -20, "max": 20}], "cases": [{"name": "원 문제", "inputs": {"e1": -1, "e2": 1, "e3": 4}, "expected_answer": 6, "reason": "18을3으로 나눈다."}, {"name": "원고 변형", "inputs": {"e1": -1, "e2": 1, "e3": 8}, "expected_answer": 22, "reason": "큰 항이16에서64가 된다."}, {"name": "같은 MAE", "inputs": {"e1": 2, "e2": 2, "e3": 2}, "expected_answer": 4, "reason": "MAE는2로 같아도 MSE는4다."}], "boundary": "가중치 없는 단일 출력·같은 세 관측의 자체 오차다. 손실 선택의 보편적 우월성을 판정하지 않는다.", "related_codes": ["4-25", "4-36"]}}</script><script type="module" src="app.mjs"></script></body></html>

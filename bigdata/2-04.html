@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>횟수를 세는 변수와 시간을 재는 변수부터 구분한다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-04</p><h1 class="lesson-title">횟수를 세는 변수와 시간을 재는 변수부터 구분한다</h1>
+<p>측정 대상과 기록 방식을 바꾸어 원래 연속시간과 이산적인 반올림 기록을 구분한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">시간 T와 반올림 기록 R은 다른 변수다. 연속시간이라는 이유만으로 지수분포를 가정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-04.png" target="_blank" rel="noopener"><img src="assets/figures/2-04.png" alt="자체 예제의 측정 대상과 기록 방식을 바꾸어 원래 연속시간과 이산적인 반올림 기록을 구분한다.. 원래 시간 T는 연속으로 모형화하지만 반올림 기록 R의 가능한 값은 이산적이다." width="1200" height="1000"/></a><figcaption>원래 시간 T는 연속으로 모형화하지만 반올림 기록 R의 가능한 값은 이산적이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>X는 하루 고장 건수, T는 이상적인 연속시간으로 정의한 다음 고장까지의 시간이다.</p><fieldset><legend>변수 종류를 올바르게 구분한 것은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. X와 T 모두 이산</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. X는 이산, T는 연속</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. X는 연속, T는 이산</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. X와 T 모두 명목 범주</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>T를 가장 가까운 분으로 반올림해 저장했다. 파일에 정수만 있다는 이유로 고장 건수와 같은 변수라고 할 수 있을까?</p>
+<details><summary>변형 풀이 확인</summary><p>그럴 수 없다.</p><p>시간을 양자화한 기록과 사건의 횟수는 측정 대상이 다르다. 원래 정의와 기록 해상도를 함께 써야 한다.</p></details>
+<p>정수로 보이는가보다 무엇을 세거나 재었는가를 먼저 본다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat857/node/31/" target="_blank" rel="noopener noreferrer">Penn State STAT 897D: What is Data</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-03.html">← 이전 체험</a>
+<a href="2-05.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-04", "title": "횟수를 세는 변수와 시간을 재는 변수부터 구분한다", "question": {"givens": "X는 하루 고장 건수, T는 이상적인 연속시간으로 정의한 다음 고장까지의 시간이다.", "stem": "변수 종류를 올바르게 구분한 것은?", "choices": ["X와 T 모두 이산", "X는 이산, T는 연속", "X는 연속, T는 이산", "X와 T 모두 명목 범주"], "answer": 2, "reason": "건수의 가능한 값은 셀 수 있고 이상적 시간은 구간 안의 값을 연속적으로 허용한다.", "wrong_reasons": ["① T를 반올림한 기록과 이상적인 시간 모형을 혼동했다.", "③ 두 변수의 가능한 값 구조를 뒤집었다.", "④ 횟수와 시간에는 수량의 의미가 있다."]}, "experience": {"kind": "condition-choice", "goal": "측정 대상과 기록 방식을 바꾸어 원래 연속시간과 이산적인 반올림 기록을 구분한다.", "inputs": [{"id": "target", "label": "구분할 변수", "type": "select", "default": "이상적 대기시간 T", "options": ["사건 건수 X", "이상적 대기시간 T", "분으로 반올림한 기록 R"]}], "cases": [{"name": "원래 시간", "inputs": {"target": "이상적 대기시간 T"}, "expected_answer": "연속시간", "reason": "원고의T"}, {"name": "건수", "inputs": {"target": "사건 건수 X"}, "expected_answer": "이산 건수", "reason": "원고의X"}, {"name": "반올림 기록", "inputs": {"target": "분으로 반올림한 기록 R"}, "expected_answer": "이산적인 시간 기록", "reason": "T와R구분"}], "boundary": "시간 T와 반올림 기록 R은 다른 변수다. 연속시간이라는 이유만으로 지수분포를 가정하지 않는다.", "related_codes": ["2-15", "2-23"]}}</script><script type="module" src="app.mjs"></script></body></html>

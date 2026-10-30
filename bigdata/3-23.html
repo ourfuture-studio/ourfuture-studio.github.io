@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MANOVA는 여러 반응의 평균벡터를 비교한다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-23</p><h1 class="lesson-title">MANOVA는 여러 반응의 평균벡터를 비교한다</h1>
+<p>반응 수와 독립·반복측정 설계에 따라 기본 질문을 구별한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">기법 선택의 출발점만 판단한다. 정규성·공분산 가정을 확인하거나 p값을 산출한 것은 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-23.png" target="_blank" rel="noopener"><img src="assets/figures/3-23.png" alt="자체 예제의 집단 수와 반응 차원을 구분한다.. 독립 집단A·B·C 각각에서 시간·점수의 두 성분 평균을 묶어 비교한다." width="1200" height="957"/></a><figcaption>독립 집단A·B·C 각각에서 시간·점수의 두 성분 평균을 묶어 비교한다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>서로 독립인 세 교육 집단에서 각 사람의 시간·점수 두 수치 반응을 함께 측정했다. 일원 MANOVA를 검토한다.</p><fieldset><legend>기본 귀무가설은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 모든 관측값이 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 두 반응의 상관계수가 0이다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 각 집단의 표본 수가 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 세 집단의 모평균벡터가 같다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>평균벡터 동일을 기각했다. 시간과 점수가 모두 세 집단의 모든 쌍에서 다르다고 말할 수 있는가?</p>
+<details><summary>변형 풀이 확인</summary><p>그렇게 단정할 수 없다.</p><p>적어도 일부 집단의 평균벡터가 다르다는 결론이다. 차이를 특정하려면 계획된 대비나 개별 반응 후속 분석 및 다중비교를 검토한다.</p></details>
+<p>여러 반응을 묶은 집단 평균벡터.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat505/Lesson08" target="_blank" rel="noopener noreferrer">Penn State STAT 505 MANOVA</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-22.html">← 이전 체험</a>
+<a href="3-24.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-23", "title": "MANOVA는 여러 반응의 평균벡터를 비교한다", "question": {"givens": "서로 독립인 세 교육 집단에서 각 사람의 시간·점수 두 수치 반응을 함께 측정했다. 일원 MANOVA를 검토한다.", "stem": "기본 귀무가설은?", "choices": ["모든 관측값이 같다", "두 반응의 상관계수가 0이다", "각 집단의 표본 수가 같다", "세 집단의 모평균벡터가 같다"], "answer": 4, "reason": "집단별 두 반응의 모평균을 묶은 벡터가 모두 같다는 가설이다.", "wrong_reasons": ["1번: 평균이 같다는 것과 모든 관측이 같다는 것은 다르다.", "2번: 반응 사이 무상관 검정이 아니다.", "3번: 동일 표본 수는 여기서 검정하려는 효과 가설이 아니다."]}, "experience": {"kind": "decision", "goal": "반응 수와 독립·반복측정 설계에 따라 기본 질문을 구별한다.", "inputs": [{"id": "responses", "label": "수치 반응 수", "type": "select", "default": "2", "options": [{"value": "1", "label": "한 반응"}, {"value": "2", "label": "두 반응 함께"}]}, {"id": "design", "label": "세 집단의 관측 설계", "type": "select", "default": "independent", "options": [{"value": "independent", "label": "서로 다른 사람의 독립 집단"}, {"value": "repeated", "label": "동일인을 세 조건에서 반복"}]}], "cases": [{"name": "두반응독립", "inputs": {"responses": "2", "design": "independent"}, "expected_answer": "일원 MANOVA", "reason": "평균벡터"}, {"name": "한반응독립", "inputs": {"responses": "1", "design": "independent"}, "expected_answer": "일원 ANOVA", "reason": "한평균"}, {"name": "반복구조", "inputs": {"responses": "2", "design": "repeated"}, "expected_answer": "반복측정 설계 검토", "reason": "관측독립조건변경"}], "boundary": "기법 선택의 출발점만 판단한다. 정규성·공분산 가정을 확인하거나 p값을 산출한 것은 아니다.", "related_codes": ["3-24"]}}</script><script type="module" src="app.mjs"></script></body></html>
