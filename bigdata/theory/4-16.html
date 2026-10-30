@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>로지스틱 적합도와 분류 정확도는 다른 질문이다 · 빅분기 공부방</title><meta name="description" content="같은0·1 판정을 내린 두 모형도 양성확률을 다르게 줄 수 있다. 정확도는 임곗값을 넘긴 라벨을 평가하고 적합도·보정 진단은 확률과 관측 결과의 일치까지 살핀다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-16">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-16</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-16 · 이론 읽기</span><h1>로지스틱 적합도와 분류 정확도는 다른 질문이다</h1><p class="theory-lead">같은0·1 판정을 내린 두 모형도 양성확률을 다르게 줄 수 있다. 정확도는 임곗값을 넘긴 라벨을 평가하고 적합도·보정 진단은 확률과 관측 결과의 일치까지 살핀다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-16">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-16.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>로지스틱 회귀는 각 입력에서 사건이 생길 확률을 추정한다. 정확도는 그 확률을 임곗값으로 잘라 라벨을 만든 뒤 전체에서 몇 개 맞혔는지 센다.0.6과0.9가 모두0.5를 넘으면 둘 다 양성 판정이다. 따라서 같은 라벨이면 정확도는 같지만 실제로 양성이 생기는 비율을 얼마나 잘 표현하는지는 다를 수 있다. 한 지표가 다른 질문의 답까지 대신한다고 읽지 않는다.</p>
+<p>확률을 진단할 때는 예측확률이 비슷한 관측을 묶어 평균 예측확률과 실제 양성비율을 비교하는 보정곡선 등을 사용할 수 있다. 독립 평가자료에서 전체 적합·비선형성·누락 구조를 검토하는 목적과, 임곗값별 오류비용을 확인하는 목적도 구분한다. Brier 점수처럼 확률과0·1 결과의 제곱차를 평균하는 값은 확률 평가의 한 예이며, 그 값 하나가 모든 적합도 문제를 증명하는 것은 아니다.</p>
+<p>대표적인 Hosmer–Lemeshow 진단은 예측확률에 따라 그룹을 만들고 관측·기대 사건 수를 비교하지만 그룹 구성과 표본 크기의 영향을 받는다. 유의하지 않다고 완벽한 모형이 확인되거나 분류 성능이 높은 것으로 확정되지 않는다. 아래의 단순10건 집계는 확률정보가 정확도에 가려질 수 있음을 보여주는 자체 계산이며, 적절한 그룹 수와 표본을 갖춘 실제 적합도 검정을 수행한 결과가 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>독립적인 자체 평가10건에서 실제 양성8건·음성2건이다. A는 모든 건에 양성확률0.6, B는0.9를 주었다고 둔다. 두 모형 모두 임곗값0.5에서 전부 양성으로 판정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">모형</th>
+<th scope="col" style="text-align: right;">양성확률</th>
+<th scope="col" style="text-align: right;">정확도</th>
+<th scope="col" style="text-align: right;">확률 제곱오차 평균</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">80%</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">80%</td>
+<td style="text-align: right;">0.17</td>
+</tr>
+</tbody>
+</table></div>
+<p>A의 확률 제곱오차는[8×(1−0.6)²+2×0.6²]/10=0.20, B는0.17이다. 라벨 정확도는 같아도 확률 평가값은 다르다. 작은10건만으로 보정이나 전체 적합도 우열을 일반화하지 않는다. Brier 점수는 보정만 따로 재는 지표가 아니다. 확률과 결과의 제곱오차에는 판별력과 자료의 불확실성도 함께 반영될 수 있어, 일반적인 두 모형에서 Brier가 작다는 사실만으로 더 잘 보정되었다고 결론내리지 않는다. 이 예제처럼 모든 예측이 일정한 단순 상황과, 입력 집단마다 다른 확률을 내는 실제 모형을 구분한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-16.png" alt="자체 예제의 같은 정확도 뒤의 확률 위치를 관측 양성비율0.8과 비교한다.. 세 일정 예측의 정확도는80%로 같고 Brier는0.6→.20,0.9→.17,0.8→.16이다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>세 일정 예측의 정확도는80%로 같고 Brier는0.6→.20,0.9→.17,0.8→.16이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>자체 평가 10건은 양성 8건·음성 2건이다. A의 양성 확률은 모두 0.6, B는 모두 0.9다. 임곗값 0.5에서 둘 다 전부 양성으로 판정한다.</p>
+<p><strong>이 기록에서 가능한 판단은?</strong></p>
+<ul>
+<li>1. 정확도가 같으므로 확률 적합도도 같다</li>
+<li>2. 두 모형의 정확도는 80%지만 확률 평가는 다를 수 있다</li>
+<li>3. B의 정확도는 90%다</li>
+<li>4. 정확도가 같으므로 적합도 검정은 불필요하다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 두 모형의 정확도는 80%지만 확률 평가는 다를 수 있다</strong></p>
+<p>둘 다 실제 양성 8건만 맞혀 정확도 80%다. 그러나 예측 확률 자체가 다르므로 관측 양성 비율과의 일치나 확률 오차는 달라질 수 있다.</p>
+<ul>
+<li>1번: 임곗값으로 버린 확률의 차이를 라벨 정확도만으로 복원할 수 없다.</li>
+<li>3번: 0.9는 모형이 내놓은 확률이며 실제 정답을 맞힌 비율이 아니다.</li>
+<li>4번: 같은 정확도는 확률모형의 형태·보정·누락 구조 진단을 면제하지 않는다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>모든 건의 양성 확률을 0.8로 주는 C를 추가한다. 같은 평가 자료에서 정확도와 확률 제곱오차 평균은?</p>
+<p><strong>풀이:</strong> 정확도 80%, 제곱오차 평균 0.16이다.</p>
+<p>[8×0.2²+2×0.8²]/10=0.16이다. 이 자료에서는 실제 양성 비율과 일정 예측 확률이 맞지만, 다른 조건부 집단까지 잘 맞는다는 증명은 아니다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>같은 라벨 뒤에 다른 확률이 숨어 있다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/calibration.html" rel="noopener noreferrer" target="_blank">scikit-learn Probability calibration</a> — Calibration curves의 예측확률·양성관측비율과 적절한 평가자료. 확인일 2026-10-30.</li>
+<li><a href="https://www.stata.com/links/stata-basics/logistic-regression-1-introduction/" rel="noopener noreferrer" target="_blank">Stata Logistic regression: Introduction</a> — Goodness-of-fit test의 확률별 그룹과 Hosmer–Lemeshow의 그룹 수 민감성. 해당 절 본문 직접 확인. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-16">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-16.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>양성8·음성2·동일 상수확률·문턱.5의 자체 평가다. H-L 검정이나 실제 모형 보정 평가를 수행하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-15.html"><small>이전 개념 · 4-15</small>전체 F검정은 모든 기울기를 함께 묻는다</a><a class="next" rel="next" data-role="theory-next" href="4-20.html"><small>다음 개념 · 4-20</small>가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-07</span><a href="4-07.html">ROC의 한 점과 점수 순서를 요약한 AUC를 구분한다</a><div class="related-actions"><a href="../practice.html?code=4-07">문제 풀기</a><a href="../4-07.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-04</span><a href="4-04.html">정밀도와 재현율은 같은 분자를 다른 집합으로 나눈다</a><div class="related-actions"><a href="../practice.html?code=4-04">문제 풀기</a><a href="../4-04.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-16"}</script><script type="module" src="../theory.mjs"></script></body></html>

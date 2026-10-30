@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다 · 빅분기 공부방</title><meta name="description" content="세 기법은 모두 과대적합을 줄이는 데 사용할 수 있지만 같은 동작은 아니다. 나무의 가지, 훈련 중 활성값, 반복 학습의 종료 시점 중 무엇을 제한하는지 나누어 본다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-20">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-20</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-20 · 이론 읽기</span><h1>가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다</h1><p class="theory-lead">세 기법은 모두 과대적합을 줄이는 데 사용할 수 있지만 같은 동작은 아니다. 나무의 가지, 훈련 중 활성값, 반복 학습의 종료 시점 중 무엇을 제한하는지 나누어 본다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-20">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-20.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>결정나무의 가지치기는 복잡한 부분 트리를 줄이거나 복잡도에 비용을 주어 구조를 선택한다. 작은 학습 표본에만 맞춘 분할을 덜어낼 수 있지만 강하게 줄이면 필요한 규칙도 잃을 수 있다. 드롭아웃은 신경망 훈련 중 일부 활성값을 무작위로0으로 만드는 방식이다. 항상 같은 노드를 영구 삭제하는 구조 변경과 다르며, 통상 평가에서는 이 무작위 비활성화를 끈다.</p>
+<p>일반적인 inverted dropout은 남은 활성값을 유지확률로 나누어 훈련 시 기대 크기를 맞춘다. 예를 들어 드롭 확률0.5에서 살아남은 값은2배로 조정한다. 이는 구현상 스케일의 설명이지 모형의 정답률을2배로 만든다는 뜻이 아니다. 의도적으로 평가에서도 드롭아웃을 사용하는 별도 추론 설계는 여기의 기본 훈련·평가 구분과 나누어 설명한다.</p>
+<p>조기종료는 미리 정한 검증 지표가 개선되지 않을 때 반복 학습을 멈춘다. 어느 지표를 최소화하거나 최대화할지, 얼마나 기다릴지, 최선 시점의 가중치를 복원할지 설정해야 한다. 마지막 시점과 검증 최선 시점은 다를 수 있다. 세 방법의 유용성은 같은 분할·평가조건에서 확인하며, 적용했다는 사실만으로 과대적합이 사라지거나 모든 자료에서 더 좋은 결과가 보장되지는 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 비교표다. 드롭아웃 예시는 p=0.5인 훈련에서 한 활성값2가 살아남았을 때 inverted scaling으로4가 되는 상황이다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">방법</th>
+<th scope="col">직접 제한하는 대상</th>
+<th scope="col">확인할 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가지치기</td>
+<td>나무 구조의 분할</td>
+<td>복잡도·검증 결과</td>
+</tr>
+<tr>
+<td>드롭아웃</td>
+<td>훈련 중 활성값</td>
+<td>무작위성·스케일·평가 모드</td>
+</tr>
+<tr>
+<td>조기종료</td>
+<td>학습 반복 시점</td>
+<td>검증 지표·대기·복원</td>
+</tr>
+</tbody>
+</table></div>
+<p>검증 손실이 epoch1~3에서0.50·0.40·0.43이라면 현재 기록 중 최선은epoch2다. 중단 시점에 최선 가중치를 복원하는지는 설정을 확인해야 하며, 이 세 숫자만으로 실제 정지 epoch를 확정하지 않는다. 활성값2를 드롭 확률0.5로 처리하면 훈련 중 값은 절반의 경우0, 나머지 절반의 경우4다. 기대값은0×0.5+4×0.5=2로 원래 크기와 같다. 평가에서는 통상 이 무작위 비활성화를 끄고2를 그대로 전달한다. 한 번 살아남은 값4와 반복 평균2를 구분한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-20.png" alt="자체 예제의 훈련의 두 결과와 기대값을 나누어 표시한다.. 활성값2·드롭 확률0.5의 훈련 출력은0 또는4이며 기대값2다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>활성값2·드롭 확률0.5의 훈련 출력은0 또는4이며 기대값2다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>신경망 훈련마다 일부 활성값을 무작위로 0으로 만들고, 통상 평가 때는 이 동작을 끈다.</p>
+<p><strong>이 설명에 해당하는 것은?</strong></p>
+<ul>
+<li>1. 나무 가지의 영구 삭제</li>
+<li>2. 시험 정답 무작위 변경</li>
+<li>3. 드롭아웃</li>
+<li>4. 검증 지표를 보지 않는 고정 종료</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 드롭아웃</strong></p>
+<p>훈련 중 일시적인 무작위 활성 비활성화는 드롭아웃이다. 나무 구조를 줄이는 가지치기나 반복 시점을 정하는 조기종료와 직접 바꾸는 대상이 다르다.</p>
+<ul>
+<li>1번: 노드나 가지의 영구 구조 삭제를 훈련마다 바뀌는 활성 마스크와 혼동했다.</li>
+<li>2번: 드롭아웃은 정답 라벨을 바꾸는 방법이 아니다.</li>
+<li>4번: 제시된 설명은 종료 시점을 정하지 않고 훈련 중 활성값을 바꾼다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>검증 손실이 epoch 1~3에서 0.50·0.40·0.43이다. 이 기록에서 가장 작은 손실의 가중치를 복원하려면 어느 epoch를 고르는가?</p>
+<p><strong>풀이:</strong> epoch 2다.</p>
+<p>최소 손실 0.40이 두 번째에 있다. patience와 종료 여부는 별도 설정이며 최종 훈련 epoch를 자동으로 최선이라고 가정하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>구조를 줄이나, 잠깐 끄나, 반복을 멈추나.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://d2l.ai/chapter_multilayer-perceptrons/dropout.html" rel="noopener noreferrer" target="_blank">Dive into Deep Learning Dropout</a> — 5.6의 훈련 중 무작위 비활성화와 test-time 구분. 확인일 2026-10-30.</li>
+<li><a href="https://keras.io/api/callbacks/early_stopping/" rel="noopener noreferrer" target="_blank">Keras EarlyStopping</a> — monitor·patience·restore_best_weights. 확인일 2026-10-30.</li>
+<li><a href="https://scikit-learn.org/stable/modules/tree.html" rel="noopener noreferrer" target="_blank">scikit-learn Decision Trees</a> — Minimal Cost-Complexity Pruning. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-20">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-20.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>지정 마스크의 산술이며 실제 무작위 추출·신경망 학습·MC dropout 추론이 아니다. p=0에서는 드롭 사건이 발생하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-16.html"><small>이전 개념 · 4-16</small>로지스틱 적합도와 분류 정확도는 다른 질문이다</a><a class="next" rel="next" data-role="theory-next" href="4-21.html"><small>다음 개념 · 4-21</small>성능을 탓하기 전에 자료 품질과 입력 조건을 점검한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-13</span><a href="3-13.html">기울기의 반복 곱은 작아지거나 커질 수 있다</a><div class="related-actions"><a href="../practice.html?code=3-13">문제 풀기</a><a href="../3-13.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-23</span><a href="4-23.html">탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이 다르다</a><div class="related-actions"><a href="../practice.html?code=4-23">문제 풀기</a><a href="../4-23.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-20"}</script><script type="module" src="../theory.mjs"></script></body></html>

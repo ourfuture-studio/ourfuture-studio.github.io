@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>시간 추세와 공간 분포는 먼저 묻는 질문이 다르다 · 빅분기 공부방</title><meta name="description" content="같은 매출표도 한 지역의 월별 변화, 한 달의 지역 차이, 지역별 시간 변화를 묻는지에 따라 표현이 달라진다. 좌표가 있다는 이유만으로 언제나 지도가 가장 좋은 선택은 아니다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-27">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-27</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-27 · 이론 읽기</span><h1>시간 추세와 공간 분포는 먼저 묻는 질문이 다르다</h1><p class="theory-lead">같은 매출표도 한 지역의 월별 변화, 한 달의 지역 차이, 지역별 시간 변화를 묻는지에 따라 표현이 달라진다. 좌표가 있다는 이유만으로 언제나 지도가 가장 좋은 선택은 아니다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-27.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>시간 추세를 묻는다면 시간의 순서와 간격을 보이게 한다. 월별 수치를 같은 시간축에 놓은 선그래프는 증가·감소와 변화 시점을 비교하는 데 적합하다. 관측이 없는 달을0으로 채우거나 날짜 간격을 임의로 같게 그리면 뜻이 달라질 수 있으므로 결측과 시간 단위를 표시한다. 범주 이름을 단순히 순서대로 연결했다고 시간 변화가 되는 것은 아니다.</p>
+<p>공간 분포를 묻는다면 지역의 위치와 인접 관계가 질문에 필요한지 확인한다. 단계구분도는 지역별 값을 색으로 표현하지만 면적이 큰 지역이 더 눈에 띌 수 있다. 사건 건수와 인구당 비율도 다른 질문이므로 분모를 함께 둔다. 정확한 지역 간 수치 차이를 읽는 목적이라면 정렬한 표나 막대가 더 편할 수도 있다. 지도는 위치 패턴을 설명할 때 선택하고 모든 비교에 자동 적용하지 않는다.</p>
+<p>시간과 공간을 함께 살피면 월별 작은 지도, 지역별 작은 선그래프, 지역×월 히트맵처럼 표현을 조합할 수 있다. 비교할 패널의 색 범위·시간 범위·단위를 맞춰야 같은 색과 높이가 같은 뜻을 가진다. 화면을 많이 만드는 것 자체보다 어떤 변화를 읽게 할지 먼저 정한다. 다음 자체 예제는 표현 선택과 값의 비교를 설명하며 실제 지역의 상업적 성과를 보고하는 자료가 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>두 가상 지역의 같은 단위 월별 매출을 비교한다. A의 시간 추세를 먼저 보려는 질문을 정했다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">지역</th>
+<th scope="col" style="text-align: right;">1월</th>
+<th scope="col" style="text-align: right;">2월</th>
+<th scope="col" style="text-align: right;">3월</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">12</td>
+</tr>
+</tbody>
+</table></div>
+<p>A는1월10에서3월14로4증가했다. 시간을 가로축에 두면 중간 변화도 함께 읽을 수 있다.3월의 지역별 값만 비교하려면 A14·B12의 막대나 표를 쓸 수 있다. 두 지역 모두 증가량4라고 증가율까지 같지는 않다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-27.png" alt="자체 예제의 같은 증가량4가 다른 증가율로 읽힘을 두 지역의 시간축에서 보인다.. A10→12→14와 B8→8→12는 전체 증가량4가 같지만 증가율은40%·50%다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>A10→12→14와 B8→8→12는 전체 증가량4가 같지만 증가율은40%·50%다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>가상 지역 A의 1·2·3월 매출은 각각 10·12·14다. 목적은 A의 월별 추세와 변화 시점 확인이다.</p>
+<p><strong>이 목적에 가장 직접 맞는 표현은?</strong></p>
+<ul>
+<li>1. 한 달의 지역별 면적 지도만</li>
+<li>2. 시간 순서가 있는 선그래프</li>
+<li>3. 합계만 나타낸 원그래프</li>
+<li>4. 지역 이름의 가나다순 목록만</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 시간 순서가 있는 선그래프</strong></p>
+<p>월별 값과 시간 순서를 같은 축에 놓은 선그래프는 추세와 변화 시점을 직접 보여준다. 지도나 합계만으로는 이 질문의 시간 변화를 충분히 나타내지 못한다.</p>
+<ul>
+<li>1번: 한 달의 공간 배치만 보여주면 A의 월별 변화가 빠진다.</li>
+<li>3번: 합계를 부분 비중으로 바꾸면 언제 값이 달라졌는지 보이지 않는다.</li>
+<li>4번: 지역 이름의 순서는 시간 순서나 월별 값의 변화가 아니다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>A는 1월 10→3월 14, B는 8→12다. 증가량과 증가율이 모두 같은가?</p>
+<p><strong>풀이:</strong> 증가량은 둘 다 4지만 증가율은 A40%, B50%로 다르다.</p>
+<p>시간 그래프를 해석할 때도 변화량의 분모를 확인한다. 같은 절대 증가를 같은 비율 증가로 읽지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>어디의 차이인가, 언제의 변화인가.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://service-manual.ons.gov.uk/data-visualisation/chart-types/line-chart" rel="noopener noreferrer" target="_blank">ONS Line chart</a> — 시간 변화 표현. 확인일 2026-10-30.</li>
+<li><a href="https://service-manual.ons.gov.uk/data-visualisation/chart-types/choropleth-maps" rel="noopener noreferrer" target="_blank">ONS Choropleth maps</a> — When to use a map과 인구·면적 영향을 고려한 비교. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-27.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>표현 선택의 교육용 판단이다. 실제 지역 자료·상업 성과나 지도 품질을 평가하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-25.html"><small>이전 개념 · 4-25</small>융합했다는 사실과 더 좋아졌다는 결과를 구분한다</a><a class="next" rel="next" data-role="theory-next" href="4-28.html"><small>다음 개념 · 4-28</small>카토그램의 면적은 실제 땅보다 선택한 통계량을 나타낸다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-28</span><a href="4-28.html">카토그램의 면적은 실제 땅보다 선택한 통계량을 나타낸다</a><div class="related-actions"><a href="../practice.html?code=4-28">문제 풀기</a><a href="../4-28.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-32</span><a href="4-32.html">축을 잘라도 자료의 증가율이 바뀌지는 않는다</a><div class="related-actions"><a href="../practice.html?code=4-32">문제 풀기</a><a href="../4-32.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-27"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>슬라이딩 윈도우는 예측 시점을 고정해 만든다 · 빅분기 공부방</title><meta name="description" content="입력의 끝과 정답의 시점을 별도로 적는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-27">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-27</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-27 · 이론 읽기</span><h1>슬라이딩 윈도우는 예측 시점을 고정해 만든다</h1><p class="theory-lead">입력의 끝과 정답의 시점을 별도로 적는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-27.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>시간 자료를 지도학습 표로 바꿀 때 최근 L개 관측을 입력으로 하고 미래 값을 정답으로 붙일 수 있다. 길이 3, 한 시점 앞 예측이면 (y₁,y₂,y₃)→y₄, 다음 행은 (y₂,y₃,y₄)→y₅다. 창을 한 칸씩 이동하므로 입력 행끼리 값이 겹칠 수 있다.</p>
+<p>길이 L과 예측 수평 h가 다르다. 입력 마지막 시점이 t라면 h시점 앞 정답은 yₜ₊ₕ다. 실제 예측을 실행하는 시점까지 알려진 입력만 사용해야 한다. 사후에는 있는 데이터라도 미래 정답이나 아직 발표되지 않은 통계를 입력에 넣으면 이용 가능 조건이 깨진다.</p>
+<p>겹치는 창을 무작위로 나누면 가까운 시점이나 같은 원천이 학습과 검증 양쪽에 섞일 수 있다. 시간 순서와 라벨 가용 시점을 지키며 분할하고, 필요하면 간격이나 그룹 분리를 둔다. TimeSeriesSplit의 gap도 가능한 도구지만 어떤 gap 하나가 모든 문제의 누수를 막는 것은 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>시간순 값이 10·11·12·13·14다. 길이 3, 한 시점 앞, 간격 1의 창을 모두 만든다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">입력</th>
+<th scope="col" style="text-align: right;">정답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(10,11,12)</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr>
+<td>(11,12,13)</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table></div>
+<p>완성된 입력·정답 쌍은 2개다. 마지막 (12,13,14)는 그 다음 정답이 아직 없어서 이 자료만으로 학습 쌍을 완성하지 못한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-27.png" alt="자체 예제의 입력 구간의 끝과 정답 시점을 나눠 표시한다.. 시점1~3 입력으로4를 예측하고2~4 입력으로5를 예측한다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>시점1~3 입력으로4를 예측하고2~4 입력으로5를 예측한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>시간순 관측 5개. 창 길이 3, 한 시점 앞을 예측하고 창을 1칸씩 이동한다.</p>
+<p><strong>만들 수 있는 완전한 입력·정답 쌍은?</strong></p>
+<ul>
+<li>1. 1개</li>
+<li>2. 2개</li>
+<li>3. 3개</li>
+<li>4. 5개</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 2개</strong></p>
+<p>n−L−h+1=5−3−1+1=2다. 마지막 창 뒤의 정답까지 있어야 쌍을 셀 수 있다.</p>
+<ul>
+<li>1번: 한 창만 만들고 다음 가능한 창을 누락했다.</li>
+<li>3번: 정답이 없는 마지막 입력 창까지 셌다.</li>
+<li>4번: 각 시점을 창 하나로 셌으며 앞뒤에 필요한 관측을 고려하지 않았다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>관측 5개와 창 길이 3은 같고 두 시점 앞 h=2를 예측하면 완전한 쌍은?</p>
+<p><strong>풀이:</strong> 1개: (10,11,12)→14.</p>
+<p>n−L−h+1=1이다. 정답은 입력 바로 다음 13이 아니라 두 시점 뒤 14다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>창 끝 t, 정답은 t+h.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html" rel="noopener noreferrer" target="_blank">scikit-learn TimeSeriesSplit</a> — 시간 순서 분할과 gap 매개변수; 창 개수는 자체 구성에서 계산. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-27.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>창 이동 간격1, 결측 없음, 일정 시점이다. 창 수 산술이 누수 없는 평가를 보장하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-25.html"><small>이전 개념 · 3-25</small>ARIMA의 MA는 과거 관측의 단순 평균이 아니다</a><a class="next" rel="next" data-role="theory-next" href="3-28.html"><small>다음 개념 · 3-28</small>베이즈는 관찰 뒤 분모를 다시 정한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-25</span><a href="3-25.html">ARIMA의 MA는 과거 관측의 단순 평균이 아니다</a><div class="related-actions"><a href="../practice.html?code=3-25">문제 풀기</a><a href="../3-25.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-28</span><a href="3-28.html">베이즈는 관찰 뒤 분모를 다시 정한다</a><div class="related-actions"><a href="../practice.html?code=3-28">문제 풀기</a><a href="../3-28.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-27"}</script><script type="module" src="../theory.mjs"></script></body></html>

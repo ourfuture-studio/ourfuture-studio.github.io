@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다 · 빅분기 공부방</title><meta name="description" content="행·열의 순서만 바꾸면 가까운 패턴을 모아 볼 수 있지만 관측값 자체가 바뀌지는 않는다. 재정렬과 표준화·값 변환을 같은 작업으로 설명하지 않는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-30">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-30</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-30 · 이론 읽기</span><h1>히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다</h1><p class="theory-lead">행·열의 순서만 바꾸면 가까운 패턴을 모아 볼 수 있지만 관측값 자체가 바뀌지는 않는다. 재정렬과 표준화·값 변환을 같은 작업으로 설명하지 않는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-30">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-30.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>히트맵은 행과 열의 교차값을 색으로 나타낸다. 비슷한 행이 멀리 떨어져 있으면 공통 패턴을 읽기 어려워, 거리나 유사도에 따라 이웃하게 재배치할 수 있다. 이때 원래 행 이름·열 이름과 각 값의 대응을 유지해야 한다. 행A를 옮겼는데 이름만 남겨 다른 값에 붙이면 재정렬이 아니라 자료 표기의 오류다.</p>
+<p>순서만 바꿨다면 모든 값의 모음·합계·평균·표본수는 그대로다. 색 범위도 같게 두면 같은 값은 같은 색이다. 재정렬된 블록이 눈에 잘 띈다고 새로 상관이 생겼거나 인과관계가 발견된 것은 아니다. 어떤 거리·연결법을 사용했는지에 따라 배열이 달라질 수 있으며, 패턴을 찾은 다음에는 원래 변수의 의미와 개별 관측을 다시 확인한다.</p>
+<p>clustermap 같은 도구에는 재정렬뿐 아니라 행·열별 표준화 옵션도 있다. 평균을 빼거나 표준편차로 나누는 처리를 켜면 색이 나타내는 값의 의미까지 달라진다. 원래 큰 수치를 비교하려는 질문과 각 행의 상대 패턴을 비교하려는 질문을 구분한다. 값 변환 여부와 색상 범위, 결측 처리 방법을 기록해야 서로 다른 그림을 같은 단위의 비교로 오해하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 행렬은 A=(1,2), B=(8,9), C=(2,1), D=(9,8)이다. 열과 색 범위를 고정하고 행 순서만 A·C·B·D로 바꾼다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">행</th>
+<th scope="col" style="text-align: right;">열1</th>
+<th scope="col" style="text-align: right;">열2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table></div>
+<p>작은 값의 두 행과 큰 값의 두 행이 가까워졌다. 하지만 전체 합계40, 평균5, A의열1값1은 그대로다. A와C의 거리√2, A와B의 거리√98처럼 비교한 수치도 행 이름 기준으로는 변하지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-30.png" alt="자체 예제의 원 순서와 재정렬 순서를 같은 색 범위·값 대응으로 비교한다.. A·B·C·D를 A·C·B·D로 옮겨도 합계40·평균5와 각 이름의 값은 같다." width="1200" height="1042" loading="lazy" decoding="async"><figcaption>A·B·C·D를 A·C·B·D로 옮겨도 합계40·평균5와 각 이름의 값은 같다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>A=(1,2), B=(8,9), C=(2,1), D=(9,8)의 행 순서만 A·C·B·D로 바꾼다. 값 변환은 없고 색 범위도 같다.</p>
+<p><strong>재정렬 후 올바른 설명은?</strong></p>
+<ul>
+<li>1. 전체 합계 40과 각 이름에 연결된 값은 같다</li>
+<li>2. 서로 이웃한 모든 행의 상관은 1이 된다</li>
+<li>3. 관측 수가 4에서 8로 늘어난다</li>
+<li>4. 값이 자동으로 평균 0으로 표준화된다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 전체 합계 40과 각 이름에 연결된 값은 같다</strong></p>
+<p>행의 위치만 달라졌으므로 값·합계·행 수는 변하지 않는다. 비슷한 행을 이웃하게 보여주는 효과와 수치 변환을 구별한다.</p>
+<ul>
+<li>2번: 이웃 배치는 새로운 상관을 만들거나 완전한 상관을 보장하지 않는다.</li>
+<li>3번: 4행의 순서를 바꿨을 뿐 관측을 추가하지 않았다.</li>
+<li>4번: 평균을 빼는 표준화는 이 문제에서 수행하지 않았다고 명시한 별도 연산이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>이번에는 A행(1,2)에서 그 행의 평균 1.5를 빼는 별도 처리를 했다. 새 값은 무엇이며 단순 재정렬인가?</p>
+<p><strong>풀이:</strong> (−0.5,0.5)이며 단순 재정렬이 아니다.</p>
+<p>평균 중심화로 숫자가 원자료값에서 행 평균과의 차이로 바뀌었다. 측정 단위는 같지만 색으로 비교하는 기준이 달라진다. 위치 변경만 수행한 앞 사례와 처리 옵션을 구분해 기록한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>자리만 바뀌었나, 숫자도 바뀌었나.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://seaborn.pydata.org/generated/seaborn.clustermap.html" rel="noopener noreferrer" target="_blank">seaborn clustermap</a> — row_cluster·col_cluster와 선택적 z_score·standard_scale. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-30">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-30.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>고정 자체 행렬의 순열·중심화다. 클러스터링 알고리즘을 실행하거나 새 상관·인과를 발견한 결과가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-29.html"><small>이전 개념 · 4-29</small>버블의 값 비율과 반지름 비율은 다르다</a><a class="next" rel="next" data-role="theory-next" href="4-31.html"><small>다음 개념 · 4-31</small>히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-03</span><a href="4-03.html">행을 고르는 작업과 표현을 다듬는 작업을 구분한다</a><div class="related-actions"><a href="../practice.html?code=4-03">문제 풀기</a><a href="../4-03.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-31</span><a href="4-31.html">히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다</a><div class="related-actions"><a href="../practice.html?code=4-31">문제 풀기</a><a href="../4-31.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-30"}</script><script type="module" src="../theory.mjs"></script></body></html>

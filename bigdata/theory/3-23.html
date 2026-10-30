@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MANOVA는 여러 반응의 평균벡터를 비교한다 · 빅분기 공부방</title><meta name="description" content="반응변수 수와 집단 수를 먼저 구분한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-23">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-23</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-23 · 이론 읽기</span><h1>MANOVA는 여러 반응의 평균벡터를 비교한다</h1><p class="theory-lead">반응변수 수와 집단 수를 먼저 구분한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-23">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-23.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>일원 ANOVA는 범주로 나눈 여러 집단의 한 수치 반응 평균을 비교한다. MANOVA는 같은 관측 단위에서 얻은 여러 수치 반응을 벡터로 묶어 집단의 평균벡터가 같은지 묻는다. 설명변수가 여러 개라는 사실만으로 MANOVA가 되는 것은 아니다. 다변량이라는 말은 이 문맥에서 반응의 차원을 가리킨다.</p>
+<p>예를 들어 교육 프로그램 세 집단에서 같은 사람의 속도와 정확도를 측정했다면 두 반응은 상관될 수 있다. MANOVA는 변수 간 공분산을 포함한 공동 차이를 다룬다. 반응별 ANOVA를 여러 번 돌리고 각 p값을 그대로 보는 절차와 검정 질문이 같지 않다. 사후 개별 비교에는 다중비교 계획이 필요하다.</p>
+<p>평균벡터 동일이라는 귀무가설을 기각해도 모든 반응이 모든 집단 사이에서 다르다고 결론 내릴 수 없다. 어느 집단·반응이 차이에 기여했는지는 후속 분석의 질문이다. 통상 관측 독립성·공분산 구조·다변량 정규성 등을 진단한다. 아래에서는 검정을 실행하거나 p값을 만들지 않고 가설 문장의 범위를 구별한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>교육 A·B·C의 반응을 (문제풀이 시간, 정답 점수)로 정의한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">집단</th>
+<th scope="col">비교할 모평균 벡터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>μA=(시간 평균, 점수 평균)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>μB=(시간 평균, 점수 평균)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>μC=(시간 평균, 점수 평균)</td>
+</tr>
+</tbody>
+</table></div>
+<p>일원 MANOVA의 귀무가설은 μA=μB=μC다. 두 성분이 함께 같은지 묻지만 기각 시 두 성분이 모두 다르다는 뜻은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-23.png" alt="자체 예제의 집단 수와 반응 차원을 구분한다.. 독립 집단A·B·C 각각에서 시간·점수의 두 성분 평균을 묶어 비교한다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>독립 집단A·B·C 각각에서 시간·점수의 두 성분 평균을 묶어 비교한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>서로 독립인 세 교육 집단에서 각 사람의 시간·점수 두 수치 반응을 함께 측정했다. 일원 MANOVA를 검토한다.</p>
+<p><strong>기본 귀무가설은?</strong></p>
+<ul>
+<li>1. 모든 관측값이 같다</li>
+<li>2. 두 반응의 상관계수가 0이다</li>
+<li>3. 각 집단의 표본 수가 같다</li>
+<li>4. 세 집단의 모평균벡터가 같다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 세 집단의 모평균벡터가 같다</strong></p>
+<p>집단별 두 반응의 모평균을 묶은 벡터가 모두 같다는 가설이다.</p>
+<ul>
+<li>1번: 평균이 같다는 것과 모든 관측이 같다는 것은 다르다.</li>
+<li>2번: 반응 사이 무상관 검정이 아니다.</li>
+<li>3번: 동일 표본 수는 여기서 검정하려는 효과 가설이 아니다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>평균벡터 동일을 기각했다. 시간과 점수가 모두 세 집단의 모든 쌍에서 다르다고 말할 수 있는가?</p>
+<p><strong>풀이:</strong> 그렇게 단정할 수 없다.</p>
+<p>적어도 일부 집단의 평균벡터가 다르다는 결론이다. 차이를 특정하려면 계획된 대비나 개별 반응 후속 분석 및 다중비교를 검토한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>여러 반응을 묶은 집단 평균벡터.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat505/Lesson08" rel="noopener noreferrer" target="_blank">Penn State STAT 505 MANOVA</a> — 공식 검색 반환 본문의 평균벡터 동일 가설·가정·후속 Bonferroni ANOVA 설명; 직접 페이지 응답은 시간초과. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-23">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-23.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>기법 선택의 출발점만 판단한다. 정규성·공분산 가정을 확인하거나 p값을 산출한 것은 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-22.html"><small>이전 개념 · 3-22</small>교차표는 관측빈도를 독립 기대빈도와 비교한다</a><a class="next" rel="next" data-role="theory-next" href="3-24.html"><small>다음 개념 · 3-24</small>정준상관은 두 묶음에서 점수를 하나씩 만든다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-24</span><a href="3-24.html">정준상관은 두 묶음에서 점수를 하나씩 만든다</a><div class="related-actions"><a href="../practice.html?code=3-24">문제 풀기</a><a href="../3-24.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-23"}</script><script type="module" src="../theory.mjs"></script></body></html>

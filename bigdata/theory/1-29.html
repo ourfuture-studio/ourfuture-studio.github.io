@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>웨어하우스·마트·레이크·레이크하우스의 목적 · 빅분기 공부방</title><meta name="description" content="저장소 이름보다 자료 범위와 사용 목적을 연결해 읽는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="1-29">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">1과목 · 빅데이터 분석 기획</a><span class="separator" aria-hidden="true">/</span><span>1-29</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">1과목 · 1-29 · 이론 읽기</span><h1>웨어하우스·마트·레이크·레이크하우스의 목적</h1><p class="theory-lead">저장소 이름보다 자료 범위와 사용 목적을 연결해 읽는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-29">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-29.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>웨어하우스는 여러 원천을 통합해 일관된 분석·보고를 지원하는 정리된 자료 체계로 설명한다. 데이터 마트는 특정 부서나 주제에 초점을 맞춘 분석 범위다. 마트가 반드시 전사 웨어하우스에서만 파생되는 것은 아니며, 범위와 목적을 함께 확인한다.</p>
+<p>데이터 레이크는 표뿐 아니라 원본 파일, 로그, 이미지 등 다양한 자료를 담는 저장 접근이다. 레이크하우스는 이런 저장 기반에 테이블 관리, 질의와 스키마·트랜잭션 관리 같은 웨어하우스의 성격을 결합하려는 접근으로 이해한다. 실제 제공 기능은 제품과 구현에 따라 다르다.</p>
+<p>레이크에 넣었다고 품질 검증이 끝나는 것은 아니며 레이크하우스라는 이름만으로 어떤 질의에서도 더 빠르다고 할 수 없다. 원본 보존, 전사 지표, 부서별 분석, 관리 기능처럼 문제에 명시된 요구를 기준으로 구분한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>소매 회사의 자체 저장 요구를 비교한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">요구</th>
+<th scope="col">연결되는 개념</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전사 매출 지표를 통합해 보고</td>
+<td>웨어하우스</td>
+</tr>
+<tr>
+<td>마케팅 부서의 캠페인 분석 범위</td>
+<td>마트</td>
+</tr>
+<tr>
+<td>원본 영상·로그·표 파일 보관</td>
+<td>레이크</td>
+</tr>
+<tr>
+<td>레이크 자료에 관리되는 테이블·질의 기능 결합</td>
+<td>레이크하우스</td>
+</tr>
+</tbody>
+</table></div>
+<p>한 조직에서 이 구조들을 함께 사용할 수 있다. 네 개를 서로 배타적인 발전 단계로 외우지 않는다. 마트는 누구와 어떤 주제에 필요한 범위인지에 초점이 있고, 레이크하우스는 저장과 관리 기능을 결합하는 구조에 초점이 있다. 따라서 레이크하우스 기반 안에 마케팅 마트 범위를 구성할 수도 있다. 네 이름을 한 줄의 발전 단계나 서로 하나만 고르는 전체 조직 형태로 외우지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-29.png" alt="자체 예제의 범위·원본 보존·관리 기능이라는 구분 축을 나눈다.. 전사 통합은 웨어하우스, 주제 범위는 마트, 다양한 원본 보관은 레이크, 관리 기능 결합은 레이크하우스다." width="1200" height="1086" loading="lazy" decoding="async"><figcaption>전사 통합은 웨어하우스, 주제 범위는 마트, 다양한 원본 보관은 레이크, 관리 기능 결합은 레이크하우스다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>전사 자료 중 마케팅 부서의 캠페인 분석에 필요한 범위를 구성한다.</p>
+<p><strong>분석 범위를 가장 직접 설명하는 것은?</strong></p>
+<ul>
+<li>1. 데이터 마트</li>
+<li>2. 원본 영상 코덱</li>
+<li>3. 항상 전사 전체와 같은 범위</li>
+<li>4. 워크플로 스케줄러</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 데이터 마트</strong></p>
+<p>특정 부서와 주제에 초점을 맞춘 분석 자료 범위는 데이터 마트로 설명할 수 있다.</p>
+<ul>
+<li>2번은 영상 표현 방식이다.</li>
+<li>3번은 부서·주제로 한정한다는 조건과 다르다.</li>
+<li>4번은 작업 실행 순서를 관리하는 역할이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>요구를 “원본 영상·로그를 보관하면서 관리되는 테이블과 질의 기능도 함께 제공”으로 바꾸면?</p>
+<p><strong>풀이:</strong> 레이크하우스 접근을 검토할 수 있다.</p>
+<p>자료의 다양성에 더해 테이블 관리와 분석 기능의 결합을 명시했다. 실제 지원 여부는 구현을 확인해야 한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>전사 통합·주제 범위·원본 다양성·관리 기능을 나눈다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://aws.amazon.com/compare/the-difference-between-a-data-warehouse-data-lake-and-data-mart/" rel="noopener noreferrer" target="_blank">AWS: Data lake vs data warehouse vs data mart</a> — 저장 목적과 범위의 비교. 확인일 2026-10-30.</li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/store-data" rel="noopener noreferrer" target="_blank">Microsoft Learn: Store data in Microsoft Fabric</a> — Lakehouse for flexible data storage 및 Warehouse for structured analytics; 제품 구현 사례의 범위. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-29">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-29.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>요구에 가장 직접 대응하는 교육 개념이다. 제품 추천·실제 기능 검증·성능 벤치마크가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="1-28.html"><small>이전 개념 · 1-28</small>ETL과 ELT의 변환 위치</a><span aria-hidden="true"></span></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-02</span><a href="1-02.html">저장소와 작업 실행 순서 관리</a><div class="related-actions"><a href="../practice.html?code=1-02">문제 풀기</a><a href="../1-02.html">조건 바꿔 체험</a></div></li><li><span class="related-code">1-28</span><a href="1-28.html">ETL과 ELT의 변환 위치</a><div class="related-actions"><a href="../practice.html?code=1-28">문제 풀기</a><a href="../1-28.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "1-29"}</script><script type="module" src="../theory.mjs"></script></body></html>

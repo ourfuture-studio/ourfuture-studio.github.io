@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>비모수검정은 표본의 연결부터 고른다 · 빅분기 공부방</title><meta name="description" content="정규성이라는 한 단어보다 독립 표본인지 같은 사람의 반복 측정인지 먼저 본다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-03">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-03</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-03 · 이론 읽기</span><h1>비모수검정은 표본의 연결부터 고른다</h1><p class="theory-lead">정규성이라는 한 단어보다 독립 표본인지 같은 사람의 반복 측정인지 먼저 본다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-03">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-03.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>비모수검정은 아무 가정도 없는 검정이라는 뜻이 아니다. 연속형 또는 순서형 자료의 순위로 비교하더라도 관측의 독립성, 표본 설계, 동점 처리 등은 검토해야 한다. 독립된 두 집단의 분포를 비교하는 Mann–Whitney U 검정과, 같은 사람의 두 측정을 짝지어 차이를 보는 Wilcoxon 부호순위 검정은 입력의 연결 구조가 다르다.</p>
+<p>Mann–Whitney의 귀무가설을 곧바로 두 집단 중앙값이 같다고 바꾸면 조건이 빠진다. 분포 모양이 같고 위치만 다른 모형 같은 추가 조건 아래에서 위치 차이로 읽을 수 있다. 모양과 산포도 함께 다르면 검정 결과만으로 중앙값 차이를 특정하기 어렵다. 정규성을 확인하지 못했다는 이유만으로 모든 상황에 같은 순위검정을 쓰지 않는다.</p>
+<p>부호순위 검정은 짝별 차이의 크기에 순위를 매기므로 차이 분포의 대칭성 같은 해석 조건을 살핀다. 짝 정보가 있으면 원래 점수를 두 독립 집단처럼 합치지 않는다. 아래 문항은 검정 종류를 고르는 자체 예제이며 p값이나 불명확한 복원 문항의 공식 정답을 주장하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>서로 다른 사람에게서 A={1,3,5}, B={2,4,6}을 관측했다. 전체 값의 순위를 합하면 A는 1+3+5=9, B는 2+4+6=12다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">자료 구조</th>
+<th scope="col">먼저 검토할 순위검정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서로 다른 두 집단</td>
+<td>Mann–Whitney U</td>
+</tr>
+<tr>
+<td>동일인의 전·후</td>
+<td>Wilcoxon 부호순위</td>
+</tr>
+</tbody>
+</table></div>
+<p>세 명씩 독립 표본이므로 집단 간 순위 배치를 비교한다. 표본이 작다는 사실만으로 유의함이나 차이 없음이 정해지지는 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-03.png" alt="자체 예제의 분포의 정상성보다 먼저 표본 연결을 보게 한다.. 짝이 없으면 독립 순위 비교, 짝이 있으면 차이의 대칭성과 척도를 추가 확인한다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>짝이 없으면 독립 순위 비교, 짝이 있으면 차이의 대칭성과 척도를 추가 확인한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>서로 다른 사람의 두 독립 집단. 순서형 반응의 분포를 순위로 비교하려 한다.</p>
+<p><strong>보기 중 자료 구조에 맞는 검정은?</strong></p>
+<ul>
+<li>1. 대응표본 t검정</li>
+<li>2. Wilcoxon 부호순위 검정</li>
+<li>3. Mann–Whitney U 검정</li>
+<li>4. 범주 빈도 카이제곱검정</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — Mann–Whitney U 검정</strong></p>
+<p>두 집단 사이에 짝이 없고 순위 기반 분포 비교를 원하므로 Mann–Whitney U가 맞는다.</p>
+<ul>
+<li>1번: 같은 사람의 차이 평균을 다루는 설계가 아니다.</li>
+<li>2번: 짝별 차이가 필요한 검정인데 여기에는 짝이 없다.</li>
+<li>4번: 반응을 범주별 빈도로 정리하는 상황을 제시하지 않았다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>자료가 동일인 세 명의 교육 전·후 점수이고 짝별 차이의 대칭성을 가정할 수 있다면 어떤 순위검정을 검토하는가?</p>
+<p><strong>풀이:</strong> Wilcoxon 부호순위 검정.</p>
+<p>사람별 전·후를 연결해 차이를 만든다. 검정 선택과 별개로 0인 차이·동점·표본 수에 맞는 계산 방식을 확인해야 한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>독립 두 집단인가, 같은 사람의 차이인가.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html" rel="noopener noreferrer" target="_blank">SciPy mannwhitneyu</a> — Notes: 두 독립 표본의 분포 비교와 짝진 자료에는 wilcoxon 사용. 확인일 2026-10-30.</li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html" rel="noopener noreferrer" target="_blank">SciPy wilcoxon</a> — paired differences, symmetry about zero, ties and zero-differences. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-03">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-03.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>연속·순서형 독립 비교와 수치 차이가 정의되는 짝진 비교만 다룬다. 표본 수·동점·0 차이의 p값은 계산하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-01.html"><small>이전 개념 · 3-01</small>범주형 회귀의 계수는 조건부터 센다</a><a class="next" rel="next" data-role="theory-next" href="3-05.html"><small>다음 개념 · 3-05</small>최소제곱은 잔차의 부호를 지운다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-01</span><a href="3-01.html">범주형 회귀의 계수는 조건부터 센다</a><div class="related-actions"><a href="../practice.html?code=3-01">문제 풀기</a><a href="../3-01.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-05</span><a href="3-05.html">최소제곱은 잔차의 부호를 지운다</a><div class="related-actions"><a href="../practice.html?code=3-05">문제 풀기</a><a href="../3-05.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-03"}</script><script type="module" src="../theory.mjs"></script></body></html>

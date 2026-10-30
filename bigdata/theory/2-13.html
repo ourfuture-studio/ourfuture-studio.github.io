@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>표준점수 0은 원자료의 0이 아니라 기준 평균이다 · 빅분기 공부방</title><meta name="description" content="표준화는 평균에서의 차이를 표준편차 단위로 표시한다. 표준점수가 0이라고 원래 값이 없거나 측정값이 0이었다는 뜻은 아니다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-13">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-13</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-13 · 이론 읽기</span><h1>표준점수 0은 원자료의 0이 아니라 기준 평균이다</h1><p class="theory-lead">표준화는 평균에서의 차이를 표준편차 단위로 표시한다. 표준점수가 0이라고 원래 값이 없거나 측정값이 0이었다는 뜻은 아니다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-13.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>평균 μ와 표준편차 σ&gt;0을 기준으로 한 표준점수는 z=(x−μ)/σ다. 분자는 평균에서 얼마나 떨어졌는지, 분모는 그 자료의 전형적인 산포 단위를 나타낸다. x가 기준 평균과 같으면 분자는 0이다. 평균보다 크면 양수, 작으면 음수가 되므로 부호와 절댓값을 각각 해석할 수 있다.</p>
+<p>이 변환은 원래 단위를 없애 서로 다른 척도의 입력을 비교하거나 거리 기반 학습에 사용할 때 도움이 된다. 그러나 표준화를 했다고 분포 모양이 정규분포로 바뀌지는 않는다. 양수 평균의 자료도 평균보다 작은 관측에서는 음의 z가 나오며, 음수라고 잘못된 값으로 지우면 안 된다.</p>
+<p>문제에서는 모집단 표준편차인지 표본 표준편차인지, 또는 소프트웨어가 어떤 분산 정의를 쓰는지 확인한다. 같은 숫자에서도 ddof 선택에 따라 표준편차가 달라질 수 있다. 아래 예제는 평균과 표준편차를 이미 주었으므로 추정 방식을 다시 선택하지 않는다. 예측에서는 훈련에서 얻은 평균·표준편차를 평가 자료에 그대로 적용한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>기준 평균은 50, 표준편차는 5로 고정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col" style="text-align: right;">원자료 x</th>
+<th scope="col">계산</th>
+<th scope="col" style="text-align: right;">z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">45</td>
+<td>(45−50)/5</td>
+<td style="text-align: right;">−1</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>(50−50)/5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">55</td>
+<td>(55−50)/5</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>z=0은 기준 평균과 같은 위치이고 z=1은 평균보다 표준편차 한 단위만큼 큰 위치다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-13.png" alt="자체 예제의 기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.. 평균50·표준편차5에서45·50·55는 z=−1·0·1이다. 이 산술은 정규분포를 가정하지 않는다." width="1200" height="901" loading="lazy" decoding="async"><figcaption>평균50·표준편차5에서45·50·55는 z=−1·0·1이다. 이 산술은 정규분포를 가정하지 않는다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>기준 평균 50, 표준편차 5이며 x=50이다. z=(x−평균)/표준편차를 사용한다.</p>
+<p><strong>z와 그 의미로 옳은 것은?</strong></p>
+<ul>
+<li>1. 0·원래 측정값이 0이다</li>
+<li>2. 1·평균과 같다</li>
+<li>3. 0·기준 평균과 같다</li>
+<li>4. −1·기준 평균보다 크다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 0·기준 평균과 같다</strong></p>
+<p>(50−50)/5=0이고 이는 기준 평균과 같은 위치라는 뜻이다.</p>
+<ul>
+<li>① 원자료는 50이며 변환 후 0의 뜻을 혼동했다.</li>
+<li>② 평균에서 표준편차만큼 커야 z=1이다.</li>
+<li>④ z=−1은 여기서는 원자료 45의 위치다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>기준을 유지하고 x만 55로 바꾸면?</p>
+<p><strong>풀이:</strong> z=1</p>
+<p>평균보다 5 크고 표준편차가 5이므로 5/5=1이다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>표준점수 0은 그 자료의 출발점이 아니라 평균 위치다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener noreferrer" target="_blank">scikit-learn: Preprocessing data</a> — 8.3.1 Standardization. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-13.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>주어진 기준으로 계산한다. 분산 추정법과 정규성은 별도이며 운영 입력에서 다시 fit하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-12.html"><small>이전 개념 · 2-12</small>최소-최대 변환의 기준은 적용할 자료마다 새로 정하지 않는다</a><a class="next" rel="next" data-role="theory-next" href="2-14.html"><small>다음 개념 · 2-14</small>로그 변환은 큰 값 사이의 간격을 다른 척도로 표현한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-12</span><a href="2-12.html">최소-최대 변환의 기준은 적용할 자료마다 새로 정하지 않는다</a><div class="related-actions"><a href="../practice.html?code=2-12">문제 풀기</a><a href="../2-12.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-25</span><a href="2-25.html">표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다</a><div class="related-actions"><a href="../practice.html?code=2-25">문제 풀기</a><a href="../2-25.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-13"}</script><script type="module" src="../theory.mjs"></script></body></html>

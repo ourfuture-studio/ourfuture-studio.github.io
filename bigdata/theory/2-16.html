@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>명목 범주의 숫자는 크기가 아니라 이름이다 · 빅분기 공부방</title><meta name="description" content="색상에 1·2·3이라는 코드를 붙여도 색 사이에 크기나 거리의 의미가 생기지 않는다. 원-핫 인코딩은 각 범주에 속하는지를 별도 열로 표시한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-16">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-16</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-16 · 이론 읽기</span><h1>명목 범주의 숫자는 크기가 아니라 이름이다</h1><p class="theory-lead">색상에 1·2·3이라는 코드를 붙여도 색 사이에 크기나 거리의 의미가 생기지 않는다. 원-핫 인코딩은 각 범주에 속하는지를 별도 열로 표시한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-16">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-16.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>빨강·파랑·초록을 1·2·3으로 저장한 열은 색상이라는 명목 범주를 나타낸다. 숫자를 저장했다고 초록이 빨강의 세 배이거나 파랑이 둘의 중간이라는 뜻이 아니다. 숫자 간격을 거리로 사용하는 모형에 이 코드를 그대로 넣으면 존재하지 않는 순서와 간격을 입력하게 될 수 있다.</p>
+<p>범주 순서를 빨강·파랑·초록으로 고정하고 모든 범주를 남기는 원-핫 인코딩을 쓰면 파랑은 [0,1,0]이다. 각 칸은 해당 색 여부를 나타내며 한 행의 세 값은 정확히 하나만 1이다. 여러 상품이 동시에 선택될 수 있는 장바구니의 다중 표시와는 다른 조건이다. 열 순서를 바꾸면 벡터도 바뀌므로 숫자 배열만 외우지 않는다.</p>
+<p>절편이 있는 선형모형에서 기준 범주를 생략하는 코딩은 또 다른 설정이다. 그때의 열 수와 모든 범주를 남긴 원-핫의 열 수를 섞으면 안 된다. 학습 때 없던 새 범주의 처리, 결측값의 표현과 열 정렬도 구현 시 확인해야 한다. 이 글은 범주의 의미와 표현을 구분하는 데 집중하며 회귀계수의 총 개수는 별도의 문제다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>범주 생략 없이 열 순서를 명시한 자체 색상 예제다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">색상</th>
+<th scope="col" style="text-align: right;">빨강</th>
+<th scope="col" style="text-align: right;">파랑</th>
+<th scope="col" style="text-align: right;">초록</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>빨강</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>파랑</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>초록</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>파랑의 원-핫 벡터에서 가운데 1은 파랑 열에 해당한다. 위치만 보고 색상을 판단하면 열 순서가 바뀌는 변형을 풀기 어렵다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-16.png" alt="자체 예제의 색상과 열 순서를 바꾸어 같은 범주의 원-핫 벡터를 확인한다.. 빨강·파랑·초록 순서의 파랑은[0,1,0], 파랑·빨강·초록 순서에서는[1,0,0]이다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>빨강·파랑·초록 순서의 파랑은[0,1,0], 파랑·빨강·초록 순서에서는[1,0,0]이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>한 행은 색 하나다. 열 순서는 빨강·파랑·초록이며 범주를 생략하지 않는다.</p>
+<p><strong>파랑의 원-핫 표현은?</strong></p>
+<ul>
+<li>1. [1,0,0]</li>
+<li>2. [0,1,0]</li>
+<li>3. [0,0,1]</li>
+<li>4. [1,1,0]</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — [0,1,0]</strong></p>
+<p>파랑 열만 1이고 다른 두 색의 열은 0이다.</p>
+<ul>
+<li>① 주어진 순서에서 빨강이다.</li>
+<li>③ 주어진 순서에서 초록이다.</li>
+<li>④ 한 행이 두 색에 속한다고 표시하여 색 하나 조건과 다르다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>열 순서만 파랑·빨강·초록으로 바꾸면 같은 파랑의 벡터는?</p>
+<p><strong>풀이:</strong> [1,0,0]</p>
+<p>의미는 같지만 파랑 열이 첫 번째로 이동했기 때문에 1의 위치가 바뀐다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>숫자의 위치보다 그 열의 범주 이름을 읽는다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener noreferrer" target="_blank">scikit-learn: Preprocessing data</a> — 8.3.4 Encoding categorical features. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-16">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-16.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>범주 생략·절편·다중 선택·결측 인코딩은 제외한다. 벡터의 숫자가 색의 크기나 거리를 뜻하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-15.html"><small>이전 개념 · 2-15</small>연속값을 구간으로 바꾸면 정확한 값은 되찾기 어렵다</a><a class="next" rel="next" data-role="theory-next" href="2-17.html"><small>다음 개념 · 2-17</small>파생변수는 계산식과 관측 단위를 함께 정의한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-23</span><a href="2-23.html">같은 숫자라도 척도에 따라 가능한 해석이 다르다</a><div class="related-actions"><a href="../practice.html?code=2-23">문제 풀기</a><a href="../2-23.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-01</span><a href="3-01.html">범주형 회귀의 계수는 조건부터 센다</a><div class="related-actions"><a href="../practice.html?code=3-01">문제 풀기</a><a href="../3-01.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-16"}</script><script type="module" src="../theory.mjs"></script></body></html>

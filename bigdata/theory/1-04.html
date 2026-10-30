@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Volume·Velocity·Variety를 조건으로 구분하기 · 빅분기 공부방</title><meta name="description" content="자료의 양, 도착 속도, 표현 형태를 서로 다른 축으로 읽는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="1-04">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">1과목 · 빅데이터 분석 기획</a><span class="separator" aria-hidden="true">/</span><span>1-04</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">1과목 · 1-04 · 이론 읽기</span><h1>Volume·Velocity·Variety를 조건으로 구분하기</h1><p class="theory-lead">자료의 양, 도착 속도, 표현 형태를 서로 다른 축으로 읽는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-04">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-04.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>Volume은 저장·처리해야 할 자료의 규모, Velocity는 자료가 발생하고 유입되는 속도, Variety는 표·문서·이미지처럼 자료 형태의 다양성을 가리키는 대표적인 설명이다. 세 특성은 함께 나타날 수 있지만 같은 뜻은 아니다.</p>
+<p>이전보다 파일이 많이 쌓였다는 문장은 규모를, 초당 들어오는 건수가 늘었다는 문장은 속도를, 같은 양의 표에 음성과 영상이 추가됐다는 문장은 형태를 강조한다. 문제에 없는 다른 조건까지 상상하면 보기 여러 개가 그럴듯해진다. 달라졌다고 명시한 조건을 기준으로 고른다.</p>
+<p>“빅데이터는 몇 GB 이상” 같은 고정 문턱을 이 구분에서 도출할 수는 없다. 시스템이 감당할 수 있는 크기와 처리 시간도 고려해야 한다. 여기서는 세 축의 의미를 익히기 위해 나머지 조건을 고정한 예를 사용한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>세 시스템의 변경 내용을 비교한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">변경</th>
+<th scope="col">강조되는 축</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>누적 보관량 1TB→10TB</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>유입 100건/초→1,000건/초</td>
+<td>Velocity</td>
+</tr>
+<tr>
+<td>표에 음성·영상 형식 추가</td>
+<td>Variety</td>
+</tr>
+</tbody>
+</table></div>
+<p>세 수치는 자체 구분 예제다. 실제 처리 속도 개선이나 시스템 용량을 측정한 결과가 아니다. 1TB를 계속 보관하면서 초당 유입이 100건에서 1,000건으로 늘었다면 이번 비교에서 직접 바뀐 것은 속도다. 오랫동안 두면 누적량도 커질 수 있지만 그것은 다른 관찰 시점의 문제다. 반대로 같은 기간·같은 유입 속도를 유지한 채 자료 형식만 세 종류로 늘면 형태 다양성의 변화로 읽는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-04.png" alt="자체 예제의 양·속도·형태를 독립된 축으로 보여 조건을 섞지 않게 한다.. 누적 TB, 초당 건수, 자료 형태 수는 서로 다른 축이다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>누적 TB, 초당 건수, 자료 형태 수는 서로 다른 축이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>총량과 초당 유입 건수는 같다. 표 데이터에 음성·영상 형태가 추가됐다.</p>
+<p><strong>직접 증가한 특성은?</strong></p>
+<ul>
+<li>1. Volume</li>
+<li>2. Velocity</li>
+<li>3. Variety</li>
+<li>4. 정확도</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — Variety</strong></p>
+<p>양과 유입 속도를 고정하고 표현 형태가 늘었으므로 Variety를 묻는다.</p>
+<ul>
+<li>1번은 총량이며 이 문제에서는 고정했다.</li>
+<li>2번은 유입 속도이며 이 문제에서는 같다.</li>
+<li>4번은 예측의 맞고 틀림을 나타내는 평가량이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>형태는 그대로이고 초당 유입이 100건에서 1,000건으로 바뀌면?</p>
+<p><strong>풀이:</strong> Velocity가 강조된다.</p>
+<p>비교한 것은 누적량이 아니라 시간당 들어오는 양이다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>얼마나 많이·얼마나 빨리·어떤 형태인지 나눈다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://aws.amazon.com/what-is/big-data/" rel="noopener noreferrer" target="_blank">AWS: What is Big Data?</a> — Volume, Velocity, Variety 및 활용 설명. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-04">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-04.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>형태 수는 구분 연습용 단순 값이며 빅데이터를 정하는 임계치나 시스템 성능 지표가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="1-03.html"><small>이전 개념 · 1-03</small>데이터 관리와 모형 개발의 업무 구분</a><a class="next" rel="next" data-role="theory-next" href="1-05.html"><small>다음 개념 · 1-05</small>데이터 보유에서 서비스 가치까지</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-24</span><a href="1-24.html">정형·반정형·비정형 자료를 구조로 읽기</a><div class="related-actions"><a href="../practice.html?code=1-24">문제 풀기</a><a href="../1-24.html">조건 바꿔 체험</a></div></li><li><span class="related-code">1-27</span><a href="1-27.html">일괄 수집과 지속적인 스트림 수집</a><div class="related-actions"><a href="../practice.html?code=1-27">문제 풀기</a><a href="../1-27.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "1-04"}</script><script type="module" src="../theory.mjs"></script></body></html>

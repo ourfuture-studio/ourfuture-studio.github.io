@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>예측값 다음에 누가 무엇을 결정하는지 적는다 · 빅분기 공부방</title><meta name="description" content="같은 수요80개도 발주 담당자와 배송 담당자가 필요한 설명은 다르다. 예측 단위·시점·불확실성과 사용자의 행동 규칙을 연결해야 결과가 실제 의사결정에 쓰인다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-37">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-37</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-37 · 이론 읽기</span><h1>예측값 다음에 누가 무엇을 결정하는지 적는다</h1><p class="theory-lead">같은 수요80개도 발주 담당자와 배송 담당자가 필요한 설명은 다르다. 예측 단위·시점·불확실성과 사용자의 행동 규칙을 연결해야 결과가 실제 의사결정에 쓰인다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-37.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>분석 결과를 전달할 때는 사용자가 내려야 하는 결정을 먼저 적는다. 점포 발주자는 내일 필요한 상품 수와 현재 재고를 보지만 배송 담당자는 지점별 물량·부피·도착 기한과 차량 제약을 함께 본다. 같은 예측표를 보여 주더라도 어떤 단위와 집계 수준이 필요한지 다르다. 숫자 옆에 대상·기간·업데이트 시각을 붙이고, 사용자가 바꿀 수 있는 행동과 바꿀 수 없는 조건을 구분한다.</p>
+<p>예측을 행동으로 바꾸는 규칙에는 추가 가정이 있다. 내일 수요를80개로 예상하더라도 재고, 입고 예정, 유통 기한, 발주 최소 단위와 품절 비용에 따라 주문량이 달라진다. 모형이 이 조건들을 입력받거나 최적화한 것이 아니라면 예측80개를 최적 주문80개라고 부를 수 없다. 교육 예제에서는 계산을 분명하게 하려고 조건을 줄일 수 있지만 실제 적용에는 생략한 제약을 되돌려 확인해야 한다.</p>
+<p>성능 지표와 업무 결과도 나눈다. 평균 절대 오차가 줄었다는 결과만으로 비용이나 만족도가 개선됐다고 증명되지는 않는다. 행동 규칙과 실행률, 재고·근무 조건이 연결 고리다. 업무 목적에 맞는 성공 지표를 정하고, 사람의 검토·예외 처리와 결정 기록을 남긴다. 개선의 인과효과를 주장하려면 단순 전후 비교의 계절·수요 변화 같은 대안 설명도 검토해야 한다. 사용자가 이해할 설명은 모형의 확신을 과장하는 문장이 아니라 행동의 조건과 확인할 결과다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 단순 발주 예다. 내일 수요 예측80개, 사용 가능한 재고20개다. 입고 예정·폐기·안전 재고·포장 제약은 없고, 정책은 추가발주=max(예측수요−재고,0)으로만 정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">사용자</th>
+<th scope="col">바로 필요한 정보</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>점포 발주 담당자</td>
+<td>수요80, 재고20, 단순 정책의 추가발주60</td>
+</tr>
+<tr>
+<td>배송 담당자</td>
+<td>지점별 발주량 외에 부피·차량·도착 기한</td>
+</tr>
+</tbody>
+</table></div>
+<p>정한 단순 정책에서는max(80−20,0)=60개다. 60은 주어진 정책의 결과이지 현실의 최적 발주량을 검증한 수치가 아니다. 배송 계획은 물량60개만으로 차량과 경로가 결정되지 않으므로 그 역할에 필요한 추가 조건을 설명한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-37.png" alt="자체 예제의 예측값에서 정책을 거쳐 행동으로 이어지는 조건을 표시한다.. 수요예측80−재고20 → max(60,0) → 추가발주60. 예측과 최적 발주는 같은 개념이 아니다." width="1200" height="1001" loading="lazy" decoding="async"><figcaption>수요예측80−재고20 → max(60,0) → 추가발주60. 예측과 최적 발주는 같은 개념이 아니다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>내일 수요 예측은 80개, 재고는 20개다. 입고·폐기·안전 재고·포장 제약은 없다. 단순 정책은 추가 발주=max(예측 수요−재고,0)이다.</p>
+<p><strong>이 정책의 추가 발주량과 올바른 설명은?</strong></p>
+<ul>
+<li>1. 80개, 예측은 항상 최적 행동과 같다</li>
+<li>2. 100개, 재고를 더해야 한다</li>
+<li>3. 60개, 명시한 단순 정책의 결과다</li>
+<li>4. 20개, 예측값은 의사결정에 쓰지 않는다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 60개, 명시한 단순 정책의 결과다</strong></p>
+<p>max(80−20,0)=60이다. 재고를 고려한 지정 정책의 산출이며, 현실의 모든 비용·제약을 반영한 최적 주문이나 업무 성과 개선을 뜻하지 않는다.</p>
+<ul>
+<li>1번: 재고 20개를 빠뜨렸다. 예측값과 제약을 반영한 행동은 구별한다.</li>
+<li>2번: 현재 재고는 수요를 충당하므로 지정 식에서는 빼야 한다.</li>
+<li>4번: 재고를 그대로 발주량으로 읽었다. 주어진 정책은 예측 수요와 재고를 함께 쓴다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>다른 조건과 정책은 같고 재고만 90개로 늘어나면 추가 발주량은?</p>
+<p><strong>풀이:</strong> max(80−90,0)=0개다.</p>
+<p>차이는−10이지만 정책의 하한이 0이다. 음수 발주는 허용하지 않는다. 실제 반품이나 폐기 결정은 이 단순 발주 정책의 범위 밖이다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>예측값 옆에 사용자·행동·조건.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://developers.google.com/machine-learning/problem-framing/ml-framing" rel="noopener noreferrer" target="_blank">Google Framing an ML problem</a> — Define the ideal outcome·Define success metrics. 확인일 2026-10-30.</li>
+<li><a href="https://developers.google.com/machine-learning/managing-ml-projects/production" rel="noopener noreferrer" target="_blank">Google Productionization</a> — Logging, monitoring and alerting의 정답 지연·대리 지표. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-37.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>자체 max 정책의 산술 결과이며 현실의 최적 발주·비용 절감·업무 효과를 입증하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-36.html"><small>이전 개념 · 4-36</small>재학습했다는 사실과 교체할 근거를 구분한다</a><span aria-hidden="true"></span></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-05</span><a href="1-05.html">데이터 보유에서 서비스 가치까지</a><div class="related-actions"><a href="../practice.html?code=1-05">문제 풀기</a><a href="../1-05.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-36</span><a href="4-36.html">재학습했다는 사실과 교체할 근거를 구분한다</a><div class="related-actions"><a href="../practice.html?code=4-36">문제 풀기</a><a href="../4-36.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-37"}</script><script type="module" src="../theory.mjs"></script></body></html>

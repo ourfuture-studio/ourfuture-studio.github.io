@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Attention은 가중치를 구해 Value를 합친다 · 빅분기 공부방</title><meta name="description" content="Query·Key가 정한 비중과 실제로 집계되는 Value를 구별한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-36">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-36</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-36 · 이론 읽기</span><h1>Attention은 가중치를 구해 Value를 합친다</h1><p class="theory-lead">Query·Key가 정한 비중과 실제로 집계되는 Value를 구별한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-36">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-36.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>어텐션은 Query와 Key의 적합도를 이용해 가중치를 만들고, 그 가중치로 Value를 합친다. 원형 Transformer의 scaled dot-product attention은 QKᵀ를 √dₖ로 나누어 softmax를 적용한 뒤 V를 곱한다. softmax 뒤 한 행의 가중치는 합이 1이다. 점수가 가장 큰 Value 하나만 선택하는 연산과 다르다.</p>
+<p>가중치가 0.25와 0.75, Value가 2와 6이면 출력은 0.25×2+0.75×6=5다. Query와 Key는 여기서 비중을 만드는 역할이고 값 2와 6이 집계 대상이다. 한 어텐션 가중치를 곧바로 어떤 입력의 인과적 중요성이나 설명의 정답이라고 단정할 수는 없다.</p>
+<p>원형 Transformer는 순환 계산 없이 어텐션을 사용하므로 위치 정보를 별도로 더한다. 디코더의 마스킹은 현재 위치가 허용되지 않은 미래 출력에 접근하지 못하게 한다. 모든 현대 변형의 위치 표현이나 구조가 원형과 같지는 않다. 아래 문항은 이미 정해진 가중치의 합산만 물으며 QK에서 가중치를 추정하는 문제는 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>한 Query에 대한 softmax 가중치가 (0.25,0.75), 스칼라 Value가 (2,6)이라고 하자.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">항</th>
+<th scope="col" style="text-align: right;">가중치×Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">0.25×2=0.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">0.75×6=4.5</td>
+</tr>
+<tr>
+<td>합</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value의 단순 평균은 4지만 이 예제의 가중치는 같지 않으므로 출력이 5가 된다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-36.png" alt="자체 예제의 가중치 계산과 V 집계를 나눈다.. Q와 K가 만든 비중(.25,.75)로 V(2,6)를 합하면5다." width="1200" height="1105" loading="lazy" decoding="async"><figcaption>Q와 K가 만든 비중(.25,.75)로 V(2,6)를 합하면5다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>Attention 가중치 (0.25,0.75), Value (2,6). 출력은 Value의 가중합이다.</p>
+<p><strong>출력값은?</strong></p>
+<ul>
+<li>1. 2</li>
+<li>2. 4</li>
+<li>3. 6</li>
+<li>4. 5</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 5</strong></p>
+<p>0.25×2+0.75×6=0.5+4.5=5다.</p>
+<ul>
+<li>1번: 첫 Value만 선택했다.</li>
+<li>2번: 가중치를 무시하고 단순 평균을 냈다.</li>
+<li>3번: 가장 큰 가중치의 Value만 선택했다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 Value에 가중치가 (0.5,0.5)로 바뀌면 출력은?</p>
+<p><strong>풀이:</strong> 4.</p>
+<p>0.5×2+0.5×6=4다. 집계 대상은 같고 비중만 변했다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>Q와 K로 비중, V를 가중합.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://arxiv.org/html/1706.03762v7" rel="noopener noreferrer" target="_blank">Vaswani et al., Attention Is All You Need</a> — 3.2.1 scaled dot-product attention, 3.5 positional encoding 및 decoder masking. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-36">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-36.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>정규화된 비음수 가중치를 직접 입력한다. 유한 softmax의 정확한0/1은 극한 경계로 이해한다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-35.html"><small>이전 개념 · 3-35</small>RNN은 이전 상태를 받아 다음 상태를 만든다</a><a class="next" rel="next" data-role="theory-next" href="3-37.html"><small>다음 개념 · 3-37</small>오토인코더는 입력을 복원하는 표현을 배운다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-35</span><a href="3-35.html">RNN은 이전 상태를 받아 다음 상태를 만든다</a><div class="related-actions"><a href="../practice.html?code=3-35">문제 풀기</a><a href="../3-35.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-36"}</script><script type="module" src="../theory.mjs"></script></body></html>

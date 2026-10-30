@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다 · 빅분기 공부방</title><meta name="description" content="회귀계수가0.6이라는 크기와0인지 검정하는 판단은 다르다. 추정값이 표준오차에 비해 얼마나 큰지 계산하고, 귀무가설 아래 그 정도 통계량이 나올 가능성을 p값으로 읽는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-14">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-14</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-14 · 이론 읽기</span><h1>회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</h1><p class="theory-lead">회귀계수가0.6이라는 크기와0인지 검정하는 판단은 다르다. 추정값이 표준오차에 비해 얼마나 큰지 계산하고, 귀무가설 아래 그 정도 통계량이 나올 가능성을 p값으로 읽는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-14">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-14.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>여러 입력이 있는 선형회귀에서 한 계수 βj의 기본 양측검정은 H0:βj=0과 H1:βj≠0을 비교한다. t=(추정계수−귀무가설값)/표준오차이며, 추정값만 크고 작은지를 보는 검정이 아니다. 표준오차는 같은 단위의 추정 불확실성을 나타내므로 같은 계수0.6도 표준오차0.2일 때와0.4일 때의 통계량이 달라진다. 다른 입력을 모형에 둔 상태의 조건부 계수라는 점도 유지한다.</p>
+<p>이 글의 정확한 t 기준 분포는 선형 평균구조·독립 정규오차·등분산·완전계수 설계행렬이라는 고전적 조건을 전제로 한다. 잔차 자유도가10이면 H0 아래 T10 분포에서 관측한 |t| 이상이 양쪽 꼬리에 나올 확률을 구한다. 이 값이 p값이며 βj가0일 확률이 아니다. 비정규·이분산 등 다른 조건에서 강건 표준오차나 다른 근사 추론을 쓴 결과까지 같은 방식으로 단정하지 않는다.</p>
+<p>유의수준을 자료 확인 전에0.05로 정했다면 p&lt;0.05에서 H0를 기각한다. 기각은 현재 모형과 가정 아래 계수가0과 다르다는 근거이고, 효과가 실무적으로 크다거나 입력을 강제로 바꾸면 결과가 그만큼 변한다는 인과결론은 아니다. 기각하지 못했을 때도 계수가 정확히0임을 입증한 것은 아니다. 계수의 단위·신뢰구간·자료 범위를 함께 제시해야 숫자의 의미가 남는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 회귀 출력에서 한 입력의 추정계수는0.6, 표준오차는0.2, 잔차 자유도는10이라고 둔다. 위 고전적 조건과 양측 H0:βj=0을 사용한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">항목</th>
+<th scope="col" style="text-align: right;">값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>계수 추정값</td>
+<td style="text-align: right;">0.6</td>
+</tr>
+<tr>
+<td>표준오차</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr>
+<td>t통계량</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>양측 p값</td>
+<td style="text-align: right;">약0.0133</td>
+</tr>
+</tbody>
+</table></div>
+<p>t=0.6/0.2=3이고 p=2P(T10≥3)≈0.0133이다. 유의수준0.05에서는0이라는 가설을 기각한다.0.6이 예측값의60% 변화라거나 p=0.0133이 귀무가설의 참일 확률이라는 뜻은 아니다. 체험에서는 잔차 자유도10·양측 유의수준0.05를 고정한다. 그 기준의 |t| 임계값은 약2.2281이다. 표준오차0.2에서는 |t|=3이 이 값을 넘지만0.4에서는1.5로 작다. 귀무가설값0에서 얼마나 떨어졌는지와 추정 불확실성을 함께 비교한 결과이지 효과의 실제 중요성이나 인과를 계산한 것은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-14.png" alt="자체 예제의 귀무가설의 T10 분포에서 두 꼬리와 관측 통계량을 표시한다.. T10의 양측5% 임계값은 약±2.2281, 원 통계량3은 오른쪽 기각 구간에 있다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>T10의 양측5% 임계값은 약±2.2281, 원 통계량3은 오른쪽 기각 구간에 있다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>고전적 선형회귀 조건과 잔차 자유도 10을 가정한다. 한 계수의 추정값은 0.6, 표준오차는 0.2다. H0: βj=0의 양측 검정이다.</p>
+<p><strong>이 계수의 t 통계량은?</strong></p>
+<ul>
+<li>1. 0.12</li>
+<li>2. 0.4</li>
+<li>3. 3</li>
+<li>4. 6</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 3</strong></p>
+<p>(0.6−0)/0.2=3이다. 표준오차에 비해 추정값이 몇 배 떨어져 있는지 계산하며, p값은 이 통계량과 기준 자유도를 이용해 따로 구한다.</p>
+<ul>
+<li>1번: 추정값과 표준오차를 곱했다. t 통계량은 차이를 표준오차로 나눈다.</li>
+<li>2번: 0.6−0.2를 계산했으며 표준오차로 표준화하지 않았다.</li>
+<li>4번: 실제 표준오차 0.2 대신 0.1을 사용한 값이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>추정 계수 0.6은 같지만 표준오차가 0.4로 바뀌었다. 자유도 10·양측 검정·유의수준 0.05를 유지하면 t와 판단은?</p>
+<p><strong>풀이:</strong> t=1.5, p≈0.1645이므로 H0를 기각하지 못한다.</p>
+<p>계수 추정값이 같아도 불확실성이 커지면 0과 구분할 근거가 약해질 수 있다. 이 결과로 효과가 없다고 확정하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>추정값만 보지 말고, 표준오차로 나눈다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.RegressionResults.tvalues.html" rel="noopener noreferrer" target="_blank">statsmodels RegressionResults.tvalues</a> — 회귀계수의 t통계량. 확인일 2026-10-30.</li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html" rel="noopener noreferrer" target="_blank">SciPy Student t distribution</a> — ppf와 sf: df10 양측 임계값·p값 자체 계산에 사용. JS 체험은 고정 임계값 비교만 수행. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-14">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-14.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>고전적 선형모형 조건·df10·양측α.05를 고정한 체험이다. JS는 p값 근사 알고리즘을 구현하지 않고 검증한 임계값만 사용한다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-08.html"><small>이전 개념 · 4-08</small>같은 오차도 제곱하면 큰 오차의 영향이 커진다</a><a class="next" rel="next" data-role="theory-next" href="4-15.html"><small>다음 개념 · 4-15</small>전체 F검정은 모든 기울기를 함께 묻는다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-15</span><a href="4-15.html">전체 F검정은 모든 기울기를 함께 묻는다</a><div class="related-actions"><a href="../practice.html?code=4-15">문제 풀기</a><a href="../4-15.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-33</span><a href="4-33.html">회귀계수의 크기는 원인의 크기가 아니다</a><div class="related-actions"><a href="../practice.html?code=4-33">문제 풀기</a><a href="../4-33.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-14"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이 다르다 · 빅분기 공부방</title><meta name="description" content="격자·무작위·베이지안 탐색을 비교할 때는 후보 공간, 평가 지표, 분할과 예산을 먼저 맞춘다. 특정 이름을 썼다는 이유로 항상 더 좋은 모형을 찾았다고 말할 수 없다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-23">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-23</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-23 · 이론 읽기</span><h1>탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이 다르다</h1><p class="theory-lead">격자·무작위·베이지안 탐색을 비교할 때는 후보 공간, 평가 지표, 분할과 예산을 먼저 맞춘다. 특정 이름을 썼다는 이유로 항상 더 좋은 모형을 찾았다고 말할 수 없다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-23">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-23.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>격자 탐색은 미리 정한 값들의 조합을 평가한다. 깊이3가지와 학습률4가지를 모두 조합하면12후보다. 무작위 탐색은 정한 분포나 후보집합에서 설정을 뽑고, 시도 횟수로 예산을 정할 수 있다. 유한 집합에서 중복 없이 뽑는 경우와 연속분포에서 뽑는 경우는 범위와 동작이 다르므로 실제 설정을 확인한다. 정한 범위 밖의 좋은 값은 어느 방법도 저절로 찾지 못한다.</p>
+<p>베이지안 최적화는 지금까지 시도한 설정과 평가값으로 목적함수의 대리모형을 갱신하고 획득함수로 다음 후보를 고르는 대표적인 순차 탐색 방식이다. 높은 점수가 기대되는 곳과 불확실한 곳을 살펴보는 균형을 설계한다. 한 번 낮은 점수가 나온 주변을 영원히 금지하거나 이미 최고인 후보만 계속 반복한다는 뜻이 아니다. 대리모형·획득함수·초기 시도·잡음 가정에 따라 결과가 달라진다.</p>
+<p>모든 탐색의 점수는 개발용 검증 절차에서 구한다. 최종 시험 정답을 보며 다음 후보를 고르면 독립 평가가 깨진다. ‘후보12개’와 ‘학습12회’도 같지 않다.3fold 교차검증이면 후보당3번 학습하고 최종 재적합이 추가될 수 있다. 후보마다 학습 시간이 다르면 같은 시도 횟수도 같은 계산 비용이 아니다. 예산과 비교 기준을 기록해야 탐색 방법의 차이를 공정하게 해석할 수 있다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>기존 ML15의 이전 관측을 다음 탐색에 반영하는 구분을 연결한다. 자체 설정 공간은 깊이3가지×학습률4가지이며 각 후보를 같은3fold로 평가한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">절차</th>
+<th scope="col">후보 결정의 기준</th>
+<th scope="col" style="text-align: right;">예제의 평가 학습 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전체 격자</td>
+<td>미리 정한12조합</td>
+<td style="text-align: right;">12×3=36</td>
+</tr>
+<tr>
+<td>무작위4시도</td>
+<td>지정 분포·집합의 추출</td>
+<td style="text-align: right;">4×3=12</td>
+</tr>
+<tr>
+<td>베이지안4시도</td>
+<td>이전 결과와 대리모형</td>
+<td style="text-align: right;">4×3=12</td>
+</tr>
+</tbody>
+</table></div>
+<p>평가 학습 수는 최종 전체자료 재적합을 제외한 계산이다. 표의4시도 둘은 실행 원리가 다르다는 뜻이며 어느 쪽의 점수가 더 높았다는 실험 결과가 아니다. 계산 시간이 큰 실제 모형에서는 총 시간도 비교해야 한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-23.png" alt="자체 예제의 후보 개수와 평가 학습 횟수를 다른 열로 둔다.. 깊이3×학습률4=12후보,3fold 격자는36회 학습이며 최종 재적합은 별도다." width="1200" height="1021" loading="lazy" decoding="async"><figcaption>깊이3×학습률4=12후보,3fold 격자는36회 학습이며 최종 재적합은 별도다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>검증 점수로 설정을 평가한다. 이전 후보·점수와 불확실성을 표현한 대리모형을 갱신해 다음 후보를 고르려 한다.</p>
+<p><strong>이 방식과 가장 직접 연결되는 것은?</strong></p>
+<ul>
+<li>1. 고정된 전체 격자만 순서대로 평가</li>
+<li>2. 이전 점수와 무관한 무작위 추출만 수행</li>
+<li>3. 시험 정답으로 후보를 선택</li>
+<li>4. 베이지안 최적화</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 베이지안 최적화</strong></p>
+<p>베이지안 최적화는 관측한 결과로 대리모형을 갱신하고 획득함수를 이용해 다음 평가 위치를 정한다. 설정과 예산 안의 순차 의사결정이며 전역 최적의 보장은 아니다.</p>
+<ul>
+<li>1번: 고정 격자의 조합은 이전 검증 결과를 이용해 새 평가 위치를 정하는 방식이 아니다.</li>
+<li>2번: 이 문제는 이전 점수와 불확실성을 다음 결정에 반영한다고 명시했다.</li>
+<li>3번: 최종 시험 정답을 탐색에 쓰면 독립 성능 평가를 위한 역할이 무너진다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>깊이 3가지·학습률 4가지의 전체 격자를 3fold로 평가한다. 최종 재적합을 제외하면 학습은 몇 회인가?</p>
+<p><strong>풀이:</strong> 12후보×3fold=36회다.</p>
+<p>후보 개수와 후보당 반복 학습 횟수를 구분한다. 최종 최적 설정을 전체 개발자료에 다시 적합하면 그 비용은 별도다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>다음 후보를 고를 때 이전 점수를 쓰는가.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/grid_search.html" rel="noopener noreferrer" target="_blank">scikit-learn Tuning hyper-parameters</a> — 3.2.1 격자와 3.2.2 무작위 탐색. 확인일 2026-10-30.</li>
+<li><a href="https://arxiv.org/html/1206.2944v2" rel="noopener noreferrer" target="_blank">Snoek et al. Practical Bayesian Optimization</a> — 2절 Gaussian process priors와 2.2 acquisition functions. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-23">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-23.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>후보를 실제 샘플링·학습·최적화하지 않는 횟수 계산이다. 무작위·베이지안은 중복 허용 가능성을 포함한 시도 예산으로 해석하며 같은 시간 비용을 보장하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-21.html"><small>이전 개념 · 4-21</small>성능을 탓하기 전에 자료 품질과 입력 조건을 점검한다</a><a class="next" rel="next" data-role="theory-next" href="4-25.html"><small>다음 개념 · 4-25</small>융합했다는 사실과 더 좋아졌다는 결과를 구분한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-10</span><a href="1-10.html">명시한 기준으로 과제 우선순위 정하기</a><div class="related-actions"><a href="../practice.html?code=1-10">문제 풀기</a><a href="../1-10.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-20</span><a href="4-20.html">가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다</a><div class="related-actions"><a href="../practice.html?code=4-20">문제 풀기</a><a href="../4-20.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-23"}</script><script type="module" src="../theory.mjs"></script></body></html>

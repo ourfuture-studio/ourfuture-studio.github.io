@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>기울기의 반복 곱은 작아지거나 커질 수 있다 · 빅분기 공부방</title><meta name="description" content="클리핑이 막는 것은 큰 기울기이며 사라진 신호를 복원하는 장치는 아니다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-13">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-13</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-13 · 이론 읽기</span><h1>기울기의 반복 곱은 작아지거나 커질 수 있다</h1><p class="theory-lead">클리핑이 막는 것은 큰 기울기이며 사라진 신호를 복원하는 장치는 아니다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-13.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>깊은 신경망과 긴 순환 계산에서 기울기는 여러 단계의 미분을 곱해 전달된다. 작은 계수가 반복되면 앞 단계에 도달하는 변화 신호가 작아질 수 있고 큰 계수가 반복되면 매우 커질 수 있다. 실제 모형은 행렬과 활성화가 연결되므로 단일 수의 곱이 전부는 아니지만 반복 곱의 효과를 이해하는 출발점이 된다.</p>
+<p>단순 경로에서 매 단계 계수가 0.5라면 열 단계 뒤 배율은 0.5¹⁰≈0.000977이다. 계수가 2라면 2¹⁰=1024다. 작아진 기울기는 초기 단계 학습을 더디게 하고 큰 기울기는 큰 갱신을 유발할 수 있다. 손실값이 크다는 것과 기울기 폭발은 같은 판정이 아니다.</p>
+<p>노름 클리핑은 기울기 벡터의 길이가 문턱을 넘으면 방향을 유지하면서 길이를 줄이는 대표 방법이다. 이미 거의 0인 기울기를 키우는 조치로 설명하지 않는다. 게이트·초기화·잔차 연결 등은 다른 설계 선택이며 어느 하나가 모든 자료에서 문제를 없앤다고 보장하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>기울기 g=(6,8)의 유클리드 노름은 10이다. 클리핑 문턱을 5로 정해 g×min(1,5/||g||)를 적용한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">벡터</th>
+<th scope="col" style="text-align: right;">노름</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>원래 (6,8)</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>조정 (3,4)</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 좌표 모두 0.5배로 줄여 방향을 유지한다. 각 좌표를 독립적으로 5에 잘라 (5,5)로 만드는 값 클리핑과 다르다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-13.png" alt="자체 예제의 길이를 줄여도 방향은 보존됨을 보인다.. (6,8)과 클리핑 결과(3,4)는 같은 방향이며 노름은10과5다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>(6,8)과 클리핑 결과(3,4)는 같은 방향이며 노름은10과5다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>기울기 g=(6,8), L2 노름 10. 노름 문턱 5로 방향을 유지해 클리핑한다.</p>
+<p><strong>클리핑 뒤 기울기는?</strong></p>
+<ul>
+<li>1. (5,5)</li>
+<li>2. (6,8)</li>
+<li>3. (3,4)</li>
+<li>4. (0,0)</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — (3,4)</strong></p>
+<p>노름 비율 5/10=0.5를 두 좌표에 곱하면 (3,4)다.</p>
+<ul>
+<li>1번: 좌표별 값 클리핑과 노름 클리핑을 혼동했다.</li>
+<li>2번: 원래 노름이 문턱 5를 초과하므로 조정이 필요하다.</li>
+<li>4번: 길이를 제한하는 것이지 기울기를 지우는 것은 아니다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>기울기가 (0.03,0.04), 같은 문턱 5라면 어떻게 변하는가?</p>
+<p><strong>풀이:</strong> 그대로 (0.03,0.04).</p>
+<p>노름 0.05가 문턱보다 작아 배율 min(1,100)=1이다. 작은 기울기를 5까지 키우지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>노름 클리핑은 큰 길이만 줄인다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://proceedings.mlr.press/v28/pascanu13.html" rel="noopener noreferrer" target="_blank">Pascanu et al., 2013</a> — 논문 초록: RNN의 소실·폭발 문제와 gradient norm clipping 제안; 성능 수치 미인용. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-13.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>L2 노름 클리핑이다. 좌표별 값 클리핑·소실 복원·전체 신경망 학습을 구현하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-12.html"><small>이전 개념 · 3-12</small>역전파와 갱신은 서로 다른 단계다</a><a class="next" rel="next" data-role="theory-next" href="3-14.html"><small>다음 개념 · 3-14</small>서포트벡터는 경계에 가까운 제약을 만든다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-12</span><a href="3-12.html">역전파와 갱신은 서로 다른 단계다</a><div class="related-actions"><a href="../practice.html?code=3-12">문제 풀기</a><a href="../3-12.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-13"}</script><script type="module" src="../theory.mjs"></script></body></html>

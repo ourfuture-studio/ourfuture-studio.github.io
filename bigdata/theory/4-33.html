@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>회귀계수의 크기는 원인의 크기가 아니다 · 빅분기 공부방</title><meta name="description" content="예측식의 계수는 다른 입력을 고정하고 한 입력을 한 단위 바꿀 때 예측값이 얼마나 바뀌는지 말한다. 단위와 모형을 지우고 중요도나 인과효과로 바꾸어 읽으면 설명 범위를 넘는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-33">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-33</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-33 · 이론 읽기</span><h1>회귀계수의 크기는 원인의 크기가 아니다</h1><p class="theory-lead">예측식의 계수는 다른 입력을 고정하고 한 입력을 한 단위 바꿀 때 예측값이 얼마나 바뀌는지 말한다. 단위와 모형을 지우고 중요도나 인과효과로 바꾸어 읽으면 설명 범위를 넘는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-33.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>회귀식 ŷ=2x₁+0.01x₂에서 x₁의 계수2는 이 모형 안에서 x₂를 고정한 채 x₁을1단위 늘릴 때 예측값이2늘어난다는 뜻이다. x₁과 x₂가 관찰 자료에서 함께 움직인다면 다른 변수를 고정한 변화가 현실에서도 쉽게 가능한지는 별도 문제다. 회귀계수가 양수라는 사실만으로 그 변수를 실제로 조작하면 결과가 늘어난다고 결론 내릴 수 없다. 누락한 공통 원인, 선택 과정, 시간 순서가 설명을 바꿀 수 있다.</p>
+<p>계수의 숫자는 입력 단위에도 의존한다. x₁을 천원으로 기록했다가 원으로 바꾸면 새 입력w₁=1000x₁에 대한 계수는0.002가 된다. 같은 사람의 같은 입력과 예측인데 계수2가0.002로 바뀐다. 크기가 다른 계수를 그대로 비교해 어느 변수가 더 중요하다고 순위를 매길 수 없는 이유다. 표준화는 단위 비교를 돕지만 상관된 입력, 표본의 범위와 모형 설정에 대한 의존성을 없애지는 않는다.</p>
+<p>특성 중요도는 무엇을 중요하다고 정의했는지부터 읽는다. 순열 중요도는 고정한 모형과 평가 자료에서 한 특성의 값을 섞었을 때 정한 점수가 얼마나 떨어지는지를 측정한다. 비슷한 정보를 가진 다른 특성이 대신 쓰이면 한 특성의 중요도가 작게 나올 수 있다. 작은 값은 그 특성이 현실에서 아무 역할도 하지 않는다는 증명이 아니다. 단순 상관은 두 변수의 함께 움직임, 회귀계수는 지정한 모형의 조건부 관계, 순열 중요도는 특정 예측 평가의 의존성을 설명한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 선형 예측식 ŷ=2x₁+0.01x₂에서 x₁은 천원, x₂는 개수다. 입력은 x₁=3, x₂=100이다. x₁만 원 단위w₁로 바꾸어 같은 식을 다시 쓴다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">표현</th>
+<th scope="col" style="text-align: right;">첫 입력</th>
+<th scope="col" style="text-align: right;">첫 계수</th>
+<th scope="col" style="text-align: right;">예측값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>천원 단위</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>원 단위</td>
+<td style="text-align: right;">3000</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table></div>
+<p>처음은2×3+0.01×100=7, 바꾼 식은0.002×3000+0.01×100=7이다. 계수의 숫자가1000분의1이 되어도 이 입력에서의 예측값은 같다. 단위 변환은 원인의 효과를 측정한 실험이 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-33.png" alt="자체 예제의 동일한 양을 두 단위로 써도 예측이 같음을 한 행씩 보여준다.. 천원 입력3·계수2와 원 입력3000·계수0.002는 모두 첫 항6이며 전체 예측7이다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>천원 입력3·계수2와 원 입력3000·계수0.002는 모두 첫 항6이며 전체 예측7이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>예측식 ŷ=2x₁+0.01x₂에서 x₁은 천원 단위다. 원 단위 w₁=1000x₁로 바꾸고 같은 예측을 유지한다.</p>
+<p><strong>w₁의 계수와 해석으로 옳은 것은?</strong></p>
+<ul>
+<li>1. 계수 2000, 현실의 인과효과도 1000배다</li>
+<li>2. 계수 0.002, 단위가 바뀌었을 뿐 예측식은 동등하다</li>
+<li>3. 계수 2, 입력 단위와 계수는 무관하다</li>
+<li>4. 계수 0.01, 더 작은 계수가 언제나 덜 중요한 변수다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 계수 0.002, 단위가 바뀌었을 뿐 예측식은 동등하다</strong></p>
+<p>x₁=w₁/1000이므로 2x₁=0.002w₁다. 동일한 입력값을 단위에 맞게 환산하면 예측은 같고, 이 변환은 인과효과를 증명하지 않는다.</p>
+<ul>
+<li>1번: 입력 수치가 1000배가 되므로 계수는 1000분의 1로 줄여야 한다. 인과효과의 확대도 도출되지 않는다.</li>
+<li>3번: 계수 2를 유지하면 첫 항이 1000배가 되어 원래 식과 다른 예측을 만든다.</li>
+<li>4번: 두 번째 변수의 계수를 가져왔다. 서로 다른 단위의 계수 크기로 중요도를 단정할 수도 없다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 예측 정보를 거의 그대로 담은 특성 두 개가 있다. 하나의 순열 중요도가 작으면 현실에서 그 특성이 쓸모없다고 확정할 수 있는가?</p>
+<p><strong>풀이:</strong> 확정할 수 없다. 다른 특성이 대체 정보를 제공했는지 함께 살펴야 한다.</p>
+<p>순열 중요도는 고정한 모형·자료·평가 점수에 대한 값이다. 상관된 대체 특성이 있으면 하나만 섞어도 점수가 거의 떨어지지 않을 수 있다. 이는 인과적 무효를 뜻하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>계수는 단위, 중요도는 평가 조건부터.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html" rel="noopener noreferrer" target="_blank">scikit-learn Coefficient interpretation pitfalls</a> — Wrong causal interpretation와 Lessons learned. 확인일 2026-10-30.</li>
+<li><a href="https://scikit-learn.org/stable/modules/permutation_importance.html" rel="noopener noreferrer" target="_blank">scikit-learn Permutation feature importance</a> — 5.2.3 상관된 특성의 중요도 한계. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-33.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>정해진 선형식의 대수적 환산이다. 재적합·특성 중요도 순위·현실 인과효과 추정이 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-32.html"><small>이전 개념 · 4-32</small>축을 잘라도 자료의 증가율이 바뀌지는 않는다</a><a class="next" rel="next" data-role="theory-next" href="4-34.html"><small>다음 개념 · 4-34</small>예측할 때도 학습한 전처리를 그대로 연결한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-01</span><a href="2-01.html">평균이 다른 두 제품의 상대 산포를 비교하는 법</a><div class="related-actions"><a href="../practice.html?code=2-01">문제 풀기</a><a href="../2-01.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-14</span><a href="4-14.html">회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</a><div class="related-actions"><a href="../practice.html?code=4-14">문제 풀기</a><a href="../4-14.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-34</span><a href="4-34.html">예측할 때도 학습한 전처리를 그대로 연결한다</a><div class="related-actions"><a href="../practice.html?code=4-34">문제 풀기</a><a href="../4-34.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-33"}</script><script type="module" src="../theory.mjs"></script></body></html>

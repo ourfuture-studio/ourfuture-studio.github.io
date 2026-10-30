@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다 · 빅분기 공부방</title><meta name="description" content="도수가 같아도 구간 너비가 다르면 밀도 높이는 다르다. density로 정규화한 히스토그램은 막대 높이의 합이 아니라 높이×너비의 총합이1이 되도록 계산한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-31">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-31</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-31 · 이론 읽기</span><h1>히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다</h1><p class="theory-lead">도수가 같아도 구간 너비가 다르면 밀도 높이는 다르다. density로 정규화한 히스토그램은 막대 높이의 합이 아니라 높이×너비의 총합이1이 되도록 계산한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-31">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-31.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>히스토그램은 연속 수치의 범위를 구간으로 나누고 관측을 센다. 구간 경계와 너비가 표현을 결정하므로 같은 자료도 넓게 묶으면 세부 구조가 사라지고 좁게 묶으면 작은 흔들림이 강조될 수 있다. 소프트웨어의 경계 포함 규칙도 확인한다. NumPy에서는 마지막을 제외한 구간은 왼쪽을 포함하고 오른쪽을 제외하며 마지막 구간은 오른쪽 끝까지 포함한다.</p>
+<p>도수 히스토그램의 높이는 구간에 들어간 개수다. 확률밀도 표현에서는 높이=도수/(전체 관측수×구간 너비)로 두어 면적이 해당 구간의 상대도수가 되게 한다. 특히 너비가 다르면 같은 개수의 구간도 높이가 달라져야 한다. 막대 높이가0.5라고 사건확률이 언제나50%인 것은 아니며 그 값은 가로축 단위당 밀도다.</p>
+<p>자료 집단을 비교할 때는 구간 경계·표시 범위·정규화 기준을 맞춘다. 표본수가 다른 두 자료의 도수만 비교하면 많은 집단의 막대가 커 보일 수 있다. 반대로 밀도를 쓰면 총수 차이가 숨겨질 수 있으므로 표본수도 표시한다. 표시 범위 밖 자료를 제외했다면 무엇을 전체로 정규화했는지 밝혀야 한다. 같은 그림의 도수·밀도·확률을 말만 바꾸어 혼용하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체4개 관측0.2·0.6·1.2·2.4를 경계0·1·3으로 나눈다. 모든 관측이 표시 범위 안에 있고 가중치는 없다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">구간</th>
+<th scope="col" style="text-align: right;">너비</th>
+<th scope="col" style="text-align: right;">도수</th>
+<th scope="col" style="text-align: right;">밀도 높이</th>
+<th scope="col" style="text-align: right;">면적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0,1)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr>
+<td>[1,3]</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 구간 모두 도수2지만 두 번째는 너비가2라 밀도 높이는 절반이다. 높이 합은0.75지만 면적 합은0.5×1+0.25×2=1이다. 도수와 면적을 구별하면 너비가 다른 막대도 일관되게 읽을 수 있다. 마지막 관측2.4를 정확히3으로 바꿔도 마지막 구간 [1,3]에 포함되어 두 구간의 도수는2·2로 유지된다. 반면 정확히1인 관측은 [0,1)이 아니라 다음 구간에 들어간다. 같은 자료를 재현하려면 구간 너비뿐 아니라 이런 경계 규칙도 같아야 한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-31.png" alt="자체 예제의 같은 도수2의 두 구간에서 너비와 높이가 반대로 변하고 면적이 같음을 보인다.. [0,1)은 너비1·높이0.5, [1,3]은 너비2·높이0.25로 두 면적이 각각0.5다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>[0,1)은 너비1·높이0.5, [1,3]은 너비2·높이0.25로 두 면적이 각각0.5다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>관측값 0.2·0.6·1.2·2.4를 구간 [0,1), [1,3]으로 나눈다. 가중치 없이 전체 4개를 density로 정규화한다.</p>
+<p><strong>두 구간의 밀도 높이는 각각?</strong></p>
+<ul>
+<li>1. 2와 2</li>
+<li>2. 0.5와 0.5</li>
+<li>3. 0.5와 0.25</li>
+<li>4. 1과 0.5</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 0.5와 0.25</strong></p>
+<p>첫 구간은 2/(4×1)=0.5, 둘째는 2/(4×2)=0.25다. 각각 높이에 구간 너비를 곱하면 관측의 절반에 해당하는 면적 0.5가 된다.</p>
+<ul>
+<li>1번: 구간의 도수를 밀도 높이로 그대로 썼다.</li>
+<li>2번: 상대도수는 둘 다 0.5지만 두 번째 구간 너비 2로 다시 나누지 않았다.</li>
+<li>4번: 전체 관측 수 4가 아니라 2로 나누어 면적 총합이 2가 된다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 자료를 경계 0·1·2·3의 같은 너비 1인 세 구간으로 나눈다. 도수와 밀도 높이는?</p>
+<p><strong>풀이:</strong> 도수는 2·1·1, 밀도는 0.5·0.25·0.25다.</p>
+<p>구간 너비가 모두 1이면 높이 합과 면적 합이 우연히 같아 1이 된다. 이 성질을 너비가 다른 모든 히스토그램에 일반화하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>밀도 그림은, 높이 곱하기 너비.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram.html" rel="noopener noreferrer" target="_blank">NumPy histogram</a> — bins·density 및 Notes의 경계 포함 규칙. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-31">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-31.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>가중치 없고 모든4관측이0~3 표시 범위 안에 있다. 범위 밖 제외·재정규화 설정으로 일반화하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-30.html"><small>이전 개념 · 4-30</small>히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다</a><a class="next" rel="next" data-role="theory-next" href="4-32.html"><small>다음 개념 · 4-32</small>축을 잘라도 자료의 증가율이 바뀌지는 않는다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-30</span><a href="4-30.html">히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다</a><div class="related-actions"><a href="../practice.html?code=4-30">문제 풀기</a><a href="../4-30.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-32</span><a href="4-32.html">축을 잘라도 자료의 증가율이 바뀌지는 않는다</a><div class="related-actions"><a href="../practice.html?code=4-32">문제 풀기</a><a href="../4-32.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-31"}</script><script type="module" src="../theory.mjs"></script></body></html>

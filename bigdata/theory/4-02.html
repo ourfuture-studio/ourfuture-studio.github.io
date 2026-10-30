@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>구간을 합쳤다면 최종 도수표로 자유도를 다시 센다 · 빅분기 공부방</title><meta name="description" content="8구간으로 시작했더라도 검정을 6구간 도수표에서 수행한다면 범주 수는 6이다. 정규분포의 평균·표준편차를 그 최종 도수로 추정한 조건까지 함께 확인한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-02">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-02</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-02 · 이론 읽기</span><h1>구간을 합쳤다면 최종 도수표로 자유도를 다시 센다</h1><p class="theory-lead">8구간으로 시작했더라도 검정을 6구간 도수표에서 수행한다면 범주 수는 6이다. 정규분포의 평균·표준편차를 그 최종 도수로 추정한 조건까지 함께 확인한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-02">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-02.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>히스토그램 구간을 합치면 별개의 두 도수가 하나의 도수로 바뀐다. 원래 몇 칸을 그렸는지는 준비 과정의 기록이고, 검정통계량을 계산할 때 실제 사용한 최종 칸 수가 자유도 계산의 출발점이다. 한 칸을 합쳤는데 도수는 그대로 두거나 기대도수만 더하는 식으로 섞지 않는다. 관측도수와 기대도수를 같은 새 구간으로 묶고 두 총합이 유지되는지 확인한다.</p>
+<p>이 예제는 8구간을 사전에 정한 병합 규칙으로 6구간으로 합친 뒤, 최종 구간도수의 다항우도에서 정규분포의 평균 μ와 표준편차 σ를 최대우도추정한다. 두 모수가 식별되고 σ가 양수인 정규적인 조건, 충분한 기대도수와 독립 표본을 가정한다. 이때 자유도는 6−1−2=3이다. ‘정규분포니까 언제나 2를 뺀다’는 암기와 다르다. 두 모수를 외부에서 정했다면 이 자료에서 추정한 수는 0이다.</p>
+<p>원자료의 표본평균·표본표준편차를 곧바로 넣는 방법, 검정 결과가 좋아질 때까지 구간을 임의로 바꾸는 방법까지 같은 공식으로 처리하지 않는다. 모수 추정 방법이나 자료에 맞춘 구간 선택이 기준 분포에 영향을 줄 수 있기 때문이다. 어떤 자료에서 무엇을 추정했고 어떤 구간을 최종 사용했는지 풀이에 남긴다. 유의하지 않은 결과도 정규분포가 참이라는 확정이 아니라 현재 검정에서 반박 근거가 충분하지 않았다는 판단이다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 도수표 설계에서 처음 8구간을 준비했지만, 꼬리 구간을 합쳐 최종 6구간을 쓴다. 전체 관측수와 기대도수 총합은 같고, 모든 최종 기대도수는 5 이상이라고 둔다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">계산 요소</th>
+<th scope="col" style="text-align: right;">이 예제에서 셀 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최종 구간 수 k</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>총합 제약</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>최종 도수로 추정한 μ·σ</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>근사 자유도</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table></div>
+<p>8−1−2=5는 병합 전 표의 계산이다. 최종 표에서는 관측값과 기대값을 묶은 6칸으로 검정하므로 6을 넣는다. 표본수가 6이라는 뜻도 아니다. 한 구간에는 여러 관측이 들어갈 수 있다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-02.png" alt="자체 예제의 병합 전 8칸과 검정에 쓰는 최종 6칸을 구분한다.. 8구간 → 사전 규칙으로 6구간 병합 → 최종 도수로 μ·σ 추정 → 자유도3." width="1200" height="984" loading="lazy" decoding="async"><figcaption>8구간 → 사전 규칙으로 6구간 병합 → 최종 도수로 μ·σ 추정 → 자유도3.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>독립 표본의 정규 적합도 검정에서 8개 구간을 규칙에 따라 6개 구간으로 합쳤다. 최종 도수의 다항 우도로 μ·σ를 정규적인 최대우도 추정하며 기대도수는 충분하다.</p>
+<p><strong>이 최종 검정의 카이제곱 근사 자유도는?</strong></p>
+<ul>
+<li>1. 7</li>
+<li>2. 5</li>
+<li>3. 3</li>
+<li>4. 1</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 3</strong></p>
+<p>최종 k=6에서 합계 제약 1개와 추정 모수 2개를 뺀다. 6−1−2=3이며 병합 전 8구간은 계산의 k가 아니다.</p>
+<ul>
+<li>1번: 7은 원래 8구간에서 합계 제약만 뺀 값이다. 병합과 모수 추정을 모두 놓쳤다.</li>
+<li>2번: 5는 최종 6구간에서 모수를 추정하지 않았을 때의 값이며, 병합 전 8−1−2와도 우연히 같다.</li>
+<li>4번: 구간 두 개를 합친 효과를 최종 k에 이미 반영하고도 다시 두 번 뺀 셈이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>최종 6구간은 유지하되 μ와 σ를 독립적인 외부 기준으로 모두 고정했다. 다른 근사 조건이 같다면 자유도는?</p>
+<p><strong>풀이:</strong> 6−1=5다.</p>
+<p>분포가 정규분포라는 이름만으로 모수 두 개를 빼지 않는다. 이번 검정 자료에서 추정한 모수는 없으므로 p=0이다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>처음 그린 칸 말고, 검정에 남은 칸을 센다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm" rel="noopener noreferrer" target="_blank">NIST Chi-Square Goodness-of-Fit Test</a> — Definition의 최종 구간도수 우도와 Critical Region. 확인일 2026-10-30.</li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html" rel="noopener noreferrer" target="_blank">SciPy chisquare</a> — Parameters ddof와 Notes의 근사·모수 추정 조건. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-02">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-02.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>사전 병합·정규적 구간도수 MLE·충분한 기대도수·독립 표본 가정 아래의 자유도 산술이다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-01.html"><small>이전 개념 · 4-01</small>포아송 적합도 자유도는 모수를 어디에서 구했는지부터 본다</a><a class="next" rel="next" data-role="theory-next" href="4-03.html"><small>다음 개념 · 4-03</small>행을 고르는 작업과 표현을 다듬는 작업을 구분한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-01</span><a href="4-01.html">포아송 적합도 자유도는 모수를 어디에서 구했는지부터 본다</a><div class="related-actions"><a href="../practice.html?code=4-01">문제 풀기</a><a href="../4-01.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-02"}</script><script type="module" src="../theory.mjs"></script></body></html>

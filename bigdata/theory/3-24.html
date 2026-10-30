@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정준상관은 두 묶음에서 점수를 하나씩 만든다 · 빅분기 공부방</title><meta name="description" content="한 쌍의 원래 변수보다 두 변수 집합의 선형결합을 비교한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-24">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-24</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-24 · 이론 읽기</span><h1>정준상관은 두 묶음에서 점수를 하나씩 만든다</h1><p class="theory-lead">한 쌍의 원래 변수보다 두 변수 집합의 선형결합을 비교한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-24">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-24.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>정준상관분석 CCA는 같은 관측 단위에 두 변수 묶음 X와 Y가 있을 때 각 묶음의 선형결합 U=aᵀX, V=bᵀY를 만들어 그 상관을 다룬다. 첫 정준쌍은 적절한 분산 정규화 아래 상관이 최대가 되도록 가중치를 찾는다. 두 집합의 변수 수가 같을 필요는 없다.</p>
+<p>예를 들어 기초시험 두 과목과 직무지표 세 개를 같은 사람에게 측정했다고 하자. 각각 가중 점수를 만들어 두 점수의 관계를 탐색한다. 단순히 가장 상관이 큰 원래 열 하나씩 고르는 절차와 다르다. 두 집합을 합쳐 전체 분산이 큰 축만 찾는 PCA와도 목적이 다르다.</p>
+<p>훈련 자료에서 높은 정준상관이 나와도 인과관계나 새 자료의 재현성을 보장하지 않는다. 표본 수에 비해 변수가 많거나 집합 내부에 선형 종속이 있으면 불안정해질 수 있다. 정규화·변수 선택·보류 자료 확인이 필요하다. 아래 가중치는 설명을 위해 미리 지정했으며 실제로 최적 CCA를 적합한 결과는 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>X=(시험1,시험2), Y=(속도,정확도,완료량). 한 사람의 값이 X=(2,4), Y=(1,3,2)이고 U=0.5X₁+0.5X₂, V=Y₁+Y₂−Y₃라고 정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">결합</th>
+<th scope="col">계산</th>
+<th scope="col" style="text-align: right;">값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U</td>
+<td>0.5×2+0.5×4</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>V</td>
+<td>1+3−2</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table></div>
+<p>한 사람의 (U,V)=(3,2)만으로 상관을 계산할 수는 없다. 여러 사람의 두 점수 열을 만들어 관계를 본다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-24.png" alt="자체 예제의 두 변수 묶음과 두 점수의 역할을 보인다.. 시험2열→U, 직무3열→V를 만든 뒤 여러 사람의 U·V 관계를 보는 구조다." width="1200" height="1077" loading="lazy" decoding="async"><figcaption>시험2열→U, 직무3열→V를 만든 뒤 여러 사람의 U·V 관계를 보는 구조다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>여러 사람 각각에게서 시험 두 과목과 직무지표 세 개를 함께 관측해 두 변수 묶음의 선형 관계를 탐색한다.</p>
+<p><strong>CCA가 직접 비교하는 것은?</strong></p>
+<ul>
+<li>1. 각 묶음에서 만든 선형결합 점수</li>
+<li>2. 모든 원래 값의 합 하나</li>
+<li>3. 집단별 수치 반응의 평균벡터</li>
+<li>4. 정답 레이블의 다수결</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 각 묶음에서 만든 선형결합 점수</strong></p>
+<p>두 변수 집합에서 선형결합을 하나씩 만들고 그 점수 사이 상관을 다룬다.</p>
+<ul>
+<li>2번: 두 묶음의 구분과 가중치를 모두 잃는다.</li>
+<li>3번: 집단 간 평균벡터 비교는 MANOVA의 질문이다.</li>
+<li>4번: 여러 분류기의 예측을 투표로 합치는 문제가 아니다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>설명용 가중치를 그대로 두고 X=(4,4), Y=(2,3,1)이면 (U,V)는?</p>
+<p><strong>풀이:</strong> (4,4).</p>
+<p>U=0.5×4+0.5×4=4, V=2+3−1=4다. 가중치는 고정되어 있고 새로 CCA를 적합한 것은 아니다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>두 묶음, 두 선형결합, 그 사이 상관.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/cross_decomposition.html" rel="noopener noreferrer" target="_blank">scikit-learn Cross decomposition</a> — Canonical Correlation Analysis 및 표본 수보다 변수 수가 클 때 불안정 조건. 확인일 2026-10-30.</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html" rel="noopener noreferrer" target="_blank">scikit-learn CCA</a> — fit/fit_transform 입력의 n_samples×n_features 및 n_samples×n_targets: 여러 관측에서 두 변수 묶음의 점수 생성. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-24">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-24.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>단위·중심화가 이미 정해졌다고 가정한 설명용 점수다. 원변수 단위가 다른 실제 CCA의 적합·안정성 검증을 대신하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-23.html"><small>이전 개념 · 3-23</small>MANOVA는 여러 반응의 평균벡터를 비교한다</a><a class="next" rel="next" data-role="theory-next" href="3-25.html"><small>다음 개념 · 3-25</small>ARIMA의 MA는 과거 관측의 단순 평균이 아니다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-23</span><a href="3-23.html">MANOVA는 여러 반응의 평균벡터를 비교한다</a><div class="related-actions"><a href="../practice.html?code=3-23">문제 풀기</a><a href="../3-23.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-21</span><a href="3-21.html">고윳값은 축의 분산 몫을 보여 준다</a><div class="related-actions"><a href="../practice.html?code=3-21">문제 풀기</a><a href="../3-21.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-24"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>전체 F검정은 모든 기울기를 함께 묻는다 · 빅분기 공부방</title><meta name="description" content="회귀 ANOVA의 전체 F검정은 절편을 제외한 기울기가 모두0인지 공동으로 묻는다. 결과가 유의하더라도 각 계수가 하나씩 모두 유의하다는 결론으로 바꾸지 않는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-15">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-15</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-15 · 이론 읽기</span><h1>전체 F검정은 모든 기울기를 함께 묻는다</h1><p class="theory-lead">회귀 ANOVA의 전체 F검정은 절편을 제외한 기울기가 모두0인지 공동으로 묻는다. 결과가 유의하더라도 각 계수가 하나씩 모두 유의하다는 결론으로 바꾸지 않는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-15">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-15.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>절편과 p개 설명변수가 있는 OLS에서 전체 검정은 H0:β1=…=βp=0이다. 이 가설은 입력을 쓰는 현재 모형을 절편만 있는 기준 모형과 비교한다. 개별 t검정은 다른 입력을 둔 상태에서 특정 βj 하나를 묻기 때문에 질문이 다르다. 표본수 n은 p+1보다 크고 설계행렬이 완전계수여야 잔차 자유도가 남는다.</p>
+<p>고전적 독립 정규·등분산 오차 조건에서 전체 변동 TSS는 회귀가 설명한 SSR과 잔차 SSE로 나뉜다. 회귀 평균제곱은 SSR/p, 잔차 평균제곱은 SSE/(n−p−1)이고 F는 앞의 값을 뒤의 값으로 나눈다. 두 제곱합을 그대로 나누는 값과 다르다. 분자·분모 자유도는 각각 p와 n−p−1이며, 공분산을 강건하게 추정하는 다른 공동검정 출력까지 항상 같은 비율 공식으로 설명하지 않는다.</p>
+<p>H0를 기각하면 기울기 중 적어도 하나가0이 아니라는 근거가 된다. 어느 계수인지 알아보려면 개별 추정값·표준오차·검정과 모형의 입력 관계를 더 읽어야 한다. 높은 R²도 이 공동검정과 동일한 판단이 아니며, 표본수나 변수 수가 달라진 출력은 비교 조건을 확인한다. 유의성이 새 자료 예측 성능이나 인과효과를 보장하지 않는다는 경계도 유지한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>기존 ML15 전체·개별 검정 구분을 바탕으로 수치를 새로 구성했다. 절편 포함 OLS에서 n=12, p=2, SSR=80, SSE=20이며 고전적 검정 조건을 충족한다고 둔다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">변동</th>
+<th scope="col" style="text-align: right;">제곱합</th>
+<th scope="col" style="text-align: right;">자유도</th>
+<th scope="col" style="text-align: right;">평균제곱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>회귀</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>잔차</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">20/9</td>
+</tr>
+<tr>
+<td>전체</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<p>F=(80/2)/(20/9)=18이다. 회귀 제곱합80을 잔차20으로 나눈4는 자유도를 반영하지 않은 값이다. 전체 유의성 판단에는 F분포의 분자2·분모9 자유도를 사용한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-15.png" alt="자체 예제의 ANOVA의 제곱합→자유도→평균제곱 경로를 열로 분리한다.. n12·기울기2에서 회귀80/2=40, 잔차20/9, F=18이다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>n12·기울기2에서 회귀80/2=40, 잔차20/9, F=18이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>절편 포함 OLS에서 n=12, 설명변수 p=2, SSR=80, SSE=20이다. 완전계수와 독립 정규·등분산 오차의 고전적 전체 F 검정이다.</p>
+<p><strong>전체 F 통계량은?</strong></p>
+<ul>
+<li>1. 4</li>
+<li>2. 9</li>
+<li>3. 18</li>
+<li>4. 40</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 18</strong></p>
+<p>회귀 평균제곱 40을 잔차 평균제곱 20/9로 나누어 18을 얻는다. 절편은 설명변수 p에 넣지 않고 잔차 자유도에서 따로 반영한다.</p>
+<ul>
+<li>1번: 80/20만 계산해 회귀와 잔차의 서로 다른 자유도를 빠뜨렸다.</li>
+<li>2번: 잔차 자유도 12−2−1=9를 F 통계량과 혼동했다.</li>
+<li>4번: 분자인 회귀 평균제곱만 구하고 잔차 평균제곱으로 나누지 않았다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>별도 자체 요약에서 n=12·p=1·SSR=80·SSE=20이고 같은 고전적 조건을 둔다. F는 얼마이며 유의하면 모든 기울기 유의성과 관계는?</p>
+<p><strong>풀이:</strong> F=80/(20/10)=40이다. 이때는 기울기가 하나이므로 동일한 양측 t 검정과 F=t² 관계가 성립한다.</p>
+<p>기울기가 여러 개인 원래 예제의 ‘적어도 하나’와, 기울기 하나만 공동으로 묻는 별도 예제를 구분한다. 다른 모형을 재적합한 실제 결과는 아니다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>제곱합이 아니라 평균제곱을 비교한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.RegressionResults.fvalue.html" rel="noopener noreferrer" target="_blank">statsmodels RegressionResults.fvalue</a> — 비강건 공분산의 모형·잔차 평균제곱 비와 공동검정. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-15">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-15.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>절편 포함·완전열랭크·고전적 오차 조건의 별도 자체 요약이다. 입력 변경을 실제 재적합 결과로 표시하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-14.html"><small>이전 개념 · 4-14</small>회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</a><a class="next" rel="next" data-role="theory-next" href="4-16.html"><small>다음 개념 · 4-16</small>로지스틱 적합도와 분류 정확도는 다른 질문이다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-14</span><a href="4-14.html">회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</a><div class="related-actions"><a href="../practice.html?code=4-14">문제 풀기</a><a href="../4-14.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-15"}</script><script type="module" src="../theory.mjs"></script></body></html>
