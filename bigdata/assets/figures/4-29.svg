@@ -1,29 +1,152 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
-<rect width="1200" height="900" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">버블의 값 비율과 반지름 비율은 다르다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">면적에 맞춘 원과 반지름에 값을 직접 대입한 원을 비교한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">면적 비례</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">반지름 직접 비례</text>
-<rect x="50" y="331.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="416.6666666666667" y1="331.3" x2="416.6666666666667" y2="416.3" stroke="#dcded7" stroke-width="2"/>
-<text x="428.6666666666667" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">radius_ratio</text>
-<line x1="783.3333333333334" y1="331.3" x2="783.3333333333334" y2="416.3" stroke="#dcded7" stroke-width="2"/>
-<text x="795.3333333333334" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">area_ratio</text>
-<rect x="50" y="416.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">면적 비례</text>
-<line x1="416.6666666666667" y1="416.3" x2="416.6666666666667" y2="501.3" stroke="#dcded7" stroke-width="2"/>
-<text x="428.6666666666667" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
-<line x1="783.3333333333334" y1="416.3" x2="783.3333333333334" y2="501.3" stroke="#dcded7" stroke-width="2"/>
-<text x="795.3333333333334" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
-<rect x="50" y="501.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">반지름 직접 비례</text>
-<line x1="416.6666666666667" y1="501.3" x2="416.6666666666667" y2="586.3" stroke="#dcded7" stroke-width="2"/>
-<text x="428.6666666666667" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
-<line x1="783.3333333333334" y1="501.3" x2="783.3333333333334" y2="586.3" stroke="#dcded7" stroke-width="2"/>
-<text x="795.3333333333334" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">16</text>
-<text x="50" y="647.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">값10·40의 올바른 면적비4는 반지름비2이며 반지름비4로 그리면 면적비16이다.</text>
-<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 552 
+L 720 552 
+L 720 0 
+L 0 0 
+z
+" style="fill: #fbfaf7"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 82.44 288.048 
+C 86.13481 288.048 89.678787 286.580037 92.291412 283.967412 
+C 94.904037 281.354787 96.372 277.81081 96.372 274.116 
+C 96.372 270.42119 94.904037 266.877213 92.291412 264.264588 
+C 89.678787 261.651963 86.13481 260.184 82.44 260.184 
+C 78.74519 260.184 75.201213 261.651963 72.588588 264.264588 
+C 69.975963 266.877213 68.508 270.42119 68.508 274.116 
+C 68.508 277.81081 69.975963 281.354787 72.588588 283.967412 
+C 75.201213 286.580037 78.74519 288.048 82.44 288.048 
+z
+" clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 237.24 301.98 
+C 244.629619 301.98 251.717574 299.044073 256.942823 293.818823 
+C 262.168073 288.593574 265.104 281.505619 265.104 274.116 
+C 265.104 266.726381 262.168073 259.638426 256.942823 254.413177 
+C 251.717574 249.187927 244.629619 246.252 237.24 246.252 
+C 229.850381 246.252 222.762426 249.187927 217.537177 254.413177 
+C 212.311927 259.638426 209.376 266.726381 209.376 274.116 
+C 209.376 281.505619 212.311927 288.593574 217.537177 293.818823 
+C 222.762426 299.044073 229.850381 301.98 237.24 301.98 
+z
+" clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 82.44 274.116 
+L 96.372 274.116 
+" clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 237.24 274.116 
+L 265.104 274.116 
+" clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="82.44" y="346.872" transform="rotate(-0 82.44 346.872)">A: 값10</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="237.24" y="346.872" transform="rotate(-0 237.24 346.872)">B: 값40</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #2e6f66" x="181.512" y="210.648" transform="rotate(-0 181.512 210.648)">반지름비 2배 / 면적비 4배</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 14px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="190.8" y="179.812" transform="rotate(-0 190.8 179.812)">면적에 값을 연결</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 420.84 288.048 
+C 424.53481 288.048 428.078787 286.580037 430.691412 283.967412 
+C 433.304037 281.354787 434.772 277.81081 434.772 274.116 
+C 434.772 270.42119 433.304037 266.877213 430.691412 264.264588 
+C 428.078787 261.651963 424.53481 260.184 420.84 260.184 
+C 417.14519 260.184 413.601213 261.651963 410.988588 264.264588 
+C 408.375963 266.877213 406.908 270.42119 406.908 274.116 
+C 406.908 277.81081 408.375963 281.354787 410.988588 283.967412 
+C 413.601213 286.580037 417.14519 288.048 420.84 288.048 
+z
+" clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 575.64 329.844 
+C 590.419238 329.844 604.595147 323.972146 615.045647 313.521647 
+C 625.496146 303.071147 631.368 288.895238 631.368 274.116 
+C 631.368 259.336762 625.496146 245.160853 615.045647 234.710353 
+C 604.595147 224.259854 590.419238 218.388 575.64 218.388 
+C 560.860762 218.388 546.684853 224.259854 536.234353 234.710353 
+C 525.783854 245.160853 519.912 259.336762 519.912 274.116 
+C 519.912 288.895238 525.783854 303.071147 536.234353 313.521647 
+C 546.684853 323.972146 560.860762 329.844 575.64 329.844 
+z
+" clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 420.84 274.116 
+L 434.772 274.116 
+" clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 575.64 274.116 
+L 631.368 274.116 
+" clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="420.84" y="346.872" transform="rotate(-0 420.84 346.872)">A: 값10</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="575.64" y="346.872" transform="rotate(-0 575.64 346.872)">B: 값40</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #a12d48" x="519.912" y="210.648" transform="rotate(-0 519.912 210.648)">반지름비 4배 / 면적비 16배</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 14px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="529.2" y="179.812" transform="rotate(-0 529.2 179.812)">반지름에 값을 직접 연결</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 21px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="36" y="43.764141" transform="rotate(-0 36 43.764141)">버블의 값 비율과 반지름 비율은 다르다</text>
+  </g>
+  <g id="text_10">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="87.52875" transform="rotate(-0 36 87.52875)">같은 A값 10·B값 40 · 두 패널에서 A의 기준 반지름은 같음</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 9px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="532.68" transform="rotate(-0 36 532.68)">ourfuture studio · 4-29 · 직접 만든 교육용 예제</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 486.745234)">값의 비율은 4배다. 면적을 맞추면 반지름은 2배이며, 반지름을 4배로 그리면 면적은 16배가</text>
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 502.858516)">된다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5fa4c1a2b2">
+   <rect x="36" y="199.812" width="309.6" height="157.896"/>
+  </clipPath>
+  <clipPath id="p8dbfd3bc29">
+   <rect x="374.4" y="199.812" width="309.6" height="157.896"/>
+  </clipPath>
+ </defs>
 </svg>

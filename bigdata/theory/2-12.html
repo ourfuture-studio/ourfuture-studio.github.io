@@ -42,7 +42,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>50의 결과가 2인 것은 새 자료의 최댓값을 기준으로 다시 학습하지 않았기 때문이다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-12.png" alt="자체 예제의 저장된 기준과 관측값, clipping 선택을 바꾸어 선형 변환의 차이를 확인한다.. 기준[10,30]이면20→0.5, 별도 기준[10,50]이면20→0.25다. 평가 중에는 저장한 기준을 유지한다." width="1200" height="965" loading="lazy" decoding="async"><figcaption>기준[10,30]이면20→0.5, 별도 기준[10,50]이면20→0.25다. 평가 중에는 저장한 기준을 유지한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>기준 최솟값 10, 최댓값 30. 0~1 최소-최대 선형 변환이며 clipping하지 않는다.</p>
+<p>50의 결과가 2인 것은 새 자료의 최댓값을 기준으로 다시 학습하지 않았기 때문이다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-12.png" alt="clipping 없는 최소-최대 변환을 같은 x/y 단위의 두 패널에서 비교한다. 기준[10,30]의20→0.5·50→2와 별도 기준[10,50]의20→0.25를 표시한다." width="1200" height="950" loading="lazy" decoding="async"><figcaption>기준 [10,30]이면20→0.5와50→2, 별도 기준 [10,50]이면20→0.25입니다. 0~1 밖의 값도 가능합니다. 두 기준 비교는 평가 자료에서 다시 fit하라는 뜻이 아닙니다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>기준 최솟값 10, 최댓값 30. 0~1 최소-최대 선형 변환이며 clipping하지 않는다.</p>
 <p><strong>값 20의 변환 결과는?</strong></p>
 <ul>
 <li>1. 0</li>

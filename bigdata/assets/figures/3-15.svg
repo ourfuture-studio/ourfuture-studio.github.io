@@ -53,4 +53,5 @@
 <text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">벌점 비중 C(지정된 목적식 단위)</text>
 <text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A=1+2C와 B=3은 C=1에서 만난다. x축 C, y축 목적값.</text>
 <text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<text x="38" y="485" transform="rotate(-90 38 485)" fill="#626a73" font-size="28" font-family="Malgun Gothic,sans-serif" font-weight="400">후보 목적값</text>
 </svg>

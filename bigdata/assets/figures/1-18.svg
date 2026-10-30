@@ -1,36 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
-<rect width="1200" height="900" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">AI 도입 전 성능과 운영 조건 함께 보기</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">성능 점수와 별개의 필수 운영조건을 통과·미충족으로 표시한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">응답 시간</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">외부 전송</text>
-<rect x="50" y="331.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="325.0" y1="331.3" x2="325.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
-<line x1="600.0" y1="331.3" x2="600.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">limit</text>
-<line x1="875.0" y1="331.3" x2="875.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
-<rect x="50" y="416.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">응답 시간</text>
-<line x1="325.0" y1="416.3" x2="325.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
-<line x1="600.0" y1="416.3" x2="600.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
-<line x1="875.0" y1="416.3" x2="875.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원 예시 8초 &gt; 2초</text>
-<rect x="50" y="501.3" width="1100" height="112.0" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">외부 전송</text>
-<line x1="325.0" y1="501.3" x2="325.0" y2="613.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
-<line x1="600.0" y1="501.3" x2="600.0" y2="613.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
-<line x1="875.0" y1="501.3" x2="875.0" y2="613.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">필요함 → 금지 조</text>
-<text x="887.0" y="585.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">건 미충족</text>
-<text x="50" y="674.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">요구는 응답 2초 이하와 외부 전송 없음이며 각각 별도로 확인한다.</text>
-<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img">
+<rect width="1200" height="920" fill="#fbfaf6"/>
+<text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">AI 도입 전 성능과 운영 조건 함께 보기</text>
+<text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">성능 점수와 별개인 두 필수 운영 조건을 각각 확인합니다.</text>
+<rect x="50" y="230" width="330" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="67" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">조건</text>
+<rect x="380" y="230" width="270" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="397" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">업무 요구</text>
+<rect x="650" y="230" width="245" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="667" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">후보 A</text>
+<rect x="895" y="230" width="255" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="912" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">판단</text>
+<rect x="50" y="355" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="67" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">응답 시간</text>
+<rect x="380" y="355" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="397" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2초 이내</text>
+<rect x="650" y="355" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="667" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8초</text>
+<rect x="895" y="355" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="912" y="413.1" fill="#8c3444" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">미충족</text>
+<rect x="50" y="480" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="67" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">외부 전송</text>
+<rect x="380" y="480" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="397" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">금지</text>
+<rect x="650" y="480" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="667" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">필요</text>
+<rect x="895" y="480" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="912" y="538.1" fill="#8c3444" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">미충족</text>
+<text x="60" y="678.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시간만 1초로 줄어도 외부 전송이 남으면 그 조건은 미충족입니다.</text>
+<text x="50" y="811.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">요구는 응답 2초 이하와 외부 전송 없음이며 각각 별도로 확인한다.</text>
+<text x="50" y="894.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
 </svg>

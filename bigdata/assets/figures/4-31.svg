@@ -1,14 +1,265 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
-<rect width="1200" height="900" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">히스토그램의 밀도는 높이가 아니라 면적으로 비율을</text>
-<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">읽는다</text>
-<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">같은 도수2의 두 구간에서 너비와 높이가 반대로 변하고 면적이 같음을 보인다.</text>
-<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">[0,1)</text>
-<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">[1,3]</text>
-<text x="55" y="423.2" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">label: [0,1) · left: 0 · right: 1 · width: 1 · count: 2 · height: 0.5 · area: 0.5</text>
-<text x="55" y="485.3" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">label: [1,3] · left: 1 · right: 3 · width: 2 · count: 2 · height: 0.25 · area: 0.5</text>
-<text x="50" y="580.3" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[0,1)은 너비1·높이0.5, [1,3]은 너비2·높이0.25로 두 면적이 각각0.5다.</text>
-<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 552 
+L 720 552 
+L 720 0 
+L 0 0 
+z
+" style="fill: #fbfaf7"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 86.4 397.44 
+L 655.2 397.44 
+L 655.2 154.56 
+L 86.4 154.56 
+z
+" style="fill: #fbfaf7"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m3e04ab93a7" d="M 0 0 
+L 0 3.5 
+" style="stroke: #1d2541; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="86.4" y="397.44" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="86.4" y="416.737852" transform="rotate(-0 86.4 416.737852)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="276" y="397.44" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="276" y="416.737852" transform="rotate(-0 276 416.737852)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="465.6" y="397.44" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="465.6" y="416.737852" transform="rotate(-0 465.6 416.737852)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="655.2" y="397.44" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="655.2" y="416.737852" transform="rotate(-0 655.2 416.737852)">3</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="370.8" y="433.2825" transform="rotate(-0 370.8 433.2825)">관측값 / 구간 경계</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 86.4 397.44 
+L 655.2 397.44 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <defs>
+       <path id="m63b66a0bca" d="M 0 0 
+L -3.5 0 
+" style="stroke: #1d2541; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="397.44" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="401.838926" transform="rotate(-0 75.9 401.838926)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 86.4 358.265806 
+L 655.2 358.265806 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="358.265806" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="362.664732" transform="rotate(-0 75.9 362.664732)">0.1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 86.4 319.091613 
+L 655.2 319.091613 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="319.091613" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="323.490539" transform="rotate(-0 75.9 323.490539)">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 86.4 279.917419 
+L 655.2 279.917419 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="279.917419" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="284.316345" transform="rotate(-0 75.9 284.316345)">0.3</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 86.4 240.743226 
+L 655.2 240.743226 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="240.743226" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="245.142152" transform="rotate(-0 75.9 245.142152)">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <path d="M 86.4 201.569032 
+L 655.2 201.569032 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="201.569032" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="205.967958" transform="rotate(-0 75.9 205.967958)">0.5</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17">
+      <path d="M 86.4 162.394839 
+L 655.2 162.394839 
+" clip-path="url(#p1a3c8a46ca)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="162.394839" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="75.9" y="166.793764" transform="rotate(-0 75.9 166.793764)">0.6</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="54.974219" y="276" transform="rotate(-90 54.974219 276)">확률밀도</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.4 397.44 
+L 86.4 154.56 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 86.4 397.44 
+L 655.2 397.44 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 86.4 397.44 
+L 276 397.44 
+L 276 201.569032 
+L 86.4 201.569032 
+z
+" clip-path="url(#p1a3c8a46ca)" style="fill: #2e6f66; stroke: #fbfaf7; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 276 397.44 
+L 655.2 397.44 
+L 655.2 299.504516 
+L 276 299.504516 
+z
+" clip-path="url(#p1a3c8a46ca)" style="fill: #a12d48; stroke: #fbfaf7; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Malgun Gothic'; fill: #ffffff" transform="translate(160.682344 296.561782)">도수 2</text>
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Malgun Gothic'; fill: #ffffff" transform="translate(154.793594 311.321391)">면적 0.5</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="181.2" y="191.775484" transform="rotate(-0 181.2 191.775484)">높이 0.5 · 너비 1</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Malgun Gothic'; fill: #ffffff" transform="translate(445.082344 345.529524)">도수 2</text>
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Malgun Gothic'; fill: #ffffff" transform="translate(439.193594 360.289133)">면적 0.5</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="465.6" y="289.710968" transform="rotate(-0 465.6 289.710968)">높이 0.25 · 너비 2</text>
+   </g>
+  </g>
+  <g id="text_18">
+   <text style="font-weight: 700; font-size: 21px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 43.783828)">히스토그램의 밀도는 높이가 아니라 면적으로 비율을</text>
+   <text style="font-weight: 700; font-size: 21px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 71.073984)">읽는다</text>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="115.2225" transform="rotate(-0 36 115.2225)">가중치 없는 관측 4개: 0.2·0.6·1.2·2.4 · 전부 표시 범위 안</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 9px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="532.68" transform="rotate(-0 36 532.68)">ourfuture studio · 4-31 · 직접 만든 교육용 예제</text>
+  </g>
+  <g id="text_21">
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 486.567344)">[0,1)은 너비 1·밀도 0.5, [1,3]은 너비 2·밀도 0.25다. 높이 합은 0.75지만</text>
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 502.930703)">두 면적의 합은 1이다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1a3c8a46ca">
+   <rect x="86.4" y="154.56" width="568.8" height="242.88"/>
+  </clipPath>
+ </defs>
 </svg>

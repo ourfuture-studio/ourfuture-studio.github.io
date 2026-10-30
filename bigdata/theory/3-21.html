@@ -14,7 +14,7 @@
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-21">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-21.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
 <div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>PCA는 입력 변동을 많이 담는 직교 축을 순서대로 찾는다. 같은 전처리를 거친 공분산 또는 상관행렬의 고윳값은 각 주성분 방향의 분산에 대응한다. 한 축의 설명분산비는 그 고윳값을 전체 고윳값 합으로 나눈 값이다. 축 번호가 뒤로 갈수록 고윳값은 커지는 순서가 아니라 보통 내림차순이다.</p>
-<p>목표가 누적 설명분산 80% 이상이라면 큰 축부터 더해 처음 기준을 넘는 지점의 개수를 고른다. 고윳값 6·3·1이면 총분산은 10, 첫 축 60%, 둘째 축 단독 30%, 앞 두 축 누적 90%다. 둘째 축의 30%와 앞 두 축의 90%를 구분해야 한다.</p>
+<p>목표가 누적 설명분산 80% 이상이라면 큰 축부터 더해 처음 기준에 도달하거나 넘는 지점의 개수를 고른다. 고윳값 6·3·1이면 총분산은 10, 첫 축 60%, 둘째 축 단독 30%, 앞 두 축 누적 90%다. 둘째 축의 30%와 앞 두 축의 90%를 구분해야 한다.</p>
 <p>설명분산은 입력의 변동을 얼마나 보존했는지이며 분류 정확도나 예측 성공률이 아니다. 단위가 다른 입력을 표준화했는지도 결과를 바꾼다. scikit-learn PCA는 중심화하지만 기본적으로 변수의 표준편차를 자동으로 1로 만들지는 않는다. 어떤 전처리에서 얻은 고윳값인지 함께 기록한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>같은 전처리의 PCA 고윳값이 6·3·1이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>

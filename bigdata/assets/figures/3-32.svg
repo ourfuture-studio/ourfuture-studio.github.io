@@ -1,34 +1,295 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1086" viewBox="0 0 1200 1086" role="img">
-<rect width="1200" height="1086" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">투표와 메타학습의 입력은 다르다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">두 .51 표와 한 .01 확률의 차이를 보인다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">모형</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">클래스1 확률</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">문턱0.5</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">x</text>
-<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">y</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">모형1</text>
-<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.51</text>
-<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">모형2</text>
-<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.51</text>
-<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">모형3</text>
-<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.01</text>
-<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균</text>
-<line x1="600.0" y1="791.3" x2="600.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.3433333</text>
-<text x="50" y="937.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">클래스1 확률 .51·.51·.01의 평균은 약.343이라 다수표의1과 소프트결정0이 다르</text>
-<text x="50" y="980.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">다.</text>
-<text x="50" y="1057.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="612pt" viewBox="0 0 864 612" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-30T23:51:28.931495</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 612 
+L 864 612 
+L 864 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 86.4 471.24 
+L 501.12 471.24 
+L 501.12 134.64 
+L 86.4 134.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mf4d4c91df8" d="M 0 0 
+L 0 3.5 
+" style="stroke: #202944; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf4d4c91df8" x="137.536996" y="471.24" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="137.536996" y="491.123594" transform="rotate(-0 137.536996 491.123594)">모형 1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mf4d4c91df8" x="241.685665" y="471.24" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="241.685665" y="491.123594" transform="rotate(-0 241.685665 491.123594)">모형 2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mf4d4c91df8" x="345.834335" y="471.24" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="345.834335" y="491.123594" transform="rotate(-0 345.834335 491.123594)">모형 3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf4d4c91df8" x="449.983004" y="471.24" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="449.983004" y="491.050937" transform="rotate(-0 449.983004 491.050937)">평균</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 86.4 471.24 
+L 501.12 471.24 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <defs>
+       <path id="mb056fbb2f5" d="M 0 0 
+L -3.5 0 
+" style="stroke: #202944; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb056fbb2f5" x="86.4" y="471.24" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="79.4" y="477.238535" transform="rotate(-0 79.4 477.238535)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 86.4 387.09 
+L 501.12 387.09 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mb056fbb2f5" x="86.4" y="387.09" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="79.4" y="393.088535" transform="rotate(-0 79.4 393.088535)">0.25</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 86.4 302.94 
+L 501.12 302.94 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mb056fbb2f5" x="86.4" y="302.94" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="79.4" y="308.938535" transform="rotate(-0 79.4 308.938535)">0.50</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 86.4 218.79 
+L 501.12 218.79 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mb056fbb2f5" x="86.4" y="218.79" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="79.4" y="224.788535" transform="rotate(-0 79.4 224.788535)">0.75</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 86.4 134.64 
+L 501.12 134.64 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mb056fbb2f5" x="86.4" y="134.64" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="79.4" y="140.638535" transform="rotate(-0 79.4 140.638535)">1.00</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="43.314688" y="302.94" transform="rotate(-90 43.314688 302.94)">클래스 1 확률 p (0~1)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 105.250909 471.24 
+L 169.823084 471.24 
+L 169.823084 299.574 
+L 105.250909 299.574 
+z
+" clip-path="url(#p5206eb5a04)" style="fill: #2c6a61"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 209.399578 471.24 
+L 273.971753 471.24 
+L 273.971753 299.574 
+L 209.399578 299.574 
+z
+" clip-path="url(#p5206eb5a04)" style="fill: #2c6a61"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 313.548247 471.24 
+L 378.120422 471.24 
+L 378.120422 467.874 
+L 313.548247 467.874 
+z
+" clip-path="url(#p5206eb5a04)" style="fill: #95364e"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 417.696916 471.24 
+L 482.269091 471.24 
+L 482.269091 355.674 
+L 417.696916 355.674 
+z
+" clip-path="url(#p5206eb5a04)" style="fill: #496ea3"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 86.4 302.94 
+L 501.12 302.94 
+" clip-path="url(#p5206eb5a04)" style="fill: none; stroke-dasharray: 6.29,2.72; stroke-dashoffset: 0; stroke: #586773; stroke-width: 1.7"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 86.4 471.24 
+L 86.4 134.64 
+" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 86.4 471.24 
+L 501.12 471.24 
+" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="137.536996" y="287.793" transform="rotate(-0 137.536996 287.793)">0.51</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="241.685665" y="287.793" transform="rotate(-0 241.685665 287.793)">0.51</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="345.834335" y="456.093" transform="rotate(-0 345.834335 456.093)">0.01</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="449.983004" y="343.893" transform="rotate(-0 449.983004 343.893)">0.343</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #586773" x="496.9728" y="289.83907" transform="rotate(-0 496.9728 289.83907)">문턱 0.5</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 563.13792 284.50656 
+L 805.26528 284.50656 
+Q 810.62208 284.50656 810.62208 277.28496 
+L 810.62208 156.68424 
+Q 810.62208 149.46264 805.26528 149.46264 
+L 563.13792 149.46264 
+Q 557.78112 149.46264 557.78112 156.68424 
+L 557.78112 277.28496 
+Q 557.78112 284.50656 563.13792 284.50656 
+z
+" clip-path="url(#p20335f5bdd)" style="fill: #f3f7f4; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 563.13792 472.26816 
+L 805.26528 472.26816 
+Q 810.62208 472.26816 810.62208 465.04656 
+L 810.62208 330.00264 
+Q 810.62208 322.78104 805.26528 322.78104 
+L 563.13792 322.78104 
+Q 557.78112 322.78104 557.78112 330.00264 
+L 557.78112 465.04656 
+Q 557.78112 472.26816 563.13792 472.26816 
+z
+" clip-path="url(#p20335f5bdd)" style="fill: #f3f7f4; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(642.861756 203.16544)">하드 보팅</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(624.192772 223.196338)">레이블 1, 1, 0</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(621.176522 243.227237)">다수 → 범주 1</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(636.037537 375.432764)">소프트 보팅</text>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(601.63785 393.432764)">(0.51+0.51+0.01)/3</text>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(623.230819 412.409405)">약 0.343 &lt; 0.5</text>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(645.657694 431.386045)">→ 범주 0</text>
+   </g>
+  </g>
+  <g id="text_18">
+   <text style="font-weight: 700; font-size: 25px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #202944" x="47.52" y="49.243125" transform="rotate(-0 47.52 49.243125)">보팅: 레이블 다수와 확률 평균은 다르다</text>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="78.065" transform="rotate(-0 47.52 78.065)">동등 가중치 · 확률 p≥0.5를 범주 1로 바꾸는 명시적 규칙</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="596.7" transform="rotate(-0 47.52 596.7)">직접 만든 교육용 예제 · 그림은 표시된 고정 조건을 보여 줍니다.</text>
+  </g>
+  <g id="text_21">
+   <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #202944" x="86.4" y="541.62" transform="rotate(-0 86.4 541.62)">같은 관측의 예측을 결합해도 사용하는 정보와 계산 규칙이 다르면 결과가 달라집니다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5206eb5a04">
+   <rect x="86.4" y="134.64" width="414.72" height="336.6"/>
+  </clipPath>
+  <clipPath id="p20335f5bdd">
+   <rect x="552.96" y="128.52" width="267.84" height="361.08"/>
+  </clipPath>
+ </defs>
 </svg>

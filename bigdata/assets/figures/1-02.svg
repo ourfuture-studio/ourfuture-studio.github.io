@@ -1,35 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1042" viewBox="0 0 1200 1042" role="img">
-<rect width="1200" height="1042" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">저장소와 작업 실행 순서 관리</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">저장·처리·실행 조건의 책임을 화살표와 실패 가지로 분리한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">원본 보관</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정제</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">성공?</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집계</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원본 보관</text>
-<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">저장소의 책임</text>
-<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정제</text>
-<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">행을 수정하는 처리 작업</text>
-<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">성공</text>
-<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">집계 시작 허용</text>
-<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">실패</text>
-<line x1="600.0" y1="791.3" x2="600.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">집계 중단·재시도 검토</text>
-<text x="50" y="937.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다.</text>
-<text x="50" y="1013.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1030" viewBox="0 0 1200 1030" role="img">
+<rect width="1200" height="1030" fill="#fbfaf6"/>
+<text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">저장소와 작업 실행 순서 관리</text>
+<text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정제 성공이라는 선행 조건과, 실패 때의 실행 중단을 나누어 읽습니다.</text>
+<rect x="70" y="210" width="300" height="130" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="90" y="257.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">원본 보관</text>
+<text x="90" y="305.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">주문 파일·결과 저장</text>
+<rect x="470" y="210" width="300" height="130" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="490" y="257.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정제 작업</text>
+<text x="490" y="305.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">잘못된 행 처리</text>
+<line x1="370" y1="275" x2="470" y2="275" stroke="#2e6b60" stroke-width="5"/>
+<line x1="470" y1="275" x2="454.2035138859733" y2="283.62965969487567" stroke="#2e6b60" stroke-width="5"/>
+<line x1="470" y1="275" x2="454.2035138859733" y2="266.37034030512433" stroke="#2e6b60" stroke-width="5"/>
+<rect x="470" y="450" width="300" height="110" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="490" y="497.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정제 성공?</text>
+<text x="490" y="545.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">작업 상태 확인</text>
+<line x1="620" y1="340" x2="620" y2="450" stroke="#2e6b60" stroke-width="5"/>
+<line x1="620" y1="450" x2="611.3703403051244" y2="434.2035138859733" stroke="#2e6b60" stroke-width="5"/>
+<line x1="620" y1="450" x2="628.6296596948756" y2="434.2035138859733" stroke="#2e6b60" stroke-width="5"/>
+<rect x="70" y="670" width="400" height="175" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="90" y="717.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집계 실행 허용</text>
+<text x="90" y="765.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">집계 산출물의 정확성은 별도</text>
+<text x="90" y="801.5" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">확인</text>
+<rect x="730" y="670" width="400" height="175" rx="14" fill="#f8eded" stroke="#dcded7" stroke-width="2"/>
+<text x="750" y="717.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집계 중단·재시도 검토</text>
+<text x="750" y="765.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">실패 상태에서 집계로 넘어가지</text>
+<text x="750" y="801.5" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">않음</text>
+<line x1="470" y1="505" x2="270" y2="670" stroke="#2e6b60" stroke-width="5"/>
+<line x1="270" y1="670" x2="276.69321894768444" y2="653.2906965998473" stroke="#2e6b60" stroke-width="5"/>
+<line x1="270" y1="670" x2="287.67675561869476" y2="666.60407438289" stroke="#2e6b60" stroke-width="5"/>
+<line x1="770" y1="505" x2="930" y2="670" stroke="#8c3444" stroke-width="5"/>
+<line x1="930" y1="670" x2="912.8081058768236" y2="664.6671980669173" stroke="#8c3444" stroke-width="5"/>
+<line x1="930" y1="670" x2="925.1985780574234" y2="652.6521947402749" stroke="#8c3444" stroke-width="5"/>
+<text x="230" y="589.1" fill="#2e6b60" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">성공</text>
+<text x="860" y="589.1" fill="#8c3444" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">실패</text>
+<text x="50" y="921.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다.</text>
+<text x="50" y="1004.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
 </svg>

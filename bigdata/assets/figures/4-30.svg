@@ -1,35 +1,278 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1042" viewBox="0 0 1200 1042" role="img">
-<rect width="1200" height="1042" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원 순서와 재정렬 순서를 같은 색 범위·값 대응으로 비교한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">D</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
-<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[1, 2]</text>
-<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
-<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[8, 9]</text>
-<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">C</text>
-<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[2, 1]</text>
-<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">D</text>
-<line x1="600.0" y1="791.3" x2="600.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[9, 8]</text>
-<text x="50" y="937.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A·B·C·D를 A·C·B·D로 옮겨도 합계40·평균5와 각 이름의 값은 같다.</text>
-<text x="50" y="1013.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 552 
+L 720 552 
+L 720 0 
+L 0 0 
+z
+" style="fill: #fbfaf7"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 140.88 402.96 
+L 262.32 402.96 
+L 262.32 160.08 
+L 140.88 160.08 
+z
+" style="fill: #fbfaf7"/>
+   </g>
+   <g clip-path="url(#p968ea52014)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAMoAAAGVCAYAAAC/ym4+AAAEi0lEQVR4nO3VIU5DUQBEUT7g2mU0QdSwCGpQiCZdJQmbQZDUswGQzUf3qeseTc5ZwZibWS7fu/WOf+Xjdzt7AoP72QPgFggFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhALB4+vhNHsDg8vn1+wJDDwKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAWC5f38vM4ewbW3zc/sCQw8CgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFguVlOa6zR3DtYf80ewIDjwKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgeAPF50RZ2b8/yIAAAAASUVORK5CYII=" id="imageb822088eaa" transform="scale(1 -1) translate(0 -243)" x="141" y="-160.2" width="121.2" height="243"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="171.24" y="423.20875" transform="rotate(-0 171.24 423.20875)">열1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="231.96" y="423.20875" transform="rotate(-0 231.96 423.20875)">열2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="130.88" y="195.238828" transform="rotate(-0 130.88 195.238828)">A</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="130.88" y="255.958828" transform="rotate(-0 130.88 255.958828)">B</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="130.88" y="316.678828" transform="rotate(-0 130.88 316.678828)">C</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="130.88" y="377.398828" transform="rotate(-0 130.88 377.398828)">D</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="171.24" y="195.236875" transform="rotate(-0 171.24 195.236875)">1</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="231.96" y="195.236875" transform="rotate(-0 231.96 195.236875)">2</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="171.24" y="255.956875" transform="rotate(-0 171.24 255.956875)">8</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="231.96" y="255.956875" transform="rotate(-0 231.96 255.956875)">9</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="171.24" y="316.676875" transform="rotate(-0 171.24 316.676875)">2</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="231.96" y="316.676875" transform="rotate(-0 231.96 316.676875)">1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="171.24" y="377.396875" transform="rotate(-0 171.24 377.396875)">9</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="231.96" y="377.396875" transform="rotate(-0 231.96 377.396875)">8</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 13px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="201.6" y="145.08" transform="rotate(-0 201.6 145.08)">원 순서 A·B·C·D</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 457.68 402.96 
+L 579.12 402.96 
+L 579.12 160.08 
+L 457.68 160.08 
+z
+" style="fill: #fbfaf7"/>
+   </g>
+   <g clip-path="url(#pcaf1248467)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAMoAAAGVCAYAAAC/ym4+AAAEhElEQVR4nO3Vu21CQQAFUX6ZKQOJAPogpR83RTMEVOAGTPgEMRtNtrZ0TgU3Gd318nN4rfhTbs/97AkMNrMHwH8gFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBEKBQCgQCAUCoUAgFAiEAoFQIBAKBLvbcz97A4Pr1+/sCQw8CgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFgvXl/P2aPYJPy/0xewIDjwKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgUAoEAgFAqFAIBQIhAKBUCAQCgRCgWC33B+zNzDYno6zJzDwKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCIQCgVAgEAoEQoFAKBAIBQKhQCAUCN7ztRJ96nrEbAAAAABJRU5ErkJggg==" id="image1346d73d1f" transform="scale(1 -1) translate(0 -243)" x="457.8" y="-160.2" width="121.2" height="243"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_7"/>
+     <g id="text_16">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="488.04" y="423.20875" transform="rotate(-0 488.04 423.20875)">열1</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_8"/>
+     <g id="text_17">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="548.76" y="423.20875" transform="rotate(-0 548.76 423.20875)">열2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_9"/>
+     <g id="text_18">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="447.68" y="195.238828" transform="rotate(-0 447.68 195.238828)">A</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_10"/>
+     <g id="text_19">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="447.68" y="255.958828" transform="rotate(-0 447.68 255.958828)">C</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_11"/>
+     <g id="text_20">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="447.68" y="316.678828" transform="rotate(-0 447.68 316.678828)">B</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_12"/>
+     <g id="text_21">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #1d2541" x="447.68" y="377.398828" transform="rotate(-0 447.68 377.398828)">D</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="488.04" y="195.236875" transform="rotate(-0 488.04 195.236875)">1</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="548.76" y="195.236875" transform="rotate(-0 548.76 195.236875)">2</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="488.04" y="255.956875" transform="rotate(-0 488.04 255.956875)">2</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #ffffff" x="548.76" y="255.956875" transform="rotate(-0 548.76 255.956875)">1</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="488.04" y="316.676875" transform="rotate(-0 488.04 316.676875)">8</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="548.76" y="316.676875" transform="rotate(-0 548.76 316.676875)">9</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="488.04" y="377.396875" transform="rotate(-0 488.04 377.396875)">9</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="548.76" y="377.396875" transform="rotate(-0 548.76 377.396875)">8</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 13px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="518.4" y="145.08" transform="rotate(-0 518.4 145.08)">재정렬 A·C·B·D</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_4">
+    <path d="M 273.6 433.32 
+L 446.4 433.32 
+L 446.4 422.28 
+L 273.6 422.28 
+z
+" style="fill: #fbfaf7"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAASAAAAASCAYAAAD7RgOSAAABVElEQVR4nO3US67jMAxE0Spqa72E3v9SrDcQ9XPSDz3j5B4gsCWWJRkO6D/+2+WQw5JDkvZ9WLLlCMmW5lWSwvKRueozYx/1V/ZYR7a6LYWuel8Z3XM57raUEdnqa37mtfPSys/6uI4z9LXOZ/0az0z8kr3WOa/+yHzP6XivY/7LM+O9vsz/T0a/7LXy/Z+Zq673mv3I7PHOjrHfWfW1jlfmztr9+IvtjHM86+G+Muec3RX6zKzaqud9ZuKohV8/nZnnlXvUrsyoN+3sqD9rr6Y5/yiUVz/rmZHJtWdWz5WXpNDYe2SezPScf/Ze+UzTrjX16zxz3DTPnmfIT9osNVkhqdkKOcdWyw8WihxH3gNAERoQgDI0IABlaEAAytCAAJShAQEoQwMCUIYGBKAMDQhAGRoQgDI0IABlaEAAytCAAJShAQEoQwMCUIYGBKAMDQhAmR8w6YksnrLziQAAAABJRU5ErkJggg==" id="imagefd186f6d43" transform="scale(1 -1) translate(0 -10.8)" x="273.6" y="-422.4" width="172.8" height="10.8"/>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_5">
+     <g id="line2d_13">
+      <defs>
+       <path id="m3e04ab93a7" d="M 0 0 
+L 0 3.5 
+" style="stroke: #1d2541; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="273.6" y="433.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_31">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="273.6" y="449.917656" transform="rotate(-0 273.6 449.917656)">1</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="360" y="433.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_32">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="360" y="449.917656" transform="rotate(-0 360 449.917656)">5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m3e04ab93a7" x="446.4" y="433.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_33">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="446.4" y="449.917656" transform="rotate(-0 446.4 449.917656)">9</text>
+     </g>
+    </g>
+    <g id="text_34">
+     <text style="font-size: 10px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="360" y="461.860625" transform="rotate(-0 360 461.860625)">원래 행렬 값</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6"/>
+   <g id="LineCollection_1"/>
+   <g id="patch_5">
+    <path d="M 273.6 433.32 
+L 273.6 427.8 
+L 273.6 422.28 
+L 446.4 422.28 
+L 446.4 427.8 
+L 446.4 433.32 
+L 273.6 433.32 
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="text_35">
+   <text style="font-weight: 700; font-size: 21px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="36" y="43.713281" transform="rotate(-0 36 43.713281)">히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다</text>
+  </g>
+  <g id="text_36">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="87.586875" transform="rotate(-0 36 87.586875)">행 이름과 값은 함께 이동 · 두 패널의 색 범위는 1~9로 고정</text>
+  </g>
+  <g id="text_37">
+   <text style="font-size: 9px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="532.68" transform="rotate(-0 36 532.68)">ourfuture studio · 4-30 · 직접 만든 교육용 예제</text>
+  </g>
+  <g id="text_38">
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="36" y="486.980703" transform="rotate(-0 36 486.980703)">행만 A·B·C·D에서 A·C·B·D로 옮겼다. 이름별 값과 전체 합계 40·평균 5는 같다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p968ea52014">
+   <rect x="140.88" y="160.08" width="121.44" height="242.88"/>
+  </clipPath>
+  <clipPath id="pcaf1248467">
+   <rect x="457.68" y="160.08" width="121.44" height="242.88"/>
+  </clipPath>
+ </defs>
 </svg>

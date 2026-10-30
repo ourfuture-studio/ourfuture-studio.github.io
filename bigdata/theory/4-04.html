@@ -37,7 +37,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>예측 스팸은3+1=4통이므로 정밀도3/4=75%다. 실제 스팸은3+2=5통이므로 재현율3/5=60%다. 10통 전체를 분모로 삼은3/10은 두 지표 중 어느 것도 아니며, 정확도는(3+4)/10=70%로 별도 계산한다. 스팸이라고 한 통도 고르지 않아 TP=FP=0이면 정밀도의 분모가 0이다. 그 비율을 임의로 100%라고 두지 않는다. 실제 스팸이 남아 있다면 재현율은 0으로 계산할 수 있어 두 지표의 상태도 다를 수 있다. 체험은 수학적으로 정의되지 않은 비율을 “정의 불가”로 표시한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-04.png" alt="자체 예제의 분자 TP와 서로 다른 두 분모 영역을 같은 혼동행렬에서 표시한다.. 정밀도는 TP3+FP1의 예측 양성4통, 재현율은 TP3+FN2의 실제 양성5통이 분모다." width="1200" height="1086" loading="lazy" decoding="async"><figcaption>정밀도는 TP3+FP1의 예측 양성4통, 재현율은 TP3+FN2의 실제 양성5통이 분모다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>양성은 스팸이다. TP=3, FP=1, FN=2, TN=4인 자체 메일 10통의 같은 판정 결과다.</p>
+<p>예측 스팸은3+1=4통이므로 정밀도3/4=75%다. 실제 스팸은3+2=5통이므로 재현율3/5=60%다. 10통 전체를 분모로 삼은3/10은 두 지표 중 어느 것도 아니며, 정확도는(3+4)/10=70%로 별도 계산한다. 스팸이라고 한 통도 고르지 않아 TP=FP=0이면 정밀도의 분모가 0이다. 그 비율을 임의로 100%라고 두지 않는다. 실제 스팸이 남아 있다면 재현율은 0으로 계산할 수 있어 두 지표의 상태도 다를 수 있다. 체험은 수학적으로 정의되지 않은 비율을 “정의 불가”로 표시한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-04.png" alt="실제값을 행, 예측값을 열로 둔 혼동행렬. TP3·FN2·FP1·TN4이며 예측 양성 열4와 실제 양성 행5를 서로 다른 테두리로 강조했다." width="1200" height="920" loading="lazy" decoding="async"><figcaption>정밀도의 분모는 예측 양성 4통, 재현율의 분모는 실제 양성 5통이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>양성은 스팸이다. TP=3, FP=1, FN=2, TN=4인 자체 메일 10통의 같은 판정 결과다.</p>
 <p><strong>정밀도와 재현율은 각각 얼마인가?</strong></p>
 <ul>
 <li>1. 60%와 75%</li>

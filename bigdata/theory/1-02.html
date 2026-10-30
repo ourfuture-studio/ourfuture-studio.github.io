@@ -38,7 +38,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>정제가 실패했을 때 집계를 멈추고 재시도 조건을 확인하는 것은 실행 조정의 문제다. 정제 내용이 옳은지는 별도로 확인해야 한다. 파일 보관이 끝났어도 정제 결과가 실패이면 “정제 성공 뒤 집계”라는 규칙에서는 집계를 시작하지 않는다. 반대로 정제 성공이면 집계를 시작할 수 있지만 집계 계산의 정확성까지 확인된 것은 아니다. 실행 허용, 작업 성공, 산출물 정확성을 세 번 나누어 확인한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-02.png" alt="자체 예제의 저장·처리·실행 조건의 책임을 화살표와 실패 가지로 분리한다.. 원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다." width="1200" height="1042" loading="lazy" decoding="async"><figcaption>원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>정제가 성공한 뒤에만 매출 집계를 실행해야 한다.</p>
+<p>정제가 실패했을 때 집계를 멈추고 재시도 조건을 확인하는 것은 실행 조정의 문제다. 정제 내용이 옳은지는 별도로 확인해야 한다. 파일 보관이 끝났어도 정제 결과가 실패이면 “정제 성공 뒤 집계”라는 규칙에서는 집계를 시작하지 않는다. 반대로 정제 성공이면 집계를 시작할 수 있지만 집계 계산의 정확성까지 확인된 것은 아니다. 실행 허용, 작업 성공, 산출물 정확성을 세 번 나누어 확인한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-02.png" alt="자체 예제의 저장·처리·실행 조건의 책임을 화살표와 실패 가지로 분리한다.. 원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다." width="1200" height="1030" loading="lazy" decoding="async"><figcaption>원본 보관 뒤 정제를 실행하고, 정제 성공일 때만 집계로 이동한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>정제가 성공한 뒤에만 매출 집계를 실행해야 한다.</p>
 <p><strong>직접 필요한 역할은?</strong></p>
 <ul>
 <li>1. 파일 영구 보관</li>

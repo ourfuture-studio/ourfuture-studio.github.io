@@ -1,46 +1,324 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="901" viewBox="0 0 1200 901" role="img">
-<rect width="1200" height="901" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">로지스틱 계수는 확률보다 오즈에 붙는다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">로그오즈와 확률의 비선형 대응을 보인다.</text>
-<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
-<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
-<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사건 확률 p(0~1)</text>
-<circle cx="150.0" cy="547.8053083333797" r="9" fill="#2e6b60"/>
-<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-4</text>
-<line x1="150.0" y1="547.8053083333797" x2="382.5" y2="516.884140091093" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="382.5" cy="516.884140091093" r="9" fill="#2e6b60"/>
-<text x="367.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-2</text>
-<line x1="382.5" y1="516.884140091093" x2="498.75" y2="471.1398234021907" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="498.75" cy="471.1398234021907" r="9" fill="#2e6b60"/>
-<text x="483.75" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-1</text>
-<line x1="498.75" y1="471.1398234021907" x2="615.0" y2="400.5526541666898" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="615.0" cy="400.5526541666898" r="9" fill="#2e6b60"/>
-<text x="600.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
-<line x1="615.0" y1="400.5526541666898" x2="731.25" y2="329.96548493118894" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="731.25" cy="329.96548493118894" r="9" fill="#2e6b60"/>
-<text x="716.25" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
-<line x1="731.25" y1="329.96548493118894" x2="847.5" y2="284.2211682422867" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="847.5" cy="284.2211682422867" r="9" fill="#2e6b60"/>
-<text x="832.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
-<line x1="847.5" y1="284.2211682422867" x2="1080.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
-<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
-<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
-<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
-<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
-<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.24550</text>
-<text x="50" y="523.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">34</text>
-<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
-<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.49100</text>
-<text x="50" y="448.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">69</text>
-<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
-<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.73651</text>
-<text x="50" y="373.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">03</text>
-<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
-<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.98201</text>
-<text x="50" y="298.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">38</text>
-<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
-<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">선형식 η(로그오즈, 무차원)</text>
-<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">η의 같은 증가가 확률의 같은 증가량을 뜻하지 않는다. x축 로그오즈, y축 사건 확</text>
-<text x="50" y="795.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">률.</text>
-<text x="50" y="872.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="576pt" viewBox="0 0 864 576" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-30T23:51:28.035363</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 576 
+L 864 576 
+L 864 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 103.68 466.56 
+L 794.88 466.56 
+L 794.88 120.96 
+L 103.68 120.96 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mcaf2f29dcb" d="M 0 0 
+L 0 3.5 
+" style="stroke: #202944; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mcaf2f29dcb" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="103.68" y="485.55707" transform="rotate(-0 103.68 485.55707)">-4</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mcaf2f29dcb" x="276.48" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="276.48" y="485.55707" transform="rotate(-0 276.48 485.55707)">-2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mcaf2f29dcb" x="449.28" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="449.28" y="485.55707" transform="rotate(-0 449.28 485.55707)">0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mcaf2f29dcb" x="622.08" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="622.08" y="485.55707" transform="rotate(-0 622.08 485.55707)">2</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mcaf2f29dcb" x="794.88" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="794.88" y="485.55707" transform="rotate(-0 794.88 485.55707)">4</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="449.28" y="507.079063" transform="rotate(-0 449.28 507.079063)">로그오즈 η (무차원)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <path d="M 103.68 466.56 
+L 794.88 466.56 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <defs>
+       <path id="mcbb11852ab" d="M 0 0 
+L -3.5 0 
+" style="stroke: #202944; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="96.68" y="472.558535" transform="rotate(-0 96.68 472.558535)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <path d="M 103.68 380.16 
+L 794.88 380.16 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="380.16" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="96.68" y="386.158535" transform="rotate(-0 96.68 386.158535)">0.25</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <path d="M 103.68 293.76 
+L 794.88 293.76 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="293.76" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="96.68" y="299.758535" transform="rotate(-0 96.68 299.758535)">0.50</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <path d="M 103.68 207.36 
+L 794.88 207.36 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="207.36" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="96.68" y="213.358535" transform="rotate(-0 96.68 213.358535)">0.75</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <path d="M 103.68 120.96 
+L 794.88 120.96 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="120.96" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: end; fill: #202944" x="96.68" y="126.958535" transform="rotate(-0 96.68 126.958535)">1.00</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="60.594687" y="293.76" transform="rotate(-90 60.594687 293.76)">사건 확률 p (0~1)</text>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 103.68 460.343966 
+L 119.232 459.144361 
+L 134.784 457.71928 
+L 148.608 456.231163 
+L 162.432 454.501529 
+L 174.528 452.761805 
+L 186.624 450.782955 
+L 196.992 448.874369 
+L 207.36 446.748765 
+L 217.728 444.384964 
+L 228.096 441.760593 
+L 236.736 439.357707 
+L 245.376 436.743638 
+L 254.016 433.904128 
+L 262.656 430.824804 
+L 271.296 427.491361 
+L 279.936 423.889788 
+L 288.576 420.006625 
+L 297.216 415.829259 
+L 305.856 411.346254 
+L 312.768 407.533081 
+L 319.68 403.513739 
+L 326.592 399.284957 
+L 333.504 394.844524 
+L 342.144 388.994923 
+L 350.784 382.814083 
+L 359.424 376.306562 
+L 368.064 369.480842 
+L 376.704 362.349579 
+L 385.344 354.929768 
+L 393.984 347.242796 
+L 404.352 337.702268 
+L 414.72 327.866455 
+L 426.816 316.098302 
+L 444.096 298.942445 
+L 473.472 269.724825 
+L 485.568 257.996189 
+L 495.936 248.205628 
+L 506.304 238.71961 
+L 514.944 231.08415 
+L 523.584 223.720478 
+L 532.224 216.649104 
+L 540.864 209.886148 
+L 549.504 203.443414 
+L 558.144 197.328577 
+L 566.784 191.545448 
+L 573.696 187.158072 
+L 580.608 182.981901 
+L 587.52 179.014446 
+L 596.16 174.343196 
+L 604.8 169.983728 
+L 613.44 165.925489 
+L 622.08 162.15653 
+L 630.72 158.663861 
+L 639.36 155.433769 
+L 648 152.452095 
+L 656.64 149.704484 
+L 665.28 147.176587 
+L 673.92 144.854238 
+L 684.288 142.319278 
+L 694.656 140.037306 
+L 705.024 137.986332 
+L 715.392 136.1456 
+L 727.488 134.237947 
+L 739.584 132.561524 
+L 753.408 130.89548 
+L 767.232 129.462599 
+L 782.784 128.090868 
+L 794.88 127.176034 
+L 794.88 127.176034 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke: #2c6a61; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 544.200102 466.56 
+L 544.200102 207.36 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 103.68 207.36 
+L 544.200102 207.36 
+" clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 103.68 466.56 
+L 103.68 120.96 
+" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 103.68 466.56 
+L 794.88 466.56 
+" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m3ae0308382" d="M 0 5 
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
+C 4.473168 2.597899 5 1.326016 5 0 
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
+C 2.597899 -4.473168 1.326016 -5 0 -5 
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
+C -4.473168 -2.597899 -5 -1.326016 -5 0 
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
+C -2.597899 4.473168 -1.326016 5 0 5 
+z
+" style="stroke: #95364e"/>
+    </defs>
+    <g clip-path="url(#pac97f09666)">
+     <use xlink:href="#m3ae0308382" x="544.200102" y="207.36" style="fill: #95364e; stroke: #95364e"/>
+    </g>
+   </g>
+   <g id="patch_5">
+    <path d="M 367.852395 172.608747 
+Q 455.045433 189.791093 541.141532 206.757275 
+" style="fill: none; stroke: #95364e; stroke-linecap: round"/>
+    <path d="M 534.773421 201.833135 
+L 541.141532 206.757275 
+L 533.381353 208.89728 
+" style="fill: none; stroke: #95364e; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #95364e" x="250.56" y="165.888" transform="rotate(-0 250.56 165.888)">η=ln3, p=0.75</text>
+   </g>
+  </g>
+  <g id="text_14">
+   <text style="font-weight: 700; font-size: 25px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #202944" x="47.52" y="47.623125" transform="rotate(-0 47.52 47.623125)">로그오즈를 확률로 바꾸면 증가량도 달라진다</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="74.27" transform="rotate(-0 47.52 74.27)">p = 1 / (1 + exp(-η)) · 확률축은 0부터 1까지</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="561.6" transform="rotate(-0 47.52 561.6)">직접 만든 교육용 예제 · 그림은 표시된 고정 조건을 보여 줍니다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pac97f09666">
+   <rect x="103.68" y="120.96" width="691.2" height="345.6"/>
+  </clipPath>
+ </defs>
 </svg>
