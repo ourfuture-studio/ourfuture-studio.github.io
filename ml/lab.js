@@ -7,6 +7,7 @@
  const outputs=Array.from(document.querySelectorAll('.output'));
  const stop=document.getElementById('stop');
  const buttons=Array.from(document.querySelectorAll('button[data-run],#run-all,#restore,#check-homework'));
+ buttons.forEach(b=>b.disabled=true);
  function lock(value){busy=value;buttons.forEach(b=>b.disabled=value);editors.forEach(e=>e.readOnly=value);stop.disabled=!value;}
  function finish(){clearTimeout(timer);lock(false);}
  function terminate(message){if(worker)worker.terminate();worker=null;finish();status.textContent=message;}
@@ -39,4 +40,5 @@
  stop.addEventListener('click',()=>terminate('실행을 중단했습니다. 코드는 그대로입니다. 다시 실행할 수 있습니다.'));
  document.getElementById('restore').addEventListener('click',()=>{editors.forEach((e,i)=>e.value=lesson.codes[i]);outputs.forEach(e=>{e.textContent='아직 실행하지 않았습니다.';e.classList.remove('error');});document.getElementById('homework-status').textContent='';status.textContent='원래 코드로 되돌렸습니다.';});
  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const editor=editors[Number(b.dataset.copy)];try{await navigator.clipboard.writeText(editor.value);b.textContent='복사했습니다';}catch(e){editor.focus();editor.select();b.textContent='선택한 코드를 Ctrl+C로 복사하세요';}}));
+ lock(false);
 })();
