@@ -1,0 +1,54 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>부스팅 · ourfuture studio</title><link rel="stylesheet" href="style.css"></head><body><header><a href="./">머신러닝 실습</a><a href="../">스튜디오 홈</a></header><main data-lesson="ML-P09"><p class="eyebrow">ML-P09 · 코드 실습</p><h1>부스팅</h1><p class="lead">현재 예측의 잔차를 다음 작은 모델이 학습하고, 그 예측을 조금 더한다.</p><div class="theory-link"><strong>같은 예제의 이론</strong><p>부스팅: 다음 모델은 무엇을 보완할까?</p><p>티스토리 글은 비공개 검토 중입니다. 공개 후 같은 번호로 찾을 수 있습니다.</p><a href="https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2009" target="_blank" rel="noopener">티스토리 이론 찾기 (공개 후) →</a></div><h2>이번 입력</h2><table style="width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;">
+<thead>
+<tr>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">입력 x</th>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">정답 y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">2</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">3</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">3</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">4</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">3</td>
+</tr>
+</tbody>
+</table><p>직접 만든 학습용 숫자입니다. 원리를 확인하는 예제이며 실제 성능 비교는 아닙니다.</p><p>1→2→3 순서로 실행하고, 4에서는 <code>homework = None</code> 한 줄만 바꿔 보세요. 각 실행은 필요한 앞 코드도 함께 실행합니다. 앞 코드를 바꾸면 뒤의 결과에도 반영됩니다.</p><div class="toolbar"><button id="run-all">1~4 모두 실행</button><button id="stop" disabled>실행 중단</button><button id="restore">원래 코드로</button></div><p id="runtime-status" role="status" aria-live="polite">실행 버튼을 누르면 Python을 준비합니다.</p><section class="code-section" id="part-1"><h2>1. 직접 구현하기</h2><label for="code-0">수정할 Python 코드</label><textarea id="code-0" spellcheck="false" rows="16">import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.
+x = np.array([1.,2.,3.,4.])  # 학습에 사용할 입력값 목록이다.
+y = np.array([1.,1.,3.,3.])  # 각 입력에 대응하는 정답이다.
+prediction = np.full(len(y),y.mean())  # 모든 표본의 첫 예측을 정답 평균으로 놓는다.
+for _ in range(2):  # 잔차를 보완하는 작은 나무를 두 번 만든다.
+    residual = y-prediction  # 실제값에서 현재 예측을 빼 남은 오차를 구한다.
+    best = None  # 이번 단계에서 가장 좋은 보완값을 저장할 자리다.
+    for t in (x[:-1]+x[1:])/2:  # 입력값 사이의 중간점을 경계 후보로 확인한다.
+        left = x&lt;=t  # 후보 경계의 왼쪽 표본을 표시한다.
+        correction = np.where(left,residual[left].mean(),residual[~left].mean())  # 각 묶음의 평균 잔차를 그 묶음의 보완값으로 쓴다.
+        error = ((residual-correction)**2).sum()  # 보완값이 잔차를 얼마나 못 맞췄는지 제곱해 더한다.
+        if best is None or error&lt;best[0]: best = (error,correction)  # 오차가 가장 작은 분할의 보완값을 기억한다.
+    prediction += 0.5*best[1]  # 현재 예측에 보완값의 절반만 더한다.
+direct = prediction  # 두 번 보완한 최종 예측을 저장한다.
+print(&#x27;직접 구현: 잔차를 두 번 보완 →&#x27;,direct)
+</textarea><div class="actions"><button data-run="0">1번 실행</button><button data-copy="0">코드 복사</button></div><pre id="output-0" class="output" aria-label="1번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>직접 구현: 잔차를 두 번 보완 → [1.25 1.25 2.75 2.75]
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-2"><h2>2. 라이브러리로 확인하기</h2><label for="code-1">수정할 Python 코드</label><textarea id="code-1" spellcheck="false" rows="5">from sklearn.ensemble import GradientBoostingRegressor  # 이 주제에 사용할 sklearn 도구를 불러온다.
+model = GradientBoostingRegressor(n_estimators=2,learning_rate=0.5,max_depth=1,random_state=42)  # 학습률 0.5, 깊이 1의 나무 두 개를 만든다.
+library = model.fit(x.reshape(-1,1),y).predict(x.reshape(-1,1))  # 같은 입력에서 학습 후 예측값을 계산한다.
+print(&#x27;sklearn:&#x27;,library)
+</textarea><div class="actions"><button data-run="1">2번 실행</button><button data-copy="1">코드 복사</button></div><pre id="output-1" class="output" aria-label="2번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>sklearn: [1.25 1.25 2.75 2.75]
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-3"><h2>3. 같이 풀기</h2><p>실제값이 5, 현재 예측이 3이면 잔차는 얼마일까?</p><ol><li>잔차 공식은 실제값−예측값입니다. 순서를 바꾸지 않습니다.</li><li>주어진 값을 넣으면 5−3=2입니다.</li><li>잔차가 양수 2이므로 예측이 2만큼 부족합니다. 다음 과제는 이 2의 절반만 예측에 더하는 연습입니다.</li></ol><label for="code-2">수정할 Python 코드</label><textarea id="code-2" spellcheck="false" rows="5">actual = 5  # 실제 정답이다.
+predicted = 3  # 현재 모델의 예측이다.
+answer = actual - predicted  # 아직 남은 오차를 구한다.
+print(actual, &#x27;-&#x27;, predicted, &#x27;=&#x27;, answer)
+</textarea><div class="actions"><button data-run="2">3번 실행</button><button data-copy="2">코드 복사</button></div><pre id="output-2" class="output" aria-label="3번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>5 - 3 = 2
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-4"><h2>4. 아주 쉬운 과제</h2><p>현재 예측 3에 잔차 2의 절반만 더하면 얼마일까?</p><p><strong>힌트:</strong> 3 + 0.5*2</p><label for="code-3">수정할 Python 코드</label><textarea id="code-3" spellcheck="false" rows="5">homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.
+print(&#x27;과제:&#x27;,homework)
+</textarea><div class="actions"><button data-run="3">4번 실행</button><button data-copy="3">코드 복사</button></div><pre id="output-3" class="output" aria-label="4번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><button id="check-homework">과제 답 확인</button><p id="homework-status" role="status"></p><details><summary>정답과 이유 보기</summary><p>3+0.5×2=4입니다. homework = 3 + 0.5*2로 씁니다.</p></details></section><h2>기억할 조건</h2><ul><li>잔차를 그대로 배우는 설명은 여기의 제곱오차 조건입니다. 모든 부스팅과 모든 손실이 똑같이 작동하지는 않습니다.</li><li>나무를 더 많이 쌓으면 학습 오차가 줄어도 새 데이터 예측이 나빠질 수 있습니다. 학습률과 반복 수는 별도 검증으로 정해야 합니다.</li></ul><div class="downloads"><a download href="files/ML-P09.py">Python 파일 받기</a><a download href="files/ML-P09.ipynb">노트북 받기</a></div><p class="small">내 컴퓨터에서는 numpy·pandas·scikit-learn이 설치된 Python 환경을 사용하세요. 브라우저는 Pyodide0.28.3과 포함된 패키지를 사용해 버전이 다를 수 있습니다.</p><nav><a href="ML-P08.html">← 이전 실습</a><a href="./">실습 목록</a><a href="ML-P10.html">다음 실습 →</a></nav></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결.</footer><script src="lab.js" defer></script></body></html>

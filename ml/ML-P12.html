@@ -1,0 +1,50 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>협업 필터링 · ourfuture studio</title><link rel="stylesheet" href="style.css"></head><body><header><a href="./">머신러닝 실습</a><a href="../">스튜디오 홈</a></header><main data-lesson="ML-P12"><p class="eyebrow">ML-P12 · 코드 실습</p><h1>협업 필터링</h1><p class="lead">기록이 비슷한 다른 사용자의 평점을 유사도로 가중 평균해 빈 평점을 예상한다.</p><div class="theory-link"><strong>같은 예제의 이론</strong><p>협업 필터링: 비슷한 사람의 평점을 어떻게 모을까?</p><p>티스토리 글은 비공개 검토 중입니다. 공개 후 같은 번호로 찾을 수 있습니다.</p><a href="https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2012" target="_blank" rel="noopener">티스토리 이론 찾기 (공개 후) →</a></div><h2>이번 입력</h2><table style="width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;">
+<thead>
+<tr>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">사용자</th>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">공통 강의1</th>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">공통 강의2</th>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">새 강의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">나</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">5</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">미평가</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">이웃 A</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">5</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">4</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">이웃 B</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">5</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">2</td>
+</tr>
+</tbody>
+</table><p>직접 만든 학습용 숫자입니다. 원리를 확인하는 예제이며 실제 성능 비교는 아닙니다.</p><p>1→2→3 순서로 실행하고, 4에서는 <code>homework = None</code> 한 줄만 바꿔 보세요. 각 실행은 필요한 앞 코드도 함께 실행합니다. 앞 코드를 바꾸면 뒤의 결과에도 반영됩니다.</p><div class="toolbar"><button id="run-all">1~4 모두 실행</button><button id="stop" disabled>실행 중단</button><button id="restore">원래 코드로</button></div><p id="runtime-status" role="status" aria-live="polite">실행 버튼을 누르면 Python을 준비합니다.</p><section class="code-section" id="part-1"><h2>1. 직접 구현하기</h2><label for="code-0">수정할 Python 코드</label><textarea id="code-0" spellcheck="false" rows="9">import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.
+# 공통으로 평가한 강의 두 개의 평점이다.
+me = np.array([5.,1.])  # 내가 공통 강의 두 개에 준 평점이다.
+neighbors = np.array([[5.,1.],[1.,5.]])  # 다른 사용자 두 명이 같은 강의에 준 평점이다.
+new_item_ratings = np.array([4.,2.])  # 나는 아직 평가하지 않은 강의의 이웃 평점이다.
+similarity = (neighbors @ me)/(np.linalg.norm(neighbors,axis=1)*np.linalg.norm(me))  # 공통 평점 벡터의 방향으로 사용자 유사도를 구한다.
+direct = (similarity*new_item_ratings).sum()/similarity.sum()  # 평점×유사도를 더한 뒤 유사도 합으로 나눈다.
+print(&#x27;직접 구현의 예상 평점:&#x27;,round(direct,2))
+</textarea><div class="actions"><button data-run="0">1번 실행</button><button data-copy="0">코드 복사</button></div><pre id="output-0" class="output" aria-label="1번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>직접 구현의 예상 평점: 3.44
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-2"><h2>2. 라이브러리로 확인하기</h2><label for="code-1">수정할 Python 코드</label><textarea id="code-1" spellcheck="false" rows="5">from sklearn.metrics.pairwise import cosine_similarity  # 이 주제에 사용할 sklearn 도구를 불러온다.
+weights = cosine_similarity([me],neighbors).ravel()  # 라이브러리로 구한 두 사용자 유사도를 가중치로 쓴다.
+library = np.average(new_item_ratings,weights=weights)  # numpy의 가중 평균으로 같은 평점을 예상한다.
+print(&#x27;sklearn 유사도 + numpy 가중 평균:&#x27;,round(library,2))
+</textarea><div class="actions"><button data-run="1">2번 실행</button><button data-copy="1">코드 복사</button></div><pre id="output-1" class="output" aria-label="2번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>sklearn 유사도 + numpy 가중 평균: 3.44
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-3"><h2>3. 같이 풀기</h2><p>유사도가 같은 이웃 둘의 평점이 4, 2면 예상 평점은?</p><ol><li>같은 가중치 1을 주면 식은 (1×4+1×2)/(1+1)입니다.</li><li>분자는 4+2=6, 분모는 1+1=2입니다.</li><li>6/2=3이므로 예상 평점은 3입니다. 가중치가 같아서 일반 평균으로 계산해도 됩니다.</li><li>다음 과제에서도 같은 비중을 유지하고 평점만 5와 3으로 바꿉니다.</li></ol><label for="code-2">수정할 Python 코드</label><textarea id="code-2" spellcheck="false" rows="5">total = 4 + 2  # 같은 비중으로 두 평점을 더한다.
+answer = total / 2  # 이웃 두 명의 평균을 구한다.
+print(total, &#x27;/ 2 =&#x27;, answer)
+</textarea><div class="actions"><button data-run="2">3번 실행</button><button data-copy="2">코드 복사</button></div><pre id="output-2" class="output" aria-label="3번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>6 / 2 = 3.0
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-4"><h2>4. 아주 쉬운 과제</h2><p>이웃 평점만 5, 3으로 바꾸고 평균을 구하자.</p><p><strong>힌트:</strong> (5+3)/2</p><label for="code-3">수정할 Python 코드</label><textarea id="code-3" spellcheck="false" rows="5">homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.
+print(&#x27;과제:&#x27;,homework)
+</textarea><div class="actions"><button data-run="3">4번 실행</button><button data-copy="3">코드 복사</button></div><pre id="output-3" class="output" aria-label="4번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><button id="check-homework">과제 답 확인</button><p id="homework-status" role="status"></p><details><summary>정답과 이유 보기</summary><p>같은 비중의 평균이므로 (5+3)/2=4입니다. homework = (5+3)/2로 씁니다.</p></details></section><h2>기억할 조건</h2><ul><li>공통으로 평가한 기록이 적거나 새 사용자의 기록이 없으면 이 예제처럼 이웃을 정하기 어렵습니다.</li><li>평점을 후하게 주는 사용자 차이, 음수 유사도, 가중치 합0 처리와 이웃 검색은 추가 설계가 필요합니다. 여기의3.44가 실제 추천 성능을 뜻하지는 않습니다.</li></ul><div class="downloads"><a download href="files/ML-P12.py">Python 파일 받기</a><a download href="files/ML-P12.ipynb">노트북 받기</a></div><p class="small">내 컴퓨터에서는 numpy·pandas·scikit-learn이 설치된 Python 환경을 사용하세요. 브라우저는 Pyodide0.28.3과 포함된 패키지를 사용해 버전이 다를 수 있습니다.</p><nav><a href="ML-P11.html">← 이전 실습</a><a href="./">실습 목록</a><a href="ML-P13.html">다음 실습 →</a></nav></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결.</footer><script src="lab.js" defer></script></body></html>

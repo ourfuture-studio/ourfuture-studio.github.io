@@ -1,0 +1,589 @@
+[
+  {
+    "id": "ML-P01",
+    "n": 1,
+    "title": "선형회귀",
+    "focus": "직선 y = wx + b에서 제곱오차가 작아지는 기울기 w와 절편 b를 구한다.",
+    "theory_title": "선형회귀: 직선은 무엇을 배우는 걸까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2001",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">결과 y</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">7</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">9</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([1., 2., 3., 4.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([3., 5., 7., 9.])  # 각 입력에 대응하는 정답이다.\nw = ((x-x.mean()) * (y-y.mean())).sum() / ((x-x.mean())**2).sum()  # 입력과 정답의 관계에서 기울기 w를 계산한다.\nb = y.mean() - w*x.mean()  # 두 평균을 지나는 직선의 절편 b를 계산한다.\ndirect = w*5 + b  # 구한 직선에 새 입력 5를 넣는다.\nprint('기울기, 절편:', w, b)\nprint('직접 구현: x=5 →', direct)\n",
+      "from sklearn.linear_model import LinearRegression  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = LinearRegression().fit(x.reshape(-1, 1), y)  # 입력을 한 열로 바꾸고, 정답과의 관계를 학습한다.\nlibrary = model.predict([[5]])[0]  # 새 입력 5의 예측값 한 개를 꺼낸다.\nprint('sklearn: x=5 →', library)\n",
+      "product = 2 * 5  # 기울기 2와 입력 5를 곱한다.\nanswer = product + 1  # 절편 1을 더한다.\nprint('2×5 =', product, '→ 1을 더한 정답:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "기울기, 절편: 2.0 1.0\n직접 구현: x=5 → 11.0\n",
+      "sklearn: x=5 → 11.0\n",
+      "2×5 = 10 → 1을 더한 정답: 11\n"
+    ],
+    "question": "y = 2x + 1이다. x가 5이면 y는 얼마일까?",
+    "steps": [
+      "식 y=2x+1에 x=5를 넣어 2×5+1로 씁니다.",
+      "곱셈을 먼저 계산하면 2×5=10입니다.",
+      "절편 1을 더하면 10+1=11입니다. 코드의 product는 10, answer는 11입니다."
+    ],
+    "exercise": "x를 5에서 6으로만 바꾸어 y를 구하자.",
+    "hint": "2 * 6 + 1",
+    "solution": "2×6+1=13입니다. homework = 2 * 6 + 1로 쓰면 됩니다.",
+    "answer": 13,
+    "limits": [
+      "이번 네 점은 설명을 위해 정확히 한 직선에 놓았습니다. 실제 자료에서는 오차가 남을 수 있습니다.",
+      "기울기 2는 이 자료와 모형에서의 관계입니다. 입력을 바꾸면 결과가 반드시 2만큼 생긴다는 인과관계의 증거는 아닙니다. 관측 범위 밖 예측도 따로 확인해야 합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P01.py",
+      "ipynb": "files/ML-P01.ipynb"
+    }
+  },
+  {
+    "id": "ML-P02",
+    "n": 2,
+    "title": "다중선형회귀",
+    "focus": "설명변수 두 개를 사용한다. y = b + w₁x₁ + w₂x₂를 한 번에 계산한다.",
+    "theory_title": "다중선형회귀: 입력이 둘이면 계수는 무엇을 뜻할까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2002",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x₁</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x₂</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">결과 y</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">6</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">8</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nX = np.array([[1.,0.], [0.,1.], [1.,1.], [2.,1.]])  # 학습 입력 표다. 안쪽 대괄호 한 묶음이 한 행이다.\ny = np.array([3., 4., 6., 8.])  # 각 입력에 대응하는 정답이다.\nA = np.column_stack([np.ones(len(X)), X])  # 각 행 앞에 1을 붙여 절편도 함께 계산한다.\nb, w1, w2 = np.linalg.solve(A.T @ A, A.T @ y)  # A.T는 행·열 바꾸기, @는 행렬 곱이다. 계수 세 개를 구한다.\ndirect = b + w1*2 + w2*2  # x1=2, x2=2를 식에 넣어 예측한다.\nprint('절편, 계수:', b, w1, w2)\nprint('직접 구현: [2, 2] →', direct)\n",
+      "from sklearn.linear_model import LinearRegression  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = LinearRegression().fit(X, y)  # 두 입력 열과 정답의 관계를 학습한다.\nlibrary = model.predict([[2, 2]])[0]  # 새 입력 한 행 [2, 2]의 예측값을 꺼낸다.\nprint('sklearn: [2, 2] →', library)\n",
+      "first = 2 * 2  # 첫 번째 입력의 기여다.\nsecond = 3 * 1  # 두 번째 입력의 기여다.\nanswer = 1 + first + second  # 절편과 두 기여를 더한다.\nprint('1 +', first, '+', second, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "절편, 계수: 1.0 2.0 3.0\n직접 구현: [2, 2] → 11.0\n",
+      "sklearn: [2, 2] → 11.0\n",
+      "1 + 4 + 3 = 8\n"
+    ],
+    "question": "y = 1 + 2x₁ + 3x₂이다. [x₁, x₂] = [2, 1]이면?",
+    "steps": [
+      "x₁=2, x₂=1이므로 식은 1+2×2+3×1입니다.",
+      "각 입력에 계수를 곱하면 2×2=4, 3×1=3입니다.",
+      "절편까지 더해 1+4+3=8입니다. 코드의 first, second가 각각 4와 3입니다."
+    ],
+    "exercise": "[x₁, x₂]만 [1, 2]로 바꾸어 계산하자.",
+    "hint": "1 + 2*1 + 3*2",
+    "solution": "1+2×1+3×2=9입니다. homework = 1 + 2*1 + 3*2로 쓰면 됩니다.",
+    "answer": 9,
+    "limits": [
+      "입력 열끼리 완전히 중복되면 같은 예측을 만드는 계수 조합이 여럿일 수 있습니다. 실습의 단순 연립방정식 풀이가 실패할 수도 있습니다.",
+      "계수는 다른 입력과 함께 추정한 관계입니다. 변수 하나가 결과의 원인이라는 뜻으로 읽지 않습니다. 입력을 늘린 뒤의 예측은 별도 데이터로 확인해야 합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P02.py",
+      "ipynb": "files/ML-P02.ipynb"
+    }
+  },
+  {
+    "id": "ML-P03",
+    "n": 3,
+    "title": "다항회귀",
+    "focus": "x에 x² 열을 더한다. 곡선을 그리지만 계수에 대해서는 선형회귀다.",
+    "theory_title": "다항회귀: 곡선을 그리는데 왜 선형회귀일까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2003",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">결과 y</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">9</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">16</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([0., 1., 2., 3.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([1., 4., 9., 16.])  # 각 입력에 대응하는 정답이다.\nA = np.column_stack([np.ones(len(x)), x, x**2])  # 1, x, x²을 열로 쌓는다. **2는 제곱이다.\nb, w1, w2 = np.linalg.solve(A.T @ A, A.T @ y)  # 제곱오차를 줄이는 절편과 두 계수를 구한다.\ndirect = b + w1*4 + w2*4**2  # 새 입력 x=4를 다항식에 넣는다.\nprint('계수:', b, w1, w2)\nprint('직접 구현: x=4 →', direct)\n",
+      "from sklearn.preprocessing import PolynomialFeatures  # 이 주제에 사용할 sklearn 도구를 불러온다.\nfrom sklearn.linear_model import LinearRegression  # 이 주제에 사용할 sklearn 도구를 불러온다.\npoly = PolynomialFeatures(degree=2, include_bias=False)  # x를 x와 x² 두 열로 늘리는 도구를 만든다.\nmodel = LinearRegression().fit(poly.fit_transform(x.reshape(-1,1)), y)  # 늘어난 두 열로 선형회귀를 학습한다.\nlibrary = model.predict(poly.transform([[4]]))[0]  # 새 입력도 똑같이 두 열로 바꾼 뒤 예측한다.\nprint('sklearn: x=4 →', library)\n",
+      "linear = 2 * 2  # 2x 부분을 계산한다.\nsquare = 2 ** 2  # x² 부분을 계산한다.\nanswer = 1 + linear + square  # 세 항을 더한다.\nprint('1 +', linear, '+', square, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "계수: 0.999999999999998 2.0000000000000027 0.9999999999999993\n직접 구현: x=4 → 25.0\n",
+      "sklearn: x=4 → 25.000000000000004\n",
+      "1 + 4 + 4 = 9\n"
+    ],
+    "question": "y = 1 + 2x + x²이다. x=2이면?",
+    "steps": [
+      "y=1+2x+x²에 2를 넣어 1+2×2+2²로 씁니다.",
+      "2×2=4, 2²=2×2=4를 각각 구합니다.",
+      "세 항을 더하면 1+4+4=9입니다. 코드의 linear와 square가 각각 4입니다."
+    ],
+    "exercise": "x만 3으로 바꾸어 계산하자.",
+    "hint": "1 + 2*3 + 3**2",
+    "solution": "1+2×3+3²=16입니다. homework = 1 + 2*3 + 3**2로 씁니다.",
+    "answer": 16,
+    "limits": [
+      "차수를 높이면 학습한 점에 더 잘 맞출 수 있지만 새 점의 예측까지 좋아진다는 보장은 없습니다.",
+      "특히 관측 범위 밖에서 높은 차수의 항이 크게 커질 수 있습니다. 실습의 예측25는 정해 둔 식의 계산이며 실제 예측 성능의 증거는 아닙니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P03.py",
+      "ipynb": "files/ML-P03.ipynb"
+    }
+  },
+  {
+    "id": "ML-P04",
+    "n": 4,
+    "title": "로지스틱 회귀",
+    "focus": "점수 wx+b를 sigmoid에 넣어 0~1의 확률로 바꾸고, 0.5 이상이면 1로 정한다.",
+    "theory_title": "로지스틱 회귀: 점수는 어떻게 확률이 될까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2004",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 범주</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([0., 1., 2., 3.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([0., 0., 1., 1.])  # 각 입력에 대응하는 정답이다.\ndef sigmoid(z):  # 점수를 0~1 사이 값으로 바꾸는 함수를 만든다.\n    return 1 / (1 + np.exp(-z))  # exp는 지수 함수이며, 점수가 0이면 결과는 0.5다.\nw, b = 0., 0.  # 기울기와 절편을 0에서 시작한다.\nfor _ in range(400):  # 같은 갱신을 400번 반복한다. _는 쓰지 않는 반복 번호다.\n    error = sigmoid(w*x + b) - y  # 각 표본의 예측 확률에서 실제 정답을 뺀다.\n    w -= 0.2 * (error*x).mean()  # 기울기를 오차가 줄어드는 방향으로 조금 바꾼다.\n    b -= 0.2 * error.mean()  # 평균 오차로 절편도 조금 바꾼다.\ndirect = int(sigmoid(w*2.5 + b) >= 0.5)  # x=2.5의 확률이 0.5 이상이면 1, 아니면 0이다.\nprint('직접 구현: x=2.5의 예측 →', direct)\n",
+      "from sklearn.linear_model import LogisticRegression  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = LogisticRegression(C=1e6).fit(x.reshape(-1,1), y)  # 로지스틱 회귀를 학습한다. 큰 C는 규제를 약하게 한다.\nlibrary = int(model.predict([[2.5]])[0])  # 새 입력의 예측 범주를 정수 한 개로 꺼낸다.\nprint('sklearn: x=2.5의 예측 →', library)\n",
+      "exp_value = np.exp(0)  # exp(0)은 1이다.\ndenominator = 1 + exp_value  # 분모는 2다.\nanswer = 1 / denominator  # 1을 분모로 나눈다.\nprint('분모:', denominator, '→ 정답:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: x=2.5의 예측 → 1\n",
+      "sklearn: x=2.5의 예측 → 1\n",
+      "분모: 2.0 → 정답: 0.5\n"
+    ],
+    "question": "sigmoid(0)은 얼마일까? 함수를 호출해 보자.",
+    "steps": [
+      "sigmoid(0)=1/(1+exp(−0))으로 씁니다.",
+      "−0=0이고 exp(0)=1이므로 분모는 1+1=2입니다.",
+      "분자가 1이므로 1/2=0.5입니다. 이 글의 판정 규칙이면 범주 1이지만, 이 문제에서 묻는 답은 확률 0.5입니다."
+    ],
+    "exercise": "확률이 0.8일 때, 0.5 이상이면 1이라는 규칙으로 예측하자.",
+    "hint": "int(0.8 >= 0.5)",
+    "solution": "0.8 >= 0.5는 참이므로 예측은1입니다. homework = int(0.8 >= 0.5)로 확인합니다.",
+    "answer": 1,
+    "limits": [
+      "문턱0.5는 이번 예제에서 정한 규칙입니다. 놓친 경우와 잘못 잡은 경우의 비용에 따라 기준을 검토해야 합니다.",
+      "직접 구현과 라이브러리는 규제와 학습 종료 방식이 다릅니다. 같은 범주를 골라도 계수·확률이 완전히 같다는 뜻은 아닙니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P04.py",
+      "ipynb": "files/ML-P04.ipynb"
+    }
+  },
+  {
+    "id": "ML-P05",
+    "n": 5,
+    "title": "K-최근접 이웃",
+    "focus": "새 점에서 가까운 K개를 고르고, 그 이웃들의 다수결로 범주를 정한다.",
+    "theory_title": "K-NN: 가까운 이웃은 어떻게 답을 정할까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2005",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 범주</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nX = np.array([[1.], [2.], [4.], [5.]])  # 학습 입력 표다. 안쪽 대괄호 한 묶음이 한 행이다.\ny = np.array([0, 0, 1, 1])  # 각 입력에 대응하는 정답이다.\nquery, k = np.array([3.8]), 3  # 새 입력은 3.8이고, 가까운 이웃 3개를 본다.\ndistance = np.sqrt(((X-query)**2).sum(axis=1))  # 입력 차이를 제곱해 더한 뒤 제곱근을 취해 거리를 구한다.\nneighbors = np.argsort(distance)[:k]  # 거리가 작은 순서로 정렬하고 앞의 K개 위치를 고른다.\ndirect = int(np.bincount(y[neighbors]).argmax())  # bincount로 범주별 표 수를 세고 가장 많은 범주를 고른다.\nprint('가까운 이웃의 범주:', y[neighbors])\nprint('직접 구현:', direct)\n",
+      "from sklearn.neighbors import KNeighborsClassifier  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = KNeighborsClassifier(n_neighbors=k).fit(X,y)  # 이웃 수를 정하고 학습 표본을 저장한다.\nlibrary = int(model.predict([query])[0])  # 새 입력 한 개의 범주를 예측한다.\nprint('sklearn:', library)\n",
+      "example_votes = [0, 1, 1]  # 가장 가까운 이웃 세 개의 범주다.\nzeros = example_votes.count(0)  # 0이 나온 횟수를 센다.\nones = example_votes.count(1)  # 1이 나온 횟수를 센다.\nanswer = 1 if ones > zeros else 0  # 표가 더 많은 범주를 고른다.\nprint('0:', zeros, '표 / 1:', ones, '표 → 정답:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "가까운 이웃의 범주: [1 1 0]\n직접 구현: 1\n",
+      "sklearn: 1\n",
+      "0: 1 표 / 1: 2 표 → 정답: 1\n"
+    ],
+    "question": "이웃 3개의 범주가 [0, 1, 1]이면 어느 범주일까?",
+    "steps": [
+      "이웃 세 개의 범주 [0,1,1]을 확인합니다.",
+      "count(0)=1, count(1)=2이므로 0은 한 표, 1은 두 표입니다.",
+      "두 표를 받은 범주 1을 고릅니다. 코드의 ones > zeros가 참이어서 answer=1입니다."
+    ],
+    "exercise": "이웃만 [0, 0, 1]로 바꾸면 어느 범주일까?",
+    "hint": "가장 많이 나온 범주를 고른다.",
+    "solution": "[0,0,1]에서는 0이 두 표입니다. homework = 0으로 적습니다.",
+    "answer": 0,
+    "limits": [
+      "이 예제에는 표 수 동점이 없습니다. 실제로는 같은 거리·동점·거리 가중치 처리 규칙도 결과에 영향을 줄 수 있습니다.",
+      "K는 참고할 이웃 수입니다. 정답 범주 없이 점을 묶는 K-means의 군집 수와는 역할이 다릅니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P05.py",
+      "ipynb": "files/ML-P05.ipynb"
+    }
+  },
+  {
+    "id": "ML-P06",
+    "n": 6,
+    "title": "의사결정나무",
+    "focus": "후보 경계마다 나눈 뒤의 지니 불순도를 계산하고, 가장 작은 경계를 선택한다.",
+    "theory_title": "의사결정나무: 좋은 분할은 어떻게 고를까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2006",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 범주</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([1., 2., 3., 4.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([0, 0, 1, 1])  # 각 입력에 대응하는 정답이다.\ndef gini(labels):  # 한 묶음의 범주가 얼마나 섞였는지 계산한다.\n    p = labels.mean()  # 그 묶음에서 범주 1의 비율을 구한다.\n    return 1 - p**2 - (1-p)**2  # 1에서 두 범주 비율의 제곱을 각각 뺀다.\ndef split_cost(t):  # 후보 경계 t로 나눈 두 묶음의 불순도를 계산한다.\n    left = x <= t  # 경계 이하인 표본이면 True가 된다.\n    return left.mean()*gini(y[left]) + (~left).mean()*gini(y[~left])  # 각 묶음의 불순도에 그 묶음의 표본 비율을 곱해 더한다.\nthresholds = (x[:-1]+x[1:])/2  # 이웃한 입력값 사이의 중간점을 경계 후보로 만든다.\nthreshold = min(thresholds, key=split_cost)  # 분할 후 불순도가 가장 작은 후보를 고른다.\ndirect = int(y[x>threshold].mean() >= 0.5)  # 3.5가 속한 오른쪽 묶음의 다수 범주를 고른다.\nprint('선택한 경계:', threshold, '분할 후 지니:', split_cost(threshold))\nprint('직접 구현: x=3.5 →', direct)\n",
+      "from sklearn.tree import DecisionTreeClassifier  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = DecisionTreeClassifier(max_depth=1,random_state=42).fit(x.reshape(-1,1),y)  # 분할 한 번만 허용하는 나무를 학습한다.\nlibrary = int(model.predict([[3.5]])[0])  # 새 입력 3.5의 범주를 꺼낸다.\nprint('sklearn 경계:', model.tree_.threshold[0], '예측:', library)\n",
+      "p_one = 0 / 2  # 두 표본 중 범주 1은 없다.\np_zero = 1 - p_one  # 나머지는 모두 범주 0이다.\nanswer = 1 - p_one**2 - p_zero**2  # 지니 공식에 넣는다.\nprint('1 -', p_one**2, '-', p_zero**2, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "선택한 경계: 2.5 분할 후 지니: 0.0\n직접 구현: x=3.5 → 1\n",
+      "sklearn 경계: 2.5 예측: 1\n",
+      "1 - 0.0 - 1.0 = 0.0\n"
+    ],
+    "question": "범주가 [0, 0]인 묶음의 지니 불순도는 얼마일까?",
+    "steps": [
+      "표본은 두 개이고 범주 1은 없으므로 p_one=0/2=0입니다.",
+      "나머지는 범주 0이므로 p_zero=1−0=1입니다.",
+      "공식에 넣으면 1−0²−1²=1−0−1=0입니다. 섞이지 않은 묶음의 지니는 0입니다."
+    ],
+    "exercise": "범주가 [0, 1]인 묶음의 지니 불순도를 구하자.",
+    "hint": "gini(np.array([0, 1]))",
+    "solution": "범주1의 비율은0.5입니다. 1−0.5²−0.5²=0.5이므로 homework = gini(np.array([0,1]))로 확인합니다.",
+    "answer": 0.5,
+    "limits": [
+      "실습은 한 번만 나누는 깊이1의 나무입니다. 나무 전체의 성장 과정을 모두 구현한 것은 아닙니다.",
+      "나무를 계속 깊게 만들면 학습 자료의 작은 차이까지 따라갈 수 있습니다. 깊이·최소 표본 수 같은 복잡도 제한과 새 데이터 검증이 필요합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P06.py",
+      "ipynb": "files/ML-P06.ipynb"
+    }
+  },
+  {
+    "id": "ML-P07",
+    "n": 7,
+    "title": "랜덤포레스트",
+    "focus": "표본을 중복 추출하고 특성을 무작위로 골라 여러 작은 나무를 만든 뒤 다수결한다.",
+    "theory_title": "랜덤포레스트: 나무들을 왜 다르게 만들까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2007",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">특성 x₁</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">특성 x₂</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 범주</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">6</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nX = np.array([[1.,0.],[2.,1.],[3.,0.],[4.,1.],[5.,0.],[6.,1.]])  # 학습 입력 표다. 안쪽 대괄호 한 묶음이 한 행이다.\ny = np.array([0,0,0,1,1,1])  # 각 입력에 대응하는 정답이다.\nrng = np.random.default_rng(42)  # 난수를 고정해 다시 실행해도 같은 표본을 뽑는다.\nquery = np.array([5.,0.])  # 이 새 입력을 다섯 나무가 각각 분류한다.\nvotes = []  # 나무별 예측 범주를 담을 빈 목록이다.\nfor _ in range(5):  # 작은 나무를 5개 만든다.\n    rows = rng.choice(len(y),len(y),replace=True)  # 같은 표본이 여러 번 뽑힐 수 있게 중복 추출한다.\n    feature = int(rng.integers(2))  # 이번 나무의 분할에 사용할 열 한 개를 무작위로 고른다.\n    x, labels = X[rows,feature], y[rows]  # 뽑힌 표본의 입력 열과 정답만 꺼낸다.\n    values = np.unique(x)  # 같은 입력값을 하나로 합치고 정렬한다.\n    thresholds = (values[:-1]+values[1:])/2  # 서로 다른 입력값 사이를 경계 후보로 만든다.\n    best = (float('inf'), int(labels.mean()>=0.5))  # 분할 후보가 없으면 표본 전체의 다수 범주를 쓴다.\n    for t in thresholds:  # 각 경계 후보를 하나씩 확인한다.\n        left = x<=t  # 현재 경계의 왼쪽에 있는 표본을 표시한다.\n        p, q = labels[left].mean(), labels[~left].mean()  # 왼쪽과 오른쪽에서 각각 범주 1의 비율을 구한다.\n        cost = left.mean()*2*p*(1-p) + (~left).mean()*2*q*(1-q)  # 표본 수로 가중한 두 묶음의 지니 불순도를 구한다.\n        vote = int((p if query[feature]<=t else q)>=0.5)  # 새 입력이 들어갈 묶음의 다수 범주를 구한다.\n        if cost<best[0]: best = (cost,vote)  # 지금까지보다 불순도가 작으면 이 분할을 기억한다.\n    votes.append(best[1])  # 이 나무가 낸 표 한 개를 목록에 추가한다.\ndirect = int(sum(votes)>len(votes)/2)  # 1을 고른 나무가 절반보다 많으면 1로 정한다.\nprint('직접 만든 작은 나무들의 표:',votes,'다수결:',direct)\n",
+      "from sklearn.ensemble import RandomForestClassifier  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = RandomForestClassifier(n_estimators=5,max_depth=1,max_features=1,random_state=42)  # 나무 5개, 깊이 1, 특성 후보 1개의 숲을 만든다.\nmodel.fit(X,y)  # 입력과 정답으로 숲을 학습한다.\nprint('sklearn 예측:',int(model.predict([query])[0]))\n",
+      "example_votes = [0, 0, 1]  # 세 나무의 예측이다.\nzeros = example_votes.count(0)  # 0을 고른 나무 수다.\nones = example_votes.count(1)  # 1을 고른 나무 수다.\nanswer = 1 if ones > zeros else 0  # 더 많은 표를 받은 범주다.\nprint('0:', zeros, '표 / 1:', ones, '표 → 정답:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 만든 작은 나무들의 표: [1, 1, 1, 0, 0] 다수결: 1\n",
+      "sklearn 예측: 1\n",
+      "0: 2 표 / 1: 1 표 → 정답: 0\n"
+    ],
+    "question": "작은 나무 3개의 예측이 [0, 0, 1]이면 다수결 결과는?",
+    "steps": [
+      "세 나무의 예측 [0,0,1]을 한 표씩 셉니다.",
+      "범주 0은 두 표, 범주 1은 한 표입니다.",
+      "더 많은 표를 받은 0을 고릅니다. ones > zeros가 거짓이라 코드도 answer=0입니다."
+    ],
+    "exercise": "표만 [0, 1, 1]로 바꾸고 다수결하자.",
+    "hint": "0이 1표, 1이 2표다.",
+    "solution": "[0,1,1]은 1이 두 표입니다. homework = 1로 적습니다.",
+    "answer": 1,
+    "limits": [
+      "같은 난수42를 써도 직접 구현과 라이브러리의 내부 나무·추출 표본이 같아지는 것은 아닙니다.",
+      "여러 나무를 모으는 것은 보통 단일 나무의 변동성을 줄이려는 선택입니다. 이 작은 예제 한 번의 일치로 성능 향상을 입증하지 않습니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P07.py",
+      "ipynb": "files/ML-P07.ipynb"
+    }
+  },
+  {
+    "id": "ML-P08",
+    "n": 8,
+    "title": "서포트 벡터 머신",
+    "focus": "분류 점수 wx+b의 부호로 예측한다. y(wx+b)가 1보다 작으면 hinge 손실이 생긴다.",
+    "theory_title": "SVM: 맞혔는데도 왜 손실이 남을까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2008",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 범주</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">-2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">-1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">-1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">-1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([-2.,-1.,1.,2.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([-1.,-1.,1.,1.])  # 각 입력에 대응하는 정답이다.\nw, b = 0., 0.  # 직선의 기울기와 절편을 0에서 시작한다.\nfor _ in range(1000):  # 손실을 줄이는 갱신을 1000번 반복한다.\n    active = y*(w*x+b)<1  # 정답×분류 점수가 1보다 작아 손실이 생기는 표본이다.\n    dw = w - 10*(y[active]*x[active]).sum()/len(y)  # 기울기 규제와 손실 표본의 영향을 합친 변화량이다.\n    db = -10*y[active].sum()/len(y)  # 손실 표본에서 절편의 변화량을 구한다.\n    w -= 0.01*dw  # 구한 변화량의 0.01배만큼 기울기를 바꾼다.\n    b -= 0.01*db  # 절편도 조금씩 바꾼다.\ndirect = np.where(w*np.array([-1.5,1.5])+b >= 0,1,-1)  # 점수가 0 이상이면 1, 음수이면 -1로 분류한다.\nprint('직접 구현: [-1.5, 1.5] →',direct)\n",
+      "from sklearn.svm import SVC  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = SVC(kernel='linear',C=2.5).fit(x.reshape(-1,1),y)  # 직선 경계를 학습한다. C는 손실에 주는 가중치다.\nlibrary = model.predict([[-1.5],[1.5]])  # 새 입력 두 개의 범주를 예측한다.\nprint('sklearn:',library)\n",
+      "margin = 1 * 0.5  # 정답과 점수를 곱한다.\nremaining = 1 - margin  # 목표 마진 1까지 부족한 양이다.\nanswer = max(0, remaining)  # 손실은 음수가 되지 않는다.\nprint('1 -', margin, '=', remaining, '→ 손실:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: [-1.5, 1.5] → [-1  1]\n",
+      "sklearn: [-1.  1.]\n",
+      "1 - 0.5 = 0.5 → 손실: 0.5\n"
+    ],
+    "question": "정답 y=1이고 점수가 0.5다. hinge 손실 max(0, 1-y*점수)는?",
+    "steps": [
+      "정답과 점수를 곱하면 y×점수=1×0.5=0.5입니다.",
+      "기준 1에서 빼면 1−0.5=0.5입니다.",
+      "max(0,0.5)=0.5이므로 손실은 0.5입니다. 방향은 맞았지만 기준 1까지의 부족분이 남습니다."
+    ],
+    "exercise": "정답 y=-1이고 점수가 -2일 때 손실을 구하자.",
+    "hint": "max(0, 1-(-1)*(-2))",
+    "solution": "y×점수=(-1)×(-2)=2입니다. max(0,1−2)=0이므로 homework = max(0,1-(-1)*(-2))로 씁니다.",
+    "answer": 0,
+    "limits": [
+      "이번 실습은 선형 경계만 다룹니다. 커널을 사용하는 SVM 전체를 같은 그림으로 설명하지 않습니다.",
+      "직접 구현의 손실 평균×10과 SVC의 손실 합×C를 맞추려고 표본4개에서 C=2.5를 씁니다. 종료 조건까지 같은 구현은 아닙니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P08.py",
+      "ipynb": "files/ML-P08.ipynb"
+    }
+  },
+  {
+    "id": "ML-P09",
+    "n": 9,
+    "title": "부스팅",
+    "focus": "현재 예측의 잔차를 다음 작은 모델이 학습하고, 그 예측을 조금 더한다.",
+    "theory_title": "부스팅: 다음 모델은 무엇을 보완할까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2009",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력 x</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">정답 y</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nx = np.array([1.,2.,3.,4.])  # 학습에 사용할 입력값 목록이다.\ny = np.array([1.,1.,3.,3.])  # 각 입력에 대응하는 정답이다.\nprediction = np.full(len(y),y.mean())  # 모든 표본의 첫 예측을 정답 평균으로 놓는다.\nfor _ in range(2):  # 잔차를 보완하는 작은 나무를 두 번 만든다.\n    residual = y-prediction  # 실제값에서 현재 예측을 빼 남은 오차를 구한다.\n    best = None  # 이번 단계에서 가장 좋은 보완값을 저장할 자리다.\n    for t in (x[:-1]+x[1:])/2:  # 입력값 사이의 중간점을 경계 후보로 확인한다.\n        left = x<=t  # 후보 경계의 왼쪽 표본을 표시한다.\n        correction = np.where(left,residual[left].mean(),residual[~left].mean())  # 각 묶음의 평균 잔차를 그 묶음의 보완값으로 쓴다.\n        error = ((residual-correction)**2).sum()  # 보완값이 잔차를 얼마나 못 맞췄는지 제곱해 더한다.\n        if best is None or error<best[0]: best = (error,correction)  # 오차가 가장 작은 분할의 보완값을 기억한다.\n    prediction += 0.5*best[1]  # 현재 예측에 보완값의 절반만 더한다.\ndirect = prediction  # 두 번 보완한 최종 예측을 저장한다.\nprint('직접 구현: 잔차를 두 번 보완 →',direct)\n",
+      "from sklearn.ensemble import GradientBoostingRegressor  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = GradientBoostingRegressor(n_estimators=2,learning_rate=0.5,max_depth=1,random_state=42)  # 학습률 0.5, 깊이 1의 나무 두 개를 만든다.\nlibrary = model.fit(x.reshape(-1,1),y).predict(x.reshape(-1,1))  # 같은 입력에서 학습 후 예측값을 계산한다.\nprint('sklearn:',library)\n",
+      "actual = 5  # 실제 정답이다.\npredicted = 3  # 현재 모델의 예측이다.\nanswer = actual - predicted  # 아직 남은 오차를 구한다.\nprint(actual, '-', predicted, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: 잔차를 두 번 보완 → [1.25 1.25 2.75 2.75]\n",
+      "sklearn: [1.25 1.25 2.75 2.75]\n",
+      "5 - 3 = 2\n"
+    ],
+    "question": "실제값이 5, 현재 예측이 3이면 잔차는 얼마일까?",
+    "steps": [
+      "잔차 공식은 실제값−예측값입니다. 순서를 바꾸지 않습니다.",
+      "주어진 값을 넣으면 5−3=2입니다.",
+      "잔차가 양수 2이므로 예측이 2만큼 부족합니다. 다음 과제는 이 2의 절반만 예측에 더하는 연습입니다."
+    ],
+    "exercise": "현재 예측 3에 잔차 2의 절반만 더하면 얼마일까?",
+    "hint": "3 + 0.5*2",
+    "solution": "3+0.5×2=4입니다. homework = 3 + 0.5*2로 씁니다.",
+    "answer": 4,
+    "limits": [
+      "잔차를 그대로 배우는 설명은 여기의 제곱오차 조건입니다. 모든 부스팅과 모든 손실이 똑같이 작동하지는 않습니다.",
+      "나무를 더 많이 쌓으면 학습 오차가 줄어도 새 데이터 예측이 나빠질 수 있습니다. 학습률과 반복 수는 별도 검증으로 정해야 합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P09.py",
+      "ipynb": "files/ML-P09.ipynb"
+    }
+  },
+  {
+    "id": "ML-P10",
+    "n": 10,
+    "title": "군집화",
+    "focus": "K-means는 가까운 중심에 점을 배정하고, 배정된 점들의 평균으로 중심을 바꾼다.",
+    "theory_title": "K-means: 중심을 왜 평균으로 옮길까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2010",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">점 번호</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">입력값</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">8</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">9</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nX = np.array([[1.],[2.],[8.],[9.]])  # 학습 입력 표다. 안쪽 대괄호 한 묶음이 한 행이다.\ncenters = np.array([[1.],[9.]])  # 두 군집의 중심을 1과 9에서 시작한다.\nfor _ in range(3):  # 배정과 중심 갱신을 세 번 반복한다.\n    distance = ((X[:,None,:]-centers[None,:,:])**2).sum(axis=2)  # 각 점과 각 중심 사이의 제곱거리를 계산한다.\n    labels = distance.argmin(axis=1)  # 점마다 가장 가까운 중심의 번호를 고른다.\n    centers = np.array([X[labels==k].mean(axis=0) for k in range(2)])  # 같은 군집의 점들을 평균 내 새 중심으로 바꾼다.\ndirect = centers.ravel()  # 중심 배열을 출력하기 쉬운 한 줄로 편다.\nprint('직접 구현의 중심:',direct)\n",
+      "from sklearn.cluster import KMeans  # 이 주제에 사용할 sklearn 도구를 불러온다.\nmodel = KMeans(n_clusters=2,init=np.array([[1.],[9.]]),n_init=1,random_state=42).fit(X)  # 같은 초기 중심으로 두 군집을 학습한다.\nlibrary = model.cluster_centers_.ravel()  # 학습한 중심값을 한 줄 배열로 꺼낸다.\nprint('sklearn의 중심:',library)\n",
+      "total = 1 + 2  # 군집 안의 값을 더한다.\ncount = 2  # 군집 안의 점 두 개다.\nanswer = total / count  # 평균이 새 중심이다.\nprint(total, '/', count, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현의 중심: [1.5 8.5]\n",
+      "sklearn의 중심: [1.5 8.5]\n",
+      "3 / 2 = 1.5\n"
+    ],
+    "question": "한 군집에 들어간 점이 [1, 2]이면 새 중심은?",
+    "steps": [
+      "군집 안의 값을 더하면 1+2=3입니다.",
+      "이 군집에 들어간 점은 두 개이므로 분모는 2입니다.",
+      "평균 3/2=1.5가 새 중심입니다. 코드의 total=3, count=2와 연결됩니다."
+    ],
+    "exercise": "점이 [8, 10]이면 새 중심은 얼마일까?",
+    "hint": "(8+10)/2",
+    "solution": "(8+10)/2=9입니다. homework = (8+10)/2로 씁니다.",
+    "answer": 9,
+    "limits": [
+      "K는 먼저 정한 값이며 이 자료만 보고 자동으로 정답 군집 수를 찾았다는 뜻은 아닙니다.",
+      "실습의 세 번 반복이 모든 자료에 충분한 것은 아닙니다. 초기값, 특성의 단위, 빈 군집과 멀리 떨어진 점도 함께 살펴야 합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P10.py",
+      "ipynb": "files/ML-P10.ipynb"
+    }
+  },
+  {
+    "id": "ML-P11",
+    "n": 11,
+    "title": "내용 기반 필터링",
+    "focus": "내용을 특성 벡터로 표현하고, 코사인 유사도가 큰 항목부터 추천한다.",
+    "theory_title": "내용 기반 추천: 비슷하다는 것을 어떻게 계산할까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2011",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">강의</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">회귀 주제</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">SQL 주제</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">회귀 입문</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">회귀 응용</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">SQL 입문</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">0</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nnames = ['회귀 입문','회귀 응용','SQL 입문']  # 추천할 세 강의의 이름이다.\n# 두 특성: [회귀 주제, SQL 주제]\nitems = np.array([[1.,0.],[1.,0.],[0.,1.]])  # 각 강의의 주제를 0과 1 두 숫자로 표시한다.\nprofile = np.array([1.,0.])  # 사용자는 회귀 주제에 관심이 있다.\ndirect = (items @ profile) / (np.linalg.norm(items,axis=1)*np.linalg.norm(profile))  # 벡터 내적을 두 길이의 곱으로 나눠 코사인 유사도를 구한다.\nprint('직접 구현의 유사도:',direct)\nunseen = np.array([1,2])  # 이미 읽은 0번을 빼고 1번과 2번만 후보로 남긴다.\nprint('추천:',names[unseen[direct[unseen].argmax()]])\n",
+      "from sklearn.metrics.pairwise import cosine_similarity  # 이 주제에 사용할 sklearn 도구를 불러온다.\nlibrary = cosine_similarity([profile],items).ravel()  # 라이브러리로 사용자와 세 강의의 유사도를 계산한다.\nprint('sklearn의 유사도:',library)\n",
+      "score_a = 1*1 + 0*0  # 두 벡터 길이가 1이므로 내적이 코사인 유사도다.\nscore_b = 1*0 + 0*1  # B와의 유사도는 0이다.\nanswer = 'A' if score_a > score_b else 'B'  # 더 비슷한 항목을 고른다.\nprint('A:', score_a, '/ B:', score_b, '→ 정답:', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현의 유사도: [1. 1. 0.]\n추천: 회귀 응용\n",
+      "sklearn의 유사도: [1. 1. 0.]\n",
+      "A: 1 / B: 0 → 정답: A\n"
+    ],
+    "question": "프로필 [1, 0]에 더 가까운 것은 A=[1, 0]과 B=[0, 1] 중 어느 쪽일까?",
+    "steps": [
+      "프로필은 [1,0], A는 [1,0], B는 [0,1]입니다. 세 벡터의 길이는 모두 1입니다.",
+      "A 점수는 (1×1+0×0)/(1×1)=1입니다.",
+      "B 점수는 (1×0+0×1)/(1×1)=0입니다.",
+      "1이 0보다 크므로 A를 고릅니다. 길이가 모두 1이라 아래 코드는 분모를 생략해도 같습니다."
+    ],
+    "exercise": "프로필만 [0, 1]로 바꾸면 A와 B 중 어느 쪽이 가까울까?",
+    "hint": "프로필과 같은 방향을 고른다.",
+    "solution": "관심사를 [0,1]로 바꾸면 B=[0,1]이 같은 방향입니다. homework = \"B\"로 적습니다.",
+    "answer": "B",
+    "limits": [
+      "유사도1은 이 특징 표현에서 같은 방향이라는 뜻이지 만족 확률100%라는 뜻은 아닙니다.",
+      "특징에 없는 관심사는 점수에 반영되지 않습니다. 길이0의 벡터는 이 식으로 나눌 수 없어 별도 처리가 필요합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P11.py",
+      "ipynb": "files/ML-P11.ipynb"
+    }
+  },
+  {
+    "id": "ML-P12",
+    "n": 12,
+    "title": "협업 필터링",
+    "focus": "기록이 비슷한 다른 사용자의 평점을 유사도로 가중 평균해 빈 평점을 예상한다.",
+    "theory_title": "협업 필터링: 비슷한 사람의 평점을 어떻게 모을까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2012",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">사용자</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">공통 강의1</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">공통 강의2</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">새 강의</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">나</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">미평가</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">이웃 A</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">이웃 B</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">5</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\n# 공통으로 평가한 강의 두 개의 평점이다.\nme = np.array([5.,1.])  # 내가 공통 강의 두 개에 준 평점이다.\nneighbors = np.array([[5.,1.],[1.,5.]])  # 다른 사용자 두 명이 같은 강의에 준 평점이다.\nnew_item_ratings = np.array([4.,2.])  # 나는 아직 평가하지 않은 강의의 이웃 평점이다.\nsimilarity = (neighbors @ me)/(np.linalg.norm(neighbors,axis=1)*np.linalg.norm(me))  # 공통 평점 벡터의 방향으로 사용자 유사도를 구한다.\ndirect = (similarity*new_item_ratings).sum()/similarity.sum()  # 평점×유사도를 더한 뒤 유사도 합으로 나눈다.\nprint('직접 구현의 예상 평점:',round(direct,2))\n",
+      "from sklearn.metrics.pairwise import cosine_similarity  # 이 주제에 사용할 sklearn 도구를 불러온다.\nweights = cosine_similarity([me],neighbors).ravel()  # 라이브러리로 구한 두 사용자 유사도를 가중치로 쓴다.\nlibrary = np.average(new_item_ratings,weights=weights)  # numpy의 가중 평균으로 같은 평점을 예상한다.\nprint('sklearn 유사도 + numpy 가중 평균:',round(library,2))\n",
+      "total = 4 + 2  # 같은 비중으로 두 평점을 더한다.\nanswer = total / 2  # 이웃 두 명의 평균을 구한다.\nprint(total, '/ 2 =', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현의 예상 평점: 3.44\n",
+      "sklearn 유사도 + numpy 가중 평균: 3.44\n",
+      "6 / 2 = 3.0\n"
+    ],
+    "question": "유사도가 같은 이웃 둘의 평점이 4, 2면 예상 평점은?",
+    "steps": [
+      "같은 가중치 1을 주면 식은 (1×4+1×2)/(1+1)입니다.",
+      "분자는 4+2=6, 분모는 1+1=2입니다.",
+      "6/2=3이므로 예상 평점은 3입니다. 가중치가 같아서 일반 평균으로 계산해도 됩니다.",
+      "다음 과제에서도 같은 비중을 유지하고 평점만 5와 3으로 바꿉니다."
+    ],
+    "exercise": "이웃 평점만 5, 3으로 바꾸고 평균을 구하자.",
+    "hint": "(5+3)/2",
+    "solution": "같은 비중의 평균이므로 (5+3)/2=4입니다. homework = (5+3)/2로 씁니다.",
+    "answer": 4,
+    "limits": [
+      "공통으로 평가한 기록이 적거나 새 사용자의 기록이 없으면 이 예제처럼 이웃을 정하기 어렵습니다.",
+      "평점을 후하게 주는 사용자 차이, 음수 유사도, 가중치 합0 처리와 이웃 검색은 추가 설계가 필요합니다. 여기의3.44가 실제 추천 성능을 뜻하지는 않습니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P12.py",
+      "ipynb": "files/ML-P12.ipynb"
+    }
+  },
+  {
+    "id": "ML-P13",
+    "n": 13,
+    "title": "연관규칙 분석",
+    "focus": "지지도=함께 산 거래/전체 거래, 신뢰도=함께 산 거래/빵 거래, 향상도=신뢰도/우유 구매율이다.",
+    "theory_title": "연관규칙: 지지도·신뢰도·향상도는 분모가 어떻게 다를까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2013",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">거래</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">포함된 상품</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">빵, 우유</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">빵</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">우유</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">4</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">빵, 우유</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "baskets = [{'빵','우유'}, {'빵'}, {'우유'}, {'빵','우유'}]  # 중괄호 하나가 거래 한 건의 상품 묶음이다.\ntotal = len(baskets)  # 전체 거래 수를 센다.\nbread = sum('빵' in t for t in baskets)  # 빵이 포함된 거래 수를 센다.\nmilk = sum('우유' in t for t in baskets)  # 우유가 포함된 거래 수를 센다.\nboth = sum({'빵','우유'} <= t for t in baskets)  # 빵과 우유가 모두 포함된 거래 수를 센다.\ndirect = [both/total, both/bread, (both/bread)/(milk/total)]  # 각각의 분모로 지지도·신뢰도·향상도를 계산한다.\nprint('직접 구현: 지지도, 신뢰도, 향상도:',direct)\n",
+      "import pandas as pd  # 표를 다루는 pandas를 pd라는 이름으로 불러온다.\ndf = pd.DataFrame({'빵':['빵' in t for t in baskets], '우유':['우유' in t for t in baskets]})  # 각 거래의 빵·우유 포함 여부를 표로 만든다.\nsupport = (df['빵'] & df['우유']).mean()  # 둘 다 True인 비율, 즉 함께 산 거래 비율이다.\nconfidence = support/df['빵'].mean()  # 동시 구매율을 빵 구매율로 나눈다.\nlift = confidence/df['우유'].mean()  # 신뢰도를 우유의 전체 구매율로 나눈다.\nlibrary = [support,confidence,lift]  # 세 계산 결과를 같은 순서로 모은다.\nprint('pandas:',library)\n",
+      "joint = 2  # 빵과 우유를 함께 산 거래 수다.\nall_transactions = 4  # 지지도의 분모는 전체 거래 수다.\nanswer = joint / all_transactions  # 함께 산 거래의 비율이다.\nprint(joint, '/', all_transactions, '=', answer, '(50%)')\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: 지지도, 신뢰도, 향상도: [0.5, 0.6666666666666666, 0.8888888888888888]\n",
+      "pandas: [np.float64(0.5), np.float64(0.6666666666666666), np.float64(0.8888888888888888)]\n",
+      "2 / 4 = 0.5 (50%)\n"
+    ],
+    "question": "4거래 중 빵과 우유를 함께 산 거래가 2개면 지지도는?",
+    "steps": [
+      "전체 거래는 4건이므로 분모는 4입니다.",
+      "그중 빵과 우유를 함께 산 거래는 2건이므로 분자는 2입니다.",
+      "2/4=0.5입니다. 백분율로 바꾸면 0.5×100=50%입니다."
+    ],
+    "exercise": "빵을 산 3거래 중 우유도 산 거래가 2개면 빵→우유의 신뢰도는?",
+    "hint": "2/3",
+    "solution": "분모는 빵을 산3거래입니다. 신뢰도는2/3이므로 homework = 2/3으로 씁니다.",
+    "answer": 0.6666666666666666,
+    "limits": [
+      "함께 보인다는 관계는 빵 구매가 우유 구매를 일으킨다는 인과관계가 아닙니다.",
+      "거래 수가 적으면 비율이 쉽게 달라집니다. 이번 네 거래는 분모를 구분하기 위한 자체 예제이며 상품 전략의 근거로 일반화하지 않습니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P13.py",
+      "ipynb": "files/ML-P13.ipynb"
+    }
+  },
+  {
+    "id": "ML-P15",
+    "n": 15,
+    "title": "차원축소",
+    "focus": "PCA는 데이터를 평균 중심으로 옮긴 뒤, 분산이 가장 큰 축에 투영한다.",
+    "theory_title": "PCA: 열을 줄이면 무엇을 남기는 걸까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2015",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">표본</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">첫 열</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">둘째 열</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">2</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">3</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nX = np.array([[1.,1.],[2.,2.],[3.,3.]])  # 학습 입력 표다. 안쪽 대괄호 한 묶음이 한 행이다.\ncentered = X-X.mean(axis=0)  # 열별 평균을 빼 데이터의 중심을 0으로 옮긴다.\ncovariance = centered.T @ centered / (len(X)-1)  # 두 특성이 함께 변하는 정도를 행렬로 구한다.\neigenvalues,eigenvectors = np.linalg.eigh(covariance)  # 각 축의 분산 크기와 축의 방향을 구한다.\naxis = eigenvectors[:,np.argmax(eigenvalues)]  # 고유값이 가장 큰 열, 즉 분산이 가장 큰 축을 고른다.\ndirect = centered @ axis  # 각 점을 선택한 축 위의 숫자 한 개로 바꾼다.\nprint('직접 구현: 2차원을 1차원으로 →',np.round(direct,3))\n",
+      "from sklearn.decomposition import PCA  # 이 주제에 사용할 sklearn 도구를 불러온다.\nlibrary = PCA(n_components=1).fit_transform(X).ravel()  # 라이브러리로 두 열을 주성분 한 열로 줄인다.\nprint('sklearn:',np.round(library,3))\n# 축의 방향(부호)은 반대일 수 있지만 같은 직선에 투영한 결과다.\n",
+      "before_columns = 2  # 원래 특성의 수다.\nn_components = 1  # 남길 주성분의 수다.\nanswer = n_components  # 변환 결과의 열 수도 1개다.\nprint('변환 전:', before_columns, '열 → 변환 후:', answer, '열')\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: 2차원을 1차원으로 → [-1.414  0.     1.414]\n",
+      "sklearn: [-1.414  0.     1.414]\n",
+      "변환 전: 2 열 → 변환 후: 1 열\n"
+    ],
+    "question": "특성 2개를 주성분 1개로 줄이면 출력의 열은 몇 개일까?",
+    "steps": [
+      "변환 전 입력에는 특성 열이 두 개 있습니다.",
+      "n_components=1은 각 행에 주성분 좌표 하나만 남긴다는 뜻입니다.",
+      "따라서 변환 표의 열은 1개입니다. 표본 세 개라면 3행 1열이며, 행 수는 유지됩니다."
+    ],
+    "exercise": "특성 3개를 주성분 2개로 줄이면 출력의 열은 몇 개일까?",
+    "hint": "n_components=2이다.",
+    "solution": "n_components=2이면 변환 결과의 열도2개입니다. homework = 2로 적습니다.",
+    "answer": 2,
+    "limits": [
+      "축의 부호가 반대여도 같은 직선입니다. 출력의 부호만 보고 직접 계산과 라이브러리가 다른 원리라고 판단하지 않습니다.",
+      "기본 PCA는 자동으로 각 열의 단위를 같게 만들지 않습니다. 단위가 다른 특성은 스케일 처리를 검토해야 합니다. 큰 분산이 항상 예측에 중요한 정보라는 뜻도 아닙니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P15.py",
+      "ipynb": "files/ML-P15.ipynb"
+    }
+  },
+  {
+    "id": "ML-P16",
+    "n": 16,
+    "title": "이상탐지",
+    "focus": "IQR=Q3−Q1이다. Q1−1.5×IQR보다 작거나 Q3+1.5×IQR보다 큰 값을 표시한다.",
+    "theory_title": "IQR: 범위 밖의 값은 모두 오류일까?",
+    "theory_public": false,
+    "theory_search": "https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2016",
+    "table": "<table style=\"width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;\">\n<thead>\n<tr>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">용도</th>\n<th style=\"padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;\">값</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">기준 데이터</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">1, 2, 3, 4</td>\n</tr>\n<tr>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">확인할 새 값</td>\n<td style=\"padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;\">10</td>\n</tr>\n</tbody>\n</table>",
+    "codes": [
+      "import math  # 내림·올림 계산 도구를 불러온다.\nnormal = [1.,2.,3.,4.]  # 기준 범위를 계산할 작은 데이터다.\n# numpy 기본값과 같은 선형 보간 사분위수\ndef percentile(values,q):  # 정렬 위치 사이를 보간해 분위수를 계산한다.\n    values = sorted(values)  # 작은 값부터 정렬한다.\n    position = (len(values)-1)*q  # 구하려는 분위수가 정렬 배열의 어디쯤인지 찾는다.\n    lo,hi = math.floor(position),math.ceil(position)  # 그 위치의 바로 아래와 위 정수 번호를 구한다.\n    return values[lo]+(values[hi]-values[lo])*(position-lo)  # 두 값 사이를 위치 비율만큼 이어 계산한다.\nq1,q3 = percentile(normal,0.25),percentile(normal,0.75)  # 25% 위치와 75% 위치의 값을 구한다.\niqr = q3-q1  # 가운데 50% 구간의 폭을 구한다.\nlower,upper = q1-1.5*iqr,q3+1.5*iqr  # 아래와 위 경계를 각각 1.5 IQR만큼 넓힌다.\ndirect = 10<lower or 10>upper  # 10이 아래 경계보다 작거나 위 경계보다 큰지 확인한다.\nprint('직접 구현: 경계',lower,upper,'/ 10은 범위 밖?',direct)\n",
+      "import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.\nq1_np,q3_np = np.quantile(normal,[0.25,0.75],method='linear')  # numpy로 같은 선형 보간 사분위수를 구한다.\niqr_np = q3_np-q1_np  # 라이브러리 사분위수로 IQR을 구한다.\nlibrary = 10<q1_np-1.5*iqr_np or 10>q3_np+1.5*iqr_np  # 동일한 경계 규칙으로 10을 확인한다.\nprint('numpy: 10은 범위 밖?',bool(library))\n",
+      "example_q1, example_q3 = 2, 4  # 문제에서 주어진 사분위수다.\nanswer = example_q3 - example_q1  # 가운데 50% 구간의 폭이다.\nprint(example_q3, '-', example_q1, '=', answer)\n",
+      "homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.\nprint('과제:',homework)\n"
+    ],
+    "expected": [
+      "직접 구현: 경계 -0.5 5.5 / 10은 범위 밖? True\n",
+      "numpy: 10은 범위 밖? True\n",
+      "4 - 2 = 2\n"
+    ],
+    "question": "Q1=2, Q3=4이면 IQR은?",
+    "steps": [
+      "주어진 Q1은 2, Q3는 4입니다.",
+      "IQR 공식 Q3−Q1에 넣어 4−2로 씁니다.",
+      "차이는 2입니다. 뒤의 과제도 범위 −1~7을 따로 주므로, 위에서 구한 −0.5~5.5와 구분합니다."
+    ],
+    "exercise": "범위가 -1~7이면 값 10은 범위 밖일까? True/False로 적자.",
+    "hint": "10 > 7",
+    "solution": "10은7보다 크므로 범위 밖입니다. homework = True로 적습니다.",
+    "answer": true,
+    "limits": [
+      "범위 밖이라는 표시만으로 오류나 부정을 확정하지 않습니다. 실제로 드문 값인지 입력 오류인지 원인을 확인해야 합니다.",
+      "경계를 계산할 기준 자료를 먼저 정하고 새 값을 비교했습니다. 확인할10을 기준 자료에 포함해 경계를 다시 계산하는 상황과 구분합니다."
+    ],
+    "downloads": {
+      "py": "files/ML-P16.py",
+      "ipynb": "files/ML-P16.ipynb"
+    }
+  }
+]
