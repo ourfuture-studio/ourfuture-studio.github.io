@@ -1,6 +1,24 @@
 (() => {
   const $=id=>document.getElementById(id);
   let data,episode,variant,queryIndex=0,worker=null,serial=0,generation=0,busy=false,pending=new Map(),reviewedDataset=true;
+  function navigationSelection(ep,requestedVariant,requestedQuery){
+    const base=ep.variants.find(v=>v.id==='base')||ep.variants[0];
+    const supplied=requestedVariant!=null&&requestedVariant!=='';
+    const selected=supplied?ep.variants.find(v=>v.id===requestedVariant):base;
+    if(!selected)return {variant:base.id,query:0};
+    const index=requestedQuery==null||requestedQuery===''?0:Number(requestedQuery);
+    return {variant:selected.id,query:Number.isSafeInteger(index)&&index>=0&&index<selected.queries.length?index:0};
+  }
+  function syncNavigationUrl(){
+    if(!episode||!variant)return;
+    const url=new URL(location.href);
+    url.searchParams.set('episode',episode.id);url.searchParams.set('variant',variant.id);url.searchParams.set('query',String(queryIndex));
+    history.replaceState({},'',url);
+  }
+  function selectionFromLocation(){
+    const params=new URLSearchParams(location.search);
+    return {variant:params.get('variant'),query:params.get('query')};
+  }
   function status(text,type=''){ $('status').textContent=text;$('status').className='status '+type; }
   function setBusy(value){busy=value;for(const id of ['run','run-all','reset-data','reset-sql','prev','next'])$(id).disabled=value;$('episode-select').disabled=value;$('sql').disabled=value;for(const b of document.querySelectorAll('#variants button,#query-tabs button'))b.disabled=value;}
   function stopWorker(){if(worker)worker.terminate();worker=null;for(const p of pending.values()){clearTimeout(p.timer);p.reject(new Error('실행기를 다시 시작했습니다.'));}pending.clear();}
@@ -56,6 +74,7 @@
     target.append(section);if(response.tables)showTables(response.tables);
   }
   function syncQuery(){
+    syncNavigationUrl();
     $('sql').value=variant.queries[queryIndex].sql;
     document.querySelectorAll('#query-tabs button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===queryIndex)));
     if($('results').childElementCount)status('선택한 SQL을 다시 실행하면 결과가 갱신됩니다.','stale');
@@ -65,9 +84,10 @@
     variant.queries.forEach((q,index)=>{const button=document.createElement('button');button.type='button';button.textContent=q.label;button.setAttribute('aria-pressed',String(index===queryIndex));button.addEventListener('click',()=>{queryIndex=index;syncQuery();});tabs.append(button);});
     $('run-all').hidden=variant.queries.length<2;$('run-all').textContent=episode.topicId?'등록 쿼리 모두 실행':'기본 A/B 함께 실행';syncQuery();
   }
-  async function loadVariant(id,{keepSql=false}={}){
+  async function loadVariant(id,{keepSql=false,query=0}={}){
     const token=++generation;const previous=$('sql').value;
-    variant=episode.variants.find(v=>v.id===id)||episode.variants[0];queryIndex=0;reviewedDataset=true;
+    const selection=navigationSelection(episode,id,query);
+    variant=episode.variants.find(v=>v.id===selection.variant);queryIndex=selection.query;reviewedDataset=true;
     for(const button of document.querySelectorAll('#variants button'))button.setAttribute('aria-pressed',String(button.dataset.id===variant.id));
     $('results').replaceChildren();$('variant-note').textContent=episode.topicId?variant.explanation:(variant.id==='base'?'원래 입력입니다. 결과를 예상한 뒤 SQL을 실행해 보세요.':'원본에서 독립적으로 적용한 조건입니다. 실행 후 아래 풀이와 비교해 보세요.');
     queryTabs();if(keepSql)$('sql').value=previous;
@@ -81,10 +101,12 @@
     }catch(error){if(token===generation){status(error.message,'error');$('reload').hidden=false;}}
     finally{if(token===generation)setBusy(false);}
   }
-  function setEpisode(id,replace=false){
-    episode=data.episodes.find(e=>e.id===id)||data.episodes[0];
+  function setEpisode(id,replace=false,requested={}){
+    const found=data.episodes.find(e=>e.id===id);
+    episode=found||data.episodes[0];
+    const selection=navigationSelection(episode,found?requested.variant:null,found?requested.query:0);
     if(id!==episode.id)status('알 수 없는 문제 번호여서 첫 문제를 열었습니다.');
-    const url=new URL(location.href);url.searchParams.set('episode',episode.id);history[replace?'replaceState':'pushState']({},'',url);
+    const url=new URL(location.href);url.searchParams.set('episode',episode.id);url.searchParams.set('variant',selection.variant);url.searchParams.set('query',String(selection.query));history[replace?'replaceState':'pushState']({},'',url);
     $('episode-select').value=episode.id;$('episode-label').textContent='SQLD · '+(episode.theoryNumber?'이론 '+String(episode.theoryNumber).padStart(2,'0'):'문제 '+String(episode.number).padStart(2,'0'))+' · '+episode.id;
     $('scope-note').textContent=episode.compatibilityNote||'등록된 문제는 Oracle 19c 문서와 동작을 대조한 공통 개념입니다. 고정 입력의 값·행 수·NULL을 비교하며, 자유 편집 결과는 별도 실험입니다.';
     if(episode.oracleReview.oracleExecutionPerformed){
@@ -98,9 +120,10 @@
     $('boundary').textContent=episode.boundary;$('challenge').textContent=episode.challenge;
     const sources=$('sources');sources.replaceChildren();for(const source of episode.oracleReview.sources){const a=document.createElement('a');a.href=source.url;a.textContent=source.label;a.target='_blank';a.rel='noopener noreferrer';sources.append(a);}
     $('theory-preview').href='theory/'+episode.id+'.html';
+    window.dispatchEvent(new CustomEvent('sqld:episodechange',{detail:{code:episode.id}}));
     $('theory-link').hidden=!episode.theoryUrl;if(episode.theoryUrl)$('theory-link').href=episode.theoryUrl;
     const variants=$('variants');variants.replaceChildren();for(const v of episode.variants){const button=document.createElement('button');button.type='button';button.textContent=v.label;button.dataset.id=v.id;button.setAttribute('aria-pressed',String(v.id==='base'));button.addEventListener('click',()=>loadVariant(v.id));variants.append(button);}
-    loadVariant('base');
+    loadVariant(selection.variant,{query:selection.query});
   }
   async function run(all=false){
     if(busy)return;if(!$('sql').value.trim()){status('실행할 SQL을 입력해 주세요.','error');return;}
@@ -118,19 +141,19 @@
     }catch(error){status(error.message,'error');}finally{setBusy(false);}
   }
   $('run').addEventListener('click',()=>run());$('run-all').addEventListener('click',()=>run(true));
-  $('reset-sql').addEventListener('click',syncQuery);$('reset-data').addEventListener('click',()=>loadVariant(variant.id,{keepSql:true}));$('reload').addEventListener('click',()=>loadVariant('base'));
+  $('reset-sql').addEventListener('click',syncQuery);$('reset-data').addEventListener('click',()=>loadVariant(variant.id,{keepSql:true,query:queryIndex}));$('reload').addEventListener('click',()=>loadVariant('base'));
   $('sql').addEventListener('input',()=>{if($('results').childElementCount)status('SQL이 수정되었습니다. 아래 결과는 이전 실행값입니다. 다시 실행해 주세요.','stale');});
   $('sql').addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();run();}});
   $('episode-select').addEventListener('change',event=>setEpisode(event.target.value));
   $('prev').addEventListener('click',()=>{const i=data.episodes.indexOf(episode);setEpisode(data.episodes[(i-1+data.episodes.length)%data.episodes.length].id);});
   $('next').addEventListener('click',()=>{const i=data.episodes.indexOf(episode);setEpisode(data.episodes[(i+1)%data.episodes.length].id);});
-  window.addEventListener('popstate',()=>{if(data)setEpisode(new URLSearchParams(location.search).get('episode'),true);});
+  window.addEventListener('popstate',()=>{if(data)setEpisode(new URLSearchParams(location.search).get('episode'),true,selectionFromLocation());});
   $('copy-link').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);status('이 문제 주소를 복사했습니다.');}catch{status('주소창의 링크를 복사해 주세요.');}});
   let themeMode=0;const themeValues=['auto','light','dark'];const initial=new URLSearchParams(location.search).get('theme');if(themeValues.includes(initial))themeMode=themeValues.indexOf(initial);
   function theme(){const value=themeValues[themeMode];if(value==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=value;$('theme').textContent='테마: '+['자동','밝게','어둡게'][themeMode];}
   theme();$('theme').addEventListener('click',()=>{themeMode=(themeMode+1)%3;theme();});
   fetch('episodes.json?v=oracle-runtime-20261029-v1').then(response=>{if(!response.ok)throw new Error('문제 자료를 불러오지 못했습니다.');return response.json();}).then(result=>{
     data=result;const select=$('episode-select');for(const ep of data.episodes){const option=document.createElement('option');option.value=ep.id;option.textContent=(ep.theoryNumber?'이론 '+String(ep.theoryNumber).padStart(2,'0'):String(ep.number).padStart(2,'0'))+' · '+ep.title;select.append(option);}
-    setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true);
+    setEpisode(new URLSearchParams(location.search).get('episode')||'E001',true,selectionFromLocation());
   }).catch(error=>{status(error.message+' 페이지를 새로고침해 주세요.','error');});
 })();

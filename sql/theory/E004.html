@@ -1,1 +1,154 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LEFT JOIN의 행 수 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="heading"><div class="mono">SQLD · E004 · 이론 요약</div><h1>LEFT JOIN의 행 수<span class="dot">.</span></h1><p class="lede">왼쪽 행을 남기는 것과 한 번만 출력하는 것은 다릅니다. 고객별 주문의 대응을 확인하세요.</p></div><p class="muted">Oracle 19c 문서에서 동작을 대조한 고정 입력 문제 · 브라우저 SQLite 실행 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p>고객 11은 주문 201·202 두 건에 대응하므로 결과에 두 번 나옵니다. 고객 22는 203 한 건에 대응합니다.</p><p>고객 33은 대응 주문이 없어 주문 쪽 열이 NULL인 결과 한 행을 남깁니다. 전체 결과는 2+1+1, 네 행입니다.</p><p>조인의 대응 관계를 확인한 뒤 집계해야 합니다. LEFT JOIN 결과의 COUNT(*)를 그대로 주문 건수라고 읽으면 주문 없는 고객도 1로 셀 수 있습니다.</p><div class="sources"><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html">Oracle 19c SELECT·조인·DISTINCT·HAVING</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html">Oracle 19c COUNT</a></div><p class="boundary">이 예제에는 WHERE·DISTINCT·집계가 없습니다. 이를 추가하면 결과 행 수를 다시 판단해야 합니다.</p><div class="challenge"><h2>직접 확인해 보기</h2><p>고객 11의 주문을 모두 지우면 LEFT JOIN의 결과 행 수와 주문번호는 어떻게 달라질까요?</p><p><a href="../lab.html?episode=E004">같은 표로 쿼리를 실행하기 →</a></p></div><p class="muted">자체 교육 예제 · SQLite 실행 · 원본과 조건을 구분해 비교합니다.</p><footer class="footer"><p class="mono">ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></footer><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고객은 세 명인데 LEFT JOIN은 왜 네 행일까 · SQLD 공부방</title><meta name="description" content="조인은 고객 명단에 열 하나만 붙이는 작업이 아닙니다. 조건이 맞는 행의 쌍을 먼저 셉니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="E004"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-09</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · SQL 결과 읽기</p><h1>고객은 세 명인데 LEFT JOIN은 왜 네 행일까</h1><p class="reader-lead">조인은 고객 명단에 열 하나만 붙이는 작업이 아닙니다. 조건이 맞는 행의 쌍을 먼저 셉니다.</p><div class="reader-actions"><a href="../practice.html?code=E004&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E004">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E004" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+왼쪽 한 행과 오른쪽 두 행이 일치하면 결과에는 두 쌍이 생깁니다. LEFT JOIN은 일치하는 오른쪽 행이 없는 왼쪽 행도 한 번 남기고 오른쪽 열을 NULL로 채웁니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>MIN에게 주문 두 건, JUN에게 한 건이 있고 SOL에게는 주문이 없습니다. “모든 고객과 주문을 함께 보여 달라”는 요청에서는 MIN의 주문 둘과 SOL의 미일치 행을 모두 표현해야 합니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">고객</th>
+<th scope="col">주문 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MIN</td>
+<td>2</td>
+</tr>
+<tr>
+<td>JUN</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SOL</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>조인 조건 c.customer_id = o.customer_id가 TRUE인 쌍을 찾습니다. MIN은 101번·102번 주문 각각과 연결되므로 고객 이름이 두 번 나옵니다.</p>
+<p>INNER JOIN은 일치하는 쌍만 남깁니다. LEFT JOIN은 그 결과에 왼쪽의 미일치 행도 보존합니다. 이 예제의 결과 수는 2 + 1 + 1 = 4입니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 왼쪽 고객을 보존</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH customers (customer_id, customer_name) AS (
+    SELECT 1, 'MIN' FROM dual
+    UNION ALL
+    SELECT 2, 'JUN' FROM dual
+    UNION ALL
+    SELECT 3, 'SOL' FROM dual
+),
+orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 1, 20 FROM dual
+    UNION ALL
+    SELECT 103, 2, 5 FROM dual
+)
+SELECT c.customer_id, c.customer_name, o.order_id
+FROM customers c LEFT JOIN orders o
+  ON c.customer_id = o.customer_id
+ORDER BY c.customer_id, o.order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+<th scope="col">CUSTOMER_NAME</th>
+<th scope="col">ORDER_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MIN</td>
+<td>101</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MIN</td>
+<td>102</td>
+</tr>
+<tr>
+<td>2</td>
+<td>JUN</td>
+<td>103</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SOL</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 일치하는 쌍만 조회</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH customers (customer_id, customer_name) AS (
+    SELECT 1, 'MIN' FROM dual
+    UNION ALL
+    SELECT 2, 'JUN' FROM dual
+    UNION ALL
+    SELECT 3, 'SOL' FROM dual
+),
+orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 1, 20 FROM dual
+    UNION ALL
+    SELECT 103, 2, 5 FROM dual
+)
+SELECT c.customer_id, c.customer_name, o.order_id
+FROM customers c JOIN orders o
+  ON c.customer_id = o.customer_id
+ORDER BY c.customer_id, o.order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+<th scope="col">CUSTOMER_NAME</th>
+<th scope="col">ORDER_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MIN</td>
+<td>101</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MIN</td>
+<td>102</td>
+</tr>
+<tr>
+<td>2</td>
+<td>JUN</td>
+<td>103</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 결과에서 MIN은 모두 두 행입니다. LEFT JOIN과 INNER JOIN의 차이는 중복 제거가 아니라 이 예제에서 SOL을 보존하는지입니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>고객 이름에 DISTINCT를 붙여 행 수를 줄이면 어떤 주문과 연결됐는지 잃을 수 있습니다. 조회 목적이 고객 목록인지 고객별 주문 목록인지 먼저 정해야 합니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+MIN의 주문이 세 건으로 늘어나면 LEFT JOIN 결과는 몇 행일까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 다른 조건이 같다면 5행입니다. MIN 3행, JUN 1행, SOL의 미일치 1행입니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E004" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: 같은 조건인데 ON과 WHERE는 왜 다를까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html" rel="noopener noreferrer" target="_blank">Joins</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html" rel="noopener noreferrer" target="_blank">SELECT</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>이 예제에는 WHERE·DISTINCT·집계가 없습니다. 이를 추가하면 결과 행 수를 다시 판단해야 합니다.</p><div class="reader-actions"><a href="../practice.html?code=E004&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E004">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="E004"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

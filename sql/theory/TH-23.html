@@ -1,1 +1,110 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>소계의 NULL과 원래 NULL은 어떻게 구분할까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="mono">SQLD · TH-23</div><h1>소계의 NULL과 원래 NULL은 어떻게 구분할까</h1><p class="lede">지역 NULL인 상세 그룹과 전체 합계의 NULL을 어떻게 나눌까요?</p><p class="boundary">고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료. subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.</p><p>상세 그룹의 NULL과 집계 과정에서 붙인 NULL은 같은 표시라도 생긴 이유가 다릅니다.</p><p>이 체험은 subtotal_flag를 직접 붙입니다. Oracle GROUPING이 주는 구분 정보를 이해하기 위한 공통 SQL 예제입니다.</p><p>subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.</p><div class="challenge"><h2>한 번 더 바꾸기</h2><p>원래 지역이 전부 NULL이어도 두 종류의 행을 구분할 수 있을까요?</p></div><p><a href="../lab.html?episode=TH-23">같은 자료로 직접 체험하기 →</a></p><p><a href="../oracle/TH-23.sql" download>Oracle 테스트 SQL 저장</a></p><div class="sources"><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html">Oracle 19c · SELECT</a> <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/GROUPING.html">Oracle 19c · GROUPING</a> </div><p class="muted">자체 교육 예제 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>소계의 NULL과 원래 NULL은 어떻게 구분할까 · SQLD 공부방</title><meta name="description" content="화면의 두 NULL이 서로 다른 의미를 가질 수 있습니다. 값만 바꾸어 표시하기 전에 GROUPING을 확인합니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="TH-23"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-23</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 집계와 소계</p><h1>소계의 NULL과 원래 NULL은 어떻게 구분할까</h1><p class="reader-lead">화면의 두 NULL이 서로 다른 의미를 가질 수 있습니다. 값만 바꾸어 표시하기 전에 GROUPING을 확인합니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-23&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-23">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-23" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+ROLLUP이 만든 소계 자리의 NULL에는 GROUPING이 1을 반환합니다. 원래 입력의 NULL을 묶은 상세 그룹에는 0을 반환합니다. 단순 NVL만으로는 둘을 구별할 수 없습니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>부서 10의 매출은 10원이고 부서 번호가 없는 매출은 20원입니다. 부서별 결과와 전체 합계를 함께 출력하면 부서가 NULL인 행이 두 개 생깁니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>원래 부서 값이 없던 20원은 별도의 상세 그룹입니다. 전체 합계 30원은 모든 부서를 합쳐 부서 기준을 생략한 행입니다.</p>
+<p>GROUPING(dept)를 먼저 읽고 라벨을 정하면 실제 미기록과 전체 합계를 구분할 수 있습니다. 표시용 문자열을 입력 값으로 덮어쓰는 것과도 다릅니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · GROUPING으로 구분</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH sales (dept, amount) AS (
+    SELECT 10, 10 FROM dual
+    UNION ALL
+    SELECT CAST(NULL AS NUMBER), 20 FROM dual
+)
+SELECT dept, SUM(amount) AS total, GROUPING(dept) AS g,
+ CASE WHEN GROUPING(dept)=1 THEN 'ALL'
+      WHEN dept IS NULL THEN 'MISSING'
+      ELSE 'DETAIL' END AS row_kind
+FROM sales GROUP BY ROLLUP(dept)
+ORDER BY GROUPING(dept), dept NULLS FIRST;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">DEPT</th>
+<th scope="col">TOTAL</th>
+<th scope="col">G</th>
+<th scope="col">ROW_KIND</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NULL</td>
+<td>20</td>
+<td>0</td>
+<td>MISSING</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>DETAIL</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>30</td>
+<td>1</td>
+<td>ALL</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · NVL로만 바꾸어 표시</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH sales (dept, amount) AS (
+    SELECT 10, 10 FROM dual
+    UNION ALL
+    SELECT CAST(NULL AS NUMBER), 20 FROM dual
+)
+SELECT NVL(dept, -1) AS displayed_dept, SUM(amount) AS total
+FROM sales GROUP BY ROLLUP(dept)
+ORDER BY GROUPING(dept), dept NULLS FIRST;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">DISPLAYED_DEPT</th>
+<th scope="col">TOTAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>20</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>30</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 결과에서 G가 0인 NULL은 MISSING, 1인 NULL은 ALL입니다. 두 번째 결과는 두 경우를 모두 -1로 보여 주어 값의 출처를 읽기 어렵게 만듭니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>소계 행에 NULL이 보인다고 원본에 NULL이 있었다고 추정하지 않습니다. 반대로 모든 NULL 행을 전체 합계로 분류해서도 안 됩니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+GROUPING(dept)=0이면 dept 값이 반드시 NULL이 아닐까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 아닙니다. 원본 NULL로 구성된 상세 그룹도 0입니다. GROUPING은 NULL 여부 검사가 아니라 소계 자리인지의 표시입니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-23" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: 동점 다음은 3위일까 4위일까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/GROUPING.html" rel="noopener noreferrer" target="_blank">GROUPING</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html" rel="noopener noreferrer" target="_blank">SELECT</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>subtotal_flag는 GROUPING 함수의 실행 결과가 아닙니다. 원본 행과 소계 행을 UNION ALL에서 직접 구분합니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-23&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-23">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="TH-23"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

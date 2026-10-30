@@ -1,1 +1,101 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRIMARY KEY와 UNIQUE와 NOT NULL은 무엇을 막을까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="mono">SQLD · TH-43</div><h1>PRIMARY KEY와 UNIQUE와 NOT NULL은 무엇을 막을까</h1><p class="lede">NULL 검사와 중복 검사는 같은 규칙일까요?</p><p class="boundary">고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료. 단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.</p><p>NOT NULL은 값의 존재, 단일 열 UNIQUE는 NULL이 아닌 값의 중복, 기본 키는 두 조건을 함께 봅니다.</p><p>표에 제약을 직접 걸기 전에 후보 열이 만족하는 조건을 CASE로 비교합니다.</p><p>단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.</p><div class="challenge"><h2>한 번 더 바꾸기</h2><p>3번 code를 30으로 바꾸면 어느 조건이 달라질까요?</p></div><p><a href="../lab.html?episode=TH-43">같은 자료로 직접 체험하기 →</a></p><p><a href="../oracle/TH-43.sql" download>Oracle 테스트 SQL 저장</a></p><div class="sources"><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html">Oracle 19c · constraint</a> </div><p class="muted">자체 교육 예제 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRIMARY KEY와 UNIQUE와 NOT NULL은 무엇을 막을까 · SQLD 공부방</title><meta name="description" content="중복 금지와 값 필수는 같은 제약이 아닙니다. 한 표에 세 조건을 나누어 걸어 봅니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="TH-43"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-43</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 제약 조건과 트랜잭션</p><h1>PRIMARY KEY와 UNIQUE와 NOT NULL은 무엇을 막을까</h1><p class="reader-lead">중복 금지와 값 필수는 같은 제약이 아닙니다. 한 표에 세 조건을 나누어 걸어 봅니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-43&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-43">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-43" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+PRIMARY KEY는 키의 중복과 NULL을 금지합니다. 단일 열 UNIQUE는 중복된 NULL 아닌 값을 금지하지만 여러 NULL을 허용할 수 있습니다. NOT NULL은 값을 필수로 만들며 그 값의 중복까지 막지는 않습니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>회원 번호는 필수 고유 값, 이메일은 선택 입력이지만 입력했다면 고유 값, 별명은 필수이되 중복을 허용하는 업무를 정합니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>세 조건을 member_id PRIMARY KEY, email UNIQUE, nickname NOT NULL로 따로 표현합니다. 번호가 다르더라도 같은 이메일을 두 번 넣으면 UNIQUE 위반입니다.</p>
+<p>여기서 이메일은 단일 열 UNIQUE입니다. 복합 UNIQUE에서 일부 열만 NULL인 조합의 규칙까지 “NULL이면 모두 중복 허용”으로 확대하지 않습니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 개인 실습 표와 입력 준비</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<p>개인 실습 스키마에서 처음 한 번 실행합니다. 같은 이름의 기존 표는 삭제하지 말고 실습 이름을 바꾸세요. CREATE에는 DDL 커밋이 개입합니다.</p>
+<pre><code class="language-sql">CREATE TABLE OFS_T43_MEMBER (
+ member_id NUMBER PRIMARY KEY,
+ email VARCHAR2(40) UNIQUE,
+ nickname VARCHAR2(20) NOT NULL
+);
+INSERT INTO OFS_T43_MEMBER (member_id, email, nickname)
+WITH members (member_id, email, nickname) AS (
+ SELECT 1, CAST('a@example.test' AS VARCHAR2(40)), 'MIN' FROM dual
+ UNION ALL SELECT 2, CAST(NULL AS VARCHAR2(40)), 'JUN' FROM dual
+ UNION ALL SELECT 3, CAST(NULL AS VARCHAR2(40)), 'MIN' FROM dual
+)
+SELECT member_id, email, nickname FROM members;
+SELECT member_id, email, nickname FROM OFS_T43_MEMBER ORDER BY member_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">MEMBER_ID</th>
+<th scope="col">EMAIL</th>
+<th scope="col">NICKNAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a@example.test</td>
+<td>MIN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NULL</td>
+<td>JUN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NULL</td>
+<td>MIN</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 이메일 중복</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<p>실행 순서: 실행 1 완료</p>
+<pre><code class="language-sql">INSERT INTO OFS_T43_MEMBER VALUES (4, 'a@example.test', 'SOL');
+</code></pre>
+<p>예상 오류: ORA-00001 · 의도된 실패, Oracle 직접 실행 미확인.</p>
+<h3>실행 3 · 기본 키의 NULL</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<p>실행 순서: 실행 1 완료</p>
+<pre><code class="language-sql">INSERT INTO OFS_T43_MEMBER VALUES (NULL, 'b@example.test', 'SOL');
+</code></pre>
+<p>예상 오류: ORA-01400 · 의도된 실패, Oracle 직접 실행 미확인.</p>
+<h3>실행 4 · 필수 별명의 NULL</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<p>실행 순서: 실행 1 완료</p>
+<pre><code class="language-sql">INSERT INTO OFS_T43_MEMBER VALUES (4, 'b@example.test', NULL);
+</code></pre>
+<p>예상 오류: ORA-01400 · 의도된 실패, Oracle 직접 실행 미확인.</p>
+<h3>정리 · 만든 회원 실습 표 삭제</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<p>실행 순서: 실행 1 완료</p>
+<p>직접 만든 이 실습 표에만 실행합니다.</p>
+<pre><code class="language-sql">DROP TABLE OFS_T43_MEMBER;
+</code></pre>
+<p>예상: 명령 완료. 조회 결과 없음.</p>
+<p>기본 입력에서는 NULL 이메일 두 개와 MIN 별명 두 개가 허용됩니다. 실행 2·3·4는 각 제약을 하나씩 위반하는 의도된 오류입니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>WITH에서 중복이 없다는 조회 결과와 DB에 제약을 생성했다는 사실은 다릅니다. 이 글에서는 실제 CREATE TABLE로 제약을 만들었고, 제약 위반 입력을 별도 블록으로 분리했습니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+nickname에 NOT NULL만 있다면 같은 별명을 가진 회원을 두 명 넣을 수 있을까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 그렇습니다. 별명 중복도 금지하려면 별도의 유일성 조건이 필요합니다. 이 업무에서는 중복을 허용했습니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-43" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: DELETE와 TRUNCATE와 DROP은 무엇을 지울까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html" rel="noopener noreferrer" target="_blank">constraint</a></li>
+<li><a href="https://docs.oracle.com/en/error-help/db/ora-00001/" rel="noopener noreferrer" target="_blank">Oracle ORA-00001</a></li>
+<li><a href="https://docs.oracle.com/en/error-help/db/ora-01400/" rel="noopener noreferrer" target="_blank">Oracle ORA-01400</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>단일 열 코드의 검사 예제입니다. 복합 UNIQUE의 NULL 조합이나 SQLite INTEGER PRIMARY KEY의 자동 번호 부여 차이는 다루지 않습니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-43&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-43">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="TH-43"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

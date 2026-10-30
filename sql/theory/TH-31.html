@@ -1,1 +1,159 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>이전 행은 저장 순서일까 정렬 순서일까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="mono">SQLD · TH-31</div><h1>이전 행은 저장 순서일까 정렬 순서일까</h1><p class="lede">이전 행은 입력 순서일까요, OVER 안의 정렬 순서일까요?</p><p class="boundary">고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료. 경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.</p><p>LAG와 LEAD는 OVER 안에서 정한 순서를 기준으로 앞뒤 값을 읽습니다.</p><p>같은 날짜는 receipt_id로 순서를 결정하므로 동률의 임의 선택을 피합니다.</p><p>경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.</p><div class="challenge"><h2>한 번 더 바꾸기</h2><p>OVER의 순서만 DESC로 바꾸고 최종 출력 순서를 유지하면 어떤 값이 바뀔까요?</p></div><p><a href="../lab.html?episode=TH-31">같은 자료로 직접 체험하기 →</a></p><p><a href="../oracle/TH-31.sql" download>Oracle 테스트 SQL 저장</a></p><div class="sources"><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LAG.html">Oracle 19c · LAG</a> <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LEAD.html">Oracle 19c · LEAD</a> <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html">Oracle 19c · Analytic-Functions</a> </div><p class="muted">자체 교육 예제 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>이전 행은 저장 순서일까 정렬 순서일까 · SQLD 공부방</title><meta name="description" content="LAG와 LEAD의 옆 행은 파티션과 정렬을 정한 뒤에 결정됩니다. 앞 행이 없는 것과 앞 행의 값이 NULL인 것도 다릅니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="TH-31"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-31</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 순위와 윈도우</p><h1>이전 행은 저장 순서일까 정렬 순서일까</h1><p class="reader-lead">LAG와 LEAD의 옆 행은 파티션과 정렬을 정한 뒤에 결정됩니다. 앞 행이 없는 것과 앞 행의 값이 NULL인 것도 다릅니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-31&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-31">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-31" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+LAG는 정렬된 파티션에서 앞쪽 값을, LEAD는 뒤쪽 값을 가져옵니다. 기본 offset은 1입니다. 세 번째 인자인 기본값은 범위 밖일 때 쓰며, 범위 안의 실제 NULL을 자동으로 바꾸는 값이 아닙니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>두 고객의 주문 번호가 번갈아 나옵니다. 고객 1의 가운데 주문 금액은 NULL입니다. 고객별 이웃 주문과 전체 이웃 주문을 비교해 봅니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>PARTITION BY customer_id로 고객별 경계를 먼저 정합니다. 고객 1의 순서는 101→103→105, 고객 2는 102→104입니다.</p>
+<p>기본 RESPECT NULLS에서는 105번 바로 앞인 103번의 실제 NULL이 그대로 반환됩니다. 앞 행이 없어서 기본값 -1이 나오는 101번과 다릅니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 고객별 앞뒤 주문</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 2, 5 FROM dual
+    UNION ALL
+    SELECT 103, 1, CAST(NULL AS NUMBER) FROM dual
+    UNION ALL
+    SELECT 104, 2, 8 FROM dual
+    UNION ALL
+    SELECT 105, 1, 30 FROM dual
+)
+SELECT customer_id, order_id, amount,
+ LAG(amount, 1, -1) OVER (PARTITION BY customer_id ORDER BY order_id) AS prev_amount,
+ LEAD(amount, 1, -1) OVER (PARTITION BY customer_id ORDER BY order_id) AS next_amount
+FROM orders ORDER BY customer_id, order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+<th scope="col">ORDER_ID</th>
+<th scope="col">AMOUNT</th>
+<th scope="col">PREV_AMOUNT</th>
+<th scope="col">NEXT_AMOUNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>101</td>
+<td>10</td>
+<td>-1</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>1</td>
+<td>103</td>
+<td>NULL</td>
+<td>10</td>
+<td>30</td>
+</tr>
+<tr>
+<td>1</td>
+<td>105</td>
+<td>30</td>
+<td>NULL</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>102</td>
+<td>5</td>
+<td>-1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>104</td>
+<td>8</td>
+<td>5</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 파티션을 없애면</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 2, 5 FROM dual
+    UNION ALL
+    SELECT 103, 1, CAST(NULL AS NUMBER) FROM dual
+    UNION ALL
+    SELECT 104, 2, 8 FROM dual
+    UNION ALL
+    SELECT 105, 1, 30 FROM dual
+)
+SELECT order_id, customer_id, amount,
+ LAG(amount, 1, -1) OVER (ORDER BY order_id) AS prev_amount
+FROM orders ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">CUSTOMER_ID</th>
+<th scope="col">AMOUNT</th>
+<th scope="col">PREV_AMOUNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>1</td>
+<td>10</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>102</td>
+<td>2</td>
+<td>5</td>
+<td>10</td>
+</tr>
+<tr>
+<td>103</td>
+<td>1</td>
+<td>NULL</td>
+<td>5</td>
+</tr>
+<tr>
+<td>104</td>
+<td>2</td>
+<td>8</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>105</td>
+<td>1</td>
+<td>30</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 번째 결과에서 102번의 이전 값은 다른 고객인 101번의 10입니다. 함수가 고객 관계를 스스로 추론하지 않으므로 파티션 키를 적어야 합니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>ORDER BY가 동률을 남기면 어떤 행이 바로 앞인지 불명확할 수 있습니다. 여기서는 고유한 주문 번호로 순서를 정했습니다. -1은 설명을 위한 기본값이며 실제 금액처럼 집계할 값은 아닙니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+WHERE amount IS NOT NULL로 먼저 걸러낸 뒤 실행 1의 LAG를 계산하면 105번의 이전 값은 무엇일까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 10입니다. NULL 주문 행이 분석 함수 계산 전에 제외되므로 고객 1에게 남은 순서가 101→105가 됩니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-31" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: CONNECT BY PRIOR는 어느 쪽 값을 따라갈까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LAG.html" rel="noopener noreferrer" target="_blank">LAG</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LEAD.html" rel="noopener noreferrer" target="_blank">LEAD</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html" rel="noopener noreferrer" target="_blank">Analytic-Functions</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>경계의 이전·다음 값은 NULL입니다. NULL 정렬 차이는 묻지 않습니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-31&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-31">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="TH-31"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

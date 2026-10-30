@@ -1,1 +1,98 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>입력한 수량과 계산한 금액은 같은 속성일까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="mono">SQLD · TH-34</div><h1>입력한 수량과 계산한 금액은 같은 속성일까</h1><p class="lede">수량만 바꾸면 계산 금액도 바뀔까요?</p><p class="boundary">고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료. 작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.</p><p>수량과 단가를 입력 값으로 정하고 금액은 두 값의 곱으로 계산합니다.</p><p>SELECT에서 계산한 별칭 amount는 이 예제 표에 저장된 열이 아닙니다.</p><p>작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.</p><div class="challenge"><h2>한 번 더 바꾸기</h2><p>단가를 바꾸면 어떤 입력 값과 결과 값이 달라질까요?</p></div><p><a href="../lab.html?episode=TH-34">같은 자료로 직접 체험하기 →</a></p><p><a href="../oracle/TH-34.sql" download>Oracle 테스트 SQL 저장</a></p><div class="sources"><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html">Oracle 19c · SELECT</a> <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html">Oracle 19c · Nulls</a> </div><p class="muted">자체 교육 예제 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>입력한 수량과 계산한 금액은 같은 속성일까 · SQLD 공부방</title><meta name="description" content="업무에서 받은 값, 설계하며 만든 값, 다른 값으로 계산한 값을 생성 근거로 나눠 봅니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="TH-34"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">데이터 모델링의 이해</a><span> / TH-34</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 데이터 모델링</p><h1>입력한 수량과 계산한 금액은 같은 속성일까</h1><p class="reader-lead">업무에서 받은 값, 설계하며 만든 값, 다른 값으로 계산한 값을 생성 근거로 나눠 봅니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-34&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-34">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-34" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+이 예제에서는 수량·단가를 업무 입력, 주문 번호를 설계를 위해 부여한 식별 값, 금액을 수량×단가로 계산한 값으로 정합니다. 기본·설계·파생 속성의 분류는 이름이나 자료형만으로 결정되지 않습니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>할인·세금·반올림이 없는 작은 주문 자료입니다. 금액을 계산할 수도 있고 계산 결과를 따로 저장할 수도 있습니다. 둘을 모두 저장했을 때 불일치가 생기는지 확인합니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>파생 값은 다른 속성으로부터 정해진 규칙으로 구할 수 있습니다. 저장 여부와 파생 여부는 별개의 판단입니다. 저장된 금액도 계산 근거가 있다면 파생 값일 수 있습니다.</p>
+<p>실제 업무에서 결제 확정 금액이 별도 사실이라면 현재 단가×수량과 같아야 한다고 단정할 수 없습니다. 이 글의 일치 조건은 할인 등이 없다고 정한 예제에 한정합니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 저장 값과 계산 값</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH order_lines (order_id, qty, unit_price, saved_total) AS (
+    SELECT 101, 2, 3000, 6000 FROM dual
+    UNION ALL
+    SELECT 102, 1, 2000, 2000 FROM dual
+)
+SELECT order_id, qty, unit_price, saved_total,
+ qty * unit_price AS calculated_total
+FROM order_lines ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">QTY</th>
+<th scope="col">UNIT_PRICE</th>
+<th scope="col">SAVED_TOTAL</th>
+<th scope="col">CALCULATED_TOTAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>2</td>
+<td>3000</td>
+<td>6000</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>102</td>
+<td>1</td>
+<td>2000</td>
+<td>2000</td>
+<td>2000</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 한 값만 바뀌면</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH order_lines (order_id, qty, unit_price, saved_total) AS (
+    SELECT 101, 2, 3000, 5000 FROM dual
+    UNION ALL
+    SELECT 102, 1, 2000, 2000 FROM dual
+)
+SELECT order_id, saved_total, qty * unit_price AS calculated_total
+FROM order_lines WHERE saved_total &lt;&gt; qty * unit_price
+ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">SAVED_TOTAL</th>
+<th scope="col">CALCULATED_TOTAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>5000</td>
+<td>6000</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 번째 조회는 정한 계산 규칙과 다른 101번만 찾습니다. 이 SQL이 기본·설계·파생이라는 분류 자체를 증명하는 것은 아닙니다. 분류 근거는 앞서 정한 업무 생성 방식입니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>주문 번호도 실제 업무에서 이미 부여받는 번호라면 단순히 번호라는 이유로 설계 속성이라고 할 수 없습니다. 같은 이름이라도 업무 정의를 먼저 확인합니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+계산한 금액을 열로 저장하면 기본 속성으로 바뀔까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 저장한다는 이유만으로 바뀌지 않습니다. 어떤 사실에서 어떤 규칙으로 생성되는지가 분류의 기준입니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-34" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: 유일하기만 하면 모두 후보 키일까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/sql-developer-data-modeler/24.3/dmdug/data-modeler-concepts-usage.html" rel="noopener noreferrer" target="_blank">Oracle Data Modeler · 논리 모델과 속성 및 관계</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html" rel="noopener noreferrer" target="_blank">SELECT</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>작은 정수만 사용합니다. 업무에서 금액을 따로 저장하는 설계의 타당성이나 반올림 규칙은 별도 문제입니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-34&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-34">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="TH-34"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>
