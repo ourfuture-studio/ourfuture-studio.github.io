@@ -1,1 +1,101 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>일대다 관계이면 자식이 반드시 있어야 할까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="mono">SQLD · TH-37</div><h1>일대다 관계이면 자식이 반드시 있어야 할까</h1><p class="lede">일대다 관계라면 모든 고객에게 주문이 하나 이상 있어야 할까요?</p><p class="boundary">고정 입력의 공통 SQL 예제 · SQLite 실행 / Oracle 19c 공식 문서 대조 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료. 한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.</p><p>한 고객에게 여러 주문이 가능하다는 최대 대응 수와 주문 참여가 필수라는 최소 조건을 구분합니다.</p><p>이 예제의 고객 3은 주문 0건도 허용된 선택 참여 고객입니다.</p><p>한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.</p><div class="challenge"><h2>한 번 더 바꾸기</h2><p>모든 고객에게 주문이 필수라면 어느 시점에 어떤 업무 검사를 해야 할까요?</p></div><p><a href="../lab.html?episode=TH-37">같은 자료로 직접 체험하기 →</a></p><p><a href="../oracle/TH-37.sql" download>Oracle 테스트 SQL 저장</a></p><div class="sources"><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html">Oracle 19c · SELECT</a> <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html">Oracle 19c · Nulls</a> </div><p class="muted">자체 교육 예제 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>일대다 관계이면 자식이 반드시 있어야 할까 · SQLD 공부방</title><meta name="description" content="최대로 몇 개까지 연결되는지와 최소 한 개가 필요한지는 다른 질문입니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="TH-37"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">데이터 모델링의 이해</a><span> / TH-37</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 데이터 모델링</p><h1>일대다 관계이면 자식이 반드시 있어야 할까</h1><p class="reader-lead">최대로 몇 개까지 연결되는지와 최소 한 개가 필요한지는 다른 질문입니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-37&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-37">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-37" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+일대다는 한쪽 한 건에 다른 쪽 여러 건이 연결될 수 있다는 수의 관계입니다. 필수·선택 참여는 연결이 하나도 없어도 되는지의 조건입니다. 자식의 외래 키만으로 모든 부모에게 자식이 존재하도록 보장하지는 않습니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>가입했지만 주문하지 않은 고객을 허용하는 쇼핑몰입니다. 고객과 주문은 일대다 관계여도 고객 SOL의 주문 수는 0일 수 있습니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>고객 쪽에서 보는 “주문이 반드시 하나 있어야 하는가”와 주문 쪽에서 보는 “고객 번호가 반드시 있어야 하는가”를 각각 정합니다.</p>
+<p>자식의 customer_id에 NOT NULL과 유효한 외래 키를 함께 걸면 각 주문의 고객 참조를 보장할 수 있습니다. 모든 고객에게 주문을 하나씩 만들어 주는 조건은 아닙니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 주문이 없는 고객도 포함</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH customers (customer_id, customer_name) AS (
+    SELECT 1, 'MIN' FROM dual
+    UNION ALL
+    SELECT 2, 'JUN' FROM dual
+    UNION ALL
+    SELECT 3, 'SOL' FROM dual
+),
+orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 1, 20 FROM dual
+    UNION ALL
+    SELECT 103, 2, 5 FROM dual
+)
+SELECT c.customer_id, COUNT(o.order_id) AS order_count
+FROM customers c LEFT JOIN orders o
+ ON c.customer_id = o.customer_id
+GROUP BY c.customer_id ORDER BY c.customer_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+<th scope="col">ORDER_COUNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 고객 번호가 없는 주문 찾기</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH orders (order_id, customer_id) AS (
+    SELECT 101, 1 FROM dual
+    UNION ALL
+    SELECT 102, CAST(NULL AS NUMBER) FROM dual
+)
+SELECT order_id, customer_id FROM orders
+WHERE customer_id IS NULL ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">CUSTOMER_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>102</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 결과의 0은 허용한 업무 상황입니다. 두 번째 자료의 NULL 고객 번호를 허용할지는 별도 규칙이며, 허용하지 않는다면 실제 NOT NULL 제약이 필요합니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>LEFT JOIN 뒤 주문 수를 셀 때는 NULL이 되지 않는 주문 키를 셉니다. COUNT(*)는 주문 없는 고객의 보존 행도 1로 세므로 이 질문의 답과 다릅니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+주문의 고객 참조가 필수이면 고객 가입 즉시 주문도 있어야 할까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 그렇지 않습니다. 주문에서 고객을 향한 필수성과 고객에서 주문을 향한 필수성은 방향이 다릅니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=TH-37" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: 2정규형과 3정규형은 어떤 종속을 나눌까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/sql-developer-data-modeler/24.3/dmdug/data-modeler-concepts-usage.html" rel="noopener noreferrer" target="_blank">Oracle Data Modeler · 논리 모델과 속성 및 관계</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html" rel="noopener noreferrer" target="_blank">constraint</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html" rel="noopener noreferrer" target="_blank">COUNT</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>한 표본의 자식 수로 업무의 필수 참여 규칙을 확정하지 않습니다. 이 예제는 고객의 주문 0건을 허용한다고 명시합니다.</p><div class="reader-actions"><a href="../practice.html?code=TH-37&amp;type=recall">관련 문제 풀기 →</a><a href="../lab.html?episode=TH-37">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="TH-37"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

@@ -1,1 +1,111 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EXISTS는 무엇을 확인할까 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="heading"><div class="mono">SQLD · E018 · 이론 요약</div><h1>EXISTS는 무엇을 확인할까<span class="dot">.</span></h1><p class="lede">선택한 값과 결과 행의 존재는 다릅니다. 바깥 고객과 연결하는 조건을 확인하세요.</p></div><p class="muted">Oracle 19c 문서에서 동작을 대조한 고정 입력 문제 · 브라우저 SQLite 실행 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p>EXISTS는 서브쿼리 결과에 행이 있는지 검사합니다. 행의 선택 값이 NULL이어도 행이 존재할 수 있습니다.</p><p>o.customer_id=c.customer_id로 각 고객에게 일치 주문이 있는지 봅니다. 11과 22는 있고 33은 없습니다.</p><p>상관 조건을 지우면 고객별 질문이 달라집니다. 전체 주문이 하나라도 존재하면 세 고객 모두 조건을 통과합니다.</p><div class="sources"><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html">Oracle 19c EXISTS 조건</a></div><p class="boundary">SELECT NULL이 언제나 서브쿼리 결과 0행을 뜻하지 않습니다. 조건과 실제 행 존재를 분리합니다.</p><div class="challenge"><h2>직접 확인해 보기</h2><p>NOT EXISTS로 바꾸면 어떤 고객이 남을까요? 주문을 지운 경우도 비교해 보세요.</p><p><a href="../lab.html?episode=E018">같은 표로 쿼리를 실행하기 →</a></p></div><p class="muted">자체 교육 예제 · SQLite 실행 · 원본과 조건을 구분해 비교합니다.</p><footer class="footer"><p class="mono">ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></footer><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SELECT NULL인데 EXISTS는 왜 참일까 · SQLD 공부방</title><meta name="description" content="EXISTS가 묻는 것은 그 칸의 값일까요, 아니면 그 칸을 담은 행이 있느냐일까요?"><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="E018"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-14</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · SQL 결과 읽기</p><h1>SELECT NULL인데 EXISTS는 왜 참일까</h1><p class="reader-lead">EXISTS가 묻는 것은 그 칸의 값일까요, 아니면 그 칸을 담은 행이 있느냐일까요?</p><div class="reader-actions"><a href="../practice.html?code=E018&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E018">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E018" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+EXISTS는 서브쿼리 결과에 행이 하나라도 있는지 판단합니다. SELECT 목록이 NULL이어도 WHERE를 통과한 행이 있으면 TRUE입니다. 반환 열의 NULL과 결과의 0행을 구분해야 합니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>고객별로 주문이 있는지만 알고 싶습니다. 주문 금액이나 주문 번호를 보여 줄 필요는 없습니다. 서브쿼리의 SELECT 목록을 NULL로 적고도 고객을 찾을 수 있는지 살펴봅니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>바깥의 고객 한 명에 대해 안쪽 orders에서 같은 customer_id의 행을 찾습니다. SELECT NULL은 그 행의 출력 값을 NULL로 만들 뿐, 찾아낸 행을 없애지 않습니다.</p>
+<p>EXISTS의 상관 조건을 빠뜨리면 현재 고객과의 연결 여부가 사라집니다. 주문 표 어디에든 한 행이 있으면 모든 고객에 대해 참이 될 수 있습니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 고객과 연결되는 주문의 존재</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH customers (customer_id, customer_name) AS (
+    SELECT 1, 'MIN' FROM dual
+    UNION ALL
+    SELECT 2, 'JUN' FROM dual
+    UNION ALL
+    SELECT 3, 'SOL' FROM dual
+),
+orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 1, 20 FROM dual
+    UNION ALL
+    SELECT 103, 2, 5 FROM dual
+)
+SELECT c.customer_id
+FROM customers c
+WHERE EXISTS (
+  SELECT NULL FROM orders o
+  WHERE o.customer_id = c.customer_id
+)
+ORDER BY c.customer_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 연결 조건을 빼면</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH customers (customer_id, customer_name) AS (
+    SELECT 1, 'MIN' FROM dual
+    UNION ALL
+    SELECT 2, 'JUN' FROM dual
+    UNION ALL
+    SELECT 3, 'SOL' FROM dual
+),
+orders (order_id, customer_id, amount) AS (
+    SELECT 101, 1, 10 FROM dual
+    UNION ALL
+    SELECT 102, 1, 20 FROM dual
+    UNION ALL
+    SELECT 103, 2, 5 FROM dual
+)
+SELECT c.customer_id
+FROM customers c
+WHERE EXISTS (SELECT NULL FROM orders)
+ORDER BY c.customer_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">CUSTOMER_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 SQL에서 SOL이 제외되는 이유는 출력 값이 NULL이어서가 아닙니다. SOL과 연결되는 주문 행이 없기 때문입니다. 두 번째 SQL은 전체 주문 표가 비어 있는지만 확인합니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>SELECT 1과 SELECT NULL 중 어느 쪽이 언제나 더 빠르다고 단정하지 않습니다. 이 글에서 비교하는 것은 존재 조건의 의미이며 성능 측정 결과가 아닙니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+서브쿼리에 WHERE 1 = 0을 추가하면 SELECT 1로 바꿔도 EXISTS가 참일까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 거짓입니다. 출력하려는 상수와 관계없이 조건을 통과한 행이 0개이기 때문입니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E018" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: IN과 EXISTS와 NOT EXISTS는 무엇을 물을까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html" rel="noopener noreferrer" target="_blank">EXISTS-Condition</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html" rel="noopener noreferrer" target="_blank">SELECT</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>SELECT NULL이 언제나 서브쿼리 결과 0행을 뜻하지 않습니다. 조건과 실제 행 존재를 분리합니다.</p><div class="reader-actions"><a href="../practice.html?code=E018&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E018">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="E018"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

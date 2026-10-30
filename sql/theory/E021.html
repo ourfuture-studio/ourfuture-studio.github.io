@@ -1,1 +1,141 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RANK와 DENSE_RANK의 동률 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="heading"><div class="mono">SQLD · E021 · 이론 요약</div><h1>RANK와 DENSE_RANK의 동률<span class="dot">.</span></h1><p class="lede">같은 점수의 묶음과 다음 순위 번호를 구분합니다. 윈도우 정렬 키 전체를 확인하세요.</p></div><p class="muted">Oracle 19c 문서에서 동작을 대조한 고정 입력 문제 · 브라우저 SQLite 실행 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p>90점 두 명이 공동 1위입니다. RANK는 그 다음 고객 33에게 3위를, DENSE_RANK는 2위를 부여합니다.</p><p>윈도우의 ORDER BY에 고유 customer_id까지 추가하면 90점 두 행도 정렬 키 전체가 달라집니다. 이때는 동률이 아닙니다.</p><p>결과 표시용 바깥 ORDER BY와 순위를 정하는 OVER 안 ORDER BY를 구분해야 합니다.</p><div class="sources"><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/RANK.html">Oracle 19c RANK</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/DENSE_RANK.html">Oracle 19c DENSE_RANK</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html">Oracle 19c 분석 함수·윈도우 프레임</a></div><p class="boundary">이번 순위는 점수 내림차순입니다. 단순히 RANK는 언제나 번호를 건너뛴다고 설명하지 않습니다.</p><div class="challenge"><h2>직접 확인해 보기</h2><p>OVER 안은 그대로 두고 마지막 ORDER BY만 뒤집으면 순위 값도 바뀔까요?</p><p><a href="../lab.html?episode=E021">같은 표로 쿼리를 실행하기 →</a></p></div><p class="muted">자체 교육 예제 · SQLite 실행 · 원본과 조건을 구분해 비교합니다.</p><footer class="footer"><p class="mono">ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></footer><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동점 다음은 3위일까 4위일까 · SQLD 공부방</title><meta name="description" content="등수가 같은 두 사람 다음에 빈 순위를 남길지 결정하면 RANK와 DENSE_RANK가 구분됩니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="E021"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-25</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 순위와 윈도우</p><h1>동점 다음은 3위일까 4위일까</h1><p class="reader-lead">등수가 같은 두 사람 다음에 빈 순위를 남길지 결정하면 RANK와 DENSE_RANK가 구분됩니다.</p><div class="reader-actions"><a href="../practice.html?code=E021&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E021">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E021" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+RANK는 동점 행 수를 반영해 다음 순위를 건너뛰고, DENSE_RANK는 서로 다른 점수 그룹마다 순위를 하나씩 늘립니다. 순위 계산의 ORDER BY에 무엇을 넣었는지도 확인해야 합니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>점수는 100·90·90·80입니다. 90점 두 사람을 같은 순위로 놓은 뒤 80점의 순위를 정해 봅니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>RANK 결과는 1·2·2·4, DENSE_RANK 결과는 1·2·2·3입니다. DENSE_RANK의 3은 세 번째로 높은 서로 다른 점수라는 뜻입니다.</p>
+<p>같은 점수의 학생을 결과 화면에서 일정하게 나열하려면 최종 ORDER BY에 student_id를 더합니다. 순위 함수 안에 학생 번호까지 더하면 동점 기준 자체가 바뀔 수 있습니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 같은 점수 기준의 두 순위</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH scores (student_id, score) AS (
+    SELECT 1, 100 FROM dual
+    UNION ALL
+    SELECT 2, 90 FROM dual
+    UNION ALL
+    SELECT 3, 90 FROM dual
+    UNION ALL
+    SELECT 4, 80 FROM dual
+)
+SELECT student_id, score,
+ RANK() OVER (ORDER BY score DESC) AS rnk,
+ DENSE_RANK() OVER (ORDER BY score DESC) AS dense_rnk
+FROM scores ORDER BY student_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">STUDENT_ID</th>
+<th scope="col">SCORE</th>
+<th scope="col">RNK</th>
+<th scope="col">DENSE_RNK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>100</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>90</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>90</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>80</td>
+<td>4</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · 3 이하인 순위를 고르면</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH scores (student_id, score) AS (
+    SELECT 1, 100 FROM dual
+    UNION ALL
+    SELECT 2, 90 FROM dual
+    UNION ALL
+    SELECT 3, 90 FROM dual
+    UNION ALL
+    SELECT 4, 80 FROM dual
+),
+ranked AS (SELECT student_id, RANK() OVER (ORDER BY score DESC) AS r, DENSE_RANK() OVER (ORDER BY score DESC) AS d FROM scores)
+SELECT 'DENSE' AS method, student_id FROM ranked WHERE d &lt;= 3
+UNION ALL
+SELECT 'RANK' AS method, student_id FROM ranked WHERE r &lt;= 3
+ORDER BY method, student_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">METHOD</th>
+<th scope="col">STUDENT_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DENSE</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DENSE</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DENSE</td>
+<td>3</td>
+</tr>
+<tr>
+<td>DENSE</td>
+<td>4</td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 번째 예제에서 RANK 방식은 3명, DENSE 방식은 4명을 고릅니다. “상위 3명”과 “상위 3개 점수 그룹”이 같은 요구인지는 별도로 정해야 합니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>분석 함수 안의 정렬이 최종 결과 출력 순서를 항상 보장하는 것은 아닙니다. 원하는 표시 순서는 바깥 ORDER BY로 적습니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+90점이 세 명이라면 80점의 RANK와 DENSE_RANK는 각각 얼마일까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 다른 점수가 같다면 RANK는 5, DENSE_RANK는 3입니다. 앞선 사람 수와 앞선 점수 그룹 수가 다릅니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E021" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: 같은 날의 누적 합계는 왜 한꺼번에 늘어날까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/RANK.html" rel="noopener noreferrer" target="_blank">RANK</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/DENSE_RANK.html" rel="noopener noreferrer" target="_blank">DENSE_RANK</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html" rel="noopener noreferrer" target="_blank">Analytic-Functions</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>이번 순위는 점수 내림차순입니다. 단순히 RANK는 언제나 번호를 건너뛴다고 설명하지 않습니다.</p><div class="reader-actions"><a href="../practice.html?code=E021&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E021">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="E021"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

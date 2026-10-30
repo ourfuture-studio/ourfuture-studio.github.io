@@ -1,1 +1,116 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROWS와 RANGE의 동률 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="heading"><div class="mono">SQLD · E026 · 이론 요약</div><h1>ROWS와 RANGE의 동률<span class="dot">.</span></h1><p class="lede">날짜만 정렬할 때의 동률과 날짜·고유 ID로 정렬할 때의 순서를 비교합니다. 네 행은 그대로 유지됩니다.</p></div><p class="muted">Oracle 19c 문서에서 동작을 대조한 고정 입력 문제 · 브라우저 SQLite 실행 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p>day_no가 2인 두 행의 금액은 6과 9입니다. A는 날짜·receipt_id 순으로 한 행씩 누적해 4,10,19,24를 만듭니다.</p><p>B는 날짜만으로 정렬한 RANGE 프레임입니다. 날짜 2의 두 동률 행을 함께 포함해 누계는 4,19,19,24입니다.</p><p>B의 ORDER BY에 고유 receipt_id를 더하면 두 행의 정렬 키가 달라집니다. RANGE라는 단어만 보고 같은 날짜의 값이 항상 같다고 판단하지 않습니다.</p><div class="sources"><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html">Oracle 19c 분석 함수·윈도우 프레임</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html">Oracle 19c SUM</a></div><p class="boundary">사용한 프레임은 UNBOUNDED PRECEDING부터 CURRENT ROW까지입니다. 모든 윈도우 함수의 프레임 동작으로 확대하지 않습니다.</p><div class="challenge"><h2>직접 확인해 보기</h2><p>두 번째 날짜의 금액을 바꿔 보세요. 어느 행의 ROWS·RANGE 누계가 함께 변하는지 예상해 보세요.</p><p><a href="../lab.html?episode=E026">같은 표로 쿼리를 실행하기 →</a></p></div><p class="muted">자체 교육 예제 · SQLite 실행 · 원본과 조건을 구분해 비교합니다.</p><footer class="footer"><p class="mono">ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></footer><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>같은 날의 누적 합계는 왜 한꺼번에 늘어날까 · SQLD 공부방</title><meta name="description" content="현재 행까지라는 말의 범위가 물리적 행인지 같은 정렬 값인지 확인해 봅니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="E026"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-27</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · 순위와 윈도우</p><h1>같은 날의 누적 합계는 왜 한꺼번에 늘어날까</h1><p class="reader-lead">현재 행까지라는 말의 범위가 물리적 행인지 같은 정렬 값인지 확인해 봅니다.</p><div class="reader-actions"><a href="../practice.html?code=E026&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E026">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E026" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+ROWS는 행 단위로 창을 정합니다. RANGE의 UNBOUNDED PRECEDING부터 CURRENT ROW까지는 현재 정렬 키와 같은 동률 행을 함께 포함합니다. 동률 판단은 ORDER BY에 적은 전체 키를 기준으로 합니다.</p>
+</blockquote>
+<h2 id="section-1">어떤 자료와 조건을 볼까요</h2>
+<p>첫날 주문은 8원과 12원, 둘째 날 주문은 7원입니다. 첫 번째 주문의 누계가 8인지 20인지 비교해 봅니다.</p>
+<h2 id="section-2">답을 가르는 기준은 무엇일까요</h2>
+<p>ROWS의 계산 순서를 day_no, order_id로 유일하게 정하면 첫 행까지 8, 다음 행까지 20, 마지막까지 27입니다.</p>
+<p>RANGE를 day_no 하나로 정렬하면 같은 날의 두 주문이 동률입니다. 두 행에서 모두 첫날 전체 20을 봅니다.</p>
+<h2 id="section-3">Oracle에서 첫 조건을 확인해 봅니다</h2>
+<h3>실행 1 · 행 단위와 날짜 동률 범위</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH sales (order_id, day_no, amount) AS (
+    SELECT 1, 1, 8 FROM dual
+    UNION ALL
+    SELECT 2, 1, 12 FROM dual
+    UNION ALL
+    SELECT 3, 2, 7 FROM dual
+)
+SELECT order_id, day_no, amount,
+ SUM(amount) OVER (ORDER BY day_no, order_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS rows_sum,
+ SUM(amount) OVER (ORDER BY day_no RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS range_sum
+FROM sales ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">DAY_NO</th>
+<th scope="col">AMOUNT</th>
+<th scope="col">ROWS_SUM</th>
+<th scope="col">RANGE_SUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>8</td>
+<td>8</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>12</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>7</td>
+<td>27</td>
+<td>27</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-4">조건과 구조를 바꾸어 비교해 봅니다</h2>
+<h3>실행 2 · RANGE의 전체 정렬 키를 바꾸면</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH sales (order_id, day_no, amount) AS (
+    SELECT 1, 1, 8 FROM dual
+    UNION ALL
+    SELECT 2, 1, 12 FROM dual
+    UNION ALL
+    SELECT 3, 2, 7 FROM dual
+)
+SELECT order_id,
+ SUM(amount) OVER (ORDER BY day_no, order_id RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS range_sum
+FROM sales ORDER BY order_id;
+</code></pre>
+<p>예상 결과</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ORDER_ID</th>
+<th scope="col">RANGE_SUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>27</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 번째 예제는 RANGE여도 정렬 키 전체가 각 행에서 다르므로 이 입력에서는 ROWS와 같은 누계를 냅니다. RANGE라는 이름만 보고 같은 날짜를 언제나 묶는다고 판단하면 안 됩니다.</p>
+<h2 id="section-5">결과를 어디까지 해석할 수 있을까요</h2>
+<p>물리적 ROWS의 정렬 키가 동점을 남기면 행별 누계 배정이 일정하지 않을 수 있습니다. 또한 Oracle에서 RANGE의 여러 정렬 키가 허용되는 범위는 창 경계에 따라 다릅니다. 여기서는 허용되는 UNBOUNDED PRECEDING·CURRENT ROW 조합을 썼습니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+실행 1의 ROWS 정렬에서 order_id를 빼면 첫 두 행의 개별 누계를 확정할 수 있을까요?</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: 동률 내의 순서가 정해지지 않아 확정할 수 없습니다. 고유한 보조 정렬 키가 있어야 행별 결과를 일정하게 비교할 수 있습니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E026" rel="noopener noreferrer" target="_blank">관련 SQL 체험</a></p>
+<p>다음 질문: PARTITION BY는 왜 주문 행을 줄이지 않을까</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html" rel="noopener noreferrer" target="_blank">Analytic-Functions</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html" rel="noopener noreferrer" target="_blank">SUM</a></li>
+</ul>
+<p>자체 교육 예제 · 이 글의 Oracle Database 19c SQL과 결과·오류 표는 문서 기준의 예상입니다. 등록 실험실의 고정 입력 Oracle 대조 기록과 이 글의 코드를 구분해 확인하세요.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>사용한 프레임은 UNBOUNDED PRECEDING부터 CURRENT ROW까지입니다. 모든 윈도우 함수의 프레임 동작으로 확대하지 않습니다.</p><div class="reader-actions"><a href="../practice.html?code=E026&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E026">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">어떤 자료와 조건을 볼까요</a></li><li><a href="#section-2">답을 가르는 기준은 무엇일까요</a></li><li><a href="#section-3">Oracle에서 첫 조건을 확인해 봅니다</a></li><li><a href="#section-4">조건과 구조를 바꾸어 비교해 봅니다</a></li><li><a href="#section-5">결과를 어디까지 해석할 수 있을까요</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="E026"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

@@ -1,1 +1,158 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COUNT는 무엇을 세는가 · 이론 요약</title><link rel="stylesheet" href="../lab.css"></head><body><main class="wrap theory-body"><a href="../">SQL 목차</a><div class="heading"><div class="mono">SQLD · E001 · 이론 요약</div><h1>COUNT는 무엇을 세는가<span class="dot">.</span></h1><p class="lede">같은 500이 두 번 기록되어도 두 행입니다. 괄호 안의 표현식과 NULL을 구분해 보세요.</p></div><p class="muted">Oracle 19c 문서에서 동작을 대조한 고정 입력 문제 · 브라우저 SQLite 실행 · Oracle 19c 19.26 고정 입력 실제 결과 대조 완료</p><p>원본 쿠폰 값은 500, NULL, 500입니다. COUNT(coupon_amount)는 NULL이 아닌 두 값을 셉니다. 중복 값 500을 자동으로 하나로 합치지 않습니다.</p><p>COUNT(*)는 세 행을 셉니다. COUNT(DISTINCT coupon_amount)는 NULL을 제외한 서로 다른 값 한 종류를 셉니다.</p><p>여기서 세는 단위는 주문 행 또는 표현식 값입니다. 이를 쿠폰을 사용한 고객 수라고 바꿔 해석하지 않습니다.</p><div class="sources"><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html">Oracle 19c COUNT</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html">Oracle 19c 집계 함수</a><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html">Oracle 19c NULL과 조건</a></div><p class="boundary">NULL은 0원이라는 뜻이 아닙니다. NULL을 0으로 바꾸는 실험은 입력 자료를 바꾸는 별도 조건입니다.</p><div class="challenge"><h2>직접 확인해 보기</h2><p>COUNT(amount + fee)는 어떤 행을 셀까요? 먼저 세 행의 표현식 값을 적어 보세요.</p><p><a href="../lab.html?episode=E001">같은 표로 쿼리를 실행하기 →</a></p></div><p class="muted">자체 교육 예제 · SQLite 실행 · 원본과 조건을 구분해 비교합니다.</p><footer class="footer"><p class="mono">ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></footer><p><a href="../oracle-validation.html">Oracle 실제 실행 대조 기록 →</a></p></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>주문은 세 건인데 COUNT는 왜 다를까 · SQLD 공부방</title><meta name="description" content="같은 표에서도 3, 2, 1이 나옵니다. COUNT의 괄호 안을 읽으면 무엇을 세었는지 알 수 있습니다."><link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../reader.css"></head>
+<body class="learning-page" data-page="theory" data-code="E001"><a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner"><a aria-label="SQLD 공부방 홈" class="learning-brand" href="../index.html"><span class="brand-mark">of<span>·</span></span><span>SQLD 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">SQL 실험</a><a href="../review.html">복습노트</a></nav><span class="local-badge"><span></span>로그인 없이 공부</span></div></header><main class="learning-container" id="main"><nav class="reader-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">SQL 기본 및 활용</a><span> / TH-01</span></nav><header class="reader-intro"><p class="eyebrow">SQLD · NULL과 집계</p><h1>주문은 세 건인데 COUNT는 왜 다를까</h1><p class="reader-lead">같은 표에서도 3, 2, 1이 나옵니다. COUNT의 괄호 안을 읽으면 무엇을 세었는지 알 수 있습니다.</p><div class="reader-actions"><a href="../practice.html?code=E001&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E001">같은 표로 SQL 실행 →</a></div></header><div class="reader-layout"><article class="theory-article reader-article" id="theory-content"><p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E001" rel="noopener noreferrer" target="_blank">이 주제 직접 체험하기</a></p>
+<p>GitHub SQL 실험실은 SQLite로 실행됩니다. Oracle 전용 코드는 Oracle 체험에서 실행합니다.</p>
+<blockquote>
+<p><strong>핵심 먼저</strong>
+<code>COUNT(*)</code>는 조회 대상의 <strong>행</strong>을 셉니다. <code>COUNT(열)</code>은 그 열에서 <strong>NULL이 아닌 값</strong>을 세고, <code>COUNT(DISTINCT 열)</code>은 NULL을 제외한 <strong>서로 다른 값</strong>을 셉니다.</p>
+<p>500, NULL, 500이 들어 있는 세 행이라면 결과는 차례로 <strong>3, 2, 1</strong>입니다. 행 수, 기록된 값의 수, 값의 종류 수가 서로 다른 질문이기 때문입니다.</p>
+</blockquote>
+<h2 id="section-1">주문 수와 쿠폰 금액의 수는 같을까</h2>
+<p>[가상 예시] 카페 주문 세 건을 살펴봅니다. 201번과 203번에는 쿠폰 금액 500원이 기록되어 있고, 202번의 쿠폰 금액은 NULL입니다.</p>
+<p>orders · 쿠폰 금액 단위: 원</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">order_id</th>
+<th scope="col">coupon_amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td>500</td>
+</tr>
+<tr>
+<td>202</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>203</td>
+<td>500</td>
+</tr>
+</tbody>
+</table></div>
+<p>주문은 분명 세 건입니다. 그런데 “쿠폰 금액이 기록된 주문은 몇 건인가?”라고 물으면 답은 두 건입니다. “기록된 쿠폰 금액은 몇 종류인가?”라고 물으면 500원 한 종류만 남습니다.</p>
+<p>NULL을 0원으로 읽으면 여기서부터 답이 어긋납니다. 이 표의 NULL은 <strong>쿠폰 금액 값이 없다는 표시</strong>입니다. 이 값만 보고 쿠폰을 사용하지 않았다고 단정하지도 않습니다.</p>
+<h2 id="section-2">COUNT의 괄호 안이 계산 대상을 정한다</h2>
+<p>[사실] Oracle의 COUNT 문서는 표현식을 넣으면 그 표현식이 NULL이 아닌 행을 세고, 별표를 넣으면 중복과 NULL을 포함해 모든 행을 센다고 설명합니다. DISTINCT를 넣으면 NULL이 아닌 값의 중복도 제거합니다. <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html" rel="noopener noreferrer" target="_blank">COUNT · Purpose</a></p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">표현</th>
+<th scope="col">세는 대상</th>
+<th scope="col">이 표의 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COUNT(*)</code></td>
+<td>조회 대상 행</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td><code>COUNT(coupon_amount)</code></td>
+<td>NULL이 아닌 쿠폰 금액</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>COUNT(DISTINCT coupon_amount)</code></td>
+<td>NULL이 아닌 서로 다른 금액</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>두 번 나온 500은 <code>COUNT(coupon_amount)</code>에서 두 번 셉니다. 같은 값이라는 이유로 저절로 한 번만 세지 않습니다. 중복을 제거하라는 <code>DISTINCT</code>를 써야 한 종류가 됩니다.</p>
+<p>여기서 “NULL을 제외한다”는 것은 <strong>그 COUNT의 계산에서 제외한다</strong>는 뜻입니다. 원본 주문 행을 지우거나, 같은 SELECT에 있는 <code>COUNT(*)</code>의 계산 대상에서 함께 빼는 것이 아닙니다.</p>
+<blockquote>
+<p><strong>같은 기준으로 읽어 보기</strong>
+<code>COUNT(1)</code>도 3입니다. 각 행에서 표현식 1은 NULL이 아니기 때문입니다. 이때 1은 첫 번째 열의 번호가 아니라 <strong>상수 값</strong>입니다.</p>
+</blockquote>
+<h2 id="section-3">Oracle에서 세 가지를 한 번에 비교해 보자</h2>
+<p>아래 코드는 Oracle 19c용입니다. <strong>코드 위의 ‘쿼리 복사’ 버튼</strong>을 누르면 WITH 데이터부터 마지막 세미콜론까지 한 번에 복사됩니다. Oracle SQL 실행 창에 붙여 넣고 한 문장씩 실행해 보세요.</p>
+<p><code>WITH orders</code> 부분에 세 행을 적어 두었으므로 테이블을 따로 만들거나 데이터를 INSERT할 필요가 없습니다. 이 데이터 이름은 아래 SELECT 문장 안에서 사용합니다.</p>
+<h3>실행 1 · 500, NULL, 500</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH orders (order_id, coupon_amount) AS (
+    SELECT 201, 500 FROM dual
+    UNION ALL
+    SELECT 202, CAST(NULL AS NUMBER) FROM dual
+    UNION ALL
+    SELECT 203, 500 FROM dual
+)
+SELECT COUNT(*) AS row_count,
+       COUNT(coupon_amount) AS value_count,
+       COUNT(DISTINCT coupon_amount) AS distinct_count
+FROM orders;
+</code></pre>
+<p>예상 결과 · 1행</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ROW_COUNT</th>
+<th scope="col">VALUE_COUNT</th>
+<th scope="col">DISTINCT_COUNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>2</strong></td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>위쪽 WITH가 입력을 준비하고, 아래 SELECT가 세 가지 기준으로 셉니다. 별표는 세 행 전체, 열 이름은 500이 있는 두 행, DISTINCT는 남은 500 한 종류에 대응합니다.</p>
+<h2 id="section-4">NULL 한 칸을 0으로 바꾸면 어떻게 될까</h2>
+<p>이번에는 주문 행을 더하거나 빼지 않습니다. <strong>202번의 쿠폰 금액만 NULL에서 0으로 바꿉니다.</strong> 실행하기 전에 세 결과 가운데 무엇이 달라질지 예상해 보세요.</p>
+<h3>실행 2 · 500, 0, 500</h3>
+<p>복사한 쿼리를 <a href="https://freesql.com/" rel="noopener noreferrer" target="_blank">Oracle 체험(FreeSQL)</a>에 붙여 넣어 실행하세요.</p>
+<pre><code class="language-sql">WITH orders (order_id, coupon_amount) AS (
+    SELECT 201, 500 FROM dual
+    UNION ALL
+    SELECT 202, 0 FROM dual
+    UNION ALL
+    SELECT 203, 500 FROM dual
+)
+SELECT COUNT(*) AS row_count,
+       COUNT(coupon_amount) AS value_count,
+       COUNT(DISTINCT coupon_amount) AS distinct_count
+FROM orders;
+</code></pre>
+<p>예상 결과 · 1행</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="reader-table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ROW_COUNT</th>
+<th scope="col">VALUE_COUNT</th>
+<th scope="col">DISTINCT_COUNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>3</strong></td>
+<td><strong>2</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>행은 여전히 세 개이므로 첫 결과는 3입니다. 0도 NULL이 아닌 값이어서 두 번째 결과는 3으로 늘어납니다. 서로 다른 금액은 0과 500 두 종류가 되어 세 번째 결과는 2가 됩니다.</p>
+<p>이것은 입력 값을 바꾼 별도 예제입니다. 실제 자료의 NULL을 0으로 채워도 되는지는 <strong>그 빈칸이 업무에서 무엇을 뜻하는지</strong> 확인한 뒤 결정해야 합니다.</p>
+<h2 id="section-5">숫자 옆에 무엇의 개수인지 붙여 보자</h2>
+<p>이번 표에서 2라는 결과는 “쿠폰 금액이 기록된 주문 2건”입니다. 고객을 구분하는 열은 없으므로 이를 “쿠폰을 쓴 고객 2명”이라고 바꿔 읽을 근거는 없습니다. 한 고객이 여러 번 주문할 수도 있기 때문입니다.</p>
+<p>COUNT 문제를 읽을 때는 <strong>어떤 행이 조회 대상인지 → 괄호 안의 값이 NULL인지 → DISTINCT가 있는지</strong> 순서로 확인해 보세요. 마지막에는 결과 숫자 뒤에 “주문 몇 건”, “금액 몇 종류”처럼 세는 단위를 붙입니다.</p>
+<blockquote>
+<p><strong>직접 예상해 볼 질문</strong>
+세 행의 쿠폰 금액이 모두 NULL이라면 세 COUNT는 각각 얼마일까요? 주문 행은 그대로 있다는 조건을 놓치지 마세요.</p>
+</blockquote>
+<details class="recall-answer"><summary>직접 예상해 본 뒤 풀이 확인</summary><p>확인: <strong>3, 0, 0</strong>입니다. 주문 세 행은 남아 있지만, 셀 수 있는 NULL 아닌 쿠폰 금액은 없습니다.</p></details>
+<p><a href="https://ourfuture-studio.github.io/sql/lab.html?episode=E001" rel="noopener noreferrer" target="_blank">COUNT SQL 실험실 열기</a></p>
+<p>브라우저 체험은 SQLite로 실행됩니다.</p>
+<p>다음에는 조건에 맞는 주문이 아예 없는 경우로 넘어가 보겠습니다. 조회된 행이 없을 때, COUNT 결과도 0행일까요? 아니면 0이라는 값 한 칸이 나올까요?</p>
+<h2 id="section-6">출처와 예제 기준</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html" rel="noopener noreferrer" target="_blank">Oracle Database 19c SQL Language Reference, COUNT · Purpose</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html" rel="noopener noreferrer" target="_blank">Oracle Database 19c SQL Language Reference, Nulls</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html" rel="noopener noreferrer" target="_blank">Oracle Database 19c SQL Language Reference, SELECT · subquery_factoring_clause</a></li>
+</ul>
+<p>표와 데이터는 직접 구성한 교육용 예제입니다. 예상 결과는 Oracle 19c 공식 문서와 대조했습니다. 이 글의 Oracle SQL은 문서 기준의 예상 결과입니다. 등록 실험실의 고정 입력에 대한 기존 Oracle 대조 기록은 별도로 확인합니다.</p>
+<details class="reader-environment"><summary>SQL 실행 환경과 확인 범위</summary><p>이 글의 Oracle 코드는 Oracle 문서에 맞춘 예제입니다. 같은 주제의 브라우저 실험은 SQLite로 실행됩니다.</p><p>등록된 고정 입력의 Oracle 실행 대조 기록은 2026-10-29의 133건입니다. 자유롭게 바꾼 SQL을 Oracle에서 실시간 실행한 결과로 표시하지 않습니다.</p><a href="../oracle-validation.html">고정 입력 Oracle 대조 기록 보기 →</a></details><section class="reader-next"><h2>읽은 조건을 직접 바꿔 보기</h2><p>NULL은 0원이라는 뜻이 아닙니다. NULL을 0으로 바꾸는 실험은 입력 자료를 바꾸는 별도 조건입니다.</p><div class="reader-actions"><a href="../practice.html?code=E001&amp;type=choice">관련 문제 풀기 →</a><a href="../lab.html?episode=E001">같은 표로 SQL 실행 →</a></div></section></article><aside class="reader-aside" aria-label="이 글의 순서와 학습 기록"><nav aria-label="이론 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">주문 수와 쿠폰 금액의 수는 같을까</a></li><li><a href="#section-2">COUNT의 괄호 안이 계산 대상을 정한다</a></li><li><a href="#section-3">Oracle에서 세 가지를 한 번에 비교해 보자</a></li><li><a href="#section-4">NULL 한 칸을 0으로 바꾸면 어떻게 될까</a></li><li><a href="#section-5">숫자 옆에 무엇의 개수인지 붙여 보자</a></li><li><a href="#section-6">출처와 예제 기준</a></li></ol></nav><div id="learning-record" data-code="E001"></div><p class="reader-record-note">읽음 표시와 문제 정답 기록은 따로 저장합니다.</p></aside></div></main><footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span><a href="../../bigdata/study.html">빅분기 공부방 ↗</a></div><p>직접 만든 교육용 문제와 예제입니다. 공식 기출·합격 예측 서비스가 아닙니다. 학습 기록은 현재 브라우저에 저장하며, 개념 자기점검을 객관식 정답 수에 합산하지 않습니다. SQL 실행과 변경한 예제 자료는 실험실에서 서버로 전송하지 않습니다.</p></div></footer><script type="module" src="../theory.mjs"></script><script type="module" src="../reader.mjs"></script></body></html>

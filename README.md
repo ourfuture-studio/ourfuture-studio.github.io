@@ -5,12 +5,12 @@
 - 첫 화면: https://ourfuture-studio.github.io/
 - AI 수학 체험16개·그림19개: https://ourfuture-studio.github.io/math/
 - 머신러닝과 기술 노트 31개: https://ourfuture-studio.github.io/viz/
-- SQLD 쿼리 실험 12개: https://ourfuture-studio.github.io/sql/
+- SQLD 공부방: 이론31편·객관식12문제·개념확인31개·SQL실험34개 https://ourfuture-studio.github.io/sql/
 - 웹 기초 22개 실습: https://ourfuture-studio.github.io/web/
 
 VIZ는 자체 가상 데이터를 JavaScript로 계산하는 독립 HTML입니다. `?shorts=1`로 녹화용 화면을 엽니다.
 
-SQL은 sql.js 1.13.0 / WebAssembly로 브라우저 메모리의 SQLite에서 실제 쿼리를 실행합니다. 외부 DB 서버·로그인은 필요하지 않습니다. 등록된 문제는 Oracle 19c 공식 문서와 대조한 공통 문법·고정 입력 범위입니다. Oracle 직접 실행 비교는 수행하지 않았고 자유 편집 SQL은 별도 실험으로 표시합니다. 예제는 직접 만든 교육 자료이며 sql.js의 라이선스와 저자 고지는 `sql/vendor/`에 있습니다.
+SQL은 sql.js 1.13.0 / WebAssembly로 브라우저 메모리의 SQLite에서 실제 쿼리를 실행합니다. 외부 DB 서버·로그인은 필요하지 않습니다. 등록된 문제는 Oracle 19c 공식 문서와 대조한 공통 문법·고정 입력 범위입니다. 등록된 고정 입력 133건의 Oracle 실행 대조 기록(2026-10-29)을 제공하며, 자유 편집 SQL은 별도 SQLite 실험으로 표시합니다. 예제는 직접 만든 교육 자료이며 sql.js의 라이선스와 저자 고지는 `sql/vendor/`에 있습니다.
 
 이 저장소는 원본에서 생성한 공개본입니다. 원본을 수정하고 공개본 생성기를 다시 실행해 갱신합니다. 비공개 원고·편집 링크는 포함하지 않습니다.
 
