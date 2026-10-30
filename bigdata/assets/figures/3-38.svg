@@ -1,57 +1,198 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1162" viewBox="0 0 1200 1162" role="img">
-<rect width="1200" height="1162" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">HMM은 상태의 이동과 관측의 발생을 나눈다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전이 화살표와 방출 화살표를 분리한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">초기.8</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정상</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">마모</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">낮음</text>
-<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">높음</text>
-<rect x="50" y="571.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">출발</text>
-<line x1="325.0" y1="571.3" x2="325.0" y2="656.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">연결</text>
-<line x1="600.0" y1="571.3" x2="600.0" y2="656.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">확률</text>
-<line x1="875.0" y1="571.3" x2="875.0" y2="656.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">종류</text>
-<rect x="50" y="656.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시작</text>
-<line x1="325.0" y1="656.3" x2="325.0" y2="741.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="600.0" y1="656.3" x2="600.0" y2="741.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.8</text>
-<line x1="875.0" y1="656.3" x2="875.0" y2="741.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">초기</text>
-<rect x="50" y="741.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="325.0" y1="741.3" x2="325.0" y2="826.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">낮음</text>
-<line x1="600.0" y1="741.3" x2="600.0" y2="826.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.9</text>
-<line x1="875.0" y1="741.3" x2="875.0" y2="826.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">방출</text>
-<rect x="50" y="826.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="325.0" y1="826.3" x2="325.0" y2="911.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">마모</text>
-<line x1="600.0" y1="826.3" x2="600.0" y2="911.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.1</text>
-<line x1="875.0" y1="826.3" x2="875.0" y2="911.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전이</text>
-<rect x="50" y="911.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">마모</text>
-<line x1="325.0" y1="911.3" x2="325.0" y2="996.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">높음</text>
-<line x1="600.0" y1="911.3" x2="600.0" y2="996.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.7</text>
-<line x1="875.0" y1="911.3" x2="875.0" y2="996.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">방출</text>
-<text x="50" y="1057.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상→마모는 전이. 정상→낮음과 마모→높음은 관측 방출이다.</text>
-<text x="50" y="1133.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="763.2pt" viewBox="0 0 864 763.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-30T23:51:29.313631</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 763.2 
+L 864 763.2 
+L 864 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 53.03232 234.241344 
+L 810.96768 234.241344 
+Q 826.69248 234.241344 826.69248 224.167104 
+L 826.69248 171.781056 
+Q 826.69248 161.706816 810.96768 161.706816 
+L 53.03232 161.706816 
+Q 37.30752 161.706816 37.30752 171.781056 
+L 37.30752 224.167104 
+Q 37.30752 234.241344 53.03232 234.241344 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 251.1648 422.12592 
+C 273.058695 422.12592 294.05882 416.553121 309.540142 406.634868 
+C 325.021463 396.716615 333.72 383.262688 333.72 369.23616 
+C 333.72 355.209632 325.021463 341.755705 309.540142 331.837452 
+C 294.05882 321.919199 273.058695 316.3464 251.1648 316.3464 
+C 229.270905 316.3464 208.27078 321.919199 192.789458 331.837452 
+C 177.308137 341.755705 168.6096 355.209632 168.6096 369.23616 
+C 168.6096 383.262688 177.308137 396.716615 192.789458 406.634868 
+C 208.27078 416.553121 229.270905 422.12592 251.1648 422.12592 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 636.4224 422.12592 
+C 658.316295 422.12592 679.31642 416.553121 694.797742 406.634868 
+C 710.279063 396.716615 718.9776 383.262688 718.9776 369.23616 
+C 718.9776 355.209632 710.279063 341.755705 694.797742 331.837452 
+C 679.31642 321.919199 658.316295 316.3464 636.4224 316.3464 
+C 614.528505 316.3464 593.52838 321.919199 578.047058 331.837452 
+C 562.565737 341.755705 553.8672 355.209632 553.8672 369.23616 
+C 553.8672 383.262688 562.565737 396.716615 578.047058 406.634868 
+C 593.52838 416.553121 614.528505 422.12592 636.4224 422.12592 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 95.919591 369.23616 
+Q 127.334313 369.23616 156.065753 369.23616 
+" clip-path="url(#pf826e4051a)" style="fill: none; stroke: #586773; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 147.265753 364.83616 
+L 156.065753 369.23616 
+L 147.265753 373.63616 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #586773; stroke: #586773; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 339.649792 369.23616 
+Q 443.793382 369.23616 545.25369 369.23616 
+" clip-path="url(#pf826e4051a)" style="fill: none; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 536.45369 364.83616 
+L 545.25369 369.23616 
+L 536.45369 373.63616 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #2c6a61; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 178.83072 561.654144 
+L 323.49888 561.654144 
+Q 339.22368 561.654144 339.22368 551.579904 
+L 339.22368 509.268096 
+Q 339.22368 499.193856 323.49888 499.193856 
+L 178.83072 499.193856 
+Q 163.10592 499.193856 163.10592 509.268096 
+L 163.10592 551.579904 
+Q 163.10592 561.654144 178.83072 561.654144 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 564.08832 561.654144 
+L 708.75648 561.654144 
+Q 724.48128 561.654144 724.48128 551.579904 
+L 724.48128 509.268096 
+Q 724.48128 499.193856 708.75648 499.193856 
+L 564.08832 499.193856 
+Q 548.36352 499.193856 548.36352 509.268096 
+L 548.36352 551.579904 
+Q 548.36352 561.654144 564.08832 561.654144 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 251.1648 426.646077 
+Q 251.1648 461.165012 251.1648 493.000666 
+" clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 255.5648 484.200666 
+L 251.1648 493.000666 
+L 246.7648 484.200666 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 636.4224 426.646077 
+Q 636.4224 461.165012 636.4224 493.000666 
+" clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 640.8224 484.200666 
+L 636.4224 493.000666 
+L 632.0224 484.200666 
+z
+" clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="432" y="203.97701" transform="rotate(-0 432 203.97701)">정상 출발 전이행: 정상→정상 0.9 + 정상→마모 0.1 = 1</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #2c6a61" x="211.8528" y="278.568" transform="rotate(-0 211.8528 278.568)">실선: 상태 전이</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #95364e" x="604.9728" y="278.568" transform="rotate(-0 604.9728 278.568)">점선: 관측 방출</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(223.319409 365.432449)">시점 1</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(221.245738 385.463347)">정상 N</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(608.577009 365.432449)">시점 2</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(604.489041 385.463347)">마모 W</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(55.1731 329.575995)">초기 정상</text>
+    <text style="font-size: 16px; font-family: 'Malgun Gothic'; fill: #202944" transform="translate(60.6106 346.56912)">확률 0.8</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #2c6a61" x="443.7936" y="347.497021" transform="rotate(-0 443.7936 347.497021)">전이 P(W|N)=0.1</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="251.1648" y="536.379117" transform="rotate(-0 251.1648 536.379117)">관측: 낮음</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="636.4224" y="536.379117" transform="rotate(-0 636.4224 536.379117)">관측: 높음</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #95364e" x="266.8896" y="469.97856" transform="rotate(-0 266.8896 469.97856)">방출 0.9</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #95364e" x="652.1472" y="469.97856" transform="rotate(-0 652.1472 469.97856)">방출 0.7</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="432" y="611.01792" transform="rotate(-0 432 611.01792)">지정 경로·관측의 결합확률 = 0.8 × 0.9 × 0.1 × 0.7 = 0.0504</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 25px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #202944" x="47.52" y="56.047125" transform="rotate(-0 47.52 56.047125)">HMM: 상태 전이와 관측 방출을 나눈다</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 16px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="94.011" transform="rotate(-0 47.52 94.011)">중앙은 지정 경로 N→W와 관측 낮음→높음만 표시 · 다른 경로는 합산하지 않음</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #586773" x="47.52" y="744.12" transform="rotate(-0 47.52 744.12)">직접 만든 교육용 예제 · 그림은 표시된 고정 조건을 보여 줍니다.</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #202944" x="60.48" y="694.512" transform="rotate(-0 60.48 694.512)">변형: 정상→마모 0.2이면 정상→정상 0.8도 함께 조정 (행합 1)</text>
+  </g>
+  <g id="text_17">
+   <text style="font-size: 17px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #2c6a61" x="60.48" y="721.224" transform="rotate(-0 60.48 721.224)">이 경로의 결합확률은 0.8 × 0.9 × 0.2 × 0.7 = 0.1008</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf826e4051a">
+   <rect x="38.88" y="152.64" width="786.24" height="503.712"/>
+  </clipPath>
+ </defs>
 </svg>

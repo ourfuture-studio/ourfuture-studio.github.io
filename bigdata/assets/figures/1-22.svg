@@ -1,16 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
-<rect width="1200" height="900" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">k-익명성·l-다양성·t-근접성</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">집단 크기·민감값 종류 수·전체와의 비율 차이를 한 표에서 분리한다.</text>
-<text x="55" y="224.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20대 A</text>
-<rect x="320" y="198.3" width="2" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
-<text x="990" y="222.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
-<text x="55" y="314.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">30대 B</text>
-<rect x="320" y="288.3" width="650.0" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
-<text x="990" y="312.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
-<text x="55" y="404.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전체</text>
-<rect x="320" y="378.3" width="325.0" height="44" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
-<text x="990" y="402.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.25</text>
-<text x="50" y="532.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원 표는 집단 크기 2·2, 질환 종류 1·2, 천식 비율은 집단 0·0.5와 전체 0.25다.</text>
-<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1240" viewBox="0 0 1200 1240" role="img">
+<rect width="1200" height="1240" fill="#fbfaf6"/>
+<text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">k-익명성·l-다양성·t-근접성</text>
+<text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원 표의 집단 크기·질환 종류·민감속성 분포를 서로 다른 조건으로 확인합니다.</text>
+<rect x="50" y="220" width="350" height="100" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="66" y="271.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">동질집단</text>
+<rect x="400" y="220" width="180" height="100" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="416" y="271.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">크기</text>
+<rect x="580" y="220" width="270" height="100" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="596" y="271.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">질환 종류</text>
+<rect x="850" y="220" width="300" height="100" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<text x="866" y="271.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">천식 비율</text>
+<rect x="50" y="320" width="350" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="66" y="371.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20대·A</text>
+<rect x="400" y="320" width="180" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="416" y="371.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2명</text>
+<rect x="580" y="320" width="270" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="596" y="371.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">감기 1종</text>
+<rect x="850" y="320" width="300" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="866" y="371.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0/2 = 0</text>
+<rect x="50" y="420" width="350" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="66" y="471.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">30대·B</text>
+<rect x="400" y="420" width="180" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="416" y="471.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2명</text>
+<rect x="580" y="420" width="270" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="596" y="471.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">감기·천식 2종</text>
+<rect x="850" y="420" width="300" height="100" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="866" y="471.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1/2 = 0.5</text>
+<text x="65" y="593.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">집단의 천식 비율</text>
+<text x="65" y="654.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20대·A</text>
+<line x1="340" y1="650" x2="990" y2="650" stroke="#d4dcd1" stroke-width="2"/>
+<circle cx="340" cy="650" r="5" fill="#2e6b60"/>
+<text x="1040" y="652.2" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<text x="65" y="732.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">30대·B</text>
+<line x1="340" y1="728" x2="990" y2="728" stroke="#d4dcd1" stroke-width="2"/>
+<rect x="340" y="711" width="325.0" height="34" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="1040" y="730.2" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<text x="65" y="810.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전체</text>
+<line x1="340" y1="806" x2="990" y2="806" stroke="#d4dcd1" stroke-width="2"/>
+<rect x="340" y="789" width="162.5" height="34" rx="2" fill="#2e6b60" stroke="#dcded7" stroke-width="2"/>
+<text x="1040" y="808.2" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.25</text>
+<text x="325" y="877.3" fill="#1b2340" font-size="23" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<text x="487.5" y="877.3" fill="#1b2340" font-size="23" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.25</text>
+<text x="650.0" y="877.3" fill="#1b2340" font-size="23" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<text x="812.5" y="877.3" fill="#1b2340" font-size="23" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.75</text>
+<text x="975" y="877.3" fill="#1b2340" font-size="23" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<text x="65" y="926.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">두 질환 사이 거리1: 각 집단과 전체의 거리 = |p - 0.25| = 0.25</text>
+<text x="65" y="986.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">최소 집단 크기2 → k=2 충족  ·  최소 질환 종류1 → distinct l=2 미충족</text>
+<text x="65" y="1030.2" fill="#8c3444" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">최대 거리0.25 &gt; t=0.20 → t 미충족</text>
+<text x="50" y="1131.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원 표는 집단 크기 2·2, 질환 종류 1·2, 천식 비율은 집단 0·0.5와 전체 0.25다.</text>
+<text x="50" y="1214.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
 </svg>

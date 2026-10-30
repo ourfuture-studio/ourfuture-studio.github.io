@@ -1,56 +1,168 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1086" viewBox="0 0 1200 1086" role="img">
-<rect width="1200" height="1086" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정밀도와 재현율은 같은 분자를 다른 집합으로 나눈다</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">분자 TP와 서로 다른 두 분모 영역을 같은 혼동행렬에서 표시한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">실제 스팸</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">실제 정상</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">예측 스팸</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">예측 정상</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="325.0" y1="451.3" x2="325.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">actual</text>
-<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">predicted</text>
-<line x1="875.0" y1="451.3" x2="875.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">TP</text>
-<line x1="325.0" y1="536.3" x2="325.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">스팸</text>
-<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">스팸</text>
-<line x1="875.0" y1="536.3" x2="875.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
-<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">FN</text>
-<line x1="325.0" y1="621.3" x2="325.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">스팸</text>
-<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="875.0" y1="621.3" x2="875.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
-<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">FP</text>
-<line x1="325.0" y1="706.3" x2="325.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">스팸</text>
-<line x1="875.0" y1="706.3" x2="875.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
-<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">TN</text>
-<line x1="325.0" y1="791.3" x2="325.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="337.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="600.0" y1="791.3" x2="600.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정상</text>
-<line x1="875.0" y1="791.3" x2="875.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
-<text x="887.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
-<text x="50" y="937.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정밀도는 TP3+FP1의 예측 양성4통, 재현율은 TP3+FN2의 실제 양성5통이 분모다</text>
-<text x="50" y="980.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">.</text>
-<text x="50" y="1057.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 552 
+L 720 552 
+L 720 0 
+L 0 0 
+z
+" style="fill: #fbfaf7"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 136.92 402.96 
+L 374.28 402.96 
+L 374.28 165.6 
+L 136.92 165.6 
+z
+" style="fill: #fbfaf7"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 136.92 165.6 
+L 255.6 165.6 
+L 255.6 284.28 
+L 136.92 284.28 
+z
+" clip-path="url(#p620f9609b5)" style="fill: #cce1d7; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 255.6 165.6 
+L 374.28 165.6 
+L 374.28 284.28 
+L 255.6 284.28 
+z
+" clip-path="url(#p620f9609b5)" style="fill: #e7efeb; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 136.92 284.28 
+L 255.6 284.28 
+L 255.6 402.96 
+L 136.92 402.96 
+z
+" clip-path="url(#p620f9609b5)" style="fill: #e7efeb; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 255.6 284.28 
+L 374.28 284.28 
+L 374.28 402.96 
+L 255.6 402.96 
+z
+" clip-path="url(#p620f9609b5)" style="fill: #e7efeb; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 139.887 168.567 
+L 252.633 168.567 
+L 252.633 399.993 
+L 139.887 399.993 
+L 139.887 168.567 
+z
+" clip-path="url(#p620f9609b5)" style="fill: none; stroke: #2e6f66; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 142.2606 170.9406 
+L 368.9394 170.9406 
+L 368.9394 278.9394 
+L 142.2606 278.9394 
+L 142.2606 170.9406 
+z
+" clip-path="url(#p620f9609b5)" style="fill: none; stroke-dasharray: 11.1,4.8; stroke-dashoffset: 0; stroke: #a12d48; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(170.150625 140.546563)">예측 스팸</text>
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(180.60375 153.197656)">(양성)</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(288.830625 140.546563)">예측 정상</text>
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(299.28375 153.197656)">(음성)</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(74.70125 223.738828)">실제 스팸</text>
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(95.6075 236.389922)">(양성)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(74.70125 342.418828)">실제 정상</text>
+      <text style="font-size: 12px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(95.6075 355.069922)">(음성)</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(184.886719 220.839043)">TP</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(181.254453 240.433535)">3통</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(302.379219 220.839043)">FN</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(299.934453 240.433535)">2통</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(185.438906 339.519043)">FP</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(181.254453 359.113535)">1통</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(301.827031 339.519043)">TN</text>
+    <text style="font-weight: 700; font-size: 19px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(299.934453 359.113535)">4통</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 21px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="36" y="43.911797" transform="rotate(-0 36 43.911797)">정밀도와 재현율은 같은 분자를 다른 집합으로 나눈다</text>
+  </g>
+  <g id="text_10">
+   <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="87.6225" transform="rotate(-0 36 87.6225)">양성은 스팸 · 실제값은 행, 예측값은 열 · 같은 메일 10통</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 9px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #5b626e" x="36" y="532.68" transform="rotate(-0 36 532.68)">ourfuture studio · 4-04 · 직접 만든 교육용 예제</text>
+  </g>
+  <g id="text_12">
+   <text style="font-weight: 700; font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #2e6f66" x="468" y="198.72" transform="rotate(-0 468 198.72)">정밀도: 예측 양성 열</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 14px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="468" y="237.36" transform="rotate(-0 468 237.36)">3 ÷ (3+1) = 75%</text>
+  </g>
+  <g id="text_14">
+   <text style="font-weight: 700; font-size: 15px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #a12d48" x="468" y="303.6" transform="rotate(-0 468 303.6)">재현율: 실제 양성 행</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 14px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="468" y="342.24" transform="rotate(-0 468 342.24)">3 ÷ (3+2) = 60%</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="36" y="486.704844" transform="rotate(-0 36 486.704844)">정밀도의 분모는 예측 양성 4통, 재현율의 분모는 실제 양성 5통이다.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p620f9609b5">
+   <rect x="136.92" y="165.6" width="237.36" height="237.36"/>
+  </clipPath>
+ </defs>
 </svg>

@@ -14,7 +14,7 @@
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-38">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-38.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
 <div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>은닉 마르코프 모형 HMM은 직접 관찰되지 않는 상태열이 있고 각 상태에서 관측값이 확률적으로 발생한다고 놓는다. 기본 1차 모형은 다음 상태의 분포가 현재 상태에 의존하는 마르코프 구조를 사용한다. 상태를 알고 있을 때 그 시점 관측의 분포를 정하는 것이 방출 모형이다.</p>
-<p>초기분포 π는 첫 상태, 전이 A는 현재 상태에서 다음 상태로 갈 확률, 방출은 상태가 주어졌을 때 센서 관측이 나올 확률이다. P(관측|상태)를 P(상태|관측)와 바꾸지 않는다. 관측 후 상태를 추론하려면 초기·전이·방출과 관측을 함께 사용해야 한다.</p>
+<p>초기분포 π는 첫 상태, 전이 A는 현재 상태에서 다음 상태로 갈 확률, 방출은 상태가 주어졌을 때 센서 관측이 나올 확률이다. P(관측|상태)를 P(상태|관측)와 바꾸지 않는다. 관측 후 상태를 추론하려면 초기·전이·방출과 관측을 함께 사용해야 한다. 같은 출발 상태에서 가능한 다음 상태로 향하는 전이확률의 합은1이다. 정상·마모 두 상태라면 정상→마모가p일 때 정상→정상은1−p다. 방출확률도 한 상태에서 가능한 관측 전체에 대해 합이1이어야 한다.</p>
 <p>주어진 모형에서 관측열 가능도를 구하는 문제, 가장 그럴듯한 상태 경로를 찾는 문제, 모형 매개변수를 학습하는 문제도 서로 다르다. 대표적으로 forward 계산과 Viterbi 경로 탐색을 구별한다. 아래는 두 시점의 한 경로가 관측과 함께 나타날 확률이며 모든 경로를 합한 관측열 확률이 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>숨은 상태는 정상 N·마모 W다. P(z₁=N)=0.8, N→W=0.1, 정상에서 낮음=0.9, 마모에서 높음=0.7이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
@@ -42,7 +42,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>지정 경로 N,W와 관측 낮음,높음의 결합확률은 0.8×0.9×0.1×0.7=0.0504다. 관측열만의 확률은 다른 상태 경로의 기여도 더해야 한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-38.png" alt="자체 예제의 전이 화살표와 방출 화살표를 분리한다.. 정상→마모는 전이. 정상→낮음과 마모→높음은 관측 방출이다." width="1200" height="1162" loading="lazy" decoding="async"><figcaption>정상→마모는 전이. 정상→낮음과 마모→높음은 관측 방출이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>장비의 내부 상태는 정상·마모, 센서는 낮음·높음이다.</p>
+<p>지정 경로 N,W와 관측 낮음,높음의 결합확률은 0.8×0.9×0.1×0.7=0.0504다. 관측열만의 확률은 다른 상태 경로의 기여도 더해야 한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-38.png" alt="HMM의 지정 경로 정상 N→마모 W를 실선 전이확률 0.1로, 낮음·높음 관측을 점선 방출확률 0.9·0.7로 표시한다. 초기 정상확률 0.8을 곱한 결합확률은 0.0504다. 정상 출발 전이행의 합 1과 변형 0.8·0.2도 표시한다." width="1200" height="1060" loading="lazy" decoding="async"><figcaption>실선은 상태 전이, 점선은 관측 방출이다. 지정 경로 N,W와 관측 낮음,높음의 결합확률은 0.8×0.9×0.1×0.7=0.0504다. 전이확률을 0.2로 바꾸면 정상→정상도 0.8로 조정해 행의 합 1을 유지하며, 경로 결합확률은 0.1008이 된다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>장비의 내부 상태는 정상·마모, 센서는 낮음·높음이다.</p>
 <p><strong>전이확률이 설명하는 것은?</strong></p>
 <ul>
 <li>1. 상태가 주어졌을 때 센서값의 확률</li>
@@ -55,12 +55,12 @@
 <li>1번: 방출확률의 역할이다.</li>
 <li>3번: 초기분포의 역할이다.</li>
 <li>4번: 관측을 조건으로 한 사후 상태 추론과 다르다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>예제에서 정상→마모 전이확률만 0.1에서 0.2로 바꾸고 초기·방출확률은 유지한다. 지정 경로 N,W와 관측 낮음,높음의 결합확률은?</p>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>정상→마모 전이확률을0.1에서0.2로 바꾸고 정상→정상도0.9에서0.8로 조정해 두 확률의 합1을 유지한다. 초기·방출확률은 그대로다. 지정 경로 N,W와 관측 낮음,높음의 결합확률은?</p>
 <p><strong>풀이:</strong> 0.1008.</p>
 <p>0.8×0.9×0.2×0.7=0.1008이다. 지정 경로의 전이가 두 배이므로 이 경로의 결합확률도 두 배다. 다른 경로를 합산하지 않았으므로 관측열 전체 가능도가 아니다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>전이는 상태에서 상태, 방출은 상태에서 관측.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
 <li><a href="https://hmmlearn.readthedocs.io/en/latest/tutorial.html" rel="noopener noreferrer" target="_blank">hmmlearn Tutorial</a> — 도입의 π·전이·방출과 세 기본 추론 문제. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-38">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-38.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>1차 HMM의 지정 경로 N,W와 관측 낮음,높음만 다룬다. 관측열 가능도·상태 사후확률·Viterbi 경로를 계산하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-37.html"><small>이전 개념 · 3-37</small>오토인코더는 입력을 복원하는 표현을 배운다</a><span aria-hidden="true"></span></nav></article>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-38">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-38.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>1차 HMM의 지정 경로 N,W와 관측 낮음,높음만 다룬다. 관측열 가능도·상태 사후확률·Viterbi 경로를 계산하지 않는다. 전이 입력p를 바꾸면 정상→정상은1−p로 함께 조정한다고 가정한다. 이 지정 경로의 곱에는 정상→마모p만 들어가며, 마모 출발 전이행의 수치는 이 계산에 필요하지 않다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-37.html"><small>이전 개념 · 3-37</small>오토인코더는 입력을 복원하는 표현을 배운다</a><span aria-hidden="true"></span></nav></article>
 <aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
 <div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
 <p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>

@@ -13,8 +13,8 @@
 <div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-14 · 이론 읽기</span><h1>서포트벡터는 경계에 가까운 제약을 만든다</h1><p class="theory-lead">하드 마진의 간단한 선형 예제로 경계와 두 지지선을 분리한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-14">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-14.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>선형 이진 SVM의 결정 경계는 wᵀx+b=0이다. 분리 가능한 하드 마진 문제에서는 모든 표본이 yᵢ(wᵀxᵢ+b)≥1을 만족하도록 두고 ½||w||²를 최소화한다. 기준을 ±1로 정규화했을 때 두 지지 초평면 사이 폭은 2/||w||다. w와 b를 함께 임의 배수로 바꾼 식에 이 폭을 무조건 적용하지 않는다.</p>
-<p>하드 마진에서 경계에 가장 가까워 제약이 등호가 되는 점이 서포트벡터다. 먼 점의 수가 많다는 사실만으로 경계가 그쪽으로 이동하는 것은 아니다. 소프트 마진에서는 마진 안쪽이나 오분류된 점도 서포트벡터가 될 수 있으므로 항상 정확히 지지선 위에만 있다고 일반화하지 않는다.</p>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>선형 이진 SVM에서 x는 입력 벡터, w는 각 입력에 곱하는 계수 벡터, b는 절편이다. wᵀx는 같은 위치 성분끼리 곱해 더한 내적이고, yᵢ는 음성−1·양성1 레이블이다. 결정 경계는 wᵀx+b=0이다. 분리 가능한 하드 마진 문제에서는 모든 표본이 yᵢ(wᵀxᵢ+b)≥1을 만족하도록 두고 ½||w||²를 최소화한다. ||w||는 w의 유클리드 길이다. 기준을 ±1로 정규화했을 때 두 지지 초평면 사이 폭은 2/||w||다. w와 b를 함께 임의 배수로 바꾼 식에 이 폭을 무조건 적용하지 않는다.</p>
+<p>이 분리 가능한 하드 마진 예제에서 해를 결정하는 서포트벡터는 양쪽 지지선 위에서 등호 제약을 만든다. 먼 점의 수가 많다는 사실만으로 경계가 그쪽으로 이동하는 것은 아니다. 소프트 마진에서는 마진 안쪽이나 오분류된 점도 서포트벡터가 될 수 있으므로 항상 정확히 지지선 위에만 있다고 일반화하지 않는다.</p>
 <p>한 점에서 결정 경계까지의 기하 거리는 |wᵀx+b|/||w||다. 출력 점수 자체를 거리나 확률로 부르는 것은 조건을 빠뜨린다. 입력 단위와 스케일도 거리에 영향을 준다. 여기서는 1차원, 분리 가능, 하드 마진이라는 조건을 고정해 어떤 점이 경계를 제한하는지 확인한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>음성 좌표가 −3·−1, 양성이 1·3이다. 최적 하드 마진 경계는 x=0, 정규화 표현은 w=1,b=0이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>

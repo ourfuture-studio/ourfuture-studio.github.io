@@ -1,29 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="957" viewBox="0 0 1200 957" role="img">
-<rect width="1200" height="957" fill="#fbfaf6"/>
-<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">한 모형의 계획과 여러 과제의 로드맵</text>
-<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">여러 과제의 의존 관계와 한 과제 내부 설계의 경계를 보여준다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A 코드 통일</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B 수요예측</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
-<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C 발주 적용</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A→B</text>
-<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">통합 코드 필요</text>
-<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B→C</text>
-<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">검증 결과 필요</text>
-<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
-<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B 내부</text>
-<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
-<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">목표·입력·평가·알고리즘 후보</text>
-<text x="50" y="852.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A 코드 통일 → B 수요예측·검증 → C 발주 적용. B의 알고리즘은 내부 설계다.</text>
-<text x="50" y="928.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
+<rect width="1200" height="960" fill="#fbfaf6"/>
+<text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">한 모형의 계획과 여러 과제의 로드맵</text>
+<text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">과제 사이의 의존 관계와, 한 과제 안의 상세 설계는 다릅니다.</text>
+<rect x="50" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="70" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A  코드 통일</text>
+<text x="70" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">담당 부서 합의</text>
+<rect x="450" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="470" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B  수요예측</text>
+<text x="470" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A의 통합 코드 필요</text>
+<rect x="850" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<text x="870" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C  발주 적용</text>
+<text x="870" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B의 검증 결과 필요</text>
+<line x1="350" y1="320" x2="450" y2="320" stroke="#2e6b60" stroke-width="5"/>
+<line x1="450" y1="320" x2="434.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5"/>
+<line x1="450" y1="320" x2="434.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5"/>
+<line x1="750" y1="320" x2="850" y2="320" stroke="#2e6b60" stroke-width="5"/>
+<line x1="850" y1="320" x2="834.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5"/>
+<line x1="850" y1="320" x2="834.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5"/>
+<rect x="280" y="550" width="640" height="175" rx="14" fill="#f1f3f8" stroke="#dcded7" stroke-width="2"/>
+<text x="300" y="597.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B 안의 상세 설계</text>
+<text x="300" y="645.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력·목표·손실함수·알고리즘 후보</text>
+<text x="300" y="681.5" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">과제 B 내부의 선택이며 A→B→C를 대신하지 않음</text>
+<line x1="600" y1="400" x2="600" y2="550" stroke="#d4dcd1" stroke-width="3"/>
+<text x="50" y="851.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A 코드 통일 → B 수요예측·검증 → C 발주 적용. B의 알고리즘은 내부 설계다.</text>
+<text x="50" y="934.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
 </svg>

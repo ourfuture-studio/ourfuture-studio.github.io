@@ -14,7 +14,7 @@
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-35">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-35.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
 <div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>이산확률변수의 기댓값은 각 값에 그 값이 나올 확률을 곱해 더한 것이다. 확률들이 0 이상이고 합이 1인지 먼저 확인한다. 가능한 값이 0과 2라고 해서 평균을 항상 1로 계산하면 안 된다. 2가 더 자주 발생하는 분포에서는 가중된 중심도 2 쪽으로 이동한다.</p>
-<p>분산은 E[(X−μ)²]로 정의하며 E(X²)−[E(X)]²로도 계산할 수 있다. X가 0일 확률 0.25, 2일 확률 0.75라면 E(X)=1.5, E(X²)=3이므로 분산은 3−2.25=0.75다. 기댓값과 분산의 단위가 각각 원래 단위와 제곱 단위라는 점도 구분한다.</p>
+<p>분산은 μ=E(X), 즉 기댓값을 중심으로 한 제곱 거리의 평균 E[(X−μ)²]다. X가 0일 확률 0.25, 2일 확률 0.75라면 μ=1.5이고, 제곱 거리를 같은 확률로 가중해 0.25×(0−1.5)²+0.75×(2−1.5)²=0.75를 얻는다. 지름길 공식 E(X²)−[E(X)]²로도 E(X²)=0²×0.25+2²×0.75=3이므로 3−1.5²=0.75다. 기댓값과 분산의 단위는 각각 원래 단위와 제곱 단위다.</p>
 <p>모든 값에 같은 상수를 더하면 평균은 그만큼 이동하지만 값들 사이의 편차는 변하지 않아 분산은 유지된다. 반면 값을 상수배하면 분산은 그 상수의 제곱배가 된다. 이 규칙은 계산을 검산하는 데 유용하다. 기댓값은 가능한 관측값 중 하나일 필요가 없고, 한 번의 시행에서 반드시 나오는 값도 아니다.</p>
 <p>확률이 같다는 것은 단순평균과 기댓값이 같아지는 충분조건이며 필요조건은 아니다. 자체 반례로 값0·1·2에 확률0.25·0.5·0.25를 주면 단순평균도1이고 기댓값도1이다. 반면 아래처럼 값0·2에 서로 다른 확률을 주면 기댓값1.5와 단순평균1이 달라진다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>분포를 직접 지정한 자체 확률변수다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
@@ -41,7 +41,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>열을 더하면 확률 합은 1, 기댓값은 1.5, 제곱의 기댓값은 3이다. 1.5가 실제 가능한 값 0·2 사이에 있어도 문제가 없다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-35.png" alt="자체 예제의 확률과 선형 변환의 배율·위치를 바꾸어 기댓값과 분산을 계산한다.. X=0·2의 확률이0.25·0.75이면 E(X)=1.5다. 기댓값이 실제 가능한 관측값일 필요는 없다." width="1200" height="901" loading="lazy" decoding="async"><figcaption>X=0·2의 확률이0.25·0.75이면 E(X)=1.5다. 기댓값이 실제 가능한 관측값일 필요는 없다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>P(X=0)=0.25, P(X=2)=0.75다.</p>
+<p>열을 더하면 확률 합은 1, 기댓값은 1.5, 제곱의 기댓값은 3이다. 1.5가 실제 가능한 값 0·2 사이에 있어도 문제가 없다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-35.png" alt="X=0/2에 확률질량.25/.75를 분리된 스템으로 표시하고, 별도 수직선에 기댓값1.5의 위치를 표시한다. 두 확률점을 선으로 잇지 않아 중간값이 가능한 관측으로 보이지 않는다." width="1200" height="950" loading="lazy" decoding="async"><figcaption>P(X=0)=0.25, P(X=2)=0.75이면E(X)=0×0.25+2×0.75=1.5입니다. E(X²)=3, 분산은3-1.5²=0.75입니다. 기댓값 위치와 확률질량을 구분합니다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>P(X=0)=0.25, P(X=2)=0.75다.</p>
 <p><strong>E(X)와 Var(X)는?</strong></p>
 <ul>
 <li>1. 1과 1</li>

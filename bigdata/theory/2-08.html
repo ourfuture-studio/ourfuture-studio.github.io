@@ -13,7 +13,7 @@
 <div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-08 · 이론 읽기</span><h1>이상값의 표시 기준을 바꾸면 선택되는 점도 달라진다</h1><p class="theory-lead">상자그림 울타리 밖의 점과 표준점수가 큰 점은 같은 기준으로 고른 것이 아니다. 계산한 기준과 비교한 집단을 밝힌 뒤 그 표시를 해석한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-08">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-08.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>상자그림의 한 가지 관례는 Q1−1.5×IQR보다 작거나 Q3+1.5×IQR보다 큰 관측값을 잠재적 이상값으로 표시하는 것이다. IQR은 Q3−Q1이며 중간 절반의 산포를 기준으로 한다. 울타리는 관측값 그 자체가 아니라 표시를 결정하는 경계이고, 수염은 보통 울타리 안에서 가장 먼 관측값까지 이어진다.</p>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>Q1은 제1사분위수인 25백분위수, Q3는 제3사분위수인 75백분위수다. 자료를 크기순으로 놓았을 때 아래쪽 약 25%와 75%의 위치를 나타내며, 둘의 차이 IQR=Q3−Q1은 가운데 절반의 퍼짐을 요약한다. 상자그림의 한 가지 관례는 Q1−1.5×IQR보다 작거나 Q3+1.5×IQR보다 큰 관측값을 잠재적 이상값으로 표시하는 것이다. 울타리는 관측값 그 자체가 아니라 표시를 결정하는 경계이고, 수염은 보통 울타리 안에서 가장 먼 관측값까지 이어진다.</p>
 <p>표준점수는 평균에서 떨어진 거리를 표준편차로 나눈다. 평균·표준편차는 큰 값의 영향을 받을 수 있어 IQR 기준과 다른 점을 고를 수 있다. 여러 변수의 조합에서는 각 열만 보면 평범한 점도 변수 사이 관계에서 드물 수 있다. 단변량 규칙을 통과했다는 사실은 다변량 이상이 없다는 뜻이 아니다.</p>
 <p>어떤 규칙을 쓰더라도 표시 결과와 오류 판정은 구분한다. 분포의 꼬리가 원래 긴 자료에 정규분포를 전제로 한 검사를 기계적으로 적용하면 실제 관측을 과도하게 의심할 수 있다. 아래 예제는 주어진 사분위수와 1.5×IQR 관례만의 계산이다. 다른 프로그램의 기본 사분위수·경계 규칙과 결과를 비교하려면 그 정의를 맞춰야 한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>Q1=10, Q3=20을 계산이 끝난 요약값으로 주었다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
@@ -34,7 +34,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>40은 35보다 크므로 이 관례에서는 후보로 표시된다. 오류인지에 관한 자료는 주어지지 않았다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-08.png" alt="자체 예제의 관측값과 IQR 배수를 바꿔 엄격한 울타리의 경계 포함 여부를 계산한다.. Q1=10, Q3=20에서 위 울타리는35다. 40은 밖이고35는 엄격한 바깥이 아니다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>Q1=10, Q3=20에서 위 울타리는35다. 40은 밖이고35는 엄격한 바깥이 아니다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>Q1=10, Q3=20. 1.5×IQR 울타리를 엄격히 벗어난 값만 후보로 표시한다. 관측값은 40이다.</p>
+<p>40은 35보다 크므로 이 관례에서는 후보로 표시된다. 오류인지에 관한 자료는 주어지지 않았다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-08.png" alt="원자료의 한 수축에서 Q1=10, Q3=20, 아래울타리 -5, 위울타리35와 관측값35·40을 비교한다. 35는 경계이며40만 엄격한 바깥 후보다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>IQR=20-10=10, 울타리는 -5와 35입니다. x=40은 위울타리 밖의 후보지만 입력 오류로 확정되지 않습니다. x=35는 엄격한 바깥이 아닙니다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>Q1=10, Q3=20. 1.5×IQR 울타리를 엄격히 벗어난 값만 후보로 표시한다. 관측값은 40이다.</p>
 <p><strong>맞는 판단은?</strong></p>
 <ul>
 <li>1. IQR은 30이다</li>

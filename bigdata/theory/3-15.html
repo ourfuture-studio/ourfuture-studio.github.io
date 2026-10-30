@@ -14,7 +14,7 @@
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-15">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-15.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
 <div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>커널은 K(x,z)=φ(x)ᵀφ(z)처럼 변환된 특징 공간의 내적을 계산한다. 좌표를 모두 직접 만들지 않고도 그 공간에서 선형 경계를 학습하는 효과를 얻을 수 있다. 원래 입력 공간에서는 경계가 비선형일 수 있다. 임의의 유사도 함수가 모두 유효한 커널이 되는 것은 아니다.</p>
-<p>소프트 마진 SVM의 통상 목적식은 ½||w||²+CΣξ다. C는 마진 위반 비용을 얼마나 중시하는지 조절한다. C를 키우면 같은 위반량에 대한 비용이 커지지만 모든 자료에서 훈련 오분류가 정확히 몇 개 줄어든다고 단정하지 않는다. RBF 커널의 gamma는 국소적 영향 범위와 관련된 별도 설정이다.</p>
+<p>소프트 마진 SVM의 통상 목적식은 ½||w||²+CΣξ다. 여기서 ξᵢ≥0은 각 표본의 마진 제약을 얼마나 위반하는지 나타내는 여유변수다. 최소로 잡으면 ξᵢ=max(0,1−yᵢf(xᵢ))이고, f(x)는 분류 점수다. 예를 들어 yᵢf(xᵢ)=0.5면 부호는 맞게 분류했어도 ξᵢ=0.5의 마진 위반이 남는다. 따라서 Σξ는 오분류 표본 개수 자체가 아니다. C는 이 위반 비용의 비중을 조절한다. C를 키우면 같은 위반량의 비용이 커지지만 모든 자료에서 훈련 오분류가 정확히 몇 개 줄어든다고 단정하지 않는다. RBF 커널의 gamma는 국소적 영향 범위와 관련된 별도 설정이다.</p>
 <p>C가 크면 규제가 더 강해진다는 보기는 이 목적식과 반대다. 위반을 더 비싸게 만들어 복잡한 경계라도 훈련 제약에 맞추려는 비중을 높인다. 적절한 값은 전처리와 커널을 포함한 전체 절차 안에서 검증한다. 아래 두 후보의 비교는 지정된 목적값만 비교하며 전역 최적해를 찾았다는 의미는 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>가능한 후보 A의 ½||w||²=1, Σξ=2이고 B는 각각 3,0이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
@@ -40,7 +40,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>C가 바뀌어 위반량 2의 비용이 달라졌다. 두 후보의 특징 공간이나 정답을 바꾼 계산은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-15.png" alt="자체 예제의 같은 후보의 목적값이 C에 따라 변하는 직선을 보인다.. A=1+2C와 B=3은 C=1에서 만난다. x축 C, y축 목적값." width="1200" height="900" loading="lazy" decoding="async"><figcaption>A=1+2C와 B=3은 C=1에서 만난다. x축 C, y축 목적값.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>목적식 ½‖w‖²+CΣξ. A=(1,2), B=(3,0)는 두 항의 값이다. C=2.</p>
+<p>C가 바뀌어 위반량 2의 비용이 달라졌다. 두 후보의 특징 공간이나 정답을 바꾼 계산은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-15.png" alt="같은 두 후보의 목적값이 C에 따라 변하는 직선. A=1+2C와 B=3은 C=1에서 만난다. 가로축은 벌점 비중 C, 세로축은 후보 목적값이다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>A=1+2C와 B=3은 C=1에서 만난다. 가로축은 C, 세로축은 후보 목적값이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>목적식 ½‖w‖²+CΣξ. A=(1,2), B=(3,0)는 두 항의 값이다. C=2.</p>
 <p><strong>두 후보 중 목적값이 작은 쪽은?</strong></p>
 <ul>
 <li>1. A, 목적값 1</li>

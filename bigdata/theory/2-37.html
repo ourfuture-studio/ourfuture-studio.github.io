@@ -13,9 +13,9 @@
 <div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-37 · 이론 읽기</span><h1>좋은 추정량의 네 성질은 서로 다른 질문이다</h1><p class="theory-lead">한 번의 추정값이 참값과 가까웠다는 사실만으로 추정량을 평가할 수 없다. 불편성·일치성·효율성·충분성은 반복 표집과 자료 축약의 서로 다른 성질을 말한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-37.html">조건 바꿔 체험</a></div>
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>추정량은 표본으로 값을 계산하는 규칙이며 추정값은 특정 표본에 그 규칙을 적용한 결과다. 불편성은 모든 해당 모수에서 추정량의 기댓값이 모수와 같다는 성질이다. 한 번 정확한 숫자가 나왔는지와 다르다. 일치성은 표본 수가 커질수록 추정량이 참 모수 가까이 있을 확률이 커지는 점근적 성질이다.</p>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>추정량은 표본으로 값을 계산하는 규칙이며 추정값은 특정 표본에 그 규칙을 적용한 결과다. 모수 θ는 모집단 평균이나 성공확률처럼 알고 싶은 고정된 수이고, Eθ(T)는 그 θ를 가진 모집단에서 표본을 반복해 뽑을 때 추정량 T의 평균을 뜻한다. 불편성은 모든 해당 θ에서 Eθ(T)=θ가 성립하는 성질로, 한 번 정확한 숫자가 나왔는지와 다르다. 일치성은 허용오차를 아무리 작게 정해도 표본 수가 커질수록 추정값이 그 오차 범위 안에 있을 확률이 1에 가까워진다는 점근적 성질이다.</p>
 <p>같은 목표를 추정하는 불편추정량들을 비교할 때 분산이 더 작은 추정량을 더 효율적이라고 비교할 수 있다. 유한 표본에서의 불편성이 표본 수 증가에 따른 일치성을 자동으로 보장하지는 않는다. 새 자료가 늘어도 첫 관측 하나만 쓰는 규칙은 불편할 수 있지만 불확실성이 줄지 않을 수 있다.</p>
-<p>충분성은 정한 확률모형과 모수에 관한 정보를 통계량이 보존하는 성질이다. 예를 들어 독립 베르누이 표본의 p에 대한 우도는 성공 횟수와 표본 수로 표현되어 성공 횟수가 충분통계량이 된다. 어떤 표 하나가 모든 분석 목적에 충분하다는 일반적 칭찬이 아니다. 효율성 비교와 충분성 판단 모두 대상 모형·모수를 명시해야 한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>독립 베르누이(p) 표본에서 p를 추정한다.</p>
+<p>충분성은 정한 확률모형과 모수에 관한 정보를 통계량이 보존하는 성질이다. 예를 들어 독립 베르누이 표본의 p에 대한 우도는 성공 횟수와 표본 수로 표현되어 성공 횟수가 충분통계량이 된다. 어떤 표 하나가 모든 분석 목적에 충분하다는 일반적 칭찬이 아니다. 효율성 비교와 충분성 판단 모두 대상 모형·모수를 명시해야 한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>각 시행의 성공을 1, 실패를 0으로 기록하고 성공확률 p가 같은 독립 시행 n개를 모은다. 이런 0·1 변수를 베르누이(p) 변수라고 한다. 전체 표본평균은 성공 횟수/n이고, 첫 관측만 쓰는 규칙은 나머지 n−1개를 버리고 첫 0 또는 1 하나만 추정값으로 쓴다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>

@@ -15,7 +15,7 @@
 <nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
 <div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>통상적인 범주 설명에서 인공지능은 지능적 작업을 수행하는 방법을 넓게 다루고, 머신러닝은 데이터로부터 규칙이나 모형을 학습하는 접근을 포함한다. 딥러닝은 여러 층의 신경망을 사용하는 머신러닝의 한 분야다. 모든 인공지능이 딥러닝인 것은 아니다.</p>
 <p>전이학습은 먼저 학습한 지식이나 표현을 다른 과제에 활용하는 전략이다. 딥러닝 이미지 모형의 사전학습 가중치를 가져오는 사례가 익숙하지만, 전이학습을 딥러닝 다음에 놓인 독립적인 네 번째 포함 단계로 외우면 관계를 잘못 읽게 된다.</p>
-<p>PyTorch의 예에서는 사전학습망을 초기값으로 미세 조정하거나 앞부분을 고정한 특징 추출기로 사용한다. 일부 층을 고정해도 새 분류기처럼 학습하는 부분이 있을 수 있다. 기존 지식이 새 데이터에 적합한지는 검증해야 하며, 가져왔다는 이유만으로 향상을 보장하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 과제는 두 종류의 상품 사진을 분류하는 것이다.</p>
+<p>PyTorch의 예에서는 사전학습망을 초기값으로 미세 조정하거나 앞부분을 고정한 특징 추출기로 사용한다. 특징 추출기는 사진을 분류에 쓸 숫자 표현으로 바꾸고, 출력층은 그 표현을 새 상품의 범주 점수로 바꾼다. 고정은 새 자료를 통과시키지 않는다는 뜻이 아니라 해당 가중치를 학습 중 갱신하지 않는다는 뜻이다. 일부 층을 고정해도 새 분류기처럼 학습하는 부분이 있을 수 있다. 기존 지식이 새 데이터에 적합한지는 검증해야 하며, 가져왔다는 이유만으로 향상을 보장하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 과제는 두 종류의 상품 사진을 분류하는 것이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>

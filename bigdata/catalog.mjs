@@ -1,4 +1,3 @@
-// Sanitized reviewed educational content; no operating paths or review metadata.
 export const CATALOG = [
   {
     "code": "1-02",
@@ -424,7 +423,7 @@ export const CATALOG = [
     "kind": "decision",
     "relatedCodes": [
       "1-13",
-      "2-37",
+      "2-21",
       "4-34"
     ],
     "sources": [
@@ -3083,6 +3082,10 @@ export const CATALOG = [
       {
         "title": "Attention Is All You Need",
         "url": "https://arxiv.org/html/1706.03762v7"
+      },
+      {
+        "title": "PyTorch torch.nn.RNN",
+        "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.RNN.html"
       }
     ],
     "featured": false,
@@ -4063,7 +4066,7 @@ export const CATALOG = [
       "reason": "저장한 변환에서 z=2이고 ŷ=7이다. 학습된 변환과 입력·출력 의미를 함께 유지해야 동일한 파이프라인을 적용한 것이다.",
       "wrong_reasons": [
         "1번: 표준화 단계를 빠뜨려 학습 때와 다른 숫자를 모형에 넣었다.",
-        "2번: 새 입력에서 변환을 다시 fit하면 저장한 학습 변환과 달라진다. 임의의 재학습으로 출력을 고정할 수 없다.",
+        "2번: 저장된 평균 10·표준편차 2를 적용하면 입력 14는 z=2가 된다. 새 요청 한 건으로 평균을 14로 다시 맞추면 중심화 값 0에서 출력 1이 나올 수 있지만, 학습 때 정한 변환을 바꾼 계산이다. 이 보기를 제외하는 이유는 1이라는 숫자가 불가능해서가 아니라 저장한 파이프라인을 유지하지 않았기 때문이다.",
         "4번: 같은 숫자라도 단위·기간·클래스 의미가 다르면 사용자가 다른 행동을 할 수 있다. 출력 계약도 확인한다."
       ]
     },
