@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>최소제곱은 잔차의 부호를 지운다 · 빅분기 공부방</title><meta name="description" content="잔차 합이 0이라는 사실과 오차가 작다는 판단을 구별한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-05">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-05</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-05 · 이론 읽기</span><h1>최소제곱은 잔차의 부호를 지운다</h1><p class="theory-lead">잔차 합이 0이라는 사실과 오차가 작다는 판단을 구별한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-05">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-05.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>회귀에서 잔차는 관측값에서 예측값을 뺀 값이다. 보통 최소제곱법은 잔차 자체의 합이 아니라 잔차 제곱합 RSS를 최소화한다. 양수와 음수가 상쇄되어 적합이 나쁜 모형도 잔차 합은 0일 수 있기 때문이다. 제곱은 부호를 없애고 큰 차이에 더 큰 비용을 준다.</p>
+<p>설명변수 없이 절편 b만 있는 모형은 모든 관측에 같은 b를 예측한다. Σ(y−b)²를 b로 미분하면 −2Σ(y−b)=0이므로 b는 표본평균이다. 이는 절편만 있는 모형의 결과다. 설명변수가 있는 회귀에서는 그 변수들의 계수와 절편을 함께 선택해야 하므로 모든 예측을 평균으로 고정하지 않는다.</p>
+<p>훈련 RSS를 최소화했다는 말은 새 자료에서도 가장 정확하다는 뜻이 아니다. 변수를 늘리면 훈련 오차는 줄어들 수 있어도 예측 오차는 커질 수 있다. 최소제곱의 정의, 계수 계산, 일반화 평가는 서로 다른 질문이다. 여기서는 고정된 세 관측의 산술만 확인한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>절편만 있는 모형으로 y={1,2,3}을 예측한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">절편 b</th>
+<th scope="col">잔차</th>
+<th scope="col" style="text-align: right;">RSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0,1,2</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>−1,0,1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>−2,−1,0</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<p>b=2일 때 잔차 합은 0이고 RSS는 2다. RSS가 0이 아니라는 것은 세 실제 값이 모두 2는 아니기 때문이다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-05.png" alt="자체 예제의 후보 절편별 제곱합 최소를 보여 준다.. 관측 1·2·3의 절편 RSS는 b=2에서 2로 최소다. x축 b, y축 RSS." width="1200" height="900" loading="lazy" decoding="async"><figcaption>관측 1·2·3의 절편 RSS는 b=2에서 2로 최소다. x축 b, y축 RSS.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>관측값 1·2·3에 절편 b만 있는 모형을 보통 최소제곱으로 적합한다.</p>
+<p><strong>적합 절편과 잔차 제곱합은?</strong></p>
+<ul>
+<li>1. b=2, RSS=0</li>
+<li>2. b=1, RSS=5</li>
+<li>3. b=3, RSS=2</li>
+<li>4. b=2, RSS=2</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — b=2, RSS=2</strong></p>
+<p>평균 2를 예측하면 잔차는 −1,0,1이다. 제곱합 1+0+1=2를 얻는다.</p>
+<ul>
+<li>1번: 잔차 합 0과 잔차 제곱합을 혼동했다.</li>
+<li>2번: 제시된 RSS 계산은 맞지만 5보다 작은 RSS를 갖는 b=2가 있다.</li>
+<li>3번: b=3의 RSS는 4+1+0=5다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>세 관측 모두에 2를 더해 3·4·5로 바꾸면 적합 절편과 RSS는?</p>
+<p><strong>풀이:</strong> b=4, RSS=2.</p>
+<p>평균은 2만큼 이동하지만 평균으로부터의 편차 −1,0,1은 그대로다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>잔차를 더하지 말고, 제곱해서 더한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/linear_model.html" rel="noopener noreferrer" target="_blank">scikit-learn Linear Models</a> — 1.1.1 Ordinary Least Squares: 잔차 제곱합 목적식. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-05">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-05.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>절편만 있는 비가중 최소제곱의 훈련 RSS다. 예측 성능 실험이 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-03.html"><small>이전 개념 · 3-03</small>비모수검정은 표본의 연결부터 고른다</a><a class="next" rel="next" data-role="theory-next" href="3-06.html"><small>다음 개념 · 3-06</small>로지스틱 계수는 확률보다 오즈에 붙는다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-08</span><a href="3-08.html">분류 트리와 회귀 트리의 잎을 구별한다</a><div class="related-actions"><a href="../practice.html?code=3-08">문제 풀기</a><a href="../3-08.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-05"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>웹·API·DB에 맞는 수집 경로 · 빅분기 공부방</title><meta name="description" content="화면을 읽는 방법, 제공된 인터페이스를 호출하는 방법, DB를 질의하는 방법을 구분한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="1-26">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">1과목 · 빅데이터 분석 기획</a><span class="separator" aria-hidden="true">/</span><span>1-26</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">1과목 · 1-26 · 이론 읽기</span><h1>웹·API·DB에 맞는 수집 경로</h1><p class="theory-lead">화면을 읽는 방법, 제공된 인터페이스를 호출하는 방법, DB를 질의하는 방법을 구분한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-26">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-26.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>웹 페이지는 사람이 보는 화면과 HTML 구조를 중심으로 구성된다. 공개 API는 요청 주소, 매개변수, 응답 항목, 인증과 호출 한도 같은 명세를 통해 기계가 데이터를 요청하도록 한다. DB 접근은 허용된 계정과 범위 안에서 질의를 실행하는 방식이다.</p>
+<p>필요한 필드를 제공하는 공식 API가 있고 이용 조건을 충족했다면 화면 구조를 해석하는 대신 그 명세를 사용하는 경로를 먼저 검토할 수 있다. 다만 API라는 이름만으로 모든 자료가 있고 자유롭게 무제한 사용할 수 있다고 가정하지 않는다. 페이지 구분, 갱신 주기, 누락과 오류 응답을 확인한다.</p>
+<p>이 문항은 접근 권한을 우회하는 방법을 다루지 않는다. 수집과 재이용이 허용된 자료라는 조건에서 자료의 제공 형태에 맞는 경로를 고른다. 수집 후에는 요청 조건·수집 시각·반환 건수와 원본을 기록해야 나중에 같은 결과를 설명할 수 있다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>공공데이터포털의 실제 명세는 요청변수와 출력결과를 구분한다. 아래 상황은 자체 예다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">제공 형태</th>
+<th scope="col">수집에서 확인할 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API</td>
+<td>매개변수·페이지·응답 필드·한도</td>
+</tr>
+<tr>
+<td>허용된 DB</td>
+<td>테이블·필드·조건·권한</td>
+</tr>
+<tr>
+<td>허용된 웹 페이지</td>
+<td>HTML 구조·갱신·이용 조건</td>
+</tr>
+</tbody>
+</table></div>
+<p>같은 항목을 얻더라도 화면 문구와 API 필드명이 다를 수 있다. 수집 경로와 원천의 의미를 함께 기록한다. 전체 120건을 페이지당 50건씩 주는 자체 API라면 첫 응답 50건은 전체가 아니다. 다음 페이지에서 50건과 20건을 더 받아 120건인지 대조해야 한다. 명세에 전체 건수가 없거나 수집 중 자료가 바뀌면 단순 합계만으로 완전성을 확정하지 말고 응답 시각·페이지 조건·중복 식별자를 함께 남긴다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-26.png" alt="자체 예제의 권한이 있는 API·DB 경로와 페이지 누락 점검을 보여준다.. 필요 필드와 이용 조건을 충족한 API → 페이지별 50·50·20건 확인. API가 없으면 허용 DB 경로를 검토한다." width="1200" height="1001" loading="lazy" decoding="async"><figcaption>필요 필드와 이용 조건을 충족한 API → 페이지별 50·50·20건 확인. API가 없으면 허용 DB 경로를 검토한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>필요한 필드를 반환하는 공식 API가 있고 이용 권한과 조건을 충족했다.</p>
+<p><strong>직접 맞는 수집 경로는?</strong></p>
+<ul>
+<li>1. 화면 픽셀을 무조건 수기 복사</li>
+<li>2. API 명세에 따라 요청·응답 수집</li>
+<li>3. DB 권한 우회</li>
+<li>4. API는 자료를 반환할 수 없음</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — API 명세에 따라 요청·응답 수집</strong></p>
+<p>제공된 필드와 요청·응답 명세를 사용해 자료를 수집할 수 있다.</p>
+<ul>
+<li>1번은 공식 인터페이스가 있다는 조건을 활용하지 않는다.</li>
+<li>3번은 허용된 경로를 벗어난다.</li>
+<li>4번은 API가 필드를 반환한다는 조건과 모순된다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>API가 없고 읽기 권한이 있는 내부 DB에 필요한 표가 있다면?</p>
+<p><strong>풀이:</strong> 허용된 DB 질의를 수집 경로로 검토한다.</p>
+<p>자료의 제공 형태와 권한이 바뀌었으므로 경로를 다시 고른다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>제공 형태·명세·허용 범위를 함께 확인한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://www.data.go.kr/data/15013110/standard.do" rel="noopener noreferrer" target="_blank">공공데이터포털: 전국평생학습강좌표준데이터</a> — OpenAPI 요청변수와 출력결과 명세. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-26">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-26.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>실제 API 호출·DB 접속·웹 수집을 실행하지 않는다. 120건은 자체 페이지 예제다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="1-24.html"><small>이전 개념 · 1-24</small>정형·반정형·비정형 자료를 구조로 읽기</a><a class="next" rel="next" data-role="theory-next" href="1-27.html"><small>다음 개념 · 1-27</small>일괄 수집과 지속적인 스트림 수집</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-24</span><a href="1-24.html">정형·반정형·비정형 자료를 구조로 읽기</a><div class="related-actions"><a href="../practice.html?code=1-24">문제 풀기</a><a href="../1-24.html">조건 바꿔 체험</a></div></li><li><span class="related-code">1-27</span><a href="1-27.html">일괄 수집과 지속적인 스트림 수집</a><div class="related-actions"><a href="../practice.html?code=1-27">문제 풀기</a><a href="../1-27.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "1-26"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>베이즈는 관찰 뒤 분모를 다시 정한다 · 빅분기 공부방</title><meta name="description" content="사전 규모에 가능도를 곱하고 관찰된 전체 안에서 정규화한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-28">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-28</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-28 · 이론 읽기</span><h1>베이즈는 관찰 뒤 분모를 다시 정한다</h1><p class="theory-lead">사전 규모에 가능도를 곱하고 관찰된 전체 안에서 정규화한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-28">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-28.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>베이즈 정리는 P(A|D)=P(D|A)P(A)/P(D)다. A는 알고 싶은 원인 또는 가설, D는 관찰 결과다. P(D|A)를 알았다고 P(A|D)가 같은 것은 아니다. 관찰되기 전의 집단 크기인 사전확률이 다르면 같은 가능도에서도 관찰 뒤 구성비가 달라진다.</p>
+<p>분모 P(D)는 가능한 가설별 P(D|가설)P(가설)을 합친 값이다. 가설들이 서로 겹치지 않고 전체를 덮는다는 조건에서 이 합이 관찰 결과의 전체 확률이 된다. 두 후보의 비정규화 점수만 비교하는 문제와 사후확률의 숫자를 구하는 문제를 구분한다.</p>
+<p>장비 100개 중 A형 25개, B형 75개라고 하자. 경고 확률이 A에서 0.20, B에서 0.04이면 같은 확률 구조를 100개 기준 기대빈도로 환산한 경고 수는 A 5, B 3이다. 경고를 본 뒤에는 전체 100이 아니라 경고 8개에 초점을 맞춘다. 이 수치는 실제 장비의 고장률이 아닌 자체 교육 조건이다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>서로 배타적인 A/B형이 전체를 구성한다. P(A)=0.25, P(B)=0.75, 경고 D의 가능도는 각각 0.20,0.04다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">유형</th>
+<th scope="col" style="text-align: right;">사전확률×경고 가능도</th>
+<th scope="col" style="text-align: right;">경고 내 몫</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">0.25×0.20=0.05</td>
+<td style="text-align: right;">5/8</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">0.75×0.04=0.03</td>
+<td style="text-align: right;">3/8</td>
+</tr>
+</tbody>
+</table></div>
+<p>P(D)=0.08이고 P(A|D)=0.05/0.08=0.625다. 경고 가능도 0.20을 사후확률로 바로 쓰지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-28.png" alt="자체 예제의 사전과 가능도의 곱을 관찰 뒤 분모로 모은다.. A의 결합확률.05와 B의.03 중 A몫은.05/.08=.625다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>A의 결합확률.05와 B의.03 중 A몫은.05/.08=.625다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>A형 25%·B형 75%. 경고 확률은 A에서 20%, B에서 4%다. 두 유형이 전체다.</p>
+<p><strong>경고를 보았을 때 A형일 확률은?</strong></p>
+<ul>
+<li>1. 20%</li>
+<li>2. 25%</li>
+<li>3. 50%</li>
+<li>4. 62.5%</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 62.5%</strong></p>
+<p>관찰의 전체 확률은 0.25×0.20+0.75×0.04=0.08이다. A와 경고가 함께인 확률 0.05를 나누면 62.5%다.</p>
+<ul>
+<li>1번: P(경고|A)를 P(A|경고)와 뒤바꾸었다.</li>
+<li>2번: 관찰 전의 사전확률을 그대로 사용했다.</li>
+<li>3번: 두 가능도에 사전 규모가 다르다는 조건을 반영하지 않았다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>사전 비율만 A/B가 각각 50%로 바뀌면 경고 후 A의 확률은?</p>
+<p><strong>풀이:</strong> 5/6, 약 83.3%.</p>
+<p>A의 점수 0.5×0.20=0.10, B는 0.5×0.04=0.02다. 0.10/0.12를 구한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>사전 곱하기 가능도, 관찰된 전체로 나누기.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" rel="noopener noreferrer" target="_blank">scikit-learn Naive Bayes</a> — 도입의 Bayes 정리: 사전·가능도·사후 관계. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-28">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-28.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>A/B는 상호배타적이고 전체를 덮는다. 확률은0~1, 출력은백분율이다. 실제 빈도·원인 확정·고장 실험이 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-27.html"><small>이전 개념 · 3-27</small>슬라이딩 윈도우는 예측 시점을 고정해 만든다</a><a class="next" rel="next" data-role="theory-next" href="3-29.html"><small>다음 개념 · 3-29</small>나이브 베이즈는 클래스 안에서 곱으로 나눈다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-29</span><a href="3-29.html">나이브 베이즈는 클래스 안에서 곱으로 나눈다</a><div class="related-actions"><a href="../practice.html?code=3-29">문제 풀기</a><a href="../3-29.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-38</span><a href="3-38.html">HMM은 상태의 이동과 관측의 발생을 나눈다</a><div class="related-actions"><a href="../practice.html?code=3-38">문제 풀기</a><a href="../3-38.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-28"}</script><script type="module" src="../theory.mjs"></script></body></html>

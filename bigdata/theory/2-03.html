@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다 · 빅분기 공부방</title><meta name="description" content="빈칸이 몇 개인지 세는 일과 왜 비었는지 설명하는 일은 다르다. MCAR·MAR·MNAR는 관측된 칸의 모양보다 결측 확률이 어떤 값에 의존하는지를 구분한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-03">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-03</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-03 · 이론 읽기</span><h1>빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다</h1><p class="theory-lead">빈칸이 몇 개인지 세는 일과 왜 비었는지 설명하는 일은 다르다. MCAR·MAR·MNAR는 관측된 칸의 모양보다 결측 확률이 어떤 값에 의존하는지를 구분한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-03">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-03.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>MCAR에서는 결측 여부가 관측된 값과 관측되지 않은 값 모두에 의존하지 않는다고 가정한다. 자료에서 무작위로 선택한 측정값을 일정 확률로 누락시키는 설계가 한 예다. 결측률이 낮거나 빈칸이 흩어져 보인다는 사실만으로 이 가정을 입증할 수는 없다. 작은 자료에서는 서로 다른 발생 규칙이 비슷한 모양을 만들 수 있다.</p>
+<p>MAR에서는 관측된 정보를 조건으로 주었을 때 결측 여부가 누락된 값 자체에 추가로 의존하지 않는다. 연령은 모두 관측하고 연령대별로 응답 누락 확률을 정했다면, 그 규칙에 다른 의존성이 없다는 조건 아래 MAR로 설명할 수 있다. MAR라는 이름을 모든 값이 아무 이유 없이 빠졌다는 뜻으로 읽으면 MCAR와 혼동한다.</p>
+<p>MNAR에서는 관측된 정보를 고려한 뒤에도 빠진 값 자체가 누락 가능성과 연결된다. 실제 체중이 클수록 같은 연령에서도 체중 응답을 거절하는 상황이 해당할 수 있다. 관측표만으로 MAR와 MNAR를 일반적으로 확정할 수 없으므로 수집 절차·추가 조사·민감도 분석이 필요하다. 기전의 가정은 삭제나 대치 방법의 이름과도 구분해야 한다.</p>
+<p>MCAR는 MAR의 더 강한 특수 조건이다. 이 문제는 연령대별 누락 확률이 실제로 다르다고 명시해 MCAR를 제외하고, 관측 연령을 조건으로 남는 체중 의존성이 없는 MAR를 고른다. 관측표만 보고 이 기전을 확인한 것은 아니다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>가상 설문에서 연령은 전원 기록하고 체중 일부가 빠져 있다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">사람</th>
+<th scope="col" style="text-align: right;">연령</th>
+<th scope="col">기록된 체중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">20</td>
+<td>60</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">40</td>
+<td>누락</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align: right;">40</td>
+<td>75</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 세 행만 보면 B가 왜 누락됐는지 알 수 없다. 실험 설계자가 누락 확률을 연령만으로 정했다고 추가로 알려 주어야 아래 분류 조건이 생긴다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-03.png" alt="자체 예제의 같은 빈칸 표에서 발생 규칙을 바꾸어 MCAR·MAR·MNAR의 차이를 판단한다.. 빈칸의 모양이 아니라 명시한 발생 규칙으로 분기한다. MCAR는 MAR의 특수 경우다." width="1200" height="1001" loading="lazy" decoding="async"><figcaption>빈칸의 모양이 아니라 명시한 발생 규칙으로 분기한다. MCAR는 MAR의 특수 경우다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>연령은 모두 관측됐다. 체중 누락 확률은 연령대별로 서로 다르고 관측된 연령에만 의존한다. 연령을 조건으로 하면 실제 체중에는 의존하지 않는다.</p>
+<p><strong>이 명시된 결측 발생 규칙은 무엇에 해당하는가?</strong></p>
+<ul>
+<li>1. MCAR</li>
+<li>2. MAR</li>
+<li>3. MNAR</li>
+<li>4. 빈칸을 0으로 대치한 규칙</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — MAR</strong></p>
+<p>관측 연령에는 의존하지만 연령을 조건으로 실제 체중에는 의존하지 않으므로 MAR 조건이다.</p>
+<ul>
+<li>① 관측 연령에 따라 누락 확률이 달라져 MCAR의 독립 조건과 다르다.</li>
+<li>③ 누락 체중 자체에 대한 추가 의존성은 없다고 주어졌다.</li>
+<li>④ 발생 기전과 값을 채우는 처리는 다른 개념이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 연령 안에서도 실제 체중이 클수록 응답을 더 자주 거절하도록 규칙을 바꾸면?</p>
+<p><strong>풀이:</strong> MNAR에 해당하는 규칙이다.</p>
+<p>관측된 연령으로 설명한 뒤에도 누락되는 체중 자체가 결측 확률에 영향을 준다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>빈칸을 보기보다 무엇이 빈칸의 확률을 바꾸는지 묻는다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://stats.oarc.ucla.edu/sas/seminars/multiple-imputation-in-sas/mi_new_1/" rel="noopener noreferrer" target="_blank">UCLA OARC: Multiple Imputation in SAS Part 1</a> — Exploring missing data mechanisms. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-03">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-03.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>알려 준 발생 규칙을 분류한다. 실제 빈칸 표에서 기전을 추정하거나 대치법을 선택하는 검사는 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-02.html"><small>이전 개념 · 2-02</small>95% 신뢰구간의 비율은 구간을 만드는 절차에 붙는다</a><a class="next" rel="next" data-role="theory-next" href="2-04.html"><small>다음 개념 · 2-04</small>횟수를 세는 변수와 시간을 재는 변수부터 구분한다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-05</span><a href="2-05.html">빠진 값과 형식이 틀린 값은 다른 품질 문제다</a><div class="related-actions"><a href="../practice.html?code=2-05">문제 풀기</a><a href="../2-05.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-07</span><a href="2-07.html">드문 값을 찾았다는 이유만으로 삭제하지 않는다</a><div class="related-actions"><a href="../practice.html?code=2-07">문제 풀기</a><a href="../2-07.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-03"}</script><script type="module" src="../theory.mjs"></script></body></html>

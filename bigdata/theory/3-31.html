@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>랜덤포레스트의 무작위성은 두 곳에 있다 · 빅분기 공부방</title><meta name="description" content="훈련 행을 뽑는 일과 노드에서 분할 후보 특성을 뽑는 일을 나눈다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-31">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-31</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-31 · 이론 읽기</span><h1>랜덤포레스트의 무작위성은 두 곳에 있다</h1><p class="theory-lead">훈련 행을 뽑는 일과 노드에서 분할 후보 특성을 뽑는 일을 나눈다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-31">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-31.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>대표적인 랜덤포레스트는 여러 결정나무의 예측을 결합한다. 부트스트랩을 사용하면 나무마다 훈련 행이 달라지고, 각 노드에서는 특성의 일부를 분할 후보로 검토한다. 두 무작위성은 대상과 시점이 다르다. 행 추출을 한다고 특성 추출까지 자동으로 설명된 것은 아니다.</p>
+<p>예를 들어 입력 특성이 다섯 개이고 한 노드에서 후보 둘을 검토한다면 다섯 개 중 선택한 두 특성으로 좋은 분할을 찾는다. 다음 노드의 후보는 달라질 수 있다. 나무 하나가 처음 고른 두 특성만 평생 사용하는 규칙으로 읽지 않는다. 구현은 유효 분할을 찾는 과정 등 세부 동작이 있어 후보 수를 모든 검사 횟수의 절대 상한으로 확대하지 않는다.</p>
+<p>나무 사이 예측이 완전히 같다면 평균을 내도 변화가 작다. 서로 다른 표본과 후보를 통해 나무의 상관을 줄이려는 이유가 여기에 있다. 그렇다고 무작위성이 많을수록 무조건 좋지는 않다. 후보가 지나치게 제한되면 기본 나무가 약해질 수 있어 max_features 같은 설정을 검증한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>특성은 {나이,비용,지역,빈도,기간}이다. 노드 1에서는 {나이,비용}, 노드 2에서는 {지역,빈도}가 후보가 되었다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">무작위화</th>
+<th scope="col">대상</th>
+<th scope="col">시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>부트스트랩</td>
+<td>훈련 행</td>
+<td>나무를 학습할 때</td>
+</tr>
+<tr>
+<td>후보 특성 선택</td>
+<td>설명변수</td>
+<td>노드를 분할할 때</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 후보 목록은 주어진 예시다. 정답을 임의로 바꾸는 절차나 매 나무에서 동일한 두 특성을 강제로 쓰는 절차가 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-31.png" alt="자체 예제의 행 추출과 열 후보를 분리한다.. 부트스트랩은 나무별 훈련 행을, 후보 특성 선택은 노드별 설명변수를 바꾼다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>부트스트랩은 나무별 훈련 행을, 후보 특성 선택은 노드별 설명변수를 바꾼다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>랜덤포레스트의 노드별 분할 후보 특성을 무작위로 선택하는 설정을 생각한다.</p>
+<p><strong>올바른 설명은?</strong></p>
+<ul>
+<li>1. 정답 레이블을 무작위로 바꾼다</li>
+<li>2. 한 나무는 처음 고른 특성만 계속 쓴다</li>
+<li>3. 노드마다 후보 특성 집합이 달라질 수 있다</li>
+<li>4. 특성 선택이 부트스트랩 행 추출과 같은 일이다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 노드마다 후보 특성 집합이 달라질 수 있다</strong></p>
+<p>노드의 분할을 검토할 때 후보 특성의 부분집합을 선택하므로 서로 다른 노드에서 후보가 달라질 수 있다.</p>
+<ul>
+<li>1번: 분류 정답을 섞는 것은 이 학습 절차의 설명이 아니다.</li>
+<li>2번: 노드별 후보 선택을 나무 전체의 고정 특성 선택으로 바꾸었다.</li>
+<li>4번: 행과 열이라는 서로 다른 대상을 혼동했다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>가능한 특성 5개에서 순서를 무시하고 후보 2개를 고르는 조합은 몇 개인가?</p>
+<p><strong>풀이:</strong> 10개.</p>
+<p>5×4/2=10이다. 이는 가능한 후보 집합 수이며 실제 포레스트가 모두 한 번씩 사용한다는 뜻은 아니다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>행은 나무별로, 후보 열은 노드별로.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" rel="noopener noreferrer" target="_blank">scikit-learn RandomForestClassifier</a> — bootstrap·max_features 매개변수 설명. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-31">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-31.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>가능한 집합 수다. 실제 모든 집합의 출현·성능 개선을 보장하지 않으며 구현의 유효 분할 검색 횟수 상한으로 쓰지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-30.html"><small>이전 개념 · 3-30</small>배깅은 표본을 바꾸고 부스팅은 순서대로 보완한다</a><a class="next" rel="next" data-role="theory-next" href="3-32.html"><small>다음 개념 · 3-32</small>투표와 메타학습의 입력은 다르다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-30</span><a href="3-30.html">배깅은 표본을 바꾸고 부스팅은 순서대로 보완한다</a><div class="related-actions"><a href="../practice.html?code=3-30">문제 풀기</a><a href="../3-30.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-32</span><a href="3-32.html">투표와 메타학습의 입력은 다르다</a><div class="related-actions"><a href="../practice.html?code=3-32">문제 풀기</a><a href="../3-32.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-31"}</script><script type="module" src="../theory.mjs"></script></body></html>

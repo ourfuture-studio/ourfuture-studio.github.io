@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>일괄 수집과 지속적인 스트림 수집 · 빅분기 공부방</title><meta name="description" content="끝이 정해진 묶음을 처리하는지, 계속 들어오는 사건을 처리하는지 본다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="1-27">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">1과목 · 빅데이터 분석 기획</a><span class="separator" aria-hidden="true">/</span><span>1-27</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">1과목 · 1-27 · 이론 읽기</span><h1>일괄 수집과 지속적인 스트림 수집</h1><p class="theory-lead">끝이 정해진 묶음을 처리하는지, 계속 들어오는 사건을 처리하는지 본다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-27.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>하루가 끝난 주문 파일을 모아 다음 날 처리하는 것은 일괄 처리의 예다. 계속 발생하는 로그를 받아 짧은 간격으로 이상 징후를 갱신하는 것은 스트림 처리의 예다. 저장 장치 이름보다 입력이 끝나는 묶음인지 계속 늘어나는 흐름인지가 직접적인 구분이다.</p>
+<p>스트림을 사용한다고 지연이 정확히 0이 되는 것은 아니다. 네트워크 전송, 대기, 집계 간격과 처리 시간이 있다. 사건이 실제 발생한 시각과 시스템에 도착해 처리된 시각도 다를 수 있으므로 “실시간”이라는 표현만으로 모든 도착 순서를 보장하지 않는다.</p>
+<p>늦게 도착한 로그를 어느 집계 구간에 포함할지, 중복 수집을 어떻게 다룰지도 설계 조건이다. Apache Beam은 고정 크기의 bounded 자료와 시간이 지나며 늘어나는 unbounded 자료를 구분해 설명한다. 여기서는 특정 도구 설치법 대신 수집·처리 조건을 고르는 연습을 한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 로그에서 두 시각을 나눈다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">사건</th>
+<th scope="col">발생</th>
+<th scope="col">도착·처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>오류 X</td>
+<td>10:00:00</td>
+<td>10:00:05</td>
+</tr>
+</tbody>
+</table></div>
+<p>차이는 5초다. 계속 수집하는 방식이어도 실제 지연이 있을 수 있다. 이 수치는 실제 서버 측정 결과가 아니다. 10:00:00 발생 로그가 10:00:05에 도착한 사례의 차이는 5초다. 이 값은 입력 한 건의 도착 지연일 뿐 전체 파이프라인 응답 시간이나 모든 로그의 최대 지연이 아니다. 하루 파일을 다음 날 처리하는 방식은 입력 묶음의 끝이 정해져 있다는 점에서 다르며 “파일이므로 무조건 느리다”는 결론도 나오지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-27.png" alt="자체 예제의 발생 시각·도착 시각과 입력 묶음의 끝을 분리해 표시한다.. 사건 10:00:00 → 도착 10:00:05는 5초 차이이며 스트림도 지연이 있다." width="1200" height="957" loading="lazy" decoding="async"><figcaption>사건 10:00:00 → 도착 10:00:05는 5초 차이이며 스트림도 지연이 있다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>로그가 계속 발생하고 도착할 때마다 짧은 주기로 결과를 갱신한다.</p>
+<p><strong>가장 맞는 설명은?</strong></p>
+<ul>
+<li>1. 일일 종료 파일만 처리</li>
+<li>2. 스트림 처리이며 지연은 별도 확인</li>
+<li>3. 스트림이면 지연은 항상 0</li>
+<li>4. 모든 로그가 발생 순서대로 도착</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 스트림 처리이며 지연은 별도 확인</strong></p>
+<p>계속 늘어나는 입력을 처리하는 스트림이며 실제 지연과 순서는 별도의 조건이다.</p>
+<ul>
+<li>1번은 정해진 묶음을 모으는 방식이다.</li>
+<li>3번은 전송·처리 지연을 무시한다.</li>
+<li>4번은 늦은 도착 가능성을 없다고 단정한다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>하루 로그를 확정한 파일 하나로 모아 다음 날 한 번 처리하면?</p>
+<p><strong>풀이:</strong> 일괄 처리의 예다.</p>
+<p>처리할 입력의 범위와 끝이 정해진 묶음으로 바뀌었다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>계속 들어오는가, 끝이 정해진 묶음인가.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://beam.apache.org/documentation/basics/" rel="noopener noreferrer" target="_blank">Apache Beam: Basics of the Beam model</a> — PCollection의 Bounded vs. unbounded 및 Timestamps. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-27">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-27.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>도착 지연은 자체 단일 사건 값이다. 처리 시간·워터마크·도구의 실제 성능을 시뮬레이션하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="1-26.html"><small>이전 개념 · 1-26</small>웹·API·DB에 맞는 수집 경로</a><a class="next" rel="next" data-role="theory-next" href="1-28.html"><small>다음 개념 · 1-28</small>ETL과 ELT의 변환 위치</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-04</span><a href="1-04.html">Volume·Velocity·Variety를 조건으로 구분하기</a><div class="related-actions"><a href="../practice.html?code=1-04">문제 풀기</a><a href="../1-04.html">조건 바꿔 체험</a></div></li><li><span class="related-code">1-26</span><a href="1-26.html">웹·API·DB에 맞는 수집 경로</a><div class="related-actions"><a href="../practice.html?code=1-26">문제 풀기</a><a href="../1-26.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "1-27"}</script><script type="module" src="../theory.mjs"></script></body></html>

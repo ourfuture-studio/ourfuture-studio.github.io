@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>조건부확률은 조건에 해당하는 집단을 분모로 삼는다 · 빅분기 공부방</title><meta name="description" content="불량품을 보았을 때 어느 공장에서 왔는지 묻는 확률과, 한 공장의 제품이 불량일 확률은 조건이 반대다. 분모에 들어가는 집단부터 표시한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-33">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-33</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-33 · 이론 읽기</span><h1>조건부확률은 조건에 해당하는 집단을 분모로 삼는다</h1><p class="theory-lead">불량품을 보았을 때 어느 공장에서 왔는지 묻는 확률과, 한 공장의 제품이 불량일 확률은 조건이 반대다. 분모에 들어가는 집단부터 표시한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-33.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>P(A|B)는 B가 일어났다는 조건에서 A의 확률을 묻는다. 분모는 B가 일어나는 확률이고 분자는 A와 B가 함께 일어나는 확률이다. B의 확률이 0보다 커야 이 나눗셈을 정의한다. 조건을 거꾸로 바꾸면 일반적으로 같은 숫자가 되지 않으므로 기호의 순서를 읽어야 한다.</p>
+<p>공장 A와 B가 각각 100개를 만들고 불량이 10개와 30개라고 하자. B 제품이 불량일 비율은 30/100=30%다. 반면 전체 불량품 40개 중 B 제품일 비율은 30/40=75%다. 같은 30을 분자로 쓰더라도 무엇을 알고 나서 고르는지에 따라 분모가 달라진다.</p>
+<p>베이즈 정리는 공장별 생산 비중과 공장 안의 불량확률처럼 주어진 방향의 확률을 반대 방향의 조건부확률로 연결한다. 실제 조사에서는 이 확률들이 어떤 기간과 표본을 대표하는지도 확인해야 한다. 아래 표는 자체 빈도 예제이며 공장의 원인 효과나 미래 품질을 측정한 결과로 사용하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>전체 생산품 중 한 개를 균등하게 고른다고 가정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">공장</th>
+<th scope="col" style="text-align: right;">정상</th>
+<th scope="col" style="text-align: right;">불량</th>
+<th scope="col" style="text-align: right;">전체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>합계</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table></div>
+<p>불량이라는 조건을 알면 선택 대상은 200개 전체가 아니라 불량 40개로 좁아진다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-33.png" alt="자체 예제의 불량 수와 조건의 방향을 바꾸어 조건부확률의 분모를 확인한다.. P(불량|B)=30/100=30%, P(B|불량)=30/40=75%다. 조건에 따라 분모가 다르다." width="1200" height="992" loading="lazy" decoding="async"><figcaption>P(불량|B)=30/100=30%, P(B|불량)=30/40=75%다. 조건에 따라 분모가 다르다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>A 생산100개 중 불량10개, B 생산100개 중 불량30개다. 전체 생산품에서 균등하게 고른 제품이 불량이라고 확인됐다.</p>
+<p><strong>그 제품이 B 공장 제품일 조건부확률은?</strong></p>
+<ul>
+<li>1. 30%</li>
+<li>2. 50%</li>
+<li>3. 75%</li>
+<li>4. 15%</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 75%</strong></p>
+<p>불량 40개 중 B의 불량이 30개이므로 30/40=0.75다.</p>
+<ul>
+<li>① B라는 조건에서 불량일 비율 30/100이다.</li>
+<li>② 전체 생산품에서 B가 차지하는 비율 100/200이다.</li>
+<li>④ B와 불량이 함께인 비율 30/200이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>생산 수는 같고 B의 불량 수만 10개로 바꾸면 불량품이 B에서 왔을 확률은?</p>
+<p><strong>풀이:</strong> 50%</p>
+<p>전체 불량이 10+10=20개이고 그중 B가 10개이므로 10/20=0.5다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>무엇을 안 뒤의 확률인지가 분모를 정한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://online.stat.psu.edu/stat414/Lesson06" rel="noopener noreferrer" target="_blank">Penn State STAT 414: Bayes’ Theorem</a> — Partition and Bayes formula（검색 제공 본문 확인, 직접 URL 재시도 실패）. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-33.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>각 공장 생산100개와 전체 생산품의 균등 선택을 가정한다. 미래 품질이나 공장의 인과효과를 확인한 결과가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-32.html"><small>이전 개념 · 2-32</small>표본을 늘려도 표본틀에서 빠진 사람은 돌아오지 않는다</a><a class="next" rel="next" data-role="theory-next" href="2-34.html"><small>다음 개념 · 2-34</small>다시 넣는 추출과 넣지 않는 추출은 다음 확률이 다르다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-34</span><a href="2-34.html">다시 넣는 추출과 넣지 않는 추출은 다음 확률이 다르다</a><div class="related-actions"><a href="../practice.html?code=2-34">문제 풀기</a><a href="../2-34.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-35</span><a href="2-35.html">기댓값은 가능한 값에 확률을 가중한 평균이다</a><div class="related-actions"><a href="../practice.html?code=2-35">문제 풀기</a><a href="../2-35.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-33"}</script><script type="module" src="../theory.mjs"></script></body></html>

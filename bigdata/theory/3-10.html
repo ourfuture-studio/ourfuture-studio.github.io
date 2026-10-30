@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XOR는 비선형 표현이 필요한 이유를 보여 준다 · 빅분기 공부방</title><meta name="description" content="층 수만 늘려도 모든 활성화가 선형이면 한 선형식으로 합쳐진다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-10">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-10</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-10 · 이론 읽기</span><h1>XOR는 비선형 표현이 필요한 이유를 보여 준다</h1><p class="theory-lead">층 수만 늘려도 모든 활성화가 선형이면 한 선형식으로 합쳐진다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-10">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-10.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>XOR 자료는 (0,0)과 (1,1)이 0, 나머지 두 점이 1인 대각선 배치다. 원래 두 좌표의 직선 하나로 두 범주를 완전히 나눌 수 없다. 선형 층 두 개를 합성해도 W₂(W₁x+b₁)+b₂는 다시 한 아핀식이다. 중간 비선형 함수가 없으면 층 수만으로 이 한계를 없애지 못한다.</p>
+<p>은닉 표현을 바꾸면 출력층이 보는 공간이 달라진다. 자체 예제로 s=x₁+x₂, h₁=ReLU(s), h₂=ReLU(s−1), f=h₁−2h₂를 사용하자. 네 점의 s는 0,1,1,2이며 f는 0,1,1,0이다. 출력 문턱을 0.5로 두면 XOR 범주와 일치한다.</p>
+<p>이 구성은 특정 가중치를 제시해 표현 가능성을 확인한 것이다. 무작위 초기화로 학습했을 때 항상 이 해에 도달한다는 뜻이 아니다. 표준화 같은 아핀 전처리만으로 원래 XOR가 선형 분리된다고 말할 수도 없다. 표현 가능성, 최적화 성공, 보류 자료 성능을 나누어 생각한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>가중치를 학습하지 않고 위 식으로 고정한 네 입력을 계산한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">x₁,x₂</th>
+<th scope="col" style="text-align: right;">s</th>
+<th scope="col" style="text-align: right;">h₁</th>
+<th scope="col" style="text-align: right;">h₂</th>
+<th scope="col" style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0,0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>0,1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>1,0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>1,1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>비선형 은닉값을 만든 뒤 출력에서 조합했다. 이것은 새 데이터 실험이 아닌 네 점의 정확한 산술 확인이다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-10.png" alt="자체 예제의 대각선 클래스와 비선형 표현을 함께 본다.. XOR 네 점은 대각선끼리 같은 클래스다. 원 좌표와 은닉 표현의 차이를 비교한다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>XOR 네 점은 대각선끼리 같은 클래스다. 원 좌표와 은닉 표현의 차이를 비교한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>XOR 네 점을 분류한다. 은닉층과 출력층이 모두 아핀 연산이며 비선형 활성화가 없다.</p>
+<p><strong>층을 더 쌓으면 직선 한계를 없앨 수 있는가?</strong></p>
+<ul>
+<li>1. 항상 가능하다</li>
+<li>2. 입력 표본 수만 늘면 가능하다</li>
+<li>3. 합성이 다시 아핀식이므로 이 구성만으로는 어렵다</li>
+<li>4. 편향을 없애면 반드시 가능하다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 합성이 다시 아핀식이므로 이 구성만으로는 어렵다</strong></p>
+<p>아핀 함수의 합성은 아핀 함수다. 직선 하나로 분리할 수 없는 XOR를 이 구조만으로 완전 분류할 수 없다.</p>
+<ul>
+<li>1번: 깊이와 비선형 표현을 같은 것으로 보았다.</li>
+<li>2번: 표본 수가 함수족의 선형성을 바꾸지는 않는다.</li>
+<li>4번: 편향 제거는 표현을 더 제한하며 XOR 해결을 보장하지 않는다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>s=x₁+x₂, f=ReLU(s)−2ReLU(s−1)로 바꾸면 (1,1)의 f와 문턱 0.5에서의 범주는?</p>
+<p><strong>풀이:</strong> f=0, 범주 0.</p>
+<p>s=2이고 2−2×1=0이다. 비선형 표현이 네 점을 구분할 수 있게 만든다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>깊이보다 먼저 중간의 비선형을 확인한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://cs231n.github.io/neural-networks-1/" rel="noopener noreferrer" target="_blank">Stanford CS231n Neural Networks 1</a> — 다층 점수 함수: 중간 비선형 제거 시 행렬곱으로 축약되는 설명. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-10">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-10.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>문턱은 0.5 이상을1로 한다. 한 고정 가중치의 확인이며 새 자료 성능이나 최적화 성공을 측정하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-09.html"><small>이전 개념 · 3-09</small>순전파는 층마다 값을 넘긴다</a><a class="next" rel="next" data-role="theory-next" href="3-11.html"><small>다음 개념 · 3-11</small>활성화 함수의 값과 범위를 따로 본다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-09</span><a href="3-09.html">순전파는 층마다 값을 넘긴다</a><div class="related-actions"><a href="../practice.html?code=3-09">문제 풀기</a><a href="../3-09.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-11</span><a href="3-11.html">활성화 함수의 값과 범위를 따로 본다</a><div class="related-actions"><a href="../practice.html?code=3-11">문제 풀기</a><a href="../3-11.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-10"}</script><script type="module" src="../theory.mjs"></script></body></html>

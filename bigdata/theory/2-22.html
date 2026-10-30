@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>분할 단위는 나중에 예측할 대상에 맞춘다 · 빅분기 공부방</title><meta name="description" content="행을 섞어 나누기 전에 한 행이 누구와 어느 시점에서 나왔는지 확인한다. 같은 사람의 반복 기록이나 미래의 관측이 섞이면 평가하려던 조건이 바뀔 수 있다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-22">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-22</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-22 · 이론 읽기</span><h1>분할 단위는 나중에 예측할 대상에 맞춘다</h1><p class="theory-lead">행을 섞어 나누기 전에 한 행이 누구와 어느 시점에서 나왔는지 확인한다. 같은 사람의 반복 기록이나 미래의 관측이 섞이면 평가하려던 조건이 바뀔 수 있다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-22">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-22.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>한 사람에게서 두 번 측정한 기록은 서로 독립된 새 사람 두 명의 자료와 다르다. 새 사람에 대한 성능을 알고 싶은데 같은 사람의 일부 기록은 훈련, 나머지는 시험에 들어가면 개인별 특성이 양쪽에 공유된다. 행 수가 많아도 이를 독립적인 새 사람의 수로 해석할 수 없다. 유효표본수는 집단 내 의존 정도와 추정 대상에 따라 달라지며 단순히 행 수나 사람 수 하나로 확정하지 않는다.</p>
+<p>새 사람으로의 일반화를 평가하려면 사람 식별자를 기준으로 같은 사람의 기록을 한쪽에 모으는 분할을 검토한다. 이때 양쪽에 행 수를 똑같이 맞추는 것보다 평가 질문을 유지하는 것이 우선이다. 그룹을 나누었다고 성능이 반드시 낮아지거나 올바른 모집단을 완벽히 대표하는 것도 아니므로 표본 구성은 별도로 확인한다.</p>
+<p>미래 시점 예측이 목적이면 시간의 앞뒤도 고려한다. 미래 자료에서 학습한 패턴으로 과거를 평가하는 무작위 분할은 실제 사용 순서를 재현하지 못할 수 있다. 그룹과 시간이 동시에 얽힌 자료에서는 두 제약을 함께 만족하는 설계를 정해야 한다. 간격을 둔 분할이나 정보가 확정되는 시점까지 고려하되 그 선택을 기록한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>새 사람을 예측하는 가상 과제에서 A·B·C가 각각 두 행을 제공했다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">분할</th>
+<th scope="col">훈련 사람</th>
+<th scope="col">시험 사람</th>
+<th scope="col">새 사람 평가인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>행별 섞기</td>
+<td>A·B·C</td>
+<td>A·B·C</td>
+<td>아니다</td>
+</tr>
+<tr>
+<td>사람별 분할</td>
+<td>A·B</td>
+<td>C</td>
+<td>그 조건을 지킨다</td>
+</tr>
+</tbody>
+</table></div>
+<p>같은 사람의 기록을 공유하는지 확인하는 구조 예제이며 예측 모형을 실행해 성능 차이를 측정한 것은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-22.png" alt="자체 예제의 평가 목적과 분할 방법을 바꾸어 사람과 시간의 경계를 확인한다.. 새 사람 평가에서는 A·B로 훈련하고 C로 시험해 개인의 경계를 지킨다. 미래 예측은 시간도 확인한다." width="1200" height="1156" loading="lazy" decoding="async"><figcaption>새 사람 평가에서는 A·B로 훈련하고 C로 시험해 개인의 경계를 지킨다. 미래 예측은 시간도 확인한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>A·B·C 각각 두 기록이 있다. 목표는 훈련 때 없던 새 사람을 예측하는 것이다.</p>
+<p><strong>목표에 맞는 시험 분할은?</strong></p>
+<ul>
+<li>1. 각 사람의 첫 행은 훈련, 둘째 행은 시험</li>
+<li>2. 모든 기록으로 학습하고 같은 기록을 시험</li>
+<li>3. A·B의 모든 행으로 훈련하고 C의 모든 행으로 시험</li>
+<li>4. 행 번호가 홀수인지로만 분할</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — A·B의 모든 행으로 훈련하고 C의 모든 행으로 시험</strong></p>
+<p>사람 C는 훈련에 없으므로 새 사람을 평가한다는 질문을 유지한다.</p>
+<ul>
+<li>① 같은 사람이 양쪽에 있어 새 사람 조건이 아니다.</li>
+<li>② 학습 자료 자체를 평가하면 새 자료 평가가 아니다.</li>
+<li>④ 행 번호와 개인의 중복 여부는 무관할 수 있다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>목표를 같은 설비의 다음 달 예측으로 바꾸었다. 1~2월과 3월 자료를 어떻게 나누는 것이 사용 순서에 맞을까?</p>
+<p><strong>풀이:</strong> 1~2월로 훈련하고 이후 3월로 평가한다.</p>
+<p>미래 예측에서는 과거 정보로 이후 시점을 예측하는 시간 순서를 유지해야 한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>나눌 단위는 행이 아니라 평가하려는 사람과 시간이다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/cross_validation.html" rel="noopener noreferrer" target="_blank">scikit-learn: Cross-validation</a> — 3.1 overview・Group K-fold・Time Series Split. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-22">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-22.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>사람과 시간 제약이 동시에 필요하면 둘 다 확인한다. 이 체험은 분할 조건만 비교하고 성능을 측정하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-21.html"><small>이전 개념 · 2-21</small>검증으로 고르고 시험 자료로 마지막 성능을 확인한다</a><a class="next" rel="next" data-role="theory-next" href="2-23.html"><small>다음 개념 · 2-23</small>같은 숫자라도 척도에 따라 가능한 해석이 다르다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-21</span><a href="2-21.html">검증으로 고르고 시험 자료로 마지막 성능을 확인한다</a><div class="related-actions"><a href="../practice.html?code=2-21">문제 풀기</a><a href="../2-21.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-32</span><a href="2-32.html">표본을 늘려도 표본틀에서 빠진 사람은 돌아오지 않는다</a><div class="related-actions"><a href="../practice.html?code=2-32">문제 풀기</a><a href="../2-32.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-22"}</script><script type="module" src="../theory.mjs"></script></body></html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>융합했다는 사실과 더 좋아졌다는 결과를 구분한다 · 빅분기 공부방</title><meta name="description" content="여러 모형의 예측을 평균해도 가장 좋은 단일 모형보다 나쁠 수 있다. 결합 규칙을 정한 뒤 같은 평가자료와 지표에서 결과를 직접 비교해야 한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-25">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-25</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-25 · 이론 읽기</span><h1>융합했다는 사실과 더 좋아졌다는 결과를 구분한다</h1><p class="theory-lead">여러 모형의 예측을 평균해도 가장 좋은 단일 모형보다 나쁠 수 있다. 결합 규칙을 정한 뒤 같은 평가자료와 지표에서 결과를 직접 비교해야 한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-25">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-25.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>평균·보팅·스태킹은 여러 예측을 결합하는 구조다. 구조가 다르다는 사실은 성능 향상의 증거가 아니다. 회귀 예측의 단순 평균은 오차가 서로 반대 방향이면 상쇄할 수 있지만 같은 방향이면 남는다. 좋은 모형에 편향이 큰 모형을 섞으면 좋은 예측을 오히려 밀어낼 수도 있다. 먼저 단일 기준 모형과 결합 모형이 같은 관측을 대상으로 어떤 값을 냈는지 표로 확인한다.</p>
+<p>가중 평균이라면 가중치를 어디에서 정했는지도 검토한다. 최종 시험자료의 정답을 보고 가중치를 맞춘 뒤 그 시험점수를 독립 결과처럼 제시하지 않는다. 스태킹도 메타모형이 학습하는 예측이 해당 행을 이미 학습한 모형의 과도하게 낙관적인 출력인지 확인해야 한다. 서로 다른 입력·추가자료·튜닝 예산을 썼다면 그 차이까지 기록해 비교한다.</p>
+<p>성능이 조금 좋아도 추론시간·메모리·오류 대응 비용이 크게 늘면 목적에 맞는 선택인지는 별도다. 반대로 평균 지표가 같아도 특정 실패 집단을 개선할 수 있으므로 오차 분포와 중요한 하위 조건을 살핀다. 한 번의 작은 가상 예제는 자동 개선이라는 논리를 반박할 수 있지만 실제 자료에서의 평균적인 우월성을 측정한 실험은 아니다. 최종 판단은 사전에 정한 목적과 적절한 독립 평가로 내린다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 회귀 평가2건의 정답은 모두0이다. A는 두 건 모두1, B는 모두3을 예측하고 두 예측을 같은 가중치로 평균한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">모형</th>
+<th scope="col">두 예측값</th>
+<th scope="col" style="text-align: right;">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>1·1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3·3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>평균 융합</td>
+<td>2·2</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table></div>
+<p>융합은 B보다는 낫지만 가장 좋은 단일 모형A보다 오차가 크다. 모형 수가2개라는 사실만으로 개선을 보장할 수 없다는 반례다. 같은 방향으로 치우친 예측의 평균이 정답 쪽으로 충분히 이동하지 못했다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-25.png" alt="자체 예제의 기준 모형·다른 모형·평균의 오차를 같은 목표값으로 비교한다.. 정답0에서 A1·B3·평균2의 절대오차는 각각1·3·2로 평균이 A보다 나쁘다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>정답0에서 A1·B3·평균2의 절대오차는 각각1·3·2로 평균이 A보다 나쁘다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>정답이 0인 같은 평가 사례에서 A의 예측 1과 B의 예측 3을 동일 가중치로 평균한다.</p>
+<p><strong>평균 융합의 절대오차와 A 대비 판단은?</strong></p>
+<ul>
+<li>1. 오차 0으로 반드시 개선</li>
+<li>2. 오차 2로 A보다 나쁨</li>
+<li>3. 오차 1로 A와 같음</li>
+<li>4. 모형이 2개라 일반화 향상 보장</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — 오차 2로 A보다 나쁨</strong></p>
+<p>평균 예측은(1+3)/2=2, 절대오차는|0−2|=2다. A의 절대오차 1보다 커서 이 사례에서는 융합이 나쁘다.</p>
+<ul>
+<li>1번: 서로 같은 방향의 오차는 평균한다고 0으로 상쇄되지 않는다.</li>
+<li>3번: 두 예측의 평균은 1이 아니라 2다.</li>
+<li>4번: 모형 개수는 예측 오차나 새 자료 성능을 자동으로 보장하지 않는다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>B의 예측만−1로 바꾸고 정답 0·A의 예측 1·동일 가중치는 유지한다. 평균 융합의 절대오차는?</p>
+<p><strong>풀이:</strong> 평균 예측 0, 절대오차 0이다.</p>
+<p>이번에는 반대 방향의 오차가 상쇄된다. 개선의 가능성과 항상 개선된다는 주장은 다르며, 다른 사례에서도 상쇄되는지는 직접 평가해야 한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>모형 개수 대신, 같은 표의 오차를 비교한다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html" rel="noopener noreferrer" target="_blank">scikit-learn VotingRegressor</a> — 각 회귀 예측의 평균과 weights 정의. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-25">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-25.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>한 자체 사례의 가중 평균 산술이다. 시험 정답으로 가중치를 튜닝하는 체험이나 실제 모델 성능 평가가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="4-23.html"><small>이전 개념 · 4-23</small>탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이 다르다</a><a class="next" rel="next" data-role="theory-next" href="4-27.html"><small>다음 개념 · 4-27</small>시간 추세와 공간 분포는 먼저 묻는 질문이 다르다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-08</span><a href="4-08.html">같은 오차도 제곱하면 큰 오차의 영향이 커진다</a><div class="related-actions"><a href="../practice.html?code=4-08">문제 풀기</a><a href="../4-08.html">조건 바꿔 체험</a></div></li><li><span class="related-code">4-36</span><a href="4-36.html">재학습했다는 사실과 교체할 근거를 구분한다</a><div class="related-actions"><a href="../practice.html?code=4-36">문제 풀기</a><a href="../4-36.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-25"}</script><script type="module" src="../theory.mjs"></script></body></html>

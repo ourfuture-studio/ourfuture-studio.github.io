@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KDD와 CRISP-DM의 단계 읽기 · 빅분기 공부방</title><meta name="description" content="데이터 마이닝은 지식을 얻는 전체 과정 안에 놓인 작업이다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="1-13">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=1">1과목 · 빅데이터 분석 기획</a><span class="separator" aria-hidden="true">/</span><span>1-13</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">1과목 · 1-13 · 이론 읽기</span><h1>KDD와 CRISP-DM의 단계 읽기</h1><p class="theory-lead">데이터 마이닝은 지식을 얻는 전체 과정 안에 놓인 작업이다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-13.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>KDD는 자료에서 유용한 지식을 얻는 전체 과정과 데이터 마이닝 단계를 구분한다. 교육용으로 정리하면 자료 선택, 전처리, 변환, 데이터 마이닝, 해석·평가의 흐름을 확인할 수 있다. 알고리즘으로 패턴을 찾기 전에 어떤 자료를 대상으로 삼고 어떻게 가공할지 정해야 한다.</p>
+<p>CRISP-DM의 대표적인 여섯 단계는 업무 이해, 데이터 이해, 데이터 준비, 모델링, 평가, 배포다. 여섯 이름을 KDD의 단계와 무조건 일대일로 대응시키지 않는다. CRISP-DM은 업무 목표와 배포를 포함해 프로젝트를 관리하는 관점이 드러난다.</p>
+<p>절차도는 한 번만 지나가는 고정 순서가 아니다. 모델링 중 입력 형식의 문제가 드러나면 준비 단계로 돌아갈 수 있고, 평가에서 업무 목표와 어긋남을 발견하면 문제 정의를 재검토한다. 성능 점수를 계산했다는 이유만으로 업무 적용 준비까지 끝났다고 보지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>반품 예측의 자체 작업을 단계에 배치한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">작업</th>
+<th scope="col">CRISP-DM에서의 주된 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>어떤 반품 비용을 줄일지 합의</td>
+<td>업무 이해</td>
+</tr>
+<tr>
+<td>코드와 입력 열을 정리</td>
+<td>데이터 준비</td>
+</tr>
+<tr>
+<td>예측 규칙 학습</td>
+<td>모델링</td>
+</tr>
+<tr>
+<td>업무 목표에 부합하는지 검토</td>
+<td>평가</td>
+</tr>
+</tbody>
+</table></div>
+<p>모형을 학습했더라도 적합한 업무 조치와 평가 기준을 확인하는 과정이 남는다. 모형의 예측 점수가 좋아도 점주가 결과를 받는 시간이 발주 마감 뒤라면 업무 목표를 충족하지 못할 수 있다. 평가 단계에서는 점수 외에 이런 적용 조건도 되짚는다. 입력 코드 오류가 드러났다면 데이터 준비로 돌아가고, 수정 뒤 같은 기준으로 다시 검토한다. 단계의 이름보다 지금 해결하려는 작업을 고른다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/1-13.png" alt="자체 예제의 단계를 순환할 수 있고 KDD 마이닝이 전체 과정의 일부임을 보여준다.. CRISP-DM의 업무 이해·자료·모형·평가·배포는 필요한 이전 단계로 되돌아갈 수 있다." width="1200" height="1121" loading="lazy" decoding="async"><figcaption>CRISP-DM의 업무 이해·자료·모형·평가·배포는 필요한 이전 단계로 되돌아갈 수 있다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>CRISP-DM에서 예측모형을 학습한 뒤 업무 목표에 맞는지 검토한다.</p>
+<p><strong>주된 단계는?</strong></p>
+<ul>
+<li>1. 데이터 준비</li>
+<li>2. 모델링</li>
+<li>3. 평가</li>
+<li>4. 자료 선택만 수행</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 평가</strong></p>
+<p>학습 후 결과가 업무 목표에 부합하는지를 검토하는 것은 평가 단계다.</p>
+<ul>
+<li>1번은 입력 자료를 분석 가능한 형태로 준비하는 단계다.</li>
+<li>2번은 예측 규칙을 학습하는 작업에 해당한다.</li>
+<li>4번은 전체 검토를 자료 범위 선정으로 축소한다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>학습 중 입력 코드 오류가 발견돼 다시 자료를 정리한다면 절차 위반인가?</p>
+<p><strong>풀이:</strong> 아니다. 필요한 이전 단계로 돌아가는 반복이 허용된다.</p>
+<p>CRISP-DM은 단계 간 의존 관계를 제시하며 일방향 진행만 강제하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>마이닝은 전체 KDD와 같지 않으며 절차는 반복할 수 있다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/1230" rel="noopener noreferrer" target="_blank">Fayyad et al.: From Data Mining to Knowledge Discovery in Databases</a> — 저자·1996년 논문 서지·초록 확인. 아래 원문 PDF의 인쇄 41쪽 Figure 1, 42쪽 The KDD Process로 단계와 반복 관계 확인. 확인일 2026-10-30.</li>
+<li><a href="https://www.kdnuggets.com/gpspubs/aimag-kdd-overview-1996-Fayyad.pdf" rel="noopener noreferrer" target="_blank">Fayyad et al. 1996 본문 PDF</a> — Figure 1의 KDD 단계 및 Data Mining and KDD 설명. 저자 Piatetsky-Shapiro의 KDNuggets에 보관된 원문. 확인일 2026-10-30.</li>
+<li><a href="https://www.ibm.com/docs/en/SS3RA7_18.5.0/pdf/ModelerCRISPDM.pdf" rel="noopener noreferrer" target="_blank">IBM: CRISP-DM Guide</a> — Chapter 1 Introduction, Figure 1; 검색 제공 본문에서 6단계와 반복 관계 확인. 직접 PDF 열기는 403. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=1-13">관련 문제 풀기</a><a class="btn btn-secondary" href="../1-13.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>KDD와 CRISP-DM을 일대일 대응시키지 않는다. 프로젝트를 실제 수행한 결과가 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="1-12.html"><small>이전 개념 · 1-12</small>업무 문제에서 시작하기와 데이터에서 발견하기</a><a class="next" rel="next" data-role="theory-next" href="1-16.html"><small>다음 개념 · 1-16</small>알고리즘보다 먼저 정할 모형의 조건</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">1-09</span><a href="1-09.html">한 모형의 계획과 여러 과제의 로드맵</a><div class="related-actions"><a href="../practice.html?code=1-09">문제 풀기</a><a href="../1-09.html">조건 바꿔 체험</a></div></li><li><span class="related-code">1-12</span><a href="1-12.html">업무 문제에서 시작하기와 데이터에서 발견하기</a><div class="related-actions"><a href="../practice.html?code=1-12">문제 풀기</a><a href="../1-12.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "1-13"}</script><script type="module" src="../theory.mjs"></script></body></html>

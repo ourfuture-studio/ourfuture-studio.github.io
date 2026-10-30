@@ -42,7 +42,11 @@ if (lessonNode && !document.getElementById('learning-lesson-nav')) {
     status.id = 'learning-lesson-status';
     status.className = 'learner-status';
     status.setAttribute('aria-live', 'polite');
-    tools.append(read, bookmark, status);
+    const theory = document.createElement('a');
+    theory.className = 'learning-theory-link';
+    theory.href = 'theory/' + encodeURIComponent(code) + '.html';
+    theory.textContent = '이론 읽기';
+    tools.append(theory, read, bookmark, status);
     const privacy = document.createElement('p');
     privacy.id = 'learning-storage-note';
     privacy.className = 'learner-status';

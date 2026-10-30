@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>역전파와 갱신은 서로 다른 단계다 · 빅분기 공부방</title><meta name="description" content="기울기를 구했다는 사실만으로 가중치가 바뀌지는 않는다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="3-12">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-12</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-12 · 이론 읽기</span><h1>역전파와 갱신은 서로 다른 단계다</h1><p class="theory-lead">기울기를 구했다는 사실만으로 가중치가 바뀌지는 않는다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-12">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-12.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>순전파는 현재 가중치로 예측과 손실을 계산한다. 역전파는 그 계산 경로를 거꾸로 따라 연쇄법칙으로 각 매개변수에 대한 손실의 기울기를 구한다. 기울기는 어느 방향으로 조금 움직일 때 손실이 얼마나 변하는지 나타내는 정보다. 새 가중치 자체와 같지 않다.</p>
+<p>단순 경사하강 갱신은 w새=w현재−학습률×기울기다. 같은 기울기라도 학습률이 달라지면 이동량이 다르다. PyTorch의 backward는 기울기를 grad에 누적하는 단계이며 일반적인 학습 루프에서는 optimizer.step 같은 갱신을 따로 호출한다. 누적이 의도되지 않았다면 다음 반복 전에 기울기를 초기화한다.</p>
+<p>역전파는 정답을 출력층에 그대로 복사하거나 가중치를 무작위로 섞는 절차가 아니다. 미분 가능한 연산의 연결을 사용한다. 여기서는 스칼라 모형과 제곱손실을 사용해 연쇄법칙의 두 항을 직접 계산한다. 큰 모형의 수렴이나 훈련 성공을 이 예제로 일반화하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>ŷ=wx, L=(ŷ−t)²/2, x=2, t=0, w=1이다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">단계</th>
+<th scope="col">계산</th>
+<th scope="col" style="text-align: right;">값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순전파</td>
+<td>ŷ=1×2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>손실</td>
+<td>(2−0)²/2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>기울기</td>
+<td>(ŷ−t)x</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>η=0.1 갱신</td>
+<td>1−0.1×4</td>
+<td style="text-align: right;">0.6</td>
+</tr>
+</tbody>
+</table></div>
+<p>역전파 직후 기울기만 구한 상태에서는 w=1이다. 마지막 갱신까지 실행해야 0.6이 된다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-12.png" alt="자체 예제의 예측·손실·미분·갱신의 서로 다른 값을 분리한다.. w1→예측2→손실2→기울기4→η.1 갱신 후w.6이다." width="1200" height="1127" loading="lazy" decoding="async"><figcaption>w1→예측2→손실2→기울기4→η.1 갱신 후w.6이다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>ŷ=wx, L=(ŷ−t)²/2. x=2, t=0, w=1. 학습률 0.1로 한 번 갱신한다.</p>
+<p><strong>갱신 뒤 w는?</strong></p>
+<ul>
+<li>1. 0.6</li>
+<li>2. 1.0</li>
+<li>3. 1.4</li>
+<li>4. 4.0</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 0.6</strong></p>
+<p>∂L/∂w=(wx−t)x=4다. 따라서 1−0.1×4=0.6이다.</p>
+<ul>
+<li>2번: 갱신을 하지 않고 기울기만 구했을 때의 w다.</li>
+<li>3번: 손실을 줄이는 음의 기울기 방향 대신 더했다.</li>
+<li>4번: 기울기 4를 새 가중치로 착각했다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>위 조건에서 역전파만 실행하고 갱신 단계를 생략하면 w는?</p>
+<p><strong>풀이:</strong> 1 그대로다.</p>
+<p>기울기 4가 계산되더라도 저장된 매개변수를 바꾸는 갱신을 실행하지 않았다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>역전파는 기울기, 갱신은 새 가중치.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html" rel="noopener noreferrer" target="_blank">PyTorch Automatic Differentiation</a> — Computing Gradients 및 Computational Graphs: backward와 grad 누적. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-12">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-12.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>ŷ=2w, 목표0, 반제곱손실의 한 단계다. backward의 누적 상태나 옵티마이저 전부를 구현한 것은 아니다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-11.html"><small>이전 개념 · 3-11</small>활성화 함수의 값과 범위를 따로 본다</a><a class="next" rel="next" data-role="theory-next" href="3-13.html"><small>다음 개념 · 3-13</small>기울기의 반복 곱은 작아지거나 커질 수 있다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-09</span><a href="3-09.html">순전파는 층마다 값을 넘긴다</a><div class="related-actions"><a href="../practice.html?code=3-09">문제 풀기</a><a href="../3-09.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-13</span><a href="3-13.html">기울기의 반복 곱은 작아지거나 커질 수 있다</a><div class="related-actions"><a href="../practice.html?code=3-13">문제 풀기</a><a href="../3-13.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-12"}</script><script type="module" src="../theory.mjs"></script></body></html>

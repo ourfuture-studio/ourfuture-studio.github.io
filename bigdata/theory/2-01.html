@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>평균이 다른 두 제품의 상대 산포를 비교하는 법 · 빅분기 공부방</title><meta name="description" content="평균 중량이 다른 제품을 비교할 때 표준편차의 크기와 상대적인 흔들림은 다른 답을 준다. 비교하려는 것이 몇 g의 차이인지, 평균에 대한 몇 %의 차이인지 먼저 정한다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="2-01">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-01</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-01 · 이론 읽기</span><h1>평균이 다른 두 제품의 상대 산포를 비교하는 법</h1><p class="theory-lead">평균 중량이 다른 제품을 비교할 때 표준편차의 크기와 상대적인 흔들림은 다른 답을 준다. 비교하려는 것이 몇 g의 차이인지, 평균에 대한 몇 %의 차이인지 먼저 정한다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-01">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-01.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>표준편차는 관측값이 평균 주변에서 얼마나 흩어졌는지를 원래 단위로 나타낸다. 평균 100g인 제품에서 표준편차 10g과 평균 20g인 제품에서 표준편차 4g을 비교하면, 절대적인 산포는 첫 제품이 크다. 그러나 두 번째 제품은 평균 자체가 작으므로 4g을 작다고만 해석하면 생산량의 상대 변동을 놓친다.</p>
+<p>변동계수는 표준편차를 평균으로 나눈 값이다. 백분율로 쓰려면 100을 곱한다. 두 요약값에서는 10/100=0.10, 4/20=0.20이므로 두 번째 제품의 상대 산포가 더 크다. 비율을 계산하기 전에 두 표준편차가 같은 정의로 계산되었는지, 비교 자료의 모집단과 측정 조건이 맞는지도 확인해야 한다.</p>
+<p>이 비교에는 의미 있는 영점이 있는 비율척도와 적절한 양수 평균이 필요하다. 섭씨온도처럼 영점이 임의적인 척도에 그대로 적용하면 원점을 바꾸는 것만으로 결과가 달라진다. 평균이 0 근처이면 분모의 작은 변화가 비율을 크게 흔든다. 변동계수가 크다는 사실도 불량률이나 제품의 좋고 나쁨을 직접 입증하지는 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>가상 중량 요약값이며 실측 생산 성능이 아니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">제품</th>
+<th scope="col" style="text-align: right;">평균(g)</th>
+<th scope="col" style="text-align: right;">표준편차(g)</th>
+<th scope="col" style="text-align: right;">변동계수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20%</td>
+</tr>
+</tbody>
+</table></div>
+<p>A의 표준편차가 더 크지만 B의 표준편차는 자기 평균의 5분의 1이다. 서로 다른 질문에 답한 결과이므로 모순이 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-01.png" alt="자체 예제의 평균과 표준편차를 바꾸어 절대 산포와 상대 산포의 순위를 비교한다.. A의 표준편차는10g, B는4g이지만 평균에 대한 비율은 각각10%,20%다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>A의 표준편차는10g, B는4g이지만 평균에 대한 비율은 각각10%,20%다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>A 평균 100g·표준편차 10g, B 평균 20g·표준편차 4g. 양수 비율척도이며 같은 표준편차 정의를 쓴다.</p>
+<p><strong>변동계수로 비교할 때 상대 산포가 더 큰 제품은?</strong></p>
+<ul>
+<li>1. A</li>
+<li>2. B</li>
+<li>3. 두 제품이 같다</li>
+<li>4. 표준편차가 모두 0이다</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — B</strong></p>
+<p>A는 10%, B는 20%이므로 B의 상대 산포가 더 크다.</p>
+<ul>
+<li>① 10g과 4g만 비교한 절대 산포의 판단이다.</li>
+<li>③ 두 비율 0.10과 0.20은 같지 않다.</li>
+<li>④ 주어진 표준편차는 각각 10g과 4g이다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>두 제품의 단위를 g에서 mg으로 바꾼다. 변동계수와 상대 산포의 순위는 어떻게 될까?</p>
+<p><strong>풀이:</strong> A 10%, B 20%로 유지되며 B가 크다.</p>
+<p>평균과 표준편차가 모두 1,000배가 되어 나눗셈에서 단위 변환 배율이 상쇄된다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>몇 g인가와 평균의 몇 %인가는 다른 질문이다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm" rel="noopener noreferrer" target="_blank">NIST Dataplot: Coefficient of Variation</a> — Description. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-01">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-01.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>비율척도와 양수 평균을 가정한다. 원점 이동·음수 평균·추정 불확실성·불량률은 계산하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><span aria-hidden="true"></span><a class="next" rel="next" data-role="theory-next" href="2-02.html"><small>다음 개념 · 2-02</small>95% 신뢰구간의 비율은 구간을 만드는 절차에 붙는다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-13</span><a href="2-13.html">표준점수 0은 원자료의 0이 아니라 기준 평균이다</a><div class="related-actions"><a href="../practice.html?code=2-13">문제 풀기</a><a href="../2-13.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-23</span><a href="2-23.html">같은 숫자라도 척도에 따라 가능한 해석이 다르다</a><div class="related-actions"><a href="../practice.html?code=2-23">문제 풀기</a><a href="../2-23.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-01"}</script><script type="module" src="../theory.mjs"></script></body></html>

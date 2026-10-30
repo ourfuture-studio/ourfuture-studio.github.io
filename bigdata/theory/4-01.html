@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>포아송 적합도 자유도는 모수를 어디에서 구했는지부터 본다 · 빅분기 공부방</title><meta name="description" content="최종 범주 수가 같아도 포아송 모수 λ를 외부에서 고정했는지, 같은 범주도수로 추정했는지에 따라 적합도 검정의 기준 분포가 달라진다. ‘포아송이므로 하나 뺀다’보다 추정한 정보의 수를 먼저 센다.">
+<meta name="theme-color" content="#f7f6f2"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css"><link rel="stylesheet" href="../theory.css"></head>
+<body class="learning-page theory-page" data-code="4-01">
+<a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="brand-mark">of<span>·</span></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
+</div></header>
+<main class="learning-container" id="main" tabindex="-1">
+<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=4">4과목 · 빅데이터 결과 해석</a><span class="separator" aria-hidden="true">/</span><span>4-01</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">4과목 · 4-01 · 이론 읽기</span><h1>포아송 적합도 자유도는 모수를 어디에서 구했는지부터 본다</h1><p class="theory-lead">최종 범주 수가 같아도 포아송 모수 λ를 외부에서 고정했는지, 같은 범주도수로 추정했는지에 따라 적합도 검정의 기준 분포가 달라진다. ‘포아송이므로 하나 뺀다’보다 추정한 정보의 수를 먼저 센다.</p>
+<div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-01">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-01.html">조건 바꿔 체험</a></div>
+<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>적합도 검정은 관측도수 O와 귀무가설 아래 기대도수 E의 차이를 Σ(O−E)²/E로 요약한다. 여기서 범주는 사건이 발생한 횟수의 구간이고, 범주마다 별도의 포아송 확률변수 하나를 검정하는 상황과 다르다. 표본수 N을 고정한 빈도표에서는 모든 범주도수의 합이 N이므로 k개 값이 완전히 독립적으로 움직이지 못한다. 모수가 사전에 주어졌다면 이 합계 제약을 반영한 기본 자유도는 k−1이다.</p>
+<p>같은 빈도표를 더 잘 설명하도록 λ를 추정하면 기대도수도 관측자료에 맞추어 조정된다. 이 글은 최종 구간도수의 다항우도를 이용한 효율적인 최대우도추정, 식별 가능한 내부 모수, 고정된 범주와 충분한 표본이라는 조건을 둔다. 그때 추정 모수 p개를 반영한 자유도는 k−1−p다. 포아송 모수는 하나이지만 외부에서 정한 λ까지 추정 모수로 세면 안 된다.</p>
+<p>숫자를 세기 전에 검정 자체가 가능한지도 살핀다. 표본의 독립성, 빠지거나 겹치지 않는 구간, 관측·기대 총합의 일치, 충분한 기대도수가 필요하다. 이 교육 예제에서는 모든 기대도수가 5 이상이 되도록 구간과 표본을 정했다고 가정한다. 작은 기대도수를 무시하거나 원자료의 평균으로 구한 추정치를 아무 설명 없이 대입하면 같은 근사 자유도가 보장되지 않는다. 자유도 계산과 실제 모형 적합·검정 실행은 별도 작업이다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>자체 비교 상황이다. 최종 6범주와 표본수는 동일하며, 독립 표본·충분한 기대도수·정규적인 최대우도추정 조건을 충족한다고 둔다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
+<thead>
+<tr>
+<th scope="col">경우</th>
+<th scope="col">λ의 출처</th>
+<th scope="col" style="text-align: right;">추정 모수 수</th>
+<th scope="col" style="text-align: right;">기준 자유도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>외부 자료에서 고정</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6−1=5</td>
+</tr>
+<tr>
+<td>B</td>
+<td>최종 범주도수 우도로 추정</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6−1−1=4</td>
+</tr>
+</tbody>
+</table></div>
+<p>B는 같은 자료로 λ를 조정하는 데 한 자유도를 사용한다. λ의 실제 숫자가 작아졌다는 이유로 자유도가 줄어드는 것은 아니다. 이 표는 검정의 구조를 비교하며 실제 포아송 자료의 p값이나 적합 결과를 제시하지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/4-01.png" alt="자체 예제의 범주 수가 같아도 모수 출처에 따라 차감 수가 달라짐을 보인다.. 최종 6범주: 외부 고정 λ는 자유도5, 같은 범주도수에서 효율적 MLE로 λ 추정은4다." width="1200" height="900" loading="lazy" decoding="async"><figcaption>최종 6범주: 외부 고정 λ는 자유도5, 같은 범주도수에서 효율적 MLE로 λ 추정은4다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>독립 표본을 최종 6개 범주로 나눴다. 기대도수는 충분하다. A는 λ를 외부에서 고정하고, B는 최종 범주 도수의 다항 우도로 λ 한 개를 정규적인 최대우도 추정한다.</p>
+<p><strong>A와 B의 카이제곱 근사 자유도는 각각?</strong></p>
+<ul>
+<li>1. 5와 4</li>
+<li>2. 4와 5</li>
+<li>3. 5와 5</li>
+<li>4. 6과 5</li>
+</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 5와 4</strong></p>
+<p>A는 추정 모수가 없어 6−1=5, B는 같은 범주 도수에서 추정한 모수가 하나라 6−1−1=4다. 합계 제약과 모수 추정을 따로 센다.</p>
+<ul>
+<li>2번: 외부 고정 모수와 같은 자료에서 추정한 모수를 반대로 취급했다.</li>
+<li>3번: B에서 λ를 추정해 기대도수를 조정한 조건을 빠뜨렸다.</li>
+<li>4번: 고정된 총도수 때문에 생기는 합계 제약 한 개를 반영하지 않았다.</li>
+</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>최종 범주만 7개로 늘리고 B의 추정 방식·모수 수와 나머지 근사 조건은 유지한다. B의 자유도는?</p>
+<p><strong>풀이:</strong> 7−1−1=5다.</p>
+<p>달라진 것은 최종 범주 수뿐이다. 표본 수나 λ의 값이 아니라 k와 같은 자료에서 추정한 모수 수로 계산한다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>최종 범주 − 합계 제약 − 같은 자료의 추정 모수.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html" rel="noopener noreferrer" target="_blank">SciPy chisquare</a> — Parameters ddof와 Notes의 근사·모수 추정 조건. 확인일 2026-10-30.</li>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm" rel="noopener noreferrer" target="_blank">NIST Chi-Square Goodness-of-Fit Test</a> — Definition의 최종 구간도수 우도와 Critical Region. 확인일 2026-10-30.</li>
+</ul>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=4-01">관련 문제 풀기</a><a class="btn btn-secondary" href="../4-01.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>고정 총합·고정 구간의 다항도수 적합도 설정이다. 실제 포아송 적합·구간 병합·p값 계산을 수행하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><span aria-hidden="true"></span><a class="next" rel="next" data-role="theory-next" href="4-02.html"><small>다음 개념 · 4-02</small>구간을 합쳤다면 최종 도수표로 자유도를 다시 센다</a></nav></article>
+<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
+<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">4-02</span><a href="4-02.html">구간을 합쳤다면 최종 도수표로 자유도를 다시 센다</a><div class="related-actions"><a href="../practice.html?code=4-02">문제 풀기</a><a href="../4-02.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "4-01"}</script><script type="module" src="../theory.mjs"></script></body></html>
