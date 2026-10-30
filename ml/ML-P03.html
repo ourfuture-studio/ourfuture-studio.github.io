@@ -1,0 +1,50 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다항회귀 · ourfuture studio</title><link rel="stylesheet" href="style.css"></head><body><header><a href="./">머신러닝 실습</a><a href="../">스튜디오 홈</a></header><main data-lesson="ML-P03"><p class="eyebrow">ML-P03 · 코드 실습</p><h1>다항회귀</h1><p class="lead">x에 x² 열을 더한다. 곡선을 그리지만 계수에 대해서는 선형회귀다.</p><div class="theory-link"><strong>같은 예제의 이론</strong><p>다항회귀: 곡선을 그리는데 왜 선형회귀일까?</p><p>티스토리 글은 비공개 검토 중입니다. 공개 후 같은 번호로 찾을 수 있습니다.</p><a href="https://ourfuture-studio.tistory.com/search/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%20%EC%9B%90%EB%A6%AC%2003" target="_blank" rel="noopener">티스토리 이론 찾기 (공개 후) →</a></div><h2>이번 입력</h2><table style="width:100%;border-collapse:collapse;margin:20px 0;text-align:center;table-layout:fixed;">
+<thead>
+<tr>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">입력 x</th>
+<th style="padding:9px 8px;border-bottom:2px solid #1B2340;background:#F6F3EA;font-weight:700;overflow-wrap:anywhere;text-align:center;">결과 y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">0</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">1</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">4</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">2</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">9</td>
+</tr>
+<tr>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">3</td>
+<td style="padding:8px;border-bottom:1px solid #E4E4E0;overflow-wrap:anywhere;text-align:center;">16</td>
+</tr>
+</tbody>
+</table><p>직접 만든 학습용 숫자입니다. 원리를 확인하는 예제이며 실제 성능 비교는 아닙니다.</p><p>1→2→3 순서로 실행하고, 4에서는 <code>homework = None</code> 한 줄만 바꿔 보세요. 각 실행은 필요한 앞 코드도 함께 실행합니다. 앞 코드를 바꾸면 뒤의 결과에도 반영됩니다.</p><div class="toolbar"><button id="run-all">1~4 모두 실행</button><button id="stop" disabled>실행 중단</button><button id="restore">원래 코드로</button></div><p id="runtime-status" role="status" aria-live="polite">실행 버튼을 누르면 Python을 준비합니다.</p><section class="code-section" id="part-1"><h2>1. 직접 구현하기</h2><label for="code-0">수정할 Python 코드</label><textarea id="code-0" spellcheck="false" rows="9">import numpy as np  # 숫자 배열과 계산에 쓸 numpy를 np라는 이름으로 불러온다.
+x = np.array([0., 1., 2., 3.])  # 학습에 사용할 입력값 목록이다.
+y = np.array([1., 4., 9., 16.])  # 각 입력에 대응하는 정답이다.
+A = np.column_stack([np.ones(len(x)), x, x**2])  # 1, x, x²을 열로 쌓는다. **2는 제곱이다.
+b, w1, w2 = np.linalg.solve(A.T @ A, A.T @ y)  # 제곱오차를 줄이는 절편과 두 계수를 구한다.
+direct = b + w1*4 + w2*4**2  # 새 입력 x=4를 다항식에 넣는다.
+print(&#x27;계수:&#x27;, b, w1, w2)
+print(&#x27;직접 구현: x=4 →&#x27;, direct)
+</textarea><div class="actions"><button data-run="0">1번 실행</button><button data-copy="0">코드 복사</button></div><pre id="output-0" class="output" aria-label="1번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>계수: 0.999999999999998 2.0000000000000027 0.9999999999999993
+직접 구현: x=4 → 25.0
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-2"><h2>2. 라이브러리로 확인하기</h2><label for="code-1">수정할 Python 코드</label><textarea id="code-1" spellcheck="false" rows="7">from sklearn.preprocessing import PolynomialFeatures  # 이 주제에 사용할 sklearn 도구를 불러온다.
+from sklearn.linear_model import LinearRegression  # 이 주제에 사용할 sklearn 도구를 불러온다.
+poly = PolynomialFeatures(degree=2, include_bias=False)  # x를 x와 x² 두 열로 늘리는 도구를 만든다.
+model = LinearRegression().fit(poly.fit_transform(x.reshape(-1,1)), y)  # 늘어난 두 열로 선형회귀를 학습한다.
+library = model.predict(poly.transform([[4]]))[0]  # 새 입력도 똑같이 두 열로 바꾼 뒤 예측한다.
+print(&#x27;sklearn: x=4 →&#x27;, library)
+</textarea><div class="actions"><button data-run="1">2번 실행</button><button data-copy="1">코드 복사</button></div><pre id="output-1" class="output" aria-label="2번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>sklearn: x=4 → 25.000000000000004
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-3"><h2>3. 같이 풀기</h2><p>y = 1 + 2x + x²이다. x=2이면?</p><ol><li>y=1+2x+x²에 2를 넣어 1+2×2+2²로 씁니다.</li><li>2×2=4, 2²=2×2=4를 각각 구합니다.</li><li>세 항을 더하면 1+4+4=9입니다. 코드의 linear와 square가 각각 4입니다.</li></ol><label for="code-2">수정할 Python 코드</label><textarea id="code-2" spellcheck="false" rows="5">linear = 2 * 2  # 2x 부분을 계산한다.
+square = 2 ** 2  # x² 부분을 계산한다.
+answer = 1 + linear + square  # 세 항을 더한다.
+print(&#x27;1 +&#x27;, linear, &#x27;+&#x27;, square, &#x27;=&#x27;, answer)
+</textarea><div class="actions"><button data-run="2">3번 실행</button><button data-copy="2">코드 복사</button></div><pre id="output-2" class="output" aria-label="3번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><details><summary>예상 결과 보기</summary><pre>1 + 4 + 4 = 9
+</pre><p class="small">소수 끝자리·축의 부호 등은 실행 환경에 따라 다를 수 있습니다.</p></details></section><section class="code-section" id="part-4"><h2>4. 아주 쉬운 과제</h2><p>x만 3으로 바꾸어 계산하자.</p><p><strong>힌트:</strong> 1 + 2*3 + 3**2</p><label for="code-3">수정할 Python 코드</label><textarea id="code-3" spellcheck="false" rows="5">homework = None  # 아주 쉬운 과제: 이 한 줄만 바꾸세요.
+print(&#x27;과제:&#x27;,homework)
+</textarea><div class="actions"><button data-run="3">4번 실행</button><button data-copy="3">코드 복사</button></div><pre id="output-3" class="output" aria-label="4번 실제 실행 결과" aria-live="polite">아직 실행하지 않았습니다.</pre><button id="check-homework">과제 답 확인</button><p id="homework-status" role="status"></p><details><summary>정답과 이유 보기</summary><p>1+2×3+3²=16입니다. homework = 1 + 2*3 + 3**2로 씁니다.</p></details></section><h2>기억할 조건</h2><ul><li>차수를 높이면 학습한 점에 더 잘 맞출 수 있지만 새 점의 예측까지 좋아진다는 보장은 없습니다.</li><li>특히 관측 범위 밖에서 높은 차수의 항이 크게 커질 수 있습니다. 실습의 예측25는 정해 둔 식의 계산이며 실제 예측 성능의 증거는 아닙니다.</li></ul><div class="downloads"><a download href="files/ML-P03.py">Python 파일 받기</a><a download href="files/ML-P03.ipynb">노트북 받기</a></div><p class="small">내 컴퓨터에서는 numpy·pandas·scikit-learn이 설치된 Python 환경을 사용하세요. 브라우저는 Pyodide0.28.3과 포함된 패키지를 사용해 버전이 다를 수 있습니다.</p><nav><a href="ML-P02.html">← 이전 실습</a><a href="./">실습 목록</a><a href="ML-P04.html">다음 실습 →</a></nav></main><footer>ourfuture studio · 새로운 지식, 뜻밖의 연결.</footer><script src="lab.js" defer></script></body></html>

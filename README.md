@@ -17,3 +17,5 @@ SQL은 sql.js 1.13.0 / WebAssembly로 브라우저 메모리의 SQLite에서 실
 웹 실습은 코드 수정·복사·실행 화면 비교를 제공합니다. HTTP·저장·Worker는 GitHub Pages의 HTTPS에서 실행합니다. 위치와 지연 응답은 명시한 모의 예제이며 실제 접수·계정·센서 정보를 수집하지 않습니다. 원본 PDF·OCR·티스토리 비공개 초안은 공개본에 포함하지 않습니다.
 
 ourfuture studio · 새로운 지식, 뜻밖의 연결.
+
+- 머신러닝 코드 실습15개: https://ourfuture-studio.github.io/ml/
