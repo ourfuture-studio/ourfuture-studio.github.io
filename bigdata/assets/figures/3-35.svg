@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1091" viewBox="0 0 1200 1091" role="img">
+<rect width="1200" height="1091" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">RNN은 이전 상태를 받아 다음 상태를 만든다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">이전 상태가 다음 시점으로 전달되는 경로를 보인다.</text>
+<text x="70" y="223.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">h(t) = 0.5h(t-1) + x(t) · h(0)=0 · 항등 활성화</text>
+<line x1="90" y1="283.3" x2="145" y2="283.3" stroke="#2e6b60" stroke-width="5"/>
+<text x="165" y="286.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력 (2, 0)</text>
+<line x1="625" y1="283.3" x2="680" y2="283.3" stroke="#8c3444" stroke-width="5"/>
+<text x="700" y="286.5" fill="#8c3444" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력 (0, 2)</text>
+<text x="75" y="349.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">은닉상태 (임의 단위)</text>
+<line x1="170" y1="368.3" x2="170" y2="728.3" stroke="#1b2340" stroke-width="3"/>
+<line x1="170" y1="728.3" x2="1100" y2="728.3" stroke="#1b2340" stroke-width="3"/>
+<line x1="170" y1="728.3" x2="1100" y2="728.3" stroke="#d9dfd9" stroke-width="2"/>
+<text x="115" y="734.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="170" y1="578.3" x2="1100" y2="578.3" stroke="#d9dfd9" stroke-width="2"/>
+<text x="115" y="584.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="170" y1="428.29999999999995" x2="1100" y2="428.29999999999995" stroke="#d9dfd9" stroke-width="2"/>
+<text x="115" y="434.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<circle cx="260" cy="728.3" r="10" fill="#2e6b60"/>
+<line x1="260" y1="728.3" x2="620" y2="428.29999999999995" stroke="#2e6b60" stroke-width="5"/>
+<circle cx="620" cy="428.29999999999995" r="10" fill="#2e6b60"/>
+<text x="636" y="412.4" fill="#2e6b60" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">2</text>
+<line x1="620" y1="428.29999999999995" x2="980" y2="578.3" stroke="#2e6b60" stroke-width="5"/>
+<circle cx="980" cy="578.3" r="10" fill="#2e6b60"/>
+<text x="996" y="562.4" fill="#2e6b60" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">1</text>
+<line x1="260" y1="728.3" x2="620" y2="728.3" stroke="#8c3444" stroke-width="5"/>
+<circle cx="620" cy="728.3" r="10" fill="#8c3444"/>
+<text x="636" y="705.4" fill="#8c3444" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">0</text>
+<line x1="620" y1="728.3" x2="980" y2="428.29999999999995" stroke="#8c3444" stroke-width="5"/>
+<circle cx="980" cy="428.29999999999995" r="10" fill="#8c3444"/>
+<text x="996" y="475.4" fill="#8c3444" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">2</text>
+<text x="240" y="781.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">t=0</text>
+<text x="600" y="781.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">t=1</text>
+<text x="960" y="781.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">t=2</text>
+<text x="695" y="829.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시점 번호</text>
+<text x="90" y="903.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">같은 입력의 합이어도 마지막 상태는 1과 2로 다르다.</text>
+<text x="50" y="986.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">초기0에서 입력(2,0)은 상태0→2→1, 입력(0,2)은0→0→2다.</text>
+<text x="50" y="1062.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

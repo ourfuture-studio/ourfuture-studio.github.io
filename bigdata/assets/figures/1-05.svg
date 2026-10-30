@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1247" viewBox="0 0 1200 1247" role="img">
+<rect width="1200" height="1247" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">데이터 보유에서 서비스 가치까지</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">보유·계산·제공·활용·효과 검증 사이에 필요한 증거를 표시한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">보유</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">예측 계산</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">제공</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">발주에 사용</text>
+<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">효과 검증</text>
+<rect x="50" y="571.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="600.0" y1="571.3" x2="600.0" y2="656.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
+<rect x="50" y="656.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">보유</text>
+<line x1="600.0" y1="656.3" x2="600.0" y2="741.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">영수증 100만 건</text>
+<rect x="50" y="741.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">계산</text>
+<line x1="600.0" y1="741.3" x2="600.0" y2="826.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">수요 예측 파일</text>
+<rect x="50" y="826.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">제공</text>
+<line x1="600.0" y1="826.3" x2="600.0" y2="911.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전달 로그</text>
+<rect x="50" y="911.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사용</text>
+<line x1="600.0" y1="911.3" x2="600.0" y2="996.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="952.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">발주 결정 기록</text>
+<rect x="50" y="996.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="1037.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">효과</text>
+<line x1="600.0" y1="996.3" x2="600.0" y2="1081.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="1037.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">비교 조건을 갖춘 별도 평가</text>
+<text x="50" y="1142.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">영수증 보유에서 발주 활용까지는 서로 다른 확인 단계다.</text>
+<text x="50" y="1218.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

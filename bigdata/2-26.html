@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-26</p><h1 class="lesson-title">상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다</h1>
+<p>평균 기호와 바깥 점을 추가했을 때 그림에서 직접 읽을 수 있는 값을 구분한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">전체 자료가 없는 요약 도식이다. 평균7은 가상으로 추가한 표시이며 다섯 요약값에서 계산한 결과가 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-26.png" target="_blank" rel="noopener"><img src="assets/figures/2-26.png" alt="자체 예제의 평균 기호와 바깥 점을 추가했을 때 그림에서 직접 읽을 수 있는 값을 구분한다.. 중앙선6은 중앙값이다. 평균 기호가 없으면 정확한 평균을 읽을 수 없다. 바깥점15가 있으면 수염10은 전체 최댓값이 아니다." width="1200" height="969"/></a><figcaption>중앙선6은 중앙값이다. 평균 기호가 없으면 정확한 평균을 읽을 수 없다. 바깥점15가 있으면 수염10은 전체 최댓값이 아니다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>상자그림에 아래 수염2·Q1=4·중앙값6·Q3=8·위 수염10만 표시하고 평균 기호는 없다.</p><fieldset><legend>그림에서 정확한 값을 직접 읽을 수 없는 것은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 중앙값</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 산술평균</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 제1사분위수</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 제3사분위수</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>위 수염 10보다 큰 바깥 점 15가 하나 추가로 표시됐다. 10을 자료 전체의 최댓값으로 읽어도 될까?</p>
+<details><summary>변형 풀이 확인</summary><p>안 된다. 적어도 15라는 더 큰 관측이 표시됐다.</p><p>이 상황의 수염은 전체 극값이 아니라 정해진 관례에 따른 경계 안의 관측까지 표시한 것으로 읽어야 한다.</p></details>
+<p>중앙선은 중앙값이며 평균은 별도 표시를 확인한다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/boxplot.htm" target="_blank" rel="noopener noreferrer">NIST: Box Plot</a></li>
+<li><a href="https://itl.nist.gov/div898/handbook/eda/section3/eda351.htm" target="_blank" rel="noopener noreferrer">NIST: Measures of Location</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-25.html">← 이전 체험</a>
+<a href="2-28.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-26", "title": "상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다", "question": {"givens": "상자그림에 아래 수염2·Q1=4·중앙값6·Q3=8·위 수염10만 표시하고 평균 기호는 없다.", "stem": "그림에서 정확한 값을 직접 읽을 수 없는 것은?", "choices": ["중앙값", "산술평균", "제1사분위수", "제3사분위수"], "answer": 2, "reason": "평균 표시는 없고 사분위수와 중앙값만으로 평균은 일반적으로 정해지지 않는다.", "wrong_reasons": ["① 중앙값 6이 명시되어 있다.", "③ Q1=4가 명시되어 있다.", "④ Q3=8이 명시되어 있다."]}, "experience": {"kind": "read-plot-conditions", "goal": "평균 기호와 바깥 점을 추가했을 때 그림에서 직접 읽을 수 있는 값을 구분한다.", "inputs": [{"id": "mean", "label": "평균 기호", "type": "select", "default": "없음", "options": ["없음", "평균7 표시"]}, {"id": "outlier", "label": "바깥점15", "type": "select", "default": "없음", "options": ["없음", "있음"]}], "cases": [{"name": "원문제", "inputs": {"mean": "없음", "outlier": "없음"}, "expected_answer": "평균은 직접 읽을 수 없음 · 전체 최댓값은 수염 관례 확인", "reason": "보이지않은평균을추정하지않음"}, {"name": "바깥점변형", "inputs": {"mean": "없음", "outlier": "있음"}, "expected_answer": "평균은 직접 읽을 수 없음 · 10은 전체 최댓값 아님", "reason": "적어도15가있음"}, {"name": "명시평균", "inputs": {"mean": "평균7 표시", "outlier": "있음"}, "expected_answer": "평균7을 직접 읽음 · 10은 전체 최댓값 아님", "reason": "별도기호로주어진경우"}], "boundary": "전체 자료가 없는 요약 도식이다. 평균7은 가상으로 추가한 표시이며 다섯 요약값에서 계산한 결과가 아니다.", "related_codes": ["2-08", "2-25"]}}</script><script type="module" src="app.mjs"></script></body></html>

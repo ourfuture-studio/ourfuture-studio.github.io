@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>정형·반정형·비정형 자료를 구조로 읽기 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">1과목 · 빅데이터 분석 기획 · 1-24</p><h1 class="lesson-title">정형·반정형·비정형 자료를 구조로 읽기</h1>
+<p>파일 이름 대신 표현 구조를 바꾸며 통상 분류를 판단한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">통상적인 교육 예시이며 JSON 스키마나 파일 포맷을 직접 검사하는 판별기가 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/1-24.png" target="_blank" rel="noopener"><img src="assets/figures/1-24.png" alt="자체 예제의 같은 문의의 원본·JSON·표 표현을 나란히 비교한다.. 원본 통화와 문의ID·유형을 추출한 표는 서로 다른 자료 표현이다." width="1200" height="957"/></a><figcaption>원본 통화와 문의ID·유형을 추출한 표는 서로 다른 자료 표현이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>항목마다 키가 있고 일부 항목은 중첩되며 선택 필드도 있는 JSON 문서를 받았다.</p><fieldset><legend>통상적인 교육 분류는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 반정형</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 항상 무구조</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 반드시 관계형 표</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 암호화 자료</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>원본 통화에서 문의ID·유형을 추출해 고정 열 표로 만들었다면 추출 결과는?</p>
+<details><summary>변형 풀이 확인</summary><p>정형 자료로 다룰 수 있다.</p><p>원본 음성과 추출된 표는 표현 구조와 분석 단위가 다르다.</p></details>
+<p>고정 열인가, 키·태그인가, 내용 해석이 필요한가.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://aws.amazon.com/what-is/structured-data/" target="_blank" rel="noopener noreferrer">AWS: What is Structured Data?</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="1-22.html">← 이전 체험</a>
+<a href="1-26.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "1-24", "title": "정형·반정형·비정형 자료를 구조로 읽기", "question": {"givens": "항목마다 키가 있고 일부 항목은 중첩되며 선택 필드도 있는 JSON 문서를 받았다.", "stem": "통상적인 교육 분류는?", "choices": ["반정형", "항상 무구조", "반드시 관계형 표", "암호화 자료"], "answer": 1, "reason": "키와 중첩처럼 자기 설명적인 구조를 가진 반정형 자료의 대표 사례다.", "wrong_reasons": ["2번은 구조 단서가 있다는 조건과 다르다.", "3번은 JSON을 반드시 관계형 고정 표라고 볼 수 없기 때문에 틀리다.", "4번은 자료 구조와 암호화 여부를 혼동한다."]}, "experience": {"kind": "decision", "goal": "파일 이름 대신 표현 구조를 바꾸며 통상 분류를 판단한다.", "inputs": [{"id": "representation", "label": "분석할 자료 표현", "type": "select", "default": "json", "options": [{"value": "json", "label": "키·선택 필드·중첩 JSON"}, {"value": "table", "label": "문의ID·유형의 고정 열 표"}, {"value": "audio", "label": "자유롭게 말한 원본 통화"}]}], "cases": [{"name": "원 문제", "inputs": {"representation": "json"}, "expected_answer": "반정형", "reason": "키와 중첩을 본다."}, {"name": "원고 변형", "inputs": {"representation": "table"}, "expected_answer": "정형", "reason": "추출 결과는 고정 열이다."}, {"name": "원본 통화", "inputs": {"representation": "audio"}, "expected_answer": "비정형", "reason": "원본과 추출물을 구분한다."}], "boundary": "통상적인 교육 예시이며 JSON 스키마나 파일 포맷을 직접 검사하는 판별기가 아니다.", "related_codes": ["1-04", "1-26"]}}</script><script type="module" src="app.mjs"></script></body></html>

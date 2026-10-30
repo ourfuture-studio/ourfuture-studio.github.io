@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1127" viewBox="0 0 1200 1127" role="img">
+<rect width="1200" height="1127" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분류 트리와 회귀 트리의 잎을 구별한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">극단값이 평균을 옮기는 장면을 비교한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">반응값</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">평균</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">중앙값</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">x</text>
+<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">종류</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측</text>
+<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측</text>
+<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8.666667</text>
+<line x1="600.0" y1="791.3" x2="600.0" y2="876.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균</text>
+<rect x="50" y="876.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="917.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="600.0" y1="876.3" x2="600.0" y2="961.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="917.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">중앙값</text>
+<text x="50" y="1022.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">값 2·4·20에서 제곱오차의 평균은 약8.667, 절대오차의 중앙값은4다.</text>
+<text x="50" y="1098.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

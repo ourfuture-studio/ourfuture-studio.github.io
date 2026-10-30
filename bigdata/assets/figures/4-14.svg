@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">귀무가설의 T10 분포에서 두 꼬리와 관측 통계량을 표시한다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">value</text>
+<circle cx="150.0" cy="551.7340862381275" r="9" fill="#2e6b60"/>
+<line x1="150.0" y1="551.7340862381275" x2="208.125" y2="549.6118704269921" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="208.125" cy="549.6118704269921" r="9" fill="#2e6b60"/>
+<line x1="208.125" y1="549.6118704269921" x2="266.25" y2="544.5102514869961" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="266.25" cy="544.5102514869961" r="9" fill="#2e6b60"/>
+<line x1="266.25" y1="544.5102514869961" x2="324.375" y2="532.530418511931" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="324.375" cy="532.530418511931" r="9" fill="#2e6b60"/>
+<line x1="324.375" y1="532.530418511931" x2="382.5" y2="506.15701708764294" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="382.5" cy="506.15701708764294" r="9" fill="#2e6b60"/>
+<line x1="382.5" y1="506.15701708764294" x2="440.625" y2="455.0409034047817" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="440.625" cy="455.0409034047817" r="9" fill="#2e6b60"/>
+<line x1="440.625" y1="455.0409034047817" x2="498.75" y2="375.6924242794656" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="498.75" cy="375.6924242794656" r="9" fill="#2e6b60"/>
+<line x1="498.75" y1="375.6924242794656" x2="556.875" y2="291.39728830073244" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="556.875" cy="291.39728830073244" r="9" fill="#2e6b60"/>
+<line x1="556.875" y1="291.39728830073244" x2="615.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="615.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<line x1="615.0" y1="253.29999999999995" x2="673.125" y2="291.39728830073244" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="673.125" cy="291.39728830073244" r="9" fill="#2e6b60"/>
+<line x1="673.125" y1="291.39728830073244" x2="731.25" y2="375.6924242794656" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="731.25" cy="375.6924242794656" r="9" fill="#2e6b60"/>
+<line x1="731.25" y1="375.6924242794656" x2="789.375" y2="455.0409034047817" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="789.375" cy="455.0409034047817" r="9" fill="#2e6b60"/>
+<line x1="789.375" y1="455.0409034047817" x2="847.5" y2="506.15701708764294" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="847.5" cy="506.15701708764294" r="9" fill="#2e6b60"/>
+<line x1="847.5" y1="506.15701708764294" x2="905.625" y2="532.530418511931" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="905.625" cy="532.530418511931" r="9" fill="#2e6b60"/>
+<line x1="905.625" y1="532.530418511931" x2="963.75" y2="544.5102514869961" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="963.75" cy="544.5102514869961" r="9" fill="#2e6b60"/>
+<line x1="963.75" y1="544.5102514869961" x2="1021.875" y2="549.6118704269921" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1021.875" cy="549.6118704269921" r="9" fill="#2e6b60"/>
+<line x1="1021.875" y1="549.6118704269921" x2="1080.0" y2="551.7340862381275" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="551.7340862381275" r="9" fill="#2e6b60"/>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.09727</text>
+<text x="50" y="523.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">71</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.19455</text>
+<text x="50" y="448.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">42</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.29183</text>
+<text x="50" y="373.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">13</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.38910</text>
+<text x="50" y="298.8" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">84</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력 x</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">T10의 양측5% 임계값은 약±2.2281, 원 통계량3은 오른쪽 기각 구간에 있다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

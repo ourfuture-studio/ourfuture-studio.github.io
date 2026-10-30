@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">최소제곱은 잔차의 부호를 지운다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">후보 절편별 제곱합 최소를 보여 준다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">RSS(반응 단위의 제곱)</text>
+<circle cx="150.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="150.0" y1="253.29999999999995" x2="382.5" y2="446.15714285714284" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="382.5" cy="446.15714285714284" r="9" fill="#2e6b60"/>
+<text x="367.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="382.5" y1="446.15714285714284" x2="615.0" y2="510.4428571428571" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="615.0" cy="510.4428571428571" r="9" fill="#2e6b60"/>
+<text x="600.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="615.0" y1="510.4428571428571" x2="847.5" y2="446.15714285714284" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="847.5" cy="446.15714285714284" r="9" fill="#2e6b60"/>
+<text x="832.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="847.5" y1="446.15714285714284" x2="1080.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3.5</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">7</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">10.5</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">14</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">절편 b(반응값과 같은 단위)</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측 1·2·3의 절편 RSS는 b=2에서 2로 최소다. x축 b, y축 RSS.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

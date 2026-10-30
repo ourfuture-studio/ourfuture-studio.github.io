@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1028" viewBox="0 0 1200 1028" role="img">
+<rect width="1200" height="1028" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">입력 변화는 경보이고 성능 저하는 정답으로 확인한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력 비율 변화와 아직 알 수 없는 정답 성능을 별도 칸에 둔다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">이전 입력</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">새 입력</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">새 정확도</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="325.0" y1="451.3" x2="325.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
+<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">n</text>
+<line x1="875.0" y1="451.3" x2="875.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">이전 입력1 비율</text>
+<line x1="325.0" y1="536.3" x2="325.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
+<line x1="875.0" y1="536.3" x2="875.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">새 입력1 비율</text>
+<line x1="325.0" y1="621.3" x2="325.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">60</text>
+<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
+<line x1="875.0" y1="621.3" x2="875.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<rect x="50" y="706.3" width="1100" height="112.0" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">새 정확도</text>
+<line x1="325.0" y1="706.3" x2="325.0" y2="818.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<line x1="600.0" y1="706.3" x2="600.0" y2="818.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<line x1="875.0" y1="706.3" x2="875.0" y2="818.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">정답 도착 전 미확</text>
+<text x="887.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">인</text>
+<text x="50" y="879.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력1 비율20%→60%는40퍼센트포인트 변화다. 정답이 없으면 정확도 변화는 미</text>
+<text x="50" y="922.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">확인이다.</text>
+<text x="50" y="999.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

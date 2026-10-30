@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">커널과 C는 서로 다른 부분을 바꾼다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">같은 후보의 목적값이 C에 따라 변하는 직선을 보인다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<circle cx="150.0" cy="493.29999999999995" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.1</text>
+<line x1="150.0" y1="493.29999999999995" x2="305.0" y2="453.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="305.0" cy="453.29999999999995" r="9" fill="#2e6b60"/>
+<text x="290.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<line x1="305.0" y1="453.29999999999995" x2="498.75" y2="403.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="498.75" cy="403.29999999999995" r="9" fill="#2e6b60"/>
+<text x="483.75" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="498.75" y1="403.29999999999995" x2="692.5" y2="353.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="692.5" cy="353.29999999999995" r="9" fill="#2e6b60"/>
+<text x="677.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<line x1="692.5" y1="353.29999999999995" x2="886.25" y2="303.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="886.25" cy="303.29999999999995" r="9" fill="#2e6b60"/>
+<text x="871.25" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="886.25" y1="303.29999999999995" x2="1080.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2.5</text>
+<text x="470" y="208.5" fill="#7a1f2e" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<circle cx="150.0" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.1</text>
+<line x1="150.0" y1="403.29999999999995" x2="305.0" y2="403.29999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="305.0" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="290.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<line x1="305.0" y1="403.29999999999995" x2="498.75" y2="403.29999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="498.75" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="483.75" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="498.75" y1="403.29999999999995" x2="692.5" y2="403.29999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="692.5" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="677.5" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<line x1="692.5" y1="403.29999999999995" x2="886.25" y2="403.29999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="886.25" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="871.25" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="886.25" y1="403.29999999999995" x2="1080.0" y2="403.29999999999995" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="1080.0" cy="403.29999999999995" r="9" fill="#7a1f2e"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2.5</text>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4.5</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">벌점 비중 C(지정된 목적식 단위)</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A=1+2C와 B=3은 C=1에서 만난다. x축 C, y축 목적값.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

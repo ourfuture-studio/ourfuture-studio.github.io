@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1077" viewBox="0 0 1200 1077" role="img">
+<rect width="1200" height="1077" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정준상관은 두 묶음에서 점수를 하나씩 만든다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">두 변수 묶음과 두 점수의 역할을 보인다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">X의 두 변수</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">가중치a</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">U</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">Y의 세 변수</text>
+<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">가중치b</text>
+<rect x="625" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">V</text>
+<rect x="50" y="571.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">출발</text>
+<line x1="600.0" y1="571.3" x2="600.0" y2="656.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">연결</text>
+<rect x="50" y="656.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">X_1,X_2</text>
+<line x1="600.0" y1="656.3" x2="600.0" y2="741.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">U=0.5X_1+0.5X_2</text>
+<rect x="50" y="741.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">Y_1,Y_2,Y_3</text>
+<line x1="600.0" y1="741.3" x2="600.0" y2="826.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">V=Y_1+Y_2-Y_3</text>
+<rect x="50" y="826.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">여러 사람의 U,V</text>
+<line x1="600.0" y1="826.3" x2="600.0" y2="911.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="867.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">상관 검토</text>
+<text x="50" y="972.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시험2열→U, 직무3열→V를 만든 뒤 여러 사람의 U·V 관계를 보는 구조다.</text>
+<text x="50" y="1048.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

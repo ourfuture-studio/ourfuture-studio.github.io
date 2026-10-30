@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-25</p><h1 class="lesson-title">표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다</h1>
+<p>세 관측의 배율과 분모의 정의를 바꾸어 분산과 표준편차를 구분한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">n=3이다. iid·유한분산 조건의 불편성은 반복 표집의 성질이며 한 표본이 참 모분산과 같다는 뜻은 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-25.png" target="_blank" rel="noopener"><img src="assets/figures/2-25.png" alt="자체 예제의 세 관측의 배율과 분모의 정의를 바꾸어 분산과 표준편차를 구분한다.. 2·4·6의 평균은4, 편차제곱합은8이다. 두 배한4·8·12의 불편 표본분산은16이다." width="1200" height="900"/></a><figcaption>2·4·6의 평균은4, 편차제곱합은8이다. 두 배한4·8·12의 불편 표본분산은16이다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>독립·동일분포 표본 2·4·6이다. 모분산의 불편 추정량 s²=Σ(x−표본평균)²/(n−1)을 쓴다.</p><fieldset><legend>s²는 얼마인가?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 2</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 8/3</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 4</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 8</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>원래 세 값을 모두 2배하여 4·8·12로 바꾸면 같은 정의의 표본분산은?</p>
+<details><summary>변형 풀이 확인</summary><p>16</p><p>편차가 모두 2배이고 제곱합은 4배가 되므로 분산도 4×4=16이다.</p></details>
+<p>편차를 제곱했으니 단위와 배율도 제곱된다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://itl.nist.gov/div898/handbook/eda/section3/eda356.htm" target="_blank" rel="noopener noreferrer">NIST: Measures of Scale</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-24.html">← 이전 체험</a>
+<a href="2-26.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-25", "title": "표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다", "question": {"givens": "독립·동일분포 표본 2·4·6이다. 모분산의 불편 추정량 s²=Σ(x−표본평균)²/(n−1)을 쓴다.", "stem": "s²는 얼마인가?", "choices": ["2", "8/3", "4", "8"], "answer": 3, "reason": "평균은 4, 편차제곱합은 8이므로 8/(3−1)=4다.", "wrong_reasons": ["① 표본표준편차와 분산을 혼동했다.", "② n으로 나눈 값이며 문제에서 정한 분모와 다르다.", "④ 편차제곱합에서 나누기를 하지 않았다."]}, "experience": {"kind": "variance-calculation", "goal": "세 관측의 배율과 분모의 정의를 바꾸어 분산과 표준편차를 구분한다.", "inputs": [{"id": "factor", "label": "원자료 배율", "type": "number", "default": 1, "min": -5, "max": 5}, {"id": "denominator", "label": "분모의 목적", "type": "select", "default": "불편 표본분산 n−1", "options": ["불편 표본분산 n−1", "경험분포 분산 n"]}], "cases": [{"name": "원문제", "inputs": {"factor": 1, "denominator": "불편 표본분산 n−1"}, "expected_answer": "분산 4.000 · 표준편차 2.000", "reason": "8/2"}, {"name": "배율변형", "inputs": {"factor": 2, "denominator": "불편 표본분산 n−1"}, "expected_answer": "분산 16.000 · 표준편차 4.000", "reason": "분산4배"}, {"name": "다른정의", "inputs": {"factor": 1, "denominator": "경험분포 분산 n"}, "expected_answer": "분산 2.667 · 표준편차 1.633", "reason": "8/3"}, {"name": "상수변환", "inputs": {"factor": 0, "denominator": "불편 표본분산 n−1"}, "expected_answer": "분산 0.000 · 표준편차 0.000", "reason": "분모는여전히2"}], "boundary": "n=3이다. iid·유한분산 조건의 불편성은 반복 표집의 성질이며 한 표본이 참 모분산과 같다는 뜻은 아니다.", "related_codes": ["2-13", "2-28"]}}</script><script type="module" src="app.mjs"></script></body></html>

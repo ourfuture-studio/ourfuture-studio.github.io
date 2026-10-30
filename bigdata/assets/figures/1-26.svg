@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1001" viewBox="0 0 1200 1001" role="img">
+<rect width="1200" height="1001" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">웹·API·DB에 맞는 수집 경로</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">권한이 있는 API·DB 경로와 페이지 누락 점검을 보여준다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">제공 형태</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">권한·필드</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">수집</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">페이지·건수 점검</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">공식 API</text>
+<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">명세·인증·페이지·한도</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">내부 DB</text>
+<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">읽기 권한·표·조건</text>
+<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">결과 확인</text>
+<line x1="600.0" y1="706.3" x2="600.0" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원본·시각·건수·중복</text>
+<text x="50" y="852.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">필요 필드와 이용 조건을 충족한 API → 페이지별 50·50·20건 확인. API가 없으면</text>
+<text x="50" y="895.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">허용 DB 경로를 검토한다.</text>
+<text x="50" y="972.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>예측값 다음에 누가 무엇을 결정하는지 적는다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">4과목 · 빅데이터 결과 해석 · 4-37</p><h1 class="lesson-title">예측값 다음에 누가 무엇을 결정하는지 적는다</h1>
+<p>명시한 단순 발주 정책에서 수요와 재고를 바꾸어 계산한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">자체 max 정책의 산술 결과이며 현실의 최적 발주·비용 절감·업무 효과를 입증하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/4-37.png" target="_blank" rel="noopener"><img src="assets/figures/4-37.png" alt="자체 예제의 예측값에서 정책을 거쳐 행동으로 이어지는 조건을 표시한다.. 수요예측80−재고20 → max(60,0) → 추가발주60. 예측과 최적 발주는 같은 개념이 아니다." width="1200" height="1001"/></a><figcaption>수요예측80−재고20 → max(60,0) → 추가발주60. 예측과 최적 발주는 같은 개념이 아니다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>내일 수요 예측은 80개, 재고는 20개다. 입고·폐기·안전 재고·포장 제약은 없다. 단순 정책은 추가 발주=max(예측 수요−재고,0)이다.</p><fieldset><legend>이 정책의 추가 발주량과 올바른 설명은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 80개, 예측은 항상 최적 행동과 같다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 100개, 재고를 더해야 한다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 60개, 명시한 단순 정책의 결과다</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 20개, 예측값은 의사결정에 쓰지 않는다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>다른 조건과 정책은 같고 재고만 90개로 늘어나면 추가 발주량은?</p>
+<details><summary>변형 풀이 확인</summary><p>max(80−90,0)=0개다.</p><p>차이는−10이지만 정책의 하한이 0이다. 음수 발주는 허용하지 않는다. 실제 반품이나 폐기 결정은 이 단순 발주 정책의 범위 밖이다.</p></details>
+<p>예측값 옆에 사용자·행동·조건.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://developers.google.com/machine-learning/problem-framing/ml-framing" target="_blank" rel="noopener noreferrer">Google Framing an ML problem</a></li>
+<li><a href="https://developers.google.com/machine-learning/managing-ml-projects/production" target="_blank" rel="noopener noreferrer">Google Productionization</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="4-36.html">← 이전 체험</a>
+<a href="index.html">전체 목록</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "4-37", "title": "예측값 다음에 누가 무엇을 결정하는지 적는다", "question": {"givens": "내일 수요 예측은 80개, 재고는 20개다. 입고·폐기·안전 재고·포장 제약은 없다. 단순 정책은 추가 발주=max(예측 수요−재고,0)이다.", "stem": "이 정책의 추가 발주량과 올바른 설명은?", "choices": ["80개, 예측은 항상 최적 행동과 같다", "100개, 재고를 더해야 한다", "60개, 명시한 단순 정책의 결과다", "20개, 예측값은 의사결정에 쓰지 않는다"], "answer": 3, "reason": "max(80−20,0)=60이다. 재고를 고려한 지정 정책의 산출이며, 현실의 모든 비용·제약을 반영한 최적 주문이나 업무 성과 개선을 뜻하지 않는다.", "wrong_reasons": ["1번: 재고 20개를 빠뜨렸다. 예측값과 제약을 반영한 행동은 구별한다.", "2번: 현재 재고는 수요를 충당하므로 지정 식에서는 빼야 한다.", "4번: 재고를 그대로 발주량으로 읽었다. 주어진 정책은 예측 수요와 재고를 함께 쓴다."]}, "experience": {"kind": "numeric", "goal": "명시한 단순 발주 정책에서 수요와 재고를 바꾸어 계산한다.", "inputs": [{"id": "demand", "label": "내일 수요 예측(개)", "type": "number", "default": 80, "min": 0, "max": 200}, {"id": "stock", "label": "사용 가능한 재고(개)", "type": "number", "default": 20, "min": 0, "max": 200}], "cases": [{"name": "원 문제", "inputs": {"demand": 80, "stock": 20}, "expected_answer": 60, "reason": "예측에서 재고를 뺀다."}, {"name": "원고 변형", "inputs": {"demand": 80, "stock": 90}, "expected_answer": 0, "reason": "음수 발주는 허용하지 않는다."}, {"name": "재고 없음", "inputs": {"demand": 80, "stock": 0}, "expected_answer": 80, "reason": "이 정책에서는 예측만큼 주문한다."}], "boundary": "자체 max 정책의 산술 결과이며 현실의 최적 발주·비용 절감·업무 효과를 입증하지 않는다.", "related_codes": ["1-05", "4-36"]}}</script><script type="module" src="app.mjs"></script></body></html>

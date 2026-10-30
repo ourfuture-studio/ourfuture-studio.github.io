@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>슬라이딩 윈도우는 예측 시점을 고정해 만든다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-27</p><h1 class="lesson-title">슬라이딩 윈도우는 예측 시점을 고정해 만든다</h1>
+<p>창 길이와 예측 수평을 바꿔 완전한 입력·정답 쌍을 센다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">창 이동 간격1, 결측 없음, 일정 시점이다. 창 수 산술이 누수 없는 평가를 보장하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-27.png" target="_blank" rel="noopener"><img src="assets/figures/3-27.png" alt="자체 예제의 입력 구간의 끝과 정답 시점을 나눠 표시한다.. 시점1~3 입력으로4를 예측하고2~4 입력으로5를 예측한다." width="1200" height="900"/></a><figcaption>시점1~3 입력으로4를 예측하고2~4 입력으로5를 예측한다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>시간순 관측 5개. 창 길이 3, 한 시점 앞을 예측하고 창을 1칸씩 이동한다.</p><fieldset><legend>만들 수 있는 완전한 입력·정답 쌍은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 1개</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 2개</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 3개</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 5개</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>관측 5개와 창 길이 3은 같고 두 시점 앞 h=2를 예측하면 완전한 쌍은?</p>
+<details><summary>변형 풀이 확인</summary><p>1개: (10,11,12)→14.</p><p>n−L−h+1=1이다. 정답은 입력 바로 다음 13이 아니라 두 시점 뒤 14다.</p></details>
+<p>창 끝 t, 정답은 t+h.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html" target="_blank" rel="noopener noreferrer">scikit-learn TimeSeriesSplit</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-25.html">← 이전 체험</a>
+<a href="3-28.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-27", "title": "슬라이딩 윈도우는 예측 시점을 고정해 만든다", "question": {"givens": "시간순 관측 5개. 창 길이 3, 한 시점 앞을 예측하고 창을 1칸씩 이동한다.", "stem": "만들 수 있는 완전한 입력·정답 쌍은?", "choices": ["1개", "2개", "3개", "5개"], "answer": 2, "reason": "n−L−h+1=5−3−1+1=2다. 마지막 창 뒤의 정답까지 있어야 쌍을 셀 수 있다.", "wrong_reasons": ["1번: 한 창만 만들고 다음 가능한 창을 누락했다.", "3번: 정답이 없는 마지막 입력 창까지 셌다.", "4번: 각 시점을 창 하나로 셌으며 앞뒤에 필요한 관측을 고려하지 않았다."]}, "experience": {"kind": "calculation", "goal": "창 길이와 예측 수평을 바꿔 완전한 입력·정답 쌍을 센다.", "inputs": [{"id": "n", "label": "시간순 관측 수", "type": "number", "default": 5, "min": 3, "max": 20}, {"id": "L", "label": "입력 창 길이", "type": "number", "default": 3, "min": 1, "max": 10}, {"id": "h", "label": "앞으로 예측할 시점 수", "type": "number", "default": 1, "min": 1, "max": 5}], "cases": [{"name": "한시점앞", "inputs": {"n": 5, "L": 3, "h": 1}, "expected_answer": 2, "reason": "입력1~3→4,2~4→5"}, {"name": "두시점앞", "inputs": {"n": 5, "L": 3, "h": 2}, "expected_answer": 1, "reason": "입력1~3→5"}, {"name": "정답없음", "inputs": {"n": 3, "L": 3, "h": 1}, "expected_answer": 0, "reason": "마지막창뒤값없음"}], "boundary": "창 이동 간격1, 결측 없음, 일정 시점이다. 창 수 산술이 누수 없는 평가를 보장하지 않는다.", "related_codes": []}}</script><script type="module" src="app.mjs"></script></body></html>

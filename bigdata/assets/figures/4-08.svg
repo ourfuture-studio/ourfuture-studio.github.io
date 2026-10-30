@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img">
+<rect width="1200" height="1000" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">같은 오차도 제곱하면 큰 오차의 영향이 커진다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">절대오차와 제곱오차 항을 별도로 보여 단위가 다른 지표를 한 축에서 혼합하지</text>
+<text x="50" y="190.4" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">않는다.</text>
+<rect x="50" y="236.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="283.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">오차1</text>
+<rect x="625" y="236.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="283.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">오차2</text>
+<rect x="50" y="356.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="403.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">오차3</text>
+<rect x="50" y="494.8" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="325.0" y1="494.8" x2="325.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">오차</text>
+<line x1="600.0" y1="494.8" x2="600.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">absolute</text>
+<line x1="875.0" y1="494.8" x2="875.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">squared</text>
+<rect x="50" y="579.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">첫 관측</text>
+<line x1="325.0" y1="579.8" x2="325.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-1</text>
+<line x1="600.0" y1="579.8" x2="600.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="875.0" y1="579.8" x2="875.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<rect x="50" y="664.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">둘째 관측</text>
+<line x1="325.0" y1="664.8" x2="325.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="600.0" y1="664.8" x2="600.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="875.0" y1="664.8" x2="875.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<rect x="50" y="749.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">셋째 관측</text>
+<line x1="325.0" y1="749.8" x2="325.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="600.0" y1="749.8" x2="600.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="875.0" y1="749.8" x2="875.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">16</text>
+<text x="50" y="895.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">절대오차1·1·4는 합6, 제곱오차1·1·16은 합18이다.</text>
+<text x="50" y="971.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1036" viewBox="0 0 1200 1036" role="img">
+<rect width="1200" height="1036" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">검증으로 고르고 시험 자료로 마지막 성능을 확인한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">검증 점수와 시험 정보 사용 여부를 바꾸어 선택과 독립 평가의 경계를 확인한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">검증</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">미사용 시험</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A70%</text>
+<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B80%</text>
+<rect x="50" y="571.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">후보</text>
+<line x1="416.6666666666667" y1="571.3" x2="416.6666666666667" y2="656.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련(%)</text>
+<line x1="783.3333333333334" y1="571.3" x2="783.3333333333334" y2="656.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="612.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">검증(%)</text>
+<rect x="50" y="656.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<line x1="416.6666666666667" y1="656.3" x2="416.6666666666667" y2="741.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">99</text>
+<line x1="783.3333333333334" y1="656.3" x2="783.3333333333334" y2="741.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="697.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">70</text>
+<rect x="50" y="741.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<line x1="416.6666666666667" y1="741.3" x2="416.6666666666667" y2="826.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">90</text>
+<line x1="783.3333333333334" y1="741.3" x2="783.3333333333334" y2="826.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="782.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">80</text>
+<text x="50" y="887.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">선택 기준이 검증 정확도이면 A70%, B80%에서 B를 고른다. 시험 점수는 선택에</text>
+<text x="50" y="930.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">쓰지 않는다.</text>
+<text x="50" y="1007.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

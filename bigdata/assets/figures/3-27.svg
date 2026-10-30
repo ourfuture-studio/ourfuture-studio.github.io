@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">슬라이딩 윈도우는 예측 시점을 고정해 만든다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력 구간의 끝과 정답 시점을 나눠 표시한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">시점</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">입력창</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">정답</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">윈도우</text>
+<line x1="325.0" y1="451.3" x2="325.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">입력 시작</text>
+<line x1="600.0" y1="451.3" x2="600.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">입력 끝</text>
+<line x1="875.0" y1="451.3" x2="875.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">대상</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="325.0" y1="536.3" x2="325.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="600.0" y1="536.3" x2="600.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="875.0" y1="536.3" x2="875.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="325.0" y1="621.3" x2="325.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="600.0" y1="621.3" x2="600.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="875.0" y1="621.3" x2="875.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
+<text x="50" y="767.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시점1~3 입력으로4를 예측하고2~4 입력으로5를 예측한다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1052" viewBox="0 0 1200 1052" role="img">
+<rect width="1200" height="1052" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">범주형 회귀의 계수는 조건부터 센다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">계수 항목을 눈으로 더한다.</text>
+<text x="70" y="221.4" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">절편 포함 · 기준 코딩 · 모든 조합 관측 · 완전열랭크</text>
+<text x="70" y="341.4" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">주효과</text>
+<rect x="205" y="293.3" width="71.25" height="82" rx="0" fill="#626a73" stroke="#626a73" stroke-width="2"/>
+<text x="228.625" y="341.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">1</text>
+<rect x="276.25" y="293.3" width="142.5" height="82" rx="0" fill="#2e6b60" stroke="#2e6b60" stroke-width="2"/>
+<text x="335.5" y="341.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">2</text>
+<rect x="418.75" y="293.3" width="213.75" height="82" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="513.625" y="341.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">3</text>
+<text x="647.5" y="342.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">6개</text>
+<text x="70" y="521.4" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">교호작용</text>
+<text x="70" y="563.5" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">포함</text>
+<rect x="205" y="473.3" width="71.25" height="82" rx="0" fill="#626a73" stroke="#626a73" stroke-width="2"/>
+<text x="228.625" y="521.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">1</text>
+<rect x="276.25" y="473.3" width="142.5" height="82" rx="0" fill="#2e6b60" stroke="#2e6b60" stroke-width="2"/>
+<text x="335.5" y="521.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">2</text>
+<rect x="418.75" y="473.3" width="213.75" height="82" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="513.625" y="521.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">3</text>
+<rect x="632.5" y="473.3" width="427.5" height="82" rx="0" fill="#a36c25" stroke="#a36c25" stroke-width="2"/>
+<text x="834.25" y="521.3" fill="#ffffff" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">6</text>
+<text x="1075.0" y="522.4" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">12개</text>
+<line x1="205" y1="688.3" x2="1060.0" y2="688.3" stroke="#1b2340" stroke-width="3"/>
+<line x1="205.0" y1="688.3" x2="205.0" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="190.0" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="347.5" y1="688.3" x2="347.5" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="332.5" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="490.0" y1="688.3" x2="490.0" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="475.0" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="632.5" y1="688.3" x2="632.5" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="617.5" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6</text>
+<line x1="775.0" y1="688.3" x2="775.0" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="760.0" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
+<line x1="917.5" y1="688.3" x2="917.5" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="902.5" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">10</text>
+<line x1="1060.0" y1="688.3" x2="1060.0" y2="698.3" stroke="#1b2340" stroke-width="2"/>
+<text x="1045.0" y="729.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<text x="600" y="784.5" fill="#626a73" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균 모형의 계수 수 (개)</text>
+<rect x="70" y="833.3" width="24" height="24" rx="0" fill="#626a73" stroke="#626a73" stroke-width="2"/>
+<text x="108" y="846.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">절편</text>
+<rect x="350" y="833.3" width="24" height="24" rx="0" fill="#2e6b60" stroke="#2e6b60" stroke-width="2"/>
+<text x="388" y="846.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A의 2열</text>
+<rect x="630" y="833.3" width="24" height="24" rx="0" fill="#8c3444" stroke="#8c3444" stroke-width="2"/>
+<text x="668" y="846.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B의 3열</text>
+<rect x="910" y="833.3" width="24" height="24" rx="0" fill="#a36c25" stroke="#a36c25" stroke-width="2"/>
+<text x="948" y="846.5" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A×B의 6열</text>
+<text x="50" y="947.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A 3수준·B 4수준에서 주효과는 6열, 교호작용 포함은 12열이다.</text>
+<text x="50" y="1023.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

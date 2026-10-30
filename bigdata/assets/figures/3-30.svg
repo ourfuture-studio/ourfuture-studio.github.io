@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="957" viewBox="0 0 1200 957" role="img">
+<rect width="1200" height="957" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">배깅은 표본을 바꾸고 부스팅은 순서대로 보완한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">현재 예측에 보정이 더해지는 구조를 보인다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">현재 F_0</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">보정 h</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">학습률</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">새 F_1</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">단계</text>
+<line x1="416.6666666666667" y1="451.3" x2="416.6666666666667" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">v1</text>
+<line x1="783.3333333333334" y1="451.3" x2="783.3333333333334" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">v2</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">현재</text>
+<line x1="416.6666666666667" y1="536.3" x2="416.6666666666667" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="783.3333333333334" y1="536.3" x2="783.3333333333334" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5h</text>
+<line x1="416.6666666666667" y1="621.3" x2="416.6666666666667" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<line x1="783.3333333333334" y1="621.3" x2="783.3333333333334" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">새 예측</text>
+<line x1="416.6666666666667" y1="706.3" x2="416.6666666666667" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2.5</text>
+<line x1="783.3333333333334" y1="706.3" x2="783.3333333333334" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3.5</text>
+<text x="50" y="852.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">F_0=(2,2)에 0.5h=(0.5,1.5)를 더해 F_1=(2.5,3.5)를 만든다.</text>
+<text x="50" y="928.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

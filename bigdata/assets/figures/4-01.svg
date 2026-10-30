@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">포아송 적합도 자유도는 모수를 어디에서 구했는지부터</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">본다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">범주 수가 같아도 모수 출처에 따라 차감 수가 달라짐을 보인다.</text>
+<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">외부 고정</text>
+<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">구간도수 MLE</text>
+<rect x="50" y="395.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="416.6666666666667" y1="395.1" x2="416.6666666666667" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
+<line x1="783.3333333333334" y1="395.1" x2="783.3333333333334" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
+<rect x="50" y="480.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">외부 고정</text>
+<line x1="416.6666666666667" y1="480.1" x2="416.6666666666667" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
+<line x1="783.3333333333334" y1="480.1" x2="783.3333333333334" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6-1-0</text>
+<rect x="50" y="565.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">구간도수 MLE</text>
+<line x1="416.6666666666667" y1="565.1" x2="416.6666666666667" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="783.3333333333334" y1="565.1" x2="783.3333333333334" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6-1-1</text>
+<text x="50" y="711.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">최종 6범주: 외부 고정 λ는 자유도5, 같은 범주도수에서 효율적 MLE로 λ 추정은4</text>
+<text x="50" y="754.7" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ROC의 한 점과 점수 순서를 요약한 AUC를 구분한다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">4과목 · 빅데이터 결과 해석 · 4-07</p><h1 class="lesson-title">ROC의 한 점과 점수 순서를 요약한 AUC를 구분한다</h1>
+<p>한 양성 점수와 판정 임곗값을 독립적으로 바꾸어 AUC와 ROC 점을 비교한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">양성·음성 각2개가 있는 자체 이진 자료다. AUC는 확률 보정이나 특정 임곗값의 정밀도가 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/4-07.png" target="_blank" rel="noopener"><img src="assets/figures/4-07.png" alt="자체 예제의 ROC의 두 축과 임곗값 변화의 지점을 표시한다.. 원 점수의 ROC는 (0,0)→(0,0.5)→(0.5,0.5)→(0.5,1)→(1,1)이며 AUC는0.75다." width="1200" height="900"/></a><figcaption>원 점수의 ROC는 (0,0)→(0,0.5)→(0.5,0.5)→(0.5,1)→(1,1)이며 AUC는0.75다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>이진 평가 4건이다. 양성 점수는 0.9·0.6, 음성 점수는 0.8·0.2다. 높을수록 양성이며 동점은 없다.</p><fieldset><legend>이 점수의 ROC-AUC는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. 0.25</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. 0.50</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. 0.75</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 1.00</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>양성 점수 0.6만 0.85로 바꾸고 나머지 세 점수는 유지했다. 새 AUC는?</p>
+<details><summary>변형 풀이 확인</summary><p>1.00이다.</p><p>이제 양성 0.9·0.85가 두 음성 0.8·0.2보다 모두 높아 네 쌍을 전부 맞힌다. 실제 보정이나 새 자료 성능이 입증된 결과는 아니다.</p></details>
+<p>ROC는 판정 지점들, AUC는 그 점수의 순위.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html" target="_blank" rel="noopener noreferrer">scikit-learn roc_auc_score</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener noreferrer">scikit-learn Metrics and scoring</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="4-06.html">← 이전 체험</a>
+<a href="4-08.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "4-07", "title": "ROC의 한 점과 점수 순서를 요약한 AUC를 구분한다", "question": {"givens": "이진 평가 4건이다. 양성 점수는 0.9·0.6, 음성 점수는 0.8·0.2다. 높을수록 양성이며 동점은 없다.", "stem": "이 점수의 ROC-AUC는?", "choices": ["0.25", "0.50", "0.75", "1.00"], "answer": 3, "reason": "양성 2개와 음성 2개의 4쌍을 비교하면 양성이 높은 쌍은 3개다. 0.75는 점수 순위의 요약이지 특정 임곗값에서 계산한 TPR이나 FPR이 아니다.", "wrong_reasons": ["1번: 잘못된 순서 1쌍의 비율을 양성이 앞서는 비율과 바꾸었다.", "2번: 올바른 쌍은 2개가 아니라 3개다. 0.5라는 임곗값과도 무관하다.", "4번: 양성 0.6은 음성 0.8보다 낮으므로 모든 쌍의 순서가 맞지 않는다."]}, "experience": {"kind": "numeric", "goal": "한 양성 점수와 판정 임곗값을 독립적으로 바꾸어 AUC와 ROC 점을 비교한다.", "inputs": [{"id": "positive2", "label": "두 번째 양성 점수", "type": "number", "default": 0.6, "min": 0, "max": 1}, {"id": "threshold", "label": "임곗값(이상 양성)", "type": "number", "default": 0.5, "min": 0, "max": 1}], "cases": [{"name": "원 문제", "inputs": {"positive2": 0.6, "threshold": 0.5}, "expected_answer": 0.75, "reason": "네 쌍 중 세 승리다."}, {"name": "임곗값만 변경", "inputs": {"positive2": 0.6, "threshold": 0.85}, "expected_answer": 0.75, "reason": "운용 점은 바뀌어도 순위는 같다."}, {"name": "원고 변형", "inputs": {"positive2": 0.85, "threshold": 0.5}, "expected_answer": 1, "reason": "네 쌍 모두 앞선다."}, {"name": "동점 추가", "inputs": {"positive2": 0.8, "threshold": 0.5}, "expected_answer": 0.875, "reason": "동점은 반 쌍이다."}], "boundary": "양성·음성 각2개가 있는 자체 이진 자료다. AUC는 확률 보정이나 특정 임곗값의 정밀도가 아니다.", "related_codes": ["4-04", "4-16"]}}</script><script type="module" src="app.mjs"></script></body></html>

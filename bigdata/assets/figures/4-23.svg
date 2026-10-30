@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1021" viewBox="0 0 1200 1021" role="img">
+<rect width="1200" height="1021" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">다르다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">후보 개수와 평가 학습 횟수를 다른 열로 둔다.</text>
+<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">격자</text>
+<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">무작위4시도</text>
+<rect x="50" y="377.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="424.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">베이지안4시도</text>
+<rect x="50" y="515.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="325.0" y1="515.1" x2="325.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">candidates</text>
+<line x1="600.0" y1="515.1" x2="600.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">folds</text>
+<line x1="875.0" y1="515.1" x2="875.0" y2="600.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="556.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">fits</text>
+<rect x="50" y="600.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">전체 격자</text>
+<line x1="325.0" y1="600.1" x2="325.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<line x1="600.0" y1="600.1" x2="600.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="875.0" y1="600.1" x2="875.0" y2="685.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="641.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">36</text>
+<rect x="50" y="685.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">무작위4시도</text>
+<line x1="325.0" y1="685.1" x2="325.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="600.0" y1="685.1" x2="600.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="875.0" y1="685.1" x2="875.0" y2="770.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="726.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<rect x="50" y="770.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="811.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">베이지안4시도</text>
+<line x1="325.0" y1="770.1" x2="325.0" y2="855.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="811.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="600.0" y1="770.1" x2="600.0" y2="855.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="811.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="875.0" y1="770.1" x2="875.0" y2="855.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="811.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<text x="50" y="916.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">깊이3×학습률4=12후보,3fold 격자는36회 학습이며 최종 재적합은 별도다.</text>
+<text x="50" y="992.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="921" viewBox="0 0 1200 921" role="img">
+<rect width="1200" height="921" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">공분산의 크기와 상관계수의 크기는 단위 변화에 다르</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">게 반응한다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">y의 배율을 양수·음수·0으로 바꾸어 공분산과 상관계수의 차이를 확인한다.</text>
+<line x1="150" y1="617.1" x2="1100" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="292.1" x2="150" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="272.3" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">패널별 y·100y·-y 단위</text>
+<circle cx="150.0" cy="517.1" r="9" fill="#2e6b60"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<circle cx="615.0" cy="417.1" r="9" fill="#2e6b60"/>
+<text x="600.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<circle cx="1080.0" cy="317.1" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<text x="50" y="626.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="617.1" x2="150" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="551.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<line x1="145" y1="542.1" x2="150" y2="542.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="476.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
+<line x1="145" y1="467.1" x2="150" y2="467.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="401.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4.5</text>
+<line x1="145" y1="392.1" x2="150" y2="392.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="326.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6</text>
+<line x1="145" y1="317.1" x2="150" y2="317.1" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="717.3" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">x(예제 임의 단위)</text>
+<text x="50" y="816.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">y를100배하면 공분산2→200, r=1은 유지된다. y를-1배하면 r=-1이다.</text>
+<text x="50" y="892.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

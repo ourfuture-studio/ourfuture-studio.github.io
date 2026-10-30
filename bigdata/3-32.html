@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>투표와 메타학습의 입력은 다르다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">3과목 · 빅데이터 모델링 · 3-32</p><h1 class="lesson-title">투표와 메타학습의 입력은 다르다</h1>
+<p>같은 다수표여도 확률 평균이 다른 결론을 낼 수 있음을 확인한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">동등 가중치, 0.5 이상을 1로 하는 명시적 규칙이다. 라이브러리 argmax의 동률 규칙과 구별하며 확률 보정이나 성능을 검증하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/3-32.png" target="_blank" rel="noopener"><img src="assets/figures/3-32.png" alt="자체 예제의 두 .51 표와 한 .01 확률의 차이를 보인다.. 클래스1 확률 .51·.51·.01의 평균은 약.343이라 다수표의1과 소프트결정0이 다르다." width="1200" height="1086"/></a><figcaption>클래스1 확률 .51·.51·.01의 평균은 약.343이라 다수표의1과 소프트결정0이 다르다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>클래스 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.</p><fieldset><legend>하드·소프트 보팅의 범주 순서는?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. (1,0)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. (1,1)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. (0,1)</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. (0,0)</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>세 번째 확률만 0.90으로 바뀌면 두 결합의 범주는?</p>
+<details><summary>변형 풀이 확인</summary><p>둘 다 1.</p><p>개별 레이블은 모두 1이고 평균 확률은 1.92/3=0.64다. 단일 예시로 어느 결합의 성능이 더 좋다고 판단할 수 없다.</p></details>
+<p>레이블은 표 수, 소프트는 확률 평균.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank" rel="noopener noreferrer">scikit-learn Ensembles</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="3-31.html">← 이전 체험</a>
+<a href="3-33.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "3-32", "title": "투표와 메타학습의 입력은 다르다", "question": {"givens": "클래스 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.", "stem": "하드·소프트 보팅의 범주 순서는?", "choices": ["(1,0)", "(1,1)", "(0,1)", "(0,0)"], "answer": 1, "reason": "개별 범주는 1,1,0이므로 하드는 1이다. 평균은 1.03/3≈0.343이므로 소프트는 0이다.", "wrong_reasons": ["2번: 확률 평균을 계산하지 않고 다수 레이블을 두 번 사용했다.", "3번: 두 결합 방식의 결과를 서로 바꾸었다.", "4번: 하드 보팅에서 1이 두 표라는 사실을 놓쳤다."]}, "experience": {"kind": "calculation", "goal": "같은 다수표여도 확률 평균이 다른 결론을 낼 수 있음을 확인한다.", "inputs": [{"id": "p3", "label": "세 번째 모형의 클래스1 확률", "type": "number", "default": 0.01, "min": 0, "max": 1}], "cases": [{"name": "강한 반대 확률", "inputs": {"p3": 0.01}, "expected_answer": "하드 1 / 소프트 0", "reason": "평균.343333"}, {"name": "같은 방향", "inputs": {"p3": 0.9}, "expected_answer": "하드 1 / 소프트 1", "reason": "평균.64"}, {"name": "명시적 문턱 동일", "inputs": {"p3": 0.48}, "expected_answer": "하드 1 / 소프트 1", "reason": "체험의 ≥ 규칙"}], "boundary": "동등 가중치, 0.5 이상을 1로 하는 명시적 규칙이다. 라이브러리 argmax의 동률 규칙과 구별하며 확률 보정이나 성능을 검증하지 않는다.", "related_codes": []}}</script><script type="module" src="app.mjs"></script></body></html>

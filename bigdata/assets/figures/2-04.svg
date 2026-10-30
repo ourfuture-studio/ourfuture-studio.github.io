@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img">
+<rect width="1200" height="1000" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">횟수를 세는 변수와 시간을 재는 변수부터 구분한다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">측정 대상과 기록 방식을 바꾸어 원래 연속시간과 이산적인 반올림 기록을 구분한</text>
+<text x="50" y="190.4" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">다.</text>
+<rect x="50" y="236.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="283.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">횟수 X(회)</text>
+<rect x="625" y="236.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="283.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">이상적 시간 T(분)</text>
+<rect x="50" y="356.8" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="403.8" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">반올림 기록 R(분)</text>
+<rect x="50" y="494.8" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">변수</text>
+<line x1="325.0" y1="494.8" x2="325.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
+<line x1="600.0" y1="494.8" x2="600.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">종류</text>
+<line x1="875.0" y1="494.8" x2="875.0" y2="579.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="535.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">범위</text>
+<rect x="50" y="579.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">X</text>
+<line x1="325.0" y1="579.8" x2="325.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[0, 1, 2, 3]</text>
+<line x1="600.0" y1="579.8" x2="600.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">discrete</text>
+<line x1="875.0" y1="579.8" x2="875.0" y2="664.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="620.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<rect x="50" y="664.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">T</text>
+<line x1="325.0" y1="664.8" x2="325.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<line x1="600.0" y1="664.8" x2="600.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">continuous</text>
+<line x1="875.0" y1="664.8" x2="875.0" y2="749.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[0, 3]</text>
+<rect x="50" y="749.8" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">R</text>
+<line x1="325.0" y1="749.8" x2="325.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[0, 1, 2, 3]</text>
+<line x1="600.0" y1="749.8" x2="600.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">rounded-time</text>
+<line x1="875.0" y1="749.8" x2="875.0" y2="834.8" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="790.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400"></text>
+<text x="50" y="895.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원래 시간 T는 연속으로 모형화하지만 반올림 기록 R의 가능한 값은 이산적이다.</text>
+<text x="50" y="971.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

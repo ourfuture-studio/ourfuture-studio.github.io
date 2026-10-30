@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1156" viewBox="0 0 1200 1156" role="img">
+<rect width="1200" height="1156" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분할 단위는 나중에 예측할 대상에 맞춘다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평가 목적과 분할 방법을 바꾸어 사람과 시간의 경계를 확인한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A1</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A2</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B1</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B2</text>
+<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C1</text>
+<rect x="625" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C2</text>
+<rect x="50" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="600.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련</text>
+<rect x="625" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="600.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">시험</text>
+<rect x="50" y="691.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분할 기준</text>
+<line x1="416.6666666666667" y1="691.3" x2="416.6666666666667" y2="776.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련</text>
+<line x1="783.3333333333334" y1="691.3" x2="783.3333333333334" y2="776.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">시험</text>
+<rect x="50" y="776.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">행별</text>
+<line x1="416.6666666666667" y1="776.3" x2="416.6666666666667" y2="861.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A1&quot;, &quot;B1&quot;, &quot;C1&quot;]</text>
+<line x1="783.3333333333334" y1="776.3" x2="783.3333333333334" y2="861.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A2&quot;, &quot;B2&quot;, &quot;C2&quot;]</text>
+<rect x="50" y="861.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사람별</text>
+<line x1="416.6666666666667" y1="861.3" x2="416.6666666666667" y2="946.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A1&quot;, &quot;A2&quot;, &quot;B1&quot;, &quot;B2&quot;]</text>
+<line x1="783.3333333333334" y1="861.3" x2="783.3333333333334" y2="946.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;C1&quot;, &quot;C2&quot;]</text>
+<text x="50" y="1007.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">새 사람 평가에서는 A·B로 훈련하고 C로 시험해 개인의 경계를 지킨다. 미래 예측</text>
+<text x="50" y="1050.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">은 시간도 확인한다.</text>
+<text x="50" y="1127.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

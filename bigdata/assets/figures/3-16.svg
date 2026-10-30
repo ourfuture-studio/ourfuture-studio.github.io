@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1042" viewBox="0 0 1200 1042" role="img">
+<rect width="1200" height="1042" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">연관규칙의 분모를 바꾸면 질문도 바뀐다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">세 지표의 같은 분자와 다른 분모를 연결한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">거래 수</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A</text>
+<line x1="416.6666666666667" y1="451.3" x2="416.6666666666667" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B</text>
+<line x1="783.3333333333334" y1="451.3" x2="783.3333333333334" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">n</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">예</text>
+<line x1="416.6666666666667" y1="536.3" x2="416.6666666666667" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">예</text>
+<line x1="783.3333333333334" y1="536.3" x2="783.3333333333334" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">예</text>
+<line x1="416.6666666666667" y1="621.3" x2="416.6666666666667" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">아니오</text>
+<line x1="783.3333333333334" y1="621.3" x2="783.3333333333334" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<rect x="50" y="706.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">아니오</text>
+<line x1="416.6666666666667" y1="706.3" x2="416.6666666666667" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">예</text>
+<line x1="783.3333333333334" y1="706.3" x2="783.3333333333334" y2="791.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="747.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<rect x="50" y="791.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">아니오</text>
+<line x1="416.6666666666667" y1="791.3" x2="416.6666666666667" y2="876.3" stroke="#dcded7" stroke-width="2"/>
+<text x="428.6666666666667" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">아니오</text>
+<line x1="783.3333333333334" y1="791.3" x2="783.3333333333334" y2="876.3" stroke="#dcded7" stroke-width="2"/>
+<text x="795.3333333333334" y="832.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">18</text>
+<text x="50" y="937.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40거래에서 동시8, A만2, B만12, 둘다없음18이다.</text>
+<text x="50" y="1013.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">축을 잘라도 자료의 증가율이 바뀌지는 않는다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원자료는 고정한 채 축 시작만 바꾸어 보이는 길이비를 비교한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">축0</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">축18</text>
+<rect x="50" y="331.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="325.0" y1="331.3" x2="325.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">first_height</text>
+<line x1="600.0" y1="331.3" x2="600.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">last_height</text>
+<line x1="875.0" y1="331.3" x2="875.0" y2="416.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="372.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">height_ratio</text>
+<rect x="50" y="416.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">축0</text>
+<line x1="325.0" y1="416.3" x2="325.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="600.0" y1="416.3" x2="600.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">30</text>
+<line x1="875.0" y1="416.3" x2="875.0" y2="501.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="457.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1.5</text>
+<rect x="50" y="501.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">축18</text>
+<line x1="325.0" y1="501.3" x2="325.0" y2="586.3" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="600.0" y1="501.3" x2="600.0" y2="586.3" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12</text>
+<line x1="875.0" y1="501.3" x2="875.0" y2="586.3" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="542.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6</text>
+<text x="50" y="647.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20→30은50% 증가이며 축0의 길이비1.5와 축18의 길이비6이 서로 다르다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

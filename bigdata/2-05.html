@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>빠진 값과 형식이 틀린 값은 다른 품질 문제다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-05</p><h1 class="lesson-title">빠진 값과 형식이 틀린 값은 다른 품질 문제다</h1>
+<p>값의 존재·허용 규칙·원기록을 바꿔 어떤 품질 검사가 실패하는지 확인한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">한 기록에 여러 품질 문제가 있을 수 있다. 가장 직접적인 검사만 비교하며 값을 자동 수정하지 않는다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<p>있는가, 규칙에 맞는가, 사실과 같은가는 다른 검사다.</p>
+<p>필수 점수 열의 규칙을 0~100의 정수로 정한 자체 사례다.</p>
+<table>
+<thead>
+<tr>
+<th>기록</th>
+<th>점수</th>
+<th>첫 검사 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>누락</td>
+<td>필수 값 부재</td>
+</tr>
+<tr>
+<td>B</td>
+<td>999</td>
+<td>허용 범위 위반</td>
+</tr>
+<tr>
+<td>C</td>
+<td>80</td>
+<td>이 두 검사는 통과</td>
+</tr>
+</tbody>
+</table>
+<p>C가 실제로 80점인지까지 확인한 것은 아니다. 형식 검사와 원기록 대조의 역할을 나누는 예제다.</p>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>점수는 필수이며 0~100의 정수다. A는 빈칸이고 B는 999다.</p><fieldset><legend>가장 직접적인 품질 문제의 연결은?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. A 완전성·B 유효성</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. A 유일성·B 완전성</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. A 적시성·B 유일성</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. A와 B 모두 실제 점수가 확인됐다</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>C의 80점은 범위에 맞지만 원래 채점표가 60점으로 확인됐다. 주된 문제는?</p>
+<details><summary>변형 풀이 확인</summary><p>정확성 문제다.</p><p>정해진 형식과 범위를 만족해도 실제 사실과 다른 값이면 정확하지 않다.</p></details>
+<p>있는가, 규칙에 맞는가, 사실과 같은가는 다른 검사다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework" target="_blank" rel="noopener noreferrer">UK Government Data Quality Framework</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-04.html">← 이전 체험</a>
+<a href="2-07.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-05", "title": "빠진 값과 형식이 틀린 값은 다른 품질 문제다", "question": {"givens": "점수는 필수이며 0~100의 정수다. A는 빈칸이고 B는 999다.", "stem": "가장 직접적인 품질 문제의 연결은?", "choices": ["A 완전성·B 유효성", "A 유일성·B 완전성", "A 적시성·B 유일성", "A와 B 모두 실제 점수가 확인됐다"], "answer": 1, "reason": "A는 있어야 할 값이 없고 B는 값이 있지만 허용 범위를 어겼다.", "wrong_reasons": ["② 중복 여부는 주어지지 않았고 B의 값은 존재한다.", "③ 입력 시점이나 중복에 관한 정보는 없다.", "④ 두 기록 모두 실제 점수와의 대조는 하지 않았다."]}, "experience": {"kind": "condition-choice", "goal": "값의 존재·허용 규칙·원기록을 바꿔 어떤 품질 검사가 실패하는지 확인한다.", "inputs": [{"id": "state", "label": "점수 기록 상태", "type": "select", "default": "빈칸", "options": ["빈칸", "999", "80인데 원기록60", "80이고 원기록80", "80이고 원기록 미확인"]}], "cases": [{"name": "기본A", "inputs": {"state": "빈칸"}, "expected_answer": "완전성 문제", "reason": "필수값누락"}, {"name": "기본B", "inputs": {"state": "999"}, "expected_answer": "유효성 문제", "reason": "규칙위반"}, {"name": "변형C", "inputs": {"state": "80인데 원기록60"}, "expected_answer": "정확성 문제", "reason": "사실불일치"}, {"name": "미확인", "inputs": {"state": "80이고 원기록 미확인"}, "expected_answer": "정확성 미확인", "reason": "검사통과와확인범위구분"}], "boundary": "한 기록에 여러 품질 문제가 있을 수 있다. 가장 직접적인 검사만 비교하며 값을 자동 수정하지 않는다.", "related_codes": ["2-03", "2-07"]}}</script><script type="module" src="app.mjs"></script></body></html>

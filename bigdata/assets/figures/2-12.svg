@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="965" viewBox="0 0 1200 965" role="img">
+<rect width="1200" height="965" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">최소-최대 변환의 기준은 적용할 자료마다 새로 정하지</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">않는다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">저장된 기준과 관측값, clipping 선택을 바꾸어 선형 변환의 차이를 확인한다.</text>
+<line x1="150" y1="617.1" x2="1100" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="292.1" x2="150" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="272.3" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">min</text>
+<circle cx="150.0" cy="557.1" r="9" fill="#2e6b60"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="557.1" x2="150.0" y2="557.1" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="150.0" cy="557.1" r="9" fill="#2e6b60"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="557.1" x2="1080.0" y2="557.1" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="557.1" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<text x="470" y="272.3" fill="#7a1f2e" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">max</text>
+<circle cx="150.0" cy="437.1" r="9" fill="#7a1f2e"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="437.1" x2="150.0" y2="317.1" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="150.0" cy="317.1" r="9" fill="#7a1f2e"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="317.1" x2="1080.0" y2="437.1" stroke="#7a1f2e" stroke-width="3"/>
+<circle cx="1080.0" cy="437.1" r="9" fill="#7a1f2e"/>
+<text x="1065.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<text x="770" y="272.3" fill="#526da4" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">value</text>
+<circle cx="150.0" cy="614.1" r="9" fill="#526da4"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="614.1" x2="150.0" y2="615.6" stroke="#526da4" stroke-width="3"/>
+<circle cx="150.0" cy="615.6" r="9" fill="#526da4"/>
+<text x="135.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">20</text>
+<line x1="150.0" y1="615.6" x2="1080.0" y2="605.1" stroke="#526da4" stroke-width="3"/>
+<circle cx="1080.0" cy="605.1" r="9" fill="#526da4"/>
+<text x="1065.0" y="657.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<text x="50" y="626.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="617.1" x2="150" y2="617.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="551.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">12.5</text>
+<line x1="145" y1="542.1" x2="150" y2="542.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="476.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">25</text>
+<line x1="145" y1="467.1" x2="150" y2="467.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="401.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">37.5</text>
+<line x1="145" y1="392.1" x2="150" y2="392.1" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="326.4" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<line x1="145" y1="317.1" x2="150" y2="317.1" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="717.3" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원래 입력값</text>
+<text x="50" y="816.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">기준[10,30]이면20→0.5, 별도 기준[10,50]이면20→0.25다. 평가 중에는 저장한 기</text>
+<text x="50" y="859.7" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">준을 유지한다.</text>
+<text x="50" y="936.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

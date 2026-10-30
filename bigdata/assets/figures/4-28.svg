@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">카토그램의 면적은 실제 땅보다 선택한 통계량을 나타</text>
+<text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">낸다</text>
+<text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">실제 지리면적 비와 인구 비례 표시 면적 비를 분리한다.</text>
+<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">실제 땅 면적</text>
+<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">인구 비례 표시 면적</text>
+<rect x="50" y="395.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
+<line x1="325.0" y1="395.1" x2="325.0" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">geographic_area</text>
+<line x1="600.0" y1="395.1" x2="600.0" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">population</text>
+<line x1="875.0" y1="395.1" x2="875.0" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">display_area</text>
+<rect x="50" y="480.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A</text>
+<line x1="325.0" y1="480.1" x2="325.0" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">100</text>
+<line x1="600.0" y1="480.1" x2="600.0" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">10</text>
+<line x1="875.0" y1="480.1" x2="875.0" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<rect x="50" y="565.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B</text>
+<line x1="325.0" y1="565.1" x2="325.0" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<text x="337.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<line x1="600.0" y1="565.1" x2="600.0" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<text x="612.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">30</text>
+<line x1="875.0" y1="565.1" x2="875.0" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<text x="887.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">150</text>
+<text x="50" y="711.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">실제 면적은 A100·B50이지만 인구 비례 카토그램은 A50·B150이다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

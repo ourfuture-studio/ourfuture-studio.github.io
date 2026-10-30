@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="901" viewBox="0 0 1200 901" role="img">
+<rect width="1200" height="901" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표준점수 0은 원자료의 0이 아니라 기준 평균이다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.</text>
+<line x1="150" y1="553.3" x2="1100" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<line x1="150" y1="228.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="170" y="208.5" fill="#2e6b60" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">z</text>
+<circle cx="150.0" cy="553.3" r="9" fill="#2e6b60"/>
+<text x="135.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">45</text>
+<line x1="150.0" y1="553.3" x2="615.0" y2="403.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="615.0" cy="403.29999999999995" r="9" fill="#2e6b60"/>
+<text x="600.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">50</text>
+<line x1="615.0" y1="403.29999999999995" x2="1080.0" y2="253.29999999999995" stroke="#2e6b60" stroke-width="3"/>
+<circle cx="1080.0" cy="253.29999999999995" r="9" fill="#2e6b60"/>
+<text x="1065.0" y="593.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">55</text>
+<text x="50" y="562.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-1</text>
+<line x1="145" y1="553.3" x2="150" y2="553.3" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="487.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">-0.5</text>
+<line x1="145" y1="478.29999999999995" x2="150" y2="478.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="412.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0</text>
+<line x1="145" y1="403.29999999999995" x2="150" y2="403.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="337.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">0.5</text>
+<line x1="145" y1="328.29999999999995" x2="150" y2="328.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="50" y="262.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="145" y1="253.29999999999995" x2="150" y2="253.29999999999995" stroke="#929b98" stroke-width="3"/>
+<text x="150" y="653.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">원래 입력값</text>
+<text x="50" y="752.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균50·표준편차5에서45·50·55는 z=-1·0·1이다. 이 산술은 정규분포를 가정하지</text>
+<text x="50" y="795.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">않는다.</text>
+<text x="50" y="872.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다 · ourfuture studio</title><link rel="stylesheet" href="site.css"></head><body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header><div class="wrap"><nav class="backline"><a href="index.html">빅분기 필기 체험 목록</a><a href="../">ourfuture studio</a></nav>
+<p class="eyebrow">2과목 · 빅데이터 탐색 · 2-03</p><h1 class="lesson-title">빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다</h1>
+<p>같은 빈칸 표에서 발생 규칙을 바꾸어 MCAR·MAR·MNAR의 차이를 판단한다.</p></div></header><main class="wrap" id="main"><div class="lesson-layout"><section aria-labelledby="experiment-title"><h2 id="experiment-title">조건을 바꾸며 확인하기</h2><div class="presets" id="presets" aria-label="예제 조건"></div><p class="status" id="preset-reason"></p><form id="experiment-form"><div class="controls" id="controls"></div><div class="actions"><button type="submit">계산·판단하기</button><button type="button" id="reset">기본값 복원</button></div></form><div class="result" id="result" aria-live="polite"><strong id="result-answer"></strong><p id="result-explanation"></p><div id="result-values"></div></div>
+<p class="boundary">알려 준 발생 규칙을 분류한다. 실제 빈칸 표에서 기전을 추정하거나 대치법을 선택하는 검사는 아니다.</p><button type="button" id="download-example">현재 예제 JSON 내려받기</button></section><section><h2>기본 예제와 비교하기</h2><p class="notice">아래 그림과 표는 글의 기본 조건입니다. 입력을 바꾼 결과는 계산 칸에서 확인하세요.</p>
+<figure class="figure"><a href="assets/figures/2-03.png" target="_blank" rel="noopener"><img src="assets/figures/2-03.png" alt="자체 예제의 같은 빈칸 표에서 발생 규칙을 바꾸어 MCAR·MAR·MNAR의 차이를 판단한다.. 빈칸의 모양이 아니라 명시한 발생 규칙으로 분기한다. MCAR는 MAR의 특수 경우다." width="1200" height="1001"/></a><figcaption>빈칸의 모양이 아니라 명시한 발생 규칙으로 분기한다. MCAR는 MAR의 특수 경우다.</figcaption></figure>
+</section></div><section aria-labelledby="quiz-title"><h2 id="quiz-title">같은 문제를 직접 골라 보기</h2>
+<p>연령은 모두 관측됐다. 체중 누락 확률은 연령대별로 서로 다르고 관측된 연령에만 의존한다. 연령을 조건으로 하면 실제 체중에는 의존하지 않는다.</p><fieldset><legend>이 명시된 결측 발생 규칙은 무엇에 해당하는가?</legend>
+<label class="choice"><input type="radio" name="quiz" value="1"><span>1. MCAR</span></label>
+<label class="choice"><input type="radio" name="quiz" value="2"><span>2. MAR</span></label>
+<label class="choice"><input type="radio" name="quiz" value="3"><span>3. MNAR</span></label>
+<label class="choice"><input type="radio" name="quiz" value="4"><span>4. 빈칸을 0으로 대치한 규칙</span></label>
+</fieldset><button type="button" id="check-answer">답과 이유 확인</button><div class="feedback" id="quiz-feedback" aria-live="polite"></div></section><section><h2>조건을 더 바꾸면?</h2>
+<p>같은 연령 안에서도 실제 체중이 클수록 응답을 더 자주 거절하도록 규칙을 바꾸면?</p>
+<details><summary>변형 풀이 확인</summary><p>MNAR에 해당하는 규칙이다.</p><p>관측된 연령으로 설명한 뒤에도 누락되는 체중 자체가 결측 확률에 영향을 준다.</p></details>
+<p>빈칸을 보기보다 무엇이 빈칸의 확률을 바꾸는지 묻는다.</p></section><section class="sources"><h2>정의와 원문 확인</h2><ul>
+<li><a href="https://stats.oarc.ucla.edu/sas/seminars/multiple-imputation-in-sas/mi_new_1/" target="_blank" rel="noopener noreferrer">UCLA OARC: Multiple Imputation in SAS Part 1</a></li>
+</ul></section><nav class="backline" aria-label="체험 이동">
+<a href="2-02.html">← 이전 체험</a>
+<a href="2-04.html">다음 체험 →</a>
+</nav></main><footer><div class="wrap"><p>직접 만든 교육용 예제입니다. 입력값은 이 브라우저에서 계산하며 저장하거나 서버로 전송하지 않습니다.</p><p>ourfuture studio · 새로운 지식, 뜻밖의 연결.</p></div></footer>
+<script type="application/json" id="lesson-data">{"code": "2-03", "title": "빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다", "question": {"givens": "연령은 모두 관측됐다. 체중 누락 확률은 연령대별로 서로 다르고 관측된 연령에만 의존한다. 연령을 조건으로 하면 실제 체중에는 의존하지 않는다.", "stem": "이 명시된 결측 발생 규칙은 무엇에 해당하는가?", "choices": ["MCAR", "MAR", "MNAR", "빈칸을 0으로 대치한 규칙"], "answer": 2, "reason": "관측 연령에는 의존하지만 연령을 조건으로 실제 체중에는 의존하지 않으므로 MAR 조건이다.", "wrong_reasons": ["① 관측 연령에 따라 누락 확률이 달라져 MCAR의 독립 조건과 다르다.", "③ 누락 체중 자체에 대한 추가 의존성은 없다고 주어졌다.", "④ 발생 기전과 값을 채우는 처리는 다른 개념이다."]}, "experience": {"kind": "condition-choice", "goal": "같은 빈칸 표에서 발생 규칙을 바꾸어 MCAR·MAR·MNAR의 차이를 판단한다.", "inputs": [{"id": "rule", "label": "확인한 누락 발생 규칙", "type": "select", "default": "연령별 확률 다름", "options": ["연령별 확률 다름", "같은 연령에서도 체중 의존", "모든 값과 독립", "발생 규칙 미확인"]}], "cases": [{"name": "기본 연령 의존", "inputs": {"rule": "연령별 확률 다름"}, "expected_answer": "MAR", "reason": "연령조건부로 체중 독립"}, {"name": "조건 변경", "inputs": {"rule": "같은 연령에서도 체중 의존"}, "expected_answer": "MNAR", "reason": "누락값추가의존"}, {"name": "독립 규칙", "inputs": {"rule": "모든 값과 독립"}, "expected_answer": "MCAR", "reason": "MAR의 특수 조건"}, {"name": "표만 있음", "inputs": {"rule": "발생 규칙 미확인"}, "expected_answer": "기전 미확인", "reason": "정보 부족"}], "boundary": "알려 준 발생 규칙을 분류한다. 실제 빈칸 표에서 기전을 추정하거나 대치법을 선택하는 검사는 아니다.", "related_codes": ["2-05", "2-07"]}}</script><script type="module" src="app.mjs"></script></body></html>

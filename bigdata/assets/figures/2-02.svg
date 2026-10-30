@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">95% 신뢰구간의 비율은 구간을 만드는 절차에 붙는다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">같은 표본과 n=25에서 신뢰수준만 바꿔 구간의 폭을 확인한다.</text>
+<text x="55" y="266.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">95%</text>
+<line x1="368.2980302650638" y1="253.3" x2="931.7019697349363" y2="253.3" stroke="#2e6b60" stroke-width="10"/>
+<line x1="368.2980302650638" y1="235.3" x2="368.2980302650638" y2="271.3" stroke="#929b98" stroke-width="3"/>
+<line x1="931.7019697349363" y1="235.3" x2="931.7019697349363" y2="271.3" stroke="#929b98" stroke-width="3"/>
+<circle cx="650.0" cy="253.3" r="9" fill="#2e6b60"/>
+<text x="200" y="305.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[35.872, 44.128]</text>
+<text x="55" y="376.3" fill="#1b2340" font-size="34" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">99%</text>
+<line x1="268.2451102532624" y1="363.3" x2="1031.7548897467377" y2="363.3" stroke="#7a1f2e" stroke-width="10"/>
+<line x1="268.2451102532624" y1="345.3" x2="268.2451102532624" y2="381.3" stroke="#929b98" stroke-width="3"/>
+<line x1="1031.7548897467377" y1="345.3" x2="1031.7548897467377" y2="381.3" stroke="#929b98" stroke-width="3"/>
+<circle cx="650.0" cy="363.3" r="9" fill="#2e6b60"/>
+<text x="200" y="415.5" fill="#1b2340" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[34.406, 45.594]</text>
+<line x1="200" y1="513.3" x2="1100" y2="513.3" stroke="#929b98" stroke-width="3"/>
+<line x1="240.52933848042576" y1="513.3" x2="240.52933848042576" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="222.52933848042576" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">34</text>
+<line x1="377.0195589869505" y1="513.3" x2="377.0195589869505" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="359.0195589869505" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">36</text>
+<line x1="513.5097794934752" y1="513.3" x2="513.5097794934752" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="495.5097794934752" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">38</text>
+<line x1="650.0" y1="513.3" x2="650.0" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="632.0" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">40</text>
+<line x1="786.4902205065247" y1="513.3" x2="786.4902205065247" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="768.4902205065247" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">42</text>
+<line x1="922.9804410130496" y1="513.3" x2="922.9804410130496" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="904.9804410130496" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">44</text>
+<line x1="1059.4706615195742" y1="513.3" x2="1059.4706615195742" y2="523.3" stroke="#929b98" stroke-width="3"/>
+<text x="1041.4706615195742" y="552.5" fill="#1b2340" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">46</text>
+<text x="50" y="642.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평균40, s=10, n=25를 고정하면99% 구간이95% 구간보다 넓다. 참 모평균의 위</text>
+<text x="50" y="685.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">치는 모른다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>

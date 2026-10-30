@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
+<rect width="1200" height="900" fill="#fbfaf6"/>
+<text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표본분산의 분모 n-1은 평균을 추정한 제약과 연결된다</text>
+<text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">세 관측의 배율과 분모의 정의를 바꾸어 분산과 표준편차를 구분한다.</text>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">표본평균4</text>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">편차-2,0,2</text>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">편차제곱합8</text>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분모 n-1=2</text>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">배율</text>
+<line x1="270.0" y1="451.3" x2="270.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
+<line x1="490.0" y1="451.3" x2="490.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">평균</text>
+<line x1="710.0" y1="451.3" x2="710.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">편차제곱합</text>
+<line x1="930.0" y1="451.3" x2="930.0" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="488.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분산</text>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">1</text>
+<line x1="270.0" y1="536.3" x2="270.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[2, 4, 6]</text>
+<line x1="490.0" y1="536.3" x2="490.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<line x1="710.0" y1="536.3" x2="710.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
+<line x1="930.0" y1="536.3" x2="930.0" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="573.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
+<rect x="50" y="621.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<text x="62.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2</text>
+<line x1="270.0" y1="621.3" x2="270.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="282.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[4, 8, 12]</text>
+<line x1="490.0" y1="621.3" x2="490.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="502.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
+<line x1="710.0" y1="621.3" x2="710.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="722.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">32</text>
+<line x1="930.0" y1="621.3" x2="930.0" y2="706.3" stroke="#dcded7" stroke-width="2"/>
+<text x="942.0" y="658.5" fill="#1b2340" font-size="26" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">16</text>
+<text x="50" y="767.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2·4·6의 평균은4, 편차제곱합은8이다. 두 배한4·8·12의 불편 표본분산은16이다.</text>
+<text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
+</svg>
