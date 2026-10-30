@@ -1,0 +1,3 @@
+
+# Preserve the original downloadable learning files byte for byte.
+ml/files/* -text
