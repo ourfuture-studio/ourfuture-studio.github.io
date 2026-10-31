@@ -5,7 +5,7 @@
 - 첫 화면: https://ourfuture-studio.github.io/
 - AI 수학 체험16개·그림19개: https://ourfuture-studio.github.io/math/
 - 머신러닝과 기술 노트 31개: https://ourfuture-studio.github.io/viz/
-- SQLD 공부방: 이론31편·객관식12문제·개념확인31개·SQL실험34개 https://ourfuture-studio.github.io/sql/
+- SQLD 공부방: 이론31편·객관식103문제·개념확인31개·SQL실험34개 https://ourfuture-studio.github.io/sql/
 - 웹 기초 22개 실습: https://ourfuture-studio.github.io/web/
 
 VIZ는 자체 가상 데이터를 JavaScript로 계산하는 독립 HTML입니다. `?shorts=1`로 녹화용 화면을 엽니다.
