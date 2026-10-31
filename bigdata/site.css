@@ -4,3 +4,33 @@ h1{text-wrap:balance}.lesson-title{max-width:950px}
 .lesson-layout>*{min-width:0}.control{min-width:0}.control input,.control select{width:100%;min-width:0}.presets button{overflow-wrap:anywhere}section{overflow-wrap:anywhere}
 @media(max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.lesson-layout{grid-template-columns:minmax(0,1fr)}.wrap{width:calc(100% - 28px)}section{padding:21px}}
 @media(max-width:480px){body{font-size:16px}.cards,.controls{grid-template-columns:1fr}header{padding-top:27px}section{padding:18px;margin:17px 0}.card{padding:17px}h2{font-size:22px}.result strong{font-size:24px}.presets{gap:6px}.presets button{padding:.5rem .65rem}.backline{align-items:flex-start}.filters{gap:6px}}
+
+/* OurFuture topic theme: Big Data observation notebook. */
+:root{--paper:#ffffff;--ink:#1b2340;--text:#3e424a;--accent:#1f6f6f;--green:#1f6f6f;--line:#dbe3e2;--soft:#eef6f4;--card:#fff;--muted:#5b5f67}
+body{font-family:"IBM Plex Sans KR","Malgun Gothic",sans-serif;background:#fff;color:#3e424a;font-size:17px;line-height:1.9}
+.wrap{width:min(1180px,100% - 64px)}
+header{padding:28px 0 34px;background:#f3f8f6;border-bottom:1px solid #c4d8d2}
+header .backline{margin-bottom:30px;border-bottom:1px solid #ccddd7;padding-bottom:21px;font-size:13px;min-height:51px;gap:15px}
+header .backline a:first-child{text-decoration:none;border-bottom:1px solid #95b6ac;padding-bottom:3px;color:#1b2340}
+.experiment-studio{display:block;position:relative;width:125px;line-height:0;flex-shrink:0}
+.experiment-studio img{display:block;width:100%;height:auto}
+.experiment-studio:after{content:"";position:absolute;left:97.02%;top:59.846%;width:2.503%;aspect-ratio:1;border-radius:50%;background:#7a1f2e;transform:translate(-50%,-50%)}
+.eyebrow{font-family:"IBM Plex Mono",Consolas,monospace;color:#1f6f6f;letter-spacing:.06em;font-size:12px}
+h1,h2{font-family:"Noto Serif KR","Noto Serif CJK KR",Batang,serif;letter-spacing:-.045em;font-weight:600}
+h1{font-size:clamp(29px,3.7vw,44px);line-height:1.6;margin:12px 0 19px;max-width:1030px}
+header .wrap>p:last-child{max-width:880px;font-size:16px;color:#526560;line-height:1.95}
+h2{font-size:25px;line-height:1.7}
+h3{font-family:"IBM Plex Sans KR","Malgun Gothic",sans-serif;font-size:20px}
+main{padding:28px 0 65px}
+section{border:0;border-top:1px solid #1b2340;border-bottom:1px solid #dbe3e2;border-radius:0;padding:28px 0;margin:28px 0;background:#fff}
+.lesson-layout{grid-template-columns:minmax(0,1.07fr) minmax(0,1fr);gap:42px}.lesson-layout section{margin:12px 0 22px}
+button,input,select{border-radius:2px!important}button{min-height:44px;border-color:#a8c2ba;font-size:14px;padding:10px 15px}button:hover,button[aria-pressed=true]{border-color:#1f6f6f;background:#e8f3ef}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #1f6f6f;outline-offset:4px}
+.control label{font-size:14px;font-weight:500}.control input,.control select{min-height:46px;border-color:#9bb8af;background:#fff;color:#1b2340;font-size:15px;padding:10px 12px}.control small{font-size:12px;line-height:1.8}.controls{gap:20px 16px;margin:24px 0}.presets{gap:8px}.presets button{font-size:13px}.status{font-size:13px;color:#5b5f67}
+.result{border-radius:0;border-left:3px solid #1f6f6f;background:#eef6f4;padding:22px;min-height:150px;margin-top:20px}.result strong{font-family:"Noto Serif KR",Batang,serif;color:#1b2340;font-size:28px;line-height:1.7}.result p{font-size:15px;line-height:1.95}.result th{background:#dbeae5}.boundary{font-size:13px;color:#5b5f67;line-height:1.95;border-bottom:1px dashed #c6d5d0;margin-bottom:20px;padding-bottom:19px}
+.figure img{border-radius:0;border:1px solid #dbe3e2}.figure figcaption{font-size:13px;line-height:1.9;margin-top:14px;color:#5b5f67}.notice{font-size:13px;padding:14px 16px;background:#f2f6f4;border-radius:0;border-left:2px solid #9cbfb3;line-height:1.9}
+th,td{border-color:#c9d9d3;font-size:14px;padding:10px 12px}th{background:#eef6f4;color:#1b2340}.value-table{max-width:100%;overscroll-behavior-inline:contain}
+.choice{border-radius:0;border-color:#c6d8d0;padding:14px 16px;margin:10px 0;font-size:15px;line-height:1.85}.choice:has(input:checked){background:#eef6f4;border-color:#1f6f6f}.choice input{accent-color:#1f6f6f;margin-top:8px}.feedback{border-radius:0;background:#eef6f4;font-size:15px;padding:22px}.feedback.correct{border-left-color:#1f6f6f}.feedback.incorrect{border-left-color:#9e4c37;background:#fcf1ed}
+.sources{font-size:13px}.backline{font-size:13px;gap:15px}.backline a{line-height:1.9}.sources li{margin:11px 0}footer{background:#f5f8f7;border-color:#dbe3e2;font-size:12px;line-height:1.9}details{border-top:1px solid #dbe3e2;padding:16px 0;margin-top:18px}summary{font-size:15px;color:#1b2340;line-height:1.9}details p{font-size:15px}
+@media(max-width:900px){.lesson-layout{grid-template-columns:minmax(0,1fr);gap:10px}.wrap{width:calc(100% - 44px)}header .wrap>p:last-child{font-size:15px}.lesson-layout section{margin-block:12px}}
+@media(max-width:600px){.wrap{width:calc(100% - 36px)}header{padding:21px 0 24px}header .backline{margin-bottom:24px;padding-bottom:18px;gap:10px;font-size:12px}.experiment-studio{width:102px}.eyebrow{font-size:11px;letter-spacing:.02em}h1{font-size:30px;line-height:1.65;margin:12px 0 15px}h2{font-size:24px}.lesson-title{max-width:100%}section{padding:24px 0;margin:23px 0}main{padding-top:22px}.controls{grid-template-columns:1fr}.result{padding:19px}.result strong{font-size:26px}.result p{font-size:14px}.choice{padding:13px;font-size:14px}.notice,.figure figcaption{font-size:12px}.presets button{padding:9px 11px;font-size:12px}.backline{font-size:12px}.sources{font-size:12px}.boundary{font-size:12px}.actions{gap:9px}footer{font-size:11px}.controls{margin-block:20px}.control label{font-size:14px}}
