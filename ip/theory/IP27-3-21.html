@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>해시 충돌과 키의 동등성 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-21"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-21 · 이론 읽기</p><h1>해시 충돌과 키의 동등성</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-21">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-21">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>같은 버킷에 도착해도 원래 키를 다시 비교해야 한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>해시 함수 h(k)는 키를 버킷 위치 등 작은 범위의 값으로 대응시킨다. 서로 다른 키 k1,k2가 같은 해시값을 가지는 것을 충돌이라고 한다. 작은 버킷 수에서는 서로 다른 입력이 같은 위치로 갈 수 있다.</p>
+<p>이 예제는 정수 키와 h(k)=k mod 5, 별도 체인법을 사용한다. 별도 체인은 버킷마다 키 목록을 두는 방식이다. 6과11은 모두 버킷1에 들어가지만 서로 다른 정수 키이다.</p>
+<p>조회는 해시로 버킷을 고른 뒤 그 버킷의 원래 키들을 동등성 비교해야 한다. 암호학적 충돌 저항성이나 Java의 실제 HashMap 내부 구현을 이 작은 모형으로 검증한 것은 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  키6,11을 버킷5개에 저장, h(k)=k%5. query=16의 버킷번호와 포함 여부를 출력한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h(6)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>h(11)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>버킷1의 키</td>
+<td>6,11 두 개</td>
+</tr>
+<tr>
+<td>query=16</td>
+<td>같은 버킷이나 저장 안 됨</td>
+</tr>
+</tbody>
+</table></div>
+<p>나머지 연산과 실제 키 비교를 각각 수행하면 충돌을 같은 키로 오해하지 않는다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>해시는 후보 위치를 좁히고 키 비교가 일치를 확정한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>비음수 정수, 버킷5개, 중복 키 없는 삽입, 별도 체인법의 자체 모형이다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" rel="noopener noreferrer" target="_blank">Java SE 17 Object.hashCode contract</a> — hashCode 일반 계약: equals인 객체의 같은 해시; 서로 다른 객체의 다른 해시는 요구하지 않음. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-021">출력은 무엇인가?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

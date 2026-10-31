@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-013",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-13"
+  ],
+  "subject": 2,
+  "title": "결과 한 행의 의미와 값이 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "SQL 응용"
+  ],
+  "kind": "single-choice",
+  "givens": "Basket 네 행에 대해 GROUP BY region과 SUM(qty)를 사용한다. qty에는 NULL이 없다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Basket는 아래 네 행, 각 열은 NOT NULL이다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Basket(id INTEGER PRIMARY KEY, region TEXT NOT NULL, product TEXT NOT NULL, qty INTEGER NOT NULL);\nINSERT INTO Basket VALUES(1,'A','pen',2),(2,'A','pen',3),(3,'A','book',7),(4,'B','pen',4);\nSELECT region,SUM(qty) FROM Basket GROUP BY region ORDER BY region;",
+  "language": "sql",
+  "stem": "결과 한 행의 의미와 값이 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "원본 주문 한 건씩, 총 4행",
+      "explanation": "GROUP BY region이 원본 주문을 지역 단위로 요약한다."
+    },
+    {
+      "id": "B",
+      "text": "지역별 요약, (A,12),(B,4)",
+      "explanation": "A의 세 입력을 합쳐 12, B의 하나는 4다."
+    },
+    {
+      "id": "C",
+      "text": "상품별 요약, (book,7),(pen,9)",
+      "explanation": "그 결과는 GROUP BY product를 사용했을 때의 단위다."
+    },
+    {
+      "id": "D",
+      "text": "수량 중복만 제거, 2·3·7·4",
+      "explanation": "그룹 키는 수량이 아니며 SUM으로 그룹 합계를 만든다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "region의 종류는 A와 B 두 개다. A의 qty는 12, B는 4로 요약하므로 B다.",
+  "references": [
+    {
+      "id": "SEL",
+      "title": "SQLite: SELECT",
+      "url": "https://www.sqlite.org/lang_select.html",
+      "scope": "2 Simple Select Processing, 2.3 WHERE, 2.4 GROUP BY/HAVING, 3 Compound Select, 4 ORDER BY",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-028",
+  "topicId": "IP27-1-28",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "호출되는 쪽 대체",
+      "condition": "A→B→C; 시험 대상=B; C 미구현; X는 B의 호출에 고정 응답 반환.",
+      "code": null,
+      "result": "X는 스텁",
+      "explanation": "대상의 의존 모듈이다.",
+      "trace": [
+        "B→X",
+        "X→고정 응답"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "호출하는 쪽 대체",
+      "condition": "A→B→C; 시험 대상=B; A 미구현; X가 입력을 만들어 B 호출 후 결과 기록; C 사용 가능.",
+      "code": null,
+      "result": "X는 드라이버",
+      "explanation": "대상을 호출하는 역할이다.",
+      "trace": [
+        "X→B",
+        "B 결과→X 기록"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "시험 대상 변경",
+      "condition": "A→B→C; 시험 대상=A; B 미구현; X가 A의 B 호출에 고정 응답 반환.",
+      "code": null,
+      "result": "X는 스텁",
+      "explanation": "대상이 바뀌어도 called 쪽 대체다.",
+      "trace": [
+        "A→X",
+        "X가 B 응답 대체"
+      ]
+    }
+  ],
+  "boundary": "스텁·목·페이크의 모든 테스트 더블 분류를 한 가지로 합치지 않는다."
+}

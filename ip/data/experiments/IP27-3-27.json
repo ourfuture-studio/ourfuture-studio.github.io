@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-027",
+  "topicId": "IP27-3-27",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "일반 변수 violet, 환경 green",
+      "condition": "PowerShell 7의 -NoProfile 독립 부모 프로세스에서 일반 변수 $IP27_LOCAL=violet, 환경 $env:IP27_DEMO=green을 설정한다. 새 자식 pwsh도 -NoProfile이다.",
+      "code": "$IP27_LOCAL='violet'\n$env:IP27_DEMO='green'\n& (Join-Path $PSHOME 'pwsh.exe') -NoProfile -Command 'Write-Output (($null -eq $IP27_LOCAL).ToString().ToLowerInvariant() + \" \" + $env:IP27_DEMO)'\n",
+      "result": "true green",
+      "explanation": "세션 일반 이름과 환경의 상속을 비교한다.",
+      "trace": [
+        "부모 일반변수설정",
+        "부모환경green",
+        "자식 일반없음true / 환경green"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "환경값을 자식 실행 전에 amber로 변경",
+      "condition": "PowerShell 7의 -NoProfile 독립 부모 프로세스에서 일반 변수 $IP27_LOCAL=violet, 환경 $env:IP27_DEMO=amber를 설정한다. 새 자식 pwsh도 -NoProfile이다.",
+      "code": "$IP27_LOCAL='violet'\n$env:IP27_DEMO='amber'\n& (Join-Path $PSHOME 'pwsh.exe') -NoProfile -Command 'Write-Output (($null -eq $IP27_LOCAL).ToString().ToLowerInvariant() + \" \" + $env:IP27_DEMO)'\n",
+      "result": "true amber",
+      "explanation": "자식 생성 시점의 변경된 환경을 상속한다.",
+      "trace": [
+        "부모환경amber",
+        "자식시작",
+        "일반없음true / 환경amber"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "자식에서 환경을 blue로 변경",
+      "condition": "PowerShell 7의 -NoProfile 독립 부모 프로세스에서 환경 IP27_DEMO=green을 설정한다. 자식이 자기 환경을 blue로 바꾸고 출력한다. 자식 종료 뒤 부모가 자기 환경값을 출력한다.",
+      "code": "$env:IP27_DEMO='green'\n& (Join-Path $PSHOME 'pwsh.exe') -NoProfile -Command '$env:IP27_DEMO=\"blue\"; Write-Output $env:IP27_DEMO'\nWrite-Output $env:IP27_DEMO\n",
+      "result": "blue\ngreen",
+      "explanation": "자식의 환경 수정은 부모 환경을 바꾸지 않는다.",
+      "trace": [
+        "부모green→자식상속",
+        "자식blue로수정",
+        "부모는green유지"
+      ]
+    }
+  ],
+  "boundary": "Windows PowerShell이 아닌 PowerShell 7 계열 pwsh, -NoProfile, 독립 새 자식 프로세스. 프로필·영구 사용자/시스템 환경 변경 없음. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

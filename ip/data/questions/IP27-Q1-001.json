@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-001",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-01"
+  ],
+  "subject": 1,
+  "title": "R1과 R2의 분류로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "요구사항 확인"
+  ],
+  "kind": "single-choice",
+  "givens": "접수 서비스 요구 R1은 '유효한 신청을 저장하고 접수 번호를 발급한다', R2는 '동시 사용자 40명, 측정 100건에서 접수 완료 응답의 95백분위 시간이 2초 이하이다'이다. 이 문제는 관찰 동작을 기능, 성능 제약을 비기능으로 구분한다.",
+  "code": null,
+  "language": null,
+  "stem": "R1과 R2의 분류로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "R1 기능, R2 비기능",
+      "explanation": "R1은 저장·발급 동작이고 R2는 그 동작의 측정 가능한 성능 제약이다."
+    },
+    {
+      "id": "B",
+      "text": "둘 다 기능",
+      "explanation": "R2는 새로운 업무 동작을 추가하지 않고 성능 한도를 정한다."
+    },
+    {
+      "id": "C",
+      "text": "R1 비기능, R2 기능",
+      "explanation": "동작과 품질 제약을 뒤바꿨다."
+    },
+    {
+      "id": "D",
+      "text": "둘 다 비기능",
+      "explanation": "R1이 정의하는 저장·발급 동작을 누락했다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "번호 발급이라는 출력은 R1에 있다. R2는 사용자 수, 표본 수, 백분위와 시간 한도로 R1의 성능을 제한한다. 따라서 R1은 기능, R2는 비기능이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "1장 1.4 Functional Requirements, 1.5 Nonfunctional Requirements; PDF 45쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

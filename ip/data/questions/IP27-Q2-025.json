@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-025",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-25"
+  ],
+  "subject": 2,
+  "title": "이 배치를 설명하는 것은?",
+  "origin": "original",
+  "tags": [
+    "물리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "원본 R의 기본키 id는 1,2,3,4다. N1에는 1,2만, N2에는 3,4만 저장한다. 숨은 사본은 없고 분할이 겹치지 않는다. 원본 R의 비NULL 기본키 id={1,2,3,4}. N1은 id≤2, N2는 id≥3을 저장하고 복제하지 않는다. 모든 물리 배치는 {'N1': [1, 2], 'N2': [3, 4]}. 네트워크 장애·동기화 지연·압축·인덱스·메타데이터 비용은 제외한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 배치를 설명하는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "두 노드가 원본 전체를 가지는 완전 복제",
+      "explanation": "각 노드가 두 행만 가지므로 원본 전체 사본이 아니다."
+    },
+    {
+      "id": "B",
+      "text": "행 기준 수평 분할이며 두 부분을 합치면 원본 네 행이다",
+      "explanation": "서로 다른 행 부분을 나누었고 누락·중복이 없다."
+    },
+    {
+      "id": "C",
+      "text": "열 기준 수직 분할이다",
+      "explanation": "열이 아니라 id 행을 기준으로 나누었다."
+    },
+    {
+      "id": "D",
+      "text": "노드가 둘이므로 최신 값 일관성이 자동 보장된다",
+      "explanation": "노드 수만으로 동시 갱신·복제 프로토콜 보장을 도출하지 못한다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "N1·N2는 같은 전체 사본이 아니라 서로 겹치지 않는 두 행씩을 보유한다. 합집합이 원본이므로 B다.",
+  "references": [
+    {
+      "id": "DIST",
+      "title": "Database System Concepts 7판 저자 슬라이드: Parallel and Distributed Storage",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch21.pdf",
+      "scope": "Data Partitioning, Replication, Replication and Consistency: 행 배치와 사본, 갱신 일관성의 구분",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

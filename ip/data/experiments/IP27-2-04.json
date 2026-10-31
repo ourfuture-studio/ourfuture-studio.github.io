@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E2-004",
+  "topicId": "IP27-2-04",
+  "title": "외래키의 삭제 정책과 NULL 허용: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "삭제 정책 RESTRICT",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. foreign_keys=ON, Parent 7을 Child 31이 참조한다. 삭제 정책 RESTRICT, 자식 parent_id는 NULL 허용. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "PRAGMA foreign_keys=ON;\nCREATE TABLE Parent(id INTEGER PRIMARY KEY);\nCREATE TABLE Child(id INTEGER PRIMARY KEY, parent_id INTEGER  REFERENCES Parent(id) ON DELETE RESTRICT);\nINSERT INTO Parent VALUES(7);\nINSERT INTO Child VALUES(31,7);\nDELETE FROM Parent WHERE id=7;\nSELECT id,parent_id FROM Child ORDER BY id;",
+      "result": "FOREIGN KEY constraint failed",
+      "explanation": "Child 31의 참조가 남아 있어 부모 삭제를 거부한다.",
+      "trace": [
+        "부모 7 참조 확인 → DELETE FROM Parent WHERE id=7;",
+        "Child 31의 참조가 남아 있어 부모 삭제를 거부한다."
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "삭제 정책 CASCADE",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. foreign_keys=ON, Parent 7을 Child 31이 참조한다. 삭제 정책 CASCADE, 자식 parent_id는 NULL 허용. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "PRAGMA foreign_keys=ON;\nCREATE TABLE Parent(id INTEGER PRIMARY KEY);\nCREATE TABLE Child(id INTEGER PRIMARY KEY, parent_id INTEGER  REFERENCES Parent(id) ON DELETE CASCADE);\nINSERT INTO Parent VALUES(7);\nINSERT INTO Child VALUES(31,7);\nDELETE FROM Parent WHERE id=7;\nSELECT id,parent_id FROM Child ORDER BY id;",
+      "result": "Child 결과 0행",
+      "explanation": "부모 삭제에 따라 참조 자식도 삭제한다.",
+      "trace": [
+        "부모 7 참조 확인 → DELETE FROM Parent WHERE id=7;",
+        "부모 삭제에 따라 참조 자식도 삭제한다."
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "SET NULL과 NOT NULL",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. foreign_keys=ON, Parent 7을 Child 31이 참조한다. 삭제 정책 SET NULL, 자식 parent_id는 NOT NULL. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "PRAGMA foreign_keys=ON;\nCREATE TABLE Parent(id INTEGER PRIMARY KEY);\nCREATE TABLE Child(id INTEGER PRIMARY KEY, parent_id INTEGER NOT NULL REFERENCES Parent(id) ON DELETE SET NULL);\nINSERT INTO Parent VALUES(7);\nINSERT INTO Child VALUES(31,7);\nDELETE FROM Parent WHERE id=7;\nSELECT id,parent_id FROM Child ORDER BY id;",
+      "result": "NOT NULL constraint failed: Child.parent_id",
+      "explanation": "SET NULL이 만들려는 NULL을 자식의 NOT NULL 제약이 거부한다.",
+      "trace": [
+        "부모 7 참조 확인 → DELETE FROM Parent WHERE id=7;",
+        "SET NULL이 만들려는 NULL을 자식의 NOT NULL 제약이 거부한다."
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

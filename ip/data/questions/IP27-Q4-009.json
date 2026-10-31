@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q4-009",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-09"
+  ],
+  "subject": 4,
+  "title": "이 관찰로 뒷받침되는 목적은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "제작자 A가 공개 문서 m1에 서명했다. 검증자는 A의 공개키를 신뢰할 수 있는 경로로 확인했고 A의 개인키는 노출되지 않았다고 가정한다. 적절한 서명 알고리즘을 올바르게 구현했으며 m1의 서명 검증은 성공했다. 문서 내용은 공개돼 있다.",
+  "code": null,
+  "language": null,
+  "stem": "이 관찰로 뒷받침되는 목적은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "문서 내용의 기밀성이 생겼다",
+      "explanation": "문서는 공개돼 있고 서명은 내용을 숨기지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "A 키에 대한 출처 인증과 문서 무결성 확인",
+      "explanation": "신뢰된 키와 성공한 서명 검증이라는 조건에 맞는다."
+    },
+    {
+      "id": "C",
+      "text": "해시를 복호화해 개인키를 복원했다",
+      "explanation": "해시·서명 검증은 개인키 복원이 아니다."
+    },
+    {
+      "id": "D",
+      "text": "A가 서명 후 생각을 바꾸지 않았음까지 증명했다",
+      "explanation": "서명은 사람의 이후 의도나 문서 진실성 전체를 증명하지 않는다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "신뢰된 A 공개키로 m1의 서명이 검증됐으므로 가정한 보안 범위에서 A 키의 출처 인증과 무결성을 확인한다. 공개된 내용의 기밀성은 보장하지 않는다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST CSRC Glossary — encryption",
+      "url": "https://csrc.nist.gov/glossary/term/encryption",
+      "scope": "Definitions: plaintext/ciphertext 및 confidentiality 목적",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST CSRC Glossary — cryptographic hash function",
+      "url": "https://csrc.nist.gov/glossary/term/cryptographic_hash_function",
+      "scope": "Definitions: 고정 길이·역상/충돌 저항성",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R3",
+      "title": "NIST CSRC Glossary — digital signature",
+      "url": "https://csrc.nist.gov/glossary/term/digital_signature",
+      "scope": "Definitions: origin authentication, integrity; 제대로 구현한 경우의 조건",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

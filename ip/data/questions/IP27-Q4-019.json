@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-019",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-19"
+  ],
+  "subject": 4,
+  "title": "이 조건의 저장 구성은?",
+  "origin": "original",
+  "tags": [
+    "IT프로젝트 정보시스템 구축관리"
+  ],
+  "kind": "single-choice",
+  "givens": "저장 용량은 모두2TB인 비교 모형이다. Ethernet NFS로 파일·디렉터리를 요청한다. 클라이언트에 별도 블록 장치를 제공하지 않는다. 이 예제는 DAS의 직접 연결 블록 접근, NAS의 파일 서비스, SAN의 네트워크 블록 접근이라는 정의로 한정한다. 다른 계층이나 혼합 게이트웨이는 없다.",
+  "code": null,
+  "language": null,
+  "stem": "이 조건의 저장 구성은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "DAS: 서버에 직접 연결한 장치",
+      "explanation": "저장 네트워크를 거치지 않는 직접 연결 조건이 아니다."
+    },
+    {
+      "id": "B",
+      "text": "NAS: 네트워크 파일 서비스",
+      "explanation": "NFS를 통해 파일·디렉터리 단위로 접근한다."
+    },
+    {
+      "id": "C",
+      "text": "SAN: 클라이언트에 블록 장치 제공",
+      "explanation": "NFS 파일 서비스이며 블록 장치를 직접 제공하는 조건이 아니다."
+    },
+    {
+      "id": "D",
+      "text": "2TB이므로 연결 방식과 관계없이 DAS다",
+      "explanation": "용량은 직접 연결·네트워크 파일 서비스·네트워크 블록 서비스의 구분을 결정하지 않는다. 이 조건은 NFS 파일 서비스다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "네트워크를 통해 NFS 파일 서비스를 사용한다는 접근 방식이 결정 조건이므로 B다. 용량은 분류 근거가 아니다.",
+  "references": [
+    {
+      "id": "STORAGE",
+      "title": "SNIA ESF: Centralized vs. Distributed Storage",
+      "url": "https://www.snia.org/sites/default/files/ESF/Centralized-vs-Distributed-Storage-Final.pdf",
+      "scope": "Definitions 슬라이드: DAS 직접 연결, SAN 블록 저장 네트워크, NAS 파일 프로토콜 기반 저장 서비스. 원문 그림·표는 재사용하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

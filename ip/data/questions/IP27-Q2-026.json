@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-026",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-26"
+  ],
+  "subject": 2,
+  "title": "명시한 제품에서 맞는 설명은?",
+  "origin": "original",
+  "tags": [
+    "물리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "PostgreSQL 18 명세에서 P는 k의 [0,10),[10,20),[20,30) 범위로 분할한다. U는 별개 테이블이고 기존 k 인덱스를 사용해 CLUSTER를 한 번 수행한다. PostgreSQL 18 명세 사례. 처음 비어 있는 P(k integer NOT NULL)는 범위 [0,10),[10,20),[20,30)를 각각 P0,P1,P2로 분할하며 DEFAULT 파티션과 다른 제약은 없다. 삽입 k=12. 별개 비분할 테이블 U(id integer PRIMARY KEY,k integer NOT NULL)의 행은 (1,21),(2,8),(3,12), k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 수행한다. 이후 U에 변경은 없다. SQL 출력 순서는 ORDER BY로만 요구한다. 실제 서버 실행은 없다.",
+  "code": null,
+  "language": null,
+  "stem": "명시한 제품에서 맞는 설명은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "k12는 P1에 배치되고 CLUSTER는 U의 일회성 물리 재배열이다",
+      "explanation": "12는 10 이상 20 미만이고 CLUSTER의 문서상 동작도 일회성이다."
+    },
+    {
+      "id": "B",
+      "text": "k12는 모든 파티션에 복제된다",
+      "explanation": "범위 파티셔닝은 이 조건에서 일치하는 한 파티션으로 배치한다."
+    },
+    {
+      "id": "C",
+      "text": "CLUSTER를 실행하면 U가 P0·P1·P2로 자동 분할된다",
+      "explanation": "CLUSTER는 기존 인덱스에 따른 물리 재배열로 범위 분할 정의가 아니다."
+    },
+    {
+      "id": "D",
+      "text": "CLUSTER 뒤에는 ORDER BY 없이도 영구적으로 출력 순서가 보장된다",
+      "explanation": "후속 갱신 순서 자동 유지와 SELECT 순서를 보장하지 않는다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "k12는 10≤12<20이므로 P1이다. U의 CLUSTER는 별도 일회성 재배열이므로 A다.",
+  "references": [
+    {
+      "id": "PART",
+      "title": "PostgreSQL 18: Table Partitioning",
+      "url": "https://www.postgresql.org/docs/18/ddl-partitioning.html",
+      "scope": "5.12.1~5.12.2: 논리 테이블의 물리 분할, 범위 하한 포함·상한 제외",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "CLUSTER",
+      "title": "PostgreSQL 18: CLUSTER",
+      "url": "https://www.postgresql.org/docs/18/sql-cluster.html",
+      "scope": "Description: 기존 인덱스를 따라 물리 재배열, 일회성 작업, 후속 갱신은 순서를 자동 유지하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

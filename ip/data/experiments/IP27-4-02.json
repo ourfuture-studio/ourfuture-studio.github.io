@@ -1,0 +1,44 @@
+{
+  "id": "IP27-E4-002",
+  "topicId": "IP27-4-02",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "작성자 다름",
+      "condition": "U 인증 성공; D 작성자V; 편집=작성자만; 관리자/위임 없음; U의 D편집 요청.",
+      "code": null,
+      "result": "거부",
+      "explanation": "U≠V다.",
+      "trace": [
+        "신원U",
+        "작성자 비교 U=V 거짓→거부"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "작성자 같음",
+      "condition": "U 인증 성공; D 작성자U; 편집=작성자만; 관리자/위임 없음; U의 D편집 요청.",
+      "code": null,
+      "result": "허용",
+      "explanation": "작성자 조건이 참이다.",
+      "trace": [
+        "신원U",
+        "U=U 참→허용"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "역할 예외 추가",
+      "condition": "U 인증 성공; D 작성자V; 편집=작성자 또는 관리자; U는 관리자; 위임 없음; U의 D편집 요청.",
+      "code": null,
+      "result": "허용",
+      "explanation": "작성자 조건은 거짓이지만 관리자 조건은 참이다.",
+      "trace": [
+        "U=V 거짓 OR 관리자 참→허용"
+      ]
+    }
+  ],
+  "boundary": "관리자 예외는 해당 case에 명시된 경우만 적용한다."
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>집약과 합성에서 부분 객체 다루기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-1-04"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-04 · 이론 읽기</p><h1>집약과 합성에서 부분 객체 다루기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-1-04">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-04">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>부분을 누가 소유하며 삭제 전에 분리할 수 있는지 확인한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>집약은 전체와 부분 관계를 나타낸다. UML의 공유 집약(shared aggregation)은 세부 의미가 모델러와 적용 영역에 따라 달라지므로 빈 마름모만으로 삭제 전파를 확정하지 않는다.</p>
+<p>합성(composite aggregation)은 부분 객체가 한 시점에 최대 하나의 합성 전체에 속하도록 한다. 전체를 삭제하면 그때 포함된 객체 부분도 삭제된다.</p>
+<p>삭제 전에 부분을 분리하는 것이 허용된 모델이라면 분리된 부분은 전체 삭제와 함께 삭제되지 않을 수 있다. 생성 순서나 모든 구현의 메모리 해제 방식을 기호만으로 단정하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>문서 D가 페이지 P를 합성 관계로 포함한다. P는 다른 합성 전체에 속하지 않는다. P를 분리하지 않은 상태에서 D를 삭제한다. 여기서 삭제는 UML 객체 인스턴스 삭제이며 파일 복구·GC는 고려하지 않는다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D가 P를 composite로 포함; 다른 합성 소유자 없음; 사전 분리 없음; UML 객체 삭제로 D 삭제.</td>
+<td>D와 P 삭제</td>
+</tr>
+<tr>
+<td>D가 P를 composite로 포함; 모델이 분리를 허용; 먼저 P를 D에서 분리해 독립 객체로 둔 후 D 삭제.</td>
+<td>D 삭제, P 존속 가능</td>
+</tr>
+<tr>
+<td>D와 P는 shared aggregation으로만 연결; 별도 삭제 정책 없음; D 삭제 후 P의 상태를 묻는다.</td>
+<td>P 삭제 여부는 이 조건만으로 확정 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p>현재 D의 합성 부분 집합에 P가 있다. 사전 분리가 없으므로 D 삭제 시 P도 삭제된다. 생성 시점이나 파일 저장 방식은 이 모델의 판단 근거가 아니다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>삭제 직전에 합성 부분으로 남아 있는지 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>공유 집약의 생명주기를 UML이 일률적으로 강제한다고 설명하지 않는다. 운영체제 파일 삭제나 언어별 GC와는 구분한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.omg.org/spec/UML/2.5/PDF" rel="noopener noreferrer" target="_blank">OMG UML 2.5 specification (March 2015)</a> — 9.5.3 Properties: AggregationKind, composite의 소유·삭제·사전 분리 조건; PDF 151쪽. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-004">명세에 따른 P의 결과는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

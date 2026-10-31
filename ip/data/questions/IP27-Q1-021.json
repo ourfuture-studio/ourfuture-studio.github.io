@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-021",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-21"
+  ],
+  "subject": 1,
+  "title": "이번 실행에서 확인되는 상태는?",
+  "origin": "original",
+  "tags": [
+    "제품소프트웨어 패키징"
+  ],
+  "kind": "single-choice",
+  "givens": "자체 빌드 절차는 컴파일→단위 테스트→패키징 순서다. 컴파일은 성공했고 단위 테스트는 실패했다. 실패하면 즉시 중단하며 기존 산출물은 지운 깨끗한 작업 공간이다.",
+  "code": null,
+  "language": null,
+  "stem": "이번 실행에서 확인되는 상태는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "실행 패키지 생성 완료",
+      "explanation": "패키징에 도달하지 않았고 이전 파일도 없다."
+    },
+    {
+      "id": "B",
+      "text": "모든 테스트 통과",
+      "explanation": "단위 테스트 실패라는 관찰과 반대다."
+    },
+    {
+      "id": "C",
+      "text": "컴파일 성공, 패키징 미실행",
+      "explanation": "실패 시 중단 규칙을 적용한 결과다."
+    },
+    {
+      "id": "D",
+      "text": "컴파일도 반드시 실패",
+      "explanation": "테스트 실패가 앞선 컴파일 성공을 바꾸지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "성공한 컴파일 다음에 단위 테스트가 실패했으므로 중단한다. 마지막 패키징 단계는 실행하지 않았다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Apache Maven — Introduction to the Build Lifecycle",
+      "url": "https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html",
+      "scope": "A Build Lifecycle is Made Up of Phases: compile/test/package/verify 구분",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

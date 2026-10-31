@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-014",
+  "topicId": "IP27-1-14",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "금액 표시 변경",
+      "condition": "Model=계산, View=표현, Controller=요청/선택; 값 12000 및 필드 동일; 표시만 12000→12,000원.",
+      "code": null,
+      "result": "View 변경",
+      "explanation": "표현 책임만 달라진다.",
+      "trace": [
+        "Model 12000",
+        "View 포맷→12,000원"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "할인율 변경",
+      "condition": "Model=계산, View=표현, Controller=요청/선택; 정가 10000; 할인율 10%→20%; 표시 형식 동일.",
+      "code": null,
+      "result": "Model 계산 변경; 금액 9000→8000",
+      "explanation": "업무 규칙의 변화다.",
+      "trace": [
+        "10000×0.9=9000",
+        "10000×0.8=8000"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "화면 선택 변경",
+      "condition": "Model=계산, View=표현, Controller=요청/선택; 계산/표시 동일; 요청 완료 후 선택 화면만 A→B.",
+      "code": null,
+      "result": "Controller 선택 로직 변경",
+      "explanation": "요청 후 화면 선택 책임이다.",
+      "trace": [
+        "요청 처리 완료",
+        "선택 A→B"
+      ]
+    }
+  ],
+  "boundary": "명시한 MVC 책임 분담의 작은 모형이다. 모든 프레임워크의 파일 구조나 변경 범위를 일반화하지 않는다."
+}

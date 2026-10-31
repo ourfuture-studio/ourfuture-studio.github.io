@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-032",
+  "topicId": "IP27-3-32",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "가격 조회 /price 요청",
+      "condition": "W는 /price를 A로 위임하고 A는 ID 검증 후 D를 조회한다. 요청은 GET /price?item=7이며 유효 ID이고 가격 행이 존재한다. 캐시는 없다.",
+      "code": null,
+      "result": "W→A→D 조회 후 A가 결과 작성, W가 응답 전달",
+      "explanation": "업무 검증과 영속 조회가 필요하다.",
+      "trace": [
+        "W수신→A",
+        "A검증→D질의",
+        "D가격→A JSON→W응답"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "정적 파일 logo.svg 요청",
+      "condition": "W는 정적 파일을 제공하고 /price만 A로 위임한다. 요청은 GET /logo.svg이며 파일이 존재하고 추가 권한 검사·DB 조회는 없다.",
+      "code": null,
+      "result": "W가 파일을 직접 응답, A·D 호출 불필요",
+      "explanation": "정적 제공 설정과 요청 경로가 직접 대응한다.",
+      "trace": [
+        "클라이언트→W",
+        "로컬파일읽기",
+        "W→응답"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "응용 계산 요청, DB 의존 없음",
+      "condition": "W는 /double을 A로 위임한다. A는 유효 정수 n을 두 배 계산해 응답하며 DB는 사용하지 않도록 설계했다. 요청은 GET /double?n=7이다.",
+      "code": null,
+      "result": "W→A 계산 후 응답, D 호출 불필요",
+      "explanation": "응용 처리가 있어도 모든 요청이 DB를 조회하는 것은 아니다.",
+      "trace": [
+        "W→A",
+        "A가7*2=14",
+        "A→W→응답"
+      ]
+    }
+  ],
+  "boundary": "웹서버의 정적 제공·응용 위임 경로와 DB 조회 필요 여부를 명시한 학습용 구성이다. 캐시는 없고 특정 제품명만으로 역할을 고정하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

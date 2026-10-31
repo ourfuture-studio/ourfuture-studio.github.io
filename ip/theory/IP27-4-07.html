@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>출력 위치에 맞춘 XSS 방어 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-07"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-07 · 이론 읽기</p><h1>출력 위치에 맞춘 XSS 방어</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-07">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-07">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>같은 문자열도 텍스트·URL·스크립트 위치에서 다르게 해석된다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>XSS는 신뢰하지 않는 내용이 브라우저에서 코드 등으로 해석되는 문제다. 출력 인코딩은 값을 넣는 문맥에 맞춰 데이터로 표현한다.</p>
+<p>HTML 본문의 텍스트와 링크 URL은 같은 문맥이 아니다. URL 전체를 받을 때는 허용할 스킴을 검증하고 속성에 넣을 때는 따옴표와 속성 인코딩도 적용한다.</p>
+<p>텍스트를 보여 주려면 일반 div 요소의 textContent 같은 안전한 출력 경로를 사용할 수 있다. HTML 인코딩 한 번이 모든 위치의 안전을 보장한다고 일반화하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>사용자가 입력한 전체 URL을 따옴표로 둘러싼 a 요소의 href에 넣는다. 서비스 정책은 https URL만 허용한다. 입력 URL의 스킴은 javascript다. 현재 구현은 HTML 속성 인코딩만 하고 스킴 검증은 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전체 URL을 quoted href로 출력; 허용 스킴=https만; 입력 스킴=javascript; 스킴 검증 후 허용 URL만 속성 인코딩.</td>
+<td>입력 거부</td>
+</tr>
+<tr>
+<td>전체 URL https://example.test/page 를 quoted href로 출력; 허용 스킴=https만; 스킴 검증 후 허용 URL만 속성 인코딩.</td>
+<td>정책상 허용 후 속성 인코딩</td>
+</tr>
+<tr>
+<td>사용자 문자열 '&lt;b&gt;안내&lt;/b&gt;'를 링크나 HTML로 실행하지 않고 일반 본문 텍스트로 표시하려 한다. textContent로 대입한다.</td>
+<td>태그가 아닌 글자 &lt;b&gt;안내&lt;/b&gt;로 표시</td>
+</tr>
+</tbody>
+</table></div>
+<p>입력 스킴은 정책의 https와 다르므로 거부한다. 허용되는 URL을 출력할 때도 따옴표로 감싼 속성 문맥에 맞는 인코딩을 유지한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>값을 넣는 문맥과 그 위치에서 해석되는 의미를 함께 검사한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>스킴만 검사하면 모든 링크 위험이 사라진다는 뜻은 아니다. 실제 DOM 실행이나 공격 서버 연결을 수행하지 않는 모형이다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html" rel="noopener noreferrer" target="_blank">OWASP Cross Site Scripting Prevention Cheat Sheet</a> — Output Encoding의 HTML/Attribute/URL contexts, Dangerous Contexts, Safe Sinks. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-007">명시된 정책과 출력 문맥을 함께 반영한 조치는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

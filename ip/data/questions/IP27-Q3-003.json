@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-003",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-03"
+  ],
+  "subject": 3,
+  "title": "2+3*4의 해석으로 옳은 것은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\",2+3*4);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "2+3*4의 해석으로 옳은 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "14이며 모든 피연산자를 반드시 오른쪽부터 읽는다.",
+      "explanation": "14는 맞지만 읽기 순서를 일반화할 근거가 없다."
+    },
+    {
+      "id": "B",
+      "text": "14이며 *가 더 강하게 묶여도 일반적인 피연산자 평가 순서는 정하지 않는다.",
+      "explanation": "구조와 평가 순서를 구분한 설명이다."
+    },
+    {
+      "id": "C",
+      "text": "20이며 반드시 왼쪽부터 계산한다.",
+      "explanation": "곱셈의 높은 우선순위를 무시했다."
+    },
+    {
+      "id": "D",
+      "text": "컴파일 오류다.",
+      "explanation": "서로 다른 우선순위의 산술 연산자는 함께 쓸 수 있다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "식은 2+(3*4)이므로 14이다. 이 묶음 규칙만으로 C의 일반 피연산자 평가 순서를 정하지 않는다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.5p3와 각주85~86, 6.5.5~6.5.6 문법의 묶음·결합 규칙; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

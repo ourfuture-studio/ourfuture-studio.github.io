@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-022",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-22"
+  ],
+  "subject": 1,
+  "title": "주어진 조건에서 맞는 판단은?",
+  "origin": "original",
+  "tags": [
+    "제품소프트웨어 패키징"
+  ],
+  "kind": "single-choice",
+  "givens": "교육용 가정이다. 콘텐츠 권리자는 제작사 A로 고정한다. 구매자 B에게 발급된 DRM 이용 조건은 '등록 기기 1대에서 재생'이며 재배포 허락은 없다. 현재 등록 기기에서 유효한 라이선스로 재생한다.",
+  "code": null,
+  "language": null,
+  "stem": "주어진 조건에서 맞는 판단은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "재생되므로 저작권이 B에게 이전됐다",
+      "explanation": "재생 허용은 명시한 A의 권리 귀속을 바꾸지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "재생 조건은 충족하지만 재배포 허락은 주어지지 않았다",
+      "explanation": "기술적 이용과 별도 권한을 구분한 판단이다."
+    },
+    {
+      "id": "C",
+      "text": "라이선스가 있으면 무제한 기기에 등록된다",
+      "explanation": "등록 기기 1대 조건과 다르다."
+    },
+    {
+      "id": "D",
+      "text": "DRM이 있으므로 권리자는 존재하지 않는다",
+      "explanation": "권리자가 A라는 전제와 충돌한다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "현재 기기는 등록됐고 라이선스도 유효하므로 명시한 재생 조건을 충족한다. 권리자는 여전히 A이며 재배포 허락은 없다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Microsoft PlayReady — License Acquisition",
+      "url": "https://learn.microsoft.com/en-us/playready/overview/license-acquisition",
+      "scope": "Server and Client interactions: license generation, acquisition, usage rules enforcement, content decryption",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "U.S. Copyright Office — What is Copyright?",
+      "url": "https://www.copyright.gov/what-is-copyright/",
+      "scope": "공개 소개의 저작권과 원저작물 보호 정의; 미국 설명이며 한국 법률 판단에 확장하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>외래키의 삭제 정책과 NULL 허용 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-04"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-04 · 이론 읽기</p><h1>외래키의 삭제 정책과 NULL 허용</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-04">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-04">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>부모 행을 지울 수 있는지는 참조 관계만으로 결정되지 않는다. 삭제 동작과 자식 열의 NULL 제약을 함께 읽자.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>외래키는 자식 열의 값이 참조 대상 키와 맞도록 제한한다. 자식이 존재할 때 부모를 지우면 참조가 끊어질 수 있으므로 DBMS는 선언된 ON DELETE 동작을 적용한다.</p>
+<p>RESTRICT는 참조 중인 부모 삭제를 막고, CASCADE는 해당 자식도 삭제하며, SET NULL은 자식의 참조 열을 NULL로 바꾼다. SET NULL이라도 열에 NOT NULL이 있으면 그 결과를 저장할 수 없어 작업이 실패한다.</p>
+<p>외래키 자체가 모든 자식 열을 NOT NULL로 만드는 것은 아니다. 여기서는 SQLite의 외래키 집행을 PRAGMA foreign_keys=ON으로 켜고 새 DB마다 검사한다. 지연 제약과 복합 외래키는 이 예제에 포함하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>아래 코드는 Parent 7과 이를 참조하는 Child 31을 만들고 부모 7의 삭제를 시도한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">관계</th>
+<th scope="col">값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parent.id</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Child(id,parent_id)</td>
+<td>(31,7)</td>
+</tr>
+<tr>
+<td>삭제 정책</td>
+<td>RESTRICT</td>
+</tr>
+</tbody>
+</table></div>
+<p>자식 31이 부모 7을 참조하므로 RESTRICT에서 부모 삭제는 거부된다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>참조 자식의 존재, ON DELETE 정책, NULL 허용을 함께 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.sqlite.org/foreignkeys.html" rel="noopener noreferrer" target="_blank">SQLite Foreign Key Support</a> — 2 Enabling Foreign Key Support 및 4.3 ON DELETE and ON UPDATE Actions: PRAGMA, RESTRICT, CASCADE, SET NULL. 확인일 2026-10-31.</li>
+<li><a href="https://www.postgresql.org/docs/18/ddl-constraints.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: Constraints</a> — 5.5.2~5.5.5: NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY 및 삭제 동작. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-004">DELETE FROM Parent WHERE id=7의 결과는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

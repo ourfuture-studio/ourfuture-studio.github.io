@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E1-016",
+  "topicId": "IP27-1-16",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "매번 새 객체",
+      "condition": "단일 프로세스/스레드; create는 매번 새 객체; 캐시 없음; 두 번 호출하고 모두 유지.",
+      "code": null,
+      "result": "유지 객체 2개",
+      "explanation": "서로 다른 생성 두 번이다.",
+      "trace": [
+        "호출1→ID1",
+        "호출2→ID2",
+        "집합 {1,2}"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "첫 객체 재사용",
+      "condition": "단일 프로세스/스레드; create는 첫 호출만 생성하고 이후 같은 캐시 반환; 두 번 호출해 모두 유지.",
+      "code": null,
+      "result": "유지 객체 1개",
+      "explanation": "두 참조가 같은 ID를 가리킨다.",
+      "trace": [
+        "호출1→ID1 저장",
+        "호출2→ID1 반환"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "호출 수 변경",
+      "condition": "단일 프로세스/스레드; create는 매번 새 객체; 캐시 없음; 세 번 호출해 모두 유지.",
+      "code": null,
+      "result": "유지 객체 3개",
+      "explanation": "호출마다 ID가 하나씩 추가된다.",
+      "trace": [
+        "ID1→ID2→ID3",
+        "집합 크기 3"
+      ]
+    }
+  ],
+  "boundary": "작은 생성 모형이며 GoF 팩터리 메서드·추상 팩터리의 구조 전체를 구현한 것은 아니다."
+}

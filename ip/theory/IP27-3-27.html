@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>일반 변수와 자식 프로세스 환경 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-27"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-27 · 이론 읽기</p><h1>일반 변수와 자식 프로세스 환경</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-27">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-27">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>PowerShell의 일반 변수와 Env: 환경변수는 자식 프로그램에 같은 방식으로 전달되지 않는다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>환경변수는 프로세스 환경에 저장되는 문자열이다. PowerShell에서 $env:IP27_DEMO로 접근한다. 일반 변수 $IP27_LOCAL은 현재 PowerShell 세션의 변수이며 자동으로 자식 프로그램의 같은 이름 변수로 복제되지 않는다.</p>
+<p>새 자식 프로세스는 생성 시점의 부모 환경을 상속받는다. 부모가 환경변수를 먼저 green으로 설정하면 자식에서 green을 읽을 수 있다. 여기서는 -NoProfile로 프로필 초기화의 영향을 제거한다.</p>
+<p>자식이 자기 환경을 바꿔도 부모의 환경을 거꾸로 바꾸지 않는다. Process 범위의 수정과 사용자·시스템 영구 설정은 별도이다. 아래 실험은 새로 시작한 프로세스 안의 임시 환경만 바꾼다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>PowerShell 7에서 아래 스크립트를 독립 프로세스로 실행한다. 부모 일반변수 violet, 환경변수 green을 설정한 뒤 새 pwsh -NoProfile을 실행한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>부모 $IP27_LOCAL</td>
+<td>violet, 일반 변수</td>
+</tr>
+<tr>
+<td>부모 $env:IP27_DEMO</td>
+<td>green, 프로세스 환경</td>
+</tr>
+<tr>
+<td>자식 일반 변수 없음 / 환경값</td>
+<td>true / green</td>
+</tr>
+</tbody>
+</table></div>
+<p>자식에서 일반 변수가 null인지와 환경 문자열을 각각 출력해 전달 경계를 확인한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>자식 생성 시 환경은 상속되지만 일반 세션 변수는 자동 전달되지 않는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>Windows PowerShell이 아닌 PowerShell 7 계열 pwsh, -NoProfile, 독립 새 자식 프로세스. 프로필·영구 사용자/시스템 환경 변경 없음.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.5" rel="noopener noreferrer" target="_blank">Microsoft PowerShell about_Environment_Variables</a> — Long description: 문자열 환경변수의 자식 프로세스 상속과 Process 범위. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-027">자식이 출력하는 값은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

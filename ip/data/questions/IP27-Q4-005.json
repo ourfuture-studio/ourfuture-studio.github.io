@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-005",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-05"
+  ],
+  "subject": 4,
+  "title": "요구 규칙을 서버에서 보장하기 위한 조치는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "신청 수량은 정수1~5만 허용한다. 브라우저는 이 범위를 검사하지만 서버는 검사 없이 값을 저장한다. 브라우저를 거치지 않은 자체 시험 요청 quantity=9가 서버에 도착한다.",
+  "code": null,
+  "language": null,
+  "stem": "요구 규칙을 서버에서 보장하기 위한 조치는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "브라우저 오류 문구만 바꾼다",
+      "explanation": "우회 요청의 서버 저장 경로는 바뀌지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "quantity 필드 이름을 숨긴다",
+      "explanation": "이름 은닉은 수신 값 범위를 검증하지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "서버에서 정수 여부와1~5 범위를 확인해9를 거부한다",
+      "explanation": "사용할 값이 신뢰 경계에서 규칙을 만족하는지 검사한다."
+    },
+    {
+      "id": "D",
+      "text": "HTTPS이면9도 허용한다",
+      "explanation": "전송 보호가 업무상 유효 범위를 바꾸지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "수량9는 정수지만9≤5가 거짓이다. 서버가 직접 검증해 저장 전에 거부해야 화면 우회에도 규칙이 유지된다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Input Validation Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html",
+      "scope": "Common Pitfalls: Client-only checks, 신뢰 경계를 넘는 값 검증; Allowlist 전략",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

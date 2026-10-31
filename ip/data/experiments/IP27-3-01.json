@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E3-001",
+  "topicId": "IP27-3-01",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "a=9, b=4",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a=9, b=4.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a=9,b=4;\n    printf(\"%.2f %.2f\\n\", (double)(a/b), (double)a/b);\n    return 0;\n}\n",
+      "result": "2.00 2.25",
+      "explanation": "정수 계산과 실수 계산을 같은 출력에서 비교한다.",
+      "trace": [
+        "정수 9/4→2→2.00",
+        "실수 9.0/4→2.25"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "a=-9, b=4",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a=-9, b=4.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a=-9,b=4;\n    printf(\"%.2f %.2f\\n\", (double)(a/b), (double)a/b);\n    return 0;\n}\n",
+      "result": "-2.00 -2.25",
+      "explanation": "음수 정수 몫도 0 방향으로 버린다.",
+      "trace": [
+        "-9/4→-2",
+        "-9.0/4→-2.25"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "a=12, b=4",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a=12, b=4.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a=12,b=4;\n    printf(\"%.2f %.2f\\n\", (double)(a/b), (double)a/b);\n    return 0;\n}\n",
+      "result": "3.00 3.00",
+      "explanation": "나누어떨어지면 두 변환 위치의 출력이 같다.",
+      "trace": [
+        "12/4→3",
+        "12.0/4→3.0"
+      ]
+    }
+  ],
+  "boundary": "작은 정수와 정확히 표현되는 0.25 단위만 사용한다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

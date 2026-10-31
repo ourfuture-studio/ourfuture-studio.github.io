@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-026",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-26"
+  ],
+  "subject": 1,
+  "title": "필요한 경계값 집합은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "입력은 정수이고 최소 간격은 1이다. 12 이상 30 이하만 허용한다. 2값 경계 분석으로 각 유효/무효 분할 경계에서 서로 인접한 두 값을 고르며, 두 끝을 모두 검사한다.",
+  "code": null,
+  "language": null,
+  "stem": "필요한 경계값 집합은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "12, 21, 30",
+      "explanation": "유효 대표값은 있지만 양쪽 무효 이웃이 빠졌다."
+    },
+    {
+      "id": "B",
+      "text": "11, 21, 31",
+      "explanation": "유효 구간의 양끝 12·30이 빠졌다."
+    },
+    {
+      "id": "C",
+      "text": "11, 12, 13, 29, 30, 31",
+      "explanation": "각 경계의 세 값을 고른 3값 방식이다."
+    },
+    {
+      "id": "D",
+      "text": "11, 12, 30, 31",
+      "explanation": "유효/무효 경계를 양끝에서 두 값씩 확인한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "하한은 무효 최대11와 유효 최소12, 상한은 유효 최대30와 무효 최소31이다. 합치면 {11,12,30,31}이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ISTQB CTFL4.0 Set A Answers v2.1, 회원보드 배포본",
+      "url": "https://www.austriantestingboard.at/wp-content/uploads/2023/09/ISTQB_CTFL40_Sample-Exam-Answers_SET-A_v2.1_engl.pdf",
+      "scope": "공식 예시 Q21: 2값/3값 경계 선택; 연구 자료에서 확인한 문서27~28쪽",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "ISTQB CTFL Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "scope": "4.2.1 Equivalence Partitioning, 4.2.2 Boundary Value Analysis",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

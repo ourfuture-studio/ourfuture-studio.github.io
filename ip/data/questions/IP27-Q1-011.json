@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-011",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-11"
+  ],
+  "subject": 1,
+  "title": "변경 후 상태는?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "언어 중립 객체 모형이다. Seat의 reserved는 공유 변수가 아닌 인스턴스 상태이며 초기값은 false다. a와 b는 각각 새로 생성한 서로 다른 Seat다. a.reserved만 true로 바꾼다.",
+  "code": null,
+  "language": null,
+  "stem": "변경 후 상태는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "a=false, b=false",
+      "explanation": "a에 명시적으로 수행한 상태 변경을 반영하지 않았다."
+    },
+    {
+      "id": "B",
+      "text": "a=true, b=false",
+      "explanation": "독립 객체이므로 a만 변경된다."
+    },
+    {
+      "id": "C",
+      "text": "a=true, b=true",
+      "explanation": "같은 클래스라는 이유로 독립 인스턴스의 상태를 공유시켰다."
+    },
+    {
+      "id": "D",
+      "text": "a=false, b=true",
+      "explanation": "변경 대상을 반대로 읽었다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "새 객체가 두 개이고 필드는 인스턴스별이다. a에만 변경이 적용되므로 a는 true, b는 초기값 false다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Oracle Java Tutorials (JDK 8) — What Is a Class?",
+      "url": "https://docs.oracle.com/javase/tutorial/java/concepts/class.html",
+      "scope": "What Is a Class? 본문 및 두 개 객체를 각각 생성하는 예제",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Oracle Java Tutorials (JDK 8) — What Is an Object?",
+      "url": "https://docs.oracle.com/javase/tutorial/java/concepts/object.html",
+      "scope": "객체의 상태와 메서드 정의",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

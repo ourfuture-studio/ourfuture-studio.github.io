@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>형변환은 나눗셈 앞에 두는가 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-01"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-01 · 이론 읽기</p><h1>형변환은 나눗셈 앞에 두는가</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-01">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-01">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>저장할 변수의 자료형보다 나눗셈을 실행하는 순간의 두 피연산자 자료형을 먼저 본다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>정수 나눗셈은 두 피연산자가 정수일 때 수행되며 소수 부분을 0 방향으로 버린다. 9 / 4는 2이고 -9 / 4는 -2이다. 이 뒤에 double로 바꾸어도 버린 소수 부분은 돌아오지 않는다.</p>
+<p>(double)a / b는 a를 먼저 실수로 바꾼다. 일반 산술 변환에 따라 b도 실수 계산에 참여하므로 9와 4에서는 2.25가 된다. (double)(a / b)는 정수 나눗셈 뒤에 변환하므로 2.0이다.</p>
+<p>분모 0, signed 정수의 표현 범위를 넘는 결과, 정수로 표현할 수 없는 실수의 정수 변환은 이 예제에서 제외한다. 실수 출력의 소수 자릿수는 printf의 %.2f로 고정한다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9 / 4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>(double)(9 / 4)</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td>(double)9 / 4</td>
+<td>2.25</td>
+</tr>
+</tbody>
+</table></div>
+<p>계산 시점에 정수였는지 확인하면 대입 대상 double에 현혹되지 않는다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>나눗셈 기호 양옆의 자료형을 먼저 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>작은 정수와 정확히 표현되는 0.25 단위만 사용한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" rel="noopener noreferrer" target="_blank">WG14 N1570 C11 공개 위원회 초안</a> — 6.3.1.8 일반 산술 변환, 6.5.5p6 정수 몫; 공개 위원회 초안.. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-001">출력은 무엇인가?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

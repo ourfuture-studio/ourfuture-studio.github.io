@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OSI 계층은 장치 이름보다 기능으로 판단 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-28"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-28 · 이론 읽기</p><h1>OSI 계층은 장치 이름보다 기능으로 판단</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-28">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-28">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>한 제품이 여러 계층의 기능을 수행할 수 있으므로 관찰한 동작을 기준으로 분류한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>OSI 기본 참조 모형은 통신 기능을 응용·표현·세션·전송·네트워크·데이터링크·물리의 일곱 계층으로 설명한다. 계층 이름은 기능의 구분이며 제품 상자의 종류를 일대일로 고정하는 표가 아니다.</p>
+<p>네트워크 계층은 여러 망을 지나는 경로와 중계를 다룬다. 데이터링크 계층은 연결된 매체 구간의 프레임 전달을 다루고, 물리 계층은 비트 표현과 물리 신호 전달을 다룬다.</p>
+<p>예컨대 하나의 장비가 링크 프레임 중계와 IP 경로 선택을 함께 수행할 수 있다. 이때 제품 이름만 보고 기능 하나를 고정하지 않는다. 인터넷 프로토콜군과 OSI 모형은 동일한 계층 수로 구현되어야 하는 관계도 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>어떤 복합 통신 장치가 목적지 IP 프리픽스를 비교해 다른 네트워크로 보낼 다음 홉을 고른다. 제품 이름이 아니라 이 동작만 분류한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>목적지IP로 다음홉 선택</td>
+<td>네트워크계층 기능</td>
+</tr>
+<tr>
+<td>링크주소로 같은LAN 프레임전달</td>
+<td>데이터링크계층 기능</td>
+</tr>
+<tr>
+<td>비트를 전기·광 신호로 전송</td>
+<td>물리계층 기능</td>
+</tr>
+</tbody>
+</table></div>
+<p>같은 장치라는 조건은 유지하고 수행 기능만 바꾸어 분류한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>어떤 주소·데이터 단위·전달 범위로 판단하는지 먼저 본다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>OSI X.200의 기능 분류를 학습용 동작에 대응한다. 특정 복합 제품의 모든 기능을 한 계층이라고 단정하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.itu.int/rec/dologin_pub.asp?id=T-REC-X.200-199407-I!!PDF-E&amp;lang=e&amp;type=items" rel="noopener noreferrer" target="_blank">ITU-T X.200 (07/1994) OSI Basic Model</a> — 6.1 일곱 계층, 7.4 전송, 7.5 네트워크, 7.6 데이터링크, 7.7 물리 계층. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-028">이 동작에 대응하는 OSI 계층은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

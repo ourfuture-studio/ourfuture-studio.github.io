@@ -1,0 +1,42 @@
+{
+  "id": "IP27-E2-009",
+  "topicId": "IP27-2-09",
+  "title": "SQL 명령이 바꾸는 대상을 구별하기: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "조회 권한 회수",
+      "condition": "PostgreSQL 18 명세. Member와 reader 존재. 실행자는 권한 회수 가능. 명령 REVOKE SELECT ON Member FROM reader. 다른 권한 경로의 유무는 판단하지 않는다.",
+      "code": null,
+      "result": "DCL: 지정된 SELECT 권한 부여를 회수",
+      "explanation": "권한을 바꾸는 목적이며 행 값·열 구조는 직접 변경하지 않는다.",
+      "trace": [
+        "REVOKE → SELECT 권한 → reader의 해당 부여 경로"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "행 값 수정",
+      "condition": "PostgreSQL 18 명세. Member(id integer)에 행 (7)만 존재. 실행자는 UPDATE 가능. 명령 UPDATE Member SET id=8 WHERE id=7. 다른 제약 없음.",
+      "code": null,
+      "result": "DML: 행의 id 값 7을 8로 변경",
+      "explanation": "열 id를 유지하면서 행 값을 바꾼다.",
+      "trace": [
+        "조건 id=7 → 해당 행 → 값 8"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "테이블 정의",
+      "condition": "PostgreSQL 18 명세. Member는 아직 없고 실행자에게 CREATE 권한이 있다. 명령 CREATE TABLE Member(id integer).",
+      "code": null,
+      "result": "DDL: Member 테이블 구조 정의",
+      "explanation": "열 id의 구조를 정의하며 아직 행을 삽입하지 않는다.",
+      "trace": [
+        "CREATE TABLE → 구조 생성 → 초기 행 0개"
+      ]
+    }
+  ],
+  "boundary": "PostgreSQL 18 공식 명세에 따른 명령 목적 분류다. SQLite에는 같은 역할·GRANT/REVOKE 체계가 없으므로 실행 검증으로 표시하지 않는다."
+}

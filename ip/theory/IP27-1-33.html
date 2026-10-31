@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>이진 탐색의 정렬 전제 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-1-33"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-33 · 이론 읽기</p><h1>이진 탐색의 정렬 전제</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-1-33">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-33">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>절반을 버리려면 남은 값의 위치를 보장할 정렬 조건이 필요하다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>이진 탐색은 가운데 값과 목표를 비교해 탐색 구간을 줄인다. 오름차순 정렬이면 가운데보다 작은 값은 왼쪽에 있다는 전제를 사용할 수 있다.</p>
+<p>정렬되지 않은 배열에도 절차를 실행할 수는 있지만 존재하는 값을 버려 찾지 못할 수 있다. 빠른 비교 횟수와 정확성 전제를 구분한다.</p>
+<p>이 예제는 인덱스0부터, 양끝 포함 구간, 가운데 인덱스의 내림 나눗셈을 사용한다. 중복 값의 첫 위치 탐색은 요구하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>배열[2,6,9,14,20]은 오름차순이며 목표14다. low=0,high=4,mid=⌊(low+high)/2⌋. 같으면 반환, 가운데 값&lt;목표이면 low=mid+1, 크면 high=mid−1, low&gt;high면 실패한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배열[2,6,9,14,20],목표14; low0/high4; mid내림; 작으면low=mid+1,크면high=mid−1,같으면반환,low&gt;high실패.</td>
+<td>비교2→3, 반환3</td>
+</tr>
+<tr>
+<td>배열[14,6,9,2,20],목표14; low0/high4; mid내림; 작으면low=mid+1,크면high=mid−1,같으면반환,low&gt;high실패.</td>
+<td>탐색 실패, 실제 인덱스0의14를 놓침</td>
+</tr>
+<tr>
+<td>배열[2,6,9,14,20],목표9; low0/high4; mid내림; 작으면low=mid+1,크면high=mid−1,같으면반환,low&gt;high실패.</td>
+<td>비교2, 반환2</td>
+</tr>
+</tbody>
+</table></div>
+<p>mid=2에서9&lt;14이므로 low=3. 새 mid=⌊7/2⌋=3에서14와 일치하므로3을 반환한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>버리는 절반에 답이 없다는 근거가 정렬에서 나오는지 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>정렬 비용과 중복 값의 첫 위치·마지막 위치 문제는 별도다. Python bisect API의 반환 규칙을 자체 탐색과 혼동하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/bisect.html" rel="noopener noreferrer" target="_blank">Python documentation — bisect</a> — Searching Sorted Lists: 정렬 목록에서 위치 탐색과 일치 검사; 본문의 정렬 전제. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-033">가운데 비교 인덱스 순서와 반환 값은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

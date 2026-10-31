@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-024",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-24"
+  ],
+  "subject": 3,
+  "title": "선택 공간과 그 공간에서 남는 자유 크기는?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  주소순 H1=70,H2=110,H3=90. 요청80을 최초 적합으로 한 번 할당. 분할허용, 관리비용0.",
+  "code": "holes=[('H1',70),('H2',110),('H3',90)]\nrequest=80\npolicy='first'\nfits=[h for h in holes if h[1]>=request]\nchosen=fits[0] if policy=='first' else min(fits,key=lambda h:h[1])\nprint(chosen[0],chosen[1]-request)\n",
+  "language": "Python",
+  "stem": "선택 공간과 그 공간에서 남는 자유 크기는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "H1, -10",
+      "explanation": "70은 요청80을 담지 못한다."
+    },
+    {
+      "id": "B",
+      "text": "H3, 10",
+      "explanation": "이 선택은 최적 적합이다."
+    },
+    {
+      "id": "C",
+      "text": "H2, 30",
+      "explanation": "주소순 첫 충분한110을 선택하고80을 뺀다."
+    },
+    {
+      "id": "D",
+      "text": "H2, 110",
+      "explanation": "할당한80만큼 자유 크기가 줄어든다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "H1은70<80으로 제외, H2는110>=80이므로 즉시 선택.110-80=30을 자유 목록에 남긴다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OSTEP Free-Space Management",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+      "scope": "17.1 가정과 splitting; 17.3 best fit, worst fit, first fit",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

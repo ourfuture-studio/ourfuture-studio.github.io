@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-010",
+  "topicId": "IP27-1-10",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "값 두 개 전달",
+      "condition": "total의 정의=단가×수량; 단가=7, 수량=3; 호출은 total(7,3); 주문의 주소 필드만 개명한다.",
+      "code": null,
+      "result": "결과 21, 호출 계약 유지",
+      "explanation": "계산 인수가 주소 구조와 독립이다.",
+      "trace": [
+        "7×3=21",
+        "주소 개명→두 인수 불변"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "전체 구조 참조",
+      "condition": "total=단가×수량; 주문 내부 필드 price=7,qty=3을 직접 읽는다. price 필드 이름만 unitPrice로 바꾸고 total은 수정하지 않는다.",
+      "code": null,
+      "result": "기존 필드 참조 계약 불일치",
+      "explanation": "직접 읽던 이름이 사라졌다.",
+      "trace": [
+        "total이 price 조회",
+        "새 구조에 price 없음→수정 필요"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "필요 값 변경",
+      "condition": "total=단가×수량; 공개 호출 total(7,3)을 total(8,3)으로 바꾸며 구조는 동일하다.",
+      "code": null,
+      "result": "결과 24, 입력 계약 유지",
+      "explanation": "값 변경은 명시된 인터페이스의 정상 입력이다.",
+      "trace": [
+        "8×3=24",
+        "인수 이름/개수 동일"
+      ]
+    }
+  ],
+  "boundary": "특정 언어의 메모리 배치·실행 예외는 가정하지 않는 인터페이스 모형이다."
+}

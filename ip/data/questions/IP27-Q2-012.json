@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-012",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-12"
+  ],
+  "subject": 2,
+  "title": "COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
+  "origin": "original",
+  "tags": [
+    "SQL 응용"
+  ],
+  "kind": "single-choice",
+  "givens": "Measure에는 (1,5),(2,5),(3,NULL),(4,9)만 있다. 삭제나 다른 필터는 없다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Measure는 명시한 네 행만 있다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Measure(id INTEGER PRIMARY KEY, value INTEGER);\nINSERT INTO Measure VALUES(1,5),(2,5),(3,NULL),(4,9);\nSELECT COUNT(*),COUNT(value),COUNT(DISTINCT value) FROM Measure;",
+  "language": "sql",
+  "stem": "COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "4,4,3",
+      "explanation": "COUNT(value)는 NULL을 세지 않고 DISTINCT도 NULL을 추가 값으로 세지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "3,3,2",
+      "explanation": "COUNT(*)는 NULL 값이 있는 행도 포함하므로 4다."
+    },
+    {
+      "id": "C",
+      "text": "4,3,2",
+      "explanation": "전체 4행, 비NULL 입력 3개, 서로 다른 비NULL 값 2개다."
+    },
+    {
+      "id": "D",
+      "text": "4,2,2",
+      "explanation": "COUNT(value)는 중복된 5를 두 번 세므로 3이다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "COUNT(*)=4, COUNT(value)=3, COUNT(DISTINCT value)=2로 C다. NULL 제외와 중복 제거는 다른 연산이다.",
+  "references": [
+    {
+      "id": "AGG",
+      "title": "SQLite: Built-in Aggregate Functions",
+      "url": "https://www.sqlite.org/lang_aggfunc.html",
+      "scope": "count(X), count(*), avg(X), sum(X): 비NULL 입력, 빈 집합의 집계",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

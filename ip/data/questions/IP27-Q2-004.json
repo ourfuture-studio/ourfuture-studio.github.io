@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-004",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-04"
+  ],
+  "subject": 2,
+  "title": "DELETE FROM Parent WHERE id=7의 결과는?",
+  "origin": "original",
+  "tags": [
+    "물리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "아래 코드는 Parent 7과 이를 참조하는 Child 31을 만들고 부모 7의 삭제를 시도한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. foreign_keys=ON, Parent 7을 Child 31이 참조한다. 삭제 정책 RESTRICT, 자식 parent_id는 NULL 허용. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "PRAGMA foreign_keys=ON;\nCREATE TABLE Parent(id INTEGER PRIMARY KEY);\nCREATE TABLE Child(id INTEGER PRIMARY KEY, parent_id INTEGER  REFERENCES Parent(id) ON DELETE RESTRICT);\nINSERT INTO Parent VALUES(7);\nINSERT INTO Child VALUES(31,7);\nDELETE FROM Parent WHERE id=7;\nSELECT id,parent_id FROM Child ORDER BY id;",
+  "language": "sql",
+  "stem": "DELETE FROM Parent WHERE id=7의 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "부모와 자식이 모두 삭제된다",
+      "explanation": "그 동작은 CASCADE일 때이며 현재 정책은 RESTRICT다."
+    },
+    {
+      "id": "B",
+      "text": "자식의 parent_id가 NULL이 된다",
+      "explanation": "현재 정책은 SET NULL이 아니다."
+    },
+    {
+      "id": "C",
+      "text": "외래키 위반으로 삭제가 거부된다",
+      "explanation": "자식이 참조하는 부모를 RESTRICT로 삭제하려 하므로 거부된다."
+    },
+    {
+      "id": "D",
+      "text": "외래키는 조회 때만 검사하므로 삭제된다",
+      "explanation": "외래키는 이 변경 작업에도 집행되며 PRAGMA도 켜져 있다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "참조 자식이 있고 ON DELETE RESTRICT가 선언되어 있다. 삭제문이 외래키 오류를 내므로 C다.",
+  "references": [
+    {
+      "id": "FK",
+      "title": "SQLite Foreign Key Support",
+      "url": "https://www.sqlite.org/foreignkeys.html",
+      "scope": "2 Enabling Foreign Key Support 및 4.3 ON DELETE and ON UPDATE Actions: PRAGMA, RESTRICT, CASCADE, SET NULL",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "PGC",
+      "title": "PostgreSQL 18: Constraints",
+      "url": "https://www.postgresql.org/docs/18/ddl-constraints.html",
+      "scope": "5.5.2~5.5.5: NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY 및 삭제 동작",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

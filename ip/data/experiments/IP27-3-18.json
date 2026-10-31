@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-018",
+  "topicId": "IP27-3-18",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "입력 문자열 bad",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  text=\"bad\"; ValueError 처리.",
+      "code": "text='bad'\nok=False\ntry:\n    number=int(text)\n    ok=True\nexcept ValueError:\n    number=None\nprint(ok,number)\n",
+      "result": "False None",
+      "explanation": "실패 상태를 명시적으로 보존한다.",
+      "trace": [
+        "int 실패",
+        "ok=True 건너뜀",
+        "except→None"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "입력 문자열 42",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  text=\"42\"; ValueError 처리.",
+      "code": "text='42'\nok=False\ntry:\n    number=int(text)\n    ok=True\nexcept ValueError:\n    number=None\nprint(ok,number)\n",
+      "result": "True 42",
+      "explanation": "변환이 성공해 성공 플래그를 설정한다.",
+      "trace": [
+        "int→42",
+        "ok=True",
+        "except 건너뜀"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "입력 문자열 -6",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  text=\"-6\"; ValueError 처리.",
+      "code": "text='-6'\nok=False\ntry:\n    number=int(text)\n    ok=True\nexcept ValueError:\n    number=None\nprint(ok,number)\n",
+      "result": "True -6",
+      "explanation": "음수 정수 문자열도 유효하다.",
+      "trace": [
+        "int→-6",
+        "ok=True",
+        "결과 출력"
+      ]
+    }
+  ],
+  "boundary": "파일·DB 부수효과 없이 정수 변환 성공 여부만 다룬다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

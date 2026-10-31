@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>방화벽 통과·탐지 경보·차단을 나누어 보기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-16"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-16 · 이론 읽기</p><h1>방화벽 통과·탐지 경보·차단을 나누어 보기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-16">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-16">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>경보가 있다는 사실만으로 패킷이 차단되었다고 결론 내릴 수 없다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>방화벽은 선언한 보안 정책에 따라 네트워크 간 접근을 제한한다. 여기서는 목적 포트443만 허용하는 단순 규칙을 사용하며, 실제 방화벽이 포트만 검사한다는 일반화는 하지 않는다.</p>
+<p>IDS는 사건을 관찰하고 침입 가능 징후를 탐지하는 기능이다. IPS는 탐지와 함께 이를 멈추려는 조치를 수행할 수 있다. 탐지 여부와 실제 차단 여부는 장비의 배치·설정·연동에 달려 있다.</p>
+<p>IDS와 IPS의 제품 이름만으로 최종 조치를 확정하지 않는다. 이 예제는 경보만 기록하는 모드와 인라인에서 해당 패킷을 버리는 모드를 명시한다. 패턴에 맞지 않는 공격까지 모두 막는다는 보장은 없다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>가상 패킷의 목적 포트는443이고 센서 패턴과 일치한다. 방화벽 뒤 센서는 경보만 기록하며 직접 차단·외부 자동 대응은 꺼져 있다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">단계</th>
+<th scope="col">대표 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>방화벽</td>
+<td>포트443 허용</td>
+</tr>
+<tr>
+<td>센서</td>
+<td>고정 패턴 탐지</td>
+</tr>
+<tr>
+<td>직접 차단</td>
+<td>꺼짐</td>
+</tr>
+<tr>
+<td>후속 자동 대응</td>
+<td>없음</td>
+</tr>
+</tbody>
+</table></div>
+<p>탐지 경보는 생기지만 차단 동작을 두지 않았으므로 패킷은 전달된다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>정책 허용, 징후 탐지, 실제 차단 조치를 순서대로 분리해 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>고정된 정책·센서·조치의 교육 모형을 계산했다. 실제 장비 탐지율·오탐률·처리 성능이나 모든 공격의 차단을 검증한 것이 아니다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://csrc.nist.gov/glossary/term/firewall" rel="noopener noreferrer" target="_blank">NIST CSRC Glossary: Firewall</a> — NIST SP 800-12r1 연결 정의: 지역 보안 정책에 따른 네트워크 간 접근 제한. 확인일 2026-10-31.</li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf" rel="noopener noreferrer" target="_blank">NIST SP 800-94: Guide to Intrusion Detection and Prevention Systems</a> — 2007년 문서, Executive Summary·2.1의 IDS/IPS 정의: 침입 가능 징후 탐지와 이를 멈추려는 조치의 구분. 최신 제품별 능력·성능 주장은 제외. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-016">이 처리 모형의 결과는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

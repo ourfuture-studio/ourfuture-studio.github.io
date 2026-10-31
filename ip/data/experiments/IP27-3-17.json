@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-017",
+  "topicId": "IP27-3-17",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "지역 리스트 반환 후 append",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  make returns [3]; saved.append(7).",
+      "code": "def make():\n    items=[3]\n    return items\nsaved=make()\nsaved.append(7)\nprint(saved)\n",
+      "result": "[3, 7]",
+      "explanation": "반환 객체는 외부 참조로 유지된다.",
+      "trace": [
+        "함수 지역리스트[3] 생성",
+        "return→saved 연결",
+        "append7"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "지역 이름을 함수 밖에서 읽기",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  make 실행 후 외부에 없는 items 이름 접근; NameError 처리.",
+      "code": "def make():\n    items=[3]\n    return items\nsaved=make()\ntry:\n    print(items)\nexcept NameError:\n    print('NameError')\n",
+      "result": "NameError",
+      "explanation": "객체 반환과 지역 이름 노출은 별개이다.",
+      "trace": [
+        "지역 items 생성",
+        "외부 이름 saved만 정의",
+        "items 조회 실패"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "두 번 호출해 한쪽만 append",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=make(); b=make(); a.append(7).",
+      "code": "def make():\n    items=[3]\n    return items\na=make()\nb=make()\na.append(7)\nprint(a,b)\n",
+      "result": "[3, 7] [3]",
+      "explanation": "각 호출이 새 리스트를 생성한다.",
+      "trace": [
+        "첫 호출 객체a",
+        "둘째 호출 별도객체b",
+        "a만 append7"
+      ]
+    }
+  ],
+  "boundary": "Python의 일반 리스트 반환만 다루며 정확한 메모리 회수 시점은 주장하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

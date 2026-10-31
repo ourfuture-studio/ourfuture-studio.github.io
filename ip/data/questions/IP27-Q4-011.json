@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-011",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-11"
+  ],
+  "subject": 4,
+  "title": "이 예제에서 솔트의 역할을 올바르게 설명한 것은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "Python3.13.9 hashlib.pbkdf2_hmac('sha256',password,salt,600000,dklen=16)을 사용한다. password/salt는 ASCII 바이트다. 두 계정의 password는 모두 'same-pass', 솔트는 각각 'salt-A-000000001'과 'salt-B-000000002'이다. 고정 솔트는 재현용 시험값이다.",
+  "code": "from hashlib import pbkdf2_hmac\nfor salt in (b'salt-A-000000001', b'salt-B-000000002'):\n    print(pbkdf2_hmac('sha256', b'same-pass', salt, 600000, dklen=16).hex())",
+  "language": "python",
+  "stem": "이 예제에서 솔트의 역할을 올바르게 설명한 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "같은 비밀번호라도 서로 다른 KDF 입력 조합을 만들며 복호화 키는 아니다",
+      "explanation": "비밀번호·솔트·반복 횟수 등을 함께 사용하는 역할이다."
+    },
+    {
+      "id": "B",
+      "text": "솔트만 알면 저장 값을 복호화해 비밀번호를 얻는다",
+      "explanation": "KDF는 솔트를 복호화 키로 쓰는 가역 암호가 아니다."
+    },
+    {
+      "id": "C",
+      "text": "솔트가 있으므로 비밀번호 추측은 절대 불가능하다",
+      "explanation": "솔트는 공격 비용·재사용을 다루며 추측 가능성을 없애지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "모든 사용자에게 같은 솔트를 써야 사용자별 입력이 구분된다",
+      "explanation": "같은 비밀번호·같은 솔트·같은 설정은 같은 입력 조합이다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "두 계정은 비밀번호가 같아도 salt 인수가 다르다. 실행 결과는83be0607a38181e2114b974fe5327de1과39dd32431e432be5f379055c75c6f3b7로 달랐다. 이는 솔트의 입력 구분 역할이며 복호화 기능이 아니다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Password Storage Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "scope": "Salting 및 Hashing vs Encryption; PBKDF2와 솔트의 역할",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Python 3.13 hashlib — pbkdf2_hmac",
+      "url": "https://docs.python.org/3.13/library/hashlib.html#hashlib.pbkdf2_hmac",
+      "scope": "pbkdf2_hmac(hash_name,password,salt,iterations,dklen) API 정의",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

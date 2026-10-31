@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-008",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-08"
+  ],
+  "subject": 3,
+  "title": "a.f(x)의 출력은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A a=new B(); Object x=\"sun\".",
+  "code": "public class Main {\n static class A { String f(Object x){return \"AO\";} String f(String x){return \"AS\";} }\n static class B extends A { @Override String f(Object x){return \"BO\";} @Override String f(String x){return \"BS\";} }\n public static void main(String[] args) {\n A a=new B(); Object x=\"sun\"; System.out.println(a.f(x));\n }\n}\n",
+  "language": "Java",
+  "stem": "a.f(x)의 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "AO",
+      "explanation": "A의 시그니처를 고른 후 런타임 재정의를 놓쳤다."
+    },
+    {
+      "id": "B",
+      "text": "AS",
+      "explanation": "인자의 실제 객체만 보고 오버로드를 고를 수 없다."
+    },
+    {
+      "id": "C",
+      "text": "BS",
+      "explanation": "x의 컴파일 시점 자료형은 Object이다."
+    },
+    {
+      "id": "D",
+      "text": "BO",
+      "explanation": "f(Object)를 고른 뒤 B의 재정의 구현을 실행한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "x 선언형 Object→f(Object) 선택. 수신 객체 B→B.f(Object) 실행. 따라서 BO이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Expressions",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html",
+      "scope": "15.11.1 필드 접근, 15.12.2 오버로드 선택, 15.12.4.4 동적 메서드 선택, 15.21.3 참조 동등성",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

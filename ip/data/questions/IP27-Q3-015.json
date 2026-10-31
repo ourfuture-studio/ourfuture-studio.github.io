@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-015",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-15"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  values=[2,2,5]; print(len(values),len(set(values))).",
+  "code": "values=[2,2,5]\nprint(len(values),len(set(values)))\n",
+  "language": "Python",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "3 3",
+      "explanation": "집합의 동등한 정수2는 하나로 합쳐진다."
+    },
+    {
+      "id": "B",
+      "text": "2 2",
+      "explanation": "리스트에는 중복 원소가 그대로 남는다."
+    },
+    {
+      "id": "C",
+      "text": "3 2",
+      "explanation": "리스트 세 원소와 집합 두 원소를 구별했다."
+    },
+    {
+      "id": "D",
+      "text": "2 3",
+      "explanation": "컨테이너의 중복 규칙을 뒤집었다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "리스트는2,2,5 세 칸, 집합은2와5 두 값이므로3 2이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 Built-in Types",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html",
+      "scope": "Sequence Types의 슬라이스·range; set, tuple, dict의 가변성·키 제약",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

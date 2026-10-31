@@ -1,0 +1,47 @@
+{
+  "id": "IP27-E2-014",
+  "topicId": "IP27-2-14",
+  "title": "LEFT JOIN에서 ON과 WHERE의 위치: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "결제 조건을 ON에 배치",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 아래의 고객 세 명·구매 세 건만 사용한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Customer(id INTEGER PRIMARY KEY);\nCREATE TABLE Purchase(id INTEGER PRIMARY KEY, customer_id INTEGER NOT NULL, paid INTEGER NOT NULL CHECK(paid IN(0,1)));\nINSERT INTO Customer VALUES(1),(2),(3);\nINSERT INTO Purchase VALUES(11,1,1),(12,1,0),(13,2,0);\nSELECT c.id,p.id FROM Customer c LEFT JOIN Purchase p ON c.id=p.customer_id AND p.paid=1 ORDER BY c.id,p.id;",
+      "result": "(1,11),(2,NULL),(3,NULL)",
+      "explanation": "결제 구매가 없는 고객도 LEFT JOIN이 보존한다.",
+      "trace": [
+        "고객1→구매11 일치",
+        "고객2→결제구매 없음→NULL",
+        "고객3→구매 없음→NULL"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "결제 조건을 WHERE로 이동",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 입력은 동일하며 결제 조건만 WHERE에 둔다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Customer(id INTEGER PRIMARY KEY);\nCREATE TABLE Purchase(id INTEGER PRIMARY KEY, customer_id INTEGER NOT NULL, paid INTEGER NOT NULL CHECK(paid IN(0,1)));\nINSERT INTO Customer VALUES(1),(2),(3);\nINSERT INTO Purchase VALUES(11,1,1),(12,1,0),(13,2,0);\nSELECT c.id,p.id FROM Customer c LEFT JOIN Purchase p ON c.id=p.customer_id WHERE p.paid=1 ORDER BY c.id,p.id;",
+      "result": "(1,11)",
+      "explanation": "고객 2의 paid=0과 고객 3의 paid=NULL 모두 WHERE에서 제거된다.",
+      "trace": [
+        "조인:1/11,1/12,2/13,3/NULL",
+        "WHERE:paid=1만 통과"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "WHERE에 NULL 검사 추가",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 입력은 동일하며 ON은 고객번호만 비교한다. WHERE에 p.paid=1 OR p.id IS NULL을 둔다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Customer(id INTEGER PRIMARY KEY);\nCREATE TABLE Purchase(id INTEGER PRIMARY KEY, customer_id INTEGER NOT NULL, paid INTEGER NOT NULL CHECK(paid IN(0,1)));\nINSERT INTO Customer VALUES(1),(2),(3);\nINSERT INTO Purchase VALUES(11,1,1),(12,1,0),(13,2,0);\nSELECT c.id,p.id FROM Customer c LEFT JOIN Purchase p ON c.id=p.customer_id WHERE p.paid=1 OR p.id IS NULL ORDER BY c.id,p.id;",
+      "result": "(1,11),(3,NULL)",
+      "explanation": "고객 2는 실제 미결제 구매 13과 연결되어 NULL 행이 아니므로 빠진다.",
+      "trace": [
+        "고객2→구매13(paid0,id13)",
+        "0=1 거짓·13 IS NULL 거짓→제거",
+        "고객3→NULL 행→통과"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

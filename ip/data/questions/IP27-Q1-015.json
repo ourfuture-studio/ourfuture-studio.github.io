@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-015",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-15"
+  ],
+  "subject": 1,
+  "title": "이 규칙으로 B에 전달되는 값은?",
+  "origin": "original",
+  "tags": [
+    "인터페이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "A는 수량을 문자열 '12'로 보내고 B는 정수 수량만 받는다. 미들웨어에는 숫자 문자만 정수로 바꾸고 변환 불가 값은 거부하는 규칙이 설정돼 있다. 입력은 '12'이다.",
+  "code": null,
+  "language": null,
+  "stem": "이 규칙으로 B에 전달되는 값은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "문자열 '12' 그대로",
+      "explanation": "명시한 변환 규칙을 적용하지 않았다."
+    },
+    {
+      "id": "B",
+      "text": "정수 12",
+      "explanation": "숫자 문자열이므로 정수로 변환한 뒤 B 계약을 충족한다."
+    },
+    {
+      "id": "C",
+      "text": "문자열 '열둘'",
+      "explanation": "그런 문자 변환 규칙은 없다."
+    },
+    {
+      "id": "D",
+      "text": "항상 0",
+      "explanation": "실패 기본값 0 규칙은 없으며 입력은 변환 가능하다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "입력 '12'는 숫자 문자 조건을 만족한다. 설정된 규칙에 따라 정수 12로 바꾸어 전달한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "AWS — What is Middleware?",
+      "url": "https://aws.amazon.com/what-is/middleware/",
+      "scope": "What are the use cases / middleware architecture / contract manager / How does middleware work 본문",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

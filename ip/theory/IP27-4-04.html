@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>개발 단계마다 보안 근거 남기기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-04"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-04 · 이론 읽기</p><h1>개발 단계마다 보안 근거 남기기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-04">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-04">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>최종 검사에 앞서 요구와 설계에서 통제할 위험을 정한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>Secure SDLC는 개발 생명주기에 보안 활동을 통합하는 접근이다. SSDF는 보안 요구·설계 위험·구현 검토·검증·취약점 대응을 연결한다.</p>
+<p>설계에서 권한 경계를 정하지 않았다면 완성 후 스캔만으로 업무상 권한 규칙이 저절로 만들어지지 않는다.</p>
+<p>보안 검토가 일찍 있었더라도 이후 검증이 면제되지는 않는다. 위험·설계 결정·검증 사례 사이의 연결을 유지한다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>프로젝트는 문서 편집 권한 위험을 다룬다. 보안 계획에 요구 단계의 작성자 규칙, 설계 단계의 서버 권한 검사, 구현 단계의 검토, 시험 단계의 타인 문서 편집 거부 사례를 연결해야 한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>위험=타인 문서 편집; 요구 작성자만·설계 서버 검사·구현 검토·시험 타인 거부를 모두 연결 기록.</td>
+<td>명시한 활동 연결 충족</td>
+</tr>
+<tr>
+<td>위험=타인 문서 편집; 최종 포트 스캔만 수행; 업무 권한 요구/설계/거부 테스트 기록 없음.</td>
+<td>업무 권한 검증 연결 미확인</td>
+</tr>
+<tr>
+<td>위험=타인 문서 편집; 요구 작성자만·설계 서버 검사·구현 검토 연결; 타인 거부 실행 테스트는 미수행.</td>
+<td>시험 결과 미확인</td>
+</tr>
+</tbody>
+</table></div>
+<p>요구에서 정한 작성자 규칙이 설계·코드·시험에 각각 어떻게 반영됐는지 연결해야 한다. 같은 위험을 다루는 네 활동을 추적할 수 있게 남긴다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>보안 요구가 어느 설계·코드·검증으로 이어졌는지 추적한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>자체 추적 예제이며 SSDF 전체 준수 인증이나 취약점 부재 증명이 아니다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf" rel="noopener noreferrer" target="_blank">NIST SP 800-218 SSDF v1.1</a> — PW.1/PW.1.1/PW.1.2: 보안 요구·위험 모델·설계 결정 기록; PW.7/PW.8, RV 활동. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-004">이 계획의 목적에 맞는 실행은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

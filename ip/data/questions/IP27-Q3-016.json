@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-016",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-16"
+  ],
+  "subject": 3,
+  "title": "리스트와 길이 출력은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  r=range(2,10,3).",
+  "code": "r=range(2,10,3)\nprint(list(r),len(r))\n",
+  "language": "Python",
+  "stem": "리스트와 길이 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[2, 5, 8] 3",
+      "explanation": "10 미만 값 세 개를 생성한다."
+    },
+    {
+      "id": "B",
+      "text": "[2, 5, 8, 10] 4",
+      "explanation": "10은 간격3의 다음 값도 아니고 끝 경계에도 포함되지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "[2, 3, 4, 5, 6, 7, 8, 9] 8",
+      "explanation": "step3을 무시했다."
+    },
+    {
+      "id": "D",
+      "text": "[2, 5, 8, 11] 4",
+      "explanation": "11은 stop10보다 크다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "2,5,8 다음11은10 미만이 아니므로 세 원소이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 Built-in Types",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html",
+      "scope": "Sequence Types의 슬라이스·range; set, tuple, dict의 가변성·키 제약",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

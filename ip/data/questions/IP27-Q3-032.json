@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-032",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-32"
+  ],
+  "subject": 3,
+  "title": "/price 요청의 역할 대응으로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "웹서버 W는 /logo.svg를 직접 제공하고 /price를 응용 A로 전달한다. A는 상품 ID를 검증한 후 DB D에서 가격을 조회해 JSON을 만든다. 요청은 /price?item=7이며 유효한 상품이다. 캐시는 없다.",
+  "code": null,
+  "language": null,
+  "stem": "/price 요청의 역할 대응으로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "W: HTTP 수신·전달, A: 입력 검증·응답 작성, D: 영속 가격 조회",
+      "explanation": "명시한 요청 경로와 각 기능에 맞는다."
+    },
+    {
+      "id": "B",
+      "text": "W: 영속 가격 저장, A: 물리 신호 전송, D: 브라우저 렌더링",
+      "explanation": "지정된 웹·응용·DB 기능과 맞지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "W가 요청을 받았으므로 A와 D는 호출되지 않는다.",
+      "explanation": "/price는 응용으로 전달되며 캐시가 없어 DB 조회가 필요하다."
+    },
+    {
+      "id": "D",
+      "text": "세 역할은 반드시 서로 다른 물리 컴퓨터여야 한다.",
+      "explanation": "논리적 역할 분리는 물리 장비 분리와 같지 않다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "요청 경로는 클라이언트→W→A→D이며 결과는 D→A→W→클라이언트로 돌아온다. W는 수신·전달, A는 업무 처리, D는 가격 질의를 수행한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Apache HTTP Server 2.4 Reverse Proxy Guide",
+      "url": "https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html",
+      "scope": "도입과 Simple reverse proxying: httpd의 직접 정적 제공과 백엔드 전달 역할",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "PostgreSQL 18 Architectural Fundamentals",
+      "url": "https://www.postgresql.org/docs/18/tutorial-arch.html",
+      "scope": "1.2 클라이언트/서버 모형, DB서버의 파일관리·연결수락·DB작업 수행",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

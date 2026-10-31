@@ -1,0 +1,47 @@
+{
+  "id": "IP27-E2-011",
+  "topicId": "IP27-2-11",
+  "title": "WHERE는 행을, HAVING은 그룹을 거른다: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "행 기준 4, 그룹 기준 13",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Sale는 아래 네 행뿐이고 amount는 정수·NOT NULL이다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Sale(id INTEGER PRIMARY KEY, team TEXT NOT NULL, amount INTEGER NOT NULL);\nINSERT INTO Sale VALUES(1,'A',4),(2,'A',9),(3,'B',12),(4,'B',2);\nSELECT team,SUM(amount) AS total FROM Sale WHERE amount>=4 GROUP BY team HAVING SUM(amount)>=13 ORDER BY team;",
+      "result": "(A,13)",
+      "explanation": "B의 2는 먼저 제거되어 B 합계는 12다.",
+      "trace": [
+        "WHERE:4,9,12",
+        "그룹:A13,B12",
+        "HAVING:A13"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "행 필터 생략",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Sale는 아래 네 행뿐이고 amount는 정수·NOT NULL이다. WHERE만 제거한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Sale(id INTEGER PRIMARY KEY, team TEXT NOT NULL, amount INTEGER NOT NULL);\nINSERT INTO Sale VALUES(1,'A',4),(2,'A',9),(3,'B',12),(4,'B',2);\nSELECT team,SUM(amount) AS total FROM Sale GROUP BY team HAVING SUM(amount)>=13 ORDER BY team;",
+      "result": "(A,13),(B,14)",
+      "explanation": "B의 2도 포함되어 두 그룹이 기준을 넘는다.",
+      "trace": [
+        "그룹:A4+9=13,B12+2=14",
+        "HAVING:두 그룹"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "행 기준 9",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Sale는 아래 네 행뿐이고 amount는 정수·NOT NULL이다. WHERE의 하한만 9로 바꾼다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Sale(id INTEGER PRIMARY KEY, team TEXT NOT NULL, amount INTEGER NOT NULL);\nINSERT INTO Sale VALUES(1,'A',4),(2,'A',9),(3,'B',12),(4,'B',2);\nSELECT team,SUM(amount) AS total FROM Sale WHERE amount>=9 GROUP BY team HAVING SUM(amount)>=13 ORDER BY team;",
+      "result": "0행",
+      "explanation": "행 필터 후 합계는 A9와 B12여서 둘 다 13 미만이다.",
+      "trace": [
+        "WHERE:9,12",
+        "그룹:A9,B12",
+        "HAVING:없음"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-006",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-06"
+  ],
+  "subject": 2,
+  "title": "S→N 때문에 직접 위반하는 가장 이른 정규형은?",
+  "origin": "original",
+  "tags": [
+    "논리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "관계 R(S,C,N,G)의 F={SC→G,S→N}이며 논리적 귀결 외 제약은 없다. S=학생번호, C=과목번호, N=학생명, G=성적이다. NULL·복합값은 없다. R(S,C,N,G), F={SC→G,S→N}. 그 귀결 외 FD 없음. NULL·복합값 없음.",
+  "code": null,
+  "language": null,
+  "stem": "S→N 때문에 직접 위반하는 가장 이른 정규형은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "1정규형",
+      "explanation": "값이 모두 원자적이라는 전제이므로 이 FD만으로 1NF 위반을 말하지 못한다."
+    },
+    {
+      "id": "B",
+      "text": "2정규형",
+      "explanation": "유일한 후보키 SC의 일부 S가 비주요 속성 N을 결정한다."
+    },
+    {
+      "id": "C",
+      "text": "중복이 없어 정규형과 무관하다",
+      "explanation": "정규형은 현재 중복 행 수보다 스키마의 FD로 판단한다."
+    },
+    {
+      "id": "D",
+      "text": "S가 후보키이므로 BCNF다",
+      "explanation": "S+={S,N}이고 C와 G를 얻지 못해 S는 슈퍼키가 아니다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "SC+={S,C,N,G}, S+={S,N}, C+={C}이므로 후보키는 SC다. S→N이 부분 종속이므로 2NF를 위반해 B다.",
+  "references": [
+    {
+      "id": "FD",
+      "title": "Database System Concepts 7판 저자 슬라이드: Normalization",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf",
+      "scope": "슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "NF2",
+      "title": "Database System Concepts 저자 제공 7장 연습문제의 정의",
+      "url": "https://www.db-book.com/Practice-Exercises/PDF-practice-exer-dir/7.pdf",
+      "scope": "PDF 4쪽 7.18~7.19의 정의: 주요 속성, 이행 종속, 진부분집합에 대한 부분 종속, 모든 후보키를 기준으로 한 2NF. 원문의 문제·예제는 복제하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

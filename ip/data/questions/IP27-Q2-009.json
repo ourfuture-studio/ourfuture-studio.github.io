@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-009",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-09"
+  ],
+  "subject": 2,
+  "title": "REVOKE SELECT ON Member FROM reader의 직접 목적은?",
+  "origin": "original",
+  "tags": [
+    "SQL 응용"
+  ],
+  "kind": "single-choice",
+  "givens": "PostgreSQL 18 명세 사례다. Member는 존재하고 실행자에게 필요한 권한이 있으며 reader 역할도 존재한다. 실제 서버에서 실행한 사례가 아니다. PostgreSQL 18 명세. Member와 reader 존재. 실행자는 권한 회수 가능. 명령 REVOKE SELECT ON Member FROM reader. 다른 권한 경로의 유무는 판단하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "REVOKE SELECT ON Member FROM reader의 직접 목적은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "Member의 모든 행 삭제",
+      "explanation": "행 삭제는 DELETE 등의 대상이다."
+    },
+    {
+      "id": "B",
+      "text": "Member의 id 열 삭제",
+      "explanation": "열 구조 변경은 ALTER TABLE 등의 대상이다."
+    },
+    {
+      "id": "C",
+      "text": "reader에 부여한 SELECT 권한 회수",
+      "explanation": "접근 권한을 다루는 명령의 직접 목적이다. 다른 권한 경로의 존재는 별도 확인한다."
+    },
+    {
+      "id": "D",
+      "text": "Member의 물리 파일을 압축",
+      "explanation": "REVOKE는 파일 압축 명령이 아니다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "명령의 동사는 REVOKE이고 대상은 Member에 대한 reader의 SELECT 권한이다. 따라서 C다.",
+  "references": [
+    {
+      "id": "DB1",
+      "title": "Database System Concepts 7판 저자 슬라이드: Introduction",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch1.pdf",
+      "scope": "슬라이드 1.14~1.18: 논리·물리 스키마, 물리 데이터 독립성, DDL과 DML",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "PRIV",
+      "title": "PostgreSQL 18: Privileges",
+      "url": "https://www.postgresql.org/docs/18/ddl-priv.html",
+      "scope": "5.8: 객체 소유권, GRANT와 REVOKE, SELECT·UPDATE 등 권한의 대상",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

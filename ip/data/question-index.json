@@ -1,0 +1,2162 @@
+[
+  {
+    "id": "IP27-Q1-001",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-01"
+    ],
+    "subject": 1,
+    "title": "R1과 R2의 분류로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-001.json"
+  },
+  {
+    "id": "IP27-Q1-002",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-02"
+    ],
+    "subject": 1,
+    "title": "변경된 내용을 직접 드러내는 산출물은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-002.json"
+  },
+  {
+    "id": "IP27-Q1-003",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-03"
+    ],
+    "subject": 1,
+    "title": "이 조건을 표현한 관계와 방향은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-003.json"
+  },
+  {
+    "id": "IP27-Q1-004",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-04"
+    ],
+    "subject": 1,
+    "title": "명세에 따른 P의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-004.json"
+  },
+  {
+    "id": "IP27-Q1-005",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-05"
+    ],
+    "subject": 1,
+    "title": "이 팀이 피드백을 반복에 반영했다는 직접 근거는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-005.json"
+  },
+  {
+    "id": "IP27-Q1-006",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-06"
+    ],
+    "subject": 1,
+    "title": "이 화살표에서 직접 확인할 수 있는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-006.json"
+  },
+  {
+    "id": "IP27-Q1-007",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-07"
+    ],
+    "subject": 1,
+    "title": "현재 상태에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "요구사항 확인"
+    ],
+    "path": "data/questions/IP27-Q1-007.json"
+  },
+  {
+    "id": "IP27-Q1-008",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-08"
+    ],
+    "subject": 1,
+    "title": "직접 갱신해야 할 내용은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "화면 설계"
+    ],
+    "path": "data/questions/IP27-Q1-008.json"
+  },
+  {
+    "id": "IP27-Q1-009",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-09"
+    ],
+    "subject": 1,
+    "title": "현재 책임으로 정당화하기 어려운 추가 함수는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-009.json"
+  },
+  {
+    "id": "IP27-Q1-010",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-10"
+    ],
+    "subject": 1,
+    "title": "이 목표에 맞는 인터페이스는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-010.json"
+  },
+  {
+    "id": "IP27-Q1-011",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-11"
+    ],
+    "subject": 1,
+    "title": "변경 후 상태는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-011.json"
+  },
+  {
+    "id": "IP27-Q1-012",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-12"
+    ],
+    "subject": 1,
+    "title": "호출 후 규칙 충족 여부와 필요한 수정은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-012.json"
+  },
+  {
+    "id": "IP27-Q1-013",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-13"
+    ],
+    "subject": 1,
+    "title": "주어진 관계를 표현하는 선택은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-013.json"
+  },
+  {
+    "id": "IP27-Q1-014",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-14"
+    ],
+    "subject": 1,
+    "title": "직접 수정할 책임은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-014.json"
+  },
+  {
+    "id": "IP27-Q1-015",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-15"
+    ],
+    "subject": 1,
+    "title": "이 규칙으로 B에 전달되는 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "인터페이스 설계"
+    ],
+    "path": "data/questions/IP27-Q1-015.json"
+  },
+  {
+    "id": "IP27-Q1-016",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-16"
+    ],
+    "subject": 1,
+    "title": "확정할 수 있는 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 설계"
+    ],
+    "path": "data/questions/IP27-Q1-016.json"
+  },
+  {
+    "id": "IP27-Q1-017",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-17"
+    ],
+    "subject": 1,
+    "title": "이 절차의 선택 기준을 가장 정확히 표현한 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어개발 방법론 활용"
+    ],
+    "path": "data/questions/IP27-Q1-017.json"
+  },
+  {
+    "id": "IP27-Q1-018",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-18"
+    ],
+    "subject": 1,
+    "title": "주어진 조직 규칙을 충족하는 조치는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어개발 방법론 활용"
+    ],
+    "path": "data/questions/IP27-Q1-018.json"
+  },
+  {
+    "id": "IP27-Q1-019",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-19"
+    ],
+    "subject": 1,
+    "title": "이 모형의 기간은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어개발 방법론 활용"
+    ],
+    "path": "data/questions/IP27-Q1-019.json"
+  },
+  {
+    "id": "IP27-Q1-020",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-20"
+    ],
+    "subject": 1,
+    "title": "c2/s1/m1의 현재 상태는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "통합 구현"
+    ],
+    "path": "data/questions/IP27-Q1-020.json"
+  },
+  {
+    "id": "IP27-Q1-021",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-21"
+    ],
+    "subject": 1,
+    "title": "이번 실행에서 확인되는 상태는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "제품소프트웨어 패키징"
+    ],
+    "path": "data/questions/IP27-Q1-021.json"
+  },
+  {
+    "id": "IP27-Q1-022",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-22"
+    ],
+    "subject": 1,
+    "title": "주어진 조건에서 맞는 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "제품소프트웨어 패키징"
+    ],
+    "path": "data/questions/IP27-Q1-022.json"
+  },
+  {
+    "id": "IP27-Q1-023",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-23"
+    ],
+    "subject": 1,
+    "title": "두 작업을 안내할 문서 배치로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "제품소프트웨어 패키징"
+    ],
+    "path": "data/questions/IP27-Q1-023.json"
+  },
+  {
+    "id": "IP27-Q1-024",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-24"
+    ],
+    "subject": 1,
+    "title": "관찰로 뒷받침되는 결론은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "제품소프트웨어 패키징"
+    ],
+    "path": "data/questions/IP27-Q1-024.json"
+  },
+  {
+    "id": "IP27-Q1-025",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-25"
+    ],
+    "subject": 1,
+    "title": "이 사례 선택의 근거를 분류하면?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-025.json"
+  },
+  {
+    "id": "IP27-Q1-026",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-26"
+    ],
+    "subject": 1,
+    "title": "필요한 경계값 집합은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-026.json"
+  },
+  {
+    "id": "IP27-Q1-027",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-27"
+    ],
+    "subject": 1,
+    "title": "문장·결정·조건 커버리지의 순서로 맞는 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-027.json"
+  },
+  {
+    "id": "IP27-Q1-028",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-28"
+    ],
+    "subject": 1,
+    "title": "X의 역할은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-028.json"
+  },
+  {
+    "id": "IP27-Q1-029",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-29"
+    ],
+    "subject": 1,
+    "title": "이 시험의 직접 대상에 맞는 수준은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-029.json"
+  },
+  {
+    "id": "IP27-Q1-030",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-30"
+    ],
+    "subject": 1,
+    "title": "P와 Q의 검사 방식은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-030.json"
+  },
+  {
+    "id": "IP27-Q1-031",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-31"
+    ],
+    "subject": 1,
+    "title": "명세를 기준으로 한 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-031.json"
+  },
+  {
+    "id": "IP27-Q1-032",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-32"
+    ],
+    "subject": 1,
+    "title": "한 회전 직후 배열은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-032.json"
+  },
+  {
+    "id": "IP27-Q1-033",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-33"
+    ],
+    "subject": 1,
+    "title": "가운데 비교 인덱스 순서와 반환 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-033.json"
+  },
+  {
+    "id": "IP27-Q1-034",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-34"
+    ],
+    "subject": 1,
+    "title": "B가 해석한 시간과 A가 의도한 시간은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "인터페이스 구현"
+    ],
+    "path": "data/questions/IP27-Q1-034.json"
+  },
+  {
+    "id": "IP27-Q1-035",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-35"
+    ],
+    "subject": 1,
+    "title": "출력과 덧셈 횟수 비교로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "애플리케이션 테스트 관리"
+    ],
+    "path": "data/questions/IP27-Q1-035.json"
+  },
+  {
+    "id": "IP27-Q2-001",
+    "revision": 2,
+    "topicIds": [
+      "IP27-2-01"
+    ],
+    "subject": 2,
+    "title": "이 변경을 가장 직접적으로 설명하는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-001.json"
+  },
+  {
+    "id": "IP27-Q2-002",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-02"
+    ],
+    "subject": 2,
+    "title": "현재 수강이 없는 S2에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-002.json"
+  },
+  {
+    "id": "IP27-Q2-003",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-03"
+    ],
+    "subject": 2,
+    "title": "다음 중 슈퍼키이지만 후보키는 아닌 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-003.json"
+  },
+  {
+    "id": "IP27-Q2-004",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-04"
+    ],
+    "subject": 2,
+    "title": "DELETE FROM Parent WHERE id=7의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-004.json"
+  },
+  {
+    "id": "IP27-Q2-005",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-05"
+    ],
+    "subject": 2,
+    "title": "이름→부서에 대한 가장 정확한 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-005.json"
+  },
+  {
+    "id": "IP27-Q2-006",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-06"
+    ],
+    "subject": 2,
+    "title": "S→N 때문에 직접 위반하는 가장 이른 정규형은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-006.json"
+  },
+  {
+    "id": "IP27-Q2-007",
+    "revision": 2,
+    "topicIds": [
+      "IP27-2-07"
+    ],
+    "subject": 2,
+    "title": "이 스키마에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-007.json"
+  },
+  {
+    "id": "IP27-Q2-008",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-08"
+    ],
+    "subject": 2,
+    "title": "현재 상태에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-008.json"
+  },
+  {
+    "id": "IP27-Q2-009",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-09"
+    ],
+    "subject": 2,
+    "title": "REVOKE SELECT ON Member FROM reader의 직접 목적은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-009.json"
+  },
+  {
+    "id": "IP27-Q2-010",
+    "revision": 2,
+    "topicIds": [
+      "IP27-2-10"
+    ],
+    "subject": 2,
+    "title": "T의 정의와 id=1,3 행을 남기고 id=2 행만 제거하려면?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-010.json"
+  },
+  {
+    "id": "IP27-Q2-011",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-11"
+    ],
+    "subject": 2,
+    "title": "아래 SQL의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-011.json"
+  },
+  {
+    "id": "IP27-Q2-012",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-12"
+    ],
+    "subject": 2,
+    "title": "COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-012.json"
+  },
+  {
+    "id": "IP27-Q2-013",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-13"
+    ],
+    "subject": 2,
+    "title": "결과 한 행의 의미와 값이 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-013.json"
+  },
+  {
+    "id": "IP27-Q2-014",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-14"
+    ],
+    "subject": 2,
+    "title": "아래 LEFT JOIN의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-014.json"
+  },
+  {
+    "id": "IP27-Q2-015",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-15"
+    ],
+    "subject": 2,
+    "title": "아래 UNION 결과를 오름차순으로 나열한 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-015.json"
+  },
+  {
+    "id": "IP27-Q2-016",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-16"
+    ],
+    "subject": 2,
+    "title": "id NOT IN(SELECT id FROM Blocked)을 만족하는 Item 행은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-016.json"
+  },
+  {
+    "id": "IP27-Q2-017",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-17"
+    ],
+    "subject": 2,
+    "title": "아래 질의가 반환하는 행과 합계는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-017.json"
+  },
+  {
+    "id": "IP27-Q2-018",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-18"
+    ],
+    "subject": 2,
+    "title": "수정 직후 Ready의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-018.json"
+  },
+  {
+    "id": "IP27-Q2-019",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-19"
+    ],
+    "subject": 2,
+    "title": "이 실험과 인덱스 명세에서 뒷받침되는 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-019.json"
+  },
+  {
+    "id": "IP27-Q2-020",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-20"
+    ],
+    "subject": 2,
+    "title": "취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-020.json"
+  },
+  {
+    "id": "IP27-Q2-021",
+    "revision": 2,
+    "topicIds": [
+      "IP27-2-21"
+    ],
+    "subject": 2,
+    "title": "T1의 두 읽기와 해당 현상의 조합은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-021.json"
+  },
+  {
+    "id": "IP27-Q2-022",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-22"
+    ],
+    "subject": 2,
+    "title": "마지막 요청 직후의 상태는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 활용"
+    ],
+    "path": "data/questions/IP27-Q2-022.json"
+  },
+  {
+    "id": "IP27-Q2-023",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-23"
+    ],
+    "subject": 2,
+    "title": "정해진 모형으로 복구한 최종 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-023.json"
+  },
+  {
+    "id": "IP27-Q2-024",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-24"
+    ],
+    "subject": 2,
+    "title": "Audit에 저장되는 행은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-024.json"
+  },
+  {
+    "id": "IP27-Q2-025",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-25"
+    ],
+    "subject": 2,
+    "title": "이 배치를 설명하는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-025.json"
+  },
+  {
+    "id": "IP27-Q2-026",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-26"
+    ],
+    "subject": 2,
+    "title": "명시한 제품에서 맞는 설명은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "물리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-026.json"
+  },
+  {
+    "id": "IP27-Q2-027",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-27"
+    ],
+    "subject": 2,
+    "title": "행 수·키 종류 수·누락 키 수·금액 불일치 행 수의 순서로 맞는 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "데이터 전환"
+    ],
+    "path": "data/questions/IP27-Q2-027.json"
+  },
+  {
+    "id": "IP27-Q2-028",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-28"
+    ],
+    "subject": 2,
+    "title": "최종 관계의 차수와 카디널리티는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "논리 데이터베이스 설계"
+    ],
+    "path": "data/questions/IP27-Q2-028.json"
+  },
+  {
+    "id": "IP27-Q2-029",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-29"
+    ],
+    "subject": 2,
+    "title": "WHERE NOT(value=0)을 통과하는 id는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "SQL 응용"
+    ],
+    "path": "data/questions/IP27-Q2-029.json"
+  },
+  {
+    "id": "IP27-Q3-001",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-01"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-001.json"
+  },
+  {
+    "id": "IP27-Q3-002",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-02"
+    ],
+    "subject": 3,
+    "title": "이 프로그램에 대한 올바른 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-002.json"
+  },
+  {
+    "id": "IP27-Q3-003",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-03"
+    ],
+    "subject": 3,
+    "title": "2+3*4의 해석으로 옳은 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-003.json"
+  },
+  {
+    "id": "IP27-Q3-004",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-04"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-004.json"
+  },
+  {
+    "id": "IP27-Q3-005",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-05"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-005.json"
+  },
+  {
+    "id": "IP27-Q3-006",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-06"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-006.json"
+  },
+  {
+    "id": "IP27-Q3-007",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-07"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-007.json"
+  },
+  {
+    "id": "IP27-Q3-008",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-08"
+    ],
+    "subject": 3,
+    "title": "a.f(x)의 출력은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-008.json"
+  },
+  {
+    "id": "IP27-Q3-009",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-09"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-009.json"
+  },
+  {
+    "id": "IP27-Q3-010",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-10"
+    ],
+    "subject": 3,
+    "title": "출력 순서는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-010.json"
+  },
+  {
+    "id": "IP27-Q3-011",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-11"
+    ],
+    "subject": 3,
+    "title": "a.n과 b.n 출력은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-011.json"
+  },
+  {
+    "id": "IP27-Q3-012",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-12"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-012.json"
+  },
+  {
+    "id": "IP27-Q3-013",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-13"
+    ],
+    "subject": 3,
+    "title": "a를 출력한 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-013.json"
+  },
+  {
+    "id": "IP27-Q3-014",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-14"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-014.json"
+  },
+  {
+    "id": "IP27-Q3-015",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-15"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-015.json"
+  },
+  {
+    "id": "IP27-Q3-016",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-16"
+    ],
+    "subject": 3,
+    "title": "리스트와 길이 출력은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-016.json"
+  },
+  {
+    "id": "IP27-Q3-017",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-17"
+    ],
+    "subject": 3,
+    "title": "saved.append(7) 뒤 출력은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-017.json"
+  },
+  {
+    "id": "IP27-Q3-018",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-18"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-018.json"
+  },
+  {
+    "id": "IP27-Q3-019",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-19"
+    ],
+    "subject": 3,
+    "title": "스택과 큐의 제거값을 순서대로 쓰면?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-019.json"
+  },
+  {
+    "id": "IP27-Q3-020",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-20"
+    ],
+    "subject": 3,
+    "title": "중위 순회 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-020.json"
+  },
+  {
+    "id": "IP27-Q3-021",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-21"
+    ],
+    "subject": 3,
+    "title": "출력은 무엇인가?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-021.json"
+  },
+  {
+    "id": "IP27-Q3-022",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-22"
+    ],
+    "subject": 3,
+    "title": "옳은 설명은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-022.json"
+  },
+  {
+    "id": "IP27-Q3-023",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-23"
+    ],
+    "subject": 3,
+    "title": "Q의 반환시간과 대기시간은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-023.json"
+  },
+  {
+    "id": "IP27-Q3-024",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-24"
+    ],
+    "subject": 3,
+    "title": "선택 공간과 그 공간에서 남는 자유 크기는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-024.json"
+  },
+  {
+    "id": "IP27-Q3-025",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-25"
+    ],
+    "subject": 3,
+    "title": "페이지 부재 횟수는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-025.json"
+  },
+  {
+    "id": "IP27-Q3-026",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-26"
+    ],
+    "subject": 3,
+    "title": "직접 차단하려는 교착 필요조건은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-026.json"
+  },
+  {
+    "id": "IP27-Q3-027",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-27"
+    ],
+    "subject": 3,
+    "title": "자식이 출력하는 값은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-027.json"
+  },
+  {
+    "id": "IP27-Q3-028",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-28"
+    ],
+    "subject": 3,
+    "title": "이 동작에 대응하는 OSI 계층은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-028.json"
+  },
+  {
+    "id": "IP27-Q3-029",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-29"
+    ],
+    "subject": 3,
+    "title": "네트워크 주소, 브로드캐스트 주소, 사용 가능한 호스트 수는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-029.json"
+  },
+  {
+    "id": "IP27-Q3-030",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-30"
+    ],
+    "subject": 3,
+    "title": "선택할 다음 홉과 프리픽스는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-030.json"
+  },
+  {
+    "id": "IP27-Q3-031",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-31"
+    ],
+    "subject": 3,
+    "title": "확인 가능한 결론은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-031.json"
+  },
+  {
+    "id": "IP27-Q3-032",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-32"
+    ],
+    "subject": 3,
+    "title": "/price 요청의 역할 대응으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "응용 SW 기초 기술 활용"
+    ],
+    "path": "data/questions/IP27-Q3-032.json"
+  },
+  {
+    "id": "IP27-Q3-033",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-33"
+    ],
+    "subject": 3,
+    "title": "이 설계에 대한 옳은 설명은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "서버프로그램 구현"
+    ],
+    "path": "data/questions/IP27-Q3-033.json"
+  },
+  {
+    "id": "IP27-Q3-034",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-34"
+    ],
+    "subject": 3,
+    "title": "main의 출력은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용"
+    ],
+    "path": "data/questions/IP27-Q3-034.json"
+  },
+  {
+    "id": "IP27-Q4-001",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-01"
+    ],
+    "subject": 4,
+    "title": "직접 확인된 피해는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-001.json"
+  },
+  {
+    "id": "IP27-Q4-002",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-02"
+    ],
+    "subject": 4,
+    "title": "서버의 권한 판정은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-002.json"
+  },
+  {
+    "id": "IP27-Q4-003",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-03"
+    ],
+    "subject": 4,
+    "title": "이 허용의 직접 근거에 맞는 모델은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-003.json"
+  },
+  {
+    "id": "IP27-Q4-004",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-04"
+    ],
+    "subject": 4,
+    "title": "이 계획의 목적에 맞는 실행은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-004.json"
+  },
+  {
+    "id": "IP27-Q4-005",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-05"
+    ],
+    "subject": 4,
+    "title": "요구 규칙을 서버에서 보장하기 위한 조치는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-005.json"
+  },
+  {
+    "id": "IP27-Q4-006",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-06"
+    ],
+    "subject": 4,
+    "title": "검색 값의 의미를 유지하며 이 쿼리를 수행한 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-006.json"
+  },
+  {
+    "id": "IP27-Q4-007",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-07"
+    ],
+    "subject": 4,
+    "title": "명시된 정책과 출력 문맥을 함께 반영한 조치는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-007.json"
+  },
+  {
+    "id": "IP27-Q4-008",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-08"
+    ],
+    "subject": 4,
+    "title": "S1을 첨부한 편집 요청의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-008.json"
+  },
+  {
+    "id": "IP27-Q4-009",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-09"
+    ],
+    "subject": 4,
+    "title": "이 관찰로 뒷받침되는 목적은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-009.json"
+  },
+  {
+    "id": "IP27-Q4-010",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-10"
+    ],
+    "subject": 4,
+    "title": "정책S의 비밀키 수와 정책P의 키 쌍 수는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-010.json"
+  },
+  {
+    "id": "IP27-Q4-011",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-11"
+    ],
+    "subject": 4,
+    "title": "이 예제에서 솔트의 역할을 올바르게 설명한 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-011.json"
+  },
+  {
+    "id": "IP27-Q4-012",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-12"
+    ],
+    "subject": 4,
+    "title": "두 조건을 함께 만족하는 처리는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-012.json"
+  },
+  {
+    "id": "IP27-Q4-013",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-13"
+    ],
+    "subject": 4,
+    "title": "이 모형의 경계 밖 쓰기와 guard 검사에 대한 설명은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "소프트웨어 개발 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-013.json"
+  },
+  {
+    "id": "IP27-Q4-014",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-14"
+    ],
+    "subject": 4,
+    "title": "명시한 행동에 가장 직접적으로 대응하는 용어는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "시스템 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-014.json"
+  },
+  {
+    "id": "IP27-Q4-015",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-15"
+    ],
+    "subject": 4,
+    "title": "제시한 분류에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "시스템 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-015.json"
+  },
+  {
+    "id": "IP27-Q4-016",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-16"
+    ],
+    "subject": 4,
+    "title": "이 처리 모형의 결과는?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "시스템 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-016.json"
+  },
+  {
+    "id": "IP27-Q4-017",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-17"
+    ],
+    "subject": 4,
+    "title": "이 정보가 뒷받침하는 판단은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "시스템 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-017.json"
+  },
+  {
+    "id": "IP27-Q4-018",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-18"
+    ],
+    "subject": 4,
+    "title": "현재 확인 가능한 결론은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "시스템 보안 구축"
+    ],
+    "path": "data/questions/IP27-Q4-018.json"
+  },
+  {
+    "id": "IP27-Q4-019",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-19"
+    ],
+    "subject": 4,
+    "title": "이 조건의 저장 구성은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "IT프로젝트 정보시스템 구축관리"
+    ],
+    "path": "data/questions/IP27-Q4-019.json"
+  },
+  {
+    "id": "IP27-Q4-020",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-20"
+    ],
+    "subject": 4,
+    "title": "키2의 삭제 전 값 보존에 대한 판단으로 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "IT프로젝트 정보시스템 구축관리"
+    ],
+    "path": "data/questions/IP27-Q4-020.json"
+  },
+  {
+    "id": "IP27-Q4-021",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-21"
+    ],
+    "subject": 4,
+    "title": "역할 구분과 이 패킷의 동작이 맞는 것은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "IT프로젝트 정보시스템 구축관리"
+    ],
+    "path": "data/questions/IP27-Q4-021.json"
+  },
+  {
+    "id": "IP27-Q4-022",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-22"
+    ],
+    "subject": 4,
+    "title": "응용이 직접 사용하는 커널과 사용자 공간의 구분은?",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "IT프로젝트 정보시스템 구축관리"
+    ],
+    "path": "data/questions/IP27-Q4-022.json"
+  }
+]

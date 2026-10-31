@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-010",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-10"
+  ],
+  "subject": 3,
+  "title": "출력 순서는?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A/B 생성자 외 초기화 출력은 없고 new B()만 실행한다.",
+  "code": "public class Main {\n static class A { A(){System.out.print(\"A\");} A(int n){System.out.print(\"P\"+n);} }\n static class B extends A { B(){System.out.print(\"B\");} B(int n){super(n);System.out.print(\"C\");} }\n public static void main(String[] args) {\n new B(); System.out.println();\n }\n}\n",
+  "language": "Java",
+  "stem": "출력 순서는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "BA",
+      "explanation": "부모 생성자 호출을 자식 본문 뒤로 미뤘다."
+    },
+    {
+      "id": "B",
+      "text": "B",
+      "explanation": "부모 초기화를 생략했다."
+    },
+    {
+      "id": "C",
+      "text": "AB",
+      "explanation": "암시적 super()가 끝난 뒤 자식 본문이 실행된다."
+    },
+    {
+      "id": "D",
+      "text": "A",
+      "explanation": "자식 생성자 본문도 실행된다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "B()의 암시적 super()가 A를 출력하고, 이어 B() 본문이 B를 출력한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Execution",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-12.html",
+      "scope": "12.5 인스턴스 생성과 상위 생성자 호출 순서",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

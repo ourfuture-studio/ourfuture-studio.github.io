@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-007",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-07"
+  ],
+  "subject": 4,
+  "title": "명시된 정책과 출력 문맥을 함께 반영한 조치는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "사용자가 입력한 전체 URL을 따옴표로 둘러싼 a 요소의 href에 넣는다. 서비스 정책은 https URL만 허용한다. 입력 URL의 스킴은 javascript다. 현재 구현은 HTML 속성 인코딩만 하고 스킴 검증은 없다.",
+  "code": null,
+  "language": null,
+  "stem": "명시된 정책과 출력 문맥을 함께 반영한 조치는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "HTML 인코딩했으므로 모든 스킴을 허용한다",
+      "explanation": "문자 인코딩은 금지된 URL 스킴을 허용된 것으로 바꾸지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "SQL 자리표시자로 href를 만든다",
+      "explanation": "SQL 바인딩은 HTML URL 문맥 방어가 아니다."
+    },
+    {
+      "id": "C",
+      "text": "텍스트 길이가 짧으면 검증을 생략한다",
+      "explanation": "길이가 URL 스킴 정책을 충족시키지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "https 스킴 허용 여부를 검사해 입력을 거부하고, 허용 URL에도 속성 인코딩을 적용한다",
+      "explanation": "URL 의미 검증과 HTML 속성 문맥 처리를 함께 다룬다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "입력 스킴은 정책의 https와 다르므로 거부한다. 허용되는 URL을 출력할 때도 따옴표로 감싼 속성 문맥에 맞는 인코딩을 유지한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Cross Site Scripting Prevention Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+      "scope": "Output Encoding의 HTML/Attribute/URL contexts, Dangerous Contexts, Safe Sinks",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

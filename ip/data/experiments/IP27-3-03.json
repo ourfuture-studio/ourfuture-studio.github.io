@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-003",
+  "topicId": "IP27-3-03",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "괄호 없이 2+3*4",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. 식 2+3*4.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\",2+3*4);\n    return 0;\n}\n",
+      "result": "14",
+      "explanation": "3*4가 덧셈의 오른쪽 피연산자를 이룬다.",
+      "trace": [
+        "식 구조 2+(3*4)",
+        "3*4=12",
+        "2+12=14"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "덧셈을 괄호로 묶기",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. 식 (2+3)*4.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\",(2+3)*4);\n    return 0;\n}\n",
+      "result": "20",
+      "explanation": "괄호가 곱셈 왼쪽 전체를 정한다.",
+      "trace": [
+        "식 구조 (2+3)*4",
+        "2+3=5",
+        "5*4=20"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "뺄셈 세 피연산자",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. 식 20-5-3.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\",20-5-3);\n    return 0;\n}\n",
+      "result": "12",
+      "explanation": "동일 우선순위 뺄셈은 왼쪽 결합이다.",
+      "trace": [
+        "식 구조 (20-5)-3",
+        "20-5=15",
+        "15-3=12"
+      ]
+    }
+  ],
+  "boundary": "모든 수는 signed int의 안전한 범위이며 함수 호출 부수효과는 없다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

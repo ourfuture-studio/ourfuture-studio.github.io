@@ -1,0 +1,42 @@
+{
+  "id": "IP27-E2-001",
+  "topicId": "IP27-2-01",
+  "title": "응용의 열을 유지하고 저장 방법 바꾸기: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "접근 경로 추가",
+      "condition": "Member(id,name)와 SELECT id,name을 유지하고 name 보조 인덱스만 추가한다.",
+      "code": null,
+      "result": "물리 데이터 독립성",
+      "explanation": "논리 구조가 같고 내부 접근 경로만 바뀐다.",
+      "trace": [
+        "논리 열 id,name 유지 → 인덱스 추가 → 응용 조회 유지"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "열 이름 변경",
+      "condition": "Member(id,name)의 name을 display_name으로 바꾸고 기존 SELECT id,name은 수정하지 않는다. 호환 뷰는 만들지 않는다.",
+      "code": null,
+      "result": "기존 조회와의 호환을 보장하지 못한다",
+      "explanation": "기존 질의가 참조하는 name이 사라진다. 저장 구조 변경만의 사례가 아니다.",
+      "trace": [
+        "name 제거 → 기존 참조 열 부재 → 질의 수정 필요"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "뷰로 열 대응",
+      "condition": "변경 전 Member(id,name)를 읽는 OldMember(id,name) 뷰가 있고 응용은 OldMember만 조회한다. 전체 논리 구조를 Member(id,display_name)으로 바꾼 뒤 OldMember를 SELECT id,display_name AS name FROM Member로 다시 정의한다. 회원 id와 이름의 값·자료형·의미는 유지한다.",
+      "code": null,
+      "result": "지정한 외부 인터페이스는 유지된다",
+      "explanation": "열 대응 뷰가 해당 응용의 외부 구조를 유지한다. 모든 개념 변경이 자동 흡수된다는 주장은 아니다.",
+      "trace": [
+        "개념 열명 변경 → 뷰 별칭 name 제공 → 기존 외부 열 유지"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

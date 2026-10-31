@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-029",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-29"
+  ],
+  "subject": 1,
+  "title": "이 시험의 직접 대상에 맞는 수준은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "접수 모듈과 결제 모듈은 각각 단독 시험을 끝냈다. 이번 시험은 두 실제 모듈을 연결해 요청 필드와 오류 응답의 교환이 맞는지만 확인한다. 전체 업무 인수 승인은 하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "이 시험의 직접 대상에 맞는 수준은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "분리된 함수 하나의 단위 테스트",
+      "explanation": "두 실제 모듈의 상호작용을 확인하므로 분리 시험이 아니다."
+    },
+    {
+      "id": "B",
+      "text": "모듈 간 통합 테스트",
+      "explanation": "연결 인터페이스와 오류 교환이 대상이다."
+    },
+    {
+      "id": "C",
+      "text": "사용자의 최종 인수 테스트",
+      "explanation": "업무 인수 승인은 하지 않는다고 명시했다."
+    },
+    {
+      "id": "D",
+      "text": "전체 시스템의 모든 품질을 확인하는 시스템 테스트",
+      "explanation": "대상이 두 모듈의 교환으로 제한돼 있다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "이미 분리 시험을 마친 두 모듈의 연결을 확인한다. 대상은 인터페이스와 상호작용이므로 구성요소 통합 테스트다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ISTQB CTFL Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "scope": "2.2.1 Test Levels: component, component integration, system, system integration, acceptance; 문서28~29쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

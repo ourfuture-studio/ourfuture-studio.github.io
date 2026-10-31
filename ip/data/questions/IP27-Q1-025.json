@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-025",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-25"
+  ],
+  "subject": 1,
+  "title": "이 사례 선택의 근거를 분류하면?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "입력 나이의 허용 명세는 정수 20~60이다. 테스터는 코드를 열지 않고 명세의 하한 바로 아래와 하한을 확인하려고 19와 20을 골랐다.",
+  "code": null,
+  "language": null,
+  "stem": "이 사례 선택의 근거를 분류하면?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "코드를 실행하므로 반드시 화이트박스",
+      "explanation": "실행 여부가 아니라 선택 근거를 묻는다."
+    },
+    {
+      "id": "B",
+      "text": "명세의 허용 경계에 근거한 블랙박스",
+      "explanation": "내부 구조 없이 명세에서 값을 골랐다."
+    },
+    {
+      "id": "C",
+      "text": "분기 구조에 근거한 화이트박스",
+      "explanation": "분기 구조를 보지 않았다는 조건과 다르다."
+    },
+    {
+      "id": "D",
+      "text": "명세를 읽었으므로 동적 테스트는 불가능",
+      "explanation": "명세 기반 입력으로 실행 테스트를 할 수 있다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "값은 허용 구간 20~60의 명세에서 도출됐다. 내부 경로를 참조하지 않았으므로 블랙박스 기법이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ISTQB CTFL Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "scope": "4.1 Test Techniques Overview: black-box/white-box 선택 근거; 문서39쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

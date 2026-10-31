@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-020",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-20"
+  ],
+  "subject": 1,
+  "title": "c2/s1/m1의 현재 상태는?",
+  "origin": "original",
+  "tags": [
+    "통합 구현"
+  ],
+  "kind": "single-choice",
+  "givens": "출시 규칙은 승인 기록에 코드 커밋·설정 버전·매뉴얼 버전이 모두 연결돼야 한다. 코드 c2·설정 s1·매뉴얼 m1은 저장소에 있지만 승인 기록은 c1/s1/m1만 가리킨다.",
+  "code": null,
+  "language": null,
+  "stem": "c2/s1/m1의 현재 상태는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "저장됐지만 이 조합의 출시 승인은 확인되지 않는다",
+      "explanation": "존재하는 이력과 승인된 기준선이 다르다."
+    },
+    {
+      "id": "B",
+      "text": "c2가 최신이므로 자동 승인됐다",
+      "explanation": "최신 커밋이라는 이유로 승인 기록이 바뀌지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "매뉴얼이 같으므로 코드 승인도 유지된다",
+      "explanation": "코드 버전이 달라 승인 조합과 다르다."
+    },
+    {
+      "id": "D",
+      "text": "저장소에 있으므로 변경 이력이 없다",
+      "explanation": "버전 저장 사실과 정반대다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "승인 조합은 c1/s1/m1이고 대상은 c2/s1/m1이다. 코드 버전이 다르므로 대상 조합의 승인은 별도 확인해야 한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Pro Git — About Version Control",
+      "url": "https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control",
+      "scope": "1.1 About Version Control: 파일 변경 기록과 특정 버전 회상",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST SP 800-128 — Guide for Security-Focused Configuration Management",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-128.pdf",
+      "scope": "2.1.1 baseline configuration, 2.3.8 configuration change control; PDF 16·23쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

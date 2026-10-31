@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-017",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-17"
+  ],
+  "subject": 4,
+  "title": "이 정보가 뒷받침하는 판단은?",
+  "origin": "original",
+  "tags": [
+    "시스템 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "같은 요청 ID R7의 서로 다른 서버 사건 A·B를 비교한다. A 기록시각=2026-10-31T10:00:00+09:00, B 기록시각=2026-10-31T01:00:00Z. 각 기록의 실제 사건 시각에 대한 총 오차(시계·기록 지연·정밀도 포함)는 독립적으로±2초 이내다. 그 밖의 인과 순서·연속 번호·송수신 방향 증거는 없다. 허용 실제 시각 구간으로 순서를 판단한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 정보가 뒷받침하는 판단은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "A가 정확히9시간 뒤에 발생했다",
+      "explanation": "두 표기는 시간대 변환 후 같은 UTC 시각이다."
+    },
+    {
+      "id": "B",
+      "text": "UTC 중심은 같지만 실제 사건 순서는 확정할 수 없다",
+      "explanation": "가능한 실제 시각 구간이 겹친다."
+    },
+    {
+      "id": "C",
+      "text": "요청 ID가 같으므로 두 사건은 완전히 같은 사건이다",
+      "explanation": "같은 요청에 여러 서버 사건이 연결될 수 있다."
+    },
+    {
+      "id": "D",
+      "text": "수집기가 먼저 받은 로그가 반드시 먼저 발생했다",
+      "explanation": "수집·기록 지연이 있어 수신 순서만으로 발생 순서를 보장하지 않는다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "두 시각을 UTC로 바꾸면 모두01:00:00이다. 각각±2초의 구간이 겹쳐 A선행·B선행이 모두 가능하므로 B다.",
+  "references": [
+    {
+      "id": "TIME",
+      "title": "RFC 5424: The Syslog Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc5424",
+      "scope": "6.2.3 TIMESTAMP 및 7.1 timeQuality, tzKnown·isSynced·syncAccuracy: 시간대·동기화·정확도 정보. 교재의 오차 구간은 자체 예제",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

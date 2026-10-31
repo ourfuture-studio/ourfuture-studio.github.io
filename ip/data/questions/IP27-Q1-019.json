@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-019",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-19"
+  ],
+  "subject": 1,
+  "title": "이 모형의 기간은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어개발 방법론 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "자체 이상 모형이다. 총 노력 12인월, 인원 3명, 모두 동일 생산성으로 전 기간 전일 투입한다. 작업은 완전 분할 가능하고 선행 제약·소통 비용·휴일 차이는 없다. 노력=인원×기간(개월)이다.",
+  "code": null,
+  "language": null,
+  "stem": "이 모형의 기간은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "36개월",
+      "explanation": "곱하면 인원으로 나눠야 하는 관계를 반대로 계산한다."
+    },
+    {
+      "id": "B",
+      "text": "4개월",
+      "explanation": "12인월÷3명=4개월이다."
+    },
+    {
+      "id": "C",
+      "text": "12개월",
+      "explanation": "노력 수치를 인원 효과 없이 기간으로 읽었다."
+    },
+    {
+      "id": "D",
+      "text": "0.25개월",
+      "explanation": "3÷12로 분자와 분모를 뒤바꿨다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "E=N×T에서 T=E/N이다. 12인월÷3명=4개월이며 3×4=12인월로 역산된다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "9장 2.3 Effort, Schedule, and Cost Estimation; PDF 208~209쪽. 인월 단순 비례식은 자체 가정",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

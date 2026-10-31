@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-030",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-30"
+  ],
+  "subject": 3,
+  "title": "선택할 다음 홉과 프리픽스는?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13으로 검산한다. 유효 전달표는 0.0.0.0/0→A(메트릭 1), 192.0.2.0/24→B(50), 192.0.2.128/25→C(100)이다. 목적지는 192.0.2.140이다. 모든 경로는 이미 설치되어 있고 정책 라우팅은 없다.",
+  "code": "import ipaddress\nroutes=[('0.0.0.0/0', 'A', 1), ('192.0.2.0/24', 'B', 50), ('192.0.2.128/25', 'C', 100)]\ndest=ipaddress.IPv4Address('192.0.2.140')\nmatches=[(ipaddress.IPv4Network(net),hop,metric) for net,hop,metric in routes if dest in ipaddress.IPv4Network(net)]\nnet,hop,metric=max(matches,key=lambda r:(r[0].prefixlen,-r[2]))\nprint(hop,'/'+str(net.prefixlen))\n",
+  "language": "Python",
+  "stem": "선택할 다음 홉과 프리픽스는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "A /0",
+      "explanation": "메트릭 1만 보고 최장 일치를 생략했다."
+    },
+    {
+      "id": "B",
+      "text": "B /24",
+      "explanation": "/25도 목적지와 일치하며 더 구체적이다."
+    },
+    {
+      "id": "C",
+      "text": "C /25",
+      "explanation": "140은 128~255에 포함되어 /25가 가장 길게 일치한다."
+    },
+    {
+      "id": "D",
+      "text": "일치 경로 없음",
+      "explanation": "기본 경로부터 /25까지 모두 일치한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "140은 /24의 0~255와 /25의 128~255에 모두 포함된다. 프리픽스 길이 25>24>0이므로 C를 고른다. 메트릭의 크기로 이 우선순위를 뒤집지 않는다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "RFC 1812 Requirements for IP Version 4 Routers",
+      "url": "https://www.rfc-editor.org/rfc/rfc1812",
+      "scope": "5.2.4.3 Route Lookup의 최장 일치; 동일 길이 경로의 후속 선택과 구분",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "RFC 4632 CIDR",
+      "url": "https://datatracker.ietf.org/doc/html/rfc4632",
+      "scope": "3.1 Basic Concept and Prefix Notation의 32비트 주소와 프리픽스 표기",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

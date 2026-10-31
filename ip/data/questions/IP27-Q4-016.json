@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-016",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-16"
+  ],
+  "subject": 4,
+  "title": "이 처리 모형의 결과는?",
+  "origin": "original",
+  "tags": [
+    "시스템 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "교육용 처리 순서는 방화벽→센서→수신자다. 방화벽은 목적 포트443만 허용하고 나머지는 차단한다. 패킷 목적 포트=443, 센서의 고정 패턴과는 일치한다. 센서는 방화벽 뒤에 있어 통과한 패킷만 관찰한다. 센서의 직접 차단 기능은 꺼져 있어 탐지 시 경보만 기록한다. 그 밖의 장비·후속 대응·누락·오탐·암호화는 없다.",
+  "code": null,
+  "language": null,
+  "stem": "이 처리 모형의 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "경보가 나면 설정과 무관하게 반드시 차단된다",
+      "explanation": "탐지 경보와 실제 차단 조치는 별개다."
+    },
+    {
+      "id": "B",
+      "text": "방화벽에서 포트443이 차단돼 센서가 보지 못한다",
+      "explanation": "모형의 방화벽은 포트443을 허용한다."
+    },
+    {
+      "id": "C",
+      "text": "포트443이므로 센서 경보 자체가 생길 수 없다",
+      "explanation": "방화벽 허용 규칙과 센서 패턴은 별도로 정의했다."
+    },
+    {
+      "id": "D",
+      "text": "경보를 기록하고 패킷은 수신자에게 전달된다",
+      "explanation": "허용 후 탐지하지만 차단 기능과 후속 대응이 없다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "443 허용 → 센서 패턴 탐지 → 경보만 기록 → 수신자 전달이다. 따라서 D다.",
+  "references": [
+    {
+      "id": "FW",
+      "title": "NIST CSRC Glossary: Firewall",
+      "url": "https://csrc.nist.gov/glossary/term/firewall",
+      "scope": "NIST SP 800-12r1 연결 정의: 지역 보안 정책에 따른 네트워크 간 접근 제한",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "IDPS",
+      "title": "NIST SP 800-94: Guide to Intrusion Detection and Prevention Systems",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf",
+      "scope": "2007년 문서, Executive Summary·2.1의 IDS/IPS 정의: 침입 가능 징후 탐지와 이를 멈추려는 조치의 구분. 최신 제품별 능력·성능 주장은 제외",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-012",
+  "topicId": "IP27-1-12",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "무검사 대입",
+      "condition": "private count=5; 공개 setCount(n)은 count=n; 규칙 count≥0; setCount(-2) 호출.",
+      "code": null,
+      "result": "count=-2, 규칙 위반",
+      "explanation": "음수 입력을 차단하지 않는다.",
+      "trace": [
+        "5→대입 -2",
+        "-2≥0은 거짓"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "검증 경로 추가",
+      "condition": "private count=5; setCount(n)은 n<0이면 거부하고 상태 유지, 아니면 대입; 규칙 count≥0; setCount(-2) 호출.",
+      "code": null,
+      "result": "count=5, 요청 거부",
+      "explanation": "음수 분기에서 대입하지 않는다.",
+      "trace": [
+        "-2<0 참→거부",
+        "상태 5 유지"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "유효 입력",
+      "condition": "private count=5; setCount(n)은 n<0이면 거부하고 상태 유지, 아니면 대입; 규칙 count≥0; setCount(8) 호출.",
+      "code": null,
+      "result": "count=8, 규칙 충족",
+      "explanation": "유효 입력은 경계 검사를 통과한다.",
+      "trace": [
+        "8<0 거짓→대입",
+        "8≥0 참"
+      ]
+    }
+  ],
+  "boundary": "동시성·정수 오버플로·직렬화 우회는 제외하고 제시한 변경 경로만 다룬다."
+}

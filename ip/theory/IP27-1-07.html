@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>모델 검사와 요구사항 타당성 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-1-07"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-07 · 이론 읽기</p><h1>모델 검사와 요구사항 타당성</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-1-07">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-07">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>형식 검사 통과와 사용자의 요구 충족은 다른 질문이다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>모델 검사는 연결이나 타입 같은 정해진 규칙의 위반을 찾는다. 요구사항 타당성 확인은 명세가 이해관계자의 실제 필요를 나타내는지 검토한다.</p>
+<p>자동 도구가 모든 필드의 타입을 검사해도 필요한 취소 기능이 빠졌는지는 사용자 요구와 비교해야 알 수 있다.</p>
+<p>검사 통과의 결론은 검사 규칙의 범위 안에 둔다. 누락된 규칙이나 잘못 입력한 요구를 도구가 자동으로 바로잡았다고 가정하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>분석 도구는 연결 유효성과 타입 일치만 검사하며 모두 통과했다. 사용자 요구 목록에는 신청 취소가 있지만 모델에는 취소 처리가 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>도구 검사=연결/타입만; 두 검사 통과; 요구=신청·취소; 모델=신청만.</td>
+<td>형식 통과, 취소 요구 누락</td>
+</tr>
+<tr>
+<td>도구 검사=연결/타입만; 두 검사 통과; 요구=신청·취소; 모델=신청·취소.</td>
+<td>이 두 요구에 대응 요소 있음</td>
+</tr>
+<tr>
+<td>도구 검사=연결/타입만; 연결 오류 한 개 검출; 요구=신청·취소; 모델에 두 기능 존재.</td>
+<td>기능 대응은 있지만 형식 오류 남음</td>
+</tr>
+</tbody>
+</table></div>
+<p>도구의 두 검사 규칙은 통과했다. 별도로 요구 목록과 모델을 대응하면 신청 취소에 대응 요소가 없다. 형식 적합성과 업무 요구 충족을 분리해야 한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>통과한 규칙과 아직 확인하지 않은 요구를 나눈다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>요구가 모두 나열됐거나 사용자가 올바르게 표현했다고 가정해 전체 정확성을 선언하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf" rel="noopener noreferrer" target="_blank">IEEE Computer Society SWEBOK Guide v4.0a</a> — 1장 5 Requirements Validation, 5.1 Requirements Reviews; PDF 56~57쪽. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-007">현재 상태에 대한 판단으로 맞는 것은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

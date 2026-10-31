@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>같은 행 재조회와 격리 수준 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-21"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-21 · 이론 읽기</p><h1>같은 행 재조회와 격리 수준</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-21">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-21">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>다른 거래가 커밋한 뒤 같은 행을 다시 읽는 장면을 고정하면 읽기 현상을 구별할 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>비반복 읽기는 한 트랜잭션이 같은 행을 다시 읽을 때 다른 트랜잭션이 커밋한 변경으로 값이 달라지는 현상이다. 커밋 전의 값을 읽는 더티 읽기, 조건에 맞는 행 집합이 달라지는 팬텀 읽기와 구분한다.</p>
+<p>PostgreSQL 18의 Read Committed에서 일반 SELECT는 각 문장이 시작할 때의 커밋 상태를 본다. 두 SELECT 사이에 다른 거래가 커밋하면 첫 번째와 두 번째 값이 달라질 수 있다.</p>
+<p>PostgreSQL 18의 Repeatable Read는 첫 비제어 문장 시점의 스냅샷을 유지해 여기의 단순 재조회가 다른 거래의 후속 커밋을 보지 않는다. 자신의 갱신, 잠금 읽기, 쓰기 충돌·재시도는 별도 규칙이다. 아래 일정은 명세를 따라 계산한 것이며 실제 동시 연결 실행은 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>PostgreSQL 18 명세. 초기 R(id=7,v=20) 한 행. T1은 READ COMMITTED에서 일반 SELECT로 id7을 읽는다. 이어 T2가 v25로 UPDATE하고 COMMIT한 뒤 T1이 같은 행을 다시 읽는다. T1의 쓰기·잠금 SELECT·그 밖의 거래는 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">순서</th>
+<th scope="col">T1</th>
+<th scope="col">T2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BEGIN READ COMMITTED; SELECT v →20</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>UPDATE v=25</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>COMMIT</td>
+</tr>
+<tr>
+<td>4</td>
+<td>같은 id SELECT →25</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>동일한 id 한 행의 값이 20에서 25로 바뀌므로 비반복 읽기다. 행 수 변화나 미커밋 읽기는 없다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>격리 수준, SELECT 시작 시점, 상대 거래의 커밋 순서를 함께 적는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>PostgreSQL 18의 일반 SELECT와 명시한 일정에 한정한 명세 계산이다. 실제 두 세션 실행이나 다른 제품의 격리 구현 검증으로 표시하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/18/transaction-iso.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: Transaction Isolation</a> — 13.2 및 13.2.1~13.2.2: dirty/nonrepeatable/phantom read 정의, Read Committed 문장 스냅샷과 Repeatable Read 트랜잭션 스냅샷. 확인일 2026-10-31.</li>
+<li><a href="https://www.postgresql.org/docs/18/sql-begin.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: BEGIN</a> — Synopsis의 BEGIN ISOLATION LEVEL 문법. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-021">T1의 두 읽기와 해당 현상의 조합은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

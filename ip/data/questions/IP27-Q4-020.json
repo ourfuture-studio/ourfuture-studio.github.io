@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-020",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-20"
+  ],
+  "subject": 4,
+  "title": "키2의 삭제 전 값 보존에 대한 판단으로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "IT프로젝트 정보시스템 구축관리"
+  ],
+  "kind": "single-choice",
+  "givens": "초기 시각t0의 원본·동기화 사본·별도 백업은 모두 {1:A,2:B}다. 동기화 사본은 원본의 논리 변경을 즉시 동일하게 반영한다. t1에 원본에서 키2를 잘못 삭제하고 사본에도 적용한다. 원본과 사본 장치는 정상이다. 백업은 t0 시점으로 별도 보존하며 덮어쓰지 않는다. 다른 과거 사본·로그 아카이브·스냅샷·복구 경로는 없다.",
+  "code": null,
+  "language": null,
+  "stem": "키2의 삭제 전 값 보존에 대한 판단으로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "동기화 사본에는 반드시 키2가 남아 있다",
+      "explanation": "동일한 삭제가 즉시 적용된다는 전제이므로 사본에서도 없다."
+    },
+    {
+      "id": "B",
+      "text": "사본이 두 개라 모든 시점으로 자동 복구된다",
+      "explanation": "현재 사본 수만으로 과거 이력 보존을 도출하지 못한다."
+    },
+    {
+      "id": "C",
+      "text": "원본과 사본에는 없고 별도 t0 백업에는 남아 있다",
+      "explanation": "삭제 전 백업을 덮어쓰지 않았으므로 그 과거 상태에 키2가 있다."
+    },
+    {
+      "id": "D",
+      "text": "백업이 있으면 복구 시간과 무손실이 모두 자동 보장된다",
+      "explanation": "복구 절차·시점·검증·시간은 별도로 확인해야 한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "원본 삭제를 사본도 적용해 둘 다 키1만 남는다. t0 백업은 키1·2를 보존하므로 C다.",
+  "references": [
+    {
+      "id": "BACKUP",
+      "title": "PostgreSQL 18: Continuous Archiving and Point-in-Time Recovery",
+      "url": "https://www.postgresql.org/docs/18/continuous-archiving.html",
+      "scope": "25.3 도입·25.3.5: 로그의 변경 재현, warm standby의 현재 사본, 과거 시점 이전에서 재현을 멈추는 복구. 자체 복사 모형은 실제 PostgreSQL 실행이 아님",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

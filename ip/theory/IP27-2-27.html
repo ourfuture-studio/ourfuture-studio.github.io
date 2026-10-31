@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ETL 성공 뒤 행·키·단위를 대조하기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-27"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-27 · 이론 읽기</p><h1>ETL 성공 뒤 행·키·단위를 대조하기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-27">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-27">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>적재 작업이 끝났다는 상태와 값이 맞게 옮겨졌다는 검증은 따로 확인해야 한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>데이터 전환은 원본을 읽고 필요한 변환을 적용해 대상으로 옮기는 작업이다. 이 예제의 변환 계약은 원본의 센트 단위 정수를 100으로 나누어 대상의 통화 단위 값으로 저장하는 것이다.</p>
+<p>작업 완료 표시는 명령이 끝났음을 알려 줄 수 있지만 행 누락·키 중복·변환 값 오류를 모두 배제하지는 않는다. 행 수, 키 대응, 고유성, NULL, 값과 단위를 계약에 맞춰 대조해야 한다.</p>
+<p>행 수가 같아도 한 키가 두 번 들어가고 다른 키가 빠질 수 있다. 키가 모두 있어도 금액을 100으로 나누지 않으면 값은 틀린다. 아래 예제는 SQLite의 작은 대조 질의를 실행하며 AWS DMS나 실제 운영 전환의 성공을 주장하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>전환 작업의 상태는 성공이다. 원본 (1,1250),(2,2750)의 cents를 100.0으로 나누어 amount_units에 저장해야 한다. 실제 대상은 (1,1250),(2,2750)으로 적재되었다. 대상은 검증 전이므로 id 고유 제약을 아직 두지 않았다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">원본 cents</th>
+<th scope="col">계약상 대상 amount_units</th>
+<th scope="col">현재 대상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1250</td>
+<td>12.5</td>
+<td>1250</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2750</td>
+<td>27.5</td>
+<td>2750</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 행과 키는 맞지만 변환을 생략해 금액 불일치가 두 건이다. 작업 성공·행 수 일치만으로 전환 정확성을 승인하면 안 된다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>완료 상태와 별도로 행 수, 키 대응, 중복, 단위 변환을 대조한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Validating.html" rel="noopener noreferrer" target="_blank">AWS DMS: Data validation</a> — AWS DMS data validation 도입: full load 이후 원본·대상 행 대응 비교와 차이 보고. 자체 예제는 DMS 실행 결과가 아님. 확인일 2026-10-31.</li>
+<li><a href="https://aws.amazon.com/what-is/etl/" rel="noopener noreferrer" target="_blank">AWS: What is ETL?</a> — What is ETL 및 How does ETL work: 원본 데이터 추출·변환·대상 적재의 단계. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-027">행 수·키 종류 수·누락 키 수·금액 불일치 행 수의 순서로 맞는 값은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

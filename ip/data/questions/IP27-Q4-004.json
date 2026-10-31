@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-004",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-04"
+  ],
+  "subject": 4,
+  "title": "이 계획의 목적에 맞는 실행은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "프로젝트는 문서 편집 권한 위험을 다룬다. 보안 계획에 요구 단계의 작성자 규칙, 설계 단계의 서버 권한 검사, 구현 단계의 검토, 시험 단계의 타인 문서 편집 거부 사례를 연결해야 한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 계획의 목적에 맞는 실행은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "작성자 요구→검사 설계→구현 검토→거부 테스트를 추적 가능하게 남긴다",
+      "explanation": "위험 통제가 여러 개발 활동에 연결된다."
+    },
+    {
+      "id": "B",
+      "text": "출시 전 포트 스캔만 하고 권한 요구는 적지 않는다",
+      "explanation": "업무 권한 규칙과 검증의 연결이 빠진다."
+    },
+    {
+      "id": "C",
+      "text": "설계 검토했으므로 거부 테스트를 없앤다",
+      "explanation": "설계와 실제 구현 결과 확인은 다르다."
+    },
+    {
+      "id": "D",
+      "text": "테스트 통과 후 위험 기록을 전부 삭제한다",
+      "explanation": "이후 변경 때 판단 근거와 추적성을 잃는다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "요구에서 정한 작성자 규칙이 설계·코드·시험에 각각 어떻게 반영됐는지 연결해야 한다. A가 그 추적 경로를 유지한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST SP 800-218 SSDF v1.1",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf",
+      "scope": "PW.1/PW.1.1/PW.1.2: 보안 요구·위험 모델·설계 결정 기록; PW.7/PW.8, RV 활동",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

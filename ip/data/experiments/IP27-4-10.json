@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E4-010",
+  "topicId": "IP27-4-10",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "4명",
+      "condition": "n=4; S=무순서 두 사람 쌍마다 독립 비밀키1개·방향 구분 없음; P=사람마다 공개/개인키1쌍; 추가 그룹/세션키 없음.",
+      "code": null,
+      "result": "S6개, P4쌍",
+      "explanation": "상대 쌍과 사람 수를 각각 센다.",
+      "trace": [
+        "AB,AC,AD,BC,BD,CD→6",
+        "P 사람별1쌍→4"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "3명",
+      "condition": "n=3; S=무순서 두 사람 쌍마다 독립 비밀키1개·방향 구분 없음; P=사람마다 공개/개인키1쌍; 추가 그룹/세션키 없음.",
+      "code": null,
+      "result": "S3개, P3쌍",
+      "explanation": "S는3×2/2다.",
+      "trace": [
+        "AB,AC,BC→3",
+        "P→3쌍"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "5명",
+      "condition": "n=5; S=무순서 두 사람 쌍마다 독립 비밀키1개·방향 구분 없음; P=사람마다 공개/개인키1쌍; 추가 그룹/세션키 없음.",
+      "code": null,
+      "result": "S10개, P5쌍",
+      "explanation": "S는5×4/2다.",
+      "trace": [
+        "AB,AC,AD,AE,BC,BD,BE,CD,CE,DE→10",
+        "P→5쌍"
+      ]
+    }
+  ],
+  "boundary": "자체 키 배정 정책의 개수 계산이다. 실제 TLS·PKI·키 회전·세션키 전체 개수로 일반화하지 않는다."
+}

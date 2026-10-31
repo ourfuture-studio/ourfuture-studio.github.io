@@ -1,0 +1,44 @@
+{
+  "id": "IP27-E4-007",
+  "topicId": "IP27-4-07",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "기본 사례는 문제의 속성 인코딩만 하던 상태에 정답의 스킴 검증 조치를 적용한 결과다. 이어 URL 스킴 또는 출력 위치를 바꾸어 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "금지 스킴",
+      "condition": "사용자 전체 URL을 quoted href로 출력; 허용 스킴=https만; 입력 스킴=javascript; 현재 속성 인코딩만 있고 스킴 검증 없음; 제안 조치로 스킴을 먼저 검사하고 허용 URL만 속성 인코딩하여 출력한다.",
+      "code": null,
+      "result": "입력 거부",
+      "explanation": "허용 집합에 없다.",
+      "trace": [
+        "javascript∈{https} 거짓→거부"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "허용 스킴",
+      "condition": "전체 URL https://example.test/page 를 quoted href로 출력; 허용 스킴=https만; 스킴 검증 후 허용 URL만 속성 인코딩.",
+      "code": null,
+      "result": "정책상 허용 후 속성 인코딩",
+      "explanation": "스킴 조건을 만족한다.",
+      "trace": [
+        "https∈{https} 참",
+        "URL→quoted attribute 인코딩"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "텍스트 출력으로 변경",
+      "condition": "사용자 문자열 '<b>안내</b>'를 링크나 HTML로 실행하지 않고 일반 본문 텍스트로 표시하려 한다. 고정된 일반 div 요소의 textContent로 대입한다. script/style 요소는 사용하지 않는다.",
+      "code": null,
+      "result": "태그가 아닌 글자 <b>안내</b>로 표시",
+      "explanation": "텍스트 출력 경로가 마크업 해석을 피한다.",
+      "trace": [
+        "문자열→textContent",
+        "태그 구조 생성 없이 텍스트 표시"
+      ]
+    }
+  ],
+  "boundary": "스킴만 검사하면 모든 링크 위험이 사라진다는 뜻은 아니다. 실제 DOM 실행이나 공격 서버 연결을 수행하지 않는 모형이다."
+}

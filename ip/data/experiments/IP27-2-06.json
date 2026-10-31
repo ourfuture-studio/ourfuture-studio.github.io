@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E2-006",
+  "topicId": "IP27-2-06",
+  "title": "키의 일부와 비키 속성을 거치는 경로: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "F={SC→G, S→N}",
+      "condition": "R(S,C,N,G), F={SC→G,S→N}. 그 귀결 외 FD 없음. NULL·복합값 없음.",
+      "code": null,
+      "result": "S→N은 부분 종속, 2NF 위반",
+      "explanation": "S가 유일한 후보키 SC의 진부분집합이고 N은 비주요 속성이다.",
+      "trace": [
+        "키 SC",
+        "S+ = NS",
+        "S⊂SC, N은 키 밖"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "F={E→D, D→N}",
+      "condition": "R(E,D,N), F={E→D,D→N}. 그 귀결 외 FD 없음. NULL·복합값 없음. E=직원번호,D=부서코드,N=부서명.",
+      "code": null,
+      "result": "2NF는 만족하지만 D→N 때문에 3NF 위반",
+      "explanation": "단일 속성 후보키 E에는 부분 종속이 없지만 D는 슈퍼키가 아니며 N은 비주요 속성이다.",
+      "trace": [
+        "E+ = DEN → 키 E",
+        "D+ = DN → 비슈퍼키",
+        "E→D→N"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "F={SC→G}",
+      "condition": "R(S,C,G), F={SC→G}와 그 귀결만 존재. NULL·복합값 없음.",
+      "code": null,
+      "result": "이 FD 집합에서는 BCNF 만족",
+      "explanation": "비자명 종속의 결정자가 SC를 포함해야 하므로 슈퍼키다.",
+      "trace": [
+        "S+ = S",
+        "C+ = C",
+        "SC+ = CGS → 최소 슈퍼키"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

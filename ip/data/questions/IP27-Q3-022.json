@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-022",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-22"
+  ],
+  "subject": 3,
+  "title": "옳은 설명은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "단일 프로세스 P 안의 스레드 T1,T2를 비교한다. 프로세스 사이 명시적 공유 메모리는 설정하지 않았다.",
+  "code": null,
+  "language": null,
+  "stem": "옳은 설명은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "T1,T2는 힙을 공유하고 각자의 프로그램 카운터와 스택을 가진다.",
+      "explanation": "공유 주소 공간과 개별 실행 흐름을 구분한 설명이다."
+    },
+    {
+      "id": "B",
+      "text": "T1,T2는 모든 레지스터와 한 개의 스택만 함께 쓴다.",
+      "explanation": "각 스레드의 실행을 재개하려면 개별 상태를 보관해야 한다."
+    },
+    {
+      "id": "C",
+      "text": "T1,T2의 주소 공간은 항상 서로 완전히 분리된다.",
+      "explanation": "같은 프로세스의 스레드는 주소 공간을 공유한다."
+    },
+    {
+      "id": "D",
+      "text": "서로 다른 프로세스는 어떤 방식으로도 메모리를 공유할 수 없다.",
+      "explanation": "명시적 공유 메모리 같은 예외를 부정한 과도한 일반화이다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "동일 프로세스라는 전제가 공유 주소 공간을 결정하고, 각 스레드의 독립 실행 흐름이 PC·레지스터·스택 보관을 요구한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OSTEP Concurrency: An Introduction",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf",
+      "scope": "26장 첫 2쪽: 공유 주소 공간, 개별 PC·레지스터·스택",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Linux man-pages: shm_open(3)",
+      "url": "https://man7.org/linux/man-pages/man3/shm_open.3.html",
+      "scope": "DESCRIPTION: 서로 무관한 프로세스가 같은 POSIX 공유 메모리 영역을 mmap할 수 있음. Linux 구현의 직접 예이며 모든 OS API 이름을 같다고 일반화하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

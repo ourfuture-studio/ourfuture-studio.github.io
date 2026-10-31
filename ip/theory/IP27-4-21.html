@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SDN의 규칙 결정과 패킷 전달 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-21"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-21 · 이론 읽기</p><h1>SDN의 규칙 결정과 패킷 전달</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-21">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-21">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>제어기에서 규칙을 바꿔도 실제 패킷을 내보내는 동작은 데이터 평면 장비가 수행한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>SDN은 네트워크의 제어 기능과 데이터 전달 기능을 분리해 프로그래밍 가능한 인터페이스로 연결하는 구조다. 제어 평면은 정책·요구에 따라 전달 동작을 정하고 장비의 규칙을 설정할 수 있다.</p>
+<p>데이터 평면의 스위치 등은 설치된 규칙에 따라 패킷을 전달·버리는 동작을 수행한다. 모든 패킷을 반드시 제어기 프로세스가 직접 받아서 내보낸다는 뜻은 아니다.</p>
+<p>논리적으로 집중된 제어가 반드시 물리 서버 한 대를 뜻하지 않는다. 장비에 위임할 기능, 규칙 만료, 제어기 단절 시 행동도 설계 조건이다. 아래 예제는 기존 규칙을 유지하도록 명시한 작은 전달 표 모형이며 실제 OpenFlow 장비를 동작시키지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>가상 스위치S에는 목적지X→포트2 규칙이 이미 설치되어 있다. 제어기는 연결되어 기존 규칙을 유지하며, 목적지X 패킷 하나가 도착한다. 규칙 만료·링크 장애는 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">구성</th>
+<th scope="col">대표 동작</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제어기</td>
+<td>목적지X 규칙 결정·설치</td>
+</tr>
+<tr>
+<td>스위치S</td>
+<td>규칙에 따라 포트2로 전달</td>
+</tr>
+</tbody>
+</table></div>
+<p>제어기는 규칙을 정하고 스위치는 패킷을 전달한다. 기존 규칙이 유효하면 모형에서 새 제어기 왕복 없이 전달할 수 있다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>규칙을 정하는 제어 기능과 규칙을 적용하는 패킷 전달 기능을 구분한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>규칙 설치·조회 모형만 계산했다. 실제 제어기·스위치·OpenFlow 통신·장애 전환이나 처리 성능 검증이 아니다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://opennetworking.org/wp-content/uploads/2014/11/TR_SDN-ARCH-1.0-Overview-12012016.04.pdf" rel="noopener noreferrer" target="_blank">ONF: SDN Architecture 1.0 Overview</a> — 3 SDN Architecture Principles 및 4 High-level SDN Architecture: controller/data 분리, 논리적으로 집중된 제어, 데이터 평면에 기능 위임 가능. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-021">역할 구분과 이 패킷의 동작이 맞는 것은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

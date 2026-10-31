@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-031",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-31"
+  ],
+  "subject": 1,
+  "title": "명세를 기준으로 한 판단은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "명세: 정가가 10000원 이상이면 10% 할인하며 다른 할인·반올림은 없다. 입력 정가10000원에서 구현 출력10000원, 테스트 기대 값10000원이어서 비교가 통과했다.",
+  "code": null,
+  "language": null,
+  "stem": "명세를 기준으로 한 판단은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "비교 통과이므로 구현과 기대 값 모두 옳다",
+      "explanation": "둘이 같은 오류를 포함할 수 있다."
+    },
+    {
+      "id": "B",
+      "text": "정답은11000원이다",
+      "explanation": "할인을 가산으로 계산했다."
+    },
+    {
+      "id": "C",
+      "text": "명세상9000원이므로 구현 출력과 기대 값 모두 수정 검토가 필요하다",
+      "explanation": "10000이 포함 경계를 만족해1000원을 할인해야 한다."
+    },
+    {
+      "id": "D",
+      "text": "명세에10000은 포함되지 않는다",
+      "explanation": "'이상'은 경계10000을 포함한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "10000≥10000이므로 할인 대상이다. 할인액10000×0.1=1000, 결제액9000원이다. 구현/기대 값이10000으로 일치해도 명세와는 다르다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ISTQB CTFL Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "scope": "1.3 testing shows presence not absence, absence-of-defects fallacy; 1.2.3 테스트 스크립트 결함 가능성",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-023",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-23"
+  ],
+  "subject": 3,
+  "title": "Q의 반환시간과 대기시간은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  단일 CPU 비선점 FCFS. P(A=0,B=4), Q(A=1,B=3), R(A=2,B=1). I/O와 문맥교환 비용0.",
+  "code": "jobs=[('P',0,4),('Q',1,3),('R',2,1)]\npolicy='FCFS'\ntime=0\npending=jobs.copy()\nwhile pending:\n    ready=[j for j in pending if j[1]<=time]\n    if not ready:\n        time=min(j[1] for j in pending)\n        continue\n    job=min(ready,key=(lambda j:(j[1],j[0])) if policy=='FCFS' else (lambda j:(j[2],j[1],j[0])))\n    name,arrival,burst=job\n    start=time\n    time+=burst\n    if name=='Q':\n        print(time-arrival,start-arrival)\n    pending.remove(job)\n",
+  "language": "Python",
+  "stem": "Q의 반환시간과 대기시간은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "7,4",
+      "explanation": "완료시각과 시작시각에서 도착1을 빼지 않았다."
+    },
+    {
+      "id": "B",
+      "text": "6,3",
+      "explanation": "완료7-도착1=6, 시작4-도착1=3이다."
+    },
+    {
+      "id": "C",
+      "text": "3,6",
+      "explanation": "실행시간과 반환시간을 뒤섞었다."
+    },
+    {
+      "id": "D",
+      "text": "6,4",
+      "explanation": "반환은 맞지만 대기에서 도착시각을 빼지 않았다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "FCFS 실행 구간은 P[0,4),Q[4,7),R[7,8). Q는 T=7-1=6,W=4-1=3이며 T-B=6-3=3으로 검산한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OSTEP Scheduling: Introduction",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+      "scope": "7.1 가정, 7.2 반환시간, 7.3 FIFO, 7.4 SJF",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

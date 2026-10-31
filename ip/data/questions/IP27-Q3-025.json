@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-025",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-25"
+  ],
+  "subject": 3,
+  "title": "페이지 부재 횟수는?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  프레임2개는 처음 비어 있다. 참조열1,2,1,3,1,2. FIFO이며 적중 때 입장순서는 유지한다.",
+  "code": "refs=[1,2,1,3,1,2]\npolicy='FIFO'\ncapacity=2\nresident=[]\nfaults=0\nfor page in refs:\n    if page in resident:\n        if policy=='LRU':\n            resident.remove(page)\n            resident.append(page)\n    else:\n        faults+=1\n        if len(resident)==capacity:\n            resident.pop(0)\n        resident.append(page)\nprint(faults)\n",
+  "language": "Python",
+  "stem": "페이지 부재 횟수는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "3",
+      "explanation": "서로 다른 페이지 수만 센 값이며 재적재를 놓쳤다."
+    },
+    {
+      "id": "B",
+      "text": "4",
+      "explanation": "이 조건의 LRU 결과와 혼동했다."
+    },
+    {
+      "id": "C",
+      "text": "5",
+      "explanation": "부재는1,2,4,5,6번째 참조에서 발생한다."
+    },
+    {
+      "id": "D",
+      "text": "6",
+      "explanation": "세 번째1은 메모리에 남아 있어 적중한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "FIFO 큐는 [1]→[1,2]→[1,2](적중)→[2,3]→[3,1]→[1,2]. 최초적재 포함 부재5회이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OSTEP Beyond Physical Memory: Policies",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf",
+      "scope": "22.3 FIFO와 22.5 LRU; 캐시 적중과 부재의 구분",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

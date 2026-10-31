@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-024",
+  "topicId": "IP27-3-24",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "요청80, 주소순 탐색",
+      "condition": "Python 3.13. 주소순 자유 목록은 H1=70, H2=110, H3=90이다. 요청 크기 80, 최초 적합, 분할 허용, 관리 비용 0이다.",
+      "code": "holes=[('H1',70),('H2',110),('H3',90)]\nrequest=80\npolicy='first'\nfits=[h for h in holes if h[1]>=request]\nchosen=fits[0] if policy=='first' else min(fits,key=lambda h:h[1])\nprint(chosen[0],chosen[1]-request)\n",
+      "result": "H2 30",
+      "explanation": "처음 충분한 공간에서 탐색을 멈춘다.",
+      "trace": [
+        "H1 70<80 제외",
+        "H2 110>=80 선택",
+        "110-80=30자유"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "요청80, 충분한 공간 중 최소 선택",
+      "condition": "Python 3.13. 주소순 자유 목록은 H1=70, H2=110, H3=90이다. 요청 크기 80, 최적 적합, 분할 허용, 관리 비용 0이다.",
+      "code": "holes=[('H1',70),('H2',110),('H3',90)]\nrequest=80\npolicy='best'\nfits=[h for h in holes if h[1]>=request]\nchosen=fits[0] if policy=='first' else min(fits,key=lambda h:h[1])\nprint(chosen[0],chosen[1]-request)\n",
+      "result": "H3 10",
+      "explanation": "충분한110,90 중 작은90을 선택한다.",
+      "trace": [
+        "후보H2=110,H3=90",
+        "최소H3",
+        "90-80=10자유"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "요청90, 충분한 공간 중 최소 선택",
+      "condition": "Python 3.13. 주소순 자유 목록은 H1=70, H2=110, H3=90이다. 요청 크기 90, 최적 적합, 분할 허용, 관리 비용 0이다.",
+      "code": "holes=[('H1',70),('H2',110),('H3',90)]\nrequest=90\npolicy='best'\nfits=[h for h in holes if h[1]>=request]\nchosen=fits[0] if policy=='first' else min(fits,key=lambda h:h[1])\nprint(chosen[0],chosen[1]-request)\n",
+      "result": "H3 0",
+      "explanation": "요청과 정확히 같은 공간도 적합 후보이다.",
+      "trace": [
+        "90>=90 포함",
+        "최소H3=90",
+        "90-90=0"
+      ]
+    }
+  ],
+  "boundary": "서로 붙지 않은 가변 크기 공간이다. 분할을 허용하고 합치기는 없으며 관리 비용은 0이다. 크기 단위는 모두 같고 동률은 앞 주소를 우선한다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

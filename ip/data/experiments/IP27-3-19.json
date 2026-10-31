@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-019",
+  "topicId": "IP27-3-19",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "삽입 순서 A,B,C",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  독립 스택과 큐에 A,B,C 삽입 후 한 번 제거.",
+      "code": "from collections import deque\nvalues=['A', 'B', 'C']\nstack=[]\nqueue=deque()\nfor value in values:\n    stack.append(value)\n    queue.append(value)\nprint(stack.pop(),queue.popleft())\n",
+      "result": "C A",
+      "explanation": "LIFO와 FIFO를 비교한다.",
+      "trace": [
+        "삽입[A,B,C]",
+        "스택 오른쪽C",
+        "큐 왼쪽A"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "삽입 순서 C,B,A",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  독립 스택과 큐에 C,B,A 삽입 후 한 번 제거.",
+      "code": "from collections import deque\nvalues=['C', 'B', 'A']\nstack=[]\nqueue=deque()\nfor value in values:\n    stack.append(value)\n    queue.append(value)\nprint(stack.pop(),queue.popleft())\n",
+      "result": "A C",
+      "explanation": "삽입 순서가 바뀌어 양쪽 결과도 바뀐다.",
+      "trace": [
+        "삽입[C,B,A]",
+        "스택 오른쪽A",
+        "큐 왼쪽C"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "삽입 원소 A 하나",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  독립 스택과 큐에 A 하나 삽입 후 제거.",
+      "code": "from collections import deque\nvalues=['A']\nstack=[]\nqueue=deque()\nfor value in values:\n    stack.append(value)\n    queue.append(value)\nprint(stack.pop(),queue.popleft())\n",
+      "result": "A A",
+      "explanation": "원소 하나일 때 양 규칙의 관찰값이 같다.",
+      "trace": [
+        "삽입[A]",
+        "양끝 모두A",
+        "각각 제거A"
+      ]
+    }
+  ],
+  "boundary": "원소 수가1개 이상이며 스택과 큐는 독립 객체이다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

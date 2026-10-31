@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-004",
+  "topicId": "IP27-1-04",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "부분 유지 후 삭제",
+      "condition": "D가 P를 composite로 포함; 다른 합성 소유자 없음; 사전 분리 없음; UML 객체 삭제로 D 삭제.",
+      "code": null,
+      "result": "D와 P 삭제",
+      "explanation": "삭제 시점에 P가 합성 부분이다.",
+      "trace": [
+        "삭제 직전 소유자(P)=D",
+        "D 삭제→P 삭제"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "부분 분리 후 삭제",
+      "condition": "D가 P를 composite로 포함; 모델이 분리를 허용; 먼저 P를 D에서 분리해 독립 객체로 둔 후 D 삭제.",
+      "code": null,
+      "result": "D 삭제, P 존속 가능",
+      "explanation": "분리된 P는 삭제 시점의 합성 부분이 아니다.",
+      "trace": [
+        "P 분리→소유자 없음",
+        "D 삭제→현재 부분 집합에 P 없음"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "공유 집약으로 변경",
+      "condition": "D와 P는 shared aggregation으로만 연결; 별도 삭제 정책 없음; D 삭제 후 P의 상태를 묻는다.",
+      "code": null,
+      "result": "P 삭제 여부는 이 조건만으로 확정 불가",
+      "explanation": "공유 집약의 세부 생명주기 정책이 없다.",
+      "trace": [
+        "shared 확인",
+        "삭제 정책 미명시→결과 유보"
+      ]
+    }
+  ],
+  "boundary": "공유 집약의 생명주기를 UML이 일률적으로 강제한다고 설명하지 않는다. 운영체제 파일 삭제나 언어별 GC와는 구분한다."
+}

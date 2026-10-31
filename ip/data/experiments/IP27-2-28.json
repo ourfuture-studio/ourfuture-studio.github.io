@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E2-028",
+  "topicId": "IP27-2-28",
+  "title": "관계대수의 선택은 행, 투영은 속성을 고른다: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "선택 후 dept 투영",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 고전 관계대수의 집합 의미를 SELECT DISTINCT로 재현한다. R 세 행, NULL 없음. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE R(id INTEGER PRIMARY KEY, dept TEXT NOT NULL, score INTEGER NOT NULL);\nINSERT INTO R VALUES(1,'A',7),(2,'A',9),(3,'B',4);\nSELECT DISTINCT dept FROM R WHERE score>=7 ORDER BY dept;",
+      "result": "차수1·카디널리티1: {A}",
+      "explanation": "선택으로 남긴 두 행에서 dept 값이 같아 투영 후 한 튜플이다.",
+      "trace": [
+        "score≥7 → id1,2",
+        "dept → A,A",
+        "집합 중복제거 → A"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "선택만 수행",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 같은 R에 score≥7 선택만 적용하고 세 속성을 유지한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE R(id INTEGER PRIMARY KEY, dept TEXT NOT NULL, score INTEGER NOT NULL);\nINSERT INTO R VALUES(1,'A',7),(2,'A',9),(3,'B',4);\nSELECT id,dept,score FROM R WHERE score>=7 ORDER BY id;",
+      "result": "차수3·카디널리티2",
+      "explanation": "행은 두 개로 줄지만 속성은 세 개 그대로다.",
+      "trace": [
+        "id1 score7 통과",
+        "id2 score9 통과",
+        "id3 score4 제외"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "id와 dept 투영",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 같은 R에 score≥7 선택 후 id와 dept를 집합 투영한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE R(id INTEGER PRIMARY KEY, dept TEXT NOT NULL, score INTEGER NOT NULL);\nINSERT INTO R VALUES(1,'A',7),(2,'A',9),(3,'B',4);\nSELECT DISTINCT id,dept FROM R WHERE score>=7 ORDER BY id;",
+      "result": "차수2·카디널리티2",
+      "explanation": "id가 달라 두 투영 튜플이 서로 다르므로 합쳐지지 않는다.",
+      "trace": [
+        "선택 id1,2",
+        "투영(1,A),(2,A)",
+        "서로 다른 두 튜플"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

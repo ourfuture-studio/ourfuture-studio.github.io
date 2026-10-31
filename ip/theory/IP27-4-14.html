@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>도청·위장·사용 방해를 행동으로 구별하기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-14"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-14 · 이론 읽기</p><h1>도청·위장·사용 방해를 행동으로 구별하기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-14">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-14">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>이름을 외우기보다 무엇을 했는지 적으면 공격 용어를 나눌 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>스니핑은 네트워크 통신을 관찰해 헤더나 내용에서 정보를 얻는 행위를 말한다. 점검을 위한 허가된 패킷 분석에도 같은 기술이 쓰이므로 도구 이름만으로 불법 공격을 확정하지 않는다.</p>
+<p>스푸핑은 신원이나 출처 등을 다른 대상인 것처럼 꾸미는 위장 행위다. 여기서는 허가된 사용자를 사칭하는 경우만 다룬다. 서비스 거부는 정당한 사용자의 자원 접근을 막거나 동작을 지연시키는 결과·행동에 초점을 둔다.</p>
+<p>실제 사건에는 관찰·위장·자원 소진이 함께 있을 수 있다. 단일 정답을 만들 때는 어떤 행동이 관찰되었는지 범위를 고정해야 한다. 암호화된 내용을 복호화할 수 있는지, 위장이 인증에 성공했는지는 별도 조건이다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>교육용 장면에서 한 행위자가 통신 사본의 헤더와 평문 내용을 수동으로 읽었다. 발신 신원 변경·자료 변경·정상 서비스 방해는 관찰되지 않았다고 고정한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">관찰</th>
+<th scope="col">명시된 행동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>장면A</td>
+<td>전송 내용을 수동 관찰</td>
+</tr>
+<tr>
+<td>장면B</td>
+<td>허가된 사용자인 것처럼 신원 위장</td>
+</tr>
+<tr>
+<td>장면C</td>
+<td>자원을 소진해 정상 요청 처리 방해</td>
+</tr>
+</tbody>
+</table></div>
+<p>세 이름은 도청·위장·정당한 사용 방해라는 서로 다른 관찰 축에 대응한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>관찰된 행동이 통신 관찰인지, 신원 위장인지, 정당한 사용 방해인지 따로 묻는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>관찰이 명시된 자체 장면의 용어 분류다. 실제 통신 수집·신원 위장·서비스 방해나 공격 성공 검증은 수행하지 않았다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://csrc.nist.gov/glossary/term/network_sniffing" rel="noopener noreferrer" target="_blank">NIST CSRC Glossary: Network Sniffing</a> — NIST SP 800-115를 연결한 정의: 수동 통신 관찰·프로토콜 및 헤더·내용 분석. 확인일 2026-10-31.</li>
+<li><a href="https://csrc.nist.gov/glossary/term/spoofing" rel="noopener noreferrer" target="_blank">NIST CSRC Glossary: Spoofing</a> — CNSSI 4009-2022 연결 정의: 허가된 사용자로 가장하는 위장 행위. GNSS 등 다른 문맥의 정의와 혼합하지 않음. 확인일 2026-10-31.</li>
+<li><a href="https://csrc.nist.gov/glossary/term/denial_of_service" rel="noopener noreferrer" target="_blank">NIST CSRC Glossary: Denial of Service</a> — NIST SP 800-12r1 및 800-82r3 연결 정의: 정당한 자원 접근 방해·운영 지연. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-014">명시한 행동에 가장 직접적으로 대응하는 용어는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

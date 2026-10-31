@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-035",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-35"
+  ],
+  "subject": 1,
+  "title": "출력과 덧셈 횟수 비교로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "길이3 목록[1,2,3]의 합을0에서 시작해 원소마다 한 번 덧셈하여 구한다. 결과6을3번 출력한다. 방법A는 출력마다 합계를 다시 구하고, 방법B는 한 번 구해 저장한 뒤3번 출력한다. 덧셈만 비용으로 세며 목록 변경은 없다.",
+  "code": null,
+  "language": null,
+  "stem": "출력과 덧셈 횟수 비교로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "출력은 둘 다[6,6,6], 덧셈은 A9회·B3회",
+      "explanation": "세 원소 합산을 A는3번, B는1번 수행한다."
+    },
+    {
+      "id": "B",
+      "text": "B는 출력도 한 번만 한다",
+      "explanation": "합계 계산 횟수와 출력 횟수를 혼동했다."
+    },
+    {
+      "id": "C",
+      "text": "A와 B 모두 덧셈3회",
+      "explanation": "A의 출력마다 재계산 조건을 놓쳤다."
+    },
+    {
+      "id": "D",
+      "text": "B가 더 짧게 쓰였으면 실행 시간도 반드시3배 빠르다",
+      "explanation": "모형은 덧셈 수만 세며 실제 시간·줄 수는 주어지지 않았다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "한 합산은 덧셈3회다. A는3회 합산해9회, B는1회 합산해3회다. 저장한 값이 바뀌지 않아 출력은 모두6이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python documentation — timeit",
+      "url": "https://docs.python.org/3/library/timeit.html",
+      "scope": "기본 설명, setup 측정 제외·repeat 및 측정 변동 주의",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "7장 4.2 Software Reengineering: 동작을 바꾸지 않는 refactoring; PDF 178쪽. 연산 비용은 자체 모형",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

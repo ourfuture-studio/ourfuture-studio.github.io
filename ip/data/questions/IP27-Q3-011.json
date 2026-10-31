@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-011",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-11"
+  ],
+  "subject": 3,
+  "title": "a.n과 b.n 출력은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  a=new Box(2); b=a; b.n=7.",
+  "code": "public class Main {\n static class Box { int n; Box(int n){this.n=n;} }\n public static void main(String[] args) {\n Box a=new Box(2); Box b=a; b.n=7; System.out.println(a.n+\" \"+b.n);\n }\n}\n",
+  "language": "Java",
+  "stem": "a.n과 b.n 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "2 7",
+      "explanation": "대입을 객체 복사로 오해했다."
+    },
+    {
+      "id": "B",
+      "text": "7 7",
+      "explanation": "같은 객체의 n을 수정했다."
+    },
+    {
+      "id": "C",
+      "text": "2 2",
+      "explanation": "필드 수정이 실제 수행됐다."
+    },
+    {
+      "id": "D",
+      "text": "7 2",
+      "explanation": "동일 객체라 두 관찰값이 다를 수 없다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "a와 b가 한 Box를 공유하므로 b.n=7 뒤 두 값 모두 7이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Expressions",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html",
+      "scope": "15.11.1 필드 접근, 15.12.2 오버로드 선택, 15.12.4.4 동적 메서드 선택, 15.21.3 참조 동등성",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

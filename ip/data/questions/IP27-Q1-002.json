@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-002",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-02"
+  ],
+  "subject": 1,
+  "title": "변경된 내용을 직접 드러내는 산출물은?",
+  "origin": "original",
+  "tags": [
+    "요구사항 확인"
+  ],
+  "kind": "single-choice",
+  "givens": "주문·재고·결제라는 클래스와 참조 관계는 그대로 둔다. 변경 전 메시지는 '재고 확인→결제 요청', 변경 후는 '결제 요청→재고 확인'이다. 구체 메시지 선후 변경을 기록하려 한다.",
+  "code": null,
+  "language": null,
+  "stem": "변경된 내용을 직접 드러내는 산출물은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "클래스의 속성 목록만 갱신한다",
+      "explanation": "변경 조건은 속성 변화가 아니라 메시지 순서 변화다."
+    },
+    {
+      "id": "B",
+      "text": "같은 관계의 클래스 다이어그램만 다시 그린다",
+      "explanation": "관계가 같으므로 호출 선후 변경을 직접 기록하지 못한다."
+    },
+    {
+      "id": "C",
+      "text": "참여자 사이 메시지를 순서 다이어그램에 바꿔 기록한다",
+      "explanation": "상호작용의 메시지 선후가 변경 대상과 일치한다."
+    },
+    {
+      "id": "D",
+      "text": "클래스 이름을 호출 순서대로 바꾼다",
+      "explanation": "이름 변경은 메시지 선후의 명세가 아니다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "변경 전후 클래스와 관계는 같고 메시지 순서만 다르다. 구조도만으로 차이를 표현할 수 없으므로 순서 다이어그램에서 두 메시지의 선후를 바꾼다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OMG UML 2.5 specification (March 2015)",
+      "url": "https://www.omg.org/spec/UML/2.5/PDF",
+      "scope": "17.8 Sequence Diagrams의 메시지 선후; PDF 634쪽. 11장 Classifiers와 구조 표현",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

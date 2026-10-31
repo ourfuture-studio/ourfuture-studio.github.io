@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>키의 일부와 비키 속성을 거치는 경로 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-06"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-06 · 이론 읽기</p><h1>키의 일부와 비키 속성을 거치는 경로</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-06">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-06">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>부분 종속은 복합키의 일부를 보고, 이행 종속은 결정 경로의 중간 속성을 본다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>부분 함수 종속은 복합 후보키의 진부분집합이 비주요 속성을 결정하는 경우다. 비주요 속성은 어떤 후보키에도 포함되지 않는 속성이다. 2정규형은 1정규형을 전제로 이런 부분 종속을 배제한다.</p>
+<p>이행 종속은 키에서 비키 결정자를 거쳐 다른 속성을 결정하는 경로에서 살펴본다. 예를 들어 직원번호→부서코드와 부서코드→부서명이 있고 부서코드가 슈퍼키가 아니면 부서명 중복을 따로 분리할 이유가 있다.</p>
+<p>정규형은 기본키 하나만 보지 않고 모든 후보키와 주어진 FD를 기준으로 판단한다. 여기서는 속성값이 원자적이고 NULL이 없으며 명시한 FD와 그 논리적 귀결만 존재한다고 고정한다. 분해 뒤에는 무손실 조인과 종속 보존도 따로 확인한다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>관계 R(S,C,N,G)의 F={SC→G,S→N}이며 논리적 귀결 외 제약은 없다. S=학생번호, C=과목번호, N=학생명, G=성적이다. NULL·복합값은 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">종속</th>
+<th scope="col">판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SC→G</td>
+<td>전체 복합키로 성적 결정</td>
+</tr>
+<tr>
+<td>S→N</td>
+<td>복합키 일부로 이름 결정</td>
+</tr>
+</tbody>
+</table></div>
+<p>R(S,C,N,G)의 후보키가 SC이면 S→N은 후보키 일부에서 비주요 속성으로 향하는 부분 종속이다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>모든 후보키를 구한 뒤 키의 일부가 비주요 속성을 결정하는지 찾는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 7판 저자 슬라이드: Normalization</a> — 슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄. 확인일 2026-10-31.</li>
+<li><a href="https://www.db-book.com/Practice-Exercises/PDF-practice-exer-dir/7.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 저자 제공 7장 연습문제의 정의</a> — PDF 4쪽 7.18~7.19의 정의: 주요 속성, 이행 종속, 진부분집합에 대한 부분 종속, 모든 후보키를 기준으로 한 2NF. 원문의 문제·예제는 복제하지 않음. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-006">S→N 때문에 직접 위반하는 가장 이른 정규형은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

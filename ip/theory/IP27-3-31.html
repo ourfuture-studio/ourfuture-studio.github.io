@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TCP 전달 보장과 응용의 업무 완료 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-31"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-31 · 이론 읽기</p><h1>TCP 전달 보장과 응용의 업무 완료</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-31">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-31">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>전송계층이 제공하는 기능과 서버 프로그램이 실제로 끝낸 작업을 구별한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>TCP는 연결 기반으로 순서 있는 신뢰성 있는 바이트 스트림을 제공한다. 데이터 손실을 탐지하고 재전송하는 기능이 있지만 응용 메시지의 경계를 자동으로 보존하는 방식은 아니다.</p>
+<p>UDP는 데이터그램을 보내며 기본 프로토콜 자체에서 전달과 중복 방지를 보장하지 않는다. 응용이 순번·확인·재전송을 구현해 필요한 신뢰성을 더할 수 있으므로 UDP 사용이 곧 응용 전체의 무신뢰를 뜻하지 않는다.</p>
+<p>TCP의 전송 확인은 DB 저장·결제 같은 업무 완료 확인과 별개이다. 실제 요구에는 응용 응답이나 트랜잭션 상태 확인이 필요하다. UDP가 항상 더 빠르거나 TCP가 항상 지연이 크다는 수치상의 우열은 프로토콜 이름만으로 확정할 수 없다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>클라이언트가 TCP로 주문 바이트를 전송했다. 상대 TCP의 수신 확인은 관찰했지만 서버 응용의 DB 저장 완료 응답은 아직 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP 수신측 전송 확인</td>
+<td>바이트전달에관한전송계층정보</td>
+</tr>
+<tr>
+<td>서버 DB commit</td>
+<td>별도응용업무</td>
+</tr>
+<tr>
+<td>업무완료 응답</td>
+<td>응용프로토콜로확인해야할상태</td>
+</tr>
+</tbody>
+</table></div>
+<p>송신 성공·상대 전송 확인·응용 처리 완료를 서로 다른 사건으로 적는다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>전송계층의 보장 범위와 응용이 확인할 성공 조건을 따로 쓴다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>실제 네트워크 지연·손실률을 측정하지 않는다. 세 조건의 프로토콜 기능과 응용 성공 정의만 검토한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9293" rel="noopener noreferrer" target="_blank">RFC 9293 Transmission Control Protocol</a> — 2.2 신뢰성 있는 순서 있는 바이트 스트림; 3 프로토콜 동작. 확인일 2026-10-31.</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc768" rel="noopener noreferrer" target="_blank">RFC 768 User Datagram Protocol</a> — Introduction의 전달·중복 방지 비보장과 UDP 데이터그램 기능. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-031">확인 가능한 결론은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

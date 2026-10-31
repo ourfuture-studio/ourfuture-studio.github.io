@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-017",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-17"
+  ],
+  "subject": 3,
+  "title": "saved.append(7) 뒤 출력은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  make가 items=[3]을 만들어 반환하고 saved에 저장한다.",
+  "code": "def make():\n    items=[3]\n    return items\nsaved=make()\nsaved.append(7)\nprint(saved)\n",
+  "language": "Python",
+  "stem": "saved.append(7) 뒤 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[3, 7]",
+      "explanation": "호출자가 살아 있는 반환 리스트를 참조한다."
+    },
+    {
+      "id": "B",
+      "text": "NameError",
+      "explanation": "함수 밖에서 쓰는 이름은 정의된 saved이다."
+    },
+    {
+      "id": "C",
+      "text": "참조할 수 없는 해제 메모리",
+      "explanation": "Python의 반환 리스트는 함수 지역 이름이 끝나도 참조로 유지된다."
+    },
+    {
+      "id": "D",
+      "text": "[3]",
+      "explanation": "append가 같은 리스트 객체를 수정한다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "지역 이름 items와 객체를 구분한다. saved가 그 리스트를 참조해 append 후 [3,7]을 출력한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 Execution model",
+      "url": "https://docs.python.org/3.13/reference/executionmodel.html",
+      "scope": "4.2 이름 바인딩과 이름의 유효 범위",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Python 3.13 copy",
+      "url": "https://docs.python.org/3.13/library/copy.html",
+      "scope": "대입의 바인딩 및 얕은 복사와 깊은 복사 정의",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

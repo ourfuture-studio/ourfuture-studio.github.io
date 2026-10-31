@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-013",
+  "topicId": "IP27-1-13",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "부품 교체",
+      "condition": "ReportService는 Renderer 종류가 아님; Renderer 객체를 보유하고 render 위임; PdfRenderer를 HtmlRenderer로 교체.",
+      "code": null,
+      "result": "구성·위임으로 표현",
+      "explanation": "보유 참조를 교체한다.",
+      "trace": [
+        "service→PdfRenderer",
+        "참조 교체→HtmlRenderer"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "종류 계약 명시",
+      "condition": "PdfRenderer는 Renderer의 모든 계약을 지키는 하위 종류다. 이 관계를 상속으로 구현하며 보유 부품 관계는 묻지 않는다.",
+      "code": null,
+      "result": "PdfRenderer → Renderer 상속",
+      "explanation": "명시된 하위 종류 계약을 표현한다.",
+      "trace": [
+        "PdfRenderer는 Renderer 종류",
+        "상위 계약 충족→상속 관계"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "이름만 유사",
+      "condition": "ReportService와 PdfRenderer에 render라는 메서드 이름만 같다. 상속·보유·위임 여부는 미명시다.",
+      "code": null,
+      "result": "관계를 확정할 수 없음",
+      "explanation": "이름 일치만으로 구조를 알 수 없다.",
+      "trace": [
+        "동일 이름 확인",
+        "종류/보유 정보 없음"
+      ]
+    }
+  ],
+  "boundary": "여기서 구성은 객체 보유·위임의 일반 설계 용어이며 UML 합성 생명주기를 자동 부여하지 않는다."
+}

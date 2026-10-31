@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-023",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-23"
+  ],
+  "subject": 2,
+  "title": "정해진 모형으로 복구한 최종 값은?",
+  "origin": "original",
+  "tags": [
+    "물리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "대표 사례의 모형은 모든 갱신 REDO 후 미완료 거래 UNDO다. T1은 X10→14 후 커밋, T2는 Y20→27 후 미완료이며 장애 시 디스크는 X10·Y27이다. 교육용 즉시갱신·로그 복구 모형. 초기 체크포인트는 활성 거래가 없고 X10,Y20. 안정 로그는 순서 T1 start; <T1,X,10,14>; T1 commit; T2 start; <T2,Y,20,27>; 장애. 장애 시 디스크 X10,Y27. 로그는 먼저 안정 저장되고 저장장치 손상·다른 거래·보상 로그 없음. 복구 규칙: 모든 갱신을 순방향 REDO한 다음 미완료 거래를 역방향 UNDO한다.",
+  "code": null,
+  "language": null,
+  "stem": "정해진 모형으로 복구한 최종 값은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "X10,Y20",
+      "explanation": "미완료 T2는 취소하지만 커밋한 T1의 효과 X14는 남겨야 한다."
+    },
+    {
+      "id": "B",
+      "text": "X14,Y27",
+      "explanation": "T2가 미완료인데 Y27을 최종 상태로 남겼다."
+    },
+    {
+      "id": "C",
+      "text": "X14,Y20",
+      "explanation": "REDO 후 T2를 UNDO해 커밋 T1의 효과만 남긴다."
+    },
+    {
+      "id": "D",
+      "text": "X10,Y27",
+      "explanation": "커밋한 T1을 잃고 미완료 T2를 남기는 잘못된 상태다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "REDO T1·T2 → X14,Y27. 이후 미완료 T2의 old 값20을 UNDO → X14,Y20으로 C다.",
+  "references": [
+    {
+      "id": "REC",
+      "title": "Database System Concepts 7판 저자 슬라이드: Recovery System",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch19.pdf",
+      "scope": "슬라이드 19.12~19.17의 old/new 로그·즉시갱신, 19.27~19.28의 모든 갱신 REDO 후 미완료 거래 UNDO. 구현별 알고리즘 일반화 제외",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

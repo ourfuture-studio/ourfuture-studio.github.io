@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-026",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-26"
+  ],
+  "subject": 3,
+  "title": "직접 차단하려는 교착 필요조건은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "모든 스레드가 잠금 R을 먼저 얻은 다음 S를 요청하도록 강제한다. R, S는 독점 잠금이며 각각 한 개이다. 다른 대기 자원은 없다. 작업은 두 잠금을 얻으면 유한 시간 안에 끝내고 해제한다.",
+  "code": null,
+  "language": null,
+  "stem": "직접 차단하려는 교착 필요조건은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "상호 배제",
+      "explanation": "잠금은 여전히 동시에 한 스레드만 보유한다."
+    },
+    {
+      "id": "B",
+      "text": "비선점",
+      "explanation": "보유 잠금을 강제로 빼앗는 정책이 아니다."
+    },
+    {
+      "id": "C",
+      "text": "점유와 대기",
+      "explanation": "R을 가진 채 S를 기다리는 상태는 허용된다."
+    },
+    {
+      "id": "D",
+      "text": "순환 대기",
+      "explanation": "공통 증가 순서가 자원 요청의 순환을 막는다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "R→S만 허용하면 S→R의 역순 요청이 없어 순환 대기를 구성할 수 없다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OSTEP Common Concurrency Problems",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf",
+      "scope": "32.3 교착의 네 조건 및 circular wait 예방을 위한 자원 순서",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>응용의 열을 유지하고 저장 방법 바꾸기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-01"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-01 · 이론 읽기</p><h1>응용의 열을 유지하고 저장 방법 바꾸기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-01">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-01">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>인덱스를 추가해도 응용이 읽는 열을 바꿀 필요는 없다. 무엇이 바뀌었는지 스키마 층으로 나누어 보자.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>스키마는 데이터베이스의 구조를 정한 설명이다. 외부 스키마는 사용자가 보는 일부 구조, 개념 스키마는 전체 논리 구조, 내부 스키마는 파일 배치와 접근 경로 같은 저장 구조를 나타낸다.</p>
+<p>물리 데이터 독립성은 내부 저장 구조를 바꾸면서 논리 구조를 유지할 수 있는 성질이다. 예를 들어 같은 Member(id, name)를 조회하면서 name 인덱스를 추가하는 변경은 열의 의미를 바꾸지 않는다.</p>
+<p>논리 데이터 독립성은 개념 구조의 변경을 외부 뷰나 응용 인터페이스가 흡수하는 문제다. 열 이름을 없애거나 의미를 바꾸면 응용까지 고쳐야 할 수 있다. 인덱스 추가가 모든 질의의 속도를 높인다는 뜻도 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>회원 관계 Member(id, name)의 열·자료형·값 의미와 응용의 SELECT id,name을 유지한다. 변경은 name에 대한 보조 인덱스 추가뿐이다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">층</th>
+<th scope="col">변경 전</th>
+<th scope="col">변경 후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>응용 조회</td>
+<td>SELECT id,name</td>
+<td>SELECT id,name</td>
+</tr>
+<tr>
+<td>논리 열</td>
+<td>id,name</td>
+<td>id,name</td>
+</tr>
+<tr>
+<td>저장 접근</td>
+<td>테이블 스캔</td>
+<td>name 인덱스 추가</td>
+</tr>
+</tbody>
+</table></div>
+<p>조회 대상과 열 의미는 같고 접근 경로만 추가되므로 물리 데이터 독립성에 해당한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>저장 방법의 변경인지, 응용이 읽는 열과 의미의 변경인지 나누어 본다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.db-book.com/slides-dir/PDF-dir/ch1.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 7판 저자 슬라이드: Introduction</a> — 슬라이드 1.14~1.18: 논리·물리 스키마, 물리 데이터 독립성, DDL과 DML. 확인일 2026-10-31.</li>
+<li><a href="https://www.postgresql.org/docs/18/sql-createview.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: CREATE VIEW</a> — Description: 일반 뷰는 물리적 결과를 저장하지 않고 참조 시 질의를 실행. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-001">이 변경을 가장 직접적으로 설명하는 것은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

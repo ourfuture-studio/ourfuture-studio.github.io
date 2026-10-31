@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q4-014",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-14"
+  ],
+  "subject": 4,
+  "title": "명시한 행동에 가장 직접적으로 대응하는 용어는?",
+  "origin": "original",
+  "tags": [
+    "시스템 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "행위자가 통신 사본의 헤더와 평문 내용을 수동으로 읽는다. 신원 위장·변경·가용성 방해 없음. 이 사례에 적힌 행동만 관찰되었다고 고정하며 숨은 복합 행동을 추측하지 않는다. 실제 패킷을 보내거나 수집하지 않는 분류 모형이다.",
+  "code": null,
+  "language": null,
+  "stem": "명시한 행동에 가장 직접적으로 대응하는 용어는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "서비스 거부",
+      "explanation": "정당한 사용을 방해하는 자원 소진이나 지연을 이 장면에서 두지 않았다."
+    },
+    {
+      "id": "B",
+      "text": "스푸핑",
+      "explanation": "다른 신원이나 출처로 위장하지 않았다."
+    },
+    {
+      "id": "C",
+      "text": "스니핑",
+      "explanation": "통신을 수동 관찰해 정보를 얻는 행동이다."
+    },
+    {
+      "id": "D",
+      "text": "자동 복제 웜",
+      "explanation": "프로그램의 자기 복제·다른 호스트 전파는 제시되지 않았다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "관찰된 핵심은 통신 내용을 수동으로 읽는 것이다. 신원 위장·사용 방해를 배제했으므로 C다.",
+  "references": [
+    {
+      "id": "SNIFF",
+      "title": "NIST CSRC Glossary: Network Sniffing",
+      "url": "https://csrc.nist.gov/glossary/term/network_sniffing",
+      "scope": "NIST SP 800-115를 연결한 정의: 수동 통신 관찰·프로토콜 및 헤더·내용 분석",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "SPOOF",
+      "title": "NIST CSRC Glossary: Spoofing",
+      "url": "https://csrc.nist.gov/glossary/term/spoofing",
+      "scope": "CNSSI 4009-2022 연결 정의: 허가된 사용자로 가장하는 위장 행위. GNSS 등 다른 문맥의 정의와 혼합하지 않음",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "DOS",
+      "title": "NIST CSRC Glossary: Denial of Service",
+      "url": "https://csrc.nist.gov/glossary/term/denial_of_service",
+      "scope": "NIST SP 800-12r1 및 800-82r3 연결 정의: 정당한 자원 접근 방해·운영 지연",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

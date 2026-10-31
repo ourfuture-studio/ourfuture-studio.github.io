@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-001",
+  "revision": 2,
+  "topicIds": [
+    "IP27-2-01"
+  ],
+  "subject": 2,
+  "title": "이 변경을 가장 직접적으로 설명하는 것은?",
+  "origin": "original",
+  "tags": [
+    "논리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "회원 관계 Member(id, name)의 열·자료형·값 의미와 응용의 SELECT id,name을 유지한다. 변경은 name에 대한 보조 인덱스 추가뿐이다. Member(id,name)와 SELECT id,name을 유지하고 name 보조 인덱스만 추가한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 변경을 가장 직접적으로 설명하는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "물리 데이터 독립성",
+      "explanation": "내부 접근 경로를 바꾸어도 논리 열과 응용 조회를 유지한다."
+    },
+    {
+      "id": "B",
+      "text": "논리 열을 삭제하는 변경",
+      "explanation": "id와 name이 모두 남아 있으므로 삭제가 아니다."
+    },
+    {
+      "id": "C",
+      "text": "현재 저장된 모든 행의 값 변경",
+      "explanation": "인덱스 추가는 여기서 회원 값 수정으로 정의되지 않았다."
+    },
+    {
+      "id": "D",
+      "text": "응용별 외부 뷰를 모두 제거",
+      "explanation": "응용 조회를 유지한다는 전제와 어긋난다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "변경 전후의 논리 열을 비교하면 동일하다. 달라진 것은 저장 접근 경로이므로 A다.",
+  "references": [
+    {
+      "id": "DB1",
+      "title": "Database System Concepts 7판 저자 슬라이드: Introduction",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch1.pdf",
+      "scope": "슬라이드 1.14~1.18: 논리·물리 스키마, 물리 데이터 독립성, DDL과 DML",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "VIEW",
+      "title": "PostgreSQL 18: CREATE VIEW",
+      "url": "https://www.postgresql.org/docs/18/sql-createview.html",
+      "scope": "Description: 일반 뷰는 물리적 결과를 저장하지 않고 참조 시 질의를 실행",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}
