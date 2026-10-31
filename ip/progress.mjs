@@ -1,4 +1,4 @@
-import {grade} from './bank.mjs';
+import {grade} from './bank.mjs?v=a71b32bec1d038a7';
 export const STORAGE_KEY='ourfuture-ip27-learning-v1';
 const object=x=>x&&typeof x==='object'&&!Array.isArray(x);
 const id=x=>typeof x==='string'&&/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(x)&&!['constructor','__proto__','prototype'].includes(x);
@@ -35,6 +35,18 @@ export function createStore({storage,key=STORAGE_KEY,now=()=>new Date().toISOStr
   location(path){if(typeof path!=='string')return;const test={...empty(),lastLocation:{path,updatedAt:now()}};parseProgress(JSON.stringify(test));state.lastLocation=test.lastLocation;save()},
   export:()=>JSON.stringify(state,null,2),
   import(text){const d=parseProgress(text);for(const [k,v]of Object.entries(d.topics))if(!state.topics[k]||Date.parse(v.updatedAt)>Date.parse(state.topics[k].updatedAt))state.topics[k]=v;for(const [k,v]of Object.entries(d.answers)){state.answers[k]??={revisions:{}};for(const [rev,r]of Object.entries(v.revisions))if(!state.answers[k].revisions[rev]||Date.parse(r.updatedAt)>Date.parse(state.answers[k].revisions[rev].updatedAt))state.answers[k].revisions[rev]=r}if(d.lastLocation&&(!state.lastLocation||Date.parse(d.lastLocation.updatedAt)>Date.parse(state.lastLocation.updatedAt)))state.lastLocation=d.lastLocation;save()},
-  clear(){state=empty();backing=originalStorage;warning='';save()}
+  clear(){
+   try{
+    if(!originalStorage)throw Error('storage unavailable');
+    if(typeof originalStorage.removeItem==='function'){
+     originalStorage.removeItem(key);
+     if(typeof originalStorage.getItem==='function'&&originalStorage.getItem(key)!==null)throw Error('removal not confirmed');
+    }else if(typeof originalStorage.setItem==='function')originalStorage.setItem(key,JSON.stringify(empty()));
+    else throw Error('storage unavailable');
+    state=empty();backing=originalStorage;warning='';return true;
+   }catch{
+    warning='기록을 초기화하지 못했습니다. 현재 화면의 기록을 유지했습니다. 브라우저 저장 권한을 확인해 주세요.';return false;
+   }
+  }
  };
 }
