@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>그룹 합계를 원래 행마다 붙이는 윈도우 함수 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-17"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-17 · 이론 읽기</p><h1>그룹 합계를 원래 행마다 붙이는 윈도우 함수</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-17">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-17">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>같은 합계를 계산해도 GROUP BY는 요약하고 OVER는 행마다 결과를 붙일 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>일반 집계에 GROUP BY team을 쓰면 팀마다 한 행을 만든다. Work의 A팀 두 행은 합계 10을 가진 한 행으로 요약된다.</p>
+<p>SUM(hours) OVER(PARTITION BY team)은 팀을 계산 범위로 삼으면서 각 원래 행의 식별을 유지한다. A팀 두 행 모두 자신들의 hours와 함께 팀 합계 10을 표시할 수 있다.</p>
+<p>윈도우의 ORDER BY와 최종 출력 ORDER BY는 목적이 다르다. 윈도우에 ORDER BY를 더하면 기본 프레임에 따라 누적 계산이 될 수 있으므로 여기서는 윈도우 안의 정렬을 생략해 파티션 전체 합계로 고정한다. DISTINCT·GROUP BY·JOIN으로 행 수를 추가 변경하는 경우는 별도다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Work의 행은 (1,A,4),(2,A,6),(3,B,3)뿐이며 NULL이 없다. 윈도우 안에는 ORDER BY가 없고 파티션 전체를 합산한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">team</th>
+<th scope="col">hours</th>
+<th scope="col">팀 합계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>4</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>6</td>
+<td>10</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>윈도우 합계는 입력 세 행을 유지한다. id 1과 2가 같은 팀 합계 10을 가진다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>그룹으로 행을 줄이는지, 원래 행에 계산 결과를 붙이는지 구별한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/18/tutorial-window.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: Window Functions</a> — 3.5: 행 식별 유지, PARTITION BY 및 ORDER BY가 프레임에 주는 영향. 확인일 2026-10-31.</li>
+<li><a href="https://www.sqlite.org/windowfunctions.html" rel="noopener noreferrer" target="_blank">SQLite: Window Functions</a> — 1 Introduction 및 2.1 PARTITION BY: OVER를 사용한 집계와 파티션. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-017">아래 질의가 반환하는 행과 합계는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

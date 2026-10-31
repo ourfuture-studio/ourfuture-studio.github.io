@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-002",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-02"
+  ],
+  "subject": 4,
+  "title": "서버의 권한 판정은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "사용자 U의 인증은 성공했다. 문서 D의 편집은 작성자만 허용하며 D의 작성자는 V다. U에게 관리자나 위임 권한은 없다. U가 D 편집을 요청한다.",
+  "code": null,
+  "language": null,
+  "stem": "서버의 권한 판정은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "인증됐으므로 편집 허용",
+      "explanation": "신원 확인만으로 작성자 조건을 만족하지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "작성자가 아니므로 편집 거부",
+      "explanation": "U≠V이며 예외 권한도 없다."
+    },
+    {
+      "id": "C",
+      "text": "문서ID를 알면 편집 허용",
+      "explanation": "식별자 지식은 권한이 아니다."
+    },
+    {
+      "id": "D",
+      "text": "편집 거부이므로 인증도 반드시 실패",
+      "explanation": "인증은 성공했고 인가만 실패할 수 있다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "인증된 주체는 U다. 편집 규칙의 작성자는 V이므로 U=V가 거짓이고 예외도 없어 거부한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "scope": "Introduction의 authentication/authorization 구분, Validate the Permissions on Every Request",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

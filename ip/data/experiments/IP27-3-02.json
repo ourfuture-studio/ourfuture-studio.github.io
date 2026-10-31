@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-002",
+  "topicId": "IP27-3-02",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "한 식에서 i를 변경하고 읽기",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. i=2; i++ + i.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int i=2;\n    printf(\"%d\\n\", i++ + i);\n    return 0;\n}\n",
+      "result": "정의되지 않은 동작(출력 보장 없음)",
+      "explanation": "컴파일 성공 여부와 표준 의미의 정의 여부는 다르다.",
+      "trace": [
+        "i++는 i 변경",
+        "다른 피연산자 i는 같은 값 읽기",
+        "+에는 양쪽 순서 보장 없음→UB"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "완전식 두 개로 분리",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. i=2; old=i++; 다음 문장에서 old+i.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int i=2;\n    int old=i++;\n    printf(\"%d %d\\n\", old+i, i);\n    return 0;\n}\n",
+      "result": "5 3",
+      "explanation": "첫 문장이 끝난 뒤 i=3이므로 old=2와 더한다.",
+      "trace": [
+        "old=2, i=3",
+        "old+i=5",
+        "출력 뒤에도 i=3"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "논리 AND 두 피연산자로 배치",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. i=2; v=(i++ && i).",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int i=2;\n    int v=(i++ && i);\n    printf(\"%d %d\\n\",v,i);\n    return 0;\n}\n",
+      "result": "1 3",
+      "explanation": "&& 왼쪽이 참이고 증가가 반영된 뒤 오른쪽을 평가한다.",
+      "trace": [
+        "왼쪽 제공값2→참, i=3",
+        "오른쪽3→참",
+        "논리 결과1"
+      ]
+    }
+  ],
+  "boundary": "UB 사례는 컴파일 진단과 명세로 검토하고 실행 숫자를 정답으로 사용하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

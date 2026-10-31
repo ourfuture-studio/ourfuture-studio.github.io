@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-012",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-12"
+  ],
+  "subject": 4,
+  "title": "두 조건을 함께 만족하는 처리는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "운영 정책은 ①고객 응답에 내부 경로·접속 비밀을 노출하지 않음 ②권한 있는 운영자가 요청별 실패 원인을 추적 가능함이다. DB 연결 오류가 발생했으며 요청ID R17이 있다. 내부 로그 접근은 운영자로 제한되고 비밀번호·토큰은 제거한다.",
+  "code": null,
+  "language": null,
+  "stem": "두 조건을 함께 만족하는 처리는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "고객에게 전체 DB 접속 문자열과 스택을 보낸다",
+      "explanation": "원인 정보는 있지만 공개 비밀 노출 금지 조건을 어긴다."
+    },
+    {
+      "id": "B",
+      "text": "응답도 로그도 아무 기록 없이 버린다",
+      "explanation": "운영자가 요청별 원인을 추적할 수 없다."
+    },
+    {
+      "id": "C",
+      "text": "고객에게 일반 오류와R17을 주고 내부 로그에R17·오류 유형·안전한 진단 정보를 남긴다",
+      "explanation": "공개 노출을 줄이면서 사건을 연결해 진단할 수 있다."
+    },
+    {
+      "id": "D",
+      "text": "고객에게 일반 오류를 주고 모든 토큰·비밀번호를 로그에 그대로 남긴다",
+      "explanation": "명시한 민감정보 제거 조건과 충돌한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "공개 응답은 일반 오류와R17로 제한한다. 내부에는 동일R17로 오류 유형과 필요한 진단을 남기되 비밀을 제거하므로 두 정책을 함께 충족한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Error Handling Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html",
+      "scope": "REST API 오류에 구현 상세를 노출하지 않는 원칙, generic response와 내부 기록",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "OWASP Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "scope": "Data to exclude: access tokens, passwords, connection strings; Event attributes 및 상호작용 식별자",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

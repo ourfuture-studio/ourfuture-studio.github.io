@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E4-011",
+  "topicId": "IP27-4-11",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "솔트만 다르게",
+      "condition": "Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII same-pass,salt-B-000000002).",
+      "code": "from hashlib import pbkdf2_hmac\nfor s in (b'salt-A-000000001',b'salt-B-000000002'):\n print(pbkdf2_hmac('sha256',b'same-pass',s,600000,16).hex())",
+      "result": "83be0607a38181e2114b974fe5327de1 / 39dd32431e432be5f379055c75c6f3b7",
+      "explanation": "솔트가 달라 두 시험 입력 조합과 관찰 결과가 다르다.",
+      "trace": [
+        "비밀번호 동일·솔트 다름",
+        "KDF 두 번→서로 다른 관찰 결과"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "솔트도 같게",
+      "condition": "Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII same-pass,salt-A-000000001).",
+      "code": "from hashlib import pbkdf2_hmac\nfor _ in range(2):\n print(pbkdf2_hmac('sha256',b'same-pass',b'salt-A-000000001',600000,16).hex())",
+      "result": "두 값 모두83be0607a38181e2114b974fe5327de1",
+      "explanation": "모든 입력 인수가 같아 같은 결과다.",
+      "trace": [
+        "비밀번호/솔트/설정 모두 동일",
+        "결정적 KDF→동일 결과"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "비밀번호만 다르게",
+      "condition": "Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII other-pass,salt-A-000000001).",
+      "code": "from hashlib import pbkdf2_hmac\nfor p in (b'same-pass',b'other-pass'):\n print(pbkdf2_hmac('sha256',p,b'salt-A-000000001',600000,16).hex())",
+      "result": "83be0607a38181e2114b974fe5327de1 / eff3ed4c3f0b79a1f533380bc3230499",
+      "explanation": "솔트가 같아도 비밀번호 입력이 다르며 이 시험 결과는 달랐다.",
+      "trace": [
+        "같은 솔트·다른 비밀번호",
+        "KDF 두 번→관찰 결과 다름"
+      ]
+    }
+  ],
+  "boundary": "고정 바이트·반복 횟수·출력 길이는 재현 시험의 조건이다. 실제 비밀번호 저장 설계는 라이브러리·비용·솔트 생성·접근통제를 함께 정해야 한다."
+}

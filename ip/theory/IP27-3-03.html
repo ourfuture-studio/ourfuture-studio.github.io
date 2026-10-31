@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>식의 묶음과 평가 순서를 나누어 읽기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-03"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-03 · 이론 읽기</p><h1>식의 묶음과 평가 순서를 나누어 읽기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-03">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-03">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>우선순위는 어떤 연산에 어떤 피연산자가 붙는지 정한다. 모든 피연산자를 실행하는 시간 순서와는 다르다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>우선순위는 a+b<em>c를 a+(b</em>c)로 묶는 규칙이다. 결합 방향은 a-b-c를 (a-b)-c로 묶는 규칙이다. 이 두 규칙으로 식의 구조를 읽을 수 있다.</p>
+<p>C에서 +와 *의 피연산자는 일반적으로 왼쪽부터 평가된다고 보장되지 않는다. 곱셈이 더 강하게 묶인다는 사실에서 a를 읽는 것보다 b를 먼저 읽는다는 결론은 나오지 않는다.</p>
+<p>아래 식은 값을 바꾸는 부수효과가 없어서 평가 순서가 달라도 수치가 같다. 호출 순서가 필요하다면 함수를 별도 완전식으로 분리한다. UB와 허용된 여러 평가 순서를 구별해야 한다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2+3*4</td>
+<td>2+(3*4)=14</td>
+</tr>
+<tr>
+<td>(2+3)*4</td>
+<td>20</td>
+</tr>
+<tr>
+<td>20-5-3</td>
+<td>(20-5)-3=12</td>
+</tr>
+</tbody>
+</table></div>
+<p>곱셈·덧셈의 구조를 확정한 뒤 계산하되, 구조를 부수효과의 순서 보장으로 해석하지 않는다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>괄호는 묶음을, 순서 규칙은 부수효과의 앞뒤를 정한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>모든 수는 signed int의 안전한 범위이며 함수 호출 부수효과는 없다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" rel="noopener noreferrer" target="_blank">WG14 N1570 C11 공개 위원회 초안</a> — 6.5p3와 각주85~86, 6.5.5~6.5.6 문법의 묶음·결합 규칙; 공개 위원회 초안.. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-003">2+3*4의 해석으로 옳은 것은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

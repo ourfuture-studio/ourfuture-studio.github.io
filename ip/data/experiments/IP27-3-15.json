@@ -1,0 +1,47 @@
+{
+  "id": "IP27-E3-015",
+  "topicId": "IP27-3-15",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "리스트와 집합에 2,2,5",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  values=[2,2,5].",
+      "code": "values=[2,2,5]\nprint(len(values),len(set(values)))\n",
+      "result": "3 2",
+      "explanation": "중복 저장 여부만 비교한다.",
+      "trace": [
+        "리스트3칸",
+        "집합 고유값2개"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "튜플 첫 자리 재대입",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  t=(2,2,5); t[0]=9; TypeError만 잡아 이름 출력.",
+      "code": "t=(2,2,5)\ntry:\n    t[0]=9\nexcept TypeError:\n    print('TypeError')\n",
+      "result": "TypeError",
+      "explanation": "튜플은 원소 자리를 재대입할 수 없다.",
+      "trace": [
+        "튜플 생성",
+        "t[0]=9 시도",
+        "TypeError 처리"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "사전의 같은 키에 다시 대입",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  d={\"x\":1}; d[\"x\"]=9.",
+      "code": "d={'x':1}\nd['x']=9\nprint(len(d),d['x'])\n",
+      "result": "1 9",
+      "explanation": "새 키가 아니므로 항목 수는 그대로이다.",
+      "trace": [
+        "키 x 하나",
+        "기존 값1→9",
+        "len1"
+      ]
+    }
+  ],
+  "boundary": "정수 집합과 문자열 키 사전만 사용하며 출력 순서가 미정인 컨테이너 전체를 출력하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

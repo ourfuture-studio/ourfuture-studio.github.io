@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q2-016",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-16"
+  ],
+  "subject": 2,
+  "title": "id NOT IN(SELECT id FROM Blocked)을 만족하는 Item 행은?",
+  "origin": "original",
+  "tags": [
+    "SQL 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Item.id는 NULL 없는 기본키 1,2,3이고 Blocked.id는 2,NULL이다. 중복과 다른 행은 없다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Item은 1,2,3의 비NULL 키이고 Blocked는 2,NULL이다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Item(id INTEGER PRIMARY KEY);\nCREATE TABLE Blocked(id INTEGER);\nINSERT INTO Item VALUES(1),(2),(3);\nINSERT INTO Blocked VALUES(2),(NULL);\nSELECT id FROM Item WHERE id NOT IN(SELECT id FROM Blocked) ORDER BY id;",
+  "language": "sql",
+  "stem": "id NOT IN(SELECT id FROM Blocked)을 만족하는 Item 행은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "id=1과 3",
+      "explanation": "우변에 NULL이 있어 두 값의 NOT IN은 TRUE가 아니라 UNKNOWN이다."
+    },
+    {
+      "id": "B",
+      "text": "id=2",
+      "explanation": "2는 하위 질의의 2와 일치하므로 NOT IN은 FALSE다."
+    },
+    {
+      "id": "C",
+      "text": "세 행 모두",
+      "explanation": "일치 값도 있고 NULL 비교도 있어 TRUE가 되는 행은 없다."
+    },
+    {
+      "id": "D",
+      "text": "0행",
+      "explanation": "1·3은 UNKNOWN, 2는 FALSE로 WHERE를 통과하지 못한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "1과 3은 비일치 비교 TRUE와 NULL 비교 UNKNOWN을 AND하여 UNKNOWN이다. 2는 FALSE다. TRUE인 행이 없어 D다.",
+  "references": [
+    {
+      "id": "SUB",
+      "title": "PostgreSQL 18: Subquery Expressions",
+      "url": "https://www.postgresql.org/docs/18/functions-subquery.html",
+      "scope": "9.24.1 EXISTS, 9.24.2 IN, 9.24.3 NOT IN: NULL과 빈 하위 질의",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "SEL",
+      "title": "SQLite: SELECT",
+      "url": "https://www.sqlite.org/lang_select.html",
+      "scope": "2 Simple Select Processing, 2.3 WHERE, 2.4 GROUP BY/HAVING, 3 Compound Select, 4 ORDER BY",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "EXPR",
+      "title": "SQLite: SQL Language Expressions",
+      "url": "https://www.sqlite.org/lang_expr.html",
+      "scope": "8 IN/NOT IN, 10 EXISTS, 14 Boolean Expressions 및 NULL 연산 규칙",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

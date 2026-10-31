@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q2-029",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-29"
+  ],
+  "subject": 2,
+  "title": "WHERE NOT(value=0)을 통과하는 id는?",
+  "origin": "original",
+  "tags": [
+    "SQL 응용"
+  ],
+  "kind": "single-choice",
+  "givens": "Observation의 행은 (1,NULL),(2,0),(3,4)다. 정수 비교의 SQL 3값 논리를 적용한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Observation은 아래 세 행이며 value에만 NULL을 허용한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Observation(id INTEGER PRIMARY KEY, value INTEGER);\nINSERT INTO Observation VALUES(1,NULL),(2,0),(3,4);\nSELECT id FROM Observation WHERE NOT(value=0) ORDER BY id;",
+  "language": "sql",
+  "stem": "WHERE NOT(value=0)을 통과하는 id는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "id1과 id3",
+      "explanation": "id1의 비교와 그 NOT은 UNKNOWN이어서 통과하지 못한다."
+    },
+    {
+      "id": "B",
+      "text": "id2",
+      "explanation": "0=0이 TRUE이므로 그 NOT은 FALSE다."
+    },
+    {
+      "id": "C",
+      "text": "id1만",
+      "explanation": "NULL을 FALSE로 놓고 NOT한 잘못된 해석이다."
+    },
+    {
+      "id": "D",
+      "text": "id3만",
+      "explanation": "4=0은 FALSE이고 그 NOT은 TRUE다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "id1:NOT UNKNOWN=UNKNOWN, id2:NOT TRUE=FALSE, id3:NOT FALSE=TRUE다. TRUE만 남겨 D다.",
+  "references": [
+    {
+      "id": "NULL",
+      "title": "PostgreSQL 18: Comparison Functions and Operators",
+      "url": "https://www.postgresql.org/docs/18/functions-comparison.html",
+      "scope": "9.2: 일반 NULL 비교는 unknown, IS NULL과 IS NOT NULL의 검사",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "LOGIC",
+      "title": "PostgreSQL 18: Logical Operators",
+      "url": "https://www.postgresql.org/docs/18/functions-logical.html",
+      "scope": "9.1의 AND·OR·NOT 3값 진리표: TRUE/FALSE/UNKNOWN 조합",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "EXPR",
+      "title": "SQLite: SQL Language Expressions",
+      "url": "https://www.sqlite.org/lang_expr.html",
+      "scope": "8 IN/NOT IN, 10 EXISTS, 14 Boolean Expressions 및 NULL 연산 규칙",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

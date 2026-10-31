@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-022",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-22"
+  ],
+  "subject": 2,
+  "title": "마지막 요청 직후의 상태는?",
+  "origin": "original",
+  "tags": [
+    "SQL 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "배타 잠금만 있는 교육 모형이다. A·B는 서로 다른 객체이며 각 거래는 커밋까지 잠금을 유지한다. 순서 T1 lock A, T2 lock B, T1 request B, T2 request A이고 아직 커밋·중단·타임아웃·교착 탐지는 수행되지 않았다. 배타 잠금 교육 모형. A·B 서로 다른 객체. 커밋까지 잠금 보유. 일정 T1 lock A; T2 lock B; T1 request B; T2 request A. 커밋·중단·타임아웃·탐지 전.",
+  "code": null,
+  "language": null,
+  "stem": "마지막 요청 직후의 상태는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "한 방향 대기만 있어 T1이 즉시 완료한다",
+      "explanation": "T1도 B를 기다려 다음 작업을 진행할 수 없다."
+    },
+    {
+      "id": "B",
+      "text": "T1과 T2의 상호 대기로 교착상태다",
+      "explanation": "T1→T2와 T2→T1의 대기 순환이 있다."
+    },
+    {
+      "id": "C",
+      "text": "잠금을 사용했으므로 교착은 불가능하다",
+      "explanation": "서로 다른 객체를 반대 순서로 잠그면 교착이 가능하다."
+    },
+    {
+      "id": "D",
+      "text": "반드시 T1이 자동 중단되었다",
+      "explanation": "탐지·중단을 아직 수행하지 않았고 실제 제품도 희생 거래를 고정할 수 없다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "T1은 B 소유자인 T2를, T2는 A 소유자인 T1을 기다린다. 두 간선이 순환하므로 B다.",
+  "references": [
+    {
+      "id": "LOCK",
+      "title": "PostgreSQL 18: Explicit Locking",
+      "url": "https://www.postgresql.org/docs/18/explicit-locking.html",
+      "scope": "13.3.4 Deadlocks: 상호 대기, 교착 탐지 후 한 트랜잭션 중단, 동일 잠금 순서",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

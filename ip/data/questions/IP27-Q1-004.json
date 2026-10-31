@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-004",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-04"
+  ],
+  "subject": 1,
+  "title": "명세에 따른 P의 결과는?",
+  "origin": "original",
+  "tags": [
+    "요구사항 확인"
+  ],
+  "kind": "single-choice",
+  "givens": "문서 D가 페이지 P를 합성 관계로 포함한다. P는 다른 합성 전체에 속하지 않는다. P를 분리하지 않은 상태에서 D를 삭제한다. 여기서 삭제는 UML 객체 인스턴스 삭제이며 파일 복구·GC는 고려하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "명세에 따른 P의 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "P는 반드시 독립 객체로 남는다",
+      "explanation": "현재 합성 부분이므로 전체 삭제가 부분 삭제로 이어진다."
+    },
+    {
+      "id": "B",
+      "text": "P는 자동으로 두 문서에 공유된다",
+      "explanation": "합성은 한 시점에 최대 하나의 합성 전체만 허용한다."
+    },
+    {
+      "id": "C",
+      "text": "P가 먼저 생성됐으면 반드시 남는다",
+      "explanation": "생성 시점이 현재의 합성 삭제 규칙을 바꾸지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "P도 D와 함께 삭제된다",
+      "explanation": "사전 분리하지 않은 객체 부분의 합성 삭제 규칙에 해당한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "현재 D의 합성 부분 집합에 P가 있다. 사전 분리가 없으므로 D 삭제 시 P도 삭제된다. 생성 시점이나 파일 저장 방식은 이 모델의 판단 근거가 아니다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OMG UML 2.5 specification (March 2015)",
+      "url": "https://www.omg.org/spec/UML/2.5/PDF",
+      "scope": "9.5.3 Properties: AggregationKind, composite의 소유·삭제·사전 분리 조건; PDF 151쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E3-012",
+  "topicId": "IP27-3-12",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "각각 new String으로 같은 내용 생성",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  a=new String(\"sun\"); b=new String(\"sun\").",
+      "code": "public class Main {\n\n public static void main(String[] args) {\n String a=new String(\"sun\"),b=new String(\"sun\"); System.out.println((a==b)+\" \"+a.equals(b));\n }\n}\n",
+      "result": "false true",
+      "explanation": "별도 객체, 같은 내용이다.",
+      "trace": [
+        "new 두 번→서로 다른 참조",
+        "문자열 sun 동일"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "b에 a 참조 대입",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  a=new String(\"sun\"); b=a.",
+      "code": "public class Main {\n\n public static void main(String[] args) {\n String a=new String(\"sun\"); String b=a; System.out.println((a==b)+\" \"+a.equals(b));\n }\n}\n",
+      "result": "true true",
+      "explanation": "같은 객체이며 내용도 같다.",
+      "trace": [
+        "b=a→참조 공유",
+        "==true",
+        "equals true"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "별도 new와 대문자 내용",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  a=new String(\"sun\"); b=new String(\"SUN\").",
+      "code": "public class Main {\n\n public static void main(String[] args) {\n String a=new String(\"sun\"),b=new String(\"SUN\"); System.out.println((a==b)+\" \"+a.equals(b));\n }\n}\n",
+      "result": "false false",
+      "explanation": "객체도 다르고 대소문자를 포함한 내용도 다르다.",
+      "trace": [
+        "new 두 번→참조 다름",
+        "sun과 SUN→내용 다름"
+      ]
+    }
+  ],
+  "boundary": "모든 참조는 null이 아니며 대소문자·로캘 변환을 하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

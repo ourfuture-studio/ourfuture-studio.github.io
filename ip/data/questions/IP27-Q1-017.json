@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-017",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-17"
+  ],
+  "subject": 1,
+  "title": "이 절차의 선택 기준을 가장 정확히 표현한 것은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어개발 방법론 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "통신 기술이 목표 지연을 충족할지 모른다. 팀은 후보 기술 A/B의 위험을 먼저 평가하고, 고위험 통신만 시제품으로 측정한 뒤 결과에 따라 다음 개발 활동과 투자 범위를 정한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 절차의 선택 기준을 가장 정확히 표현한 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "위험을 줄인 결과에 따라 다음 활동을 정한다",
+      "explanation": "위험 평가·실험·후속 결정을 연결한 조건과 맞는다."
+    },
+    {
+      "id": "B",
+      "text": "기간을 나눴으므로 위험 검토는 필요 없다",
+      "explanation": "명시한 위험 평가를 제거했다."
+    },
+    {
+      "id": "C",
+      "text": "시제품은 항상 최종 제품으로 즉시 배포한다",
+      "explanation": "시제품의 배포 조건이 없으며 실험 목적이다."
+    },
+    {
+      "id": "D",
+      "text": "요구가 불명확해도 모든 단계의 상세 산출물을 먼저 고정한다",
+      "explanation": "고위험 부분의 측정 후 다음 활동을 정하는 조건과 다르다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "먼저 통신 위험을 식별하고 측정으로 줄인 다음 후속 범위를 결정한다. 이것은 위험이 활동 선택을 이끄는 구조다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Boehm — Spiral Development: Experience, Principles, and Refinements, CMU/SEI-2000-SR-008",
+      "url": "https://www.sei.cmu.edu/asset_files/specialreport/2000_003_001_13655.pdf",
+      "scope": "1.2 The Spiral Development Model: risk-driven process model generator, 시제품을 통한 기술 위험 완화",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

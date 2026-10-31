@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-018",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-18"
+  ],
+  "subject": 1,
+  "title": "주어진 조직 규칙을 충족하는 조치는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어개발 방법론 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "조직의 조정 규칙은 ①위험에 근거한 사유 ②대체 검토 ③책임자 승인 기록이다. 저위험 내부 도구에서 회의형 설계 검토를 비동기 검토로 바꾸려 한다.",
+  "code": null,
+  "language": null,
+  "stem": "주어진 조직 규칙을 충족하는 조치는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "일정이 짧으므로 검토 기록을 삭제한다",
+      "explanation": "사유·대체·승인 요건을 충족하지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "회의를 없앤 사실만 기록한다",
+      "explanation": "대체 검토와 승인 기록이 빠졌다."
+    },
+    {
+      "id": "C",
+      "text": "개발자 한 명이 승인 없이 결정한다",
+      "explanation": "책임자 승인 요건을 어긴다."
+    },
+    {
+      "id": "D",
+      "text": "위험 사유·비동기 검토 절차·책임자 승인을 남긴다",
+      "explanation": "세 요건을 모두 충족한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "요구된 항목의 집합은 사유·대체·승인이다. D만 세 항목을 모두 남기므로 주어진 규칙을 충족한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "9장 2 Software Project Planning: scope, requirements, risk assessment에 따른 SDLC tailoring; PDF 207쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

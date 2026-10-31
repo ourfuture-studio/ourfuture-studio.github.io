@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>sizeof가 보는 배열과 포인터 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-04"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-04 · 이론 읽기</p><h1>sizeof가 보는 배열과 포인터</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-04">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-04">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>함수 매개변수의 int a[]는 함수 안에서 int *로 조정된다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>sizeof는 해당 식이나 자료형이 차지하는 크기를 C의 바이트 단위로 반환하며 결과형은 size_t이다. 실제 int a[3] 객체에 sizeof a를 적용하면 원소 세 개의 전체 크기를 얻는다.</p>
+<p>함수 매개변수 int a[]는 int *a로 조정된다. 따라서 그 함수 안의 sizeof a는 원래 배열 전체가 아닌 포인터의 크기이다. 배열을 전달한다고 길이 정보가 자동으로 같이 복사되지 않는다.</p>
+<p>실제 배열 위치에서는 sizeof a / sizeof a[0]로 원소 수를 구할 수 있다. 매개변수 위치에 이 공식을 적용하면 포인터 크기와 int 크기의 비율을 구할 뿐이다. 포인터 바이트 수는 구현마다 달라질 수 있어 문제는 동일 자료형 크기 비교로 작성했다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. 호출자의 int a[3]. probe의 int a[]는 일반 매개변수이다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출자의 int a[3]</td>
+<td>sizeof a / sizeof a[0] = 3</td>
+</tr>
+<tr>
+<td>매개변수 int a[]</td>
+<td>실제 매개변수형은 int *</td>
+</tr>
+<tr>
+<td>함수 안 sizeof a == sizeof(int *)</td>
+<td>참(1)</td>
+</tr>
+</tbody>
+</table></div>
+<p>포인터가 4바이트인지 8바이트인지 지정하지 않아도 이 비교의 정답은 정해진다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>sizeof 앞의 이름이 실제 배열인지 포인터 매개변수인지 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>VLA와 배열 포인터 매개변수는 다루지 않는다. sizeof 매개변수 관련 경고는 예상된 진단이며 오류와 구분한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" rel="noopener noreferrer" target="_blank">WG14 N1570 C11 공개 위원회 초안</a> — 6.5.3.4 sizeof, 6.7.6.3p7 배열 매개변수의 포인터 조정; 공개 위원회 초안.. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-004">출력은 무엇인가?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

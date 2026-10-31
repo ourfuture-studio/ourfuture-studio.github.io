@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-018",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-18"
+  ],
+  "subject": 4,
+  "title": "현재 확인 가능한 결론은?",
+  "origin": "original",
+  "tags": [
+    "시스템 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "모든 사례에 취약 설정 V가 존재한다. 자산 S의 검토한 외부 경로는 차단. 성공 요청·파일 반환·무단 열람 기록 없음. 과거 로그는 불완전. 명시한 자료 외에는 증거가 없다고 고정한다. 로그 부재만으로 과거 침해가 없었다고 증명하지 않으며, 다른 자산 피해 범위는 추정하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "현재 확인 가능한 결론은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "취약점이 있으므로 특정 파일의 무단 유출이 이미 입증됐다",
+      "explanation": "약점 존재만으로 실제 효과를 입증하지 못한다."
+    },
+    {
+      "id": "B",
+      "text": "외부 경로가 막혀 있으므로 과거와 내부 경로도 모두 안전하다",
+      "explanation": "검토한 경로·시점 밖으로 일반화했다."
+    },
+    {
+      "id": "C",
+      "text": "약점은 확인했지만 실제 무단 열람 여부는 추가 증거가 필요하다",
+      "explanation": "알려진 취약 조건과 현재 부족한 성공 증거의 범위를 구별한다."
+    },
+    {
+      "id": "D",
+      "text": "성공 로그가 없으므로 대응도 필요 없다",
+      "explanation": "불완전한 로그는 무침해 증명이 아니며 약점 조치·의심 사건 조사와 별개다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "확인된 것은 취약 설정과 검토한 경로의 차단이다. 불완전한 기록으로 실제 성공이나 과거 무침해를 확정할 수 없어 C다.",
+  "references": [
+    {
+      "id": "VULN",
+      "title": "NIST CSRC Glossary: Vulnerability",
+      "url": "https://csrc.nist.gov/glossary/term/vulnerability",
+      "scope": "NIST SP 800-30r1·800-61r3 연결 정의: 위협이 악용하거나 촉발할 수 있는 약점. 특정 자산에서 실제 악용됐다는 의미와 구분",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "INCIDENT",
+      "title": "NIST SP 800-61r3: Incident Response Recommendations",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf",
+      "scope": "2025년 4월 최종본의 DE.AE·RS.AN: 관찰 사건 분석·영향과 범위 판단, 증거 보존·분석. 실제 침해 성공을 임의 확정하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

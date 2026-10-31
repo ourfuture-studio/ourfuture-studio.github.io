@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E2-003",
+  "topicId": "IP27-2-03",
+  "title": "유일성 다음에 최소성 검사하기: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "M과 E 상호 식별",
+      "condition": "R(M,E,N), NULL 없음. F={M→EN,E→M}; 이 밖의 제약은 F의 논리적 귀결뿐. {M,N}을 검사한다.",
+      "code": null,
+      "result": "{M,N}은 슈퍼키이고 후보키가 아니다",
+      "explanation": "M 단독이 후보키이므로 N이 중복이다.",
+      "trace": [
+        "M+ = MEN",
+        "MN+ = MEN",
+        "M⊂MN → 최소성 실패"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "이름만 검사",
+      "condition": "R(M,E,N), NULL 없음. F={M→EN,E→M}; 이 밖의 제약은 F의 논리적 귀결뿐. {N}을 검사한다.",
+      "code": null,
+      "result": "{N}은 슈퍼키가 아니다",
+      "explanation": "N에서 시작하는 종속이 없어 E와 M을 얻지 못한다.",
+      "trace": [
+        "N+ = N",
+        "N+ ≠ EMN"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "E 종속 제거",
+      "condition": "R(M,E,N), NULL 없음. F={M→EN}만 성립하고 논리적 귀결 외의 제약 없음. {E}를 검사한다.",
+      "code": null,
+      "result": "{E}는 슈퍼키가 아니다",
+      "explanation": "이메일에서 다른 속성으로 가는 종속을 제거하면 E+는 E뿐이다.",
+      "trace": [
+        "E+ = E",
+        "전체 속성 미포함"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

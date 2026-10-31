@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E4-013",
+  "topicId": "IP27-4-13",
+  "title": "버퍼 경계 확인과 Canary의 역할: 조건 비교",
+  "instruction": "명시된 입력 조건을 바꾸고 판단 과정과 결과를 비교한다. 각 조건은 독립적으로 시작한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "사전 검사 없이 guard 사용",
+      "condition": "실제 C 실행이 아닌 바이트 배치 모형이다. 버퍼 위치는0..5의 6바이트, 입력은 ASCII 문자 6개와 끝의 0바이트 하나다. 복사는 위치0부터 순서대로 쓴다. 경계 검사는 없다. guard는 위치6에 초기값0xA5로 두고 복사 완료 후 함수 종료 모형에서 초기값과 비교한다. 다른 손상·공격·컴파일러 최적화는 모형에 없다.",
+      "code": null,
+      "result": "필요7바이트, 거부=False, 경계 밖 쓰기1회, guard 경보=True",
+      "explanation": "경계 확인은 쓰기 전에 입력을 막는다. guard는 지정한 위치가 달라졌는지 사후 검사한다.",
+      "trace": [
+        "필요 바이트=문자수+종단1",
+        "필요 7, 용량6",
+        "모형 결과 {'required_bytes': 7, 'rejected': False, 'outside_writes': 1, 'guard_alert': True}"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "사전 경계 검사 추가",
+      "condition": "실제 C 실행이 아닌 바이트 배치 모형이다. 버퍼 위치는0..5의 6바이트, 입력은 ASCII 문자 6개와 끝의 0바이트 하나다. 복사는 위치0부터 순서대로 쓴다. 경계 검사는 필요 바이트가6을 넘으면 복사 전 전체 입력을 거부한다. guard는 위치6에 초기값0xA5로 두고 복사 완료 후 함수 종료 모형에서 초기값과 비교한다. 다른 손상·공격·컴파일러 최적화는 모형에 없다.",
+      "code": null,
+      "result": "필요7바이트, 거부=True, 경계 밖 쓰기0회, guard 경보=False",
+      "explanation": "경계 확인은 쓰기 전에 입력을 막는다. guard는 지정한 위치가 달라졌는지 사후 검사한다.",
+      "trace": [
+        "필요 바이트=문자수+종단1",
+        "필요 7, 용량6",
+        "모형 결과 {'required_bytes': 7, 'rejected': True, 'outside_writes': 0, 'guard_alert': False}"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "guard 제거",
+      "condition": "실제 C 실행이 아닌 바이트 배치 모형이다. 버퍼 위치는0..5의 6바이트, 입력은 ASCII 문자 6개와 끝의 0바이트 하나다. 복사는 위치0부터 순서대로 쓴다. 경계 검사는 없다. guard는 없다. 다른 손상·공격·컴파일러 최적화는 모형에 없다.",
+      "code": null,
+      "result": "필요7바이트, 거부=False, 경계 밖 쓰기1회, guard 경보=False",
+      "explanation": "경계 확인은 쓰기 전에 입력을 막는다. guard는 지정한 위치가 달라졌는지 사후 검사한다.",
+      "trace": [
+        "필요 바이트=문자수+종단1",
+        "필요 7, 용량6",
+        "모형 결과 {'required_bytes': 7, 'rejected': False, 'outside_writes': 1, 'guard_alert': False}"
+      ]
+    }
+  ],
+  "boundary": "명시한 바이트·guard 교육 모형만 계산했다. 실제 C의 경계 밖 쓰기, GCC 컴파일·스택 손상·공격을 실행하지 않았다."
+}

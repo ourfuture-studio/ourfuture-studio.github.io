@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-014",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-14"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[0,1,2,3,4,5]; a[1:5:2].",
+  "code": "a=[0,1,2,3,4,5]\nprint(a[1:5:2])\n",
+  "language": "Python",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[1, 3, 5]",
+      "explanation": "stop인 5를 포함했다."
+    },
+    {
+      "id": "B",
+      "text": "[1, 2, 3, 4]",
+      "explanation": "간격2를 무시했다."
+    },
+    {
+      "id": "C",
+      "text": "[1, 3]",
+      "explanation": "인덱스1,3을 선택하고5는 제외한다."
+    },
+    {
+      "id": "D",
+      "text": "[2, 4]",
+      "explanation": "시작 인덱스1을 한 칸 밀었다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "1에서 시작해 2씩 증가하면 1,3,5이나 5는 제외 경계이므로 [1,3]이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 Built-in Types",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html",
+      "scope": "Sequence Types의 슬라이스·range; set, tuple, dict의 가변성·키 제약",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

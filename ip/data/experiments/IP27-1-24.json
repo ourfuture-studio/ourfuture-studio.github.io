@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E1-024",
+  "topicId": "IP27-1-24",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "두 지표 차이",
+      "condition": "A/B 기능=10/10; 동일 세율 수정 위치 A1/B8; 실행 A Windows·Linux, B Windows만; 나머지 미측정.",
+      "code": null,
+      "result": "기능 동일, 수정 범위·실행 환경 다름",
+      "explanation": "지표별로 관찰을 나눈다.",
+      "trace": [
+        "10=10",
+        "1≠8",
+        "환경 집합 다름"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "수정 범위 동일",
+      "condition": "A/B 기능=10/10; 동일 세율 수정 위치 A1/B1; 실행 A Windows·Linux, B Windows만; 나머지 미측정.",
+      "code": null,
+      "result": "실행 환경 관찰만 다름",
+      "explanation": "변경 위치 차이가 사라졌다.",
+      "trace": [
+        "1=1",
+        "{W,L}≠{W}"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "환경도 동일",
+      "condition": "A/B 기능=10/10; 동일 세율 수정 위치 A1/B1; 둘 다 Windows·Linux 실행; 나머지 미측정.",
+      "code": null,
+      "result": "측정한 세 지표에서 동일",
+      "explanation": "전체 품질 동일은 여전히 미확정이다.",
+      "trace": [
+        "기능·수정 위치·환경 집합 일치",
+        "미측정 항목은 유보"
+      ]
+    }
+  ],
+  "boundary": "코드 위치 수 하나가 유지보수성 전체를 대표하지 않는다. 판본별 품질 특성 암기표를 대신하지 않는다."
+}

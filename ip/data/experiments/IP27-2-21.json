@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E2-021",
+  "topicId": "IP27-2-21",
+  "title": "같은 행 재조회와 격리 수준: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "격리 수준 READ COMMITTED",
+      "condition": "PostgreSQL 18 명세. 초기 R(7,20) 한 행. 순서: T1 BEGIN ISOLATION LEVEL READ COMMITTED; T1 일반 SELECT v WHERE id=7; T2 UPDATE v=25 WHERE id=7; T2 COMMIT; T1 동일 SELECT. T1 쓰기·잠금 SELECT·다른 거래 없음.",
+      "code": null,
+      "result": "20→25, 비반복 읽기",
+      "explanation": "T2 커밋이 두 번째 문장 스냅샷에 포함된다.",
+      "trace": [
+        "첫 SELECT:20",
+        "T2 v25 커밋",
+        "다음 SELECT:25"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "격리 수준 REPEATABLE READ",
+      "condition": "PostgreSQL 18 명세. 초기 R(7,20) 한 행. 순서: T1 BEGIN ISOLATION LEVEL REPEATABLE READ; T1 일반 SELECT v WHERE id=7; T2 UPDATE v=25 WHERE id=7; T2 COMMIT; T1 동일 SELECT. T1 쓰기·잠금 SELECT·다른 거래 없음.",
+      "code": null,
+      "result": "20→20",
+      "explanation": "첫 일반 SELECT의 스냅샷을 유지하여 이후 T2 커밋은 보지 않는다.",
+      "trace": [
+        "첫 SELECT 스냅샷20",
+        "T2 커밋",
+        "T1 기존 스냅샷20"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "상대 거래를 나중에 커밋",
+      "condition": "PostgreSQL 18 명세. 초기 R(7,20) 한 행. 순서: T1 BEGIN ISOLATION LEVEL READ COMMITTED; T1 일반 SELECT v WHERE id=7; T2 UPDATE v=25 WHERE id=7(아직 미커밋); T1 동일 일반 SELECT; 그 뒤 T2 COMMIT. T1 쓰기·잠금 SELECT·다른 거래 없음.",
+      "code": null,
+      "result": "20→20, 더티 읽기 없음",
+      "explanation": "두 번째 문장 전에 T2가 커밋하지 않아 기존 커밋 값 20을 본다.",
+      "trace": [
+        "T2 v25 미커밋",
+        "일반 SELECT는 미커밋25 배제",
+        "두 읽기 모두20"
+      ]
+    }
+  ],
+  "boundary": "PostgreSQL 18의 일반 SELECT와 명시한 일정에 한정한 명세 계산이다. 실제 두 세션 실행이나 다른 제품의 격리 구현 검증으로 표시하지 않는다."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-006",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-06"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. x=5에서 by_value(x)만 호출한다.",
+  "code": "#include <stdio.h>\nstatic void by_value(int v) { v=11; }\nstatic void by_pointer(int *p) { *p=11; }\nint main(void) {\n    int x=5;\n    by_value(x);\n    printf(\"%d\\n\",x);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "11",
+      "explanation": "함수의 v와 호출자의 x를 같은 객체로 간주한 결과이다."
+    },
+    {
+      "id": "B",
+      "text": "5",
+      "explanation": "정수값 복사로 초기화된 v만 수정된다."
+    },
+    {
+      "id": "C",
+      "text": "0",
+      "explanation": "x를 0으로 대입하는 문장은 없다."
+    },
+    {
+      "id": "D",
+      "text": "정의되지 않은 동작",
+      "explanation": "정상 범위의 값 복사와 지역 변수 대입이다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "v=11은 매개변수 v만 바꾸므로 main의 x는 5이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.5.2.2p4 함수 호출 시 인자값의 매개변수 대입, 6.5.3.2 간접 참조; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

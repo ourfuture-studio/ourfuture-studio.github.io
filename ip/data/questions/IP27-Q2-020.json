@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-020",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-20"
+  ],
+  "subject": 2,
+  "title": "취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?",
+  "origin": "original",
+  "tags": [
+    "SQL 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Account 초기 잔액 A60·B40에서 BEGIN 후 A만 15 차감하고 실패를 감지해 ROLLBACK한다. 동시 연결은 없다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 초기 Account는 A60·B40이다. 출금 뒤 실패를 감지해 명시적으로 롤백하며 동시 트랜잭션은 없다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Account(id TEXT PRIMARY KEY NOT NULL, balance INTEGER NOT NULL);\nINSERT INTO Account VALUES('A',60),('B',40);\nBEGIN; UPDATE Account SET balance=balance-15 WHERE id='A'; ROLLBACK;\nSELECT id,balance FROM Account ORDER BY id;",
+  "language": "sql",
+  "stem": "취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "A45·B40, 격리성",
+      "explanation": "롤백이 출금을 취소하므로 A45가 아니며 동시 관찰도 검사하지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "A60·B40, 원자성의 롤백 동작",
+      "explanation": "실행한 출금 효과를 취소해 원래 상태로 돌아간다."
+    },
+    {
+      "id": "C",
+      "text": "A45·B55, 지속성",
+      "explanation": "입금을 실행하지 않았고 커밋하지도 않았다."
+    },
+    {
+      "id": "D",
+      "text": "A60·B55, 모든 격리 수준 동등",
+      "explanation": "어느 명령도 B를 늘리지 않았고 격리 수준 비교도 없다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "BEGIN 안의 A 차감은 ROLLBACK으로 취소된다. B는 수정하지 않아 A60·B40이며 단일 작업의 취소를 확인하므로 B다.",
+  "references": [
+    {
+      "id": "TX",
+      "title": "PostgreSQL 18: Transactions",
+      "url": "https://www.postgresql.org/docs/18/tutorial-transactions.html",
+      "scope": "3.4: 여러 단계를 하나로 묶는 원자성, BEGIN/COMMIT/ROLLBACK, 중간 상태의 관찰",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "STX",
+      "title": "SQLite: Transaction",
+      "url": "https://www.sqlite.org/lang_transaction.html",
+      "scope": "2 Transactions: 명시적 BEGIN, COMMIT, ROLLBACK의 범위",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

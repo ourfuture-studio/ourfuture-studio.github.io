@@ -1,0 +1,42 @@
+{
+  "id": "IP27-E4-003",
+  "topicId": "IP27-4-03",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "역할표 적용",
+      "condition": "허용 근거는 역할표만; U=검토자; 검토자=승인 가능; 소유자 재량/등급 미사용.",
+      "code": null,
+      "result": "RBAC",
+      "explanation": "역할이 권한을 매개한다.",
+      "trace": [
+        "U→검토자→승인"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "소유자 재량 적용",
+      "condition": "허용 근거는 소유자 재량만; 문서 소유자V가 U에게 읽기를 직접 부여; 역할/등급 미사용.",
+      "code": null,
+      "result": "DAC",
+      "explanation": "소유자가 허용 대상을 정했다.",
+      "trace": [
+        "소유자V→U 읽기 허락"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "강제 등급 정책 적용",
+      "condition": "허용 근거는 중앙 강제 정책만; 문서 등급2, U 인가1; 읽기는 인가≥등급일 때만 허용; 재량/역할 미사용.",
+      "code": null,
+      "result": "MAC, 읽기 거부",
+      "explanation": "중앙 정책의 등급 조건이 거짓이다.",
+      "trace": [
+        "인가1≥등급2 거짓→거부"
+      ]
+    }
+  ],
+  "boundary": "다중 정책 조합과 Bell-LaPadula/Biba의 전체 규칙은 별도다."
+}

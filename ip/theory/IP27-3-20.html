@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>트리 순회에서 루트를 읽는 시점 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-20"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-20 · 이론 읽기</p><h1>트리 순회에서 루트를 읽는 시점</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-20">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-20">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>왼쪽·오른쪽 순서를 고정한 뒤 현재 노드를 언제 읽는지 정한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>이진 트리는 각 노드가 왼쪽 자식과 오른쪽 자식을 최대 하나씩 갖는 구조이다. 순회는 각 노드를 정해진 규칙에 따라 한 번씩 방문하는 절차이다. 여기서 방문은 이름을 결과에 적는 동작이다.</p>
+<p>전위는 현재 노드→왼쪽 서브트리→오른쪽 서브트리, 중위는 왼쪽→현재→오른쪽, 후위는 왼쪽→오른쪽→현재이다. 서브트리에서도 같은 규칙을 재귀적으로 적용한다.</p>
+<p>노드가 없는 자식에서는 아무것도 적지 않고 돌아온다. 일반 이진 트리의 중위 결과가 항상 정렬된다고 말할 수는 없다. 그 성질에는 이진 탐색 트리의 키 배치 조건이 필요하다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  루트A, A.left=B, A.right=C, B.left=None, B.right=D, C/D는 잎.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구조</td>
+<td>A의 왼쪽B·오른쪽C; B의 오른쪽D</td>
+</tr>
+<tr>
+<td>중위의 B서브트리</td>
+<td>B D</td>
+</tr>
+<tr>
+<td>전체 중위</td>
+<td>B D A C</td>
+</tr>
+</tbody>
+</table></div>
+<p>B의 왼쪽이 비어 있어 B를 먼저 적고, B 오른쪽D 뒤에 A를 적는다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>전·중·후는 자식 순서보다 현재 노드를 읽는 위치를 가리킨다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>자식이 둘 이하인 순서 있는 이진 트리이며 왼쪽 자식부터 처리한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://xlinux.nist.gov/dads/HTML/preorderTraversal.html" rel="noopener noreferrer" target="_blank">NIST DADS preorder traversal</a> — 정의와 이진 트리 root-left-right 의사코드. 확인일 2026-10-31.</li>
+<li><a href="https://xlinux.nist.gov/dads/HTML/inorderTraversal.html" rel="noopener noreferrer" target="_blank">NIST DADS in-order traversal</a> — 정의와 left-root-right 의사코드. 확인일 2026-10-31.</li>
+<li><a href="https://xlinux.nist.gov/dads/HTML/postorderTraversal.html" rel="noopener noreferrer" target="_blank">NIST DADS postorder traversal</a> — 정의와 left-right-root 의사코드. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-020">중위 순회 결과는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

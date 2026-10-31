@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-012",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-12"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  a와 b를 각각 new String(\"sun\")으로 생성한다.",
+  "code": "public class Main {\n\n public static void main(String[] args) {\n String a=new String(\"sun\"),b=new String(\"sun\"); System.out.println((a==b)+\" \"+a.equals(b));\n }\n}\n",
+  "language": "Java",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "true true",
+      "explanation": "별도 new 객체의 참조는 다르다."
+    },
+    {
+      "id": "B",
+      "text": "false false",
+      "explanation": "String.equals는 같은 문자 시퀀스를 같다고 본다."
+    },
+    {
+      "id": "C",
+      "text": "true false",
+      "explanation": "참조와 내용의 두 결과를 모두 뒤집었다."
+    },
+    {
+      "id": "D",
+      "text": "false true",
+      "explanation": "객체는 다르고 내용은 같다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "별도 생성 객체이므로 a==b는 false, 문자 내용 sun이 같아 a.equals(b)는 true이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Expressions",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html",
+      "scope": "15.11.1 필드 접근, 15.12.2 오버로드 선택, 15.12.4.4 동적 메서드 선택, 15.21.3 참조 동등성",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Java SE 17 String API",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html",
+      "scope": "String 불변성, equals(Object)의 문자 시퀀스 비교",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-013",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-13"
+  ],
+  "subject": 3,
+  "title": "a를 출력한 결과는?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[[1],[2]]; b=a.copy(); b[0].append(9).",
+  "code": "a=[[1],[2]]\nb=a.copy()\nb[0].append(9)\nprint(a)\n",
+  "language": "Python",
+  "stem": "a를 출력한 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[[1], [2]]",
+      "explanation": "내부 리스트까지 복사됐다고 가정한 결과이다."
+    },
+    {
+      "id": "B",
+      "text": "[[1, 9], [2]]",
+      "explanation": "얕은 복사의 내부 첫 리스트는 공유된다."
+    },
+    {
+      "id": "C",
+      "text": "[[1], [2], [9]]",
+      "explanation": "append 대상은 바깥 b가 아니라 b[0]이다."
+    },
+    {
+      "id": "D",
+      "text": "[[9], [2]]",
+      "explanation": "append는 기존 1을 지우지 않는다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "b는 별도 바깥 리스트지만 b[0] is a[0]이므로 내부 append가 a에도 보인다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 copy",
+      "url": "https://docs.python.org/3.13/library/copy.html",
+      "scope": "대입의 바인딩 및 얕은 복사와 깊은 복사 정의",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

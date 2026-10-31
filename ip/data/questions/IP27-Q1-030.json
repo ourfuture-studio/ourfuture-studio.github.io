@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-030",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-30"
+  ],
+  "subject": 1,
+  "title": "P와 Q의 검사 방식은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "도구 P는 소스 코드를 구문 분석하고 제어 흐름을 계산해 도달 불가능한 문장 한 곳을 보고했다. 대상 프로그램은 실행하지 않았다. 도구 Q는 실제 입력으로 실행해 응답 시간 4초를 측정하고 목표 3초 이하와 비교했다.",
+  "code": null,
+  "language": null,
+  "stem": "P와 Q의 검사 방식은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "P·Q 모두 정적 분석",
+      "explanation": "Q는 대상 실행 결과를 관찰한다."
+    },
+    {
+      "id": "B",
+      "text": "P·Q 모두 동적 테스트",
+      "explanation": "P는 대상 프로그램을 실행하지 않았다."
+    },
+    {
+      "id": "C",
+      "text": "P는 동적, Q는 정적",
+      "explanation": "실행 여부를 뒤집었다."
+    },
+    {
+      "id": "D",
+      "text": "P는 정적 분석, Q는 동적 테스트",
+      "explanation": "명시한 도구 동작과 일치한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "P는 코드를 분석했지만 실행하지 않았다. Q는 실제로 실행해 시간 결과를 얻었으므로 각각 정적 분석과 동적 테스트다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ISTQB CTFL Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "scope": "3.1 Static Testing Basics, 3.1.3 Differences between Static and Dynamic Testing; 문서33~34쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

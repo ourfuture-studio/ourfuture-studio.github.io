@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-006",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-06"
+  ],
+  "subject": 4,
+  "title": "검색 값의 의미를 유지하며 이 쿼리를 수행한 결과는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "Python3.13.9 sqlite3, SQLite3.51.0의 인메모리 DB다. users(id INTEGER PRIMARY KEY,name TEXT NOT NULL)에(1,\"O'Neil\"),(2,'Seo') 두 행만 있다. name 중복과 NULL은 없고 ORDER BY id로 정렬한다. 검색 값은 문자열 \"O'Neil\"이다. 아래 SQL의 ?에 이 값을 API로 바인딩한다.",
+  "code": "SELECT id FROM users WHERE name = ? ORDER BY id;",
+  "language": "sql",
+  "stem": "검색 값의 의미를 유지하며 이 쿼리를 수행한 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "id1 한 행",
+      "explanation": "따옴표가 문자열 데이터로 전달돼 정확한 이름과 일치한다."
+    },
+    {
+      "id": "B",
+      "text": "id2 한 행",
+      "explanation": "Seo는 입력 이름과 다르다."
+    },
+    {
+      "id": "C",
+      "text": "따옴표를 지운 ONeil로 반드시 검색한다",
+      "explanation": "바인딩은 문자열 내용을 임의 삭제하지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "?가 users의 열 이름으로 치환된다",
+      "explanation": "?는 데이터값이며 식별자 구조 치환이 아니다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "바인딩 값은 O'Neil 그대로다. id1의 name과만 일치하므로 결과는[(1,)]이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP SQL Injection Prevention Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "scope": "Prepared Statements 및 Allow-list 구조 토큰; 값 바인딩과 prepare 전 문자열 연결의 차이",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

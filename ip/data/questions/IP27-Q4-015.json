@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q4-015",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-15"
+  ],
+  "subject": 4,
+  "title": "제시한 분류에 대한 판단으로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "시스템 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "P는 독립적으로 다른 호스트로 자기 복제하며 전파한다. 유용한 앱 위장 없음. 파일을 암호화하고 복구 대가를 요구한다. 이 네 특징 외의 숨은 행동은 가정하지 않으며 실제 악성코드는 실행하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "제시한 분류에 대한 판단으로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "웜 특성과 랜섬웨어 피해 특성을 함께 가질 수 있다",
+      "explanation": "자기 전파와 암호화 협박은 서로 다른 축이므로 동시에 성립할 수 있다."
+    },
+    {
+      "id": "B",
+      "text": "웜이면 랜섬웨어 행동은 불가능하다",
+      "explanation": "서로 배타적이라는 근거가 없다."
+    },
+    {
+      "id": "C",
+      "text": "랜섬웨어는 반드시 모두 자기 복제로 전파된다",
+      "explanation": "피해·협박 행동만으로 전파 방식을 강제할 수 없다."
+    },
+    {
+      "id": "D",
+      "text": "반드시 유용한 앱으로 위장했으므로 트로이목마다",
+      "explanation": "유용한 앱 위장 조건을 제시하지 않았다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "자기 복제 전파는 웜 특성, 암호화 후 대가 요구는 랜섬웨어 행동이다. 두 특징이 함께 있어 A다.",
+  "references": [
+    {
+      "id": "WORM",
+      "title": "NIST CSRC Glossary: Worm",
+      "url": "https://csrc.nist.gov/glossary/term/worm",
+      "scope": "NIST SP 800-28v2 연결 정의: 사용자 개입 없이 독립적으로 복제·전파하는 프로그램",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "TROJAN",
+      "title": "NIST CSRC Glossary: Trojan Horse",
+      "url": "https://csrc.nist.gov/glossary/term/trojan_horse",
+      "scope": "NIST SP 800-12r1 및 800-28v2 연결 정의: 유용해 보이는 기능에 숨긴 악성 기능",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "RANSOM",
+      "title": "NIST IR 8374r1: Ransomware Risk Management",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ir/2026/NIST.IR.8374r1.pdf",
+      "scope": "2026년 6월 최종본, Introduction: 데이터 암호화·접근 복구 금전 요구, 정보 탈취 후 공개 협박도 가능. 원문 전체를 대표하는 방어 성능 주장은 하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

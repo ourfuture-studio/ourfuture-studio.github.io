@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-005",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-05"
+  ],
+  "subject": 2,
+  "title": "이름→부서에 대한 가장 정확한 판단은?",
+  "origin": "original",
+  "tags": [
+    "논리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "직원번호는 유일하고 NULL이 없다. 서로 같은 이름이 다른 부서에서 근무하는 것을 허용한다. 현재 행은 (E1,나래,A),(E2,두리,B)이다. 직원번호 유일·NULL 없음. 동명이인·서로 다른 부서 허용. 현재 (E1,나래,A),(E2,두리,B). 이름→부서의 현재 표 만족 여부를 검사한다.",
+  "code": null,
+  "language": null,
+  "stem": "이름→부서에 대한 가장 정확한 판단은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "현재 만족하므로 모든 미래 행에서도 보장된다",
+      "explanation": "한 표본의 만족은 모든 적법한 상태에 대한 보장을 주지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "업무가 동명이인의 다른 부서를 허용하므로 스키마의 FD로 보장할 수 없다",
+      "explanation": "같은 이름·다른 부서의 적법한 두 행을 만들 수 있다."
+    },
+    {
+      "id": "C",
+      "text": "행이 두 개면 FD를 평가할 수 없다",
+      "explanation": "현재 표의 만족 여부는 두 행에서도 검사할 수 있다."
+    },
+    {
+      "id": "D",
+      "text": "이름→부서가 없으면 직원번호도 키가 될 수 없다",
+      "explanation": "이름의 종속과 직원번호의 유일성은 별개다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "현재 표는 이름→부서를 만족하지만 (E3,나래,B)을 허용하면 (E1,나래,A)와 충돌한다. 따라서 업무 전체의 FD로 보장하지 못하므로 B다.",
+  "references": [
+    {
+      "id": "FD",
+      "title": "Database System Concepts 7판 저자 슬라이드: Normalization",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf",
+      "scope": "슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

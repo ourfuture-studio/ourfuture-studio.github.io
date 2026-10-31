@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E3-004",
+  "topicId": "IP27-3-04",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "배열 원소 수 3",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. int a[3]={0};",
+      "code": "#include <stdio.h>\nstatic int probe(int a[]) { return sizeof a == sizeof(int *); }\nint main(void) {\n    int a[3]={0};\n    printf(\"%zu %d\\n\",sizeof a/sizeof a[0],probe(a));\n    return 0;\n}\n",
+      "result": "3 1",
+      "explanation": "배열 길이와 포인터 조정 사실을 각각 출력한다.",
+      "trace": [
+        "호출자 전체크기/원소크기→3",
+        "함수 매개변수 int*→비교1"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "배열 원소 수 6",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. int a[6]={0};",
+      "code": "#include <stdio.h>\nstatic int probe(int a[]) { return sizeof a == sizeof(int *); }\nint main(void) {\n    int a[6]={0};\n    printf(\"%zu %d\\n\",sizeof a/sizeof a[0],probe(a));\n    return 0;\n}\n",
+      "result": "6 1",
+      "explanation": "호출자 길이만 바뀌고 매개변수 자료형은 같다.",
+      "trace": [
+        "전체크기/원소크기→6",
+        "함수 안 포인터크기 비교→1"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "배열 원소 수 1",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. int a[1]={0};",
+      "code": "#include <stdio.h>\nstatic int probe(int a[]) { return sizeof a == sizeof(int *); }\nint main(void) {\n    int a[1]={0};\n    printf(\"%zu %d\\n\",sizeof a/sizeof a[0],probe(a));\n    return 0;\n}\n",
+      "result": "1 1",
+      "explanation": "한 원소 배열도 실제 배열과 포인터 매개변수는 구분된다.",
+      "trace": [
+        "실제 배열 원소 수1",
+        "매개변수 int*→비교1"
+      ]
+    }
+  ],
+  "boundary": "VLA와 배열 포인터 매개변수는 다루지 않는다. sizeof 매개변수 관련 경고는 예상된 진단이며 오류와 구분한다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>원자성은 작업 안의 실패, 격리성은 동시 관찰을 다룬다 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-20"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-20 · 이론 읽기</p><h1>원자성은 작업 안의 실패, 격리성은 동시 관찰을 다룬다</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-20">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-20">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>이체 중간에 취소하는 문제와 다른 거래가 무엇을 보는 문제를 나누면 두 성질을 구별할 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>트랜잭션은 여러 명령을 하나의 완료 단위로 묶는다. 원자성은 이 단위의 효과가 전부 반영되거나 전부 취소되도록 하는 성질이다. 출금 후 입금 전에 문제가 생기면 해당 트랜잭션을 롤백해 출금도 취소할 수 있다.</p>
+<p>격리성은 동시 트랜잭션 사이에서 어떤 상태를 관찰할지 제한하는 성질이다. 읽기마다 새 커밋을 볼지, 트랜잭션 동안 스냅샷을 유지할지는 격리 수준과 DBMS에 달려 있다.</p>
+<p>원자성만으로 업무 절차의 누락을 알아내지는 않는다. 출금만 작성하고 그것을 정상 커밋하면 DBMS가 빠진 입금 명령을 스스로 만들지 않는다. 여기서는 단일 연결의 명시적 BEGIN/ROLLBACK/COMMIT만 실행해 동시성 보장을 측정하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Account 초기 잔액 A60·B40에서 BEGIN 후 A만 15 차감하고 실패를 감지해 ROLLBACK한다. 동시 연결은 없다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">계좌</th>
+<th scope="col">초기 잔액</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>60</td>
+</tr>
+<tr>
+<td>B</td>
+<td>40</td>
+</tr>
+</tbody>
+</table></div>
+<p>A에서 15를 뺀 뒤 ROLLBACK하면 A60·B40으로 되돌아간다. 이는 한 작업의 취소를 다루는 원자성 예다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>어떤 명령을 같은 트랜잭션에 넣었고 커밋했는지 취소했는지 추적한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/18/tutorial-transactions.html" rel="noopener noreferrer" target="_blank">PostgreSQL 18: Transactions</a> — 3.4: 여러 단계를 하나로 묶는 원자성, BEGIN/COMMIT/ROLLBACK, 중간 상태의 관찰. 확인일 2026-10-31.</li>
+<li><a href="https://www.sqlite.org/lang_transaction.html" rel="noopener noreferrer" target="_blank">SQLite: Transaction</a> — 2 Transactions: 명시적 BEGIN, COMMIT, ROLLBACK의 범위. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-020">취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

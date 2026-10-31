@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E3-005",
+  "topicId": "IP27-3-05",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "이동 원소 수 1",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a={4,9,15}, p=a+1.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a[]={4,9,15};\n    int *p=a+1;\n    printf(\"%td %d\\n\",p-a,*p);\n    return 0;\n}\n",
+      "result": "1 9",
+      "explanation": "두 번째 원소에 도달한다.",
+      "trace": [
+        "인덱스0→1",
+        "차이1, 값9"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "이동 원소 수 2",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a={4,9,15}, p=a+2.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a[]={4,9,15};\n    int *p=a+2;\n    printf(\"%td %d\\n\",p-a,*p);\n    return 0;\n}\n",
+      "result": "2 15",
+      "explanation": "마지막 유효 원소를 가리킨다.",
+      "trace": [
+        "인덱스0→2",
+        "차이2, 값15"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "이동 원소 수 0",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. a={4,9,15}, p=a+0.",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a[]={4,9,15};\n    int *p=a+0;\n    printf(\"%td %d\\n\",p-a,*p);\n    return 0;\n}\n",
+      "result": "0 4",
+      "explanation": "시작 원소에 머문다.",
+      "trace": [
+        "인덱스0 유지",
+        "차이0, 값4"
+      ]
+    }
+  ],
+  "boundary": "역참조하는 모든 포인터는 같은 실제 배열의 유효 원소를 가리킨다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

@@ -1,0 +1,47 @@
+{
+  "id": "IP27-E3-006",
+  "topicId": "IP27-3-06",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "정수값 x 전달",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. x=5; by_value(x).",
+      "code": "#include <stdio.h>\nstatic void by_value(int v) { v=11; }\nstatic void by_pointer(int *p) { *p=11; }\nint main(void) {\n    int x=5;\n    by_value(x);\n    printf(\"%d\\n\",x);\n    return 0;\n}\n",
+      "result": "5",
+      "explanation": "v만 변경된다.",
+      "trace": [
+        "x값5 복사→v",
+        "v=11",
+        "x=5 유지"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "x의 주소 전달",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. x=5; by_pointer(&x).",
+      "code": "#include <stdio.h>\nstatic void by_value(int v) { v=11; }\nstatic void by_pointer(int *p) { *p=11; }\nint main(void) {\n    int x=5;\n    by_pointer(&x);\n    printf(\"%d\\n\",x);\n    return 0;\n}\n",
+      "result": "11",
+      "explanation": "복사한 주소를 통해 x를 수정한다.",
+      "trace": [
+        "p=&x",
+        "*p=11→x=11"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "주소 전달 뒤 값 전달",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. x=5; by_pointer(&x); by_value(x).",
+      "code": "#include <stdio.h>\nstatic void by_value(int v) { v=11; }\nstatic void by_pointer(int *p) { *p=11; }\nint main(void) {\n    int x=5;\n    by_pointer(&x);\n    by_value(x);\n    printf(\"%d\\n\",x);\n    return 0;\n}\n",
+      "result": "11",
+      "explanation": "첫 호출이 바꾼 x를 두 번째 호출이 원복하지 않는다.",
+      "trace": [
+        "첫 호출 x=11",
+        "둘째 v=11 대입",
+        "x=11 유지"
+      ]
+    }
+  ],
+  "boundary": "모든 포인터는 호출 중 살아 있는 int 객체를 가리킨다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q4-003",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-03"
+  ],
+  "subject": 4,
+  "title": "이 허용의 직접 근거에 맞는 모델은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "한 시스템은 역할표만으로 권한을 정한다. U는 '검토자' 역할이며 검토자 역할에는 승인 권한이 있다. 문서 소유자의 개인 허락과 보안 등급은 판정에 사용하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "이 허용의 직접 근거에 맞는 모델은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "DAC: 소유자가 U에게 직접 허락했기 때문이다",
+      "explanation": "소유자의 직접 허락을 사용하지 않는다고 명시했다."
+    },
+    {
+      "id": "B",
+      "text": "MAC: U와 문서의 등급 비교 때문이다",
+      "explanation": "등급을 사용하지 않는다고 명시했다."
+    },
+    {
+      "id": "C",
+      "text": "인증 성공만으로 승인한 모델이다",
+      "explanation": "역할과 승인 권한 관계가 근거다."
+    },
+    {
+      "id": "D",
+      "text": "RBAC: U→검토자→승인 권한 관계 때문이다",
+      "explanation": "역할을 매개로 권한을 결정한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "사용자 U가 검토자이고 검토자가 승인 권한을 갖는다. 역할을 통과해 작업 권한을 얻으므로 RBAC다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST CSRC Glossary — discretionary access control",
+      "url": "https://csrc.nist.gov/glossary/term/discretionary_access_control",
+      "scope": "Definitions: 재량적 권한 부여와 다른 주체에 권한 전달",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST CSRC Glossary — mandatory access control",
+      "url": "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+      "scope": "Definitions: sensitivity/clearance 기반 mandatory policy",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R3",
+      "title": "NIST CSRC Glossary — role-based access control",
+      "url": "https://csrc.nist.gov/glossary/term/role_based_access_control",
+      "scope": "Definitions: individual identity 대신 role과 permission 관계",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

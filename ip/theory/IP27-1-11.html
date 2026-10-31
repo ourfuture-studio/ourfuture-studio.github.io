@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>클래스와 개별 객체의 상태 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-1-11"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-11 · 이론 읽기</p><h1>클래스와 개별 객체의 상태</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-1-11">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-11">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>설계가 같아도 생성한 두 객체의 상태는 다를 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>클래스는 객체의 상태와 동작을 정의하는 틀이다. 인스턴스는 그 클래스로 만든 개별 객체이며, 이 예제의 인스턴스 필드는 객체마다 따로 가진다.</p>
+<p>같은 Seat 클래스로 좌석 a와 b를 만들더라도 a의 예약 상태 변경이 곧 b의 상태 변경을 뜻하지 않는다.</p>
+<p>두 변수가 같은 객체를 가리키는 경우에는 상태를 공유한다. 클래스가 같다는 것과 객체의 동일성이 같다는 것을 나눈다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>언어 중립 객체 모형이다. Seat의 reserved는 공유 변수가 아닌 인스턴스 상태이며 초기값은 false다. a와 b는 각각 새로 생성한 서로 다른 Seat다. a.reserved만 true로 바꾼다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=새 객체2; a.reserved=true.</td>
+<td>a=true, b=false</td>
+</tr>
+<tr>
+<td>Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=a; a.reserved=true.</td>
+<td>a=true, b=true</td>
+</tr>
+<tr>
+<td>Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=새 객체2; b.reserved=true.</td>
+<td>a=false, b=true</td>
+</tr>
+</tbody>
+</table></div>
+<p>새 객체가 두 개이고 필드는 인스턴스별이다. a에만 변경이 적용되므로 a는 true, b는 초기값 false다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>같은 클래스인지와 같은 객체인지 따로 확인한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>정적 필드·상속·언어별 접근 문법은 제외한 객체 모형이다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/concepts/class.html" rel="noopener noreferrer" target="_blank">Oracle Java Tutorials (JDK 8) — What Is a Class?</a> — What Is a Class? 본문 및 두 개 객체를 각각 생성하는 예제. 확인일 2026-10-31.</li>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/concepts/object.html" rel="noopener noreferrer" target="_blank">Oracle Java Tutorials (JDK 8) — What Is an Object?</a> — 객체의 상태와 메서드 정의. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-011">변경 후 상태는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

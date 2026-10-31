@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E2-018",
+  "topicId": "IP27-2-18",
+  "title": "일반 뷰는 저장된 조회 정의다: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "제외 행의 수량 증가",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Stock과 일반 뷰 Ready는 아래 정의와 같다. id1 qty를 6으로 변경 후 조회한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Stock(id INTEGER PRIMARY KEY, qty INTEGER NOT NULL);\nINSERT INTO Stock VALUES(1,4),(2,7);\nCREATE VIEW Ready AS SELECT id,qty FROM Stock WHERE qty>=5;\nUPDATE Stock SET qty=6 WHERE id=1;\nSELECT id,qty FROM Ready ORDER BY id;",
+      "result": "(1,6),(2,7)",
+      "explanation": "변경된 원본 두 행이 뷰 조건을 만족한다.",
+      "trace": [
+        "id1:4→6",
+        "6≥5,7≥5 → 두행"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "포함 행의 수량 감소",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 초기 Stock (1,4),(2,7)에서 id2만 qty3으로 바꾼다. Ready 정의는 동일하다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Stock(id INTEGER PRIMARY KEY, qty INTEGER NOT NULL);\nINSERT INTO Stock VALUES(1,4),(2,7);\nCREATE VIEW Ready AS SELECT id,qty FROM Stock WHERE qty>=5;\nUPDATE Stock SET qty=3 WHERE id=2;\nSELECT id,qty FROM Ready ORDER BY id;",
+      "result": "0행",
+      "explanation": "qty4와 3은 모두 조건을 만족하지 않는다.",
+      "trace": [
+        "id2:7→3",
+        "4<5,3<5 → 없음"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "원본 포함 행 삭제",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 초기 Stock (1,4),(2,7)에서 id2를 삭제한다. Ready 정의는 동일하다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Stock(id INTEGER PRIMARY KEY, qty INTEGER NOT NULL);\nINSERT INTO Stock VALUES(1,4),(2,7);\nCREATE VIEW Ready AS SELECT id,qty FROM Stock WHERE qty>=5;\nDELETE FROM Stock WHERE id=2;\nSELECT id,qty FROM Ready ORDER BY id;",
+      "result": "0행",
+      "explanation": "포함되던 원본 행을 지워 뷰에서도 사라진다.",
+      "trace": [
+        "id2 삭제",
+        "남은 id1 qty4<5 → 없음"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

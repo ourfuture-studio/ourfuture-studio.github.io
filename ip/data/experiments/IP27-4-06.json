@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E4-006",
+  "topicId": "IP27-4-06",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "따옴표 포함 값",
+      "condition": "Python3.13.9/SQLite3.51.0 인메모리; users(id PK,name TEXT NOT NULL)={(1,\"O'Neil\"),(2,'Seo')}; 중복/NULL 없음; SELECT id FROM users WHERE name=? ORDER BY id; 바인딩=\"O'Neil\".",
+      "code": "SELECT id FROM users WHERE name = ? ORDER BY id; -- params: (\"O'Neil\",)",
+      "result": "[(1,)]",
+      "explanation": "id1의 이름만 일치한다.",
+      "trace": [
+        "고정 SQL + 별도 값",
+        "O'Neil=O'Neil 참",
+        "id1 반환"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "값만 변경",
+      "condition": "Python3.13.9/SQLite3.51.0 인메모리; users(id PK,name TEXT NOT NULL)={(1,\"O'Neil\"),(2,'Seo')}; 중복/NULL 없음; SELECT id FROM users WHERE name=? ORDER BY id; 바인딩='Seo'.",
+      "code": "SELECT id FROM users WHERE name = ? ORDER BY id; -- params: ('Seo',)",
+      "result": "[(2,)]",
+      "explanation": "id2의 이름만 일치한다.",
+      "trace": [
+        "Seo 일치→id2"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "글자 삭제 후 값",
+      "condition": "Python3.13.9/SQLite3.51.0 인메모리; users(id PK,name TEXT NOT NULL)={(1,\"O'Neil\"),(2,'Seo')}; 중복/NULL 없음; SELECT id FROM users WHERE name=? ORDER BY id; 바인딩='ONeil'.",
+      "code": "SELECT id FROM users WHERE name = ? ORDER BY id; -- params: ('ONeil',)",
+      "result": "[]",
+      "explanation": "따옴표를 삭제하면 원래 이름과 다른 문자열이다.",
+      "trace": [
+        "ONeil≠O'Neil",
+        "ONeil≠Seo→빈 결과"
+      ]
+    }
+  ],
+  "boundary": "자체 인메모리 SELECT 예제다. 실제 계정·실서비스 공격·모든 SQL 방언의 자동 호환을 다루지 않는다."
+}

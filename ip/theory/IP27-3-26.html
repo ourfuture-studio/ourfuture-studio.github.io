@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>잠금 순서를 통일해 순환 대기 막기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-26"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-26 · 이론 읽기</p><h1>잠금 순서를 통일해 순환 대기 막기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-26">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-26">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>잠금 하나를 기다리는 상태와 서로 영원히 기다리는 교착을 구분한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>교착상태는 여러 실행 흐름이 서로가 내놓아야 할 자원을 기다려 진행할 수 없는 상태이다. 자원 독점, 자원 보유 중 추가 요청, 비선점, 순환 대기는 교착에 필요한 네 조건으로 설명된다.</p>
+<p>잠금 R, S에 모든 스레드가 R 다음 S 순서를 지키게 하면 S를 보유한 채 R을 새로 기다리는 역방향 요청을 막는다. R&lt;S라는 공통 순서에 따라 요청하면 대기 간선이 돌아오는 순환을 만들 수 없다.</p>
+<p>일시적 대기는 여전히 생길 수 있다. P가 R을 가진 동안 Q가 R을 기다려도 P가 S를 얻어 작업을 마치고 해제할 수 있으면 그 사실만으로 교착이 아니다. 여기서는 잠금마다 인스턴스 하나와 유한한 임계구역을 가정한다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>모든 스레드가 잠금 R을 먼저 얻은 다음 S를 요청하도록 강제한다. R, S는 독점 잠금이며 각각 한 개이다. 다른 대기 자원은 없다. 작업은 두 잠금을 얻으면 유한 시간 안에 끝내고 해제한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>공통 획득 순서</td>
+<td>모든 스레드 R→S</td>
+</tr>
+<tr>
+<td>P가 R 보유, Q가 R 대기</td>
+<td>대기는 있지만 P는 S획득 가능</td>
+</tr>
+<tr>
+<td>차단되는 조건</td>
+<td>순환 대기</td>
+</tr>
+</tbody>
+</table></div>
+<p>정해진 순서가 모든 경로에서 지켜지는지 확인해야 예방 논리가 성립한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>모든 잠금에 같은 순서를 적용하면 역방향 요청으로 돌아오는 순환을 막는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>R, S는 독점 잠금 각각 한 개이며 강제 해제는 없다. 정상 획득 후 작업은 유한 시간에 종료하고 해제한다. 실제 OS 실행 대신 명시한 자원 그래프를 검토한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf" rel="noopener noreferrer" target="_blank">OSTEP Common Concurrency Problems</a> — 32.3 교착의 네 조건 및 circular wait 예방을 위한 자원 순서. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-026">직접 차단하려는 교착 필요조건은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

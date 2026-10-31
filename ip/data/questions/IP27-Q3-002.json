@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-002",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-02"
+  ],
+  "subject": 3,
+  "title": "이 프로그램에 대한 올바른 판단은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. i++ + i를 사용한다.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int i=2;\n    printf(\"%d\\n\", i++ + i);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "이 프로그램에 대한 올바른 판단은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "언제나 4가 출력된다.",
+      "explanation": "변경과 읽기의 순서가 정해졌다고 가정한 숫자이다."
+    },
+    {
+      "id": "B",
+      "text": "언제나 5가 출력된다.",
+      "explanation": "특정 실행의 관찰 가능값을 표준 보장으로 바꿀 수 없다."
+    },
+    {
+      "id": "C",
+      "text": "정의되지 않은 동작이므로 표준이 출력값을 보장하지 않는다.",
+      "explanation": "동일 i의 변경과 읽기가 + 양쪽에서 비순서이다."
+    },
+    {
+      "id": "D",
+      "text": "괄호만 추가하면 언제나 5가 된다.",
+      "explanation": "괄호는 + 피연산자 사이의 순서를 만들지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "N1570 6.5p2의 같은 스칼라에 대한 비순서 변경·값 사용 조건에 해당하므로 숫자 정답을 고를 수 없다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.5p2~3 비순서 부수효과·값 계산, 6.5.13 논리 AND 순서; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

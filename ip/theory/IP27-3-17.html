@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>이름의 유효 범위와 객체의 생존 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-17"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-17 · 이론 읽기</p><h1>이름의 유효 범위와 객체의 생존</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-17">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-17">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>지역 이름을 사용할 수 없게 되어도 다른 참조가 유지하는 객체는 계속 사용할 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>유효 범위는 어떤 코드 위치에서 이름을 찾을 수 있는가의 문제이다. Python 함수 안에 대입된 지역 이름 items는 보통 함수 바깥에서 그 이름으로 접근할 수 없다.</p>
+<p>함수가 지역 리스트를 return하면 반환된 객체를 호출자가 다른 이름으로 참조할 수 있다. 함수 지역 이름의 사용 범위가 끝났다고 그 객체의 사용도 끝난 것은 아니다.</p>
+<p>객체를 더 이상 참조하지 않는 시점과 메모리가 실제 회수되는 시점도 같은 뜻은 아니다. 구현별 수거 시점이나 참조 카운트 값을 이 문제의 정답으로 삼지 않는다. C의 지역 자동 객체 주소를 반환하는 상황은 Python 리스트 반환과 별도 규칙이다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  make가 items=[3]을 만들어 반환하고 saved에 저장한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>make 안 items=[3]</td>
+<td>지역 이름</td>
+</tr>
+<tr>
+<td>saved=make()</td>
+<td>호출자가 반환 객체 참조</td>
+</tr>
+<tr>
+<td>saved.append(7)</td>
+<td>객체를 계속 수정·관찰 가능</td>
+</tr>
+</tbody>
+</table></div>
+<p>지역 이름과 반환된 리스트 객체를 서로 다른 대상으로 추적한다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>이름을 찾는 범위와 참조로 객체를 유지하는 기간을 분리한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>Python의 일반 리스트 반환만 다루며 정확한 메모리 회수 시점은 주장하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://docs.python.org/3.13/reference/executionmodel.html" rel="noopener noreferrer" target="_blank">Python 3.13 Execution model</a> — 4.2 이름 바인딩과 이름의 유효 범위. 확인일 2026-10-31.</li>
+<li><a href="https://docs.python.org/3.13/library/copy.html" rel="noopener noreferrer" target="_blank">Python 3.13 copy</a> — 대입의 바인딩 및 얕은 복사와 깊은 복사 정의. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-017">saved.append(7) 뒤 출력은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

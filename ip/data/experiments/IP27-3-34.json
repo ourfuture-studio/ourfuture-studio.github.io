@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-034",
+  "topicId": "IP27-3-34",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "try return3, finally return8",
+      "condition": "Java SE 17, 외부 입력 없음. f는 try에서 return 3, finally에서 return 8을 실행한다. main은 f의 반환값을 출력한다.",
+      "code": "public class Main {\n static int f(){ try { return 3; } finally { return 8; } }\n public static void main(String[] args) {\n System.out.println(f());\n }\n}\n",
+      "result": "8",
+      "explanation": "새 return이 이전 return을 대체한다.",
+      "trace": [
+        "try반환3보류",
+        "finally반환8",
+        "호출결과8"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "try return3, finally 정상 완료",
+      "condition": "Java SE 17, 외부 입력 없음. f의 try는 return 3, finally는 지역 변수 local=8 대입 뒤 정상 완료한다. main은 f의 반환값을 출력한다.",
+      "code": "public class Main {\n static int f(){ try { return 3; } finally { int local=8; } }\n public static void main(String[] args) {\n System.out.println(f());\n }\n}\n",
+      "result": "3",
+      "explanation": "finally가 정상 완료해 보류된 반환을 유지한다.",
+      "trace": [
+        "try반환3보류",
+        "finally지역대입8",
+        "정상완료→반환3"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "try return3, finally 새 예외",
+      "condition": "Java SE 17, 외부 입력 없음. f의 try는 return 3, finally는 new IllegalStateException(\"x\")를 던진다. main이 해당 예외를 잡아 단순 클래스 이름을 출력한다.",
+      "code": "public class Main {\n static int f(){ try { return 3; } finally { throw new IllegalStateException(\"x\"); } }\n public static void main(String[] args) {\n try { System.out.println(f()); } catch (IllegalStateException e) { System.out.println(e.getClass().getSimpleName()); }\n }\n}\n",
+      "result": "IllegalStateException",
+      "explanation": "새 throw가 반환 3을 대체해 호출자 처리기로 전달된다.",
+      "trace": [
+        "try반환3보류",
+        "finally새throw",
+        "main처리기→예외명출력"
+      ]
+    }
+  ],
+  "boundary": "Java SE 17 일반 실행이다. System.exit·강제 종료·무한 반복·try-with-resources는 제외한다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

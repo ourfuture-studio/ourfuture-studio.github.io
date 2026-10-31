@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-007",
+  "revision": 2,
+  "topicIds": [
+    "IP27-2-07"
+  ],
+  "subject": 2,
+  "title": "이 스키마에 대한 판단으로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "논리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "NULL 없는 관계 R(A,B,C)에서 F={AB→C,C→B}와 그 논리적 귀결만 성립한다. 모든 속성값은 원자적이다. R(A,B,C), F={AB→C,C→B}와 그 귀결만 존재. NULL·복합값 없음.",
+  "code": null,
+  "language": null,
+  "stem": "이 스키마에 대한 판단으로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "C가 후보키이므로 BCNF다",
+      "explanation": "C+={B,C}로 A가 빠져 슈퍼키가 아니다."
+    },
+    {
+      "id": "B",
+      "text": "후보키가 AB 하나뿐이다",
+      "explanation": "AC에서 C→B를 적용해 전체를 얻으므로 AC도 후보키다."
+    },
+    {
+      "id": "C",
+      "text": "3NF를 만족하지만 C→B 때문에 BCNF는 위반한다",
+      "explanation": "AB와 AC가 후보키여서 B는 주요 속성이지만 C는 슈퍼키가 아니다."
+    },
+    {
+      "id": "D",
+      "text": "기본키를 AB로 정하면 C→B는 없어지므로 BCNF다",
+      "explanation": "기본키 선택은 업무 FD 자체를 제거하지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "AB+와 AC+는 ABC이고 각각 최소다. C+는 BC다. C→B의 우변 B는 주요 속성이라 3NF 조건을 충족하지만 결정자 C가 비슈퍼키라 BCNF를 위반하여 C다.",
+  "references": [
+    {
+      "id": "FD",
+      "title": "Database System Concepts 7판 저자 슬라이드: Normalization",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf",
+      "scope": "슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

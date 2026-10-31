@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-010",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-10"
+  ],
+  "subject": 4,
+  "title": "정책S의 비밀키 수와 정책P의 키 쌍 수는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "사람은 A/B/C/D 4명이다. 정책S는 서로 다른 두 사람의 각 무순서 쌍마다 독립 대칭 비밀키 하나를 쓰고 방향별로 나누지 않는다. 정책P는 사람마다 공개키·개인키 한 쌍을 쓴다. S는 개별 비밀키 수, P는 키 쌍 수를 묻는다. 그룹키·세션키는 추가하지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "정책S의 비밀키 수와 정책P의 키 쌍 수는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "4개, 6쌍",
+      "explanation": "사람 수와 무순서 쌍 수를 뒤바꿨다."
+    },
+    {
+      "id": "B",
+      "text": "12개, 4쌍",
+      "explanation": "S에서 A→B와 B→A를 두 번 셌다."
+    },
+    {
+      "id": "C",
+      "text": "6개, 8쌍",
+      "explanation": "P의 공개키4개+개인키4개를 키 쌍8개로 혼동했다."
+    },
+    {
+      "id": "D",
+      "text": "6개, 4쌍",
+      "explanation": "S는4C2=6개, P는 사람별 한 쌍이므로4쌍이다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "S의 상대 쌍은 AB·AC·AD·BC·BD·CD로6개다. P는 A/B/C/D 각각 한 키 쌍이므로4쌍이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST CSRC Glossary — symmetric key algorithm",
+      "url": "https://csrc.nist.gov/glossary/term/symmetric_key_algorithm",
+      "scope": "Definitions: 허가된 당사자 사이 공유 비밀키",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST CSRC Glossary — asymmetric key algorithm",
+      "url": "https://csrc.nist.gov/glossary/term/asymmetric_key_algorithm",
+      "scope": "Definitions: 관련된 공개키/개인키 두 키",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

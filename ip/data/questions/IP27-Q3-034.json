@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-034",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-34"
+  ],
+  "subject": 3,
+  "title": "main의 출력은?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장한다. 외부 입력은 없다. f의 try는 return 3, finally는 return 8로 끝난다. main이 f의 반환값을 한 번 출력한다.",
+  "code": "public class Main {\n static int f(){ try { return 3; } finally { return 8; } }\n public static void main(String[] args) {\n System.out.println(f());\n }\n}\n",
+  "language": "Java",
+  "stem": "main의 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "3",
+      "explanation": "finally의 새 반환이 앞 반환을 대체하는 규칙을 놓쳤다."
+    },
+    {
+      "id": "B",
+      "text": "8",
+      "explanation": "finally가 return 8로 비정상 완료해 이전 return 3을 대체한다."
+    },
+    {
+      "id": "C",
+      "text": "3 8",
+      "explanation": "두 return은 출력문이 아니며 호출 결과 하나만 출력한다."
+    },
+    {
+      "id": "D",
+      "text": "컴파일 오류",
+      "explanation": "finally의 return은 허용된다. 정상 완료되지 않는 finally에 대한 경고 가능성과 오류는 별개이다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "try의 return 3을 보류한 뒤 finally를 실행한다. finally가 return 8로 끝나므로 최종 반환은 8이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Blocks and Statements",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html",
+      "scope": "14.20.2 try-finally의 정상 완료와 비정상 완료 분기",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>로그의 새 값 재현과 이전 값 복원 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-23"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-23 · 이론 읽기</p><h1>로그의 새 값 재현과 이전 값 복원</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-23">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-23">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>커밋 기록과 갱신 로그를 함께 읽어야 장애 뒤 남길 효과를 정할 수 있다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>로그 기반 복구에서 갱신 기록은 어떤 거래가 어떤 값을 바꾸었는지 보관한다. 교육 모형의 &lt;T,X,old,new&gt;는 거래 T가 항목 X를 old에서 new로 바꾼 기록이다. 로그를 데이터 페이지보다 먼저 안정 저장하는 조건을 전제한다.</p>
+<p>여기서는 교재의 역사를 재현하는 2단계 모형을 고정한다. 먼저 기록된 갱신을 순방향 REDO해 new 값을 적용하고, 완료하지 못한 거래는 역방향 UNDO해 old 값으로 되돌린다. 이 방식에서는 미완료 거래도 REDO 단계에 포함될 수 있다.</p>
+<p>커밋 거래만 REDO한다는 규칙을 모든 복구 알고리즘의 정의로 쓰면 안 된다. 실제 제품은 체크포인트, 페이지의 로그 위치, 보상 로그 등으로 대상을 정한다. 아래 예제는 손상 없는 안정 저장장치·서로 다른 항목 두 개의 명시적 모형이며 실제 DBMS 장애 복구를 수행한 것은 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>대표 사례의 모형은 모든 갱신 REDO 후 미완료 거래 UNDO다. T1은 X10→14 후 커밋, T2는 Y20→27 후 미완료이며 장애 시 디스크는 X10·Y27이다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">로그</th>
+<th scope="col">상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1: X10→14</td>
+<td>커밋</td>
+</tr>
+<tr>
+<td>T2: Y20→27</td>
+<td>미완료</td>
+</tr>
+<tr>
+<td>장애 디스크</td>
+<td>X10,Y27</td>
+</tr>
+</tbody>
+</table></div>
+<p>모든 갱신을 REDO하면 X14·Y27, 미완료 T2를 UNDO하면 Y20으로 복원되어 최종 X14·Y20이다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>복구 알고리즘의 REDO·UNDO 대상과 순서를 문제의 모형에서 먼저 고정한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>모든 갱신 REDO 후 미완료 UNDO라는 명시적 교육 모형을 Python으로 검산했다. 실제 DBMS 복구 알고리즘·디스크 장애 실행 결과가 아니다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.db-book.com/slides-dir/PDF-dir/ch19.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 7판 저자 슬라이드: Recovery System</a> — 슬라이드 19.12~19.17의 old/new 로그·즉시갱신, 19.27~19.28의 모든 갱신 REDO 후 미완료 거래 UNDO. 구현별 알고리즘 일반화 제외. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-023">정해진 모형으로 복구한 최종 값은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

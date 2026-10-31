@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-021",
+  "revision": 2,
+  "topicIds": [
+    "IP27-2-21"
+  ],
+  "subject": 2,
+  "title": "T1의 두 읽기와 해당 현상의 조합은?",
+  "origin": "original",
+  "tags": [
+    "SQL 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "PostgreSQL 18 명세. 초기 R(id=7,v=20) 한 행. T1은 READ COMMITTED에서 일반 SELECT로 id7을 읽는다. 이어 T2가 v25로 UPDATE하고 COMMIT한 뒤 T1이 같은 행을 다시 읽는다. T1의 쓰기·잠금 SELECT·그 밖의 거래는 없다. PostgreSQL 18 명세. 초기 R(7,20) 한 행. 순서: T1 BEGIN ISOLATION LEVEL READ COMMITTED; T1 일반 SELECT v WHERE id=7; T2 UPDATE v=25 WHERE id=7; T2 COMMIT; T1 동일 SELECT. T1 쓰기·잠금 SELECT·다른 거래 없음.",
+  "code": null,
+  "language": null,
+  "stem": "T1의 두 읽기와 해당 현상의 조합은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "20→25, 비반복 읽기",
+      "explanation": "다른 거래가 커밋한 동일 행의 변경을 두 번째 문장 스냅샷이 본다."
+    },
+    {
+      "id": "B",
+      "text": "20→25, 더티 읽기",
+      "explanation": "T2가 두 번째 SELECT 전에 커밋하므로 미커밋 값을 읽은 것이 아니다."
+    },
+    {
+      "id": "C",
+      "text": "20→20, 모든 Read Committed의 필수 결과",
+      "explanation": "이 DBMS와 일정에서는 각 SELECT의 스냅샷이 달라 후속 커밋이 보인다."
+    },
+    {
+      "id": "D",
+      "text": "20→25, 팬텀 읽기만 발생",
+      "explanation": "추가·삭제된 행 집합이 아니라 같은 키 한 행의 값 변경을 다룬다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "첫 문장 시점에는 v20, 두 번째 문장 전에는 T2의 v25가 커밋되어 있다. Read Committed의 문장별 스냅샷으로 20→25가 되어 A다.",
+  "references": [
+    {
+      "id": "ISO",
+      "title": "PostgreSQL 18: Transaction Isolation",
+      "url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+      "scope": "13.2 및 13.2.1~13.2.2: dirty/nonrepeatable/phantom read 정의, Read Committed 문장 스냅샷과 Repeatable Read 트랜잭션 스냅샷",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "BEGIN",
+      "title": "PostgreSQL 18: BEGIN",
+      "url": "https://www.postgresql.org/docs/18/sql-begin.html",
+      "scope": "Synopsis의 BEGIN ISOLATION LEVEL 문법",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

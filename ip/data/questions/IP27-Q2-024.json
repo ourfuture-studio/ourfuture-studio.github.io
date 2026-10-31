@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-024",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-24"
+  ],
+  "subject": 2,
+  "title": "Audit에 저장되는 행은?",
+  "origin": "original",
+  "tags": [
+    "SQL 응용"
+  ],
+  "kind": "single-choice",
+  "givens": "Product 초기 행은 (1,3),(2,8)이다. Audit은 비어 있다. 아래 행 트리거를 생성한 뒤 UPDATE Product SET qty=qty+1을 한 번 실행한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Product 두 행·빈 Audit, 아래 트리거 하나뿐이다. UPDATE를 한 번 실행한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE Product(id INTEGER PRIMARY KEY, qty INTEGER NOT NULL);\nCREATE TABLE Audit(product_id INTEGER NOT NULL, old_qty INTEGER NOT NULL, new_qty INTEGER NOT NULL);\nINSERT INTO Product VALUES(1,3),(2,8);\nCREATE TRIGGER qty_audit AFTER UPDATE OF qty ON Product\nFOR EACH ROW WHEN OLD.qty<>NEW.qty\nBEGIN\n  INSERT INTO Audit VALUES(NEW.id,OLD.qty,NEW.qty);\nEND;\nUPDATE Product SET qty=qty+1;\nSELECT product_id,old_qty,new_qty FROM Audit ORDER BY product_id;",
+  "language": "sql",
+  "stem": "Audit에 저장되는 행은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "0행: 트리거 이름을 직접 호출하지 않았다",
+      "explanation": "등록된 UPDATE 사건에 연결되어 자동으로 실행된다."
+    },
+    {
+      "id": "B",
+      "text": "1행: UPDATE 문장이 하나이기 때문이다",
+      "explanation": "SQLite의 이 트리거는 행 단위여서 대상 두 행을 각각 처리한다."
+    },
+    {
+      "id": "C",
+      "text": "(1,3,4),(2,8,9) 두 행",
+      "explanation": "각 행에서 qty가 달라 WHEN이 TRUE다."
+    },
+    {
+      "id": "D",
+      "text": "(1,4,4),(2,9,9) 두 행",
+      "explanation": "OLD는 변경 전 값을, NEW는 변경 후 값을 나타낸다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "각 대상 행에서 3≠4, 8≠9이므로 WHEN을 통과한다. 이전·새 값을 각각 기록해 C다.",
+  "references": [
+    {
+      "id": "TRIGGER",
+      "title": "SQLite: CREATE TRIGGER",
+      "url": "https://www.sqlite.org/lang_createtrigger.html",
+      "scope": "2 Description: DELETE/INSERT/UPDATE 사건, BEFORE/AFTER 및 FOR EACH ROW, WHEN 조건",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

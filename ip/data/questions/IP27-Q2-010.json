@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q2-010",
+  "revision": 2,
+  "topicIds": [
+    "IP27-2-10"
+  ],
+  "subject": 2,
+  "title": "T의 정의와 id=1,3 행을 남기고 id=2 행만 제거하려면?",
+  "origin": "original",
+  "tags": [
+    "SQL 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "PostgreSQL 18 명세 사례다. T(id integer)에 1, 2, 3 세 행만 있다. 제약·의존 뷰·트리거·상속·시퀀스는 없고 필요한 권한이 있다. id=2인 행만 제거하고 T의 정의와 id=1,3 행을 보존하는 명령을 고른다. 선택한 작업은 커밋한다고 가정한다. 실제 PostgreSQL 서버 실행 사례는 아니다.",
+  "code": null,
+  "language": null,
+  "stem": "T의 정의와 id=1,3 행을 남기고 id=2 행만 제거하려면?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "TRUNCATE T WHERE id=2",
+      "explanation": "PostgreSQL TRUNCATE 문법에는 WHERE가 없다."
+    },
+    {
+      "id": "B",
+      "text": "DROP TABLE T",
+      "explanation": "테이블 자체를 제거하므로 구조와 나머지 행을 남기지 못한다."
+    },
+    {
+      "id": "C",
+      "text": "DELETE FROM T WHERE id=2",
+      "explanation": "조건에 맞는 한 행만 삭제하고 정의와 다른 행은 남긴다."
+    },
+    {
+      "id": "D",
+      "text": "DELETE id FROM T",
+      "explanation": "DELETE는 이런 열 선택 문법을 사용하지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "대상은 특정 행이고 구조와 나머지 행은 보존해야 한다. WHERE를 쓸 수 있는 DELETE가 맞으므로 C다.",
+  "references": [
+    {
+      "id": "DEL",
+      "title": "PostgreSQL 18: DELETE",
+      "url": "https://www.postgresql.org/docs/18/sql-delete.html",
+      "scope": "Synopsis·Description: WHERE 조건 행 삭제와 WHERE 생략 시 전체 행 삭제",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "TRU",
+      "title": "PostgreSQL 18: TRUNCATE",
+      "url": "https://www.postgresql.org/docs/18/sql-truncate.html",
+      "scope": "Synopsis·Description·Notes: 전체 행 제거, WHERE 없음, 명시적 트랜잭션의 롤백 가능성",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "DROP",
+      "title": "PostgreSQL 18: DROP TABLE",
+      "url": "https://www.postgresql.org/docs/18/sql-droptable.html",
+      "scope": "Description: 테이블 제거와 DELETE/TRUNCATE의 차이",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-033",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-33"
+  ],
+  "subject": 1,
+  "title": "가운데 비교 인덱스 순서와 반환 값은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "배열[2,6,9,14,20]은 오름차순이며 목표14다. low=0,high=4,mid=⌊(low+high)/2⌋. 같으면 반환, 가운데 값<목표이면 low=mid+1, 크면 high=mid−1, low>high면 실패한다.",
+  "code": null,
+  "language": null,
+  "stem": "가운데 비교 인덱스 순서와 반환 값은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "0→1→2→3, 반환3",
+      "explanation": "순차 탐색의 순서이며 가운데 규칙과 다르다."
+    },
+    {
+      "id": "B",
+      "text": "2→3, 반환3",
+      "explanation": "첫 가운데9 이후 오른쪽 구간[3,4]의 가운데14를 찾는다."
+    },
+    {
+      "id": "C",
+      "text": "2→1, 반환1",
+      "explanation": "9<14에서 왼쪽으로 가면 오름차순 규칙을 거스른다."
+    },
+    {
+      "id": "D",
+      "text": "2에서 즉시 실패",
+      "explanation": "9와 다르더라도 탐색 구간이 남아 있다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "mid=2에서9<14이므로 low=3. 새 mid=⌊7/2⌋=3에서14와 일치하므로3을 반환한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python documentation — bisect",
+      "url": "https://docs.python.org/3/library/bisect.html",
+      "scope": "Searching Sorted Lists: 정렬 목록에서 위치 탐색과 일치 검사; 본문의 정렬 전제",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-021",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-21"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  키6,11을 버킷5개에 저장, h(k)=k%5. query=16의 버킷번호와 포함 여부를 출력한다.",
+  "code": "keys=[6, 11]\nbuckets=[[] for _ in range(5)]\nfor key in keys:\n    buckets[key%5].append(key)\nquery=16\nprint(query%5,query in buckets[query%5])\n",
+  "language": "Python",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "1 True",
+      "explanation": "해시 충돌을 키 일치로 오해했다."
+    },
+    {
+      "id": "B",
+      "text": "16 False",
+      "explanation": "버킷 번호는 나머지1이다."
+    },
+    {
+      "id": "C",
+      "text": "1 False",
+      "explanation": "같은 버킷을 찾아도 키16이 저장되어 있지 않다."
+    },
+    {
+      "id": "D",
+      "text": "0 False",
+      "explanation": "16을5로 나눈 나머지는1이다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "16%5=1, 버킷1에는6과11만 있으므로16의 동등성 비교는 실패한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 Object.hashCode contract",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html",
+      "scope": "hashCode 일반 계약: equals인 객체의 같은 해시; 서로 다른 객체의 다른 해시는 요구하지 않음",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

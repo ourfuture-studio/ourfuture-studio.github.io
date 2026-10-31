@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q4-001",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-01"
+  ],
+  "subject": 4,
+  "title": "직접 확인된 피해는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "권한 없는 계정이 고객 주소 목록을 읽어 외부에 복사했다. 원본 값은 바뀌지 않았고 서비스는 계속 정상 제공됐다. 추가 피해 증거는 없다.",
+  "code": null,
+  "language": null,
+  "stem": "직접 확인된 피해는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "무결성만",
+      "explanation": "값 변조 증거가 없고 무단 공개가 관찰됐다."
+    },
+    {
+      "id": "B",
+      "text": "가용성만",
+      "explanation": "정상 제공이 유지됐다는 전제와 다르다."
+    },
+    {
+      "id": "C",
+      "text": "기밀성",
+      "explanation": "권한 없는 읽기와 외부 복사가 직접 근거다."
+    },
+    {
+      "id": "D",
+      "text": "세 성질 모두의 훼손이 확정됐다",
+      "explanation": "추가 변조·접근 중단은 관찰하지 않았다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "권한 없는 공개는 기밀성 피해다. 원본 변경이나 접근 중단은 주어진 관찰에 없으므로 그것까지 확정하지 않는다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST CSRC Glossary — confidentiality",
+      "url": "https://csrc.nist.gov/glossary/term/confidentiality",
+      "scope": "Definitions의 허가된 접근·공개 제한",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST CSRC Glossary — integrity",
+      "url": "https://csrc.nist.gov/glossary/term/integrity",
+      "scope": "Definitions의 부적절한 수정·파괴 방지",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R3",
+      "title": "NIST CSRC Glossary — availability",
+      "url": "https://csrc.nist.gov/glossary/term/availability",
+      "scope": "Definitions의 적시·신뢰할 수 있는 접근",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

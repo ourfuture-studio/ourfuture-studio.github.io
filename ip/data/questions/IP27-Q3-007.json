@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-007",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-07"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. #include <string.h>; char s[]=\"SUN\".",
+  "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[]=\"SUN\";\n    printf(\"%zu %zu\\n\",strlen(s),sizeof s);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "3 3",
+      "explanation": "sizeof에는 널 문자 한 칸도 들어간다."
+    },
+    {
+      "id": "B",
+      "text": "4 4",
+      "explanation": "strlen은 종료 널을 세지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "3 4",
+      "explanation": "문자 세 개와 종료 널 한 개를 구분한 결과이다."
+    },
+    {
+      "id": "D",
+      "text": "4 3",
+      "explanation": "두 연산의 대상을 뒤바꾸었다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "strlen은 S,U,N을 세어 3, 실제 배열은 널까지 네 원소이므로 sizeof=4이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.7.9 문자 배열 초기화, 6.5.3.4 sizeof, 7.24.6.3 strlen; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-016",
+  "topicId": "IP27-3-16",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "start=2, stop=10, step=3",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  range(2,10,3).",
+      "code": "r=range(2,10,3)\nprint(list(r),len(r))\n",
+      "result": "[2, 5, 8] 3",
+      "explanation": "양수 간격과 제외 끝값을 적용한다.",
+      "trace": [
+        "2→5→8",
+        "11>=10→중단",
+        "3개"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "start=10, stop=2, step=-3",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  range(10,2,-3).",
+      "code": "r=range(10,2,-3)\nprint(list(r),len(r))\n",
+      "result": "[10, 7, 4] 3",
+      "explanation": "감소하면서2보다 큰 값만 남긴다.",
+      "trace": [
+        "10→7→4",
+        "1<=2→중단",
+        "3개"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "start=2, stop=3, step=3",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  range(2,3,3).",
+      "code": "r=range(2,3,3)\nprint(list(r),len(r))\n",
+      "result": "[2] 1",
+      "explanation": "시작값 하나만 조건을 만족한다.",
+      "trace": [
+        "2<3→선택",
+        "5>=3→중단",
+        "1개"
+      ]
+    }
+  ],
+  "boundary": "작은 정수 범위이며 step은0이 아니다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

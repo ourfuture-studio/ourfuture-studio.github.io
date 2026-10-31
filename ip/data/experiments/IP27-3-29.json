@@ -1,0 +1,53 @@
+{
+  "id": "IP27-E3-029",
+  "topicId": "IP27-3-29",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "프리픽스 /27",
+      "condition": "Python 3.13. IPv4 주소 192.0.2.75/27, 일반 브로드캐스트 서브넷이며 네트워크·브로드캐스트 경계를 호스트 할당에서 제외한다.",
+      "code": "import ipaddress\nn=ipaddress.IPv4Network('192.0.2.75/27',strict=False)\nprint(n.network_address,n.broadcast_address,n.num_addresses-2)\n",
+      "result": "192.0.2.64 192.0.2.95 30",
+      "explanation": "32개 주소 블록의 두 경계를 제외한다.",
+      "trace": [
+        "75=01001011",
+        "마스크224=11100000",
+        "AND→01000000=64",
+        "64+31=95",
+        "2^5-2=30"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "프리픽스 /26",
+      "condition": "Python 3.13. IPv4 주소 192.0.2.75/26, 일반 브로드캐스트 서브넷이며 네트워크·브로드캐스트 경계를 호스트 할당에서 제외한다.",
+      "code": "import ipaddress\nn=ipaddress.IPv4Network('192.0.2.75/26',strict=False)\nprint(n.network_address,n.broadcast_address,n.num_addresses-2)\n",
+      "result": "192.0.2.64 192.0.2.127 62",
+      "explanation": "64개 주소의 블록이다.",
+      "trace": [
+        "호스트비트6",
+        "floor(75/64)*64=64",
+        "64+63=127",
+        "2^6-2=62"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "프리픽스 /30",
+      "condition": "Python 3.13. IPv4 주소 192.0.2.75/30, 일반 브로드캐스트 서브넷이며 네트워크·브로드캐스트 경계를 호스트 할당에서 제외한다. 주어진 75가 일반 호스트라고 가정하지 않는다.",
+      "code": "import ipaddress\nn=ipaddress.IPv4Network('192.0.2.75/30',strict=False)\nprint(n.network_address,n.broadcast_address,n.num_addresses-2)\n",
+      "result": "192.0.2.72 192.0.2.75 2",
+      "explanation": "75 자체가 브로드캐스트 경계이고 유효 호스트는73,74이다.",
+      "trace": [
+        "호스트비트2",
+        "floor(75/4)*4=72",
+        "72+3=75",
+        "2^2-2=2",
+        "입력75는브로드캐스트"
+      ]
+    }
+  ],
+  "boundary": "일반 IPv4 브로드캐스트 서브넷으로 /26, /27, /30만 사용한다. 예약·라우팅·실제 할당 가능성은 별개이며 물리망 구성 실험이 아니다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

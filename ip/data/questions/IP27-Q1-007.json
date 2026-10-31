@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-007",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-07"
+  ],
+  "subject": 1,
+  "title": "현재 상태에 대한 판단으로 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "요구사항 확인"
+  ],
+  "kind": "single-choice",
+  "givens": "분석 도구는 연결 유효성과 타입 일치만 검사하며 모두 통과했다. 사용자 요구 목록에는 신청 취소가 있지만 모델에는 취소 처리가 없다.",
+  "code": null,
+  "language": null,
+  "stem": "현재 상태에 대한 판단으로 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "형식 검사 통과로 취소 기능까지 충족했다",
+      "explanation": "도구의 검사 범위에 업무 요구 누락은 포함되지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "타입이 맞으면 사용자 검토가 불필요하다",
+      "explanation": "타입 일치와 필요 기능의 완전성은 다르다."
+    },
+    {
+      "id": "C",
+      "text": "도구를 다시 실행하면 누락이 반드시 채워진다",
+      "explanation": "자동 생성·누락 보완 기능이 주어지지 않았다."
+    },
+    {
+      "id": "D",
+      "text": "형식 검사는 통과했지만 취소 요구 누락은 남아 있다",
+      "explanation": "도구 결과와 요구 목록 대조 결과를 각각 인정한 판단이다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "도구의 두 검사 규칙은 통과했다. 별도로 요구 목록과 모델을 대응하면 신청 취소에 대응 요소가 없다. 형식 적합성과 업무 요구 충족을 분리해야 한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "1장 5 Requirements Validation, 5.1 Requirements Reviews; PDF 56~57쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

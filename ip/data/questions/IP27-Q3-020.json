@@ -1,0 +1,66 @@
+{
+  "id": "IP27-Q3-020",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-20"
+  ],
+  "subject": 3,
+  "title": "중위 순회 결과는?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  루트A, A.left=B, A.right=C, B.left=None, B.right=D, C/D는 잎.",
+  "code": "tree={'A':('B','C'),'B':(None,'D'),'C':(None,None),'D':(None,None)}\nout=[]\ndef walk(node):\n    if node is None:\n        return\n    left,right=tree[node]\n    walk(left)\n    out.append(node)\n    walk(right)\nwalk('A')\nprint(' '.join(out))\n",
+  "language": "Python",
+  "stem": "중위 순회 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "A B D C",
+      "explanation": "전위 순회이다."
+    },
+    {
+      "id": "B",
+      "text": "D B C A",
+      "explanation": "후위 순회이다."
+    },
+    {
+      "id": "C",
+      "text": "B D A C",
+      "explanation": "왼쪽서브트리 B D, 루트A, 오른쪽C이다."
+    },
+    {
+      "id": "D",
+      "text": "B A D C",
+      "explanation": "D는 A의 오른쪽이 아니라 B의 오른쪽이다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "B의 왼쪽 없음→B→D, 이어 A, 이어 C이므로 B D A C이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST DADS preorder traversal",
+      "url": "https://xlinux.nist.gov/dads/HTML/preorderTraversal.html",
+      "scope": "정의와 이진 트리 root-left-right 의사코드",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NIST DADS in-order traversal",
+      "url": "https://xlinux.nist.gov/dads/HTML/inorderTraversal.html",
+      "scope": "정의와 left-root-right 의사코드",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R3",
+      "title": "NIST DADS postorder traversal",
+      "url": "https://xlinux.nist.gov/dads/HTML/postorderTraversal.html",
+      "scope": "정의와 left-right-root 의사코드",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

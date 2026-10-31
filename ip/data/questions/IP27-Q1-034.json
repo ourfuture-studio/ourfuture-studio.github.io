@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-034",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-34"
+  ],
+  "subject": 1,
+  "title": "B가 해석한 시간과 A가 의도한 시간은?",
+  "origin": "original",
+  "tags": [
+    "인터페이스 구현"
+  ],
+  "kind": "single-choice",
+  "givens": "송신 A의 duration은 정수 밀리초이며2000을 보낸다. 수신 B의 duration은 정수 초다. 중간 변환은 없고 B는 받은 숫자를 초로 해석한다.",
+  "code": null,
+  "language": null,
+  "stem": "B가 해석한 시간과 A가 의도한 시간은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "B2초, A2초",
+      "explanation": "밀리초→초 변환이 없는데 자동 변환한 결과다."
+    },
+    {
+      "id": "B",
+      "text": "B2000밀리초, A2000초",
+      "explanation": "양쪽 단위를 뒤집었다."
+    },
+    {
+      "id": "C",
+      "text": "B2000초, A2초",
+      "explanation": "2000밀리초=2초지만 B는 숫자2000을 초로 읽는다."
+    },
+    {
+      "id": "D",
+      "text": "필드 이름이 같으므로 단위를 알 필요 없다",
+      "explanation": "같은 필드 이름으로 단위 불일치가 실제 발생한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "A의2000ms는2000/1000=2초다. B는 변환 없이2000을 초로 읽으므로2000초가 된다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OpenAPI Specification v3.1.1",
+      "url": "https://spec.openapis.org/oas/v3.1.1.html",
+      "scope": "4.4 Data Types, 4.8.24 Schema Object: 입출력 타입 및 description/스키마; 단위 수치는 자체 예제",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

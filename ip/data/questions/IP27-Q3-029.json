@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q3-029",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-29"
+  ],
+  "subject": 3,
+  "title": "네트워크 주소, 브로드캐스트 주소, 사용 가능한 호스트 수는?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13으로 검산한다. IPv4 주소는 192.0.2.75/27이다. 일반 브로드캐스트 서브넷이며 네트워크·브로드캐스트 주소를 호스트 할당에서 제외한다.",
+  "code": "import ipaddress\nn=ipaddress.IPv4Network('192.0.2.75/27',strict=False)\nprint(n.network_address,n.broadcast_address,n.num_addresses-2)\n",
+  "language": "Python",
+  "stem": "네트워크 주소, 브로드캐스트 주소, 사용 가능한 호스트 수는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "192.0.2.64, 192.0.2.95, 30",
+      "explanation": "호스트 비트 다섯 개로 만든 32개 주소에서 두 경계를 제외한다."
+    },
+    {
+      "id": "B",
+      "text": "192.0.2.64, 192.0.2.96, 32",
+      "explanation": "브로드캐스트는 다음 블록 시작인 96이 아닌 95이며 호스트 수는 두 경계를 제외한다."
+    },
+    {
+      "id": "C",
+      "text": "192.0.2.0, 192.0.2.255, 254",
+      "explanation": "/24 조건으로 계산했다."
+    },
+    {
+      "id": "D",
+      "text": "192.0.2.72, 192.0.2.75, 2",
+      "explanation": "이것은 /30 블록의 계산이다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "호스트 비트는 32-27=5개, 블록은 32개 주소이다. floor(75/32)*32=64, 끝은 64+32-1=95, 사용 가능한 호스트는 32-2=30개이다. floor는 소수 부분을 버려 아래 정수를 택하는 연산이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "RFC 4632 CIDR",
+      "url": "https://datatracker.ietf.org/doc/html/rfc4632",
+      "scope": "3.1 Basic Concept and Prefix Notation의 32비트 주소와 프리픽스 표기",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "RFC 3021 Using 31-Bit Prefixes on IPv4 Point-to-Point Links",
+      "url": "https://www.rfc-editor.org/rfc/rfc3021",
+      "scope": "2 Addressing의 일반 네트워크·브로드캐스트 주소와 /31 점대점 링크 특례",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

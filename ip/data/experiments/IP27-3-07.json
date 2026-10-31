@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E3-007",
+  "topicId": "IP27-3-07",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "크기 생략, SUN 초기화",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. char s[]=\"SUN\".",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[]=\"SUN\";\n    printf(\"%zu %zu\\n\",strlen(s),sizeof s);\n    return 0;\n}\n",
+      "result": "3 4",
+      "explanation": "종료 문자가 자동으로 붙는다.",
+      "trace": [
+        "S U N \\0",
+        "strlen3, sizeof4"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "배열 크기 8 지정",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. char s[8]=\"SUN\".",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[8]=\"SUN\";\n    printf(\"%zu %zu\\n\",strlen(s),sizeof s);\n    return 0;\n}\n",
+      "result": "3 8",
+      "explanation": "추가 공간은 문자열 길이에 더해지지 않는다.",
+      "trace": [
+        "첫 널 인덱스3",
+        "전체 원소8"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "중간 널 포함 네 원소",
+      "condition": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. char s[]={'S','\\0','N','\\0'}.",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[]={'S','\\0','N','\\0'};\n    printf(\"%zu %zu\\n\",strlen(s),sizeof s);\n    return 0;\n}\n",
+      "result": "1 4",
+      "explanation": "두 번째 원소의 널에서 문자열 길이 계산이 끝난다.",
+      "trace": [
+        "인덱스0 S",
+        "인덱스1 널→길이1",
+        "배열 원소4"
+      ]
+    }
+  ],
+  "boundary": "널 종료가 보장된 기본 실행 문자 집합의 문자만 사용한다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

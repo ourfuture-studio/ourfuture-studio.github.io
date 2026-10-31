@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q4-008",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-08"
+  ],
+  "subject": 4,
+  "title": "S1을 첨부한 편집 요청의 결과는?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "자체 서버 정책은 세션 레코드 존재 AND 미폐기 AND 현재시각<만료시각일 때만 세션을 유효하게 본다. 편집은 유효 세션 AND 편집 권한이 있어야 한다. S1 레코드가 있고 미폐기·편집 권한 있음, 만료10:00, 현재10:00이다. 두 시각은 같은 날짜/시간대의 정확한 분 단위다.",
+  "code": null,
+  "language": null,
+  "stem": "S1을 첨부한 편집 요청의 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "만료 경계이므로 세션 무효, 편집 거부",
+      "explanation": "엄격한 현재<만료 조건에서 같으면 거짓이다."
+    },
+    {
+      "id": "B",
+      "text": "식별자가 있으므로 무조건 허용",
+      "explanation": "레코드 존재만으로 시간 조건을 대체할 수 없다."
+    },
+    {
+      "id": "C",
+      "text": "권한이 있으므로 만료를 무시",
+      "explanation": "편집은 세션 유효성과 권한을 모두 요구한다."
+    },
+    {
+      "id": "D",
+      "text": "10:00은10:00보다 작다",
+      "explanation": "동일 시각에 엄격 부등식은 거짓이다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "레코드와 미폐기는 참이지만10:00<10:00이 거짓이다. 세션 조건의 AND가 거짓이므로 편집도 거부한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "OWASP Session Management Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html",
+      "scope": "Session ID lifecycle, Renew after privilege change, Session Expiration 및 server-side invalidation",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "scope": "Validate the Permissions on Every Request",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

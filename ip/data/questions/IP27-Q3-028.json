@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-028",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-28"
+  ],
+  "subject": 3,
+  "title": "이 동작에 대응하는 OSI 계층은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "어떤 복합 통신 장치가 목적지 IP 프리픽스를 비교해 다른 네트워크로 보낼 다음 홉을 고른다. 제품 이름이 아니라 이 동작만 분류한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 동작에 대응하는 OSI 계층은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "물리 계층",
+      "explanation": "신호·비트 전달보다 위의 경로 선택을 수행한다."
+    },
+    {
+      "id": "B",
+      "text": "데이터링크 계층",
+      "explanation": "서로 다른 네트워크의 IP 경로 선택은 링크 구간의 프레임 전달과 구분된다."
+    },
+    {
+      "id": "C",
+      "text": "네트워크 계층",
+      "explanation": "네트워크 간 경로와 중계 기능에 대응한다."
+    },
+    {
+      "id": "D",
+      "text": "표현 계층",
+      "explanation": "표현 형식 변환이 아니라 전달 경로 선택이다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "목적지 네트워크와 다음 홉을 결정하는 기능이므로 네트워크 계층이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "ITU-T X.200 (07/1994) OSI Basic Model",
+      "url": "https://www.itu.int/rec/dologin_pub.asp?id=T-REC-X.200-199407-I!!PDF-E&lang=e&type=items",
+      "scope": "6.1 일곱 계층, 7.4 전송, 7.5 네트워크, 7.6 데이터링크, 7.7 물리 계층",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

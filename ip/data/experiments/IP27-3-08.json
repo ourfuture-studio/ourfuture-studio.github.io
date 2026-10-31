@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E3-008",
+  "topicId": "IP27-3-08",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "참조 A, 인자 Object",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A a=new B(); Object x=\"sun\".",
+      "code": "public class Main {\n static class A { String f(Object x){return \"AO\";} String f(String x){return \"AS\";} }\n static class B extends A { @Override String f(Object x){return \"BO\";} @Override String f(String x){return \"BS\";} }\n public static void main(String[] args) {\n A a=new B(); Object x=\"sun\"; System.out.println(a.f(x));\n }\n}\n",
+      "result": "BO",
+      "explanation": "선택한 Object 시그니처가 B에서 재정의됐다.",
+      "trace": [
+        "컴파일 f(Object)",
+        "런타임 B.f(Object)"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "참조 A, 인자 String",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A a=new B(); String x=\"sun\".",
+      "code": "public class Main {\n static class A { String f(Object x){return \"AO\";} String f(String x){return \"AS\";} }\n static class B extends A { @Override String f(Object x){return \"BO\";} @Override String f(String x){return \"BS\";} }\n public static void main(String[] args) {\n A a=new B(); String x=\"sun\"; System.out.println(a.f(x));\n }\n}\n",
+      "result": "BS",
+      "explanation": "인자의 선언형을 바꾸면 String 시그니처를 고른다.",
+      "trace": [
+        "컴파일 f(String)",
+        "런타임 B.f(String)"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "참조 A, 실제 객체 A, 인자 Object",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A a=new A(); Object x=\"sun\".",
+      "code": "public class Main {\n static class A { String f(Object x){return \"AO\";} String f(String x){return \"AS\";} }\n static class B extends A { @Override String f(Object x){return \"BO\";} @Override String f(String x){return \"BS\";} }\n public static void main(String[] args) {\n A a=new A(); Object x=\"sun\"; System.out.println(a.f(x));\n }\n}\n",
+      "result": "AO",
+      "explanation": "수신 객체까지 A이므로 A의 구현이다.",
+      "trace": [
+        "컴파일 f(Object)",
+        "런타임 A.f(Object)"
+      ]
+    }
+  ],
+  "boundary": "예제는 접근 가능한 일반 인스턴스 메서드만 사용한다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

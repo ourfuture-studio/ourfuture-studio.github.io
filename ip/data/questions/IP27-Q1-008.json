@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-008",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-08"
+  ],
+  "subject": 1,
+  "title": "직접 갱신해야 할 내용은?",
+  "origin": "original",
+  "tags": [
+    "화면 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "서비스 공통 규칙은 '주요 버튼은 지정된 파란색'이다. 회원가입 화면의 화면 명세에는 '완료 선택 후 약관 미동의면 같은 화면에 오류 표시'가 있다. 오류 조건만 '약관 미동의 또는 이메일 누락'으로 변경한다.",
+  "code": null,
+  "language": null,
+  "stem": "직접 갱신해야 할 내용은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "공통 버튼의 색 정의",
+      "explanation": "버튼 색 조건은 변경되지 않았다."
+    },
+    {
+      "id": "B",
+      "text": "화면 명세의 완료 버튼 처리 조건",
+      "explanation": "해당 화면의 오류 분기 조건이 달라졌다."
+    },
+    {
+      "id": "C",
+      "text": "모든 화면의 글꼴 목록",
+      "explanation": "글꼴 변경은 요청되지 않았다."
+    },
+    {
+      "id": "D",
+      "text": "서버의 설치 순서",
+      "explanation": "UI 오류 분기와 설치 절차는 다른 내용이다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "변경 대상은 이메일 누락을 포함하는 화면 오류 조건이다. 버튼 공통 색은 그대로이므로 해당 화면 명세의 완료 처리 분기를 갱신한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "GOV.UK Design System — Styles",
+      "url": "https://design-system.service.gov.uk/styles/",
+      "scope": "Styles 본문: 기존 색·버튼·입력 테두리 규칙 준수",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "NN/g — Storyboards Help Visualize UX Ideas",
+      "url": "https://www.nngroup.com/articles/storyboards-visualize-ideas/",
+      "scope": "storyboard의 사용자 맥락·장면/순서, ideation 및 실제 행동 근거 구분",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

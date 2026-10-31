@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-022",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-22"
+  ],
+  "subject": 4,
+  "title": "응용이 직접 사용하는 커널과 사용자 공간의 구분은?",
+  "origin": "original",
+  "tags": [
+    "IT프로젝트 정보시스템 구축관리"
+  ],
+  "kind": "single-choice",
+  "givens": "물리 호스트 Linux 커널K 위에 별도 VM 없이 컨테이너C1·C2를 두고 응용A·B를 각각 실행한다. 응용A·B가 직접 시스템 호출을 하는 커널을 비교하며, 두 실행 환경의 사용자 공간은 별도다. 컨테이너 사례는 일반 Linux 프로세스 컨테이너로 한정하고 별도 VM을 만드는 특수 컨테이너 런타임은 제외한다.",
+  "code": null,
+  "language": null,
+  "stem": "응용이 직접 사용하는 커널과 사용자 공간의 구분은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "커널도 사용자 공간도 항상 완전히 같다",
+      "explanation": "컨테이너별 사용자 공간은 구분할 수 있다."
+    },
+    {
+      "id": "B",
+      "text": "응용마다 반드시 별도 게스트 커널G1·G2를 부팅한다",
+      "explanation": "그것은 여기서 지정한 일반 Linux 컨테이너 조건이 아니다."
+    },
+    {
+      "id": "C",
+      "text": "두 응용은 커널K를 공유하고 사용자 공간은 구분한다",
+      "explanation": "같은 Linux 호스트 커널 위의 일반 컨테이너다."
+    },
+    {
+      "id": "D",
+      "text": "커널을 공유하므로 모든 자원·보안 설정까지 항상 같다",
+      "explanation": "커널 공유와 각 프로세스의 격리·권한·자원 설정은 다른 문제다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "일반 Linux 컨테이너C1·C2는 같은 호스트K에서 실행한다. 응용은 같은 커널K를 쓰면서 사용자 공간을 구분하므로 C다.",
+  "references": [
+    {
+      "id": "DOCKER",
+      "title": "Docker Docs: What is a container?",
+      "url": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/",
+      "scope": "Containers versus virtual machines: VM은 자체 커널을 가진 OS, 일반 컨테이너는 실행 호스트의 커널 공유. 아래 예제는 일반 Linux 프로세스 컨테이너로 한정",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

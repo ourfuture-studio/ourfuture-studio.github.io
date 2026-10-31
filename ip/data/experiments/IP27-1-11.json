@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E1-011",
+  "topicId": "IP27-1-11",
+  "title": "조건을 바꾸어 판단 비교하기",
+  "instruction": "각 조건을 따로 읽고 결과와 판단 과정을 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "별도 생성",
+      "condition": "Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=새 객체2; a.reserved=true.",
+      "code": null,
+      "result": "a=true, b=false",
+      "explanation": "객체1만 변경된다.",
+      "trace": [
+        "{1:false,2:false}",
+        "ID1 갱신→{1:true,2:false}"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "같은 객체 참조",
+      "condition": "Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=a; a.reserved=true.",
+      "code": null,
+      "result": "a=true, b=true",
+      "explanation": "두 이름이 객체1을 가리킨다.",
+      "trace": [
+        "a→1,b→1",
+        "ID1=true→두 이름 모두 true"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "변경 대상 교체",
+      "condition": "Seat.reserved 초기 false, 인스턴스별 필드; a=새 객체1, b=새 객체2; b.reserved=true.",
+      "code": null,
+      "result": "a=false, b=true",
+      "explanation": "객체2만 변경된다.",
+      "trace": [
+        "{1:false,2:false}",
+        "ID2 갱신→{1:false,2:true}"
+      ]
+    }
+  ],
+  "boundary": "정적 필드·상속·언어별 접근 문법은 제외한 객체 모형이다."
+}

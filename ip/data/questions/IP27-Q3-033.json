@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-033",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-33"
+  ],
+  "subject": 3,
+  "title": "이 설계에 대한 옳은 설명은?",
+  "origin": "original",
+  "tags": [
+    "서버프로그램 구현"
+  ],
+  "kind": "single-choice",
+  "givens": "매일 02:00에 스케줄러가 500행 매출 파일 전체를 읽어 일일 합계 파일 하나를 만드는 비대화형 작업을 시작한다.",
+  "code": null,
+  "language": null,
+  "stem": "이 설계에 대한 옳은 설명은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "정해진 시각 기동과 자료 묶음 처리를 구분하며, 배치 작업을 API로 시작하도록 바꿀 수도 있다.",
+      "explanation": "시작 인터페이스와 배치 처리 단위를 구분한 설명이다."
+    },
+    {
+      "id": "B",
+      "text": "배치이므로 반드시 사용자의 각 행 입력을 기다려야 한다.",
+      "explanation": "조건은 비대화형 전체 파일 처리이다."
+    },
+    {
+      "id": "C",
+      "text": "API로 시작하면 500행 묶음 처리는 불가능하다.",
+      "explanation": "API는 배치 작업의 기동 인터페이스로도 쓸 수 있다."
+    },
+    {
+      "id": "D",
+      "text": "배치 실행기와 스케줄러는 언제나 동일한 기능이다.",
+      "explanation": "시작 시점 결정과 자료 처리는 별도 역할이다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "현재는 스케줄러가 시작하고 500행을 한 묶음으로 집계한다. 기동 경로를 API로 바꾸어도 실제 자료 묶음 처리는 배치일 수 있다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Spring Batch Introduction",
+      "url": "https://docs.spring.io/spring-batch/reference/spring-batch-intro.html",
+      "scope": "대량·주기적·비대화형 처리; Spring Batch 자체는 스케줄러가 아니라는 범위",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-005",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-05"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. 배열은 int a[]={4,9,15}; p=a+1.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a[]={4,9,15};\n    int *p=a+1;\n    printf(\"%td %d\\n\",p-a,*p);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "1 9",
+      "explanation": "한 원소 이동했으므로 차이 1, 값 9이다."
+    },
+    {
+      "id": "B",
+      "text": "4 9",
+      "explanation": "p-a는 바이트 수가 아니라 배열 원소 수의 차이 1이다. int의 바이트 크기를 4라고 외워 대입해도 이 차이를 4로 바꿀 수 없다."
+    },
+    {
+      "id": "C",
+      "text": "1 4",
+      "explanation": "포인터는 두 번째 원소로 이동했다."
+    },
+    {
+      "id": "D",
+      "text": "9 1",
+      "explanation": "포인터 차이와 역참조 값을 뒤바꾸었다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "a+1은 a[1], 따라서 p-a=1이고 *p=9이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.5.6p8~9 배열 내 포인터 덧셈·차이·끝 뒤 포인터의 한계; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

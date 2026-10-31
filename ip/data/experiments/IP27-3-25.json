@@ -1,0 +1,60 @@
+{
+  "id": "IP27-E3-025",
+  "topicId": "IP27-3-25",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "프레임2, 입장순서 사용",
+      "condition": "Python 3.13. 참조열은 [1,2,1,3,1,2], FIFO, 프레임 2개, 처음에는 비어 있고 최초 적재도 부재에 포함한다.",
+      "code": "refs=[1,2,1,3,1,2]\npolicy='FIFO'\ncapacity=2\nresident=[]\nfaults=0\nfor page in refs:\n    if page in resident:\n        if policy=='LRU':\n            resident.remove(page)\n            resident.append(page)\n    else:\n        faults+=1\n        if len(resident)==capacity:\n            resident.pop(0)\n        resident.append(page)\nprint(faults)\n",
+      "result": "5",
+      "explanation": "적중한1의 FIFO 순서는 바뀌지 않는다.",
+      "trace": [
+        "1:F[1]",
+        "2:F[1,2]",
+        "1:H[1,2]",
+        "3:F[2,3]",
+        "1:F[3,1]",
+        "2:F[1,2]",
+        "부재5"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "프레임2, 마지막 사용순서 사용",
+      "condition": "Python 3.13. 참조열은 [1,2,1,3,1,2], LRU, 프레임 2개, 처음에는 비어 있고 최초 적재도 부재에 포함한다.",
+      "code": "refs=[1,2,1,3,1,2]\npolicy='LRU'\ncapacity=2\nresident=[]\nfaults=0\nfor page in refs:\n    if page in resident:\n        if policy=='LRU':\n            resident.remove(page)\n            resident.append(page)\n    else:\n        faults+=1\n        if len(resident)==capacity:\n            resident.pop(0)\n        resident.append(page)\nprint(faults)\n",
+      "result": "4",
+      "explanation": "기록은 가장 오래 사용 안 된 순서에서 최근 순서로 표시한다.",
+      "trace": [
+        "1:F[1]",
+        "2:F[1,2]",
+        "1:H[2,1]",
+        "3:F[1,3]",
+        "1:H[3,1]",
+        "2:F[1,2]",
+        "부재4"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "프레임3, 입장순서 사용",
+      "condition": "Python 3.13. 참조열은 [1,2,1,3,1,2], FIFO, 프레임 3개, 처음에는 비어 있고 최초 적재도 부재에 포함한다.",
+      "code": "refs=[1,2,1,3,1,2]\npolicy='FIFO'\ncapacity=3\nresident=[]\nfaults=0\nfor page in refs:\n    if page in resident:\n        if policy=='LRU':\n            resident.remove(page)\n            resident.append(page)\n    else:\n        faults+=1\n        if len(resident)==capacity:\n            resident.pop(0)\n        resident.append(page)\nprint(faults)\n",
+      "result": "3",
+      "explanation": "세 종류 페이지가 모두 남아 교체가 필요 없다.",
+      "trace": [
+        "1:F[1]",
+        "2:F[1,2]",
+        "1:H[1,2]",
+        "3:F[1,2,3]",
+        "1:H",
+        "2:H",
+        "부재3"
+      ]
+    }
+  ],
+  "boundary": "프레임은 처음에 비어 있고 선행 적재는 없다. 모든 페이지 크기는 같으며 최초 적재도 부재에 포함한다. F는 부재, H는 적중이다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

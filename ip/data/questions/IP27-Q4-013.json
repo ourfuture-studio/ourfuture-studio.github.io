@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-013",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-13"
+  ],
+  "subject": 4,
+  "title": "이 모형의 경계 밖 쓰기와 guard 검사에 대한 설명은?",
+  "origin": "original",
+  "tags": [
+    "소프트웨어 개발 보안 구축"
+  ],
+  "kind": "single-choice",
+  "givens": "실제 C 실행이 아닌 바이트 배치 모형이다. 버퍼 위치는0..5의 6바이트, 입력은 ASCII 문자 6개와 끝의 0바이트 하나다. 복사는 위치0부터 순서대로 쓴다. 경계 검사는 없다. guard는 위치6에 초기값0xA5로 두고 복사 완료 후 함수 종료 모형에서 초기값과 비교한다. 다른 손상·공격·컴파일러 최적화는 모형에 없다.",
+  "code": null,
+  "language": null,
+  "stem": "이 모형의 경계 밖 쓰기와 guard 검사에 대한 설명은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "guard가 있어 경계 밖 쓰기 자체가 전혀 발생하지 않는다",
+      "explanation": "guard 비교는 복사 후이므로 사전 거부와 다르다."
+    },
+    {
+      "id": "B",
+      "text": "경계 밖 쓰기1회가 발생하고 guard의 변화가 사후 검출된다",
+      "explanation": "일곱 번째 0바이트가 위치6의 guard를 바꾼다."
+    },
+    {
+      "id": "C",
+      "text": "필요 공간은6바이트여서 용량에 맞는다",
+      "explanation": "종단 0의 한 바이트를 누락한 계산이다."
+    },
+    {
+      "id": "D",
+      "text": "이 결과가 모든 GCC 스택 배치와 모든 오버플로에 그대로 보장된다",
+      "explanation": "이 예제는 배치를 명시한 자체 모형이고 실제 언어의 미정의 동작 실행이 아니다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "필요7바이트를 위치0..6에 쓰므로 버퍼0..5 밖 쓰기는1회다. 위치6의 guard가0xA5에서0으로 바뀌어 복사 후 경보가 나므로 B다.",
+  "references": [
+    {
+      "id": "GCC",
+      "title": "GCC: Instrumentation Options",
+      "url": "https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html",
+      "scope": "-fstack-protector, -fstack-protector-all, -fstack-protector-strong: 보호 대상 함수·스택 객체, 진입 시 guard 설정·종료 시 검사, 실패 시 종료. 아래 예제는 실제 GCC 스택 배치가 아닌 별도 바이트 모형",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

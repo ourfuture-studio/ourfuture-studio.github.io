@@ -1,0 +1,52 @@
+{
+  "id": "IP27-E3-023",
+  "topicId": "IP27-3-23",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "FCFS, P실행4",
+      "condition": "Python 3.13. P(도착 0, 실행 4), Q(1, 3), R(2, 1). 비선점 FCFS이며 단일 CPU, I/O 없음, 문맥 교환 비용 0이다.",
+      "code": "jobs=[('P',0,4),('Q',1,3),('R',2,1)]\npolicy='FCFS'\ntime=0\npending=jobs.copy()\nwhile pending:\n    ready=[j for j in pending if j[1]<=time]\n    if not ready:\n        time=min(j[1] for j in pending)\n        continue\n    job=min(ready,key=(lambda j:(j[1],j[0])) if policy=='FCFS' else (lambda j:(j[2],j[1],j[0])))\n    name,arrival,burst=job\n    start=time\n    time+=burst\n    if name=='Q':\n        print(time-arrival,start-arrival)\n    pending.remove(job)\n",
+      "result": "6 3",
+      "explanation": "Q는4에 시작해7에 끝난다.",
+      "trace": [
+        "P[0,4)",
+        "Q[4,7)",
+        "TQ=7-1=6",
+        "WQ=4-1=3=6-3"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "FCFS, P실행2",
+      "condition": "Python 3.13. P(도착 0, 실행 2), Q(1, 3), R(2, 1). 비선점 FCFS이며 단일 CPU, I/O 없음, 문맥 교환 비용 0이다.",
+      "code": "jobs=[('P',0,2),('Q',1,3),('R',2,1)]\npolicy='FCFS'\ntime=0\npending=jobs.copy()\nwhile pending:\n    ready=[j for j in pending if j[1]<=time]\n    if not ready:\n        time=min(j[1] for j in pending)\n        continue\n    job=min(ready,key=(lambda j:(j[1],j[0])) if policy=='FCFS' else (lambda j:(j[2],j[1],j[0])))\n    name,arrival,burst=job\n    start=time\n    time+=burst\n    if name=='Q':\n        print(time-arrival,start-arrival)\n    pending.remove(job)\n",
+      "result": "4 1",
+      "explanation": "P가 일찍 끝나 Q도 일찍 실행된다.",
+      "trace": [
+        "P[0,2)",
+        "Q[2,5)",
+        "TQ=5-1=4",
+        "WQ=2-1=1=4-3"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "비선점 SJF, P실행4",
+      "condition": "Python 3.13. P(도착 0, 실행 4), Q(1, 3), R(2, 1). 비선점 SJF이며 단일 CPU, I/O 없음, 문맥 교환 비용 0이다. 같은 버스트는 도착순으로 고른다.",
+      "code": "jobs=[('P',0,4),('Q',1,3),('R',2,1)]\npolicy='SJF'\ntime=0\npending=jobs.copy()\nwhile pending:\n    ready=[j for j in pending if j[1]<=time]\n    if not ready:\n        time=min(j[1] for j in pending)\n        continue\n    job=min(ready,key=(lambda j:(j[1],j[0])) if policy=='FCFS' else (lambda j:(j[2],j[1],j[0])))\n    name,arrival,burst=job\n    start=time\n    time+=burst\n    if name=='Q':\n        print(time-arrival,start-arrival)\n    pending.remove(job)\n",
+      "result": "7 4",
+      "explanation": "시각4에 Q와R 중 짧은R을 먼저 실행한다.",
+      "trace": [
+        "P[0,4)",
+        "R[4,5)",
+        "Q[5,8)",
+        "TQ=8-1=7",
+        "WQ=5-1=4=7-3"
+      ]
+    }
+  ],
+  "boundary": "시간 단위는 모두 같다. 선점·I/O·문맥 교환이 없는 지정 모형만 계산한다. 정해진 세 조건의 검증 결과를 비교하며 실제 제품 전체를 브라우저에서 실행한다는 뜻은 아니다."
+}

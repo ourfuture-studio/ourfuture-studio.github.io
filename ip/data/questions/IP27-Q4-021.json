@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-021",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-21"
+  ],
+  "subject": 4,
+  "title": "역할 구분과 이 패킷의 동작이 맞는 것은?",
+  "origin": "original",
+  "tags": [
+    "IT프로젝트 정보시스템 구축관리"
+  ],
+  "kind": "single-choice",
+  "givens": "패킷 전달 교육 모형이다. 스위치 S의 기존 규칙은 목적지X→출력포트2이며 기본 동작은 알려지지 않은 목적지를 버리는 것이다. 들어오는 패킷 목적지는X 하나다. 제어기는 정상 연결되어 기존 규칙을 유지한다. 기존 규칙은 만료되지 않으며 링크·포트는 정상, S는 저장된 규칙으로 계속 전달하도록 설정되었다. 다른 경로·재계산·보안 정책은 없다.",
+  "code": null,
+  "language": null,
+  "stem": "역할 구분과 이 패킷의 동작이 맞는 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "스위치가 저장된 규칙으로 포트2에 전달하고 제어기는 규칙을 정하는 역할이다",
+      "explanation": "규칙 설치·정책 결정과 데이터 전달을 구분했다."
+    },
+    {
+      "id": "B",
+      "text": "모든 패킷은 제어기가 직접 포트2에서 내보낸다",
+      "explanation": "데이터 평면 장비가 설치된 규칙으로 전달할 수 있다."
+    },
+    {
+      "id": "C",
+      "text": "제어부를 분리하면 스위치의 전달 기능도 없어진다",
+      "explanation": "스위치는 데이터 평면의 전달 동작을 수행한다."
+    },
+    {
+      "id": "D",
+      "text": "SDN은 반드시 제어기 한 대만 허용한다",
+      "explanation": "논리적 집중을 물리적 단일 서버 수로 제한하지 않는다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "규칙은 제어 기능이 설정하고 패킷은 S가 X→2 표를 적용해 전달한다. 따라서 A다.",
+  "references": [
+    {
+      "id": "SDN",
+      "title": "ONF: SDN Architecture 1.0 Overview",
+      "url": "https://opennetworking.org/wp-content/uploads/2014/11/TR_SDN-ARCH-1.0-Overview-12012016.04.pdf",
+      "scope": "3 SDN Architecture Principles 및 4 High-level SDN Architecture: controller/data 분리, 논리적으로 집중된 제어, 데이터 평면에 기능 위임 가능",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

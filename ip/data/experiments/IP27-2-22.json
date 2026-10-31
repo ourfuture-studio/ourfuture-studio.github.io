@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E2-022",
+  "topicId": "IP27-2-22",
+  "title": "잠금의 대기 방향으로 교착 찾기: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "서로 반대 순서",
+      "condition": "배타 잠금 교육 모형. A·B 서로 다른 객체. 커밋까지 잠금 보유. 일정 T1 lock A; T2 lock B; T1 request B; T2 request A. 커밋·중단·타임아웃·탐지 전.",
+      "code": null,
+      "result": "교착: T1→T2→T1",
+      "explanation": "대기 그래프에 두 거래를 잇는 순환이 있다.",
+      "trace": [
+        "T1→T2(B)",
+        "T2→T1(A)",
+        "순환 확인"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "두 거래 모두 A부터",
+      "condition": "동일 모형. 두 거래의 요구 순서를 A 다음 B로 통일한다. 일정 T1 lock A; T2 request A(대기); T1 lock B; T1 COMMIT; T2 lock A; T2 lock B; T2 COMMIT. 다른 요청 없음.",
+      "code": null,
+      "result": "교착 없이 두 거래 완료",
+      "explanation": "T2→T1만 있고 T1이 T2의 잠금을 요구하지 않아 T1이 먼저 완료할 수 있다.",
+      "trace": [
+        "T2→T1 한 간선",
+        "T1 B획득·커밋",
+        "T2 대기 해제·완료"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "객체 A 하나만 사용",
+      "condition": "동일 모형. 두 거래 모두 A만 요구한다. 일정 T1 lock A; T2 request A(대기); T1 COMMIT; T2 lock A; T2 COMMIT. 다른 객체·요청 없음.",
+      "code": null,
+      "result": "대기는 있지만 교착은 없다",
+      "explanation": "T1이 먼저 완료할 수 있는 한 방향 대기다.",
+      "trace": [
+        "T2→T1",
+        "T1 커밋",
+        "T2 획득·커밋"
+      ]
+    }
+  ],
+  "boundary": "정의한 배타 잠금·대기 그래프 모형을 계산한다. PostgreSQL 잠금 모드 전체나 실제 교착 탐지·희생 거래 선택을 실행한 실험이 아니다."
+}

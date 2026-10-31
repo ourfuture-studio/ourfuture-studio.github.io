@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q1-012",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-12"
+  ],
+  "subject": 1,
+  "title": "호출 후 규칙 충족 여부와 필요한 수정은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "재고 객체의 count는 private 정수이며 초기값 5다. 공개 setCount(n)은 검사 없이 count=n을 수행한다. 요구 규칙은 count≥0이다. 외부에서 setCount(-2)를 호출한다.",
+  "code": null,
+  "language": null,
+  "stem": "호출 후 규칙 충족 여부와 필요한 수정은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "private이므로 자동으로 5가 유지된다",
+      "explanation": "메서드 내부 대입은 private 여부로 차단되지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "private이므로 -2도 유효하다",
+      "explanation": "접근 범위와 유효 값 규칙을 혼동했다."
+    },
+    {
+      "id": "C",
+      "text": "count=-2로 규칙 위반이며 공개 변경 경로에 검증이 필요하다",
+      "explanation": "무검사 대입이 음수 상태를 만들므로 경계에서 막아야 한다."
+    },
+    {
+      "id": "D",
+      "text": "필드를 public으로 바꾸면 규칙이 보장된다",
+      "explanation": "직접 변경 경로를 더 열어 검증 보장이 생기지 않는다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "setCount는 -2를 그대로 저장하므로 -2≥0은 거짓이다. private는 직접 접근만 제한하므로 setter에서 음수를 거부하는 등 모든 변경 경로에 규칙을 적용해야 한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Oracle Java Tutorials (JDK 8) — What Is an Object?",
+      "url": "https://docs.oracle.com/javase/tutorial/java/concepts/object.html",
+      "scope": "data encapsulation 및 메서드에서 유효 상태를 검사하는 설명",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "R2",
+      "title": "Oracle Java Tutorials (JDK 8) — Controlling Access to Members of a Class",
+      "url": "https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html",
+      "scope": "멤버 private/public 접근 범위; JDK 8 튜토리얼",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

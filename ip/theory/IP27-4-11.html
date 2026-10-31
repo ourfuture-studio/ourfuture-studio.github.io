@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>비밀번호 KDF와 솔트의 역할 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-4-11"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">4과목 · 4-11 · 이론 읽기</p><h1>비밀번호 KDF와 솔트의 역할</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-4-11">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-4-11">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>솔트는 복호화 키가 아니라 사용자별 입력을 구분하는 값이다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>비밀번호 저장에는 검증된 비밀번호 해시/KDF를 사용해 입력을 검증용 값으로 변환한다. KDF는 키 유도 함수라는 뜻이며 여기서는 비밀번호 기반 유도 함수를 말한다.</p>
+<p>솔트는 비밀번호와 함께 KDF에 들어가는 사용자별 값이다. 서로 다른 솔트는 같은 비밀번호라도 입력 조합을 다르게 하며, 솔트 자체가 비밀 복호화 키는 아니다.</p>
+<p>서로 다른 입력이 모든 경우에 다른 출력을 보장한다는 뜻은 아니다. 아래는 고정한 시험용 입력의 실제 결과이며 생산 환경에서 솔트를 고정하라는 권고가 아니다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>Python3.13.9 hashlib.pbkdf2_hmac('sha256',password,salt,600000,dklen=16)을 사용한다. password/salt는 ASCII 바이트다. 두 계정의 password는 모두 'same-pass', 솔트는 각각 'salt-A-000000001'과 'salt-B-000000002'이다. 고정 솔트는 재현용 시험값이다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건</th>
+<th scope="col">판단과 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII same-pass,salt-B-000000002).</td>
+<td>83be0607a38181e2114b974fe5327de1 / 39dd32431e432be5f379055c75c6f3b7</td>
+</tr>
+<tr>
+<td>Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII same-pass,salt-A-000000001).</td>
+<td>두 값 모두83be0607a38181e2114b974fe5327de1</td>
+</tr>
+<tr>
+<td>Python3.13.9; PBKDF2-HMAC-SHA256,600000회,dklen16; 계정1=(ASCII same-pass,salt-A-000000001),계정2=(ASCII other-pass,salt-A-000000001).</td>
+<td>83be0607a38181e2114b974fe5327de1 / eff3ed4c3f0b79a1f533380bc3230499</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 계정은 비밀번호가 같아도 salt 인수가 다르다. 실행 결과는83be0607a38181e2114b974fe5327de1과39dd32431e432be5f379055c75c6f3b7로 달랐다. 이는 솔트의 입력 구분 역할이며 복호화 기능이 아니다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>솔트·비밀번호·비용 설정의 입력을 구분하고 복호화라는 말을 붙이지 않는다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>고정 바이트·반복 횟수·출력 길이는 재현 시험의 조건이다. 실제 비밀번호 저장 설계는 라이브러리·비용·솔트 생성·접근통제를 함께 정해야 한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" rel="noopener noreferrer" target="_blank">OWASP Password Storage Cheat Sheet</a> — Salting 및 Hashing vs Encryption; PBKDF2와 솔트의 역할. 확인일 2026-10-31.</li>
+<li><a href="https://docs.python.org/3.13/library/hashlib.html#hashlib.pbkdf2_hmac" rel="noopener noreferrer" target="_blank">Python 3.13 hashlib — pbkdf2_hmac</a> — pbkdf2_hmac(hash_name,password,salt,iterations,dklen) API 정의. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q4-011">이 예제에서 솔트의 역할을 올바르게 설명한 것은?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

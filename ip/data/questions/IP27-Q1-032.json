@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-032",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-32"
+  ],
+  "subject": 1,
+  "title": "한 회전 직후 배열은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "자체 오름차순 버블 정렬이다. 배열[8,3,6,2], 인덱스0~3. (0,1),(1,2),(2,3) 순서로 한 번씩 비교하며 왼쪽 값이 더 크면 즉시 교환한다. 이 한 회전만 수행한다.",
+  "code": null,
+  "language": null,
+  "stem": "한 회전 직후 배열은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[3,6,2,8]",
+      "explanation": "8이 세 비교를 거쳐 마지막으로 이동한다."
+    },
+    {
+      "id": "B",
+      "text": "[2,3,6,8]",
+      "explanation": "전체 정렬 결과이며 한 회전으로는 얻지 못한다."
+    },
+    {
+      "id": "C",
+      "text": "[2,8,3,6]",
+      "explanation": "반대 방향으로 비교한 한 회전 결과다."
+    },
+    {
+      "id": "D",
+      "text": "[3,8,6,2]",
+      "explanation": "첫 번째 비교만 수행한 중간 상태다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "(8,3) 교환→[3,8,6,2], (8,6) 교환→[3,6,8,2], (8,2) 교환→[3,6,2,8]이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "NIST Dictionary of Algorithms and Data Structures — bubble sort",
+      "url": "https://xlinux.nist.gov/dads/HTML/bubblesort.html",
+      "scope": "인접 쌍 비교·필요 시 교환·회전 반복의 정의",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

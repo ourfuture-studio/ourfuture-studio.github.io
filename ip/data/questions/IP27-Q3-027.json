@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-027",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-27"
+  ],
+  "subject": 3,
+  "title": "자식이 출력하는 값은?",
+  "origin": "original",
+  "tags": [
+    "응용 SW 기초 기술 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "PowerShell 7에서 아래 스크립트를 독립 프로세스로 실행한다. 부모 일반변수 violet, 환경변수 green을 설정한 뒤 새 pwsh -NoProfile을 실행한다.",
+  "code": "$IP27_LOCAL='violet'\n$env:IP27_DEMO='green'\n& (Join-Path $PSHOME 'pwsh.exe') -NoProfile -Command 'Write-Output (($null -eq $IP27_LOCAL).ToString().ToLowerInvariant() + \" \" + $env:IP27_DEMO)'\n",
+  "language": "PowerShell",
+  "stem": "자식이 출력하는 값은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "false green",
+      "explanation": "일반 부모 변수가 자식에 자동 전달된다고 가정했다."
+    },
+    {
+      "id": "B",
+      "text": "true green",
+      "explanation": "자식 일반변수는없고 환경은 green을 상속한다."
+    },
+    {
+      "id": "C",
+      "text": "true violet",
+      "explanation": "환경변수와 일반 변수의 값을 혼동했다."
+    },
+    {
+      "id": "D",
+      "text": "false violet",
+      "explanation": "상속 범위와 두 저장 위치를 모두 혼동했다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "자식의 IP27_LOCAL은 정의되지 않아 $null 비교가true, IP27_DEMO 환경값은green이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Microsoft PowerShell about_Environment_Variables",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.5",
+      "scope": "Long description: 문자열 환경변수의 자식 프로세스 상속과 Process 범위",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

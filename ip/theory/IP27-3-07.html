@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>문자열 길이와 배열 용량을 구분하기 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-3-07"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-07 · 이론 읽기</p><h1>문자열 길이와 배열 용량을 구분하기</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-3-07">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-07">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>strlen은 첫 널 문자 앞까지 센다. sizeof 배열은 종료 문자와 여유 공간도 포함한다.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>C 문자열은 첫 널 문자 \0으로 끝나는 문자 시퀀스이다. strlen은 널 문자를 제외한 앞부분의 바이트 수를 반환한다. char s[]="SUN"은 S,U,N,\0 네 char 원소를 가진다.</p>
+<p>sizeof s는 s가 실제 배열일 때 전체 저장 크기이다. char의 sizeof는 1이므로 char s[8]="SUN"의 크기는 8이고 strlen은 3이다. 나머지 원소는 0으로 초기화된다.</p>
+<p>배열 안에 중간 널 문자가 있으면 strlen은 그 자리에서 멈춘다. 종료 널 문자가 없는 배열을 strlen에 넘기는 동작은 안전하지 않다. 한글 같은 멀티바이트 문자에서는 strlen을 사람이 읽는 글자 수와 동일시하지 않는다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다. #include &lt;string.h&gt;; char s[]="SUN".</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">조건 또는 단계</th>
+<th scope="col">판단 또는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char s[]="SUN"</td>
+<td>길이3, 저장크기4</td>
+</tr>
+<tr>
+<td>char s[8]="SUN"</td>
+<td>길이3, 저장크기8</td>
+</tr>
+<tr>
+<td>널 문자</td>
+<td>길이에 제외, 저장에는 포함</td>
+</tr>
+</tbody>
+</table></div>
+<p>영문 기본 문자만 사용해 문자 수와 인코딩 바이트 수의 차이를 이 예제에서 제거했다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>strlen은 첫 널 앞까지, sizeof 실제 배열은 전체 공간까지 센다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>널 종료가 보장된 기본 실행 문자 집합의 문자만 사용한다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" rel="noopener noreferrer" target="_blank">WG14 N1570 C11 공개 위원회 초안</a> — 6.7.9 문자 배열 초기화, 6.5.3.4 sizeof, 7.24.6.3 strlen; 공개 위원회 초안.. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-007">출력은 무엇인가?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-009",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-09"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  A a=new B().",
+  "code": "public class Main {\n static class A { int v=4; int f(){return 10;} }\n static class B extends A { int v=9; @Override int f(){return 20;} }\n public static void main(String[] args) {\n A a=new B(); System.out.println(a.v+\" \"+a.f());\n }\n}\n",
+  "language": "Java",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "9 20",
+      "explanation": "필드까지 실제 객체로 선택한 오류이다."
+    },
+    {
+      "id": "B",
+      "text": "4 20",
+      "explanation": "A형 표현식의 필드4, B의 재정의 메서드20이다."
+    },
+    {
+      "id": "C",
+      "text": "4 10",
+      "explanation": "메서드 동적 선택을 생략했다."
+    },
+    {
+      "id": "D",
+      "text": "9 10",
+      "explanation": "필드·메서드 규칙을 모두 뒤집었다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "a.v는 A.v=4, a.f()는 B.f()=20으로 결정한다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Java SE 17 JLS Expressions",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html",
+      "scope": "15.11.1 필드 접근, 15.12.2 오버로드 선택, 15.12.4.4 동적 메서드 선택, 15.21.3 참조 동등성",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

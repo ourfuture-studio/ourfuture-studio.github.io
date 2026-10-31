@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-028",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-28"
+  ],
+  "subject": 2,
+  "title": "최종 관계의 차수와 카디널리티는?",
+  "origin": "original",
+  "tags": [
+    "논리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "NULL 없는 집합 관계 R(id,dept,score)는 (1,A,7),(2,A,9),(3,B,4)다. 고전 관계대수의 집합 의미로 π dept(σ score≥7(R))을 계산한다. 아래 SQL은 DISTINCT로 그 결과를 재현한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. 고전 관계대수의 집합 의미를 SELECT DISTINCT로 재현한다. R 세 행, NULL 없음. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "code": "CREATE TABLE R(id INTEGER PRIMARY KEY, dept TEXT NOT NULL, score INTEGER NOT NULL);\nINSERT INTO R VALUES(1,'A',7),(2,'A',9),(3,'B',4);\nSELECT DISTINCT dept FROM R WHERE score>=7 ORDER BY dept;",
+  "language": "sql",
+  "stem": "최종 관계의 차수와 카디널리티는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "차수3, 튜플2",
+      "explanation": "이는 선택만 한 중간 관계의 크기다."
+    },
+    {
+      "id": "B",
+      "text": "차수1, 튜플2",
+      "explanation": "dept의 A 두 개는 집합 투영에서 중복 제거된다."
+    },
+    {
+      "id": "C",
+      "text": "차수1, 튜플1",
+      "explanation": "dept 한 속성, A 한 튜플만 남는다."
+    },
+    {
+      "id": "D",
+      "text": "차수2, 튜플1",
+      "explanation": "최종 투영 속성은 dept 하나뿐이다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "선택 후 두 행의 dept가 모두 A다. dept 투영은 열 하나를 남기고 중복 A를 하나로 합쳐 차수1·튜플1이므로 C다.",
+  "references": [
+    {
+      "id": "DB2",
+      "title": "Database System Concepts 7판 저자 슬라이드: Relational Model",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch2.pdf",
+      "scope": "슬라이드 2.8 Keys, 2.12 Select, 2.14 Project: 슈퍼키·최소성, 관계대수의 선택·투영",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "SEL",
+      "title": "SQLite: SELECT",
+      "url": "https://www.sqlite.org/lang_select.html",
+      "scope": "2 Simple Select Processing, 2.3 WHERE, 2.4 GROUP BY/HAVING, 3 Compound Select, 4 ORDER BY",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

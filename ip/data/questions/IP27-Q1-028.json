@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-028",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-28"
+  ],
+  "subject": 1,
+  "title": "X의 역할은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 테스트 관리"
+  ],
+  "kind": "single-choice",
+  "givens": "호출 관계는 A→B→C다. 시험 대상은 B이며 C는 미구현이다. B가 C를 부르면 고정 결과를 반환하는 대체물 X를 만든다. A의 대체는 묻지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "X의 역할은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "드라이버",
+      "explanation": "X는 B를 호출하는 쪽이 아니라 B에게 호출되는 쪽이다."
+    },
+    {
+      "id": "B",
+      "text": "배포 패키지",
+      "explanation": "시험 의존 모듈 대체라는 역할을 설명하지 못한다."
+    },
+    {
+      "id": "C",
+      "text": "스텁",
+      "explanation": "B가 호출하는 C를 대신해 응답한다."
+    },
+    {
+      "id": "D",
+      "text": "기준선 승인자",
+      "explanation": "형상 승인 역할은 주어지지 않았다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "시험 대상 B에서 X로 호출이 나간다. X는 미구현 C의 응답을 대신하므로 스텁이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "5장 8.2 Categories of Tools: drivers/stubs가 calling/called modules를 모사; PDF 144쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

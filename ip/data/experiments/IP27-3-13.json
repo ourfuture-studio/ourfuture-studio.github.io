@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E3-013",
+  "topicId": "IP27-3-13",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "얕은 복사 뒤 내부 append",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[[1],[2]]; b=a.copy(); b[0].append(9).",
+      "code": "a=[[1],[2]]\nb=a.copy()\nb[0].append(9)\nprint(a)\n",
+      "result": "[[1, 9], [2]]",
+      "explanation": "첫 내부 리스트를 공유한다.",
+      "trace": [
+        "바깥만 새로 생성",
+        "내부[1] 공유",
+        "append9→[1,9]"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "얕은 복사 뒤 바깥 append",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[[1],[2]]; b=a.copy(); b.append([9]).",
+      "code": "a=[[1],[2]]\nb=a.copy()\nb.append([9])\nprint(a)\n",
+      "result": "[[1], [2]]",
+      "explanation": "새 바깥 b에만 세 번째 원소가 붙는다.",
+      "trace": [
+        "바깥 리스트 별도",
+        "b에만 [9] 추가",
+        "a는 두 원소 유지"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "깊은 복사 뒤 내부 append",
+      "condition": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  import copy; a=[[1],[2]]; b=copy.deepcopy(a); b[0].append(9).",
+      "code": "import copy\na=[[1],[2]]\nb=copy.deepcopy(a)\nb[0].append(9)\nprint(a)\n",
+      "result": "[[1], [2]]",
+      "explanation": "내부 리스트도 복사되어 a에는 영향이 없다.",
+      "trace": [
+        "바깥·내부 새로 생성",
+        "b[0]만 [1,9]",
+        "a[0]은 [1]"
+      ]
+    }
+  ],
+  "boundary": "정수와 리스트만 사용하며 사용자 정의 __copy__·__deepcopy__는 없다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

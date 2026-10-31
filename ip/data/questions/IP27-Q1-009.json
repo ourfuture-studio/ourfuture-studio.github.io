@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-009",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-09"
+  ],
+  "subject": 1,
+  "title": "현재 책임으로 정당화하기 어려운 추가 함수는?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "모듈 M은 청구서 합계를 만드는 책임만 가진다. 함수는 상품 합계, 세금 계산, 할인 적용이다. 후보 함수 중 M의 책임과 직접 관련 없는 하나를 찾는다.",
+  "code": null,
+  "language": null,
+  "stem": "현재 책임으로 정당화하기 어려운 추가 함수는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "할인 적용 후 총액 반올림",
+      "explanation": "청구서 최종 금액 산출에 직접 쓰인다."
+    },
+    {
+      "id": "B",
+      "text": "청구 대상 상품의 금액 합산",
+      "explanation": "합계 산출에 필요한 입력 계산이다."
+    },
+    {
+      "id": "C",
+      "text": "사용자 프로필 사진 크기 조정",
+      "explanation": "청구서 금액 산출과 직접 관계가 없다."
+    },
+    {
+      "id": "D",
+      "text": "청구서 세금 합산",
+      "explanation": "세금이 포함된 합계 산출에 쓰인다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "M의 목적은 금액 산출이다. 반올림·상품 합산·세금 합산은 이 출력에 기여하지만 프로필 사진 조정은 다른 변경 이유와 출력을 가진다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "IEEE Computer Society SWEBOK Guide v4.0a",
+      "url": "https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf",
+      "scope": "3장 1.4 Software Design Principles: cohesion 정의; PDF 85쪽",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "IP27-E3-010",
+  "topicId": "IP27-3-10",
+  "title": "조건을 바꾸어 결과 비교하기",
+  "instruction": "각 조건의 입력과 중간 과정을 읽고 결과가 달라지는 이유를 비교한다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "무인자 B 생성",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  new B(); 출력 뒤 줄바꿈.",
+      "code": "public class Main {\n static class A { A(){System.out.print(\"A\");} A(int n){System.out.print(\"P\"+n);} }\n static class B extends A { B(){System.out.print(\"B\");} B(int n){super(n);System.out.print(\"C\");} }\n public static void main(String[] args) {\n new B(); System.out.println();\n }\n}\n",
+      "result": "AB",
+      "explanation": "암시적 super()가 A()를 부른다.",
+      "trace": [
+        "A()→A",
+        "B()→B"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "정수 인자 7로 B 생성",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  new B(7); 출력 뒤 줄바꿈.",
+      "code": "public class Main {\n static class A { A(){System.out.print(\"A\");} A(int n){System.out.print(\"P\"+n);} }\n static class B extends A { B(){System.out.print(\"B\");} B(int n){super(n);System.out.print(\"C\");} }\n public static void main(String[] args) {\n new B(7); System.out.println();\n }\n}\n",
+      "result": "P7C",
+      "explanation": "명시적 super(7)이 A(int)를 고른다.",
+      "trace": [
+        "A(7)→P7",
+        "B(int)→C"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "부모 A만 생성",
+      "condition": "Java SE 17, Main.java로 저장. java.lang은 자동 import하며 외부 입력·다중 스레드·사용자 정의 예외 처리 없음.  new A(); 출력 뒤 줄바꿈.",
+      "code": "public class Main {\n static class A { A(){System.out.print(\"A\");} A(int n){System.out.print(\"P\"+n);} }\n static class B extends A { B(){System.out.print(\"B\");} B(int n){super(n);System.out.print(\"C\");} }\n public static void main(String[] args) {\n new A(); System.out.println();\n }\n}\n",
+      "result": "A",
+      "explanation": "자식 생성 절차를 시작하지 않는다.",
+      "trace": [
+        "A()→A",
+        "B 생성 없음"
+      ]
+    }
+  ],
+  "boundary": "Java SE 17의 생성자 규칙에 고정한다. 더 최신 언어판의 생성자 문법 변화를 이 예제로 일반화하지 않는다. 정해진 세 조건의 검증 결과를 비교하며 브라우저에서 실제 제품 전체를 실행한다는 뜻은 아니다."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-001",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-01"
+  ],
+  "subject": 3,
+  "title": "출력은 무엇인가?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570), signed int이며 아래 작은 값에서 범위 초과 없음. 각 코드는 표준 헤더와 main을 포함한 독립 프로그램이고 입력 없음. 0으로 나누지 않는다.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a=9,b=4;\n    printf(\"%.2f %.2f\\n\", (double)(a/b), (double)a/b);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "2.00 2.25",
+      "explanation": "첫 식은 정수 나눗셈 후 변환, 둘째는 변환 후 실수 나눗셈이다."
+    },
+    {
+      "id": "B",
+      "text": "2.25 2.25",
+      "explanation": "첫 식의 소수 부분은 형변환 전에 사라졌다."
+    },
+    {
+      "id": "C",
+      "text": "2.00 2.00",
+      "explanation": "둘째 식에는 double 피연산자가 있다."
+    },
+    {
+      "id": "D",
+      "text": "3.00 2.25",
+      "explanation": "정수 나눗셈은 반올림하지 않는다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "9/4=2를 double로 바꾸면 2.00, 9.0/4=2.25이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.3.1.8 일반 산술 변환, 6.5.5p6 정수 몫; 공개 위원회 초안.",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

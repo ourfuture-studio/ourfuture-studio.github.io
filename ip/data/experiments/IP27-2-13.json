@@ -1,0 +1,46 @@
+{
+  "id": "IP27-E2-013",
+  "topicId": "IP27-2-13",
+  "title": "GROUP BY 키가 결과 한 행의 뜻을 정한다: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "지역만 그룹 키",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Basket는 아래 네 행, 각 열은 NOT NULL이다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Basket(id INTEGER PRIMARY KEY, region TEXT NOT NULL, product TEXT NOT NULL, qty INTEGER NOT NULL);\nINSERT INTO Basket VALUES(1,'A','pen',2),(2,'A','pen',3),(3,'A','book',7),(4,'B','pen',4);\nSELECT region,SUM(qty) FROM Basket GROUP BY region ORDER BY region;",
+      "result": "(A,12),(B,4)",
+      "explanation": "지역별 요약 두 행이다.",
+      "trace": [
+        "A:{2,3,7}→12",
+        "B:{4}→4"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "지역과 상품을 그룹 키",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Basket는 아래 네 행, 각 열은 NOT NULL이다. 그룹 키에 product를 추가한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Basket(id INTEGER PRIMARY KEY, region TEXT NOT NULL, product TEXT NOT NULL, qty INTEGER NOT NULL);\nINSERT INTO Basket VALUES(1,'A','pen',2),(2,'A','pen',3),(3,'A','book',7),(4,'B','pen',4);\nSELECT region,product,SUM(qty) FROM Basket GROUP BY region,product ORDER BY region,product;",
+      "result": "(A,book,7),(A,pen,5),(B,pen,4)",
+      "explanation": "서로 다른 지역·상품 조합 세 개를 각각 합산한다.",
+      "trace": [
+        "A/book:{7}→7",
+        "A/pen:{2,3}→5",
+        "B/pen:{4}→4"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "지역 중복 표시만 제거",
+      "condition": "SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Basket는 아래 네 행, 각 열은 NOT NULL이다. 집계 없이 DISTINCT region만 조회한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+      "code": "CREATE TABLE Basket(id INTEGER PRIMARY KEY, region TEXT NOT NULL, product TEXT NOT NULL, qty INTEGER NOT NULL);\nINSERT INTO Basket VALUES(1,'A','pen',2),(2,'A','pen',3),(3,'A','book',7),(4,'B','pen',4);\nSELECT DISTINCT region FROM Basket ORDER BY region;",
+      "result": "(A),(B)",
+      "explanation": "지역 이름만 남고 수량 합계 열은 만들어지지 않는다.",
+      "trace": [
+        "입력 지역 A,A,A,B",
+        "DISTINCT→A,B"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

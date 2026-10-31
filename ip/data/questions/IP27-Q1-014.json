@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-014",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-14"
+  ],
+  "subject": 1,
+  "title": "직접 수정할 책임은?",
+  "origin": "original",
+  "tags": [
+    "애플리케이션 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "가격 계산은 Model, 가격 표시 HTML은 View, 요청과 화면 선택은 Controller에 구현돼 있다. 계산 값·요청·반환 필드는 그대로 두고 가격 표시를 '12000'에서 '12,000원'으로만 변경한다.",
+  "code": null,
+  "language": null,
+  "stem": "직접 수정할 책임은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "Model의 할인율 계산",
+      "explanation": "계산 규칙과 값은 바꾸지 않는다."
+    },
+    {
+      "id": "B",
+      "text": "Controller의 인증 정책",
+      "explanation": "인증 정책 변경은 주어지지 않았다."
+    },
+    {
+      "id": "C",
+      "text": "DB의 가격 저장 단위",
+      "explanation": "저장 단위 변경은 주어지지 않았다."
+    },
+    {
+      "id": "D",
+      "text": "View의 금액 표현",
+      "explanation": "같은 값을 다른 문자열로 표현하는 변경이다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "계산 값과 요청 계약이 고정돼 있다. 바뀐 것은 숫자를 화면에 표현하는 형식뿐이므로 View가 직접 변경 대상이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Microsoft Learn — Overview of ASP.NET Core MVC",
+      "url": "https://learn.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-10.0",
+      "scope": "MVC pattern, Model Responsibilities, View Responsibilities, Controller Responsibilities",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

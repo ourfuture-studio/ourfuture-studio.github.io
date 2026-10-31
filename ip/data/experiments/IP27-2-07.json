@@ -1,0 +1,48 @@
+{
+  "id": "IP27-E2-007",
+  "topicId": "IP27-2-07",
+  "title": "BCNF는 모든 비자명 종속의 결정자를 검사한다: 조건 비교",
+  "instruction": "조건을 하나씩 바꾸고 중간 단계와 결과를 비교한다. 각 선택은 독립된 예제다.",
+  "cases": [
+    {
+      "id": "base",
+      "label": "C가 B만 결정",
+      "condition": "R(A,B,C), F={AB→C,C→B}와 그 귀결만 존재. NULL·복합값 없음.",
+      "code": null,
+      "result": "3NF 만족, BCNF 위반",
+      "explanation": "후보키 AB·AC와 비슈퍼키 C를 구별한다.",
+      "trace": [
+        "키 AB,AC",
+        "C+ = BC",
+        "C→B는 BCNF 위반"
+      ]
+    },
+    {
+      "id": "change1",
+      "label": "C가 A도 결정",
+      "condition": "R(A,B,C), F={AB→C,C→B,C→A}와 그 귀결만 존재. NULL·복합값 없음.",
+      "code": null,
+      "result": "BCNF 만족",
+      "explanation": "C가 전체를 결정한다. AB 역시 슈퍼키여서 제시한 비자명 종속은 BCNF 조건을 만족한다.",
+      "trace": [
+        "C+ = ABC",
+        "AB+ = ABC",
+        "모든 결정자 슈퍼키"
+      ]
+    },
+    {
+      "id": "change2",
+      "label": "연쇄 종속",
+      "condition": "R(A,B,C), F={A→B,B→C}와 그 귀결만 존재. NULL·복합값 없음.",
+      "code": null,
+      "result": "3NF와 BCNF 모두 위반",
+      "explanation": "후보키는 A뿐이고 B는 비슈퍼키, C는 비주요 속성이다.",
+      "trace": [
+        "A+ = ABC",
+        "B+ = BC",
+        "B→C는 3NF 예외도 불충족"
+      ]
+    }
+  ],
+  "boundary": "명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다."
+}

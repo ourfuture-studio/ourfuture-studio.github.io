@@ -1,0 +1,59 @@
+{
+  "id": "IP27-Q2-003",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-03"
+  ],
+  "subject": 2,
+  "title": "다음 중 슈퍼키이지만 후보키는 아닌 것은?",
+  "origin": "original",
+  "tags": [
+    "물리 데이터베이스 설계"
+  ],
+  "kind": "single-choice",
+  "givens": "NULL 없는 관계 R(M,E,N)에서 성립하는 FD는 M→EN, E→M이며 이들로부터 추론되는 종속뿐이다. M은 회원번호, E는 이메일, N은 이름이다. R(M,E,N), NULL 없음. F={M→EN,E→M}; 이 밖의 제약은 F의 논리적 귀결뿐. {M,N}을 검사한다.",
+  "code": null,
+  "language": null,
+  "stem": "다음 중 슈퍼키이지만 후보키는 아닌 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "{M}",
+      "explanation": "M+가 전체이며 빈 집합은 전체를 결정하지 못하므로 후보키다."
+    },
+    {
+      "id": "B",
+      "text": "{E}",
+      "explanation": "E→M→EN이므로 E도 최소 슈퍼키다."
+    },
+    {
+      "id": "C",
+      "text": "{M,N}",
+      "explanation": "M만으로 전체를 결정하므로 N이 불필요하다."
+    },
+    {
+      "id": "D",
+      "text": "{N}",
+      "explanation": "N+={N}이므로 슈퍼키조차 아니다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "M+={M,E,N}, E+={E,M,N}, N+={N}이다. {M,N}은 M을 포함해 슈퍼키지만 N을 빼도 되므로 C다.",
+  "references": [
+    {
+      "id": "DB2",
+      "title": "Database System Concepts 7판 저자 슬라이드: Relational Model",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch2.pdf",
+      "scope": "슬라이드 2.8 Keys, 2.12 Select, 2.14 Project: 슈퍼키·최소성, 관계대수의 선택·투영",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "id": "FD",
+      "title": "Database System Concepts 7판 저자 슬라이드: Normalization",
+      "url": "https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf",
+      "scope": "슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}

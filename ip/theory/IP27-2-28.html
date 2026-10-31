@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>관계대수의 선택은 행, 투영은 속성을 고른다 · 정처기 공부방</title><meta name="description" content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험"><link rel="stylesheet" href="../site.css"><link rel="icon" href="../favicon.svg"></head>
+<body data-page="theory" data-topic="IP27-2-28"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="../index.html"><em>of</em><span>정처기 공부방<small>ourfuture studio</small></span></a><nav class="nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html" class="active" aria-current="page">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a></nav><span class="local">● 로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-28 · 이론 읽기</p><h1>관계대수의 선택은 행, 투영은 속성을 고른다</h1><div class="actions"><a class="button primary" id="question-count" href="../practice.html?topic=IP27-2-28">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-28">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>SQL의 SELECT라는 단어와 관계대수의 선택 연산을 같은 뜻으로 읽지 않도록 결과를 그려 보자.</p>
+<h2 id="section-1">핵심 이론</h2>
+<p>관계대수의 선택 σ는 조건을 만족하는 튜플, 즉 행을 남기는 연산이다. σ score≥7(R)은 점수 7 이상의 행을 남기며 이 선택만으로 열 수를 줄이지 않는다.</p>
+<p>투영 π는 남길 속성을 지정한다. π dept는 dept 열만 남긴다. 고전적인 관계대수는 관계를 집합으로 다루므로 같은 결과 튜플이 생기면 하나로 합쳐진다.</p>
+<p>관계의 차수는 속성 수이고 카디널리티는 튜플 수다. SQL은 보통 중복을 보존하므로 고전적 투영을 재현할 때 SELECT DISTINCT가 필요하다. 관계대수의 집합에는 본래 행 순서가 없고, 아래 SQL의 ORDER BY는 관찰 결과를 정리하는 용도다.</p>
+<h2 id="section-2">작은 예제로 확인하기</h2>
+<p>NULL 없는 집합 관계 R(id,dept,score)는 (1,A,7),(2,A,9),(3,B,4)다. 고전 관계대수의 집합 의미로 π dept(σ score≥7(R))을 계산한다. 아래 SQL은 DISTINCT로 그 결과를 재현한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">dept</th>
+<th scope="col">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<p>먼저 score≥7로 id1·2를 남긴 뒤 dept만 투영하면 A·A가 같은 튜플이어서 {A} 한 개가 된다. 차수1·카디널리티1이다.</p>
+<h2 id="section-3">다시 떠올릴 단서</h2>
+<p>선택할 행과 투영할 속성을 정하고 집합 의미의 중복 제거를 적용한다.</p>
+<h2 id="section-4">적용 범위</h2>
+<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<h2 id="section-5">근거와 확인 범위</h2>
+<ul>
+<li><a href="https://www.db-book.com/slides-dir/PDF-dir/ch2.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 7판 저자 슬라이드: Relational Model</a> — 슬라이드 2.8 Keys, 2.12 Select, 2.14 Project: 슈퍼키·최소성, 관계대수의 선택·투영. 확인일 2026-10-31.</li>
+<li><a href="https://www.sqlite.org/lang_select.html" rel="noopener noreferrer" target="_blank">SQLite: SELECT</a> — 2 Simple Select Processing, 2.3 WHERE, 2.4 GROUP BY/HAVING, 3 Compound Select, 4 ORDER BY. 확인일 2026-10-31.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-028">최종 관계의 차수와 카디널리티는?</a></li></ul></aside></div><p id="storage-warning" class="notice" hidden role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" target="_blank" rel="noopener noreferrer">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script type="module" src="../app.mjs"></script></body></html>

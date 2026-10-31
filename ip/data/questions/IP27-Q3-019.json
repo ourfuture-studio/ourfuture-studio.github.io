@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-019",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-19"
+  ],
+  "subject": 3,
+  "title": "스택과 큐의 제거값을 순서대로 쓰면?",
+  "origin": "original",
+  "tags": [
+    "프로그래밍 언어 활용"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  A,B,C 순으로 각각 스택·큐에 삽입한 뒤 한 번씩 제거한다.",
+  "code": "from collections import deque\nvalues=['A', 'B', 'C']\nstack=[]\nqueue=deque()\nfor value in values:\n    stack.append(value)\n    queue.append(value)\nprint(stack.pop(),queue.popleft())\n",
+  "language": "Python",
+  "stem": "스택과 큐의 제거값을 순서대로 쓰면?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "A C",
+      "explanation": "두 구조의 제거 끝을 뒤집었다."
+    },
+    {
+      "id": "B",
+      "text": "C A",
+      "explanation": "스택 마지막C, 큐 처음A이다."
+    },
+    {
+      "id": "C",
+      "text": "C C",
+      "explanation": "큐까지 LIFO로 처리했다."
+    },
+    {
+      "id": "D",
+      "text": "A A",
+      "explanation": "스택까지 FIFO로 처리했다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "스택 오른쪽 top은C, 큐 왼쪽 front는A이므로 C A이다.",
+  "references": [
+    {
+      "id": "R1",
+      "title": "Python 3.13 Data Structures",
+      "url": "https://docs.python.org/3.13/tutorial/datastructures.html",
+      "scope": "5.1.1 리스트를 스택으로 사용; 5.1.2 deque를 큐로 사용",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "status": "verified"
+}
