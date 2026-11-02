@@ -1,0 +1,55 @@
+{
+  "id": "IP27-Q3-C102",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-01"
+  ],
+  "subject": 3,
+  "title": "double 변수에 저장하면 소수 몫이 생기는가",
+  "origin": "additional",
+  "tags": [
+    "C",
+    "일반 산술 변환",
+    "정수 나눗셈",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570). 아래는 외부 입력이 없는 완전한 독립 프로그램이다. 정수 값은 표현 범위 안이고 0으로 나누지 않는다. 1.75는 이 예제에서 정확히 표현된다. 표준 출력의 마지막 줄바꿈은 답안에서 생략한다.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 7, b = 4;\n    double first = a / b;\n    double second = (double)a / b;\n    printf(\"%.2f %.2f\\n\", first, second);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "1.75 1.75",
+      "explanation": "first의 선언이 double이어도 우변 a/b의 두 피연산자는 int이다. 정수 나눗셈 후 결과가 변환된다."
+    },
+    {
+      "id": "B",
+      "text": "1.00 1.75",
+      "explanation": "first는 int 몫 1을 double로 저장하고, second는 double 나눗셈 결과 1.75를 저장한다."
+    },
+    {
+      "id": "C",
+      "text": "1.00 1.00",
+      "explanation": "둘째 식의 (double)a는 / 실행 전에 피연산자의 자료형을 바꾼다."
+    },
+    {
+      "id": "D",
+      "text": "2.00 1.75",
+      "explanation": "정수 나눗셈은 1.75를 가까운 정수 2로 반올림하지 않고 소수 부분을 버린다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "대입받는 변수의 자료형은 우변에서 이미 실행된 정수 나눗셈을 되돌리지 않는다. first의 우변 7/4는 int 몫 1이며 저장 시 double 1.0이 된다. second는 7.0/4.0을 계산하므로 1.75이다.",
+  "references": [
+    {
+      "id": "R-C11",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.3.1.8 일반 산술 변환, 6.5.5p6 정수 나눗셈, 6.5.16.1 단순 대입, 7.21.6.1 printf. 공개 초안.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

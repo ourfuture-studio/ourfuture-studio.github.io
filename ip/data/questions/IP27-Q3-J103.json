@@ -1,0 +1,53 @@
+{
+  "id": "IP27-Q3-J103",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-11"
+  ],
+  "subject": 3,
+  "title": "프로그래밍 실행 추적 · Java",
+  "origin": "additional",
+  "tags": [
+    "프로그래밍 언어 활용",
+    "Java",
+    "실행 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17. 아래 전체 코드를 UTF-8 Main.java로 저장하고 javac로 컴파일한 뒤 java Main을 실행한다. 외부 입력, 패키지 선언, 다중 스레드는 없다. 출력의 마지막 줄바꿈은 보기에서 생략한다.",
+  "code": "public class Main {\n static class Box { int n; Box(int n){this.n=n;} }\n\n public static void main(String[] args) {\n  Box a = new Box(2);\n  Box b = a;\n  b.n = 6;\n  b = new Box(8);\n  System.out.println(a.n + \" \" + b.n);\n }\n}\n",
+  "language": "Java",
+  "stem": "다음 프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "2 8",
+      "explanation": "b.n=6은 재대입 전 a와 b가 공유하던 객체를 수정한다."
+    },
+    {
+      "id": "B",
+      "text": "6 8",
+      "explanation": "b.n=6으로 공유 객체의 n이 6이 된다. b=new Box(8)은 b만 새 객체로 옮기므로 a.n은 6, b.n은 8이다."
+    },
+    {
+      "id": "C",
+      "text": "8 8",
+      "explanation": "b를 새 객체로 재대입해도 a의 참조값은 옮겨지지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "6 6",
+      "explanation": "b는 마지막에 n=8인 새 객체를 가리킨다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "b.n=6으로 공유 객체의 n이 6이 된다. b=new Box(8)은 b만 새 객체로 옮기므로 a.n은 6, b.n은 8이다.",
+  "references": [
+    {
+      "title": "Java Language Specification, Java SE 17",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-4.html#jls-4.3.1",
+      "scope": "§4.3.1 같은 객체를 여러 참조로 관찰, §15.26.1 단순 대입, §15.12.4.5 인자값을 새 매개변수에 대입."
+    }
+  ],
+  "status": "verified"
+}

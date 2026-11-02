@@ -1764,6 +1764,257 @@
     "path": "data/questions/IP27-Q3-034.json"
   },
   {
+    "id": "IP27-Q3-C101",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-01"
+    ],
+    "subject": 3,
+    "title": "프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "C",
+      "정수 나눗셈",
+      "형변환",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-C101.json"
+  },
+  {
+    "id": "IP27-Q3-C102",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-01"
+    ],
+    "subject": 3,
+    "title": "프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "C",
+      "일반 산술 변환",
+      "정수 나눗셈",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-C102.json"
+  },
+  {
+    "id": "IP27-Q3-C103",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-06"
+    ],
+    "subject": 3,
+    "title": "프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "C",
+      "값 전달",
+      "포인터",
+      "역참조",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-C103.json"
+  },
+  {
+    "id": "IP27-Q3-C104",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-06"
+    ],
+    "subject": 3,
+    "title": "프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "C",
+      "값 전달",
+      "포인터 재대입",
+      "객체 수명",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-C104.json"
+  },
+  {
+    "id": "IP27-Q3-J101",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-08"
+    ],
+    "subject": 3,
+    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용",
+      "Java",
+      "실행 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-J101.json"
+  },
+  {
+    "id": "IP27-Q3-J102",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-08"
+    ],
+    "subject": 3,
+    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용",
+      "Java",
+      "실행 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-J102.json"
+  },
+  {
+    "id": "IP27-Q3-J103",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-11"
+    ],
+    "subject": 3,
+    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용",
+      "Java",
+      "실행 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-J103.json"
+  },
+  {
+    "id": "IP27-Q3-J104",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-11"
+    ],
+    "subject": 3,
+    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "프로그래밍 언어 활용",
+      "Java",
+      "실행 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-J104.json"
+  },
+  {
+    "id": "IP27-Q3-P101",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-13"
+    ],
+    "subject": 3,
+    "title": "얕은 복사 후 두 종류의 append를 수행하면 출력은?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "Python",
+      "프로그래밍 코드 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-P101.json"
+  },
+  {
+    "id": "IP27-Q3-P102",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-13"
+    ],
+    "subject": 3,
+    "title": "깊은 복사한 내부 리스트를 수정한 결과는?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "Python",
+      "프로그래밍 코드 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-P102.json"
+  },
+  {
+    "id": "IP27-Q3-P103",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-14",
+      "IP27-3-16"
+    ],
+    "subject": 3,
+    "title": "음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "Python",
+      "프로그래밍 코드 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-P103.json"
+  },
+  {
+    "id": "IP27-Q3-P104",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-14"
+    ],
+    "subject": 3,
+    "title": "음수 step에서 생략한 stop과 명시한 -1의 차이는?",
+    "origin": "additional",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "Python",
+      "프로그래밍 코드 추적",
+      "programming-practice"
+    ],
+    "path": "data/questions/IP27-Q3-P104.json"
+  },
+  {
     "id": "IP27-Q4-001",
     "revision": 1,
     "topicIds": [

@@ -1,0 +1,56 @@
+{
+  "id": "IP27-Q3-C103",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-06"
+  ],
+  "subject": 3,
+  "title": "정수 복사본 수정과 포인터 역참조 비교",
+  "origin": "additional",
+  "tags": [
+    "C",
+    "값 전달",
+    "포인터",
+    "역참조",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570). 아래는 외부 입력이 없는 완전한 독립 프로그램이다. 포인터는 호출 중 살아 있는 int 객체 x를 가리키며 모든 정수는 표현 범위 안이다. 표준 출력의 마지막 줄바꿈은 답안에서 생략한다.",
+  "code": "#include <stdio.h>\n\nstatic void by_value(int v) { v = 13; }\nstatic void by_pointer(int *p) { *p = 13; }\n\nint main(void) {\n    int x = 4;\n    by_value(x);\n    printf(\"%d \", x);\n    by_pointer(&x);\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "13 13",
+      "explanation": "첫 함수의 v는 x의 값을 복사한 별도 int 객체이다. v를 바꾸어도 첫 출력의 x는 4다."
+    },
+    {
+      "id": "B",
+      "text": "4 4",
+      "explanation": "둘째 함수는 복사한 주소를 *p로 역참조하여 원래 x를 13으로 바꾼다."
+    },
+    {
+      "id": "C",
+      "text": "13 4",
+      "explanation": "복사본 v 수정과 원래 객체 *p 수정의 영향을 반대로 읽었다."
+    },
+    {
+      "id": "D",
+      "text": "4 13",
+      "explanation": "첫 호출은 v만 수정해 x=4, 둘째 호출은 *p가 가리키는 x를 수정해 x=13이다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "by_value(x)의 매개변수 v는 x값 4를 복사한다. v=13 이후에도 x는 4이므로 첫 출력은 4다. by_pointer(&x)는 x의 주소값을 p로 복사하고 *p=13으로 x를 바꾸므로 둘째 출력은 13이다. 포인터를 받는 경우도 C의 인자 전달 방식은 값 전달이다.",
+  "references": [
+    {
+      "id": "R-C11",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.5.2.2p4 함수 인자의 값과 매개변수, 6.5.3.2p3~4 주소 연산자와 역참조, 6.5.16.1 단순 대입. 공개 초안.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "IP27-Q3-J102",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-08"
+  ],
+  "subject": 3,
+  "title": "프로그래밍 실행 추적 · Java",
+  "origin": "additional",
+  "tags": [
+    "프로그래밍 언어 활용",
+    "Java",
+    "실행 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Java SE 17. 아래 전체 코드를 UTF-8 Main.java로 저장하고 javac로 컴파일한 뒤 java Main을 실행한다. 외부 입력, 패키지 선언, 다중 스레드는 없다. 출력의 마지막 줄바꿈은 보기에서 생략한다.",
+  "code": "public class Main {\n static class A {\n  String f(Object x){return \"AO\";}\n  String f(String x){return \"AS\";}\n }\n static class B extends A {\n  @Override String f(Object x){return \"BO\";}\n  @Override String f(String x){return \"BS\";}\n }\n public static void main(String[] args) {\n  A a = new B();\n  Object x = \"sun\";\n  System.out.println(a.f(x) + \" \" + a.f((String)x));\n }\n}\n",
+  "language": "Java",
+  "stem": "다음 프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "BO BO",
+      "explanation": "둘째 호출의 (String)x는 컴파일 시점 자료형을 String으로 바꾸므로 f(String)를 선택한다."
+    },
+    {
+      "id": "B",
+      "text": "BO BS",
+      "explanation": "첫 인자 x는 Object형이므로 B.f(Object)가 BO를 반환한다. 둘째 인자 (String)x는 String형이므로 B.f(String)가 BS를 반환한다. x가 실제 String 객체라 캐스트도 성공한다."
+    },
+    {
+      "id": "C",
+      "text": "BS BS",
+      "explanation": "첫 호출은 캐스트하지 않은 Object형 표현식 x를 인자로 사용한다."
+    },
+    {
+      "id": "D",
+      "text": "AO AS",
+      "explanation": "수신 객체가 B이므로 두 호출 모두 B의 재정의 구현을 실행한다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "첫 인자 x는 Object형이므로 B.f(Object)가 BO를 반환한다. 둘째 인자 (String)x는 String형이므로 B.f(String)가 BS를 반환한다. x가 실제 String 객체라 캐스트도 성공한다.",
+  "references": [
+    {
+      "title": "Java Language Specification, Java SE 17",
+      "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-15.html#jls-15.12.2",
+      "scope": "§15.12.2 컴파일 시점 오버로딩 선택, §15.12.4.4 실행 시점 오버라이딩 구현 탐색. 일반 인스턴스 메서드만 사용한다."
+    }
+  ],
+  "status": "verified"
+}

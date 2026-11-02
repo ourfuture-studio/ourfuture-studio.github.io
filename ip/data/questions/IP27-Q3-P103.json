@@ -1,0 +1,60 @@
+{
+  "id": "IP27-Q3-P103",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-14",
+    "IP27-3-16"
+  ],
+  "subject": 3,
+  "title": "음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?",
+  "origin": "additional",
+  "tags": [
+    "Python",
+    "프로그래밍 코드 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음. print의 표준 출력을 위에서 아래 순서대로 고른다. 리스트와 정수는 코드에 표시한 값만 사용한다.",
+  "code": "a = [10, 20, 30, 40, 50, 60]\nprint(a[-1:-7:-2])\nprint(list(range(-1, -7, -2)))\n",
+  "language": "Python",
+  "stem": "음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[60, 40, 20]\n[-1, -3, -5]",
+      "explanation": "슬라이스는 길이 6 기준 인덱스 5,3,1의 값을 고르고 range는 정수 -1,-3,-5를 생성한다."
+    },
+    {
+      "id": "B",
+      "text": "[60, 40]\n[-1, -3, -5]",
+      "explanation": "인덱스 1은 종료 경계에 아직 도달하지 않았으므로 값 20도 포함된다."
+    },
+    {
+      "id": "C",
+      "text": "[60, 40, 20]\n[5, 3, 1]",
+      "explanation": "range는 시퀀스의 길이를 모르므로 음수를 인덱스로 보정하지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "[]\n[-1, -3, -5, -7]",
+      "explanation": "음수 step으로 왼쪽으로 이동할 수 있고 range도 stop인 -7은 제외한다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "슬라이스의 -1은 마지막 인덱스 5로 바뀌고 -7은 음수 진행에서 시작 전 경계 -1로 잘린다. 실제 선택 인덱스는 5,3,1이며 값은 60,40,20이다. range는 원래 정수 -1,-3,-5를 생성하고 -7은 제외한다.",
+  "references": [
+    {
+      "title": "Python 3.13 Built-in Types — Common Sequence Operations",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+      "scope": "Slice notes (3), (4), (5): negative indices, stop exclusion, default/clamped bounds, nonzero step.",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Python 3.13 Built-in Types — Ranges",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html#range",
+      "scope": "range(start, stop, step) definition, positive/negative step stop condition, step zero ValueError.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

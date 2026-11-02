@@ -1,0 +1,53 @@
+{
+  "id": "IP27-Q3-P102",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-13"
+  ],
+  "subject": 3,
+  "title": "깊은 복사한 내부 리스트를 수정한 결과는?",
+  "origin": "additional",
+  "tags": [
+    "Python",
+    "프로그래밍 코드 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음. print의 표준 출력을 위에서 아래 순서대로 고른다. 리스트와 정수는 코드에 표시한 값만 사용한다.",
+  "code": "import copy\na = [[2], [4]]\nb = copy.deepcopy(a)\nb[0].append(8)\nprint(a[0], b[0], a is b)\n",
+  "language": "Python",
+  "stem": "깊은 복사한 내부 리스트를 수정한 결과는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[2, 8] [2, 8] True",
+      "explanation": "할당 b=a의 결과이며 deepcopy는 이 리스트들을 새로 만든다."
+    },
+    {
+      "id": "B",
+      "text": "[2, 8] [2, 8] False",
+      "explanation": "얕은 복사는 바깥만 분리하지만 여기서는 깊은 복사이다."
+    },
+    {
+      "id": "C",
+      "text": "[2] [2, 8] False",
+      "explanation": "이 중첩 리스트에서는 바깥과 내부 리스트가 모두 분리된다."
+    },
+    {
+      "id": "D",
+      "text": "[2] [2] False",
+      "explanation": "깊은 복사가 b의 변경을 막는 것은 아니다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "deepcopy는 이 정수 중첩 리스트의 내부 리스트도 새로 만든다. b[0]만 [2, 8]이 되고 a[0]은 [2]이다. a와 b는 서로 다른 바깥 리스트이므로 is 결과는 False이다.",
+  "references": [
+    {
+      "title": "Python 3.13 copy — Shallow and deep copy operations",
+      "url": "https://docs.python.org/3.13/library/copy.html",
+      "scope": "Assignment creates bindings; shallow copies share contained objects; deep copies recursively copy them. Intro and shallow/deep comparison paragraphs.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

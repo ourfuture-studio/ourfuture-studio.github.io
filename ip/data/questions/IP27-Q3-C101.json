@@ -1,0 +1,55 @@
+{
+  "id": "IP27-Q3-C101",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-01"
+  ],
+  "subject": 3,
+  "title": "음수 정수 나눗셈과 형변환 위치",
+  "origin": "additional",
+  "tags": [
+    "C",
+    "정수 나눗셈",
+    "형변환",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570). 아래는 외부 입력이 없는 완전한 독립 프로그램이다. a와 b는 signed int이고 0으로 나누지 않으며 모든 값이 표현 범위 안이다. 소수는 이 예제에서 정확히 표현된다. 표준 출력의 마지막 줄바꿈은 답안에서 생략한다.",
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a = -7, b = 2;\n    double late = (double)(a / b);\n    double early = (double)a / b;\n    printf(\"%.2f %.2f\\n\", late, early);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "-4.00 -3.50",
+      "explanation": "C11 정수 나눗셈은 음의 무한대 방향 내림(Floor)이 아니라 0 방향 버림이므로 첫 결과는 -3.00이다."
+    },
+    {
+      "id": "B",
+      "text": "-3.00 -3.00",
+      "explanation": "둘째 식은 나누기 전에 a를 double로 바꾸므로 -3.50을 유지한다."
+    },
+    {
+      "id": "C",
+      "text": "-3.00 -3.50",
+      "explanation": "첫 식의 정수 몫 -3을 나중에 double로 바꾸고, 둘째 식은 double끼리 -7.0/2.0을 계산한다."
+    },
+    {
+      "id": "D",
+      "text": "-3.50 -3.50",
+      "explanation": "첫 식은 괄호 안 int 나눗셈이 끝난 뒤 형변환되므로 버린 소수 부분을 되살리지 못한다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "a/b의 두 피연산자는 int이므로 -7/2의 정수 몫은 0 방향으로 버린 -3이다. 이를 double로 바꾼 late는 -3.00이다. early의 식은 (double)a 때문에 b도 double로 변환되어 -7.0/2.0=-3.5이며, %.2f로 -3.50을 출력한다.",
+  "references": [
+    {
+      "id": "R-C11",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.3.1.8 일반 산술 변환, 6.5.5p6 정수 몫의 0 방향 버림, 7.21.6.1 printf. 공개 초안이며 최종 유료 표준의 판본 확인을 뜻하지 않는다.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

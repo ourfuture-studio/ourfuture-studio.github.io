@@ -1,0 +1,53 @@
+{
+  "id": "IP27-Q3-P101",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-13"
+  ],
+  "subject": 3,
+  "title": "얕은 복사 후 두 종류의 append를 수행하면 출력은?",
+  "origin": "additional",
+  "tags": [
+    "Python",
+    "프로그래밍 코드 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음. print의 표준 출력을 위에서 아래 순서대로 고른다. 리스트와 정수는 코드에 표시한 값만 사용한다.",
+  "code": "a = [[1], [2]]\nb = a.copy()\nb[0].append(9)\nb.append([7])\nprint(a)\nprint(b)\n",
+  "language": "Python",
+  "stem": "얕은 복사 후 두 종류의 append를 수행하면 출력은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[[1], [2]]\n[[1, 9], [2], [7]]",
+      "explanation": "깊은 복사라면 내부 수정이 분리되지만 a.copy()는 내부 리스트를 공유한다."
+    },
+    {
+      "id": "B",
+      "text": "[[1, 9], [2]]\n[[1, 9], [2], [7]]",
+      "explanation": "내부 리스트는 공유하고 바깥 리스트는 분리되므로 첫 수정만 a에 보인다."
+    },
+    {
+      "id": "C",
+      "text": "[[1, 9], [2], [7]]\n[[1, 9], [2], [7]]",
+      "explanation": "b=a였다면 바깥 리스트까지 공유하지만 a.copy()는 새 바깥 리스트를 만든다."
+    },
+    {
+      "id": "D",
+      "text": "[[1], [2], [7]]\n[[1, 9], [2]]",
+      "explanation": "내부 수정과 바깥 append의 공유 범위를 반대로 해석했다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "a.copy()로 바깥 리스트는 새 객체가 되지만 a[0]과 b[0]은 같은 내부 리스트이다. 9 추가는 둘 모두에서 보인다. b.append([7])는 b의 바깥 리스트만 늘린다.",
+  "references": [
+    {
+      "title": "Python 3.13 copy — Shallow and deep copy operations",
+      "url": "https://docs.python.org/3.13/library/copy.html",
+      "scope": "Assignment creates bindings; shallow copies share contained objects; deep copies recursively copy them. Intro and shallow/deep comparison paragraphs.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

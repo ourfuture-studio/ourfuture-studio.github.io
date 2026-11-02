@@ -1,0 +1,56 @@
+{
+  "id": "IP27-Q3-C104",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-06"
+  ],
+  "subject": 3,
+  "title": "포인터 매개변수의 대상을 바꾼 뒤 역참조",
+  "origin": "additional",
+  "tags": [
+    "C",
+    "값 전달",
+    "포인터 재대입",
+    "객체 수명",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "C11 의미 규칙(N1570). 아래는 외부 입력이 없는 완전한 독립 프로그램이다. local과 x는 서로 다른 int 객체이다. local의 주소는 함수 밖으로 반환하지 않으며 local의 수명이 끝난 뒤 역참조하지 않는다. 표준 출력의 마지막 줄바꿈은 답안에서 생략한다.",
+  "code": "#include <stdio.h>\n\nstatic void change(int *p) {\n    int local = 3;\n    p = &local;\n    *p = 19;\n}\n\nint main(void) {\n    int x = 7;\n    change(&x);\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
+  "language": "C",
+  "stem": "프로그램의 표준 출력은 무엇인가?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "7",
+      "explanation": "p=&local 뒤 *p=19는 local을 수정한다. x를 수정하는 대입은 없으므로 x는 7이다."
+    },
+    {
+      "id": "B",
+      "text": "19",
+      "explanation": "p의 값은 이미 &local로 바뀌었다. *p는 더 이상 x를 지정하지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "3",
+      "explanation": "local의 초기값 3을 x에 복사하는 문장은 없다."
+    },
+    {
+      "id": "D",
+      "text": "0",
+      "explanation": "함수가 끝나도 main에 있는 x를 0으로 만드는 규칙은 없다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "함수 진입 때 p는 &x를 복사해 받지만 p=&local에서 함수의 포인터 변수만 다른 주소로 바뀐다. 다음 *p=19는 살아 있는 local 객체를 수정한다. x는 어떤 문장에서도 대입받지 않으므로 최종 출력은 7이다. 함수 종료 후 local을 다시 사용하지 않아 이 코드의 역참조에는 수명 위반이 없다.",
+  "references": [
+    {
+      "id": "R-C11",
+      "title": "WG14 N1570 C11 공개 위원회 초안",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "scope": "6.2.4 객체의 저장 기간과 수명, 6.5.2.2p4 값 전달, 6.5.3.2 주소와 역참조, 6.5.16.1 단순 대입. 공개 초안.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}

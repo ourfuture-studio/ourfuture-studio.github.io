@@ -1,0 +1,53 @@
+{
+  "id": "IP27-Q3-P104",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-14"
+  ],
+  "subject": 3,
+  "title": "음수 step에서 생략한 stop과 명시한 -1의 차이는?",
+  "origin": "additional",
+  "tags": [
+    "Python",
+    "프로그래밍 코드 추적",
+    "programming-practice"
+  ],
+  "kind": "single-choice",
+  "givens": "Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음. print의 표준 출력을 위에서 아래 순서대로 고른다. 리스트와 정수는 코드에 표시한 값만 사용한다.",
+  "code": "a = [0, 1, 2, 3, 4, 5]\nprint(a[::-1])\nprint(a[:-1:-1])\n",
+  "language": "Python",
+  "stem": "음수 step에서 생략한 stop과 명시한 -1의 차이는?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "[5, 4, 3, 2, 1, 0]\n[5, 4, 3, 2, 1, 0]",
+      "explanation": "생략한 stop과 명시한 -1은 음수 step에서 같은 경계가 아니다."
+    },
+    {
+      "id": "B",
+      "text": "[5, 4, 3, 2, 1]\n[]",
+      "explanation": "생략한 stop은 시작 전 경계이므로 값 0까지 선택한다."
+    },
+    {
+      "id": "C",
+      "text": "[5, 4, 3, 2, 1, 0]\n[5]",
+      "explanation": "명시한 -1은 실제 인덱스 5이고 stop은 제외되므로 시작 칸도 선택하지 않는다."
+    },
+    {
+      "id": "D",
+      "text": "[5, 4, 3, 2, 1, 0]\n[]",
+      "explanation": "첫 식은 전체 역순이며 둘째 식은 시작 인덱스 5와 종료 경계 5가 같아 비어 있다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "음수 step의 생략한 stop은 첫 원소 앞의 경계를 뜻한다. 명시한 -1은 길이를 더해 실제 마지막 인덱스 5가 된다. 둘째 식은 시작과 stop이 모두 5이므로 선택할 원소가 없다.",
+  "references": [
+    {
+      "title": "Python 3.13 Built-in Types — Common Sequence Operations",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+      "scope": "Slice notes (3), (4), (5): negative indices, stop exclusion, default/clamped bounds, nonzero step.",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "status": "verified"
+}
