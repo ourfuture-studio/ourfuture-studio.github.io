@@ -1653,23 +1653,23 @@
     },
     {
       "path": "statistics/descriptive.html",
-      "sha256": "3ef712b9354583e11b593d3d2844af7fe246dfb2701e0701a5440152b1617308",
+      "sha256": "07d4f1999e629a355f836edeefa9f4d9b6898268d0ebfe6c81214bc8c5ab85f8",
       "bytes": 29151
     },
     {
       "path": "statistics/index.html",
-      "sha256": "14777f2c3d9d2c121b21d46c4cc732b7ecc98a414c4a3820a29425afbf065dce",
+      "sha256": "2c191d1bcc413874f81995cdc0541e4816af844328471297785c65e14ba83ffa",
       "bytes": 8914
     },
     {
       "path": "statistics/inferential.html",
-      "sha256": "3ac703977a5ecbe8f601803dc4537a394ef73b83075ed6a59ee8744434a5a799",
+      "sha256": "a4408736892f060c41f2009a5afc4244aa749db69fd13ddd9dbc47a54ba991d0",
       "bytes": 29557
     },
     {
       "path": "statistics/statistics.css",
-      "sha256": "f827af68d5bf4a514ec94fc94a0377d5b3d290919530bc796044e5aba140fa7e",
-      "bytes": 9047
+      "sha256": "c6bc687f436ee5e008960c931f308d1c447eb8304db125d1cd760fea55ca5d8d",
+      "bytes": 9061
     },
     {
       "path": "statistics-links.mjs",
