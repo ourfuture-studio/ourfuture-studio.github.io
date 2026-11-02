@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1270" viewBox="0 0 960 1270" role="img" aria-labelledby="title desc">
+<title id="title">평균이 같아도 표준편차는 다르다</title><desc id="desc">A는88,88,100,112,112분으로 평균100,표본표준편차12분이다. B는 다섯 값 모두100분으로 평균100,표본표준편차0분이다. 같은 시간축과 점 다섯 개로 비교하고 A의 분산 계산을 표시한다.</desc>
+<rect width="960" height="1270" fill="#fbfaf5"/>
+<text x="48" y="65" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="38" font-weight="700" text-anchor="start">중심과 산포를 함께 읽기</text>
+<text x="48" y="117" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="30" font-weight="400" text-anchor="start">평균(Mean)은 같아도 흩어진 정도는 다르다.</text>
+<text x="48" y="163" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">점 하나 = 교육용 배달 주문 한 건</text>
+<text x="48" y="230" fill="#34796b" font-family="Malgun Gothic,sans-serif" font-size="31" font-weight="700" text-anchor="start">A  88, 88, 100, 112, 112분</text>
+<text x="48" y="277" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="28" font-weight="400" text-anchor="start">평균 100분 · 표본 표준편차 12분</text>
+<line x1="120" y1="470" x2="880" y2="470" stroke="#5e7470" stroke-width="2"/>
+<line x1="500" y1="302" x2="500" y2="475" stroke="#34796b" stroke-width="2" stroke-dasharray="7 7"/>
+<line x1="120.0" y1="470" x2="120.0" y2="480" stroke="#5e7470" stroke-width="2"/>
+<text x="120.0" y="511" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">80</text>
+<line x1="310.0" y1="470" x2="310.0" y2="480" stroke="#5e7470" stroke-width="2"/>
+<text x="310.0" y="511" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">90</text>
+<line x1="500.0" y1="470" x2="500.0" y2="480" stroke="#5e7470" stroke-width="2"/>
+<text x="500.0" y="511" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">100</text>
+<line x1="690.0" y1="470" x2="690.0" y2="480" stroke="#5e7470" stroke-width="2"/>
+<text x="690.0" y="511" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">110</text>
+<line x1="880.0" y1="470" x2="880.0" y2="480" stroke="#5e7470" stroke-width="2"/>
+<text x="880.0" y="511" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">120</text>
+<circle cx="272.0" cy="446" r="17" fill="#34796b"/>
+<circle cx="272.0" cy="403" r="17" fill="#34796b"/>
+<circle cx="500.0" cy="446" r="17" fill="#34796b"/>
+<circle cx="728.0" cy="446" r="17" fill="#34796b"/>
+<circle cx="728.0" cy="403" r="17" fill="#34796b"/>
+<text x="48" y="550" fill="#bd6846" font-family="Malgun Gothic,sans-serif" font-size="31" font-weight="700" text-anchor="start">B  100, 100, 100, 100, 100분</text>
+<text x="48" y="597" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="28" font-weight="400" text-anchor="start">평균 100분 · 표본 표준편차 0분</text>
+<line x1="120" y1="820" x2="880" y2="820" stroke="#5e7470" stroke-width="2"/>
+<line x1="500" y1="622" x2="500" y2="825" stroke="#34796b" stroke-width="2" stroke-dasharray="7 7"/>
+<line x1="120.0" y1="820" x2="120.0" y2="830" stroke="#5e7470" stroke-width="2"/>
+<text x="120.0" y="861" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">80</text>
+<line x1="310.0" y1="820" x2="310.0" y2="830" stroke="#5e7470" stroke-width="2"/>
+<text x="310.0" y="861" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">90</text>
+<line x1="500.0" y1="820" x2="500.0" y2="830" stroke="#5e7470" stroke-width="2"/>
+<text x="500.0" y="861" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">100</text>
+<line x1="690.0" y1="820" x2="690.0" y2="830" stroke="#5e7470" stroke-width="2"/>
+<text x="690.0" y="861" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">110</text>
+<line x1="880.0" y1="820" x2="880.0" y2="830" stroke="#5e7470" stroke-width="2"/>
+<text x="880.0" y="861" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="middle">120</text>
+<circle cx="500.0" cy="796" r="17" fill="#bd6846"/>
+<circle cx="500.0" cy="753" r="17" fill="#bd6846"/>
+<circle cx="500.0" cy="710" r="17" fill="#bd6846"/>
+<circle cx="500.0" cy="667" r="17" fill="#bd6846"/>
+<circle cx="500.0" cy="624" r="17" fill="#bd6846"/>
+<text x="500" y="907" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="middle">배달시간(분) · 두 그림은 같은 눈금</text>
+<rect x="42" y="950" width="876" height="260" rx="15" fill="#edf5ef" stroke="#cbd8d1" stroke-width="2"/>
+<text x="70" y="994" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" text-anchor="start">A의 표본분산(Sample Variance)</text>
+<text x="70" y="1041" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="34" font-weight="400" text-anchor="start">s² = 576 ÷ (5−1) = 144 분²</text>
+<text x="70" y="1093" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="28" font-weight="700" text-anchor="start">표본 표준편차(Sample Standard Deviation)</text>
+<text x="70" y="1140" fill="#34796b" font-family="Malgun Gothic,sans-serif" font-size="35" font-weight="700" text-anchor="start">s = √144 = 12 분</text>
+<text x="70" y="1181" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="start">B는 모든 값이 같으므로 편차와 표본 SD가 모두 0이다.</text>
+</svg>

@@ -34,12 +34,12 @@ export function annotate(text,code=''){
 }
 function apply(root){
  const nodes=[];if(root.nodeType===Node.TEXT_NODE)nodes.push(root);else{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);while(w.nextNode())nodes.push(w.currentNode)}
- for(const n of nodes){const p=n.parentElement;if(!p||p.closest('script,style,code,pre,textarea,noscript,svg,h1,.lesson-card h2'))continue;if(p.tagName==='OPTION'&&!p.hasAttribute('value'))continue;
+ for(const n of nodes){const p=n.parentElement;if(!p||p.closest('script,style,code,pre,textarea,noscript,svg,math,h1,.lesson-card h2'))continue;if(p.tagName==='OPTION'&&!p.hasAttribute('value'))continue;
  const code=p.closest('[data-code]')?.dataset.code??document.body.dataset.code??document.querySelector('#lesson-data')?.textContent.match(/"code"\s*:\s*"([1-4]-\d{2})"/)?.[1]??'';
  const value=annotate(n.nodeValue,code);if(value!==n.nodeValue)n.nodeValue=value;
  }
 }
-if(typeof document!=='undefined'){
+if(typeof document!=='undefined'&&document.body.dataset.terminologyStatic!=='true'){
  apply(document.body);
  const observer=new MutationObserver(changes=>{const roots=new Set();for(const c of changes){if(c.type==='characterData')roots.add(c.target);for(const n of c.addedNodes)roots.add(n)}for(const root of roots)if(root.isConnected)apply(root)});
  observer.observe(document.body,{childList:true,characterData:true,subtree:true});

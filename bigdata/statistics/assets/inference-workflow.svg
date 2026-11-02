@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1750" viewBox="0 0 960 1750" role="img" aria-labelledby="title desc">
+<title id="title">추론통계: 표본으로 전체를 판단하는 과정</title><desc id="desc">모집단, 표본, 통계량, 표본분포, 추정과 가설검정, 의사결정의 여섯 단계를 위에서 아래로 잇는다. 대표성, 표준오차, 효과 크기와 비용의 역할을 함께 표시한다.</desc>
+<rect width="960" height="1750" fill="#fbfaf5"/>
+<text x="48" y="67" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="38" font-weight="700" text-anchor="start">추론통계(Inferential Statistics)</text>
+<text x="48" y="121" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="35" font-weight="400" text-anchor="start">일부를 조사해 전체를 판단하는 과정</text>
+<text x="48" y="176" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="28" font-weight="400" text-anchor="start">전부 조사하기 어렵다면, 일부를 제대로 고른다.</text>
+<rect x="42" y="220" width="876" height="180" rx="15" fill="#fff" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="269" r="23" fill="#34796b"/>
+<text x="88" y="279" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">1</text>
+<text x="133" y="281" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">모집단(Population)</text>
+<text x="70" y="334" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">알고 싶은 기간·지역의 전체 주문</text>
+<text x="70" y="374" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="26" font-weight="400" text-anchor="start">먼저 어디까지 말할 것인지 정한다.</text>
+<line x1="480" y1="406" x2="480" y2="431" stroke="#34796b" stroke-width="3"/>
+<path d="M472,422 L480,431 L488,422" fill="none" stroke="#34796b" stroke-width="3"/>
+<rect x="42" y="445" width="876" height="180" rx="15" fill="#fff" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="494" r="23" fill="#34796b"/>
+<text x="88" y="504" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">2</text>
+<text x="133" y="506" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">표본(Sample)</text>
+<text x="70" y="559" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">그 모집단에서 실제로 조사한 주문</text>
+<text x="70" y="599" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="26" font-weight="400" text-anchor="start">점심만 뽑았다면 저녁까지 대표하지 못한다.</text>
+<line x1="480" y1="631" x2="480" y2="656" stroke="#34796b" stroke-width="3"/>
+<path d="M472,647 L480,656 L488,647" fill="none" stroke="#34796b" stroke-width="3"/>
+<rect x="42" y="670" width="876" height="180" rx="15" fill="#fff" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="719" r="23" fill="#34796b"/>
+<text x="88" y="729" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">3</text>
+<text x="133" y="731" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">통계량(Statistic)</text>
+<text x="70" y="784" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">표본평균(Sample Mean) 등으로 자료를 요약</text>
+<text x="70" y="824" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="26" font-weight="400" text-anchor="start">표본을 다시 뽑으면 요약한 값도 달라질 수 있다.</text>
+<line x1="480" y1="856" x2="480" y2="881" stroke="#34796b" stroke-width="3"/>
+<path d="M472,872 L480,881 L488,872" fill="none" stroke="#34796b" stroke-width="3"/>
+<rect x="42" y="895" width="876" height="180" rx="15" fill="#fff" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="944" r="23" fill="#34796b"/>
+<text x="88" y="954" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">4</text>
+<text x="133" y="956" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">표본분포(Sampling Distribution)</text>
+<text x="70" y="1009" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">반복해서 뽑은 통계량은 얼마나 달라질까?</text>
+<text x="70" y="1049" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="26" font-weight="400" text-anchor="start">표준오차(SE, Standard Error)로 그 크기를 본다.</text>
+<line x1="480" y1="1081" x2="480" y2="1106" stroke="#34796b" stroke-width="3"/>
+<path d="M472,1097 L480,1106 L488,1097" fill="none" stroke="#34796b" stroke-width="3"/>
+<rect x="42" y="1120" width="876" height="280" rx="15" fill="#edf5ef" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="1167" r="23" fill="#34796b"/>
+<text x="88" y="1177" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">5</text>
+<text x="133" y="1180" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">질문에 맞게 추정하거나 검정한다</text>
+<text x="70" y="1235" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="30" font-weight="700" text-anchor="start">추정(Estimation)</text>
+<text x="70" y="1278" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">전체 평균은 어느 범위에 있을까?</text>
+<text x="70" y="1330" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="30" font-weight="700" text-anchor="start">가설검정(Hypothesis Testing)</text>
+<text x="70" y="1371" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">가정한 기준에서 이런 결과가 얼마나 드물까?</text>
+<line x1="480" y1="1406" x2="480" y2="1431" stroke="#34796b" stroke-width="3"/>
+<path d="M472,1422 L480,1431 L488,1422" fill="none" stroke="#34796b" stroke-width="3"/>
+<rect x="42" y="1445" width="876" height="185" rx="15" fill="#fff" stroke="#cbd8d1" stroke-width="2"/>
+<circle cx="88" cy="1494" r="23" fill="#bd6846"/>
+<text x="88" y="1504" fill="#fff" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" text-anchor="middle">6</text>
+<text x="133" y="1505" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="32" font-weight="700" text-anchor="start">의사결정(Decision-Making)</text>
+<text x="70" y="1558" fill="#183c3a" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" text-anchor="start">효과 크기·비용·자료의 한계를 함께 검토</text>
+<text x="70" y="1598" fill="#5e7470" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" text-anchor="start">통계적으로 유의하다는 사실만으로 실행하지 않는다.</text>
+<text x="48" y="1695" fill="#34796b" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" text-anchor="start">표본의 숫자 + 불확실성 + 적용 조건 = 판단의 근거</text>
+</svg>
