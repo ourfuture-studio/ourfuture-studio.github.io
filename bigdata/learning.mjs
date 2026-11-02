@@ -1,5 +1,5 @@
 import { statisticsDestination, statisticsLink } from './statistics-links.mjs?v=b51b199471ae';
-import { CATALOG } from './catalog.mjs';
+import { CATALOG } from './catalog.mjs?v=1698f3645dff';
 import { createProgressStore } from './progress.mjs';
 
 const store = createProgressStore({catalog: CATALOG});

@@ -1,40 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="984" viewBox="0 0 1200 984" role="img">
-<rect width="1200" height="984" fill="#fbfaf6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1619" viewBox="0 0 1200 1619" role="img" aria-labelledby="terminology-title"><title id="terminology-title">정규분포(Normal Distribution)의 적합도 검정(Goodness-of-Fit Test)과 자유도(Degrees of Freedom)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1619" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 4-02</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">정규분포(Normal Distribution)의 적합도 검정(Goodness-of-Fit</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">Test)과 자유도(Degrees of Freedom)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="984" viewBox="0 0 1200 984" role="img" x="0" y="0" overflow="hidden">
+<rect width="1200" height="984" fill="#fbfaf6" />
 <text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">구간을 합쳤다면 최종 도수표로 자유도를 다시 센다</text>
 <text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">병합 전 8칸과 검정에 쓰는 최종 6칸을 구분한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">병합 전8</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">최종6</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">추정 모수2</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">자유도3</text>
-<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="451.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="416.6666666666667" y1="451.3" x2="416.6666666666667" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="451.3" x2="416.6666666666667" y2="536.3" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
-<line x1="783.3333333333334" y1="451.3" x2="783.3333333333334" y2="536.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="451.3" x2="783.3333333333334" y2="536.3" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="492.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
-<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="536.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시작</text>
-<line x1="416.6666666666667" y1="536.3" x2="416.6666666666667" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="536.3" x2="416.6666666666667" y2="621.3" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8</text>
-<line x1="783.3333333333334" y1="536.3" x2="783.3333333333334" y2="621.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="536.3" x2="783.3333333333334" y2="621.3" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="577.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">검정에 그대로 쓰지 않음</text>
-<rect x="50" y="621.3" width="1100" height="112.0" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="621.3" width="1100" height="112.0" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">최종</text>
-<line x1="416.6666666666667" y1="621.3" x2="416.6666666666667" y2="733.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="621.3" x2="416.6666666666667" y2="733.3" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6</text>
-<line x1="783.3333333333334" y1="621.3" x2="783.3333333333334" y2="733.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="621.3" x2="783.3333333333334" y2="733.3" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="662.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">관측·기대를 같은 구간으</text>
 <text x="795.3333333333334" y="705.9" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">로 병합</text>
-<rect x="50" y="733.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="733.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="774.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">자유도</text>
-<line x1="416.6666666666667" y1="733.3" x2="416.6666666666667" y2="818.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="733.3" x2="416.6666666666667" y2="818.3" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="774.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">3</text>
-<line x1="783.3333333333334" y1="733.3" x2="783.3333333333334" y2="818.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="733.3" x2="783.3333333333334" y2="818.3" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="774.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6-1-2</text>
 <text x="50" y="879.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8구간 → 사전 규칙으로 6구간 병합 → 최종 도수로 μ·σ 추정 → 자유도3.</text>
 <text x="50" y="955.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1188" y2="1188" stroke="#dcded7" stroke-width="2" /><text x="48" y="1235" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1266" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1301" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">정규분포</text><text x="66" y="1334" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Normal Distribution</text><rect x="612" y="1266" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1301" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">적합도 검정</text><text x="630" y="1334" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Goodness-of-Fit Test</text><rect x="48" y="1371" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1406" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">관측도수</text><text x="66" y="1439" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Observed Frequency</text><rect x="612" y="1371" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1406" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">기대도수</text><text x="630" y="1439" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Expected Frequency</text><rect x="48" y="1476" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1511" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">범주 병합</text><text x="66" y="1544" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Category Pooling</text></svg>

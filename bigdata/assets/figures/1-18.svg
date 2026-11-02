@@ -1,32 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img">
-<rect width="1200" height="920" fill="#fbfaf6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1507" viewBox="0 0 1200 1507" role="img" aria-labelledby="terminology-title"><title id="terminology-title">인공지능 도입 평가(AI Evaluation)와 위험 관리(Risk Management)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1507" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 1-18</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">인공지능 도입 평가(AI Evaluation)와 위험 관리(Risk Management)</text><line x1="48" x2="1152" y1="134" y2="134" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 146)"><svg width="1200" height="920" viewBox="0 0 1200 920" role="img" x="0" y="0" overflow="hidden">
+<rect width="1200" height="920" fill="#fbfaf6" />
 <text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">AI 도입 전 성능과 운영 조건 함께 보기</text>
 <text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">성능 점수와 별개인 두 필수 운영 조건을 각각 확인합니다.</text>
-<rect x="50" y="230" width="330" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="230" width="330" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2" />
 <text x="67" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">조건</text>
-<rect x="380" y="230" width="270" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<rect x="380" y="230" width="270" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2" />
 <text x="397" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">업무 요구</text>
-<rect x="650" y="230" width="245" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<rect x="650" y="230" width="245" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2" />
 <text x="667" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">후보 A</text>
-<rect x="895" y="230" width="255" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2"/>
+<rect x="895" y="230" width="255" height="125" rx="1" fill="#e8eee6" stroke="#dcded7" stroke-width="2" />
 <text x="912" y="288.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">판단</text>
-<rect x="50" y="355" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="355" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="67" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">응답 시간</text>
-<rect x="380" y="355" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="380" y="355" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="397" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">2초 이내</text>
-<rect x="650" y="355" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="650" y="355" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="667" y="413.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">8초</text>
-<rect x="895" y="355" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="895" y="355" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="912" y="413.1" fill="#8c3444" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">미충족</text>
-<rect x="50" y="480" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="480" width="330" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="67" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">외부 전송</text>
-<rect x="380" y="480" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="380" y="480" width="270" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="397" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">금지</text>
-<rect x="650" y="480" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="650" y="480" width="245" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="667" y="538.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">필요</text>
-<rect x="895" y="480" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="895" y="480" width="255" height="125" rx="1" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="912" y="538.1" fill="#8c3444" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">미충족</text>
 <text x="60" y="678.1" fill="#1b2340" font-size="29" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">시간만 1초로 줄어도 외부 전송이 남으면 그 조건은 미충족입니다.</text>
 <text x="50" y="811.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">요구는 응답 2초 이하와 외부 전송 없음이며 각각 별도로 확인한다.</text>
 <text x="50" y="894.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1076" y2="1076" stroke="#dcded7" stroke-width="2" /><text x="48" y="1123" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">인공지능 도입 평가</text><text x="66" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">AI Evaluation</text><rect x="612" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">인공지능 위험관리 프레임워크</text><text x="630" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">AI RMF, AI Risk Management Framework</text><rect x="48" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">위험 관리</text><text x="66" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Risk Management</text><rect x="612" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">지연시간</text><text x="630" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Latency</text><rect x="48" y="1364" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1399" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">배포</text><text x="66" y="1432" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Deployment</text></svg>

@@ -1,21 +1,22 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>투표와 메타학습의 입력은 다르다 · 빅분기 공부방</title><meta name="description" content="레이블을 세는지 확률을 평균하는지, 예측을 다시 학습하는지 확인한다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>보팅(Voting), 스태킹(Stacking, Stacked Generalization), 블렌딩(Blending) · 빅분기 공부방</title><meta content="레이블을 세는지 확률을 평균하는지, 예측을 다시 학습하는지 확인한다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="3-32">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-32</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-32 · 이론 읽기</span><h1>투표와 메타학습의 입력은 다르다</h1><p class="theory-lead">레이블을 세는지 확률을 평균하는지, 예측을 다시 학습하는지 확인한다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=3">3과목 · 빅데이터(Big Data) 모델링(Modeling)</a><span aria-hidden="true" class="separator">/</span><span>3-32</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-32 · 이론 읽기</span><h1>보팅(Voting), 스태킹(Stacking, Stacked Generalization), 블렌딩(Blending)</h1><p class="theory-lead">레이블을 세는지 확률을 평균(Mean)하는지, 예측을 다시 학습하는지 확인한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-32">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-32.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>하드 보팅은 각 분류기의 범주 예측을 세고 소프트 보팅은 같은 클래스의 확률을 가중평균한다. 동등 가중치라도 두 결과는 다를 수 있다. 확률이 0.51인 두 모형과 0.01인 한 모형이면 범주 다수는 1이지만 평균 확률은 0.5보다 작다. 확률의 보정 상태와 가중치도 중요하다.</p>
-<p>스태킹은 기본 모형들의 예측을 새 설명변수로 삼아 메타모형을 학습한다. 메타 학습용 예측은 해당 행을 기본 모형 학습에서 제외한 OOF 예측 등으로 만들어야 한다. 기본 모형이 이미 외운 자기 훈련 행의 예측만 사용하면 새 자료에서의 관계와 달라질 수 있다. 최종 시험 자료를 메타 학습에 쓰지 않는다.</p>
-<p>이 글은 별도 보류 구간에서 기본 모형 예측을 만들고 메타모형을 학습하는 구성을 블렌딩이라 부른다. 용어 사용에는 겹침이 있으므로 이름만 외우기보다 어떤 행으로 기본·메타 모형을 학습했는지 표시한다. 보팅은 정한 결합 규칙이고, 스태킹은 결합 규칙 자체를 데이터로 학습한다는 차이가 핵심이다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>세 모형의 클래스 1 확률이 0.51·0.51·0.01이다. 각 모형과 결합의 문턱은 모두 0.5이며 동등 가중치를 쓴다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>하드 보팅(Hard Voting)은 각 분류기의 범주 예측을 집계(Aggregation)하고 소프트 보팅(Soft Voting)은 같은 클래스(Class)의 예측확률(Predicted Probability)을 평균(Mean)하므로 두 결과가 다를 수 있다. 스태킹(Stacking, Stacked Generalization)은 기본 모형(Model)의 예측으로 메타모형(Meta-Model)을 학습하며, 이 자료에서 블렌딩(Blending)은 별도 보류 집합(Holdout Set)의 예측을 메타 학습에 쓰는 구성으로 정의한다.</p><ul class="terminology-terms"><li>보팅(Voting)</li><li>하드 보팅(Hard Voting)</li><li>소프트 보팅(Soft Voting)</li><li>예측확률(Predicted Probability)</li><li>스태킹(Stacking, Stacked Generalization)</li><li>메타모형(Meta-Model)</li><li>폴드 외 예측(OOF, Out-of-Fold Prediction)</li><li>블렌딩(Blending)</li></ul><p class="terminology-sources">정의 참고: <a href="https://scikit-learn.org/stable/modules/ensemble.html">scikit-learn: Ensemble Methods</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>하드 보팅(Hard Voting)은 각 분류기의 범주 예측을 세고 소프트 보팅(Soft Voting)은 같은 클래스(Class)의 확률을 가중평균한다. 동등 가중치라도 두 결과는 다를 수 있다. 확률이 0.51인 두 모형(Model)과 0.01인 한 모형(Model)이면 범주 다수는 1이지만 평균(Mean) 확률은 0.5보다 작다. 확률 보정(Probability Calibration) 상태와 가중치도 중요하다.</p>
+<p>스태킹(Stacking, Stacked Generalization)은 기본 모형들의 예측을 새 설명변수(Explanatory Variable)로 삼아 메타모형(Meta-Model)을 학습한다. 메타 학습용 예측은 해당 행을 기본 모형(Model) 학습에서 제외한 폴드 외 예측(OOF, Out-of-Fold Prediction) 등으로 만들어야 한다. 기본 모형(Model)이 이미 외운 자기 훈련 행의 예측만 사용하면 새 자료에서의 관계와 달라질 수 있다. 최종 시험 자료를 메타 학습에 쓰지 않는다.</p>
+<p>이 글은 별도 보류 집합(Holdout Set)에서 기본 모형(Model) 예측을 만들고 메타모형(Meta-Model)을 학습하는 구성을 블렌딩(Blending)이라 부른다. 용어 사용에는 겹침이 있으므로 이름만 외우기보다 어떤 행으로 기본·메타모형(Meta-Model)을 학습했는지 표시한다. 보팅(Voting)은 정한 결합 규칙이고, 스태킹(Stacking, Stacked Generalization)은 결합 규칙 자체를 데이터로 학습한다는 차이가 핵심이다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>세 모형(Model)의 클래스(Class) 1 확률이 0.51·0.51·0.01이다. 각 모형(Model)과 결합의 문턱은 모두 0.5이며 동등 가중치를 쓴다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
@@ -32,33 +33,33 @@
 </tr>
 <tr>
 <td>소프트</td>
-<td>평균 약 0.343</td>
+<td>평균(Mean) 약 0.343</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table></div>
-<p>소프트 보팅이 하드 보팅의 다수결을 다시 하는 것은 아니다. 같은 관측의 예측을 다른 정보 수준에서 결합한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-32.png" alt="클래스 1의 확률 0.51·0.51·0.01과 평균 약 0.343을 0~1의 막대로 보여 준다. 문턱 0.5에서 개별 레이블은 1·1·0이다. 하드 보팅은 범주 1, 평균 확률을 쓰는 소프트 보팅은 범주 0을 낸다." width="1200" height="850" loading="lazy" decoding="async"><figcaption>동등 가중치에서 하드 보팅은 레이블 1·1·0의 다수로 범주 1을, 소프트 보팅은 평균 확률 1.03/3≈0.343으로 범주 0을 낸다. 이 예제는 확률 0.5 이상을 범주 1로 정한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>클래스 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.</p>
-<p><strong>하드·소프트 보팅의 범주 순서는?</strong></p>
+<p>소프트 보팅(Soft Voting)이 하드 보팅(Hard Voting)의 다수결을 다시 하는 것은 아니다. 같은 관측(Observation)의 예측을 다른 정보 수준에서 결합한다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="클래스(Class) 1의 확률 0.51·0.51·0.01과 평균(Mean) 약 0.343을 0~1의 막대로 보여 준다. 문턱 0.5에서 개별 레이블은 1·1·0이다. 하드 보팅(Hard Voting)은 범주 1, 평균(Mean) 확률을 쓰는 소프트 보팅(Soft Voting)은 범주 0을 낸다." decoding="async" height="1485" loading="lazy" src="../assets/figures/3-32.png?v=79e0d45f049c" width="1200"/><figcaption>동등 가중치에서 하드 보팅(Hard Voting)은 레이블 1·1·0의 다수로 범주 1을, 소프트 보팅(Soft Voting)은 평균(Mean) 확률 1.03/3≈0.343으로 범주 0을 낸다. 이 예제는 확률 0.5 이상을 범주 1로 정한다.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>클래스(Class) 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.</p>
+<p><strong>하드·소프트 보팅(Soft Voting)의 범주 순서는?</strong></p>
 <ul>
 <li>1. (1,0)</li>
 <li>2. (1,1)</li>
 <li>3. (0,1)</li>
 <li>4. (0,0)</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — (1,0)</strong></p>
-<p>개별 범주는 1,1,0이므로 하드는 1이다. 평균은 1.03/3≈0.343이므로 소프트는 0이다.</p>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — (1,0)</strong></p>
+<p>개별 범주는 1,1,0이므로 하드는 1이다. 평균(Mean)은 1.03/3≈0.343이므로 소프트는 0이다.</p>
 <ul>
-<li>2번: 확률 평균을 계산하지 않고 다수 레이블을 두 번 사용했다.</li>
+<li>2번: 확률 평균(Mean)을 계산하지 않고 다수 레이블을 두 번 사용했다.</li>
 <li>3번: 두 결합 방식의 결과를 서로 바꾸었다.</li>
-<li>4번: 하드 보팅에서 1이 두 표라는 사실을 놓쳤다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>세 번째 확률만 0.90으로 바뀌면 두 결합의 범주는?</p>
+<li>4번: 하드 보팅(Hard Voting)에서 1이 두 표라는 사실을 놓쳤다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>세 번째 확률만 0.90으로 바뀌면 두 결합의 범주는?</p>
 <p><strong>풀이:</strong> 둘 다 1.</p>
-<p>개별 레이블은 모두 1이고 평균 확률은 1.92/3=0.64다. 단일 예시로 어느 결합의 성능이 더 좋다고 판단할 수 없다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>레이블은 표 수, 소프트는 확률 평균.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
-<li><a href="https://scikit-learn.org/stable/modules/ensemble.html" rel="noopener noreferrer" target="_blank">scikit-learn Ensembles</a> — Voting Classifier 및 Stacked generalization: 확률 평균과 교차검증 예측. 확인일 2026-10-30.</li>
+<p>개별 레이블은 모두 1이고 평균(Mean) 확률은 1.92/3=0.64다. 단일 예시로 어느 결합의 성능이 더 좋다고 판단할 수 없다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>레이블은 표 수, 소프트는 확률 평균(Mean).</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/ensemble.html" rel="noopener noreferrer" target="_blank">scikit-learn Ensembles</a> — Voting Classifier 및 Stacked generalization: 확률 평균(Mean)과 교차검증 예측. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-32">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-32.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>동등 가중치, 0.5 이상을 1로 하는 명시적 규칙이다. 라이브러리 argmax의 동률 규칙과 구별하며 확률 보정이나 성능을 검증하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-31.html"><small>이전 개념 · 3-31</small>랜덤포레스트의 무작위성은 두 곳에 있다</a><a class="next" rel="next" data-role="theory-next" href="3-33.html"><small>다음 개념 · 3-33</small>TF는 문서 안을, IDF는 문서 전체를 본다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-32">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-32.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>동등 가중치, 0.5 이상을 1로 하는 명시적 규칙이다. 라이브러리 argmax의 동률 규칙과 구별하며 확률 보정(Probability Calibration)이나 성능을 검증하지 않는다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="3-31.html" rel="prev">이전 개념 · 3-31랜덤 포레스트(RF, Random Forest)의 부트스트랩(Bootstrap)과 특성 무작위 추출(Random Feature Subsampling)</a><a class="next" data-role="theory-next" href="3-33.html" rel="next">다음 개념 · 3-33TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-31</span><a href="3-31.html">랜덤포레스트의 무작위성은 두 곳에 있다</a><div class="related-actions"><a href="../practice.html?code=3-31">문제 풀기</a><a href="../3-31.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-33</span><a href="3-33.html">TF는 문서 안을, IDF는 문서 전체를 본다</a><div class="related-actions"><a href="../practice.html?code=3-33">문제 풀기</a><a href="../3-33.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-32"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-31</span><a href="3-31.html">랜덤 포레스트(RF, Random Forest)의 부트스트랩(Bootstrap)과 특성 무작위 추출(Random Feature Subsampling)</a><div class="related-actions"><a href="../practice.html?code=3-31">문제 풀기</a><a href="../3-31.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-33</span><a href="3-33.html">TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)</a><div class="related-actions"><a href="../practice.html?code=3-33">문제 풀기</a><a href="../3-33.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "3-32"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

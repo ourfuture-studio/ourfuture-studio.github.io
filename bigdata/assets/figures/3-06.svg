@@ -1,19 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="576pt" viewBox="0 0 864 576" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1435" viewBox="0 0 1200 1435" role="img" aria-labelledby="terminology-title"><title id="terminology-title">로지스틱 회귀(Logistic Regression)의 로짓(Logit), 오즈(Odds), 오즈비(Odds Ratio)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1435" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 3-06</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">로지스틱 회귀(Logistic Regression)의 로짓(Logit), 오즈(Odds),</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">오즈비(Odds Ratio)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="800" viewBox="0 0 864 576" version="1.1" x="0" y="0" overflow="hidden">
  <metadata>
-  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:Work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:date>2026-10-30T23:51:28.035363</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:Agent>
+     <ns2:Agent>
       <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
-     </cc:Agent>
+     </ns2:Agent>
     </dc:creator>
-   </cc:Work>
+   </ns2:Work>
   </rdf:RDF>
  </metadata>
  <defs>
@@ -21,32 +18,20 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 576 
-L 864 576 
-L 864 0 
-L 0 0 
-z
-" style="fill: #ffffff"/>
+   <path d="M 0 576  L 864 576  L 864 0  L 0 0  z " style="fill: #ffffff" />
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 103.68 466.56 
-L 794.88 466.56 
-L 794.88 120.96 
-L 103.68 120.96 
-z
-" style="fill: #ffffff"/>
+    <path d="M 103.68 466.56  L 794.88 466.56  L 794.88 120.96  L 103.68 120.96  z " style="fill: #ffffff" />
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="mcaf2f29dcb" d="M 0 0 
-L 0 3.5 
-" style="stroke: #202944; stroke-width: 0.8"/>
+       <path id="mcaf2f29dcb" d="M 0 0  L 0 3.5  " style="stroke: #202944; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#mcaf2f29dcb" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcaf2f29dcb" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_1">
@@ -56,7 +41,7 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#mcaf2f29dcb" x="276.48" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcaf2f29dcb" x="276.48" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_2">
@@ -66,7 +51,7 @@ L 0 3.5
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#mcaf2f29dcb" x="449.28" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcaf2f29dcb" x="449.28" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_3">
@@ -76,7 +61,7 @@ L 0 3.5
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#mcaf2f29dcb" x="622.08" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcaf2f29dcb" x="622.08" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_4">
@@ -86,7 +71,7 @@ L 0 3.5
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#mcaf2f29dcb" x="794.88" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcaf2f29dcb" x="794.88" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_5">
@@ -100,18 +85,14 @@ L 0 3.5
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_6">
-      <path d="M 103.68 466.56 
-L 794.88 466.56 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+      <path d="M 103.68 466.56  L 794.88 466.56  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square" />
      </g>
      <g id="line2d_7">
       <defs>
-       <path id="mcbb11852ab" d="M 0 0 
-L -3.5 0 
-" style="stroke: #202944; stroke-width: 0.8"/>
+       <path id="mcbb11852ab" d="M 0 0  L -3.5 0  " style="stroke: #202944; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#mcbb11852ab" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="466.56" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_7">
@@ -120,13 +101,11 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_8">
-      <path d="M 103.68 380.16 
-L 794.88 380.16 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+      <path d="M 103.68 380.16  L 794.88 380.16  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square" />
      </g>
      <g id="line2d_9">
       <g>
-       <use xlink:href="#mcbb11852ab" x="103.68" y="380.16" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="380.16" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_8">
@@ -135,13 +114,11 @@ L 794.88 380.16
     </g>
     <g id="ytick_3">
      <g id="line2d_10">
-      <path d="M 103.68 293.76 
-L 794.88 293.76 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+      <path d="M 103.68 293.76  L 794.88 293.76  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square" />
      </g>
      <g id="line2d_11">
       <g>
-       <use xlink:href="#mcbb11852ab" x="103.68" y="293.76" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="293.76" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_9">
@@ -150,13 +127,11 @@ L 794.88 293.76
     </g>
     <g id="ytick_4">
      <g id="line2d_12">
-      <path d="M 103.68 207.36 
-L 794.88 207.36 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+      <path d="M 103.68 207.36  L 794.88 207.36  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square" />
      </g>
      <g id="line2d_13">
       <g>
-       <use xlink:href="#mcbb11852ab" x="103.68" y="207.36" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="207.36" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_10">
@@ -165,13 +140,11 @@ L 794.88 207.36
     </g>
     <g id="ytick_5">
      <g id="line2d_14">
-      <path d="M 103.68 120.96 
-L 794.88 120.96 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square"/>
+      <path d="M 103.68 120.96  L 794.88 120.96  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #dce3df; stroke-linecap: square" />
      </g>
      <g id="line2d_15">
       <g>
-       <use xlink:href="#mcbb11852ab" x="103.68" y="120.96" style="fill: #202944; stroke: #202944; stroke-width: 0.8"/>
+       <use xlink:href="#mcbb11852ab" x="103.68" y="120.96" style="fill: #202944; stroke: #202944; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_11">
@@ -183,124 +156,31 @@ L 794.88 120.96
     </g>
    </g>
    <g id="line2d_16">
-    <path d="M 103.68 460.343966 
-L 119.232 459.144361 
-L 134.784 457.71928 
-L 148.608 456.231163 
-L 162.432 454.501529 
-L 174.528 452.761805 
-L 186.624 450.782955 
-L 196.992 448.874369 
-L 207.36 446.748765 
-L 217.728 444.384964 
-L 228.096 441.760593 
-L 236.736 439.357707 
-L 245.376 436.743638 
-L 254.016 433.904128 
-L 262.656 430.824804 
-L 271.296 427.491361 
-L 279.936 423.889788 
-L 288.576 420.006625 
-L 297.216 415.829259 
-L 305.856 411.346254 
-L 312.768 407.533081 
-L 319.68 403.513739 
-L 326.592 399.284957 
-L 333.504 394.844524 
-L 342.144 388.994923 
-L 350.784 382.814083 
-L 359.424 376.306562 
-L 368.064 369.480842 
-L 376.704 362.349579 
-L 385.344 354.929768 
-L 393.984 347.242796 
-L 404.352 337.702268 
-L 414.72 327.866455 
-L 426.816 316.098302 
-L 444.096 298.942445 
-L 473.472 269.724825 
-L 485.568 257.996189 
-L 495.936 248.205628 
-L 506.304 238.71961 
-L 514.944 231.08415 
-L 523.584 223.720478 
-L 532.224 216.649104 
-L 540.864 209.886148 
-L 549.504 203.443414 
-L 558.144 197.328577 
-L 566.784 191.545448 
-L 573.696 187.158072 
-L 580.608 182.981901 
-L 587.52 179.014446 
-L 596.16 174.343196 
-L 604.8 169.983728 
-L 613.44 165.925489 
-L 622.08 162.15653 
-L 630.72 158.663861 
-L 639.36 155.433769 
-L 648 152.452095 
-L 656.64 149.704484 
-L 665.28 147.176587 
-L 673.92 144.854238 
-L 684.288 142.319278 
-L 694.656 140.037306 
-L 705.024 137.986332 
-L 715.392 136.1456 
-L 727.488 134.237947 
-L 739.584 132.561524 
-L 753.408 130.89548 
-L 767.232 129.462599 
-L 782.784 128.090868 
-L 794.88 127.176034 
-L 794.88 127.176034 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke: #2c6a61; stroke-width: 3; stroke-linecap: square"/>
+    <path d="M 103.68 460.343966  L 119.232 459.144361  L 134.784 457.71928  L 148.608 456.231163  L 162.432 454.501529  L 174.528 452.761805  L 186.624 450.782955  L 196.992 448.874369  L 207.36 446.748765  L 217.728 444.384964  L 228.096 441.760593  L 236.736 439.357707  L 245.376 436.743638  L 254.016 433.904128  L 262.656 430.824804  L 271.296 427.491361  L 279.936 423.889788  L 288.576 420.006625  L 297.216 415.829259  L 305.856 411.346254  L 312.768 407.533081  L 319.68 403.513739  L 326.592 399.284957  L 333.504 394.844524  L 342.144 388.994923  L 350.784 382.814083  L 359.424 376.306562  L 368.064 369.480842  L 376.704 362.349579  L 385.344 354.929768  L 393.984 347.242796  L 404.352 337.702268  L 414.72 327.866455  L 426.816 316.098302  L 444.096 298.942445  L 473.472 269.724825  L 485.568 257.996189  L 495.936 248.205628  L 506.304 238.71961  L 514.944 231.08415  L 523.584 223.720478  L 532.224 216.649104  L 540.864 209.886148  L 549.504 203.443414  L 558.144 197.328577  L 566.784 191.545448  L 573.696 187.158072  L 580.608 182.981901  L 587.52 179.014446  L 596.16 174.343196  L 604.8 169.983728  L 613.44 165.925489  L 622.08 162.15653  L 630.72 158.663861  L 639.36 155.433769  L 648 152.452095  L 656.64 149.704484  L 665.28 147.176587  L 673.92 144.854238  L 684.288 142.319278  L 694.656 140.037306  L 705.024 137.986332  L 715.392 136.1456  L 727.488 134.237947  L 739.584 132.561524  L 753.408 130.89548  L 767.232 129.462599  L 782.784 128.090868  L 794.88 127.176034  L 794.88 127.176034  " clip-path="url(#pac97f09666)" style="fill: none; stroke: #2c6a61; stroke-width: 3; stroke-linecap: square" />
    </g>
    <g id="line2d_17">
-    <path d="M 544.200102 466.56 
-L 544.200102 207.36 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4"/>
+    <path d="M 544.200102 466.56  L 544.200102 207.36  " clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4" />
    </g>
    <g id="line2d_18">
-    <path d="M 103.68 207.36 
-L 544.200102 207.36 
-" clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4"/>
+    <path d="M 103.68 207.36  L 544.200102 207.36  " clip-path="url(#pac97f09666)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 1.4" />
    </g>
    <g id="patch_3">
-    <path d="M 103.68 466.56 
-L 103.68 120.96 
-" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 103.68 466.56  L 103.68 120.96  " style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="patch_4">
-    <path d="M 103.68 466.56 
-L 794.88 466.56 
-" style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 103.68 466.56  L 794.88 466.56  " style="fill: none; stroke: #586773; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m3ae0308382" d="M 0 5 
-C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
-C 4.473168 2.597899 5 1.326016 5 0 
-C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
-C 2.597899 -4.473168 1.326016 -5 0 -5 
-C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
-C -4.473168 -2.597899 -5 -1.326016 -5 0 
-C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
-C -2.597899 4.473168 -1.326016 5 0 5 
-z
-" style="stroke: #95364e"/>
+     <path id="m3ae0308382" d="M 0 5  C 1.326016 5 2.597899 4.473168 3.535534 3.535534  C 4.473168 2.597899 5 1.326016 5 0  C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534  C 2.597899 -4.473168 1.326016 -5 0 -5  C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534  C -4.473168 -2.597899 -5 -1.326016 -5 0  C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534  C -2.597899 4.473168 -1.326016 5 0 5  z " style="stroke: #95364e" />
     </defs>
     <g clip-path="url(#pac97f09666)">
-     <use xlink:href="#m3ae0308382" x="544.200102" y="207.36" style="fill: #95364e; stroke: #95364e"/>
+     <use xlink:href="#m3ae0308382" x="544.200102" y="207.36" style="fill: #95364e; stroke: #95364e" />
     </g>
    </g>
    <g id="patch_5">
-    <path d="M 367.852395 172.608747 
-Q 455.045433 189.791093 541.141532 206.757275 
-" style="fill: none; stroke: #95364e; stroke-linecap: round"/>
-    <path d="M 534.773421 201.833135 
-L 541.141532 206.757275 
-L 533.381353 208.89728 
-" style="fill: none; stroke: #95364e; stroke-linecap: round"/>
+    <path d="M 367.852395 172.608747  Q 455.045433 189.791093 541.141532 206.757275  " style="fill: none; stroke: #95364e; stroke-linecap: round" />
+    <path d="M 534.773421 201.833135  L 541.141532 206.757275  L 533.381353 208.89728  " style="fill: none; stroke: #95364e; stroke-linecap: round" />
    </g>
    <g id="text_13">
     <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #95364e" x="250.56" y="165.888" transform="rotate(-0 250.56 165.888)">η=ln3, p=0.75</text>
@@ -318,7 +198,7 @@ L 533.381353 208.89728
  </g>
  <defs>
   <clipPath id="pac97f09666">
-   <rect x="103.68" y="120.96" width="691.2" height="345.6"/>
+   <rect x="103.68" y="120.96" width="691.2" height="345.6" />
   </clipPath>
  </defs>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1004" y2="1004" stroke="#dcded7" stroke-width="2" /><text x="48" y="1051" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1082" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1117" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">로지스틱 회귀</text><text x="66" y="1150" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Logistic Regression</text><rect x="612" y="1082" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1117" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">이진 로지스틱 회귀</text><text x="630" y="1150" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Binary Logistic Regression</text><rect x="48" y="1187" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1222" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">로짓</text><text x="66" y="1255" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Logit</text><rect x="612" y="1187" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1222" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">로그오즈</text><text x="630" y="1255" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Log-Odds</text><rect x="48" y="1292" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1327" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">오즈</text><text x="66" y="1360" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Odds</text><rect x="612" y="1292" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1327" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">오즈비</text><text x="630" y="1360" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">OR, Odds Ratio</text></svg>

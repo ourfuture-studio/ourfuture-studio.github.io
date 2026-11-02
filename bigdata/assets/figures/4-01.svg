@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img">
-<rect width="1200" height="900" fill="#fbfaf6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1535" viewBox="0 0 1200 1535" role="img" aria-labelledby="terminology-title"><title id="terminology-title">포아송 분포(Poisson Distribution)의 카이제곱 적합도 검정(Chi-Square Goodness-of-Fit Test)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1535" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 4-01</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">포아송 분포(Poisson Distribution)의 카이제곱 적합도 검정(Chi-Square</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">Goodness-of-Fit Test)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="900" viewBox="0 0 1200 900" role="img" x="0" y="0" overflow="hidden">
+<rect width="1200" height="900" fill="#fbfaf6" />
 <text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">포아송 적합도 자유도는 모수를 어디에서 구했는지부터</text>
 <text x="50" y="142.5" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">본다</text>
 <text x="50" y="210.7" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">범주 수가 같아도 모수 출처에 따라 차감 수가 달라짐을 보인다.</text>
-<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">외부 고정</text>
-<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="257.1" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="304.1" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">구간도수 MLE</text>
-<rect x="50" y="395.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="395.1" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">항목</text>
-<line x1="416.6666666666667" y1="395.1" x2="416.6666666666667" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="395.1" x2="416.6666666666667" y2="480.1" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">값</text>
-<line x1="783.3333333333334" y1="395.1" x2="783.3333333333334" y2="480.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="395.1" x2="783.3333333333334" y2="480.1" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="436.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">설명</text>
-<rect x="50" y="480.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="480.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">외부 고정</text>
-<line x1="416.6666666666667" y1="480.1" x2="416.6666666666667" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="480.1" x2="416.6666666666667" y2="565.1" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">5</text>
-<line x1="783.3333333333334" y1="480.1" x2="783.3333333333334" y2="565.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="480.1" x2="783.3333333333334" y2="565.1" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="521.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6-1-0</text>
-<rect x="50" y="565.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="565.1" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">구간도수 MLE</text>
-<line x1="416.6666666666667" y1="565.1" x2="416.6666666666667" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="565.1" x2="416.6666666666667" y2="650.1" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">4</text>
-<line x1="783.3333333333334" y1="565.1" x2="783.3333333333334" y2="650.1" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="565.1" x2="783.3333333333334" y2="650.1" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="606.2" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">6-1-1</text>
 <text x="50" y="711.2" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">최종 6범주: 외부 고정 λ는 자유도5, 같은 범주도수에서 효율적 MLE로 λ 추정은4</text>
 <text x="50" y="754.7" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">다.</text>
 <text x="50" y="871.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1104" y2="1104" stroke="#dcded7" stroke-width="2" /><text x="48" y="1151" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1182" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1217" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">포아송 분포</text><text x="66" y="1250" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Poisson Distribution</text><rect x="612" y="1182" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1217" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">카이제곱 적합도 검정</text><text x="630" y="1250" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Chi-Square Goodness-of-Fit Test</text><rect x="48" y="1287" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1322" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">자유도</text><text x="66" y="1355" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">df, Degrees of Freedom</text><rect x="612" y="1287" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1322" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">최대우도 추정</text><text x="630" y="1355" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">MLE, Maximum Likelihood Estimation</text><rect x="48" y="1392" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1427" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">모수</text><text x="66" y="1460" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Parameter</text><rect x="612" y="1392" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1427" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">다항우도</text><text x="630" y="1460" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Multinomial Likelihood</text></svg>

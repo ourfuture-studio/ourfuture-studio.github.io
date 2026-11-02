@@ -1,26 +1,27 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>분류 트리와 회귀 트리의 잎을 구별한다 · 빅분기 공부방</title><meta name="description" content="정답의 자료형과 손실을 알면 잎의 예측값이 정해진다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>의사결정나무(Decision Tree)의 분류(Classification)와 회귀(Regression) · 빅분기 공부방</title><meta content="정답의 자료형과 손실을 알면 잎의 예측값이 정해진다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="3-08">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-08</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-08 · 이론 읽기</span><h1>분류 트리와 회귀 트리의 잎을 구별한다</h1><p class="theory-lead">정답의 자료형과 손실을 알면 잎의 예측값이 정해진다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=3">3과목 · 빅데이터(Big Data) 모델링(Modeling)</a><span aria-hidden="true" class="separator">/</span><span>3-08</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-08 · 이론 읽기</span><h1>의사결정나무(Decision Tree)의 분류(Classification)와 회귀(Regression)</h1><p class="theory-lead">정답의 자료형과 손실을 알면 잎의 예측값(Predicted Value)이 정해진다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-08">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-08.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>분류 트리는 범주를, 회귀 트리는 수치를 예측한다. 분류 잎에서 학습 표본의 클래스 비율을 확률로 삼고 그중 큰 클래스를 선택할 수 있다. 회귀 잎은 하나의 수치를 내지만 그 수치를 정하는 방식은 손실에 따라 달라진다. 트리는 항상 다수결한다는 설명은 회귀를 빠뜨린다.</p>
-<p>제곱오차를 쓰는 회귀 트리는 잎에 배정된 반응값의 평균을 예측한다. 고정된 잎 안에서 평균은 제곱오차 합을 최소화한다. 절대오차를 쓰면 중앙값이 최소화점이 된다. 평균과 중앙값이 우연히 같을 때도 있으므로 기준을 생략하고 숫자 하나만 외우면 조건 변경에 취약하다.</p>
-<p>분할도 이 목적에 맞추어 비교한다. 분류에서는 클래스 혼합을 줄이는 기준을, 회귀에서는 자식 안의 수치 오차 감소를 쓸 수 있다. 같은 모양의 트리라도 목표와 기준이 다르면 평가 계산이 달라진다. 아래 값은 이미 한 잎에 배정되었다고 가정하며 그 배정이 최적이라는 주장은 하지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>한 회귀 잎의 y가 2·4·6이다. 제곱오차 기준이면 평균 4를 사용한다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>분류 의사결정나무(Classification Tree)는 범주형 반응변수(Categorical Response Variable)를, 회귀 의사결정나무(Regression Tree)는 수치형 반응변수(Numerical Response Variable)를 예측한다. 회귀 잎 노드(Leaf Node)의 대표 예측값(Predicted Value)은 손실함수(Loss Function)에 따라 달라져 제곱오차(Squared Error)에는 평균(Mean), 절대오차(Absolute Error)에는 중앙값(Median)을 사용한다.</p><ul class="terminology-terms"><li>의사결정나무(Decision Tree)</li><li>분류 의사결정나무(Classification Tree)</li><li>회귀 의사결정나무(Regression Tree)</li><li>잎 노드(Leaf Node)</li><li>반응변수(Response Variable)</li><li>손실함수(Loss Function)</li><li>제곱오차(Squared Error)</li><li>절대오차(Absolute Error)</li></ul><p class="terminology-sources">정의 참고: <a href="https://scikit-learn.org/stable/modules/tree.html">scikit-learn: Decision Trees</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>분류 의사결정나무(Classification Tree)는 범주를, 회귀 의사결정나무(Regression Tree)는 수치를 예측한다. 분류 잎에서 학습 표본(Sample)의 클래스(Class) 비율을 확률로 삼고 그중 큰 클래스(Class)를 선택할 수 있다. 회귀 잎은 하나의 수치를 내지만 그 수치를 정하는 방식은 손실에 따라 달라진다. 트리는 항상 다수결한다는 설명은 회귀를 빠뜨린다.</p>
+<p>제곱오차(Squared Error)를 쓰는 회귀 의사결정나무(Regression Tree)는 잎에 배정된 반응값의 평균(Mean)을 예측한다. 고정된 잎 안에서 평균(Mean)은 제곱오차(Squared Error) 합을 최소화한다. 절대오차(Absolute Error)를 쓰면 중앙값(Median)이 최소화점이 된다. 평균(Mean)과 중앙값(Median)이 우연히 같을 때도 있으므로 기준을 생략하고 숫자 하나만 외우면 조건 변경에 취약하다.</p>
+<p>분할도 이 목적에 맞추어 비교한다. 분류에서는 클래스(Class) 혼합을 줄이는 기준을, 회귀에서는 자식 안의 수치 오차 감소를 쓸 수 있다. 같은 모양의 트리라도 목표와 기준이 다르면 평가(Evaluation) 계산이 달라진다. 아래 값은 이미 한 잎에 배정되었다고 가정하며 그 배정이 최적이라는 주장은 하지 않는다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>한 회귀 잎의 y가 2·4·6이다. 제곱오차(Squared Error) 기준이면 평균(Mean) 4를 사용한다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
 <th scope="col">예측</th>
-<th scope="col" style="text-align: right;">제곱오차 합</th>
+<th scope="col" style="text-align: right;">제곱오차(Squared Error) 합</th>
 </tr>
 </thead>
 <tbody>
@@ -38,28 +39,28 @@
 </tr>
 </tbody>
 </table></div>
-<p>잎의 4는 범주 코드가 아니라 수치 예측이다. 이 예제에서는 중앙값도 4지만 일반적으로 평균과 중앙값이 같은 것은 아니다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-08.png" alt="조건 변경 사례의 값 2·4·20과 평균 약 8.667, 중앙값 4를 비교한다. 체험 기본값 2·4·6과 다른 고정 사례다." width="1200" height="1127" loading="lazy" decoding="async"><figcaption>조건 변경 사례: 값 2·4·20에서 제곱오차를 최소화하는 평균은 약 8.667, 절대오차를 최소화하는 중앙값은 4다. 체험 기본값 2·4·6과 구별한다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>회귀 트리의 한 잎에 반응값 2·4·6이 있다. 제곱오차 기준이다.</p>
-<p><strong>이 잎의 예측값과 제곱오차 합은?</strong></p>
+<p>잎의 4는 범주 코드가 아니라 수치 예측이다. 이 예제에서는 중앙값(Median)도 4지만 일반적으로 평균(Mean)과 중앙값(Median)이 같은 것은 아니다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="조건 변경 사례의 값 2·4·20과 평균(Mean) 약 8.667, 중앙값(Median) 4를 비교한다. 체험 기본값 2·4·6과 다른 고정 사례다." decoding="async" height="1762" loading="lazy" src="../assets/figures/3-08.png?v=268be49d5106" width="1200"/><figcaption>조건 변경 사례: 값 2·4·20에서 제곱오차(Squared Error)를 최소화하는 평균(Mean)은 약 8.667, 절대오차(Absolute Error)를 최소화하는 중앙값(Median)은 4다. 체험 기본값 2·4·6과 구별한다.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>회귀 의사결정나무(Regression Tree)의 한 잎에 반응값 2·4·6이 있다. 제곱오차(Squared Error) 기준이다.</p>
+<p><strong>이 잎의 예측값(Predicted Value)과 제곱오차(Squared Error) 합은?</strong></p>
 <ul>
 <li>1. 4, 8</li>
 <li>2. 4, 0</li>
 <li>3. 2, 8</li>
 <li>4. 6, 20</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 4, 8</strong></p>
-<p>평균 (2+4+6)/3=4이고, (2−4)²+(4−4)²+(6−4)²=8이다.</p>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — 4, 8</strong></p>
+<p>평균(Mean) (2+4+6)/3=4이고, (2−4)²+(4−4)²+(6−4)²=8이다.</p>
 <ul>
-<li>2번: 평균을 예측해도 서로 다른 실제 값의 잔차가 모두 0이 되지는 않는다.</li>
-<li>3번: 최소제곱 잎 예측은 최소값 2가 아니라 평균이다.</li>
-<li>4번: 6에서의 제곱오차는 20이지만 기준을 최소화하지 못한다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 잎의 값이 2·4·20이고 절대오차 기준으로 바꾸면 잎의 예측값은?</p>
-<p><strong>풀이:</strong> 중앙값 4.</p>
-<p>절대오차 합은 2+0+16=18이다. 평균 26/3은 제곱오차의 기준이며 여기서는 목표가 달라졌다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>수치 잎은 손실을 확인한다: 제곱은 평균.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
-<li><a href="https://scikit-learn.org/stable/modules/tree.html" rel="noopener noreferrer" target="_blank">scikit-learn Decision Trees</a> — 1.10.7.2 Regression criteria: MSE의 평균과 MAE의 중앙값. 확인일 2026-10-30.</li>
+<li>2번: 평균(Mean)을 예측해도 서로 다른 실제 값의 잔차(Residual)가 모두 0이 되지는 않는다.</li>
+<li>3번: 최소제곱 잎 예측은 최소값 2가 아니라 평균(Mean)이다.</li>
+<li>4번: 6에서의 제곱오차(Squared Error)는 20이지만 기준을 최소화하지 못한다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>같은 잎의 값이 2·4·20이고 절대오차(Absolute Error) 기준으로 바꾸면 잎의 예측값(Predicted Value)은?</p>
+<p><strong>풀이:</strong> 중앙값(Median) 4.</p>
+<p>절대오차(Absolute Error) 합은 2+0+16=18이다. 평균(Mean) 26/3은 제곱오차(Squared Error)의 기준이며 여기서는 목표가 달라졌다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>수치 잎은 손실을 확인한다: 제곱은 평균(Mean).</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/tree.html" rel="noopener noreferrer" target="_blank">scikit-learn Decision Trees</a> — 1.10.7.2 Regression criteria: 평균제곱오차(MSE, Mean Squared Error)의 평균(Mean)과 평균 절대 오차(MAE, Mean Absolute Error)의 중앙값(Median). 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-08">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-08.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>이미 한 잎에 배정된 반응값이다. 군집이나 최적 트리 구조를 적합하지 않는다. 그림은 조건 변경의 값2·4·20에서 평균 약8.667과 중앙값4를 비교한다. 체험 기본값은2·4·6이고, 입력이나 손실을 바꾸어도 이 고정 그림은 갱신되지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-07.html"><small>이전 개념 · 3-07</small>트리 분할은 자식 전체의 엔트로피를 본다</a><a class="next" rel="next" data-role="theory-next" href="3-09.html"><small>다음 개념 · 3-09</small>순전파는 층마다 값을 넘긴다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-08">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-08.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>이미 한 잎에 배정된 반응값이다. 군집이나 최적 트리 구조를 적합하지 않는다. 그림은 조건 변경의 값2·4·20에서 평균(Mean) 약8.667과 중앙값(Median)4를 비교한다. 체험 기본값은2·4·6이고, 입력이나 손실을 바꾸어도 이 고정 그림은 갱신되지 않는다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="3-07.html" rel="prev">이전 개념 · 3-07의사결정나무(Decision Tree)의 엔트로피(Entropy)와 정보 이득(Information Gain)</a><a class="next" data-role="theory-next" href="3-09.html" rel="next">다음 개념 · 3-09인공신경망(ANN, Artificial Neural Network)의 순전파(Forward Propagation)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-05</span><a href="3-05.html">최소제곱은 잔차의 부호를 지운다</a><div class="related-actions"><a href="../practice.html?code=3-05">문제 풀기</a><a href="../3-05.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-08"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-05</span><a href="3-05.html">최소제곱법(OLS, Ordinary Least Squares)과 잔차제곱합(RSS, Residual Sum of Squares)</a><div class="related-actions"><a href="../practice.html?code=3-05">문제 풀기</a><a href="../3-05.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "3-08"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

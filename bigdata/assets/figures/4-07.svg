@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1555" viewBox="0 0 1200 1555" role="img" aria-labelledby="terminology-title"><title id="terminology-title">ROC 곡선(Receiver Operating Characteristic Curve)과 ROC-AUC(Area Under the ROC Curve)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1555" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 4-07</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">ROC 곡선(Receiver Operating Characteristic Curve)과</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">ROC-AUC(Area Under the ROC Curve)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="920" viewBox="0 0 720 552" version="1.1" x="0" y="0" overflow="hidden">
  <metadata>
-  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:Work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:Agent>
+     <ns2:Agent>
       <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
-     </cc:Agent>
+     </ns2:Agent>
     </dc:creator>
-   </cc:Work>
+   </ns2:Work>
   </rdf:RDF>
  </metadata>
  <defs>
@@ -20,32 +17,20 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 552 
-L 720 552 
-L 720 0 
-L 0 0 
-z
-" style="fill: #fbfaf7"/>
+   <path d="M 0 552  L 720 552  L 720 0  L 0 0  z " style="fill: #fbfaf7" />
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 93.6 402.96 
-L 532.8 402.96 
-L 532.8 149.04 
-L 93.6 149.04 
-z
-" style="fill: #fbfaf7"/>
+    <path d="M 93.6 402.96  L 532.8 402.96  L 532.8 149.04  L 93.6 149.04  z " style="fill: #fbfaf7" />
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m3e04ab93a7" d="M 0 0 
-L 0 3.5 
-" style="stroke: #1d2541; stroke-width: 0.8"/>
+       <path id="m3e04ab93a7" d="M 0 0  L 0 3.5  " style="stroke: #1d2541; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#m3e04ab93a7" x="104.057143" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="104.057143" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_1">
@@ -55,7 +40,7 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m3e04ab93a7" x="208.628571" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="208.628571" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_2">
@@ -65,7 +50,7 @@ L 0 3.5
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m3e04ab93a7" x="313.2" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="313.2" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_3">
@@ -75,7 +60,7 @@ L 0 3.5
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m3e04ab93a7" x="417.771429" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="417.771429" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_4">
@@ -85,7 +70,7 @@ L 0 3.5
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#m3e04ab93a7" x="522.342857" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="522.342857" y="402.96" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_5">
@@ -99,18 +84,14 @@ L 0 3.5
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_6">
-      <path d="M 93.6 397.215204 
-L 532.8 397.215204 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 93.6 397.215204  L 532.8 397.215204  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_7">
       <defs>
-       <path id="m63b66a0bca" d="M 0 0 
-L -3.5 0 
-" style="stroke: #1d2541; stroke-width: 0.8"/>
+       <path id="m63b66a0bca" d="M 0 0  L -3.5 0  " style="stroke: #1d2541; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#m63b66a0bca" x="93.6" y="397.215204" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="93.6" y="397.215204" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_7">
@@ -119,13 +100,11 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_8">
-      <path d="M 93.6 339.76724 
-L 532.8 339.76724 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 93.6 339.76724  L 532.8 339.76724  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_9">
       <g>
-       <use xlink:href="#m63b66a0bca" x="93.6" y="339.76724" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="93.6" y="339.76724" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_8">
@@ -134,13 +113,11 @@ L 532.8 339.76724
     </g>
     <g id="ytick_3">
      <g id="line2d_10">
-      <path d="M 93.6 282.319276 
-L 532.8 282.319276 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 93.6 282.319276  L 532.8 282.319276  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_11">
       <g>
-       <use xlink:href="#m63b66a0bca" x="93.6" y="282.319276" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="93.6" y="282.319276" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_9">
@@ -149,13 +126,11 @@ L 532.8 282.319276
     </g>
     <g id="ytick_4">
      <g id="line2d_12">
-      <path d="M 93.6 224.871312 
-L 532.8 224.871312 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 93.6 224.871312  L 532.8 224.871312  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_13">
       <g>
-       <use xlink:href="#m63b66a0bca" x="93.6" y="224.871312" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="93.6" y="224.871312" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_10">
@@ -164,13 +139,11 @@ L 532.8 224.871312
     </g>
     <g id="ytick_5">
      <g id="line2d_14">
-      <path d="M 93.6 167.423348 
-L 532.8 167.423348 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 93.6 167.423348  L 532.8 167.423348  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_15">
       <g>
-       <use xlink:href="#m63b66a0bca" x="93.6" y="167.423348" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="93.6" y="167.423348" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_11">
@@ -183,105 +156,55 @@ L 532.8 167.423348
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
-     <path id="m1258486ae1" d="M 104.057143 -154.784796 
-L 104.057143 -154.784796 
-L 104.057143 -154.784796 
-L 313.2 -154.784796 
-L 313.2 -154.784796 
-L 522.342857 -154.784796 
-L 522.342857 -384.576652 
-L 522.342857 -384.576652 
-L 313.2 -384.576652 
-L 313.2 -269.680724 
-L 104.057143 -269.680724 
-L 104.057143 -154.784796 
-z
-" style="stroke: #cde1d7"/>
+     <path id="m1258486ae1" d="M 104.057143 -154.784796  L 104.057143 -154.784796  L 104.057143 -154.784796  L 313.2 -154.784796  L 313.2 -154.784796  L 522.342857 -154.784796  L 522.342857 -384.576652  L 522.342857 -384.576652  L 313.2 -384.576652  L 313.2 -269.680724  L 104.057143 -269.680724  L 104.057143 -154.784796  z " style="stroke: #cde1d7" />
     </defs>
     <g clip-path="url(#p00b28f4f00)">
-     <use xlink:href="#m1258486ae1" x="0" y="552" style="fill: #cde1d7; stroke: #cde1d7"/>
+     <use xlink:href="#m1258486ae1" x="0" y="552" style="fill: #cde1d7; stroke: #cde1d7" />
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 93.6 402.96 
-L 93.6 149.04 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 93.6 402.96  L 93.6 149.04  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="patch_4">
-    <path d="M 93.6 402.96 
-L 532.8 402.96 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 93.6 402.96  L 532.8 402.96  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="line2d_16">
-    <path d="M 104.057143 397.215204 
-L 104.057143 282.319276 
-L 313.2 282.319276 
-L 313.2 167.423348 
-L 522.342857 167.423348 
-" clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #2e6f66; stroke-width: 3; stroke-linecap: square"/>
+    <path d="M 104.057143 397.215204  L 104.057143 282.319276  L 313.2 282.319276  L 313.2 167.423348  L 522.342857 167.423348  " clip-path="url(#p00b28f4f00)" style="fill: none; stroke: #2e6f66; stroke-width: 3; stroke-linecap: square" />
    </g>
    <g id="patch_5">
-    <path d="M 159.426324 305.122607 
-Q 132.666018 294.1016 106.939505 283.506352 
-" style="fill: none; stroke: #a12d48; stroke-linecap: round"/>
-    <path d="M 110.170195 287.216156 
-L 106.939505 283.506352 
-L 111.845761 283.147682 
-" style="fill: none; stroke: #a12d48; stroke-linecap: round"/>
+    <path d="M 159.426324 305.122607  Q 132.666018 294.1016 106.939505 283.506352  " style="fill: none; stroke: #a12d48; stroke-linecap: round" />
+    <path d="M 110.170195 287.216156  L 106.939505 283.506352  L 111.845761 283.147682  " style="fill: none; stroke: #a12d48; stroke-linecap: round" />
    </g>
    <g id="text_13">
-    <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(154.251429 317.277647)">문턱 0.85</text>
+    <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(154.251429 317.277647)">임곗값 0.85</text>
     <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(154.251429 328.277647)">(FPR 0, TPR 0.5)</text>
    </g>
    <g id="patch_6">
-    <path d="M 366.862675 208.160621 
-Q 340.828875 188.397424 315.685583 169.310244 
-" style="fill: none; stroke: #a12d48; stroke-linecap: round"/>
-    <path d="M 317.859931 173.722977 
-L 315.685583 169.310244 
-L 320.520378 170.218405 
-" style="fill: none; stroke: #a12d48; stroke-linecap: round"/>
+    <path d="M 366.862675 208.160621  Q 340.828875 188.397424 315.685583 169.310244  " style="fill: none; stroke: #a12d48; stroke-linecap: round" />
+    <path d="M 317.859931 173.722977  L 315.685583 169.310244  L 320.520378 170.218405  " style="fill: none; stroke: #a12d48; stroke-linecap: round" />
    </g>
    <g id="text_14">
-    <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(346.662857 220.765068)">문턱 0.5</text>
+    <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(346.662857 220.765068)">임곗값 0.5</text>
     <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(346.662857 231.765068)">(FPR 0.5, TPR 1)</text>
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m3bd211551b" d="M 0 4.609772 
-C 1.222526 4.609772 2.395145 4.124058 3.259601 3.259601 
-C 4.124058 2.395145 4.609772 1.222526 4.609772 0 
-C 4.609772 -1.222526 4.124058 -2.395145 3.259601 -3.259601 
-C 2.395145 -4.124058 1.222526 -4.609772 0 -4.609772 
-C -1.222526 -4.609772 -2.395145 -4.124058 -3.259601 -3.259601 
-C -4.124058 -2.395145 -4.609772 -1.222526 -4.609772 0 
-C -4.609772 1.222526 -4.124058 2.395145 -3.259601 3.259601 
-C -2.395145 4.124058 -1.222526 4.609772 0 4.609772 
-z
-" style="stroke: #a12d48"/>
+     <path id="m3bd211551b" d="M 0 4.609772  C 1.222526 4.609772 2.395145 4.124058 3.259601 3.259601  C 4.124058 2.395145 4.609772 1.222526 4.609772 0  C 4.609772 -1.222526 4.124058 -2.395145 3.259601 -3.259601  C 2.395145 -4.124058 1.222526 -4.609772 0 -4.609772  C -1.222526 -4.609772 -2.395145 -4.124058 -3.259601 -3.259601  C -4.124058 -2.395145 -4.609772 -1.222526 -4.609772 0  C -4.609772 1.222526 -4.124058 2.395145 -3.259601 3.259601  C -2.395145 4.124058 -1.222526 4.609772 0 4.609772  z " style="stroke: #a12d48" />
     </defs>
     <g clip-path="url(#p00b28f4f00)">
-     <use xlink:href="#m3bd211551b" x="104.057143" y="282.319276" style="fill: #a12d48; stroke: #a12d48"/>
-     <use xlink:href="#m3bd211551b" x="313.2" y="167.423348" style="fill: #a12d48; stroke: #a12d48"/>
+     <use xlink:href="#m3bd211551b" x="104.057143" y="282.319276" style="fill: #a12d48; stroke: #a12d48" />
+     <use xlink:href="#m3bd211551b" x="313.2" y="167.423348" style="fill: #a12d48; stroke: #a12d48" />
     </g>
    </g>
    <g id="legend_1">
     <g id="patch_7">
-     <path d="M 550.584 179.276625 
-L 570.584 179.276625 
-L 570.584 172.276625 
-L 550.584 172.276625 
-z
-" style="fill: #cde1d7; stroke: #cde1d7; stroke-linejoin: miter"/>
+     <path d="M 550.584 179.276625  L 570.584 179.276625  L 570.584 172.276625  L 550.584 172.276625  z " style="fill: #cde1d7; stroke: #cde1d7; stroke-linejoin: miter" />
     </g>
     <g id="text_15">
      <text style="font-size: 10px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="578.584" y="179.276625" transform="rotate(-0 578.584 179.276625)">곡선 아래 면적 = 0.75</text>
     </g>
     <g id="line2d_17">
-     <path d="M 550.584 191.319203 
-L 560.584 191.319203 
-L 570.584 191.319203 
-" style="fill: none; stroke: #2e6f66; stroke-width: 3; stroke-linecap: square"/>
+     <path d="M 550.584 191.319203  L 560.584 191.319203  L 570.584 191.319203  " style="fill: none; stroke: #2e6f66; stroke-width: 3; stroke-linecap: square" />
     </g>
     <g id="text_16">
      <text style="font-size: 10px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="578.584" y="194.819203" transform="rotate(-0 578.584 194.819203)">원 점수의 ROC</text>
@@ -299,12 +222,12 @@ L 570.584 191.319203
   </g>
   <g id="text_20">
    <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 486.495156)">ROC는 (0,0)→(0,0.5)→(0.5,0.5)→(0.5,1)→(1,1). 같은 점수의</text>
-   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 502.858516)">AUC는 문턱만 바꿔도 0.75다.</text>
+   <text style="font-size: 11px; font-family: 'Malgun Gothic'; fill: #1d2541" transform="translate(36 502.858516)">AUC는 임곗값만 바꿔도 0.75다.</text>
   </g>
  </g>
  <defs>
   <clipPath id="p00b28f4f00">
-   <rect x="93.6" y="149.04" width="439.2" height="253.92"/>
+   <rect x="93.6" y="149.04" width="439.2" height="253.92" />
   </clipPath>
  </defs>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1124" y2="1124" stroke="#dcded7" stroke-width="2" /><text x="48" y="1171" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1202" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1237" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">ROC 곡선</text><text x="66" y="1270" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">ROC, Receiver Operating Characteristic Curve</text><rect x="612" y="1202" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1237" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">곡선 아래 면적</text><text x="630" y="1270" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">AUC, Area Under the Curve</text><rect x="48" y="1307" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1342" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">참양성률</text><text x="66" y="1375" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">TPR, True Positive Rate</text><rect x="612" y="1307" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1342" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">거짓양성률</text><text x="630" y="1375" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">FPR, False Positive Rate</text><rect x="48" y="1412" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1447" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">분류 임곗값</text><text x="66" y="1480" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Classification Threshold</text></svg>

@@ -1,27 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
-<rect width="1200" height="960" fill="#fbfaf6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1547" viewBox="0 0 1200 1547" role="img" aria-labelledby="terminology-title"><title id="terminology-title">분석 로드맵(Analytics Roadmap)과 프로젝트 계획(Project Plan)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1547" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 1-09</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">분석 로드맵(Analytics Roadmap)과 프로젝트 계획(Project Plan)</text><line x1="48" x2="1152" y1="134" y2="134" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 146)"><svg width="1200" height="960" viewBox="0 0 1200 960" role="img" x="0" y="0" overflow="hidden">
+<rect width="1200" height="960" fill="#fbfaf6" />
 <text x="50" y="74.7" fill="#1b2340" font-size="43" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">한 모형의 계획과 여러 과제의 로드맵</text>
 <text x="50" y="137.5" fill="#626a73" font-size="28" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">과제 사이의 의존 관계와, 한 과제 안의 상세 설계는 다릅니다.</text>
-<rect x="50" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2" />
 <text x="70" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A  코드 통일</text>
 <text x="70" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">담당 부서 합의</text>
-<rect x="450" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<rect x="450" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2" />
 <text x="470" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B  수요예측</text>
 <text x="470" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A의 통합 코드 필요</text>
-<rect x="850" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2"/>
+<rect x="850" y="240" width="300" height="160" rx="14" fill="#eef4ed" stroke="#dcded7" stroke-width="2" />
 <text x="870" y="287.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C  발주 적용</text>
 <text x="870" y="335.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">B의 검증 결과 필요</text>
-<line x1="350" y1="320" x2="450" y2="320" stroke="#2e6b60" stroke-width="5"/>
-<line x1="450" y1="320" x2="434.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5"/>
-<line x1="450" y1="320" x2="434.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5"/>
-<line x1="750" y1="320" x2="850" y2="320" stroke="#2e6b60" stroke-width="5"/>
-<line x1="850" y1="320" x2="834.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5"/>
-<line x1="850" y1="320" x2="834.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5"/>
-<rect x="280" y="550" width="640" height="175" rx="14" fill="#f1f3f8" stroke="#dcded7" stroke-width="2"/>
+<line x1="350" y1="320" x2="450" y2="320" stroke="#2e6b60" stroke-width="5" />
+<line x1="450" y1="320" x2="434.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5" />
+<line x1="450" y1="320" x2="434.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5" />
+<line x1="750" y1="320" x2="850" y2="320" stroke="#2e6b60" stroke-width="5" />
+<line x1="850" y1="320" x2="834.2035138859733" y2="328.62965969487567" stroke="#2e6b60" stroke-width="5" />
+<line x1="850" y1="320" x2="834.2035138859733" y2="311.37034030512433" stroke="#2e6b60" stroke-width="5" />
+<rect x="280" y="550" width="640" height="175" rx="14" fill="#f1f3f8" stroke="#dcded7" stroke-width="2" />
 <text x="300" y="597.1" fill="#1b2340" font-size="31" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B 안의 상세 설계</text>
 <text x="300" y="645.2" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">입력·목표·손실함수·알고리즘 후보</text>
 <text x="300" y="681.5" fill="#626a73" font-size="25" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">과제 B 내부의 선택이며 A→B→C를 대신하지 않음</text>
-<line x1="600" y1="400" x2="600" y2="550" stroke="#d4dcd1" stroke-width="3"/>
+<line x1="600" y1="400" x2="600" y2="550" stroke="#d4dcd1" stroke-width="3" />
 <text x="50" y="851.2" fill="#1b2340" font-size="27" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">A 코드 통일 → B 수요예측·검증 → C 발주 적용. B의 알고리즘은 내부 설계다.</text>
 <text x="50" y="934.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1116" y2="1116" stroke="#dcded7" stroke-width="2" /><text x="48" y="1163" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1194" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1229" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">분석 로드맵</text><text x="66" y="1262" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Analytics Roadmap</text><rect x="612" y="1194" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1229" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">프로젝트 계획</text><text x="630" y="1262" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Project Plan</text><rect x="48" y="1299" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1334" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">의존성</text><text x="66" y="1367" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Dependency</text><rect x="612" y="1299" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1334" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">수요 예측</text><text x="630" y="1367" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Demand Forecasting</text><rect x="48" y="1404" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1439" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">배포</text><text x="66" y="1472" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Deployment</text></svg>

@@ -1,42 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1156" viewBox="0 0 1200 1156" role="img">
-<rect width="1200" height="1156" fill="#fbfaf6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1791" viewBox="0 0 1200 1791" role="img" aria-labelledby="terminology-title"><title id="terminology-title">그룹 기반 데이터 분할(Group-aware Data Splitting)과 시계열 분할(Time Series Splitting)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1791" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 2-22</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">그룹 기반 데이터 분할(Group-aware Data Splitting)과 시계열</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">분할(Time Series Splitting)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="1156" viewBox="0 0 1200 1156" role="img" x="0" y="0" overflow="hidden">
+<rect width="1200" height="1156" fill="#fbfaf6" />
 <text x="50" y="78.7" fill="#1b2340" font-size="44" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분할 단위는 나중에 예측할 대상에 맞춘다</text>
 <text x="50" y="146.9" fill="#626a73" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">평가 목적과 분할 방법을 바꾸어 사람과 시간의 경계를 확인한다.</text>
-<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A1</text>
-<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="193.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="240.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">A2</text>
-<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B1</text>
-<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="313.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="360.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">B2</text>
-<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C1</text>
-<rect x="625" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="433.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="480.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">C2</text>
-<rect x="50" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="73" y="600.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련</text>
-<rect x="625" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2"/>
+<rect x="625" y="553.3" width="550" height="100" rx="14" fill="#f0f4ef" stroke="#dcded7" stroke-width="2" />
 <text x="648" y="600.3" fill="#1b2340" font-size="32" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">시험</text>
-<rect x="50" y="691.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="691.3" width="1100" height="85" rx="2" fill="#e9eee8" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">분할 기준</text>
-<line x1="416.6666666666667" y1="691.3" x2="416.6666666666667" y2="776.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="691.3" x2="416.6666666666667" y2="776.3" stroke="#dcded7" stroke-width="2" />
 <text x="428.6666666666667" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">훈련</text>
-<line x1="783.3333333333334" y1="691.3" x2="783.3333333333334" y2="776.3" stroke="#dcded7" stroke-width="2"/>
+<line x1="783.3333333333334" y1="691.3" x2="783.3333333333334" y2="776.3" stroke="#dcded7" stroke-width="2" />
 <text x="795.3333333333334" y="732.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="600">시험</text>
-<rect x="50" y="776.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<rect x="50" y="776.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">행별</text>
-<line x1="416.6666666666667" y1="776.3" x2="416.6666666666667" y2="861.3" stroke="#dcded7" stroke-width="2"/>
-<text x="428.6666666666667" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A1&quot;, &quot;B1&quot;, &quot;C1&quot;]</text>
-<line x1="783.3333333333334" y1="776.3" x2="783.3333333333334" y2="861.3" stroke="#dcded7" stroke-width="2"/>
-<text x="795.3333333333334" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A2&quot;, &quot;B2&quot;, &quot;C2&quot;]</text>
-<rect x="50" y="861.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2"/>
+<line x1="416.6666666666667" y1="776.3" x2="416.6666666666667" y2="861.3" stroke="#dcded7" stroke-width="2" />
+<text x="428.6666666666667" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">["A1", "B1", "C1"]</text>
+<line x1="783.3333333333334" y1="776.3" x2="783.3333333333334" y2="861.3" stroke="#dcded7" stroke-width="2" />
+<text x="795.3333333333334" y="817.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">["A2", "B2", "C2"]</text>
+<rect x="50" y="861.3" width="1100" height="85" rx="2" fill="#fff" stroke="#dcded7" stroke-width="2" />
 <text x="62.0" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">사람별</text>
-<line x1="416.6666666666667" y1="861.3" x2="416.6666666666667" y2="946.3" stroke="#dcded7" stroke-width="2"/>
-<text x="428.6666666666667" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;A1&quot;, &quot;A2&quot;, &quot;B1&quot;, &quot;B2&quot;]</text>
-<line x1="783.3333333333334" y1="861.3" x2="783.3333333333334" y2="946.3" stroke="#dcded7" stroke-width="2"/>
-<text x="795.3333333333334" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">[&quot;C1&quot;, &quot;C2&quot;]</text>
+<line x1="416.6666666666667" y1="861.3" x2="416.6666666666667" y2="946.3" stroke="#dcded7" stroke-width="2" />
+<text x="428.6666666666667" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">["A1", "A2", "B1", "B2"]</text>
+<line x1="783.3333333333334" y1="861.3" x2="783.3333333333334" y2="946.3" stroke="#dcded7" stroke-width="2" />
+<text x="795.3333333333334" y="902.4" fill="#1b2340" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">["C1", "C2"]</text>
 <text x="50" y="1007.4" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">새 사람 평가에서는 A·B로 훈련하고 C로 시험해 개인의 경계를 지킨다. 미래 예측</text>
 <text x="50" y="1050.9" fill="#343b49" font-size="30" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">은 시간도 확인한다.</text>
 <text x="50" y="1127.4" fill="#626a73" font-size="20" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-weight="400">ourfuture studio · 직접 만든 교육용 예제</text>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1360" y2="1360" stroke="#dcded7" stroke-width="2" /><text x="48" y="1407" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1438" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1473" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">그룹 기반 데이터 분할</text><text x="66" y="1506" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Group-aware Data Splitting</text><rect x="612" y="1438" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1473" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">시계열 데이터 분할</text><text x="630" y="1506" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Time Series Splitting</text><rect x="48" y="1543" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1578" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">데이터 분할</text><text x="66" y="1611" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Data Splitting</text><rect x="612" y="1543" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1578" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">일반화</text><text x="630" y="1611" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Generalization</text><rect x="48" y="1648" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1683" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">데이터 누수</text><text x="66" y="1716" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Data Leakage</text></svg>

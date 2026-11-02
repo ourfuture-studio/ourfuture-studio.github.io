@@ -1,19 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="763.2pt" viewBox="0 0 864 763.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="1200" height="1695" viewBox="0 0 1200 1695" role="img" aria-labelledby="terminology-title"><title id="terminology-title">은닉 마르코프 모형(HMM, Hidden Markov Model)의 전이확률(Transition Probability)과 방출확률(Emission Probability)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1695" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 3-38</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">은닉 마르코프 모형(HMM, Hidden Markov Model)의</text><text x="48" y="134" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">전이확률(Transition Probability)과 방출확률(Emission Probability)</text><line x1="48" x2="1152" y1="182" y2="182" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 194)"><svg width="1200" height="1060" viewBox="0 0 864 763.2" version="1.1" x="0" y="0" overflow="hidden">
  <metadata>
-  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:Work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:date>2026-10-30T23:51:29.313631</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:Agent>
+     <ns2:Agent>
       <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
-     </cc:Agent>
+     </ns2:Agent>
     </dc:creator>
-   </cc:Work>
+   </ns2:Work>
   </rdf:RDF>
  </metadata>
  <defs>
@@ -21,118 +18,39 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 763.2 
-L 864 763.2 
-L 864 0 
-L 0 0 
-z
-" style="fill: #ffffff"/>
+   <path d="M 0 763.2  L 864 763.2  L 864 0  L 0 0  z " style="fill: #ffffff" />
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 53.03232 234.241344 
-L 810.96768 234.241344 
-Q 826.69248 234.241344 826.69248 224.167104 
-L 826.69248 171.781056 
-Q 826.69248 161.706816 810.96768 161.706816 
-L 53.03232 161.706816 
-Q 37.30752 161.706816 37.30752 171.781056 
-L 37.30752 224.167104 
-Q 37.30752 234.241344 53.03232 234.241344 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+    <path d="M 53.03232 234.241344  L 810.96768 234.241344  Q 826.69248 234.241344 826.69248 224.167104  L 826.69248 171.781056  Q 826.69248 161.706816 810.96768 161.706816  L 53.03232 161.706816  Q 37.30752 161.706816 37.30752 171.781056  L 37.30752 224.167104  Q 37.30752 234.241344 53.03232 234.241344  z " clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter" />
    </g>
    <g id="patch_3">
-    <path d="M 251.1648 422.12592 
-C 273.058695 422.12592 294.05882 416.553121 309.540142 406.634868 
-C 325.021463 396.716615 333.72 383.262688 333.72 369.23616 
-C 333.72 355.209632 325.021463 341.755705 309.540142 331.837452 
-C 294.05882 321.919199 273.058695 316.3464 251.1648 316.3464 
-C 229.270905 316.3464 208.27078 321.919199 192.789458 331.837452 
-C 177.308137 341.755705 168.6096 355.209632 168.6096 369.23616 
-C 168.6096 383.262688 177.308137 396.716615 192.789458 406.634868 
-C 208.27078 416.553121 229.270905 422.12592 251.1648 422.12592 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter"/>
+    <path d="M 251.1648 422.12592  C 273.058695 422.12592 294.05882 416.553121 309.540142 406.634868  C 325.021463 396.716615 333.72 383.262688 333.72 369.23616  C 333.72 355.209632 325.021463 341.755705 309.540142 331.837452  C 294.05882 321.919199 273.058695 316.3464 251.1648 316.3464  C 229.270905 316.3464 208.27078 321.919199 192.789458 331.837452  C 177.308137 341.755705 168.6096 355.209632 168.6096 369.23616  C 168.6096 383.262688 177.308137 396.716615 192.789458 406.634868  C 208.27078 416.553121 229.270905 422.12592 251.1648 422.12592  z " clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter" />
    </g>
    <g id="patch_4">
-    <path d="M 636.4224 422.12592 
-C 658.316295 422.12592 679.31642 416.553121 694.797742 406.634868 
-C 710.279063 396.716615 718.9776 383.262688 718.9776 369.23616 
-C 718.9776 355.209632 710.279063 341.755705 694.797742 331.837452 
-C 679.31642 321.919199 658.316295 316.3464 636.4224 316.3464 
-C 614.528505 316.3464 593.52838 321.919199 578.047058 331.837452 
-C 562.565737 341.755705 553.8672 355.209632 553.8672 369.23616 
-C 553.8672 383.262688 562.565737 396.716615 578.047058 406.634868 
-C 593.52838 416.553121 614.528505 422.12592 636.4224 422.12592 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter"/>
+    <path d="M 636.4224 422.12592  C 658.316295 422.12592 679.31642 416.553121 694.797742 406.634868  C 710.279063 396.716615 718.9776 383.262688 718.9776 369.23616  C 718.9776 355.209632 710.279063 341.755705 694.797742 331.837452  C 679.31642 321.919199 658.316295 316.3464 636.4224 316.3464  C 614.528505 316.3464 593.52838 321.919199 578.047058 331.837452  C 562.565737 341.755705 553.8672 355.209632 553.8672 369.23616  C 553.8672 383.262688 562.565737 396.716615 578.047058 406.634868  C 593.52838 416.553121 614.528505 422.12592 636.4224 422.12592  z " clip-path="url(#pf826e4051a)" style="fill: #f3f7f4; stroke: #2c6a61; stroke-width: 2.2; stroke-linejoin: miter" />
    </g>
    <g id="patch_5">
-    <path d="M 95.919591 369.23616 
-Q 127.334313 369.23616 156.065753 369.23616 
-" clip-path="url(#pf826e4051a)" style="fill: none; stroke: #586773; stroke-width: 2.4; stroke-linecap: round"/>
-    <path d="M 147.265753 364.83616 
-L 156.065753 369.23616 
-L 147.265753 373.63616 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #586773; stroke: #586773; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 95.919591 369.23616  Q 127.334313 369.23616 156.065753 369.23616  " clip-path="url(#pf826e4051a)" style="fill: none; stroke: #586773; stroke-width: 2.4; stroke-linecap: round" />
+    <path d="M 147.265753 364.83616  L 156.065753 369.23616  L 147.265753 373.63616  z " clip-path="url(#pf826e4051a)" style="fill: #586773; stroke: #586773; stroke-width: 2.4; stroke-linecap: round" />
    </g>
    <g id="patch_6">
-    <path d="M 339.649792 369.23616 
-Q 443.793382 369.23616 545.25369 369.23616 
-" clip-path="url(#pf826e4051a)" style="fill: none; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round"/>
-    <path d="M 536.45369 364.83616 
-L 545.25369 369.23616 
-L 536.45369 373.63616 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #2c6a61; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 339.649792 369.23616  Q 443.793382 369.23616 545.25369 369.23616  " clip-path="url(#pf826e4051a)" style="fill: none; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round" />
+    <path d="M 536.45369 364.83616  L 545.25369 369.23616  L 536.45369 373.63616  z " clip-path="url(#pf826e4051a)" style="fill: #2c6a61; stroke: #2c6a61; stroke-width: 2.4; stroke-linecap: round" />
    </g>
    <g id="patch_7">
-    <path d="M 178.83072 561.654144 
-L 323.49888 561.654144 
-Q 339.22368 561.654144 339.22368 551.579904 
-L 339.22368 509.268096 
-Q 339.22368 499.193856 323.49888 499.193856 
-L 178.83072 499.193856 
-Q 163.10592 499.193856 163.10592 509.268096 
-L 163.10592 551.579904 
-Q 163.10592 561.654144 178.83072 561.654144 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+    <path d="M 178.83072 561.654144  L 323.49888 561.654144  Q 339.22368 561.654144 339.22368 551.579904  L 339.22368 509.268096  Q 339.22368 499.193856 323.49888 499.193856  L 178.83072 499.193856  Q 163.10592 499.193856 163.10592 509.268096  L 163.10592 551.579904  Q 163.10592 561.654144 178.83072 561.654144  z " clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter" />
    </g>
    <g id="patch_8">
-    <path d="M 564.08832 561.654144 
-L 708.75648 561.654144 
-Q 724.48128 561.654144 724.48128 551.579904 
-L 724.48128 509.268096 
-Q 724.48128 499.193856 708.75648 499.193856 
-L 564.08832 499.193856 
-Q 548.36352 499.193856 548.36352 509.268096 
-L 548.36352 551.579904 
-Q 548.36352 561.654144 564.08832 561.654144 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter"/>
+    <path d="M 564.08832 561.654144  L 708.75648 561.654144  Q 724.48128 561.654144 724.48128 551.579904  L 724.48128 509.268096  Q 724.48128 499.193856 708.75648 499.193856  L 564.08832 499.193856  Q 548.36352 499.193856 548.36352 509.268096  L 548.36352 551.579904  Q 548.36352 561.654144 564.08832 561.654144  z " clip-path="url(#pf826e4051a)" style="fill: #fcf5f6; stroke: #dce3df; stroke-width: 1.2; stroke-linejoin: miter" />
    </g>
    <g id="patch_9">
-    <path d="M 251.1648 426.646077 
-Q 251.1648 461.165012 251.1648 493.000666 
-" clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
-    <path d="M 255.5648 484.200666 
-L 251.1648 493.000666 
-L 246.7648 484.200666 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 251.1648 426.646077  Q 251.1648 461.165012 251.1648 493.000666  " clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round" />
+    <path d="M 255.5648 484.200666  L 251.1648 493.000666  L 246.7648 484.200666  z " clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round" />
    </g>
    <g id="patch_10">
-    <path d="M 636.4224 426.646077 
-Q 636.4224 461.165012 636.4224 493.000666 
-" clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
-    <path d="M 640.8224 484.200666 
-L 636.4224 493.000666 
-L 632.0224 484.200666 
-z
-" clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 636.4224 426.646077  Q 636.4224 461.165012 636.4224 493.000666  " clip-path="url(#pf826e4051a)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round" />
+    <path d="M 640.8224 484.200666  L 636.4224 493.000666  L 632.0224 484.200666  z " clip-path="url(#pf826e4051a)" style="fill: #95364e; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #95364e; stroke-width: 2.4; stroke-linecap: round" />
    </g>
    <g id="text_1">
     <text style="font-size: 18px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #202944" x="432" y="203.97701" transform="rotate(-0 432 203.97701)">정상 출발 전이행: 정상→정상 0.9 + 정상→마모 0.1 = 1</text>
@@ -192,7 +110,7 @@ z
  </g>
  <defs>
   <clipPath id="pf826e4051a">
-   <rect x="38.88" y="152.64" width="786.24" height="503.712"/>
+   <rect x="38.88" y="152.64" width="786.24" height="503.712" />
   </clipPath>
  </defs>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1264" y2="1264" stroke="#dcded7" stroke-width="2" /><text x="48" y="1311" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1342" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1377" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">은닉 마르코프 모형</text><text x="66" y="1410" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">HMM, Hidden Markov Model</text><rect x="612" y="1342" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1377" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">은닉상태</text><text x="630" y="1410" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Hidden State</text><rect x="48" y="1447" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1482" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">초기분포</text><text x="66" y="1515" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Initial Distribution</text><rect x="612" y="1447" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1482" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">전이확률</text><text x="630" y="1515" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Transition Probability</text><rect x="48" y="1552" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1587" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">방출확률</text><text x="66" y="1620" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Emission Probability</text><rect x="612" y="1552" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1587" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">관측</text><text x="630" y="1620" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Observation</text></svg>

@@ -1,21 +1,22 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CBOW와 Skip-gram은 예측 화살표가 반대다 · 빅분기 공부방</title><meta name="description" content="주변 문맥을 넣는지 중심 단어를 넣는지 먼저 그린다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>워드투벡(Word2Vec): CBOW(Continuous Bag-of-Words)와 스킵그램(Skip-gram) · 빅분기 공부방</title><meta content="주변 문맥을 넣는지 중심 단어를 넣는지 먼저 그린다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="3-34">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-34</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-34 · 이론 읽기</span><h1>CBOW와 Skip-gram은 예측 화살표가 반대다</h1><p class="theory-lead">주변 문맥을 넣는지 중심 단어를 넣는지 먼저 그린다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=3">3과목 · 빅데이터(Big Data) 모델링(Modeling)</a><span aria-hidden="true" class="separator">/</span><span>3-34</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-34 · 이론 읽기</span><h1>워드투벡(Word2Vec): CBOW(Continuous Bag-of-Words)와 스킵그램(Skip-gram)</h1><p class="theory-lead">문맥 단어(Context Word)를 넣는지 중심 단어(Center Word)를 넣는지 먼저 그린다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-34">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-34.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>word2vec의 CBOW는 주변 단어의 연속 표현을 결합해 중심 단어를 예측한다. Skip-gram은 중심 단어를 입력으로 주변 단어를 예측한다. 둘 다 단어 벡터를 학습하지만 어떤 단어를 입력과 목표로 만드는지가 다르다. CBOW라는 이름을 단순 단어 빈도 벡터인 전통적 bag-of-words와 같은 출력이라고 보지 않는다.</p>
-<p>원 논문의 CBOW는 문맥의 단어 표현을 합치므로 그 문맥 안의 순서에 불변인 결합을 사용한다. Skip-gram은 한 중심 단어에서 여러 주변 단어 쌍을 만들 수 있다. 창 크기와 문장 경계, 동적 창 선택에 따라 실제 학습 쌍 수가 달라진다. 여기서는 경계를 넘어가지 않는 고정 반경 1을 명시해 예시를 단순화한다.</p>
-<p>학습된 정적 단어 임베딩은 보통 같은 단어에 하나의 벡터를 부여한다. 문맥마다 표현을 바꾸는 현대 문맥 임베딩과 구별한다. 이름만으로 속도·정확도의 보편적 우열을 정하지 않는다. 아래는 실제 임베딩을 훈련한 실험이 아니라 짧은 토큰열에서 입력·정답 쌍을 구성하는 예제다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>토큰열 [새벽,기차,출발]에서 중심은 기차, 고정 반경은 1이다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>워드투벡(Word2Vec)의 CBOW(Continuous Bag-of-Words)는 문맥 단어(Context Word) 단어(Context Word)들의 표현으로 중심 단어(Center Word)를 예측하며, 스킵그램(Skip-gram)은 중심 단어(Center Word)로 문맥 단어(Context Word)를 예측한다. 두 방법은 단어 임베딩(Word Embedding)을 학습하지만 입력과 목표의 방향이 다르며, 정적 임베딩(Static Embedding)을 문맥 임베딩(Contextual Embedding)과 구분해야 한다.</p><ul class="terminology-terms"><li>워드투벡(Word2Vec)</li><li>CBOW(Continuous Bag-of-Words)</li><li>스킵그램(Skip-gram)</li><li>단어 임베딩(Word Embedding)</li><li>중심 단어(Center Word)</li><li>문맥 단어(Context Word)</li><li>문맥 창(Context Window)</li><li>정적 임베딩(Static Embedding)</li></ul><p class="terminology-sources">정의 참고: <a href="https://arxiv.org/html/1301.3781v3">Mikolov et al. (2013): Efficient Estimation of Word Representations in Vector Space</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>워드투벡(Word2Vec)의 CBOW(Continuous Bag-of-Words)는 문맥 단어(Context Word)의 연속 표현을 결합해 중심 단어(Center Word)를 예측한다. 스킵그램(Skip-gram)은 중심 단어(Center Word)를 입력으로 문맥 단어(Context Word)를 예측한다. 둘 다 단어 임베딩(Word Embedding)을 학습하지만 어떤 단어를 입력과 목표로 만드는지가 다르다. CBOW(Continuous Bag-of-Words)라는 이름을 단순 단어 빈도 벡터인 전통적 단어 가방 모형(BoW, Bag-of-Words)과 같은 출력이라고 보지 않는다.</p>
+<p>원 논문의 CBOW(Continuous Bag-of-Words)는 문맥의 단어 표현을 합치므로 그 문맥 안의 순서에 불변인 결합을 사용한다. 스킵그램(Skip-gram)은 한 중심 단어(Center Word)에서 여러 문맥 단어(Context Word) 쌍을 만들 수 있다. 창 크기와 문장 경계, 동적 창 선택에 따라 실제 학습 쌍 수가 달라진다. 여기서는 경계를 넘어가지 않는 고정 반경 1을 명시해 예시를 단순화한다.</p>
+<p>학습된 정적 임베딩(Static Embedding)은 보통 같은 단어에 하나의 벡터를 부여한다. 문맥마다 표현을 바꾸는 현대 문맥 임베딩(Contextual Embedding)과 구별한다. 이름만으로 속도(Velocity)·정확도(Accuracy)의 보편적 우열을 정하지 않는다. 아래는 실제 임베딩을 훈련한 실험이 아니라 짧은 토큰열에서 입력·정답 쌍을 구성하는 예제다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>토큰열 [새벽,기차,출발]에서 중심은 기차, 고정 반경은 1이다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
@@ -26,39 +27,39 @@
 </thead>
 <tbody>
 <tr>
-<td>CBOW</td>
+<td>CBOW(Continuous Bag-of-Words)</td>
 <td>새벽·출발의 문맥</td>
 <td>기차</td>
 </tr>
 <tr>
-<td>Skip-gram</td>
+<td>스킵그램(Skip-gram)</td>
 <td>기차</td>
 <td>새벽 / 출발</td>
 </tr>
 </tbody>
 </table></div>
-<p>이 중심 위치에서 Skip-gram은 (기차→새벽), (기차→출발) 두 쌍을 만든다. CBOW는 두 문맥을 묶어 기차를 목표로 한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-34.png" alt="자체 예제의 중심 단어와 주변 문맥 사이 예측 방향을 비교한다.. CBOW: 새벽·출발→기차. Skip-gram: 기차→새벽, 기차→출발." width="1200" height="957" loading="lazy" decoding="async"><figcaption>CBOW: 새벽·출발→기차. Skip-gram: 기차→새벽, 기차→출발.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>[새벽,기차,출발]의 중심은 기차. 반경 1의 주변 단어로 중심을 예측한다.</p>
+<p>이 중심 위치에서 스킵그램(Skip-gram)은 (기차→새벽), (기차→출발) 두 쌍을 만든다. CBOW(Continuous Bag-of-Words)는 두 문맥을 묶어 기차를 목표로 한다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="자체 예제의 중심 단어(Center Word)와 문맥 단어(Context Word) 사이 예측 방향을 비교한다.. CBOW(Continuous Bag-of-Words): 새벽·출발→기차. 스킵그램(Skip-gram): 기차→새벽, 기차→출발." decoding="async" height="1592" loading="lazy" src="../assets/figures/3-34.png?v=806f0489e9e7" width="1200"/><figcaption>CBOW(Continuous Bag-of-Words): 새벽·출발→기차. 스킵그램(Skip-gram): 기차→새벽, 기차→출발.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>[새벽,기차,출발]의 중심은 기차. 반경 1의 문맥 단어(Context Word)로 중심을 예측한다.</p>
 <p><strong>해당 학습 방향은?</strong></p>
 <ul>
-<li>1. CBOW: 문맥→기차</li>
-<li>2. Skip-gram: 문맥→기차</li>
-<li>3. PCA: 문맥→기차</li>
-<li>4. CCA: 문맥→기차</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — CBOW: 문맥→기차</strong></p>
-<p>주변 문맥을 입력으로 중심 단어를 예측하는 방향은 CBOW다.</p>
+<li>1. CBOW(Continuous Bag-of-Words): 문맥→기차</li>
+<li>2. 스킵그램(Skip-gram): 문맥→기차</li>
+<li>3. 주성분 분석(PCA, Principal Component Analysis): 문맥→기차</li>
+<li>4. 정준상관분석(CCA, Canonical Correlation Analysis): 문맥→기차</li>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 1번 — CBOW(Continuous Bag-of-Words): 문맥→기차</strong></p>
+<p>문맥 단어(Context Word)를 입력으로 중심 단어(Center Word)를 예측하는 방향은 CBOW다.</p>
 <ul>
-<li>2번: Skip-gram은 중심에서 주변을 예측하는 반대 방향이다.</li>
-<li>3번: PCA는 이러한 중심 단어 예측 과제를 정의하는 이름이 아니다.</li>
-<li>4번: CCA는 두 변수 묶음의 선형결합 상관을 다루는 기법이다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 중심 위치를 Skip-gram으로 바꾸면 입력과 목표 쌍은?</p>
+<li>2번: 스킵그램(Skip-gram)은 중심에서 주변을 예측하는 반대 방향이다.</li>
+<li>3번: 주성분 분석(PCA, Principal Component Analysis)은 이러한 중심 단어(Center Word) 예측 과제를 정의하는 이름이 아니다.</li>
+<li>4번: 정준상관분석(CCA, Canonical Correlation Analysis)은 두 변수 묶음의 선형결합(Linear Combination) 상관을 다루는 기법이다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>같은 중심 위치를 스킵그램(Skip-gram)으로 바꾸면 입력과 목표 쌍은?</p>
 <p><strong>풀이:</strong> 입력 기차에서 목표 새벽, 입력 기차에서 목표 출발의 두 쌍.</p>
-<p>반경 1이라 왼쪽과 오른쪽이 각각 목표다. 문장 경계나 무작위 창 조정은 이 자체 예제에서는 사용하지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>CBOW는 문맥에서 중심, Skip-gram은 반대.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
-<li><a href="https://arxiv.org/html/1301.3781v3" rel="noopener noreferrer" target="_blank">Mikolov et al., 2013</a> — 3.1 CBOW·3.2 Skip-gram 및 Figure 1의 예측 방향; 성능표 수치 미사용. 확인일 2026-10-30.</li>
+<p>반경 1이라 왼쪽과 오른쪽이 각각 목표다. 문장 경계나 무작위 창 조정은 이 자체 예제에서는 사용하지 않는다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>CBOW(Continuous Bag-of-Words)는 문맥에서 중심, 스킵그램(Skip-gram)은 반대.</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://arxiv.org/html/1301.3781v3" rel="noopener noreferrer" target="_blank">Mikolov et al., 2013</a> — 3.1 CBOW(Continuous Bag-of-Words)·3.2 스킵그램(Skip-gram) 및 Figure 1의 예측 방향; 성능표 수치 미사용. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-34">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-34.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>고정 반경1·한 문장·세 토큰이다. 임베딩 학습·동적창·빈도 하위표집·실제 성능 비교는 수행하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-33.html"><small>이전 개념 · 3-33</small>TF는 문서 안을, IDF는 문서 전체를 본다</a><a class="next" rel="next" data-role="theory-next" href="3-35.html"><small>다음 개념 · 3-35</small>RNN은 이전 상태를 받아 다음 상태를 만든다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-34">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-34.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>고정 반경1·한 문장·세 토큰이다. 임베딩 학습·동적창·빈도 하위표집·실제 성능 비교는 수행하지 않는다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="3-33.html" rel="prev">이전 개념 · 3-33TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)</a><a class="next" data-role="theory-next" href="3-35.html" rel="next">다음 개념 · 3-35순환신경망(RNN, Recurrent Neural Network)과 시퀀스 투 시퀀스(Seq2Seq, Sequence-to-Sequence)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-33</span><a href="3-33.html">TF는 문서 안을, IDF는 문서 전체를 본다</a><div class="related-actions"><a href="../practice.html?code=3-33">문제 풀기</a><a href="../3-33.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-35</span><a href="3-35.html">RNN은 이전 상태를 받아 다음 상태를 만든다</a><div class="related-actions"><a href="../practice.html?code=3-35">문제 풀기</a><a href="../3-35.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-34"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-33</span><a href="3-33.html">TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)</a><div class="related-actions"><a href="../practice.html?code=3-33">문제 풀기</a><a href="../3-33.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-35</span><a href="3-35.html">순환신경망(RNN, Recurrent Neural Network)과 시퀀스 투 시퀀스(Seq2Seq, Sequence-to-Sequence)</a><div class="related-actions"><a href="../practice.html?code=3-35">문제 풀기</a><a href="../3-35.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "3-34"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

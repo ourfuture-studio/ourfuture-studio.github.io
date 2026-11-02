@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="1200" height="1402" viewBox="0 0 1200 1402" role="img" aria-labelledby="terminology-title"><title id="terminology-title">버블 차트(Bubble Chart)의 면적·반지름 해석</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1402" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 4-29</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">버블 차트(Bubble Chart)의 면적·반지름 해석</text><line x1="48" x2="1152" y1="134" y2="134" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 146)"><svg width="1200" height="920" viewBox="0 0 720 552" version="1.1" x="0" y="0" overflow="hidden">
  <metadata>
-  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:Work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:Agent>
+     <ns2:Agent>
       <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
-     </cc:Agent>
+     </ns2:Agent>
     </dc:creator>
-   </cc:Work>
+   </ns2:Work>
   </rdf:RDF>
  </metadata>
  <defs>
@@ -20,49 +17,20 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 552 
-L 720 552 
-L 720 0 
-L 0 0 
-z
-" style="fill: #fbfaf7"/>
+   <path d="M 0 552  L 720 552  L 720 0  L 0 0  z " style="fill: #fbfaf7" />
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 82.44 288.048 
-C 86.13481 288.048 89.678787 286.580037 92.291412 283.967412 
-C 94.904037 281.354787 96.372 277.81081 96.372 274.116 
-C 96.372 270.42119 94.904037 266.877213 92.291412 264.264588 
-C 89.678787 261.651963 86.13481 260.184 82.44 260.184 
-C 78.74519 260.184 75.201213 261.651963 72.588588 264.264588 
-C 69.975963 266.877213 68.508 270.42119 68.508 274.116 
-C 68.508 277.81081 69.975963 281.354787 72.588588 283.967412 
-C 75.201213 286.580037 78.74519 288.048 82.44 288.048 
-z
-" clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter"/>
+    <path d="M 82.44 288.048  C 86.13481 288.048 89.678787 286.580037 92.291412 283.967412  C 94.904037 281.354787 96.372 277.81081 96.372 274.116  C 96.372 270.42119 94.904037 266.877213 92.291412 264.264588  C 89.678787 261.651963 86.13481 260.184 82.44 260.184  C 78.74519 260.184 75.201213 261.651963 72.588588 264.264588  C 69.975963 266.877213 68.508 270.42119 68.508 274.116  C 68.508 277.81081 69.975963 281.354787 72.588588 283.967412  C 75.201213 286.580037 78.74519 288.048 82.44 288.048  z " clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter" />
    </g>
    <g id="patch_3">
-    <path d="M 237.24 301.98 
-C 244.629619 301.98 251.717574 299.044073 256.942823 293.818823 
-C 262.168073 288.593574 265.104 281.505619 265.104 274.116 
-C 265.104 266.726381 262.168073 259.638426 256.942823 254.413177 
-C 251.717574 249.187927 244.629619 246.252 237.24 246.252 
-C 229.850381 246.252 222.762426 249.187927 217.537177 254.413177 
-C 212.311927 259.638426 209.376 266.726381 209.376 274.116 
-C 209.376 281.505619 212.311927 288.593574 217.537177 293.818823 
-C 222.762426 299.044073 229.850381 301.98 237.24 301.98 
-z
-" clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter"/>
+    <path d="M 237.24 301.98  C 244.629619 301.98 251.717574 299.044073 256.942823 293.818823  C 262.168073 288.593574 265.104 281.505619 265.104 274.116  C 265.104 266.726381 262.168073 259.638426 256.942823 254.413177  C 251.717574 249.187927 244.629619 246.252 237.24 246.252  C 229.850381 246.252 222.762426 249.187927 217.537177 254.413177  C 212.311927 259.638426 209.376 266.726381 209.376 274.116  C 209.376 281.505619 212.311927 288.593574 217.537177 293.818823  C 222.762426 299.044073 229.850381 301.98 237.24 301.98  z " clip-path="url(#p5fa4c1a2b2)" style="fill: #e7efeb; stroke: #2e6f66; stroke-width: 2; stroke-linejoin: miter" />
    </g>
    <g id="line2d_1">
-    <path d="M 82.44 274.116 
-L 96.372 274.116 
-" clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+    <path d="M 82.44 274.116  L 96.372 274.116  " clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square" />
    </g>
    <g id="line2d_2">
-    <path d="M 237.24 274.116 
-L 265.104 274.116 
-" clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+    <path d="M 237.24 274.116  L 265.104 274.116  " clip-path="url(#p5fa4c1a2b2)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square" />
    </g>
    <g id="text_1">
     <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="82.44" y="346.872" transform="rotate(-0 82.44 346.872)">A: 값10</text>
@@ -79,40 +47,16 @@ L 265.104 274.116
   </g>
   <g id="axes_2">
    <g id="patch_4">
-    <path d="M 420.84 288.048 
-C 424.53481 288.048 428.078787 286.580037 430.691412 283.967412 
-C 433.304037 281.354787 434.772 277.81081 434.772 274.116 
-C 434.772 270.42119 433.304037 266.877213 430.691412 264.264588 
-C 428.078787 261.651963 424.53481 260.184 420.84 260.184 
-C 417.14519 260.184 413.601213 261.651963 410.988588 264.264588 
-C 408.375963 266.877213 406.908 270.42119 406.908 274.116 
-C 406.908 277.81081 408.375963 281.354787 410.988588 283.967412 
-C 413.601213 286.580037 417.14519 288.048 420.84 288.048 
-z
-" clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter"/>
+    <path d="M 420.84 288.048  C 424.53481 288.048 428.078787 286.580037 430.691412 283.967412  C 433.304037 281.354787 434.772 277.81081 434.772 274.116  C 434.772 270.42119 433.304037 266.877213 430.691412 264.264588  C 428.078787 261.651963 424.53481 260.184 420.84 260.184  C 417.14519 260.184 413.601213 261.651963 410.988588 264.264588  C 408.375963 266.877213 406.908 270.42119 406.908 274.116  C 406.908 277.81081 408.375963 281.354787 410.988588 283.967412  C 413.601213 286.580037 417.14519 288.048 420.84 288.048  z " clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter" />
    </g>
    <g id="patch_5">
-    <path d="M 575.64 329.844 
-C 590.419238 329.844 604.595147 323.972146 615.045647 313.521647 
-C 625.496146 303.071147 631.368 288.895238 631.368 274.116 
-C 631.368 259.336762 625.496146 245.160853 615.045647 234.710353 
-C 604.595147 224.259854 590.419238 218.388 575.64 218.388 
-C 560.860762 218.388 546.684853 224.259854 536.234353 234.710353 
-C 525.783854 245.160853 519.912 259.336762 519.912 274.116 
-C 519.912 288.895238 525.783854 303.071147 536.234353 313.521647 
-C 546.684853 323.972146 560.860762 329.844 575.64 329.844 
-z
-" clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter"/>
+    <path d="M 575.64 329.844  C 590.419238 329.844 604.595147 323.972146 615.045647 313.521647  C 625.496146 303.071147 631.368 288.895238 631.368 274.116  C 631.368 259.336762 625.496146 245.160853 615.045647 234.710353  C 604.595147 224.259854 590.419238 218.388 575.64 218.388  C 560.860762 218.388 546.684853 224.259854 536.234353 234.710353  C 525.783854 245.160853 519.912 259.336762 519.912 274.116  C 519.912 288.895238 525.783854 303.071147 536.234353 313.521647  C 546.684853 323.972146 560.860762 329.844 575.64 329.844  z " clip-path="url(#p8dbfd3bc29)" style="fill: #e7efeb; stroke: #a12d48; stroke-width: 2; stroke-linejoin: miter" />
    </g>
    <g id="line2d_3">
-    <path d="M 420.84 274.116 
-L 434.772 274.116 
-" clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+    <path d="M 420.84 274.116  L 434.772 274.116  " clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square" />
    </g>
    <g id="line2d_4">
-    <path d="M 575.64 274.116 
-L 631.368 274.116 
-" clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square"/>
+    <path d="M 575.64 274.116  L 631.368 274.116  " clip-path="url(#p8dbfd3bc29)" style="fill: none; stroke: #1d2541; stroke-width: 1.6; stroke-linecap: square" />
    </g>
    <g id="text_5">
     <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="420.84" y="346.872" transform="rotate(-0 420.84 346.872)">A: 값10</text>
@@ -143,10 +87,10 @@ L 631.368 274.116
  </g>
  <defs>
   <clipPath id="p5fa4c1a2b2">
-   <rect x="36" y="199.812" width="309.6" height="157.896"/>
+   <rect x="36" y="199.812" width="309.6" height="157.896" />
   </clipPath>
   <clipPath id="p8dbfd3bc29">
-   <rect x="374.4" y="199.812" width="309.6" height="157.896"/>
+   <rect x="374.4" y="199.812" width="309.6" height="157.896" />
   </clipPath>
  </defs>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1076" y2="1076" stroke="#dcded7" stroke-width="2" /><text x="48" y="1123" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">버블 차트</text><text x="66" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Bubble Chart</text><rect x="612" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">면적 부호화</text><text x="630" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Area Encoding</text><rect x="48" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">반지름</text><text x="66" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Radius</text><rect x="612" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">면적</text><text x="630" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Area</text></svg>

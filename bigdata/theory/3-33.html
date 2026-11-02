@@ -1,21 +1,22 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TF는 문서 안을, IDF는 문서 전체를 본다 · 빅분기 공부방</title><meta name="description" content="단어가 나온 횟수와 그 단어를 포함한 문서 수를 구별한다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction) · 빅분기 공부방</title><meta content="단어가 나온 횟수와 그 단어를 포함한 문서 수를 구별한다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="3-33">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-33</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-33 · 이론 읽기</span><h1>TF는 문서 안을, IDF는 문서 전체를 본다</h1><p class="theory-lead">단어가 나온 횟수와 그 단어를 포함한 문서 수를 구별한다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=3">3과목 · 빅데이터(Big Data) 모델링(Modeling)</a><span aria-hidden="true" class="separator">/</span><span>3-33</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-33 · 이론 읽기</span><h1>TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)</h1><p class="theory-lead">단어가 나온 횟수와 그 단어를 포함한 문서 수를 구별한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-33.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>TF는 한 문서 안에서 특정 단어가 얼마나 나타났는지 표현한다. DF는 전체 문서 중 그 단어가 한 번 이상 있는 문서의 수다. 같은 문서에서 열 번 반복돼도 그 문서의 DF 기여는 1이다. IDF는 여러 문서에 널리 나타나는 단어의 상대적 가중치를 낮추기 위해 사용한다.</p>
-<p>정확한 수식은 설정에 따라 다르다. 이 글의 자체 계산은 TF를 원시 빈도, IDF=ln(N/DF), 정규화 없음으로 명시한다. 이 조건에서 모든 문서에 등장하면 IDF=0이다. 반면 scikit-learn의 기본 설정은 평활화와 +1, L2 정규화를 사용하므로 같은 입력에서 기본 출력값이 이 예제와 같지 않을 수 있다. scikit-learn에서 smooth_idf=False만 지정해도 IDF의 +1은 남는다. 이 글의 ln(N/DF)와 같게 만들려면 평활화 여부뿐 아니라 +1과 벡터 정규화 조건까지 대조해야 한다.</p>
-<p>문서 행과 단어 열의 수치 행렬을 만들 때 어휘와 IDF를 학습 자료에서 적합하고 새 문서에는 그 기준으로 변환한다. 전체 시험 문서까지 보고 단어 가중치를 미리 정하면 평가 조건이 달라질 수 있다. TF-IDF는 단어 순서나 모든 문맥 의미를 자동으로 표현하는 기법이 아니라 지정된 텍스트 특징 가중치다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>전체 문서 N=4, 한 문서에서 단어 t의 TF=2다. t가 등장하는 문서는 2개다. IDF=ln(N/DF), 정규화 없음으로 계산한다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>TF-IDF(Term Frequency–Inverse Document Frequency)는 문서 내 단어빈도(TF, Term Frequency)와 문서집합에서의 역문서빈도(IDF, Inverse Document Frequency)를 결합한 텍스트 가중치다. 문서빈도(DF, Document Frequency)는 단어가 포함된 문서 수이므로 문서 내 반복 횟수와 구분하며, 계산식은 평활화(Smoothing), 상수 가산, 벡터 정규화(Vector Normalization) 조건에 따라 달라진다.</p><ul class="terminology-terms"><li>TF-IDF(Term Frequency–Inverse Document Frequency)</li><li>단어빈도(TF, Term Frequency)</li><li>문서빈도(DF, Document Frequency)</li><li>역문서빈도(IDF, Inverse Document Frequency)</li><li>원시 빈도(Raw Count)</li><li>평활화(Smoothing)</li><li>벡터 정규화(Vector Normalization)</li><li>L2 정규화(L2 Normalization)</li></ul><p class="terminology-sources">정의 참고: <a href="https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction">scikit-learn: Text Feature Extraction</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>단어빈도(TF, Term Frequency)는 한 문서 안에서 특정 단어가 얼마나 나타났는지 표현한다. 문서빈도(DF, Document Frequency)는 전체 문서 중 그 단어가 한 번 이상 있는 문서의 수다. 같은 문서에서 열 번 반복돼도 그 문서의 문서빈도(DF, Document Frequency) 기여는 1이다. 역문서빈도(IDF, Inverse Document Frequency)는 여러 문서에 널리 나타나는 단어의 상대적 가중치를 낮추기 위해 사용한다.</p>
+<p>정확한 수식은 설정에 따라 다르다. 이 글의 자체 계산은 단어빈도(TF, Term Frequency)를 원시 빈도(Raw Count), 역문서빈도(IDF, Inverse Document Frequency)=ln(N/DF), 벡터 정규화(Vector Normalization) 없음으로 명시한다. 이 조건에서 모든 문서에 등장하면 역문서빈도(IDF, Inverse Document Frequency)=0이다. 반면 scikit-learn의 기본 설정은 평활화(Smoothing)와 +1, L2 정규화(L2 Normalization)를 사용하므로 같은 입력에서 기본 출력값이 이 예제와 같지 않을 수 있다. scikit-learn에서 smooth_idf=False만 지정해도 역문서빈도(IDF, Inverse Document Frequency)의 +1은 남는다. 이 글의 ln(N/DF)와 같게 만들려면 평활화(Smoothing) 여부뿐 아니라 +1과 벡터 정규화(Vector Normalization) 조건까지 대조해야 한다.</p>
+<p>문서 행과 단어 열의 수치 행렬을 만들 때 어휘집(Vocabulary)과 역문서빈도(IDF, Inverse Document Frequency)를 학습 자료에서 적합하고 새 문서에는 그 기준으로 변환한다. 전체 시험 문서까지 보고 단어 가중치를 미리 정하면 평가(Evaluation) 조건이 달라질 수 있다. TF-IDF(Term Frequency–Inverse Document Frequency)는 단어 순서나 모든 문맥 의미를 자동으로 표현하는 기법이 아니라 지정된 텍스트 특징 가중치다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>전체 문서 N=4, 한 문서에서 단어 t의 단어빈도(TF, Term Frequency)=2다. t가 등장하는 문서는 2개다. 역문서빈도(IDF, Inverse Document Frequency)=ln(N/DF), 벡터 정규화(Vector Normalization) 없음으로 계산한다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
@@ -26,39 +27,39 @@
 </thead>
 <tbody>
 <tr>
-<td>IDF</td>
+<td>역문서빈도(IDF, Inverse Document Frequency)</td>
 <td>ln(4/2)</td>
 <td style="text-align: right;">ln2</td>
 </tr>
 <tr>
-<td>TF-IDF</td>
+<td>TF-IDF(Term Frequency–Inverse Document Frequency)</td>
 <td>2ln2</td>
 <td style="text-align: right;">약 1.386</td>
 </tr>
 </tbody>
 </table></div>
-<p>분모 DF=2는 전체 토큰 횟수가 아니라 단어를 포함한 문서 수다. 이 수식과 라이브러리 기본 수식을 구별한다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-33.png" alt="전체 문서 수 N=4와 원시 빈도 TF=2에서 DF 1~4의 정규화 전 TF-IDF를 두 수식으로 비교한다. 2ln(4/DF)는 DF=4에서 0, 2[ln(5/(DF+1))+1]은 2다." width="1200" height="840" loading="lazy" decoding="async"><figcaption>N=4·TF=2를 고정하고 두 IDF 수식의 정규화 전 TF-IDF를 비교한다. DF=4에서 ln(N/DF) 수식은 0, 평활화와 +1이 있는 수식은 2다. DF는 정수다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>IDF=ln(N/DF), TF는 원시 빈도, 정규화 없음. N=4, DF=2, 해당 문서 TF=2.</p>
-<p><strong>TF-IDF는?</strong></p>
+<p>분모 문서빈도(DF, Document Frequency)=2는 전체 토큰 횟수가 아니라 단어를 포함한 문서 수다. 이 수식과 라이브러리 기본 수식을 구별한다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="전체 문서 수 N=4와 원시 빈도(Raw Count) 단어빈도(TF, Term Frequency)=2에서 문서빈도(DF, Document Frequency) 1~4의 벡터 정규화(Vector Normalization) 전 TF-IDF(Term Frequency–Inverse Document Frequency)를 두 수식으로 비교한다. 2ln(4/DF)는 문서빈도(DF, Document Frequency)=4에서 0, 2[ln(5/(DF+1))+1]은 2다." decoding="async" height="1475" loading="lazy" src="../assets/figures/3-33.png?v=42782f2bc3ed" width="1200"/><figcaption>N=4·단어빈도(TF, Term Frequency)=2를 고정하고 두 역문서빈도(IDF, Inverse Document Frequency) 수식의 벡터 정규화(Vector Normalization) 전 TF-IDF(Term Frequency–Inverse Document Frequency)를 비교한다. 문서빈도(DF, Document Frequency)=4에서 ln(N/DF) 수식은 0, 평활화(Smoothing)와 +1이 있는 수식은 2다. 문서빈도(DF, Document Frequency)는 정수다.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>역문서빈도(IDF, Inverse Document Frequency)=ln(N/DF), 단어빈도(TF, Term Frequency)는 원시 빈도(Raw Count), 벡터 정규화(Vector Normalization) 없음. N=4, 문서빈도(DF, Document Frequency)=2, 해당 문서 단어빈도(TF, Term Frequency)=2.</p>
+<p><strong>TF-IDF(Term Frequency–Inverse Document Frequency)는?</strong></p>
 <ul>
 <li>1. 0</li>
 <li>2. ln2</li>
 <li>3. 2ln2</li>
 <li>4. 4ln2</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 2ln2</strong></p>
-<p>IDF는 ln2이고 TF 2를 곱하므로 2ln2다.</p>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 3번 — 2ln2</strong></p>
+<p>역문서빈도(IDF, Inverse Document Frequency)는 ln2이고 단어빈도(TF, Term Frequency) 2를 곱하므로 2ln2다.</p>
 <ul>
-<li>1번: 단어가 모든 문서에 있는 조건 N=DF가 아니다.</li>
-<li>2번: IDF만 구하고 TF 2를 곱하지 않았다.</li>
-<li>4번: TF 또는 문서 수를 중복으로 곱했다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>같은 수식에서 DF만 4로 바뀌고 TF=2라면 TF-IDF는?</p>
+<li>1번: 단어가 모든 문서에 있는 조건 N=문서빈도(DF, Document Frequency)가 아니다.</li>
+<li>2번: 역문서빈도(IDF, Inverse Document Frequency)만 구하고 단어빈도(TF, Term Frequency) 2를 곱하지 않았다.</li>
+<li>4번: 단어빈도(TF, Term Frequency) 또는 문서 수를 중복으로 곱했다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>같은 수식에서 문서빈도(DF, Document Frequency)만 4로 바뀌고 단어빈도(TF, Term Frequency)=2라면 TF-IDF(Term Frequency–Inverse Document Frequency)는?</p>
 <p><strong>풀이:</strong> 0.</p>
-<p>IDF=ln(4/4)=0이다. +1이 있는 다른 구현의 기본값으로 이 결론을 옮기지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>TF는 한 문서, DF는 문서 수. 수식도 적는다.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
-<li><a href="https://scikit-learn.org/stable/modules/feature_extraction.html" rel="noopener noreferrer" target="_blank">scikit-learn Feature extraction</a> — 8.2.3.5 Tf–idf term weighting: TF·DF 및 평활화·정규화에 따른 수식 차이. 확인일 2026-10-30.</li>
+<p>역문서빈도(IDF, Inverse Document Frequency)=ln(4/4)=0이다. +1이 있는 다른 구현의 기본값으로 이 결론을 옮기지 않는다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>단어빈도(TF, Term Frequency)는 한 문서, 문서빈도(DF, Document Frequency)는 문서 수. 수식도 적는다.</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://scikit-learn.org/stable/modules/feature_extraction.html" rel="noopener noreferrer" target="_blank">scikit-learn Feature extraction</a> — 8.2.3.5 Tf–idf term weighting: 단어빈도(TF, Term Frequency)·문서빈도(DF, Document Frequency) 및 평활화(Smoothing)·벡터 정규화(Vector Normalization)에 따른 수식 차이. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-33.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>N4·TF2 고정이다. 두 수식 모두 벡터 정규화 전 값이며 스무딩 선택만으로 전체 라이브러리 파이프라인을 재현하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-32.html"><small>이전 개념 · 3-32</small>투표와 메타학습의 입력은 다르다</a><a class="next" rel="next" data-role="theory-next" href="3-34.html"><small>다음 개념 · 3-34</small>CBOW와 Skip-gram은 예측 화살표가 반대다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-33">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-33.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>N4·단어빈도(TF, Term Frequency)2 고정이다. 두 수식 모두 벡터 정규화(Vector Normalization) 전 값이며 스무딩 선택만으로 전체 라이브러리 파이프라인(Pipeline)을 재현하지 않는다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="3-32.html" rel="prev">이전 개념 · 3-32보팅(Voting), 스태킹(Stacking, Stacked Generalization), 블렌딩(Blending)</a><a class="next" data-role="theory-next" href="3-34.html" rel="next">다음 개념 · 3-34워드투벡(Word2Vec): CBOW(Continuous Bag-of-Words)와 스킵그램(Skip-gram)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-32</span><a href="3-32.html">투표와 메타학습의 입력은 다르다</a><div class="related-actions"><a href="../practice.html?code=3-32">문제 풀기</a><a href="../3-32.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-34</span><a href="3-34.html">CBOW와 Skip-gram은 예측 화살표가 반대다</a><div class="related-actions"><a href="../practice.html?code=3-34">문제 풀기</a><a href="../3-34.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-33"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-32</span><a href="3-32.html">보팅(Voting), 스태킹(Stacking, Stacked Generalization), 블렌딩(Blending)</a><div class="related-actions"><a href="../practice.html?code=3-32">문제 풀기</a><a href="../3-32.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-34</span><a href="3-34.html">워드투벡(Word2Vec): CBOW(Continuous Bag-of-Words)와 스킵그램(Skip-gram)</a><div class="related-actions"><a href="../practice.html?code=3-34">문제 풀기</a><a href="../3-34.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "3-33"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1200px" height="920px" viewBox="0 0 720 552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1507" viewBox="0 0 1200 1507" role="img" aria-labelledby="terminology-title"><title id="terminology-title">불균형 데이터(Imbalanced Data)의 정확도(Accuracy)와 재현율(Recall)</title><desc>기존 교육 도표의 수치와 도형을 보존하고 정식 한국어·영문 용어를 덧붙인 자료입니다.</desc><rect width="1200" height="1507" fill="#fbfaf6" /><text x="48" y="38" fill="#626a73" font-size="20" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">빅데이터분석기사 · 4-06</text><text x="48" y="86" fill="#1b2340" font-size="34" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">불균형 데이터(Imbalanced Data)의 정확도(Accuracy)와 재현율(Recall)</text><line x1="48" x2="1152" y1="134" y2="134" stroke="#dcded7" stroke-width="2" /><g transform="translate(0 146)"><svg width="1200" height="920" viewBox="0 0 720 552" version="1.1" x="0" y="0" overflow="hidden">
  <metadata>
-  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <cc:Work>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
-     <cc:Agent>
+     <ns2:Agent>
       <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
-     </cc:Agent>
+     </ns2:Agent>
     </dc:creator>
-   </cc:Work>
+   </ns2:Work>
   </rdf:RDF>
  </metadata>
  <defs>
@@ -20,32 +17,20 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 552 
-L 720 552 
-L 720 0 
-L 0 0 
-z
-" style="fill: #fbfaf7"/>
+   <path d="M 0 552  L 720 552  L 720 0  L 0 0  z " style="fill: #fbfaf7" />
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 86.4 364.32 
-L 662.4 364.32 
-L 662.4 160.08 
-L 86.4 160.08 
-z
-" style="fill: #fbfaf7"/>
+    <path d="M 86.4 364.32  L 662.4 364.32  L 662.4 160.08  L 86.4 160.08  z " style="fill: #fbfaf7" />
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m3e04ab93a7" d="M 0 0 
-L 0 3.5 
-" style="stroke: #1d2541; stroke-width: 0.8"/>
+       <path id="m3e04ab93a7" d="M 0 0  L 0 3.5  " style="stroke: #1d2541; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#m3e04ab93a7" x="204.388194" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="204.388194" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_1">
@@ -55,7 +40,7 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m3e04ab93a7" x="544.411806" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m3e04ab93a7" x="544.411806" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_2">
@@ -66,18 +51,14 @@ L 0 3.5
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_3">
-      <path d="M 86.4 364.32 
-L 662.4 364.32 
-" clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 86.4 364.32  L 662.4 364.32  " clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_4">
       <defs>
-       <path id="m63b66a0bca" d="M 0 0 
-L -3.5 0 
-" style="stroke: #1d2541; stroke-width: 0.8"/>
+       <path id="m63b66a0bca" d="M 0 0  L -3.5 0  " style="stroke: #1d2541; stroke-width: 0.8" />
       </defs>
       <g>
-       <use xlink:href="#m63b66a0bca" x="86.4" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="364.32" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_3">
@@ -86,13 +67,11 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_5">
-      <path d="M 86.4 319.530526 
-L 662.4 319.530526 
-" clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 86.4 319.530526  L 662.4 319.530526  " clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m63b66a0bca" x="86.4" y="319.530526" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="319.530526" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_4">
@@ -101,13 +80,11 @@ L 662.4 319.530526
     </g>
     <g id="ytick_3">
      <g id="line2d_7">
-      <path d="M 86.4 274.741053 
-L 662.4 274.741053 
-" clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 86.4 274.741053  L 662.4 274.741053  " clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#m63b66a0bca" x="86.4" y="274.741053" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="274.741053" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_5">
@@ -116,13 +93,11 @@ L 662.4 274.741053
     </g>
     <g id="ytick_4">
      <g id="line2d_9">
-      <path d="M 86.4 229.951579 
-L 662.4 229.951579 
-" clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 86.4 229.951579  L 662.4 229.951579  " clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m63b66a0bca" x="86.4" y="229.951579" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="229.951579" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_6">
@@ -131,13 +106,11 @@ L 662.4 229.951579
     </g>
     <g id="ytick_5">
      <g id="line2d_11">
-      <path d="M 86.4 185.162105 
-L 662.4 185.162105 
-" clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square"/>
+      <path d="M 86.4 185.162105  L 662.4 185.162105  " clip-path="url(#pcc181a6b3b)" style="fill: none; stroke: #dde2de; stroke-width: 0.7; stroke-linecap: square" />
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#m63b66a0bca" x="86.4" y="185.162105" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8"/>
+       <use xlink:href="#m63b66a0bca" x="86.4" y="185.162105" style="fill: #1d2541; stroke: #1d2541; stroke-width: 0.8" />
       </g>
      </g>
      <g id="text_7">
@@ -149,46 +122,22 @@ L 662.4 185.162105
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 86.4 364.32 
-L 86.4 160.08 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 86.4 364.32  L 86.4 160.08  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="patch_4">
-    <path d="M 86.4 364.32 
-L 662.4 364.32 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+    <path d="M 86.4 364.32  L 662.4 364.32  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
    </g>
    <g id="patch_5">
-    <path d="M 112.581818 364.32 
-L 204.388194 364.32 
-L 204.388194 186.953684 
-L 112.581818 186.953684 
-z
-" clip-path="url(#pcc181a6b3b)" style="fill: #2e6f66"/>
+    <path d="M 112.581818 364.32  L 204.388194 364.32  L 204.388194 186.953684  L 112.581818 186.953684  z " clip-path="url(#pcc181a6b3b)" style="fill: #2e6f66" />
    </g>
    <g id="patch_6">
-    <path d="M 452.605431 364.32 
-L 544.411806 364.32 
-L 544.411806 190.536842 
-L 452.605431 190.536842 
-z
-" clip-path="url(#pcc181a6b3b)" style="fill: #2e6f66"/>
+    <path d="M 452.605431 364.32  L 544.411806 364.32  L 544.411806 190.536842  L 452.605431 190.536842  z " clip-path="url(#pcc181a6b3b)" style="fill: #2e6f66" />
    </g>
    <g id="patch_7">
-    <path d="M 204.388194 364.32 
-L 296.194569 364.32 
-L 296.194569 364.32 
-L 204.388194 364.32 
-z
-" clip-path="url(#pcc181a6b3b)" style="fill: #a12d48"/>
+    <path d="M 204.388194 364.32  L 296.194569 364.32  L 296.194569 364.32  L 204.388194 364.32  z " clip-path="url(#pcc181a6b3b)" style="fill: #a12d48" />
    </g>
    <g id="patch_8">
-    <path d="M 544.411806 364.32 
-L 636.218182 364.32 
-L 636.218182 185.162105 
-L 544.411806 185.162105 
-z
-" clip-path="url(#pcc181a6b3b)" style="fill: #a12d48"/>
+    <path d="M 544.411806 364.32  L 636.218182 364.32  L 636.218182 185.162105  L 544.411806 185.162105  z " clip-path="url(#pcc181a6b3b)" style="fill: #a12d48" />
    </g>
    <g id="text_9">
     <text style="font-size: 13px; font-family: 'Malgun Gothic'; text-anchor: middle; fill: #1d2541" x="158.485006" y="183.370526" transform="rotate(-0 158.485006 183.370526)">99%</text>
@@ -204,23 +153,13 @@ z
    </g>
    <g id="legend_1">
     <g id="patch_9">
-     <path d="M 97.2 134.2473 
-L 121.2 134.2473 
-L 121.2 125.8473 
-L 97.2 125.8473 
-z
-" style="fill: #2e6f66"/>
+     <path d="M 97.2 134.2473  L 121.2 134.2473  L 121.2 125.8473  L 97.2 125.8473  z " style="fill: #2e6f66" />
     </g>
     <g id="text_13">
      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="130.8" y="134.2473" transform="rotate(-0 130.8 134.2473)">정확도</text>
     </g>
     <g id="patch_10">
-     <path d="M 190.8 134.2473 
-L 214.8 134.2473 
-L 214.8 125.8473 
-L 190.8 125.8473 
-z
-" style="fill: #a12d48"/>
+     <path d="M 190.8 134.2473  L 214.8 134.2473  L 214.8 125.8473  L 190.8 125.8473  z " style="fill: #a12d48" />
     </g>
     <g id="text_14">
      <text style="font-size: 12px; font-family: 'Malgun Gothic'; text-anchor: start; fill: #1d2541" x="224.4" y="134.2473" transform="rotate(-0 224.4 134.2473)">양성 재현율</text>
@@ -251,7 +190,7 @@ z
  </g>
  <defs>
   <clipPath id="pcc181a6b3b">
-   <rect x="86.4" y="160.08" width="576" height="204.24"/>
+   <rect x="86.4" y="160.08" width="576" height="204.24" />
   </clipPath>
  </defs>
-</svg>
+</svg></g><line x1="48" x2="1152" y1="1076" y2="1076" stroke="#dcded7" stroke-width="2" /><text x="48" y="1123" fill="#1b2340" font-size="26" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">핵심 용어 · Key Terms</text><rect x="48" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">불균형 데이터</text><text x="66" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Imbalanced Data</text><rect x="612" y="1154" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1189" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">정확도</text><text x="630" y="1222" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Accuracy</text><rect x="48" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">균형 정확도</text><text x="66" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Balanced Accuracy</text><rect x="612" y="1259" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1294" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">다수 클래스</text><text x="630" y="1327" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Majority Class</text><rect x="48" y="1364" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="66" y="1399" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">소수 클래스</text><text x="66" y="1432" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Minority Class</text><rect x="612" y="1364" width="540" height="89" rx="12" fill="#ffffff" stroke="#dcded7" stroke-width="1.5" /><text x="630" y="1399" fill="#1b2340" font-size="25" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="700">재현율</text><text x="630" y="1432" fill="#626a73" font-size="23" font-family="Malgun Gothic, Noto Sans CJK KR, sans-serif" font-weight="400">Recall</text></svg>

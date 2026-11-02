@@ -2,27 +2,27 @@ export const CATALOG = [
   {
     "code": "1-02",
     "subject": 1,
-    "title": "저장소와 작업 실행 순서 관리",
+    "title": "워크플로 관리(Workflow Management)와 작업 의존성(Task Dependency)",
     "lead": "파일을 보관하는 장소와 다음 작업을 시작하는 규칙은 서로 다른 역할이다.",
     "cue": "보관할 곳을 묻는지, 다음 실행 조건을 묻는지 먼저 읽는다.",
     "question": {
-      "givens": "정제가 성공한 뒤에만 매출 집계를 실행해야 한다.",
+      "givens": "정제가 성공한 뒤에만 매출 집계(Aggregation)를 실행해야 한다.",
       "stem": "직접 필요한 역할은?",
       "choices": [
         "파일 영구 보관",
-        "작업 의존성 관리",
+        "작업 의존성(Task Dependency) 관리",
         "영상 압축",
         "분류 확률 계산"
       ],
       "answer": 2,
-      "reason": "성공 조건과 다음 작업의 연결을 정하는 것은 워크플로의 작업 의존성 관리다.",
+      "reason": "성공 조건과 다음 작업의 연결을 정하는 것은 워크플로(Workflow)의 작업 의존성(Task Dependency) 관리다.",
       "wrong_reasons": [
         "1번은 결과를 보관하지만 시작 조건을 정하지 않는다.",
         "3번은 특정 자료의 변환 작업이다.",
         "4번은 분석모형의 계산이다."
       ]
     },
-    "goal": "정제 결과 한 조건을 바꿔 집계 실행 허용을 판단한다.",
+    "goal": "정제 결과 한 조건을 바꿔 집계(Aggregation) 실행 허용을 판단한다.",
     "kind": "decision",
     "relatedCodes": [
       "1-28",
@@ -44,24 +44,24 @@ export const CATALOG = [
   {
     "code": "1-03",
     "subject": 1,
-    "title": "데이터 관리와 모형 개발의 업무 구분",
+    "title": "데이터베이스 관리자(DBA, Database Administrator)의 역할과 모형 개발(Model Development)",
     "lead": "직함을 외우기 전에 맡긴 업무의 결과물이 무엇인지 확인한다.",
-    "cue": "직함보다 권한·복구·예측처럼 실제 업무를 본다.",
+    "cue": "직함보다 권한·복구(Recovery)·예측처럼 실제 업무를 본다.",
     "question": {
-      "givens": "DB의 사용자 권한과 백업·복구를 맡긴다.",
+      "givens": "데이터베이스(DB, Database)의 사용자 권한과 백업(Backup)·복구(Recovery)를 맡긴다.",
       "stem": "요구와 가장 직접 연결되는 업무는?",
       "choices": [
         "이탈모형 학습",
-        "주성분 수 선정",
-        "DB 운영·보호",
+        "주성분(PC, Principal Component) 수 선정",
+        "데이터베이스(DB, Database) 운영·보호",
         "군집 개수 선정"
       ],
       "answer": 3,
-      "reason": "권한과 백업·복구는 DB를 안전하고 지속적으로 사용할 수 있게 하는 운영·보호 업무다.",
+      "reason": "권한과 백업(Backup)·복구(Recovery)는 데이터베이스(DB, Database)를 안전하고 지속적으로 사용할 수 있게 하는 운영·보호 업무다.",
       "wrong_reasons": [
         "1번은 예측모형을 개발하는 업무다.",
-        "2번은 차원 축소의 설정이다.",
-        "4번은 군집 분석의 설정이다."
+        "2번은 차원 축소(Dimensionality Reduction)의 설정이다.",
+        "4번은 군집 분석(Clustering)의 설정이다."
       ]
     },
     "goal": "맡긴 결과물을 바꾸며 직접적인 업무 책임을 구분한다.",
@@ -82,8 +82,8 @@ export const CATALOG = [
   {
     "code": "1-04",
     "subject": 1,
-    "title": "Volume·Velocity·Variety를 조건으로 구분하기",
-    "lead": "자료의 양, 도착 속도, 표현 형태를 서로 다른 축으로 읽는다.",
+    "title": "빅데이터의 3V: 규모(Volume)·속도(Velocity)·다양성(Variety)",
+    "lead": "자료의 양, 도착 속도(Velocity), 표현 형태를 서로 다른 축으로 읽는다.",
     "cue": "얼마나 많이·얼마나 빨리·어떤 형태인지 나눈다.",
     "question": {
       "givens": "총량과 초당 유입 건수는 같다. 표 데이터에 음성·영상 형태가 추가됐다.",
@@ -92,13 +92,13 @@ export const CATALOG = [
         "Volume",
         "Velocity",
         "Variety",
-        "정확도"
+        "정확도(Accuracy)"
       ],
       "answer": 3,
-      "reason": "양과 유입 속도를 고정하고 표현 형태가 늘었으므로 Variety를 묻는다.",
+      "reason": "양과 속도(Velocity)를 고정하고 표현 형태가 늘었으므로 Variety를 묻는다.",
       "wrong_reasons": [
         "1번은 총량이며 이 문제에서는 고정했다.",
-        "2번은 유입 속도이며 이 문제에서는 같다.",
+        "2번은 속도(Velocity)이며 이 문제에서는 같다.",
         "4번은 예측의 맞고 틀림을 나타내는 평가량이다."
       ]
     },
@@ -120,7 +120,7 @@ export const CATALOG = [
   {
     "code": "1-05",
     "subject": 1,
-    "title": "데이터 보유에서 서비스 가치까지",
+    "title": "데이터 수익화(Data Monetization)와 비즈니스 모델(Business Model)",
     "lead": "저장량만으로 어떤 고객에게 무엇을 제공하는 사업인지 설명할 수 없다.",
     "cue": "누구에게 무엇을 제공하고 어떤 결정을 바꾸는가.",
     "question": {
@@ -158,7 +158,7 @@ export const CATALOG = [
   {
     "code": "1-06",
     "subject": 1,
-    "title": "집중형·현업 배치형 분석 조직의 선택",
+    "title": "분석 조직 구조(Analytics Organizational Structure): 중앙집중형(Centralized)·분산형(Decentralized)·연합형(Federated)",
     "lead": "같은 분석 인력도 어디에 배치하느냐에 따라 협업과 조정의 문제가 달라진다.",
     "cue": "공통 기준의 책임과 현업 문제를 푸는 책임을 함께 확인한다.",
     "question": {
@@ -196,8 +196,8 @@ export const CATALOG = [
   {
     "code": "1-07",
     "subject": 1,
-    "title": "분석 준비와 실제 활용을 따로 진단하기",
-    "lead": "장비와 인력이 있어도 분석 결과가 의사결정에 쓰인다고 단정할 수 없다.",
+    "title": "분석 준비도(Analytics Readiness)와 데이터 성숙도(Data Maturity)",
+    "lead": "장비와 인력이 있어도 분석 결과가 의사결정(Decision-Making)에 쓰인다고 단정할 수 없다.",
     "cue": "할 수 있는 기반과 실제로 쓰는 행동을 나눈다.",
     "question": {
       "givens": "담당자와 데이터·도구는 있다. 분석 보고서를 실제 회의에서 사용한 기록은 없다.",
@@ -209,7 +209,7 @@ export const CATALOG = [
         "장비가 있으므로 활용도 높다"
       ],
       "answer": 3,
-      "reason": "준비 항목은 있으나 실제 활용의 근거가 없으므로 두 상태를 나누어 확인해야 한다.",
+      "reason": "준비 항목은 있으나 데이터 활용(Data Utilization)의 근거가 없으므로 두 상태를 나누어 확인해야 한다.",
       "wrong_reasons": [
         "1번은 사용 여부도 확인하지 못한 상태에서 효과를 확정한다.",
         "2번은 제시된 준비 자원의 존재와 모순된다.",
@@ -234,7 +234,7 @@ export const CATALOG = [
   {
     "code": "1-09",
     "subject": 1,
-    "title": "한 모형의 계획과 여러 과제의 로드맵",
+    "title": "분석 로드맵(Analytics Roadmap)과 프로젝트 계획(Project Plan)",
     "lead": "로드맵은 과제 사이의 순서와 의존 관계를 보여 준다.",
     "cue": "한 과제 안의 설계인가, 과제 사이의 연결인가.",
     "question": {
@@ -242,14 +242,14 @@ export const CATALOG = [
       "stem": "이 연결을 보여 주는 계획은?",
       "choices": [
         "여러 분석 과제의 로드맵",
-        "한 모형의 손실함수",
-        "DB 비밀번호 목록",
+        "한 모형(Model)의 손실함수(Loss Function)",
+        "데이터베이스(DB, Database) 비밀번호 목록",
         "하나의 변수 분포표"
       ],
       "answer": 1,
       "reason": "선행 조건을 기준으로 여러 과제의 순서를 연결했으므로 로드맵에 해당한다.",
       "wrong_reasons": [
-        "2번은 한 모형의 최적화 기준이다.",
+        "2번은 한 모형(Model)의 최적화 기준이다.",
         "3번은 접근 정보이며 과제 간 순서가 아니다.",
         "4번은 데이터 탐색 결과다."
       ]
@@ -272,11 +272,11 @@ export const CATALOG = [
   {
     "code": "1-10",
     "subject": 1,
-    "title": "명시한 기준으로 과제 우선순위 정하기",
-    "lead": "급한 정도와 실행 가능성을 어떤 규칙으로 결합하는지 먼저 읽는다.",
+    "title": "분석 과제 우선순위(Project Prioritization): 긴급성(Urgency)·실행 가능성(Feasibility)",
+    "lead": "급한 정도와 실행 가능성(Feasibility)을 어떤 규칙으로 결합하는지 먼저 읽는다.",
     "cue": "점수의 뜻·결합 규칙·우선 방향을 확인한다.",
     "question": {
-      "givens": "큰 점수를 우선한다. 점수=긴급성×실행 가능성. A=(5,1), B=(3,4), C=(2,3).",
+      "givens": "큰 점수를 우선한다. 점수=긴급성(Urgency)×실행 가능성(Feasibility). A=(5,1), B=(3,4), C=(2,3).",
       "stem": "주어진 규칙의 1순위는?",
       "choices": [
         "A",
@@ -287,12 +287,12 @@ export const CATALOG = [
       "answer": 2,
       "reason": "A=5, B=12, C=6이므로 가장 큰 12점을 얻은 B다.",
       "wrong_reasons": [
-        "1번은 긴급성만 비교한 선택이다.",
+        "1번은 긴급성(Urgency)만 비교한 선택이다.",
         "3번의 점수 6은 B의 12보다 작다.",
         "4번은 계산한 점수가 서로 다르므로 틀리다."
       ]
     },
-    "goal": "같은 자체 규칙에서 실행 가능성 변경과 동점을 확인한다.",
+    "goal": "같은 자체 규칙에서 실행 가능성(Feasibility) 변경과 동점을 확인한다.",
     "kind": "numeric",
     "relatedCodes": [
       "1-09",
@@ -310,24 +310,24 @@ export const CATALOG = [
   {
     "code": "1-12",
     "subject": 1,
-    "title": "업무 문제에서 시작하기와 데이터에서 발견하기",
+    "title": "분석 과제 도출: 하향식 접근법(Top-down Approach)과 상향식 접근법(Bottom-up Approach)",
     "lead": "출발점이 업무 질문인지, 관찰한 데이터 패턴인지 구분한다.",
     "cue": "질문에서 자료로 갔는지, 자료에서 질문을 찾았는지.",
     "question": {
       "givens": "정해 둔 업무 과제 없이 로그를 탐색하다 반복 오류를 발견해 조사 과제를 만들었다.",
       "stem": "출발점에 따른 접근은?",
       "choices": [
-        "하향식",
-        "상향식",
+        "하향식 접근법(Top-down Approach)",
+        "상향식 접근법(Bottom-up Approach)",
         "실험으로 인과 확정",
-        "모형 배포 완료"
+        "모형 배포(Model Deployment) 완료"
       ],
       "answer": 2,
-      "reason": "데이터의 패턴을 발견한 뒤 과제를 정의했으므로 상향식 사례다.",
+      "reason": "데이터의 패턴을 발견한 뒤 과제를 정의했으므로 상향식 접근법(Bottom-up Approach) 사례다.",
       "wrong_reasons": [
         "1번은 업무 문제를 먼저 정의하는 출발과 다르다.",
         "3번은 관찰 패턴만으로 인과를 확정한다.",
-        "4번은 탐색·과제 정의를 배포와 혼동한다."
+        "4번은 탐색·과제 정의를 배포(Deployment)와 혼동한다."
       ]
     },
     "goal": "처음 주어진 단서를 바꾸며 출발점을 판단한다.",
@@ -352,24 +352,24 @@ export const CATALOG = [
   {
     "code": "1-13",
     "subject": 1,
-    "title": "KDD와 CRISP-DM의 단계 읽기",
-    "lead": "데이터 마이닝은 지식을 얻는 전체 과정 안에 놓인 작업이다.",
-    "cue": "마이닝은 전체 KDD와 같지 않으며 절차는 반복할 수 있다.",
+    "title": "지식 발견 프로세스(KDD, Knowledge Discovery in Databases)와 CRISP-DM(Cross-Industry Standard Process for Data Mining)",
+    "lead": "데이터 마이닝(Data Mining)은 지식을 얻는 전체 과정 안에 놓인 작업이다.",
+    "cue": "마이닝은 전체 지식 발견 프로세스(KDD, Knowledge Discovery in Databases)와 같지 않으며 절차는 반복할 수 있다.",
     "question": {
-      "givens": "CRISP-DM에서 예측모형을 학습한 뒤 업무 목표에 맞는지 검토한다.",
+      "givens": "CRISP-DM(Cross-Industry Standard Process for Data Mining)에서 예측모형을 학습한 뒤 업무 목표에 맞는지 검토한다.",
       "stem": "주된 단계는?",
       "choices": [
-        "데이터 준비",
-        "모델링",
-        "평가",
+        "데이터 준비(Data Preparation)",
+        "모델링(Modeling)",
+        "평가(Evaluation)",
         "자료 선택만 수행"
       ],
       "answer": 3,
-      "reason": "학습 후 결과가 업무 목표에 부합하는지를 검토하는 것은 평가 단계다.",
+      "reason": "학습 후 결과가 업무 목표에 부합하는지를 검토하는 것은 평가(Evaluation) 단계다.",
       "wrong_reasons": [
         "1번은 입력 자료를 분석 가능한 형태로 준비하는 단계다.",
         "2번은 예측 규칙을 학습하는 작업에 해당한다.",
-        "4번은 전체 검토를 자료 범위 선정으로 축소한다."
+        "4번은 전체 검토를 자료 범위 선정으로 축소(Shrinkage)한다."
       ]
     },
     "goal": "학습 후 현재 해야 할 일을 바꾸어 단계를 고른다.",
@@ -399,7 +399,7 @@ export const CATALOG = [
   {
     "code": "1-16",
     "subject": 1,
-    "title": "알고리즘보다 먼저 정할 모형의 조건",
+    "title": "분석 모형 설계(Model Design)와 데이터 누수(Data Leakage)",
     "lead": "무엇을 언제 예측하고 그때 어떤 입력을 알 수 있는지 먼저 적는다.",
     "cue": "그 값을 예측하는 순간에도 알 수 있는가.",
     "question": {
@@ -443,24 +443,24 @@ export const CATALOG = [
   {
     "code": "1-17",
     "subject": 1,
-    "title": "AI·머신러닝·딥러닝과 전이학습",
+    "title": "인공지능(AI, Artificial Intelligence)·머신러닝(ML, Machine Learning)·딥러닝(DL, Deep Learning)과 전이학습(Transfer Learning)",
     "lead": "분야의 포함 관계와 학습 지식을 재사용하는 전략을 구분한다.",
-    "cue": "AI·ML·DL은 범주, 전이는 지식 재사용 전략.",
+    "cue": "인공지능(AI, Artificial Intelligence)·머신러닝(ML, Machine Learning)·딥러닝(DL, Deep Learning)은 범주, 전이는 지식 재사용 전략.",
     "question": {
-      "givens": "사전학습 신경망의 앞부분을 고정하고 새 상품 분류 출력층을 학습한다.",
+      "givens": "사전학습 신경망(Neural Network)의 앞부분을 고정하고 새 상품 분류 출력층(Output Layer)을 학습한다.",
       "stem": "가장 직접적인 설명은?",
       "choices": [
-        "전이학습 활용",
+        "전이학습(Transfer Learning) 활용",
         "데이터 없이 인과 확정",
-        "신경망을 전혀 사용하지 않음",
-        "모든 가중치를 무작위 초기화"
+        "신경망(Neural Network)을 전혀 사용하지 않음",
+        "모든 가중치(Weights)를 무작위 초기화(Initialization)"
       ],
       "answer": 1,
-      "reason": "먼저 학습한 표현을 새로운 분류 과제에 재사용하는 전이학습 사례다.",
+      "reason": "먼저 학습한 표현을 새로운 분류 과제에 재사용하는 전이학습(Transfer Learning) 사례다.",
       "wrong_reasons": [
         "2번은 학습과 인과 추론을 혼동한다.",
-        "3번은 사전학습 신경망을 쓴다는 조건과 다르다.",
-        "4번은 기존 가중치를 유지한다는 조건과 모순된다."
+        "3번은 사전학습 신경망(Neural Network)을 쓴다는 조건과 다르다.",
+        "4번은 기존 가중치(Weights)를 유지한다는 조건과 모순된다."
       ]
     },
     "goal": "사전학습 사용과 고정 여부를 바꾸며 전략을 판단한다.",
@@ -485,7 +485,7 @@ export const CATALOG = [
   {
     "code": "1-18",
     "subject": 1,
-    "title": "AI 도입 전 성능과 운영 조건 함께 보기",
+    "title": "인공지능 도입 평가(AI Evaluation)와 위험 관리(Risk Management)",
     "lead": "높은 실험 점수와 실제 업무에서 사용할 수 있는 상태를 구분한다.",
     "cue": "성능·데이터·시간·운영의 필수 조건을 같이 본다.",
     "question": {
@@ -524,7 +524,7 @@ export const CATALOG = [
   {
     "code": "1-19",
     "subject": 1,
-    "title": "개인정보 수집·이용과 제3자 제공 구분",
+    "title": "개인정보 보호법(Personal Information Protection Act): 수집·이용(Collection and Use)과 제3자 제공(Provision to Third Parties)",
     "lead": "자료를 가지고 있다는 사실만으로 새로운 목적의 제공 근거가 생기지는 않는다.",
     "cue": "누가·무슨 목적으로·무엇을 받는지, 그 근거를 확인한다.",
     "question": {
@@ -534,17 +534,17 @@ export const CATALOG = [
         "보유 중이면 무조건 가능",
         "이름만 지우면 모든 조건 면제",
         "새 목적과 제공에 적용할 법적 근거 확인",
-        "암호화하면 목적 검토 불필요"
+        "암호화(Encryption)하면 목적 검토 불필요"
       ],
       "answer": 3,
-      "reason": "새 목적과 제3자 제공의 조건을 확인해야 하며, 기존 보유 사실만으로 허용을 확정할 수 없다.",
+      "reason": "새 목적과 제3자 제공(Provision to Third Parties)의 조건을 확인해야 하며, 기존 보유 사실만으로 허용을 확정할 수 없다.",
       "wrong_reasons": [
         "1번은 수집과 새로운 제공의 조건을 혼동한다.",
         "2번은 이름 삭제만으로 개인 식별 가능성과 처리 조건이 모두 없어졌다고 단정한다.",
         "4번은 보호 조치가 목적과 근거 검토를 대체한다고 잘못 본다."
       ]
     },
-    "goal": "동의 문구의 범위를 바꾸며 다음 확인 지점을 고른다.",
+    "goal": "동의(Consent) 문구의 범위를 바꾸며 다음 확인 지점을 고른다.",
     "kind": "decision",
     "relatedCodes": [
       "1-20",
@@ -566,27 +566,27 @@ export const CATALOG = [
   {
     "code": "1-20",
     "subject": 1,
-    "title": "이름을 지운 뒤에도 남는 재식별 위험",
-    "lead": "직접 식별자 삭제와 다른 정보와의 연결 가능성을 구분한다.",
+    "title": "비식별화(De-identification)와 재식별(Re-identification) 위험",
+    "lead": "직접 식별자(Direct Identifier) 삭제와 다른 정보와의 연결 가능성을 구분한다.",
     "cue": "이름을 지웠는지 다음에, 무엇과 연결할 수 있는지.",
     "question": {
       "givens": "이름은 삭제했지만 출생일·작은 지역·희귀 직업 조합이 남았다. 외부 명부와 연결할 수 있다.",
       "stem": "맞는 판단은?",
       "choices": [
-        "삭제했으므로 위험 0",
-        "재식별 가능성 검토 필요",
+        "삭제했으므로 위험(Risk) 0",
+        "재식별(Re-identification) 가능성 검토 필요",
         "모든 외부 정보와 연결 불가",
         "항상 법률 적용 제외"
       ],
       "answer": 2,
-      "reason": "남은 준식별자 조합을 외부 정보와 연결할 수 있으므로 재식별 위험을 검토해야 한다.",
+      "reason": "남은 준식별자(Quasi-Identifier) 조합을 외부 정보와 연결할 수 있으므로 재식별(Re-identification) 위험(Risk)을 검토해야 한다.",
       "wrong_reasons": [
-        "1번은 직접 식별자 삭제만으로 위험이 없다고 단정한다.",
+        "1번은 직접 식별자(Direct Identifier) 삭제만으로 위험(Risk)이 없다고 단정한다.",
         "3번은 연결할 수 있다는 조건과 모순된다.",
         "4번은 법적 분류를 구체적 조건 없이 확정한다."
       ]
     },
-    "goal": "같은 조합의 후보 수와 확인된 외부 연결을 바꾸어 위험 설명을 비교한다.",
+    "goal": "같은 조합의 후보 수와 확인된 외부 연결을 바꾸어 위험(Risk) 설명을 비교한다.",
     "kind": "decision",
     "relatedCodes": [
       "1-19",
@@ -608,22 +608,22 @@ export const CATALOG = [
   {
     "code": "1-21",
     "subject": 1,
-    "title": "일반화·집계·마스킹의 차이",
+    "title": "비식별화 기법(De-identification Techniques): 일반화(Generalization)·집계(Aggregation)·마스킹(Masking)",
     "lead": "값의 범주를 넓히는지, 여러 행을 요약하는지, 일부를 가리는지 본다.",
     "cue": "넓히기·요약하기·가리기의 출력을 비교한다.",
     "question": {
       "givens": "각 개인 행의 나이 27세·29세를 모두 “20대”로 바꿨다.",
       "stem": "주된 처리는?",
       "choices": [
-        "집계 평균 산출",
-        "일반화",
-        "무작위 표본 추출",
+        "집계(Aggregation) 평균(Mean) 산출",
+        "일반화(Generalization)",
+        "무작위 표본추출(Sampling)",
         "회귀 예측"
       ],
       "answer": 2,
       "reason": "개별 값을 더 넓은 연령 범주로 바꾸었으므로 일반화다.",
       "wrong_reasons": [
-        "1번은 여러 행을 하나의 평균으로 요약하는 처리이며 여기서는 각 행이 남는다.",
+        "1번은 여러 행을 하나의 평균(Mean)으로 요약하는 처리이며 여기서는 각 행이 남는다.",
         "3번은 일부 관측치를 선택하는 일이다.",
         "4번은 입력에서 결과를 예측하는 일이다."
       ]
@@ -646,11 +646,11 @@ export const CATALOG = [
   {
     "code": "1-22",
     "subject": 1,
-    "title": "k-익명성·l-다양성·t-근접성",
+    "title": "프라이버시 모형(Privacy Models): k-익명성(k-Anonymity)·l-다양성(l-Diversity)·t-근접성(t-Closeness)",
     "lead": "사람을 구별하기 어려워도 민감한 속성을 알아낼 수 있는지 따로 본다.",
-    "cue": "k는 집단 크기, l은 민감값 다양성, t는 전체와의 분포 거리.",
+    "cue": "k는 집단 크기, l은 민감값 다양성(Variety), t는 전체와의 분포 거리.",
     "question": {
-      "givens": "준식별자는 연령대·지역이다. (20대,A)의 두 행 질환은 모두 감기, (30대,B)의 두 행은 감기·천식이다.",
+      "givens": "준식별자(Quasi-Identifier)는 연령대·지역이다. (20대,A)의 두 행 질환은 모두 감기, (30대,B)의 두 행은 감기·천식이다.",
       "stem": "k=2와 distinct l=2의 충족 여부는?",
       "choices": [
         "둘 다 충족",
@@ -684,24 +684,24 @@ export const CATALOG = [
   {
     "code": "1-24",
     "subject": 1,
-    "title": "정형·반정형·비정형 자료를 구조로 읽기",
+    "title": "데이터 유형(Data Types): 정형(Structured)·반정형(Semi-structured)·비정형(Unstructured)",
     "lead": "파일 이름보다 값에 어떤 구조와 의미가 붙어 있는지 확인한다.",
     "cue": "고정 열인가, 키·태그인가, 내용 해석이 필요한가.",
     "question": {
-      "givens": "항목마다 키가 있고 일부 항목은 중첩되며 선택 필드도 있는 JSON 문서를 받았다.",
+      "givens": "항목마다 키가 있고 일부 항목은 중첩되며 선택 필드도 있는 JSON(JavaScript Object Notation) 문서를 받았다.",
       "stem": "통상적인 교육 분류는?",
       "choices": [
         "반정형",
         "항상 무구조",
         "반드시 관계형 표",
-        "암호화 자료"
+        "암호화(Encryption) 자료"
       ],
       "answer": 1,
-      "reason": "키와 중첩처럼 자기 설명적인 구조를 가진 반정형 자료의 대표 사례다.",
+      "reason": "키와 중첩처럼 자기 설명적인 구조를 가진 반정형 데이터(Semi-structured Data)의 대표 사례다.",
       "wrong_reasons": [
         "2번은 구조 단서가 있다는 조건과 다르다.",
-        "3번은 JSON을 반드시 관계형 고정 표라고 볼 수 없기 때문에 틀리다.",
-        "4번은 자료 구조와 암호화 여부를 혼동한다."
+        "3번은 JSON(JavaScript Object Notation)을 반드시 관계형 고정 표라고 볼 수 없기 때문에 틀리다.",
+        "4번은 자료 구조와 암호화(Encryption) 여부를 혼동한다."
       ]
     },
     "goal": "파일 이름 대신 표현 구조를 바꾸며 통상 분류를 판단한다.",
@@ -723,27 +723,27 @@ export const CATALOG = [
   {
     "code": "1-26",
     "subject": 1,
-    "title": "웹·API·DB에 맞는 수집 경로",
-    "lead": "화면을 읽는 방법, 제공된 인터페이스를 호출하는 방법, DB를 질의하는 방법을 구분한다.",
+    "title": "데이터 수집(Data Collection): 웹 크롤링(Web Crawling)·API(Application Programming Interface)·데이터베이스(Database)",
+    "lead": "화면을 읽는 방법, 제공된 인터페이스를 호출하는 방법, 데이터베이스(DB, Database)를 질의(Query)하는 방법을 구분한다.",
     "cue": "제공 형태·명세·허용 범위를 함께 확인한다.",
     "question": {
-      "givens": "필요한 필드를 반환하는 공식 API가 있고 이용 권한과 조건을 충족했다.",
+      "givens": "필요한 필드를 반환하는 공식 응용 프로그래밍 인터페이스(API, Application Programming Interface)가 있고 이용 권한과 조건을 충족했다.",
       "stem": "직접 맞는 수집 경로는?",
       "choices": [
         "화면 픽셀을 무조건 수기 복사",
-        "API 명세에 따라 요청·응답 수집",
-        "DB 권한 우회",
-        "API는 자료를 반환할 수 없음"
+        "응용 프로그래밍 인터페이스(API, Application Programming Interface) 명세에 따라 요청·응답 수집",
+        "데이터베이스(DB, Database) 권한 우회",
+        "응용 프로그래밍 인터페이스(API, Application Programming Interface)는 자료를 반환할 수 없음"
       ],
       "answer": 2,
       "reason": "제공된 필드와 요청·응답 명세를 사용해 자료를 수집할 수 있다.",
       "wrong_reasons": [
         "1번은 공식 인터페이스가 있다는 조건을 활용하지 않는다.",
         "3번은 허용된 경로를 벗어난다.",
-        "4번은 API가 필드를 반환한다는 조건과 모순된다."
+        "4번은 응용 프로그래밍 인터페이스(API, Application Programming Interface)가 필드를 반환한다는 조건과 모순된다."
       ]
     },
-    "goal": "필요한 API와 허용 DB의 존재를 바꾸어 경로를 선택한다.",
+    "goal": "필요한 응용 프로그래밍 인터페이스(API, Application Programming Interface)와 허용 데이터베이스(DB, Database)의 존재를 바꾸어 경로를 선택한다.",
     "kind": "decision",
     "relatedCodes": [
       "1-24",
@@ -761,7 +761,7 @@ export const CATALOG = [
   {
     "code": "1-27",
     "subject": 1,
-    "title": "일괄 수집과 지속적인 스트림 수집",
+    "title": "배치 처리(Batch Processing)와 스트림 처리(Stream Processing)",
     "lead": "끝이 정해진 묶음을 처리하는지, 계속 들어오는 사건을 처리하는지 본다.",
     "cue": "계속 들어오는가, 끝이 정해진 묶음인가.",
     "question": {
@@ -769,7 +769,7 @@ export const CATALOG = [
       "stem": "가장 맞는 설명은?",
       "choices": [
         "일일 종료 파일만 처리",
-        "스트림 처리이며 지연은 별도 확인",
+        "스트림 처리(Stream Processing)이며 지연은 별도 확인",
         "스트림이면 지연은 항상 0",
         "모든 로그가 발생 순서대로 도착"
       ],
@@ -799,27 +799,27 @@ export const CATALOG = [
   {
     "code": "1-28",
     "subject": 1,
-    "title": "ETL과 ELT의 변환 위치",
-    "lead": "둘의 핵심 차이는 데이터를 어디에 적재한 뒤 변환하는지다.",
-    "cue": "목적 저장소에 넣기 전 변환인지, 넣은 뒤 변환인지.",
+    "title": "추출·변환·적재(ETL, Extract, Transform, Load)와 추출·적재·변환(ELT, Extract, Load, Transform)",
+    "lead": "둘의 핵심 차이는 데이터를 어디에 적재(Loading)한 뒤 변환(Transformation)하는지다.",
+    "cue": "대상 저장소(Target Data Store)에 넣기 전 변환인지, 넣은 뒤 변환인지.",
     "question": {
-      "givens": "목적지는 분석 DB다. 원본을 분석 DB에 적재한 뒤 그 DB 안에서 값을 정리한다.",
+      "givens": "목적지는 분석 DB다. 원본을 분석 데이터베이스(DB, Database)에 적재(Loading)한 뒤 그 데이터베이스(DB, Database) 안에서 값을 정리한다.",
       "stem": "주된 흐름은?",
       "choices": [
-        "ETL",
-        "ELT",
+        "추출·변환·적재(ETL, Extract, Transform, Load)",
+        "추출·적재·변환(ELT, Extract, Load, Transform)",
         "저장 없는 시각화",
-        "추출 없는 백업"
+        "추출(Extraction) 없는 백업(Backup)"
       ],
       "answer": 2,
-      "reason": "목적 DB에 먼저 적재하고 그 안에서 변환하므로 E→L→T다.",
+      "reason": "목적 데이터베이스(DB, Database)에 먼저 적재(Loading)하고 그 안에서 변환(Transformation)하므로 E→L→T다.",
       "wrong_reasons": [
-        "1번은 목적지 적재 전에 변환하는 흐름이다.",
-        "3번은 적재·변환이 있다는 조건과 다르다.",
-        "4번은 원본을 추출해 옮긴다는 조건을 누락한다."
+        "1번은 목적지 적재(Loading) 전에 변환(Transformation)하는 흐름이다.",
+        "3번은 적재(Loading)·변환(Transformation)이 있다는 조건과 다르다.",
+        "4번은 원본을 추출(Extraction)해 옮긴다는 조건을 누락한다."
       ]
     },
-    "goal": "분석 DB라는 목적지를 고정하고 주된 변환 위치만 바꾼다.",
+    "goal": "분석 데이터베이스(DB, Database)라는 목적지를 고정하고 주된 변환(Transformation) 위치만 바꾼다.",
     "kind": "decision",
     "relatedCodes": [
       "1-02",
@@ -837,20 +837,20 @@ export const CATALOG = [
   {
     "code": "1-29",
     "subject": 1,
-    "title": "웨어하우스·마트·레이크·레이크하우스의 목적",
-    "lead": "저장소 이름보다 자료 범위와 사용 목적을 연결해 읽는다.",
-    "cue": "전사 통합·주제 범위·원본 다양성·관리 기능을 나눈다.",
+    "title": "데이터 웨어하우스(Data Warehouse)·데이터 마트(Data Mart)·데이터 레이크(Data Lake)·데이터 레이크하우스(Data Lakehouse)",
+    "lead": "저장소(Storage) 이름보다 자료 범위와 사용 목적을 연결해 읽는다.",
+    "cue": "전사 통합·주제 범위·원본 다양성(Variety)·관리 기능을 나눈다.",
     "question": {
       "givens": "전사 자료 중 마케팅 부서의 캠페인 분석에 필요한 범위를 구성한다.",
       "stem": "분석 범위를 가장 직접 설명하는 것은?",
       "choices": [
-        "데이터 마트",
+        "데이터 마트(Data Mart)",
         "원본 영상 코덱",
         "항상 전사 전체와 같은 범위",
-        "워크플로 스케줄러"
+        "워크플로 스케줄러(Workflow Scheduler)"
       ],
       "answer": 1,
-      "reason": "특정 부서와 주제에 초점을 맞춘 분석 자료 범위는 데이터 마트로 설명할 수 있다.",
+      "reason": "특정 부서와 주제에 초점을 맞춘 분석 자료 범위는 데이터 마트(Data Mart)로 설명할 수 있다.",
       "wrong_reasons": [
         "2번은 영상 표현 방식이다.",
         "3번은 부서·주제로 한정한다는 조건과 다르다.",
@@ -879,27 +879,27 @@ export const CATALOG = [
   {
     "code": "2-01",
     "subject": 2,
-    "title": "평균이 다른 두 제품의 상대 산포를 비교하는 법",
-    "lead": "평균 중량이 다른 제품을 비교할 때 표준편차의 크기와 상대적인 흔들림은 다른 답을 준다. 비교하려는 것이 몇 g의 차이인지, 평균에 대한 몇 %의 차이인지 먼저 정한다.",
-    "cue": "몇 g인가와 평균의 몇 %인가는 다른 질문이다.",
+    "title": "변동계수(CV, Coefficient of Variation)",
+    "lead": "평균(Mean) 중량이 다른 제품을 비교할 때 표준편차(SD, Standard Deviation)의 크기와 상대적인 흔들림은 다른 답을 준다. 비교하려는 것이 몇 g의 차이인지, 평균(Mean)에 대한 몇 %의 차이인지 먼저 정한다.",
+    "cue": "몇 g인가와 평균(Mean)의 몇 %인가는 다른 질문이다.",
     "question": {
-      "givens": "A 평균 100g·표준편차 10g, B 평균 20g·표준편차 4g. 양수 비율척도이며 같은 표준편차 정의를 쓴다.",
-      "stem": "변동계수로 비교할 때 상대 산포가 더 큰 제품은?",
+      "givens": "A 평균(Mean) 100g·표준편차(SD, Standard Deviation) 10g, B 평균(Mean) 20g·표준편차(SD, Standard Deviation) 4g. 양수 비율척도(Ratio Scale)이며 같은 표준편차(SD, Standard Deviation) 정의를 쓴다.",
+      "stem": "변동계수(CV, Coefficient of Variation)로 비교할 때 상대 산포(Dispersion)가 더 큰 제품은?",
       "choices": [
         "A",
         "B",
         "두 제품이 같다",
-        "표준편차가 모두 0이다"
+        "표준편차(SD, Standard Deviation)가 모두 0이다"
       ],
       "answer": 2,
-      "reason": "A는 10%, B는 20%이므로 B의 상대 산포가 더 크다.",
+      "reason": "A는 10%, B는 20%이므로 B의 상대 산포(Dispersion)가 더 크다.",
       "wrong_reasons": [
-        "① 10g과 4g만 비교한 절대 산포의 판단이다.",
+        "① 10g과 4g만 비교한 절대 산포(Dispersion)의 판단이다.",
         "③ 두 비율 0.10과 0.20은 같지 않다.",
-        "④ 주어진 표준편차는 각각 10g과 4g이다."
+        "④ 주어진 표준편차(SD, Standard Deviation)는 각각 10g과 4g이다."
       ]
     },
-    "goal": "평균과 표준편차를 바꾸어 절대 산포와 상대 산포의 순위를 비교한다.",
+    "goal": "평균(Mean)과 표준편차(SD, Standard Deviation)를 바꾸어 절대 산포(Dispersion)와 상대 산포(Dispersion)의 순위를 비교한다.",
     "kind": "numeric-comparison",
     "relatedCodes": [
       "2-13",
@@ -917,27 +917,27 @@ export const CATALOG = [
   {
     "code": "2-02",
     "subject": 2,
-    "title": "95% 신뢰구간의 비율은 구간을 만드는 절차에 붙는다",
-    "lead": "빈도주의 신뢰구간의 95%는 한 번 얻은 구간 안에서 모수가 움직일 확률이 아니다. 같은 방법으로 구간을 반복 생성했을 때의 장기적인 포함 비율이다.",
+    "title": "신뢰구간(CI, Confidence Interval)과 신뢰수준(Confidence Level)",
+    "lead": "빈도주의(Frequentist Inference) 신뢰구간(CI, Confidence Interval)의 95%는 한 번 얻은 구간 안에서 모수(Parameter)가 움직일 확률이 아니다. 같은 방법으로 구간을 반복 생성했을 때의 장기적인 포함 비율이다.",
     "cue": "95%는 한 구간의 확률이 아니라 구간 생성 절차의 성질이다.",
     "question": {
-      "givens": "빈도주의의 유효한 95% 신뢰구간 생성 절차를 같은 조건에서 반복한다고 가정한다.",
+      "givens": "빈도주의(Frequentist Inference)의 유효한 95% 신뢰구간(CI, Confidence Interval) 생성 절차를 같은 조건에서 반복한다고 가정한다.",
       "stem": "95%의 뜻으로 옳은 것은?",
       "choices": [
-        "한 번 구한 구간 안에 모수가 있을 확률이 95%다",
-        "표본 관측값의 95%가 항상 구간 안에 있다",
-        "생성된 구간들의 장기적 약 95%가 고정된 모수를 포함한다",
-        "구간의 중심이 참 평균과 정확히 일치할 확률이 95%다"
+        "한 번 구한 구간 안에 모수(Parameter)가 있을 확률이 95%다",
+        "표본(Sample) 관측값의 95%가 항상 구간 안에 있다",
+        "생성된 구간들의 장기적 약 95%가 고정된 모수(Parameter)를 포함한다",
+        "구간의 중심이 참 평균(Mean)과 정확히 일치할 확률이 95%다"
       ],
       "answer": 3,
-      "reason": "확률적으로 달라지는 것은 표본과 그로 만든 구간이며 신뢰수준은 절차의 장기적 포함 성질이다.",
+      "reason": "확률적으로 달라지는 것은 표본(Sample)과 그로 만든 구간이며 신뢰수준(Confidence Level)은 절차의 장기적 포함 성질이다.",
       "wrong_reasons": [
-        "① 이 문맥에서는 모수를 확률변수로 두지 않는다.",
-        "② 평균의 신뢰구간과 관측값 분포의 범위는 다르다.",
-        "④ 표본평균과 모평균의 정확한 일치를 보장하는 비율이 아니다."
+        "① 이 문맥에서는 모수(Parameter)를 확률변수(Random Variable)로 두지 않는다.",
+        "② 평균(Mean)의 신뢰구간(CI, Confidence Interval)과 관측값 분포의 범위는 다르다.",
+        "④ 표본평균(Sample Mean)과 모평균(Population Mean)의 정확한 일치를 보장하는 비율이 아니다."
       ]
     },
-    "goal": "같은 표본과 n=25에서 신뢰수준만 바꿔 구간의 폭을 확인한다.",
+    "goal": "같은 표본(Sample)과 n=25에서 신뢰수준(Confidence Level)만 바꿔 구간의 폭을 확인한다.",
     "kind": "interval-calculation",
     "relatedCodes": [
       "2-36",
@@ -955,27 +955,27 @@ export const CATALOG = [
   {
     "code": "2-03",
     "subject": 2,
-    "title": "빈칸의 패턴과 결측 발생 기전은 같은 정보가 아니다",
-    "lead": "빈칸이 몇 개인지 세는 일과 왜 비었는지 설명하는 일은 다르다. MCAR·MAR·MNAR는 관측된 칸의 모양보다 결측 확률이 어떤 값에 의존하는지를 구분한다.",
+    "title": "결측 발생 기전(Missing Data Mechanism)",
+    "lead": "빈칸이 몇 개인지 세는 일과 왜 비었는지 설명하는 일은 다르다. 완전 무작위 결측(MCAR, Missing Completely at Random)·무작위 결측(MAR, Missing at Random)·비무작위 결측(MNAR, Missing Not at Random)은 관측(Observation)된 칸의 모양보다 결측 확률이 어떤 값에 의존하는지를 구분한다.",
     "cue": "빈칸을 보기보다 무엇이 빈칸의 확률을 바꾸는지 묻는다.",
     "question": {
-      "givens": "연령은 모두 관측됐다. 체중 누락 확률은 연령대별로 서로 다르고 관측된 연령에만 의존한다. 연령을 조건으로 하면 실제 체중에는 의존하지 않는다.",
+      "givens": "연령은 모두 관측됐다. 체중 누락 확률은 연령대별로 서로 다르고 관측(Observation)된 연령에만 의존한다. 연령을 조건으로 하면 실제 체중에는 의존하지 않는다.",
       "stem": "이 명시된 결측 발생 규칙은 무엇에 해당하는가?",
       "choices": [
-        "MCAR",
-        "MAR",
-        "MNAR",
+        "완전 무작위 결측(MCAR, Missing Completely at Random)",
+        "무작위 결측(MAR, Missing at Random)",
+        "비무작위 결측(MNAR, Missing Not at Random)",
         "빈칸을 0으로 대치한 규칙"
       ],
       "answer": 2,
-      "reason": "관측 연령에는 의존하지만 연령을 조건으로 실제 체중에는 의존하지 않으므로 MAR 조건이다.",
+      "reason": "관측(Observation) 연령에는 의존하지만 연령을 조건으로 실제 체중에는 의존하지 않으므로 무작위 결측(MAR, Missing at Random) 조건이다.",
       "wrong_reasons": [
-        "① 관측 연령에 따라 누락 확률이 달라져 MCAR의 독립 조건과 다르다.",
-        "③ 누락 체중 자체에 대한 추가 의존성은 없다고 주어졌다.",
+        "① 관측(Observation) 연령에 따라 누락 확률이 달라져 완전 무작위 결측(MCAR, Missing Completely at Random)의 독립 조건과 다르다.",
+        "③ 누락 체중 자체에 대한 추가 의존성(Dependency)은 없다고 주어졌다.",
         "④ 발생 기전과 값을 채우는 처리는 다른 개념이다."
       ]
     },
-    "goal": "같은 빈칸 표에서 발생 규칙을 바꾸어 MCAR·MAR·MNAR의 차이를 판단한다.",
+    "goal": "같은 빈칸 표에서 발생 규칙을 바꾸어 완전 무작위 결측(MCAR, Missing Completely at Random)·무작위 결측(MAR, Missing at Random)·비무작위 결측(MNAR, Missing Not at Random)의 차이를 판단한다.",
     "kind": "condition-choice",
     "relatedCodes": [
       "2-05",
@@ -993,7 +993,7 @@ export const CATALOG = [
   {
     "code": "2-04",
     "subject": 2,
-    "title": "횟수를 세는 변수와 시간을 재는 변수부터 구분한다",
+    "title": "이산확률변수(Discrete Random Variable)와 연속확률변수(Continuous Random Variable)",
     "lead": "하루 고장 횟수와 고장까지의 시간은 같은 설비에서 얻어도 가능한 값의 구조가 다르다. 이산·연속의 구분은 분포를 고르는 출발점이며 특정 분포를 확정하는 근거는 아니다.",
     "cue": "정수로 보이는가보다 무엇을 세거나 재었는가를 먼저 본다.",
     "question": {
@@ -1008,7 +1008,7 @@ export const CATALOG = [
       "answer": 2,
       "reason": "건수의 가능한 값은 셀 수 있고 이상적 시간은 구간 안의 값을 연속적으로 허용한다.",
       "wrong_reasons": [
-        "① T를 반올림한 기록과 이상적인 시간 모형을 혼동했다.",
+        "① T를 반올림한 기록과 이상적인 시간 모형(Model)을 혼동했다.",
         "③ 두 변수의 가능한 값 구조를 뒤집었다.",
         "④ 횟수와 시간에는 수량의 의미가 있다."
       ]
@@ -1032,15 +1032,15 @@ export const CATALOG = [
   {
     "code": "2-05",
     "subject": 2,
-    "title": "빠진 값과 형식이 틀린 값은 다른 품질 문제다",
-    "lead": "칸이 모두 채워져 있어도 값이 쓸 수 있는 것은 아니다. 완전성은 필요한 기록이 있는지, 유효성은 정한 범위와 형식에 맞는지 확인한다.",
+    "title": "데이터 품질(Data Quality): 완전성(Completeness)·유효성(Validity)",
+    "lead": "칸이 모두 채워져 있어도 값이 쓸 수 있는 것은 아니다. 완전성(Completeness)은 필요한 기록이 있는지, 유효성(Validity)은 정한 범위와 형식에 맞는지 확인한다.",
     "cue": "있는가, 규칙에 맞는가, 사실과 같은가는 다른 검사다.",
     "question": {
       "givens": "점수는 필수이며 0~100의 정수다. A는 빈칸이고 B는 999다.",
       "stem": "가장 직접적인 품질 문제의 연결은?",
       "choices": [
-        "A 완전성·B 유효성",
-        "A 유일성·B 완전성",
+        "A 완전성(Completeness)·B 유효성(Validity)",
+        "A 유일성·B 완전성(Completeness)",
         "A 적시성·B 유일성",
         "A와 B 모두 실제 점수가 확인됐다"
       ],
@@ -1070,16 +1070,16 @@ export const CATALOG = [
   {
     "code": "2-07",
     "subject": 2,
-    "title": "드문 값을 찾았다는 이유만으로 삭제하지 않는다",
+    "title": "이상값 탐지(Outlier Detection)",
     "lead": "다른 값과 멀리 떨어진 기록은 확인할 후보이지 곧바로 오류라는 판정이 아니다. 입력 단위와 원기록을 먼저 대조해야 드문 사건을 지워 버리는 일을 피할 수 있다.",
-    "cue": "이상값 표시는 조사 시작이며 삭제 허가가 아니다.",
+    "cue": "이상값(Outlier) 표시는 조사 시작이며 삭제 허가가 아니다.",
     "question": {
       "givens": "일별 주문량 18·20·21·120건. 120건의 발생 원인은 아직 모른다.",
       "stem": "먼저 할 행동으로 가장 적절한 것은?",
       "choices": [
         "가장 큰 값이므로 즉시 삭제한다",
         "원기록·단위·행사 여부를 대조한다",
-        "전체 평균으로 바로 바꾼다",
+        "전체 평균(Mean)으로 바로 바꾼다",
         "드문 값은 실제로 생길 수 없다고 결론 낸다"
       ],
       "answer": 2,
@@ -1087,10 +1087,10 @@ export const CATALOG = [
       "wrong_reasons": [
         "① 큰 값이라는 표시만으로 삭제 근거가 생기지 않는다.",
         "③ 대치는 발생 원인 확인을 대신하지 못한다.",
-        "④ 극단적인 관측은 실제 사건일 수도 있다."
+        "④ 극단적인 관측(Observation)은 실제 사건일 수도 있다."
       ]
     },
-    "goal": "극단값 120에 관한 추가 증거를 바꾸어 보존·정정·추가 조사를 구분한다.",
+    "goal": "극단값(Extreme Value) 120에 관한 추가 증거(Evidence)를 바꾸어 보존·정정·추가 조사를 구분한다.",
     "kind": "evidence-choice",
     "relatedCodes": [
       "2-08",
@@ -1108,27 +1108,27 @@ export const CATALOG = [
   {
     "code": "2-08",
     "subject": 2,
-    "title": "이상값의 표시 기준을 바꾸면 선택되는 점도 달라진다",
-    "lead": "상자그림 울타리 밖의 점과 표준점수가 큰 점은 같은 기준으로 고른 것이 아니다. 계산한 기준과 비교한 집단을 밝힌 뒤 그 표시를 해석한다.",
+    "title": "사분위범위(IQR, Interquartile Range)를 이용한 이상값 탐지(Outlier Detection)",
+    "lead": "상자그림(Box Plot) 울타리(Fence) 밖의 점과 표준점수(Z-score)가 큰 점은 같은 기준으로 고른 것이 아니다. 계산한 기준과 비교한 집단을 밝힌 뒤 그 표시를 해석한다.",
     "cue": "경계 계산과 오류 판단은 두 단계다.",
     "question": {
-      "givens": "Q1=10, Q3=20. 1.5×IQR 울타리를 엄격히 벗어난 값만 후보로 표시한다. 관측값은 40이다.",
+      "givens": "Q1=10, Q3=20. 1.5×사분위범위(IQR, Interquartile Range) 울타리(Fence)를 엄격히 벗어난 값만 후보로 표시한다. 관측값은 40이다.",
       "stem": "맞는 판단은?",
       "choices": [
-        "IQR은 30이다",
-        "40은 울타리 안이다",
+        "사분위범위(IQR, Interquartile Range)는 30이다",
+        "40은 울타리(Fence) 안이다",
         "40은 입력 오류로 확정된다",
-        "40은 위 울타리 밖의 후보지만 오류는 미확정이다"
+        "40은 위 울타리(Fence) 밖의 후보지만 오류는 미확정이다"
       ],
       "answer": 4,
-      "reason": "IQR=10, 위 울타리=20+15=35다. 40은 밖이지만 그 원인은 알 수 없다.",
+      "reason": "사분위범위(IQR, Interquartile Range)=10, 위 울타리(Fence)=20+15=35다. 40은 밖이지만 그 원인은 알 수 없다.",
       "wrong_reasons": [
-        "① IQR은 합이 아니라 Q3−Q1=10이다.",
-        "② 40은 위 울타리 35보다 크다.",
+        "① 사분위범위(IQR, Interquartile Range)는 합이 아니라 Q3−Q1=10이다.",
+        "② 40은 위 울타리(Fence) 35보다 크다.",
         "③ 표시 규칙은 입력 오류의 원인을 입증하지 않는다."
       ]
     },
-    "goal": "관측값과 IQR 배수를 바꿔 엄격한 울타리의 경계 포함 여부를 계산한다.",
+    "goal": "관측값과 사분위범위(IQR, Interquartile Range) 배수를 바꿔 엄격한 울타리(Fence)의 경계 포함 여부를 계산한다.",
     "kind": "fence-calculation",
     "relatedCodes": [
       "2-07",
@@ -1150,11 +1150,11 @@ export const CATALOG = [
   {
     "code": "2-12",
     "subject": 2,
-    "title": "최소-최대 변환의 기준은 적용할 자료마다 새로 정하지 않는다",
-    "lead": "최소-최대 변환은 정한 구간의 시작과 폭으로 값을 다시 표시한다. 어떤 자료에서 최솟값과 최댓값을 배웠는지가 결과의 뜻을 결정한다.",
+    "title": "최소-최대 스케일링(Min-Max Scaling)",
+    "lead": "최소-최대 스케일링(Min-Max Scaling)은 정한 구간의 시작과 폭으로 값을 다시 표시한다. 어떤 자료에서 최솟값과 최댓값을 배웠는지가 결과의 뜻을 결정한다.",
     "cue": "값을 바꾸기 전에 기준 구간을 고정한다.",
     "question": {
-      "givens": "기준 최솟값 10, 최댓값 30. 0~1 최소-최대 선형 변환이며 clipping하지 않는다.",
+      "givens": "기준 최솟값 10, 최댓값 30. 0~1 최소-최대 선형 변환이며 클리핑(Clipping)하지 않는다.",
       "stem": "값 20의 변환 결과는?",
       "choices": [
         "0",
@@ -1170,7 +1170,7 @@ export const CATALOG = [
         "④ 2는 이 기준에서 50의 결과다."
       ]
     },
-    "goal": "저장된 기준과 관측값, clipping 선택을 바꾸어 선형 변환의 차이를 확인한다.",
+    "goal": "저장된 기준과 관측값, 클리핑(Clipping) 선택을 바꾸어 선형 변환의 차이를 확인한다.",
     "kind": "numeric-transform",
     "relatedCodes": [
       "2-13",
@@ -1188,27 +1188,27 @@ export const CATALOG = [
   {
     "code": "2-13",
     "subject": 2,
-    "title": "표준점수 0은 원자료의 0이 아니라 기준 평균이다",
-    "lead": "표준화는 평균에서의 차이를 표준편차 단위로 표시한다. 표준점수가 0이라고 원래 값이 없거나 측정값이 0이었다는 뜻은 아니다.",
-    "cue": "표준점수 0은 그 자료의 출발점이 아니라 평균 위치다.",
+    "title": "표준화(Standardization)와 표준점수(Z-score)",
+    "lead": "표준화(Standardization)는 평균(Mean)에서의 차이를 표준편차(SD, Standard Deviation) 단위로 표시한다. 표준점수(Z-score)가 0이라고 원래 값이 없거나 측정값이 0이었다는 뜻은 아니다.",
+    "cue": "표준점수(Z-score) 0은 그 자료의 출발점이 아니라 평균(Mean) 위치다.",
     "question": {
-      "givens": "기준 평균 50, 표준편차 5이며 x=50이다. z=(x−평균)/표준편차를 사용한다.",
+      "givens": "기준 평균(Mean) 50, 표준편차(SD, Standard Deviation) 5이며 x=50이다. z=(x−평균)/표준편차(SD, Standard Deviation)를 사용한다.",
       "stem": "z와 그 의미로 옳은 것은?",
       "choices": [
         "0·원래 측정값이 0이다",
-        "1·평균과 같다",
-        "0·기준 평균과 같다",
-        "−1·기준 평균보다 크다"
+        "1·평균(Mean)과 같다",
+        "0·기준 평균(Mean)과 같다",
+        "−1·기준 평균(Mean)보다 크다"
       ],
       "answer": 3,
-      "reason": "(50−50)/5=0이고 이는 기준 평균과 같은 위치라는 뜻이다.",
+      "reason": "(50−50)/5=0이고 이는 기준 평균(Mean)과 같은 위치라는 뜻이다.",
       "wrong_reasons": [
-        "① 원자료는 50이며 변환 후 0의 뜻을 혼동했다.",
-        "② 평균에서 표준편차만큼 커야 z=1이다.",
-        "④ z=−1은 여기서는 원자료 45의 위치다."
+        "① 원자료(Raw Data)는 50이며 변환 후 0의 뜻을 혼동했다.",
+        "② 평균(Mean)에서 표준편차(SD, Standard Deviation)만큼 커야 z=1이다.",
+        "④ z=−1은 여기서는 원자료(Raw Data) 45의 위치다."
       ]
     },
-    "goal": "기준 평균과 표준편차를 고정하고 관측값의 상대 위치를 바꿔 본다.",
+    "goal": "기준 평균(Mean)과 표준편차(SD, Standard Deviation)를 고정하고 관측값의 상대 위치를 바꿔 본다.",
     "kind": "numeric-transform",
     "relatedCodes": [
       "2-12",
@@ -1227,9 +1227,9 @@ export const CATALOG = [
   {
     "code": "2-14",
     "subject": 2,
-    "title": "로그 변환은 큰 값 사이의 간격을 다른 척도로 표현한다",
-    "lead": "양수 자료의 로그 변환은 배율을 덧셈 간격으로 바꾼다. 큰 값을 압축할 수 있지만 정규성이나 예측 성능 향상을 자동으로 보장하지 않는다.",
-    "cue": "로그의 같은 간격은 원자료의 같은 배율이다.",
+    "title": "로그 변환(Log Transformation)",
+    "lead": "양수 자료의 로그 변환(Log Transformation)은 배율을 덧셈 간격으로 바꾼다. 큰 값을 압축할 수 있지만 정규성(Normality)이나 예측 성능 향상을 자동으로 보장하지 않는다.",
+    "cue": "로그의 같은 간격은 원자료(Raw Data)의 같은 배율이다.",
     "question": {
       "givens": "실수 범위에서 밑이 10인 로그를 쓴다. 입력 x=100이다.",
       "stem": "log10(100)은?",
@@ -1247,7 +1247,7 @@ export const CATALOG = [
         "④ 입력값과 로그값을 구분하지 않았다."
       ]
     },
-    "goal": "양수·0·음수와 로그의 밑을 바꾸어 정의역과 출력값을 확인한다.",
+    "goal": "양수·0·음수와 로그의 밑을 바꾸어 정의역(Domain)과 출력값을 확인한다.",
     "kind": "numeric-transform",
     "relatedCodes": [
       "2-12",
@@ -1269,8 +1269,8 @@ export const CATALOG = [
   {
     "code": "2-15",
     "subject": 2,
-    "title": "연속값을 구간으로 바꾸면 정확한 값은 되찾기 어렵다",
-    "lead": "이산화는 연속값을 구간의 이름이나 번호로 바꾸는 처리다. 구간을 고르는 규칙은 남지만 같은 구간 안에서의 작은 차이는 사라진다.",
+    "title": "이산화(Discretization)와 구간화(Binning)",
+    "lead": "이산화(Discretization)는 연속값을 구간의 이름이나 번호로 바꾸는 처리다. 구간을 고르는 규칙은 남지만 같은 구간 안에서의 작은 차이는 사라진다.",
     "cue": "같은 구간은 같은 원래 값을 뜻하지 않는다.",
     "question": {
       "givens": "[0,10)은 낮음, [10,20]은 높음으로 변환하고 구간 이름만 저장한다.",
@@ -1289,7 +1289,7 @@ export const CATALOG = [
         "④ 두 값 모두 정의된 낮음 구간에 있다."
       ]
     },
-    "goal": "관측값을 바꾸어 구간 경계의 소속과 구간화의 정보 손실을 확인한다.",
+    "goal": "관측값을 바꾸어 구간 경계의 소속과 구간화(Binning)의 정보 손실을 확인한다.",
     "kind": "bin-assignment",
     "relatedCodes": [
       "2-04",
@@ -1307,12 +1307,12 @@ export const CATALOG = [
   {
     "code": "2-16",
     "subject": 2,
-    "title": "명목 범주의 숫자는 크기가 아니라 이름이다",
-    "lead": "색상에 1·2·3이라는 코드를 붙여도 색 사이에 크기나 거리의 의미가 생기지 않는다. 원-핫 인코딩은 각 범주에 속하는지를 별도 열로 표시한다.",
+    "title": "원-핫 인코딩(One-Hot Encoding)과 범주형 변수(Categorical Variable)",
+    "lead": "색상에 1·2·3이라는 코드를 붙여도 색 사이에 크기나 거리의 의미가 생기지 않는다. 원-핫 인코딩(One-Hot Encoding)은 각 범주에 속하는지를 별도 열로 표시한다.",
     "cue": "숫자의 위치보다 그 열의 범주 이름을 읽는다.",
     "question": {
       "givens": "한 행은 색 하나다. 열 순서는 빨강·파랑·초록이며 범주를 생략하지 않는다.",
-      "stem": "파랑의 원-핫 표현은?",
+      "stem": "파랑의 원-핫 인코딩(One-Hot Encoding) 표현은?",
       "choices": [
         "[1,0,0]",
         "[0,1,0]",
@@ -1327,7 +1327,7 @@ export const CATALOG = [
         "④ 한 행이 두 색에 속한다고 표시하여 색 하나 조건과 다르다."
       ]
     },
-    "goal": "색상과 열 순서를 바꾸어 같은 범주의 원-핫 벡터를 확인한다.",
+    "goal": "색상과 열 순서를 바꾸어 같은 범주의 원-핫 인코딩(One-Hot Encoding) 벡터를 확인한다.",
     "kind": "encoding-choice",
     "relatedCodes": [
       "2-23",
@@ -1345,7 +1345,7 @@ export const CATALOG = [
   {
     "code": "2-17",
     "subject": 2,
-    "title": "파생변수는 계산식과 관측 단위를 함께 정의한다",
+    "title": "파생변수(Derived Variable) 생성과 특성 공학(Feature Engineering)",
     "lead": "기존 열을 계산했다고 모두 같은 의미의 새 변수가 되는 것은 아니다. 한 행이 무엇을 나타내는지와 계산 결과가 답하려는 질문을 함께 정해야 한다.",
     "cue": "새 열의 계산식 옆에 한 행의 단위를 적는다.",
     "question": {
@@ -1383,7 +1383,7 @@ export const CATALOG = [
   {
     "code": "2-19",
     "subject": 2,
-    "title": "열을 남기는 선택과 새 축을 만드는 추출을 구분한다",
+    "title": "특성 선택(Feature Selection)과 특성 추출(Feature Extraction)",
     "lead": "입력 열 수를 줄였다는 결과만으로 같은 처리라고 부르면 안 된다. 원래 열이 그대로 남는지, 여러 열을 섞어 새로운 표현을 만들었는지가 선택과 추출을 가른다.",
     "cue": "원래 열을 골랐는가, 새로운 축을 만들었는가.",
     "question": {
@@ -1400,7 +1400,7 @@ export const CATALOG = [
       "wrong_reasons": [
         "② 산출물의 구조를 뒤집었다.",
         "③ B는 새 축 하나이고 원래 두 열이 그대로 남지 않는다.",
-        "④ 선택·축소 과정에서 필요한 정보가 사라질 수도 있다."
+        "④ 선택·축소(Shrinkage) 과정에서 필요한 정보가 사라질 수도 있다."
       ]
     },
     "goal": "같은 입력에서 원래 열을 선택하거나 새 값을 결합하는 차이를 확인한다.",
@@ -1425,11 +1425,11 @@ export const CATALOG = [
   {
     "code": "2-21",
     "subject": 2,
-    "title": "검증으로 고르고 시험 자료로 마지막 성능을 확인한다",
-    "lead": "훈련·검증·시험 자료를 나누는 이유는 이름을 외우기 위해서가 아니다. 모형을 학습한 자료와 모형을 선택한 자료의 영향에서 최종 평가를 분리하기 위해서다.",
+    "title": "훈련·검증·시험 데이터(Training, Validation and Test Data)의 역할",
+    "lead": "훈련·검증·시험 데이터(Test Data)를 나누는 이유는 이름을 외우기 위해서가 아니다. 모형(Model)을 학습한 자료와 모형(Model)을 선택한 자료의 영향에서 최종 평가(Evaluation)를 분리하기 위해서다.",
     "cue": "훈련은 학습, 검증은 선택, 시험은 선택 뒤 확인이다.",
     "question": {
-      "givens": "같은 검증 자료의 정확도로 후보를 고른다. A: 훈련99%·검증70%, B: 훈련90%·검증80%. 시험은 아직 보지 않았다.",
+      "givens": "같은 검증 데이터(Validation Data)의 정확도(Accuracy)로 후보를 고른다. A: 훈련99%·검증70%, B: 훈련90%·검증80%. 시험은 아직 보지 않았다.",
       "stem": "주어진 기준에서 선택할 후보는?",
       "choices": [
         "훈련 점수가 높은 A",
@@ -1438,14 +1438,14 @@ export const CATALOG = [
         "두 훈련 점수를 더해 결정한다"
       ],
       "answer": 2,
-      "reason": "정한 선택 기준은 동일 검증 자료의 정확도이며 B의 80%가 A의 70%보다 높다.",
+      "reason": "정한 선택 기준은 동일 검증 데이터(Validation Data)의 정확도(Accuracy)이며 B의 80%가 A의 70%보다 높다.",
       "wrong_reasons": [
-        "① 선택 기준을 훈련 정확도로 바꾸었다.",
-        "③ 시험 정답을 선택에 사용하면 최종 평가의 독립성이 깨진다.",
+        "① 선택 기준을 훈련 정확도(Accuracy)로 바꾸었다.",
+        "③ 시험 정답을 선택에 사용하면 최종 평가(Evaluation)의 독립성(Independence)이 깨진다.",
         "④ 후보별 학습 점수의 합은 정한 선택 기준이 아니다."
       ]
     },
-    "goal": "검증 점수와 시험 정보 사용 여부를 바꾸어 선택과 독립 평가의 경계를 확인한다.",
+    "goal": "검증 점수와 시험 정보 사용 여부를 바꾸어 선택과 독립 평가(Evaluation)의 경계를 확인한다.",
     "kind": "selection-rule",
     "relatedCodes": [
       "2-12",
@@ -1464,9 +1464,9 @@ export const CATALOG = [
   {
     "code": "2-22",
     "subject": 2,
-    "title": "분할 단위는 나중에 예측할 대상에 맞춘다",
-    "lead": "행을 섞어 나누기 전에 한 행이 누구와 어느 시점에서 나왔는지 확인한다. 같은 사람의 반복 기록이나 미래의 관측이 섞이면 평가하려던 조건이 바뀔 수 있다.",
-    "cue": "나눌 단위는 행이 아니라 평가하려는 사람과 시간이다.",
+    "title": "그룹 기반 데이터 분할(Group-aware Data Splitting)과 시계열 분할(Time Series Splitting)",
+    "lead": "행을 섞어 나누기 전에 한 행이 누구와 어느 시점에서 나왔는지 확인한다. 같은 사람의 반복 기록이나 미래의 관측(Observation)이 섞이면 평가(Evaluation)하려던 조건이 바뀔 수 있다.",
+    "cue": "나눌 단위는 행이 아니라 평가(Evaluation)하려는 사람과 시간이다.",
     "question": {
       "givens": "A·B·C 각각 두 기록이 있다. 목표는 훈련 때 없던 새 사람을 예측하는 것이다.",
       "stem": "목표에 맞는 시험 분할은?",
@@ -1477,14 +1477,14 @@ export const CATALOG = [
         "행 번호가 홀수인지로만 분할"
       ],
       "answer": 3,
-      "reason": "사람 C는 훈련에 없으므로 새 사람을 평가한다는 질문을 유지한다.",
+      "reason": "사람 C는 훈련에 없으므로 새 사람을 평가(Evaluation)한다는 질문을 유지한다.",
       "wrong_reasons": [
         "① 같은 사람이 양쪽에 있어 새 사람 조건이 아니다.",
-        "② 학습 자료 자체를 평가하면 새 자료 평가가 아니다.",
+        "② 학습 자료 자체를 평가(Evaluation)하면 새 자료 평가(Evaluation)가 아니다.",
         "④ 행 번호와 개인의 중복 여부는 무관할 수 있다."
       ]
     },
-    "goal": "평가 목적과 분할 방법을 바꾸어 사람과 시간의 경계를 확인한다.",
+    "goal": "평가(Evaluation) 목적과 분할 방법을 바꾸어 사람과 시간의 경계를 확인한다.",
     "kind": "split-condition",
     "relatedCodes": [
       "2-21",
@@ -1502,7 +1502,7 @@ export const CATALOG = [
   {
     "code": "2-23",
     "subject": 2,
-    "title": "같은 숫자라도 척도에 따라 가능한 해석이 다르다",
+    "title": "측정척도(Scale of Measurement)",
     "lead": "범주에 붙인 번호와 중량을 잰 숫자는 같은 연산을 허용하지 않는다. 순서·차이·비율 중 무엇이 의미 있는지를 변수의 정의에서 확인한다.",
     "cue": "번호인가, 순서인가, 차이인가, 비율인가.",
     "question": {
@@ -1515,14 +1515,14 @@ export const CATALOG = [
         "20kg은 10kg의 두 배 중량이다"
       ],
       "answer": 4,
-      "reason": "중량은 의미 있는 영점을 가진 비율척도라 같은 단위에서 배율을 해석할 수 있다.",
+      "reason": "중량은 의미 있는 영점을 가진 비율척도(Ratio Scale)라 같은 단위에서 배율을 해석할 수 있다.",
       "wrong_reasons": [
         "① 명목 코드는 식별자이지 수량이 아니다.",
         "② 서열 단계 사이의 같은 간격이 보장되지 않는다.",
         "③ 섭씨의 0은 절대 영점이 아니므로 온도 비율을 그렇게 해석하지 않는다."
       ]
     },
-    "goal": "측정척도를 바꾸어 배율 해석과 코드의 산술 연산을 구분한다.",
+    "goal": "측정척도(Scale of Measurement)를 바꾸어 배율 해석과 코드의 산술 연산을 구분한다.",
     "kind": "scale-interpretation",
     "relatedCodes": [
       "2-01",
@@ -1544,12 +1544,12 @@ export const CATALOG = [
   {
     "code": "2-24",
     "subject": 2,
-    "title": "평균을 고르기 전에 무엇의 합을 보존할지 정한다",
-    "lead": "평균은 무조건 더하고 개수로 나누는 한 종류의 계산이 아니다. 같은 시간의 속도, 같은 거리의 속도, 기간별 성장배율은 서로 다른 합계와 관계를 보존해야 한다.",
-    "cue": "속도 평균은 총거리 나누기 총시간에서 시작한다.",
+    "title": "산술평균(Arithmetic Mean)·기하평균(Geometric Mean)·조화평균(Harmonic Mean)",
+    "lead": "평균(Mean)은 무조건 더하고 개수로 나누는 한 종류의 계산이 아니다. 같은 시간의 속도(Velocity), 같은 거리의 속도(Velocity), 기간별 성장배율은 서로 다른 합계와 관계를 보존해야 한다.",
+    "cue": "속도(Velocity) 평균(Mean)은 총거리 나누기 총시간에서 시작한다.",
     "question": {
       "givens": "같은 거리 60km씩을 시속 30km와 60km로 이동했다. 정차 시간은 없다.",
-      "stem": "전체 평균 속도는 몇 km/h인가?",
+      "stem": "전체 평균(Mean) 속도(Velocity)는 몇 km/h인가?",
       "choices": [
         "30",
         "40",
@@ -1559,12 +1559,12 @@ export const CATALOG = [
       "answer": 2,
       "reason": "총거리 120km, 총시간 60/30+60/60=3h이므로 40km/h다.",
       "wrong_reasons": [
-        "① 느린 구간 속도만 골랐다.",
-        "③ 같은 시간일 때의 산술평균을 같은 거리 조건에 적용했다.",
-        "④ 빠른 구간 속도만 골랐다."
+        "① 느린 구간 속도(Velocity)만 골랐다.",
+        "③ 같은 시간일 때의 산술평균(Arithmetic Mean)을 같은 거리 조건에 적용했다.",
+        "④ 빠른 구간 속도(Velocity)만 골랐다."
       ]
     },
-    "goal": "두 속도와 동일 거리·동일 시간 조건을 바꾸어 평균 속도를 계산한다.",
+    "goal": "두 속도(Velocity)와 동일 거리·동일 시간 조건을 바꾸어 평균(Mean) 속도(Velocity)를 계산한다.",
     "kind": "weighted-rate",
     "relatedCodes": [
       "2-17",
@@ -1590,11 +1590,11 @@ export const CATALOG = [
   {
     "code": "2-25",
     "subject": 2,
-    "title": "표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다",
-    "lead": "표본평균 주변의 편차는 모두 독립적으로 정해지지 않는다. 모분산을 불편하게 추정하는 표본분산은 그 제약을 반영해 편차제곱합을 n−1로 나눈다.",
-    "cue": "편차를 제곱했으니 단위와 배율도 제곱된다.",
+    "title": "표본분산(Sample Variance)과 자유도(df, Degrees of Freedom)",
+    "lead": "표본평균(Sample Mean) 주변의 편차(Deviation)는 모두 독립적으로 정해지지 않는다. 모분산(Population Variance)을 불편하게 추정하는 표본분산(Sample Variance)은 그 제약을 반영해 편차제곱합(Sum of Squared Deviations)을 n−1로 나눈다.",
+    "cue": "편차(Deviation)를 제곱했으니 단위와 배율도 제곱된다.",
     "question": {
-      "givens": "독립·동일분포 표본 2·4·6이다. 모분산의 불편 추정량 s²=Σ(x−표본평균)²/(n−1)을 쓴다.",
+      "givens": "독립·동일분포(iid, Independent and Identically Distributed) 표본(Sample) 2·4·6이다. 모분산(Population Variance)의 불편추정량(Unbiased Estimator) s²=Σ(x−표본평균)²/(n−1)을 쓴다.",
       "stem": "s²는 얼마인가?",
       "choices": [
         "2",
@@ -1603,14 +1603,14 @@ export const CATALOG = [
         "8"
       ],
       "answer": 3,
-      "reason": "평균은 4, 편차제곱합은 8이므로 8/(3−1)=4다.",
+      "reason": "평균(Mean)은 4, 편차제곱합(Sum of Squared Deviations)은 8이므로 8/(3−1)=4다.",
       "wrong_reasons": [
-        "① 표본표준편차와 분산을 혼동했다.",
+        "① 표본 표준편차(Sample Standard Deviation)와 분산(Variance)을 혼동했다.",
         "② n으로 나눈 값이며 문제에서 정한 분모와 다르다.",
-        "④ 편차제곱합에서 나누기를 하지 않았다."
+        "④ 편차제곱합(Sum of Squared Deviations)에서 나누기를 하지 않았다."
       ]
     },
-    "goal": "세 관측의 배율과 분모의 정의를 바꾸어 분산과 표준편차를 구분한다.",
+    "goal": "세 관측(Observation)의 배율과 분모의 정의를 바꾸어 분산(Variance)과 표준편차(SD, Standard Deviation)를 구분한다.",
     "kind": "variance-calculation",
     "relatedCodes": [
       "2-13",
@@ -1628,27 +1628,27 @@ export const CATALOG = [
   {
     "code": "2-26",
     "subject": 2,
-    "title": "상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다",
-    "lead": "상자그림의 중앙선은 보통 중앙값이다. 평균 표시가 따로 없다면 상자그림에서 정확한 산술평균을 읽을 수 없다.",
-    "cue": "중앙선은 중앙값이며 평균은 별도 표시를 확인한다.",
+    "title": "상자그림(Box Plot)과 사분위수(Quartile)",
+    "lead": "상자그림(Box Plot)의 중앙선은 보통 중앙값(Median)이다. 평균(Mean) 표시가 따로 없다면 상자그림(Box Plot)에서 정확한 산술평균(Arithmetic Mean)을 읽을 수 없다.",
+    "cue": "중앙선은 중앙값(Median)이며 평균(Mean)은 별도 표시를 확인한다.",
     "question": {
-      "givens": "상자그림에 아래 수염2·Q1=4·중앙값6·Q3=8·위 수염10만 표시하고 평균 기호는 없다.",
+      "givens": "상자그림(Box Plot)에 아래 수염(Whisker)2·Q1=4·중앙값(Median)6·Q3=8·위 수염(Whisker)10만 표시하고 평균(Mean) 기호는 없다.",
       "stem": "그림에서 정확한 값을 직접 읽을 수 없는 것은?",
       "choices": [
-        "중앙값",
-        "산술평균",
-        "제1사분위수",
-        "제3사분위수"
+        "중앙값(Median)",
+        "산술평균(Arithmetic Mean)",
+        "제1사분위수(Quartile)",
+        "제3사분위수(Quartile)"
       ],
       "answer": 2,
-      "reason": "평균 표시는 없고 사분위수와 중앙값만으로 평균은 일반적으로 정해지지 않는다.",
+      "reason": "평균(Mean) 표시는 없고 사분위수(Quartile)와 중앙값(Median)만으로 평균(Mean)은 일반적으로 정해지지 않는다.",
       "wrong_reasons": [
-        "① 중앙값 6이 명시되어 있다.",
+        "① 중앙값(Median) 6이 명시되어 있다.",
         "③ Q1=4가 명시되어 있다.",
         "④ Q3=8이 명시되어 있다."
       ]
     },
-    "goal": "평균 기호와 바깥 점을 추가했을 때 그림에서 직접 읽을 수 있는 값을 구분한다.",
+    "goal": "평균(Mean) 기호와 바깥 점을 추가했을 때 그림에서 직접 읽을 수 있는 값을 구분한다.",
     "kind": "read-plot-conditions",
     "relatedCodes": [
       "2-08",
@@ -1670,12 +1670,12 @@ export const CATALOG = [
   {
     "code": "2-28",
     "subject": 2,
-    "title": "공분산의 크기와 상관계수의 크기는 단위 변화에 다르게 반응한다",
-    "lead": "공분산은 두 변수의 함께 움직임을 원래 단위의 곱으로 나타낸다. 상관계수는 각각의 표준편차로 다시 나누므로 양수 단위 변환에 영향을 받지 않는다.",
-    "cue": "공분산에는 단위가 남고 상관계수에서는 산포 단위가 나뉜다.",
+    "title": "공분산(Covariance)과 피어슨 상관계수(Pearson Correlation Coefficient)",
+    "lead": "공분산(Covariance)은 두 변수의 함께 움직임을 원래 단위의 곱으로 나타낸다. 상관계수(Correlation Coefficient)는 각각의 표준편차(SD, Standard Deviation)로 다시 나누므로 양수 단위 변환에 영향을 받지 않는다.",
+    "cue": "공분산(Covariance)에는 단위가 남고 상관계수(Correlation Coefficient)에서는 산포(Dispersion) 단위가 나뉜다.",
     "question": {
       "givens": "x=[1,2,3], y=[2,4,6]. 표본공분산은 n−1로 나눈다. y만 100배 한다.",
-      "stem": "변환 후 공분산과 피어슨 상관계수는?",
+      "stem": "변환 후 공분산(Covariance)과 피어슨 상관계수(Pearson Correlation Coefficient)는?",
       "choices": [
         "2와 1",
         "200과 100",
@@ -1683,14 +1683,14 @@ export const CATALOG = [
         "200과 1"
       ],
       "answer": 4,
-      "reason": "공분산은 100배인 200이 되고 표준편차 배율이 상쇄되어 상관계수는 1로 유지된다.",
+      "reason": "공분산(Covariance)은 100배인 200이 되고 표준편차(SD, Standard Deviation) 배율이 상쇄되어 상관계수(Correlation Coefficient)는 1로 유지된다.",
       "wrong_reasons": [
-        "① 공분산의 단위 배율을 반영하지 않았다.",
-        "② 상관계수는 100이 될 수 없고 이 경우 배율은 상쇄된다.",
-        "③ 공분산과 상관계수 양쪽의 변화를 잘못 적용했다."
+        "① 공분산(Covariance)의 단위 배율을 반영하지 않았다.",
+        "② 상관계수(Correlation Coefficient)는 100이 될 수 없고 이 경우 배율은 상쇄된다.",
+        "③ 공분산(Covariance)과 상관계수(Correlation Coefficient) 양쪽의 변화를 잘못 적용했다."
       ]
     },
-    "goal": "y의 배율을 양수·음수·0으로 바꾸어 공분산과 상관계수의 차이를 확인한다.",
+    "goal": "y의 배율을 양수·음수·0으로 바꾸어 공분산(Covariance)과 상관계수(Correlation Coefficient)의 차이를 확인한다.",
     "kind": "covariance-correlation",
     "relatedCodes": [
       "2-25",
@@ -1708,20 +1708,20 @@ export const CATALOG = [
   {
     "code": "2-31",
     "subject": 2,
-    "title": "각 층에서 뽑는가, 일부 집락을 고르는가",
-    "lead": "집단을 나누었다는 사실만으로 층화추출과 집락추출을 구분할 수 없다. 모든 집단에서 일부를 뽑았는지, 집단 일부를 먼저 고른 뒤 그 안을 조사했는지가 핵심이다.",
+    "title": "층화추출(Stratified Sampling)·집락추출(Cluster Sampling)·다단계추출(Multistage Sampling)",
+    "lead": "집단을 나누었다는 사실만으로 층화추출(Stratified Sampling)과 집락추출(Cluster Sampling)을 구분할 수 없다. 모든 집단에서 일부를 뽑았는지, 집단 일부를 먼저 고른 뒤 그 안을 조사했는지가 핵심이다.",
     "cue": "각 층의 일부인지, 일부 집락의 전부인지 읽는다.",
     "question": {
       "givens": "4개 학급 각 20명에서, 모든 학급마다 무작위로 2명씩 추출한다.",
       "stem": "이 추출 절차는?",
       "choices": [
-        "학급을 층으로 한 층화추출",
-        "학급 한 개의 전원 집락추출",
+        "학급을 층으로 한 층화추출(Stratified Sampling)",
+        "학급 한 개의 전원 집락추출(Cluster Sampling)",
         "전체 학생의 전수조사",
         "확률을 정하지 않은 임의 편의추출"
       ],
       "answer": 1,
-      "reason": "모든 층에서 각각 표본을 무작위로 뽑는 구조이므로 층화추출이다.",
+      "reason": "모든 층에서 각각 표본(Sample)을 무작위로 뽑는 구조이므로 층화추출(Stratified Sampling)이다.",
       "wrong_reasons": [
         "② 집락 일부를 고르고 전원을 조사한 절차가 아니다.",
         "③ 전체 80명 중 8명만 조사한다.",
@@ -1746,27 +1746,27 @@ export const CATALOG = [
   {
     "code": "2-32",
     "subject": 2,
-    "title": "표본을 늘려도 표본틀에서 빠진 사람은 돌아오지 않는다",
-    "lead": "표본 수를 늘리면 무작위 표집의 흔들림을 줄일 수 있지만 조사 대상에서 체계적으로 빠진 집단의 문제를 자동으로 고치지는 못한다.",
+    "title": "표본오차(Sampling Error)와 비표본오차(Non-sampling Error)",
+    "lead": "표본(Sample) 수를 늘리면 무작위 표본추출(Sampling)의 흔들림을 줄일 수 있지만 조사 대상에서 체계적으로 빠진 집단의 문제를 자동으로 고치지는 못한다.",
     "cue": "많이 뽑는 것보다 누구를 뽑을 수 있는 틀인지 먼저 본다.",
     "question": {
-      "givens": "전체 주민 평균이 목표인데 전화 보유자만 표본틀에 있다. 이 틀에서 100명을 1000명으로 늘린다.",
+      "givens": "전체 주민 평균(Mean)이 목표인데 전화 보유자만 표본추출틀(Sampling Frame)에 있다. 이 틀에서 100명을 1000명으로 늘린다.",
       "stem": "옳은 판단은?",
       "choices": [
-        "포괄오차가 반드시 0이 된다",
+        "포괄오차(Coverage Error)가 반드시 0이 된다",
         "전체 주민을 모두 조사한 셈이다",
         "전화 미보유자의 체계적 누락은 남을 수 있다",
-        "비표본오차는 표본 수만 알면 정확히 계산된다"
+        "비표본오차(Non-sampling Error)는 표본(Sample) 수만 알면 정확히 계산된다"
       ],
       "answer": 3,
-      "reason": "누락된 집단은 뽑힐 기회 자체가 없어 같은 표본틀 안의 표본 확대가 포괄 문제를 해결하지 못한다.",
+      "reason": "누락된 집단은 뽑힐 기회 자체가 없어 같은 표본추출틀(Sampling Frame) 안의 표본(Sample) 확대가 포괄 문제를 해결하지 못한다.",
       "wrong_reasons": [
-        "① 표본틀을 고치지 않았으므로 그런 보장은 없다.",
-        "② 표본틀 밖의 주민은 여전히 제외되어 있다.",
-        "④ 비표본오차의 원인·크기를 표본 수 하나로 알 수 없다."
+        "① 표본추출틀(Sampling Frame)을 고치지 않았으므로 그런 보장은 없다.",
+        "② 표본추출틀(Sampling Frame) 밖의 주민은 여전히 제외되어 있다.",
+        "④ 비표본오차(Non-sampling Error)의 원인·크기를 표본(Sample) 수 하나로 알 수 없다."
       ]
     },
-    "goal": "같은 표본틀의 표본 수 증가와 누락 집단을 틀에 포함하는 변화를 비교한다.",
+    "goal": "같은 표본추출틀(Sampling Frame)의 표본(Sample) 수 증가와 누락 집단을 틀에 포함하는 변화를 비교한다.",
     "kind": "coverage-calculation",
     "relatedCodes": [
       "2-31",
@@ -1784,12 +1784,12 @@ export const CATALOG = [
   {
     "code": "2-33",
     "subject": 2,
-    "title": "조건부확률은 조건에 해당하는 집단을 분모로 삼는다",
+    "title": "조건부확률(Conditional Probability)",
     "lead": "불량품을 보았을 때 어느 공장에서 왔는지 묻는 확률과, 한 공장의 제품이 불량일 확률은 조건이 반대다. 분모에 들어가는 집단부터 표시한다.",
     "cue": "무엇을 안 뒤의 확률인지가 분모를 정한다.",
     "question": {
       "givens": "A 생산100개 중 불량10개, B 생산100개 중 불량30개다. 전체 생산품에서 균등하게 고른 제품이 불량이라고 확인됐다.",
-      "stem": "그 제품이 B 공장 제품일 조건부확률은?",
+      "stem": "그 제품이 B 공장 제품일 조건부확률(Conditional Probability)은?",
       "choices": [
         "30%",
         "50%",
@@ -1804,7 +1804,7 @@ export const CATALOG = [
         "④ B와 불량이 함께인 비율 30/200이다."
       ]
     },
-    "goal": "불량 수와 조건의 방향을 바꾸어 조건부확률의 분모를 확인한다.",
+    "goal": "불량 수와 조건의 방향을 바꾸어 조건부확률(Conditional Probability)의 분모를 확인한다.",
     "kind": "conditional-probability",
     "relatedCodes": [
       "2-34",
@@ -1822,11 +1822,11 @@ export const CATALOG = [
   {
     "code": "2-34",
     "subject": 2,
-    "title": "다시 넣는 추출과 넣지 않는 추출은 다음 확률이 다르다",
-    "lead": "성공 횟수를 센다는 공통점만으로 이항분포를 쓰면 안 된다. 시행 사이에 성공확률이 유지되는지와 독립성을 먼저 확인한다.",
+    "title": "복원추출(Sampling with Replacement)과 비복원추출(Sampling without Replacement)",
+    "lead": "성공 횟수를 센다는 공통점만으로 이항분포(Binomial Distribution)를 쓰면 안 된다. 시행 사이에 성공확률이 유지되는지와 독립성(Independence)을 먼저 확인한다.",
     "cue": "첫 번째를 뽑은 뒤 주머니에 무엇이 남는지 적는다.",
     "question": {
-      "givens": "빨강 2개·파랑 3개에서 두 개를 균등하게 비복원 추출한다.",
+      "givens": "빨강 2개·파랑 3개에서 두 개를 균등하게 비복원추출(Sampling without Replacement)한다.",
       "stem": "두 번 모두 빨강일 확률은?",
       "choices": [
         "0.16",
@@ -1839,7 +1839,7 @@ export const CATALOG = [
       "wrong_reasons": [
         "① 복원·독립 추출의 (2/5)²을 적용했다.",
         "③ 첫 번째 빨강의 확률만 계산했다.",
-        "④ 첫 빨강을 뽑은 뒤의 두 번째 조건부확률만 계산했다."
+        "④ 첫 빨강을 뽑은 뒤의 두 번째 조건부확률(Conditional Probability)만 계산했다."
       ]
     },
     "goal": "공의 수와 복원 여부를 바꾸어 두 번 모두 빨강인 확률을 계산한다.",
@@ -1864,9 +1864,9 @@ export const CATALOG = [
   {
     "code": "2-35",
     "subject": 2,
-    "title": "기댓값은 가능한 값에 확률을 가중한 평균이다",
-    "lead": "기댓값은 가능한 값에 각각의 확률을 곱해 더한 평균이다. 확률이 모두 같으면 단순평균과 일치하지만, 일반적인 계산에서는 주어진 확률을 생략하면 안 된다. 분산은 같은 확률로 평균에서의 제곱 거리를 요약한다.",
-    "cue": "값에 확률을 곱해 더하고, 제곱의 평균에서 평균의 제곱을 뺀다.",
+    "title": "기댓값(Expected Value)과 분산(Variance)",
+    "lead": "기댓값(Expected Value)은 가능한 값에 각각의 확률을 곱해 더한 평균(Mean)이다. 확률이 모두 같으면 단순평균과 일치하지만, 일반적인 계산에서는 주어진 확률을 생략하면 안 된다. 분산(Variance)은 같은 확률로 평균(Mean)에서의 제곱 거리를 요약한다.",
+    "cue": "값에 확률을 곱해 더하고, 제곱의 평균(Mean)에서 평균(Mean)의 제곱을 뺀다.",
     "question": {
       "givens": "P(X=0)=0.25, P(X=2)=0.75다.",
       "stem": "E(X)와 Var(X)는?",
@@ -1880,11 +1880,11 @@ export const CATALOG = [
       "reason": "E(X)=0×0.25+2×0.75=1.5, Var(X)=3−1.5²=0.75다.",
       "wrong_reasons": [
         "① 두 가능한 값의 확률이 같다고 계산했다.",
-        "② E(X²)=3과 분산을 혼동했다.",
-        "④ 자주 나오는 값 2를 기댓값으로, 확률 0.25를 분산으로 읽었다."
+        "② E(X²)=3과 분산(Variance)을 혼동했다.",
+        "④ 자주 나오는 값 2를 기댓값(Expected Value)으로, 확률 0.25를 분산(Variance)으로 읽었다."
       ]
     },
-    "goal": "확률과 선형 변환의 배율·위치를 바꾸어 기댓값과 분산을 계산한다.",
+    "goal": "확률과 선형 변환의 배율·위치를 바꾸어 기댓값(Expected Value)과 분산(Variance)을 계산한다.",
     "kind": "expectation-variance",
     "relatedCodes": [
       "2-24",
@@ -1906,12 +1906,12 @@ export const CATALOG = [
   {
     "code": "2-36",
     "subject": 2,
-    "title": "개별 관측의 산포와 표본평균의 산포는 다르다",
-    "lead": "표본평균의 분포는 같은 크기의 표본을 반복해서 뽑고 평균을 계산할 때의 분포다. 한 표본 안의 개별 값들이 모인 분포와 구분해야 한다.",
+    "title": "표본분포(Sampling Distribution)·표준오차(SE, Standard Error)·중심극한정리(CLT, Central Limit Theorem)",
+    "lead": "표본평균의 표본분포(Sampling Distribution of the Sample Mean)는 같은 크기의 표본(Sample)을 반복해서 뽑고 평균(Mean)을 계산할 때의 분포다. 한 표본(Sample) 안의 개별 값들이 모인 분포와 구분해야 한다.",
     "cue": "n개 값의 분포와 n개를 평균낸 값의 분포를 나눈다.",
     "question": {
-      "givens": "평균100·표준편차12인 모집단에서 독립·동일분포 관측 36개를 뽑아 평균낸다.",
-      "stem": "표본평균의 기댓값과 표준오차는?",
+      "givens": "평균(Mean)100·표준편차(SD, Standard Deviation)12인 모집단(Population)에서 독립·동일분포(iid, Independent and Identically Distributed) 관측(Observation) 36개를 뽑아 평균낸다.",
+      "stem": "표본평균(Sample Mean)의 기댓값(Expected Value)과 표준오차(SE, Standard Error)는?",
       "choices": [
         "100과 2",
         "100과 12",
@@ -1919,14 +1919,14 @@ export const CATALOG = [
         "100과 144"
       ],
       "answer": 1,
-      "reason": "E(평균)=100, 표준오차=12/√36=2다.",
+      "reason": "E(평균)=100, 표준오차(SE, Standard Error)=12/√36=2다.",
       "wrong_reasons": [
-        "② 개별 관측의 표준편차를 평균의 표준오차로 썼다.",
-        "③ 평균의 기댓값은 n으로 다시 나누지 않는다.",
-        "④ 144는 개별 관측의 분산이며 표준오차가 아니다."
+        "② 개별 관측(Observation)의 표준편차(SD, Standard Deviation)를 평균(Mean)의 표준오차(SE, Standard Error)로 썼다.",
+        "③ 평균(Mean)의 기댓값(Expected Value)은 n으로 다시 나누지 않는다.",
+        "④ 144는 개별 관측(Observation)의 분산(Variance)이며 표준오차(SE, Standard Error)가 아니다."
       ]
     },
-    "goal": "표본 수와 독립성 조건을 바꾸어 평균의 표준오차 공식 적용 여부를 확인한다.",
+    "goal": "표본(Sample) 수와 독립성(Independence) 조건을 바꾸어 평균(Mean)의 표준오차(SE, Standard Error) 공식 적용 여부를 확인한다.",
     "kind": "standard-error",
     "relatedCodes": [
       "2-02",
@@ -1944,27 +1944,27 @@ export const CATALOG = [
   {
     "code": "2-37",
     "subject": 2,
-    "title": "좋은 추정량의 네 성질은 서로 다른 질문이다",
-    "lead": "한 번의 추정값이 참값과 가까웠다는 사실만으로 추정량을 평가할 수 없다. 불편성·일치성·효율성·충분성은 반복 표집과 자료 축약의 서로 다른 성질을 말한다.",
-    "cue": "평균이 맞는가, 모이는가, 덜 흔들리는가, 정보를 남기는가.",
+    "title": "점추정(Point Estimation)과 추정량(Estimator)의 성질(Properties of Estimators)",
+    "lead": "한 번의 추정값(Estimate)이 참값과 가까웠다는 사실만으로 추정량(Estimator)을 평가(Evaluation)할 수 없다. 불편성(Unbiasedness)·일치성(Consistency)·효율성(Efficiency)·충분성(Sufficiency)은 반복 표본추출(Sampling)과 자료 축약의 서로 다른 성질을 말한다.",
+    "cue": "평균(Mean)이 맞는가, 모이는가, 덜 흔들리는가, 정보를 남기는가.",
     "question": {
-      "givens": "모수 θ의 추정량 T에 대해 모든 θ에서 Eθ(T)=θ가 성립한다.",
+      "givens": "모수(Parameter) θ의 추정량(Estimator) T에 대해 모든 θ에서 Eθ(T)=θ가 성립한다.",
       "stem": "이 조건이 직접 말하는 성질은?",
       "choices": [
-        "표본 수가 커지면 반드시 참값과 정확히 같다",
-        "모든 모수의 정보를 항상 보존한다",
-        "분산이 가능한 모든 추정량 중 가장 작다",
-        "불편성"
+        "표본(Sample) 수가 커지면 반드시 참값과 정확히 같다",
+        "모든 모수(Parameter)의 정보를 항상 보존한다",
+        "분산(Variance)이 가능한 모든 추정량(Estimator) 중 가장 작다",
+        "불편성(Unbiasedness)"
       ],
       "answer": 4,
-      "reason": "추정량의 기댓값과 목표 모수가 같다는 것은 불편성의 정의다.",
+      "reason": "추정량(Estimator)의 기댓값(Expected Value)과 목표 모수(Parameter)가 같다는 것은 불편성(Unbiasedness)의 정의다.",
       "wrong_reasons": [
-        "① 일치성도 확률적 가까워짐을 말하며 정확한 일치를 보장하지 않는다.",
-        "② 충분성은 조건부 분포나 우도 구조를 별도로 확인해야 한다.",
-        "③ 효율성은 분산과 비교 집합에 관한 추가 조건이 필요하다."
+        "① 일치성(Consistency)도 확률적 가까워짐을 말하며 정확한 일치를 보장하지 않는다.",
+        "② 충분성(Sufficiency)은 조건부 분포나 우도(Likelihood) 구조를 별도로 확인해야 한다.",
+        "③ 효율성(Efficiency)은 분산(Variance)과 비교 집합에 관한 추가 조건이 필요하다."
       ]
     },
-    "goal": "같은 불편성을 가진 두 추정 규칙의 분산을 표본 수에 따라 비교한다.",
+    "goal": "같은 불편성(Unbiasedness)을 가진 두 추정 규칙의 분산(Variance)을 표본(Sample) 수에 따라 비교한다.",
     "kind": "estimator-comparison",
     "relatedCodes": [
       "2-25",
@@ -1982,27 +1982,27 @@ export const CATALOG = [
   {
     "code": "2-38",
     "subject": 2,
-    "title": "p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다",
-    "lead": "p값은 귀무가설이 참일 확률이 아니다. 귀무가설과 검정 가정 아래에서 관측한 결과 이상으로 극단적인 통계량이 나올 확률을 나타낸다.",
-    "cue": "p값은 가설의 확률이 아니라 가설 아래 결과의 극단성이다.",
+    "title": "가설검정(Hypothesis Testing)·p값(p-value)·유의수준(Significance Level)",
+    "lead": "p값(p-value)은 귀무가설(Null Hypothesis)이 참일 확률이 아니다. 귀무가설(Null Hypothesis)과 검정 가정 아래에서 관측(Observation)한 결과 이상으로 극단적인 통계량(Statistic)이 나올 확률을 나타낸다.",
+    "cue": "p값(p-value)은 가설의 확률이 아니라 가설 아래 결과의 극단성이다.",
     "question": {
-      "givens": "가정이 맞는 검정에서 p=0.03이다. 유의수준 α=0.05를 사전에 정했다.",
+      "givens": "가정이 맞는 검정에서 p=0.03이다. 유의수준(Significance Level) α=0.05를 사전에 정했다.",
       "stem": "맞는 결론은?",
       "choices": [
-        "귀무가설이 참일 확률은 3%다",
-        "0.03<0.05이므로 귀무가설을 기각한다",
+        "귀무가설(Null Hypothesis)이 참일 확률은 3%다",
+        "0.03<0.05이므로 귀무가설(Null Hypothesis)을 기각한다",
         "차이가 전혀 없다고 확정한다",
-        "제2종 오류 확률은 항상 3%다"
+        "제2종 오류(Type II Error) 확률은 항상 3%다"
       ],
       "answer": 2,
-      "reason": "정한 기준에서 p값이 α보다 작아 기각한다. 이 결정은 가설의 사후확률이나 효과 크기를 직접 말하지 않는다.",
+      "reason": "정한 기준에서 p값(p-value)이 α보다 작아 기각한다. 이 결정은 가설의 사후확률(Posterior Probability)이나 효과크기(Effect Size)를 직접 말하지 않는다.",
       "wrong_reasons": [
-        "① p값의 조건부 방향을 뒤집었다.",
+        "① p값(p-value)의 조건부 방향을 뒤집었다.",
         "③ 기각 결과와도 맞지 않고 차이의 부재를 증명하는 절차도 아니다.",
-        "④ β는 특정 대립가설·표본 설계 등에 따라 달라지며 p값과 같지 않다."
+        "④ β는 특정 대립가설(Alternative Hypothesis)·표본(Sample) 설계 등에 따라 달라지며 p값(p-value)과 같지 않다."
       ]
     },
-    "goal": "같은 p값에 서로 다른 사전 유의수준을 적용하고 등호 경계를 확인한다.",
+    "goal": "같은 p값(p-value)에 서로 다른 사전 유의수준(Significance Level)을 적용하고 등호 경계를 확인한다.",
     "kind": "hypothesis-decision",
     "relatedCodes": [
       "2-02",
@@ -2028,12 +2028,12 @@ export const CATALOG = [
   {
     "code": "3-01",
     "subject": 3,
-    "title": "범주형 회귀의 계수는 조건부터 센다",
-    "lead": "수준 수를 바로 더하지 말고 절편·주효과·교호작용을 먼저 표시한다.",
-    "cue": "절편을 적고, 수준마다 하나씩 뺀다.",
+    "title": "범주형 변수(Categorical Variable)의 더미 변수 코딩(Dummy Variable Coding)과 회귀계수(Regression Coefficient)",
+    "lead": "수준 수를 바로 더하지 말고 절편(Intercept)·주효과(Main Effect)·교호작용(Interaction)을 먼저 표시한다.",
+    "cue": "절편(Intercept)을 적고, 수준마다 하나씩 뺀다.",
     "question": {
-      "givens": "A 3수준·B 4수준. 절편 포함, 기준 코딩, 주효과만, 설계행렬 완전열랭크.",
-      "stem": "추정하는 평균 모형의 계수 수는?",
+      "givens": "A 3수준·B 4수준. 절편(Intercept) 포함, 기준 코딩, 주효과(Main Effect)만, 설계행렬(Design Matrix) 완전 열랭크(Full Column Rank).",
+      "stem": "추정하는 평균(Mean) 모형(Model)의 계수 수는?",
       "choices": [
         "5개",
         "6개",
@@ -2041,14 +2041,14 @@ export const CATALOG = [
         "12개"
       ],
       "answer": 2,
-      "reason": "절편 1개와 A의 2개, B의 3개를 더하면 6개다. 문제는 교호작용을 제외했다.",
+      "reason": "절편(Intercept) 1개와 A의 2개, B의 3개를 더하면 6개다. 문제는 교호작용(Interaction)을 제외했다.",
       "wrong_reasons": [
-        "1번: 5는 지시변수 계수만 센 것으로 절편이 빠졌다.",
+        "1번: 5는 더미 변수(Dummy Variable) 계수만 센 것으로 절편(Intercept)이 빠졌다.",
         "3번: 7은 수준 3+4를 그대로 더한 수로 지정된 기준 코딩과 다르다.",
-        "4번: 12는 두 범주의 모든 조합을 별도 평균으로 표현할 때의 자유로운 평균 수다."
+        "4번: 12는 두 범주의 모든 조합을 별도 평균(Mean)으로 표현할 때의 자유로운 평균(Mean) 수다."
       ]
     },
-    "goal": "주효과와 교호작용을 켰을 때 독립 계수 수가 달라지는 이유를 확인한다.",
+    "goal": "주효과(Main Effect)와 교호작용(Interaction)을 켰을 때 독립 계수 수가 달라지는 이유를 확인한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2067,27 +2067,27 @@ export const CATALOG = [
   {
     "code": "3-03",
     "subject": 3,
-    "title": "비모수검정은 표본의 연결부터 고른다",
-    "lead": "정규성이라는 한 단어보다 독립 표본인지 같은 사람의 반복 측정인지 먼저 본다.",
+    "title": "비모수 검정(Nonparametric Test): 맨-휘트니 U 검정(Mann–Whitney U Test)과 윌콕슨 부호순위 검정(Wilcoxon Signed-Rank Test)",
+    "lead": "정규성(Normality)이라는 한 단어보다 독립 표본인지 같은 사람의 반복 측정인지 먼저 본다.",
     "cue": "독립 두 집단인가, 같은 사람의 차이인가.",
     "question": {
-      "givens": "서로 다른 사람의 두 독립 집단. 순서형 반응의 분포를 순위로 비교하려 한다.",
+      "givens": "서로 다른 사람의 두 독립 집단. 순서형 자료(Ordinal Data) 반응의 분포를 순위(Rank)로 비교하려 한다.",
       "stem": "보기 중 자료 구조에 맞는 검정은?",
       "choices": [
-        "대응표본 t검정",
-        "Wilcoxon 부호순위 검정",
-        "Mann–Whitney U 검정",
-        "범주 빈도 카이제곱검정"
+        "대응표본 t검정(Paired-samples t-test)",
+        "윌콕슨 부호순위 검정(Wilcoxon Signed-Rank Test)",
+        "맨-휘트니 U 검정(Mann–Whitney U Test)",
+        "범주 빈도 카이제곱 검정(Chi-square Test)"
       ],
       "answer": 3,
-      "reason": "두 집단 사이에 짝이 없고 순위 기반 분포 비교를 원하므로 Mann–Whitney U가 맞는다.",
+      "reason": "두 집단 사이에 짝이 없고 순위(Rank) 기반 분포 비교를 원하므로 맨-휘트니 U검정(Mann–Whitney U Test) U가 맞는다.",
       "wrong_reasons": [
-        "1번: 같은 사람의 차이 평균을 다루는 설계가 아니다.",
+        "1번: 같은 사람의 차이 평균(Mean)을 다루는 설계가 아니다.",
         "2번: 짝별 차이가 필요한 검정인데 여기에는 짝이 없다.",
         "4번: 반응을 범주별 빈도로 정리하는 상황을 제시하지 않았다."
       ]
     },
-    "goal": "짝 정보와 차이의 대칭성에 따라 검토할 순위검정을 바꾼다.",
+    "goal": "짝 정보와 차이의 대칭성(Symmetry)에 따라 검토할 순위검정을 바꾼다.",
     "kind": "decision",
     "relatedCodes": [],
     "sources": [
@@ -2106,27 +2106,27 @@ export const CATALOG = [
   {
     "code": "3-05",
     "subject": 3,
-    "title": "최소제곱은 잔차의 부호를 지운다",
-    "lead": "잔차 합이 0이라는 사실과 오차가 작다는 판단을 구별한다.",
-    "cue": "잔차를 더하지 말고, 제곱해서 더한다.",
+    "title": "최소제곱법(OLS, Ordinary Least Squares)과 잔차제곱합(RSS, Residual Sum of Squares)",
+    "lead": "잔차(Residual) 합이 0이라는 사실과 오차가 작다는 판단을 구별한다.",
+    "cue": "잔차(Residual)를 더하지 말고, 제곱해서 더한다.",
     "question": {
-      "givens": "관측값 1·2·3에 절편 b만 있는 모형을 보통 최소제곱으로 적합한다.",
-      "stem": "적합 절편과 잔차 제곱합은?",
+      "givens": "관측값 1·2·3에 절편(Intercept) b만 있는 모형(Model)을 보통 최소제곱으로 적합한다.",
+      "stem": "적합 절편(Intercept)과 잔차제곱합(RSS, Residual Sum of Squares)은?",
       "choices": [
-        "b=2, RSS=0",
-        "b=1, RSS=5",
-        "b=3, RSS=2",
-        "b=2, RSS=2"
+        "b=2, 잔차제곱합(RSS, Residual Sum of Squares)=0",
+        "b=1, 잔차제곱합(RSS, Residual Sum of Squares)=5",
+        "b=3, 잔차제곱합(RSS, Residual Sum of Squares)=2",
+        "b=2, 잔차제곱합(RSS, Residual Sum of Squares)=2"
       ],
       "answer": 4,
-      "reason": "평균 2를 예측하면 잔차는 −1,0,1이다. 제곱합 1+0+1=2를 얻는다.",
+      "reason": "평균(Mean) 2를 예측하면 잔차(Residual)는 −1,0,1이다. 제곱합 1+0+1=2를 얻는다.",
       "wrong_reasons": [
-        "1번: 잔차 합 0과 잔차 제곱합을 혼동했다.",
-        "2번: 제시된 RSS 계산은 맞지만 5보다 작은 RSS를 갖는 b=2가 있다.",
-        "3번: b=3의 RSS는 4+1+0=5다."
+        "1번: 잔차(Residual) 합 0과 잔차제곱합(RSS, Residual Sum of Squares)을 혼동했다.",
+        "2번: 제시된 잔차제곱합(RSS, Residual Sum of Squares) 계산은 맞지만 5보다 작은 잔차제곱합(RSS, Residual Sum of Squares)을 갖는 b=2가 있다.",
+        "3번: b=3의 잔차제곱합(RSS, Residual Sum of Squares)은 4+1+0=5다."
       ]
     },
-    "goal": "절편 후보를 바꿔 RSS 곡선의 최소점이 평균임을 확인한다.",
+    "goal": "절편(Intercept) 후보를 바꿔 잔차제곱합(RSS, Residual Sum of Squares) 곡선의 최소점이 평균임을 확인한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-08"
@@ -2144,11 +2144,11 @@ export const CATALOG = [
   {
     "code": "3-06",
     "subject": 3,
-    "title": "로지스틱 계수는 확률보다 오즈에 붙는다",
-    "lead": "선형식·오즈·확률을 세 줄로 나누면 증가량과 배수를 구별할 수 있다.",
-    "cue": "계수는 로그오즈, 지수는 오즈의 배수.",
+    "title": "로지스틱 회귀(Logistic Regression)의 로짓(Logit), 오즈(Odds), 오즈비(Odds Ratio)",
+    "lead": "선형식·오즈(Odds)·확률을 세 줄로 나누면 증가량과 배수를 구별할 수 있다.",
+    "cue": "계수는 로그오즈(Log-Odds), 지수는 오즈(Odds)의 배수.",
     "question": {
-      "givens": "이진 로지스틱 모형에서 한 관측의 선형식 η=ln3이다.",
+      "givens": "이진 로지스틱 모형(Model)에서 한 관측(Observation)의 선형식 η=ln3이다.",
       "stem": "사건 확률 p는?",
       "choices": [
         "0.25",
@@ -2157,14 +2157,14 @@ export const CATALOG = [
         "3.00"
       ],
       "answer": 3,
-      "reason": "오즈 exp(ln3)=3이므로 p=3/(1+3)=0.75다.",
+      "reason": "오즈(Odds) exp(ln3)=3이므로 p=3/(1+3)=0.75다.",
       "wrong_reasons": [
         "1번: 사건과 비사건을 바꾸었을 때의 확률이다.",
         "2번: 선형식 η=0일 때의 값이다.",
-        "4번: 오즈 3을 확률로 오인했다."
+        "4번: 오즈(Odds) 3을 확률로 오인했다."
       ]
     },
-    "goal": "같은 오즈 배수가 시작 확률에 따라 다른 확률 변화를 만드는 것을 본다.",
+    "goal": "같은 오즈(Odds) 배수가 시작 확률에 따라 다른 확률 변화를 만드는 것을 본다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2180,12 +2180,12 @@ export const CATALOG = [
   {
     "code": "3-07",
     "subject": 3,
-    "title": "트리 분할은 자식 전체의 엔트로피를 본다",
-    "lead": "작은 순수 노드 하나보다 분할 뒤 남은 전체 혼합을 비교한다.",
-    "cue": "부모에서, 자식의 크기 가중평균을 뺀다.",
+    "title": "의사결정나무(Decision Tree)의 엔트로피(Entropy)와 정보 이득(Information Gain)",
+    "lead": "작은 순수 노드(Node) 하나보다 분할 뒤 남은 전체 혼합을 비교한다.",
+    "cue": "부모에서, 자식의 크기 가중평균(Weighted Average)을 뺀다.",
     "question": {
       "givens": "앞 8명 예제와 별개인 가상 분할 평가다. 계산 편의를 위해 부모 H=1, 분할 A의 가중 자식 H=0.8, B는 0.3으로 주었다.",
-      "stem": "정보이득이 큰 분할과 그 이득은?",
+      "stem": "정보 이득(Information Gain)이 큰 분할과 그 이득은?",
       "choices": [
         "A, 0.8",
         "A, 0.2",
@@ -2193,14 +2193,14 @@ export const CATALOG = [
         "B, 0.7"
       ],
       "answer": 4,
-      "reason": "정보이득은 1−가중 자식 H다. A는 0.2, B는 0.7이므로 B다.",
+      "reason": "정보 이득(Information Gain)은 1−가중 자식 H다. A는 0.2, B는 0.7이므로 B다.",
       "wrong_reasons": [
-        "1번: 남은 불순도 0.8을 이득으로 읽었다.",
+        "1번: 남은 불순도(Impurity) 0.8을 이득으로 읽었다.",
         "2번: A의 이득은 맞지만 B보다 작다.",
-        "3번: B에 남은 불순도이며 줄어든 양이 아니다."
+        "3번: B에 남은 불순도(Impurity)이며 줄어든 양이 아니다."
       ]
     },
-    "goal": "자식의 실제 도수를 바꿔 부모·가중 자식·정보이득을 함께 다시 계산한다.",
+    "goal": "자식의 실제 도수(Frequency)를 바꿔 부모·가중 자식·정보 이득(Information Gain)을 함께 다시 계산한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2216,12 +2216,12 @@ export const CATALOG = [
   {
     "code": "3-08",
     "subject": 3,
-    "title": "분류 트리와 회귀 트리의 잎을 구별한다",
-    "lead": "정답의 자료형과 손실을 알면 잎의 예측값이 정해진다.",
-    "cue": "수치 잎은 손실을 확인한다: 제곱은 평균.",
+    "title": "의사결정나무(Decision Tree)의 분류(Classification)와 회귀(Regression)",
+    "lead": "정답의 자료형과 손실을 알면 잎의 예측값(Predicted Value)이 정해진다.",
+    "cue": "수치 잎은 손실을 확인한다: 제곱은 평균(Mean).",
     "question": {
-      "givens": "회귀 트리의 한 잎에 반응값 2·4·6이 있다. 제곱오차 기준이다.",
-      "stem": "이 잎의 예측값과 제곱오차 합은?",
+      "givens": "회귀 의사결정나무(Regression Tree)의 한 잎에 반응값 2·4·6이 있다. 제곱오차(Squared Error) 기준이다.",
+      "stem": "이 잎의 예측값(Predicted Value)과 제곱오차(Squared Error) 합은?",
       "choices": [
         "4, 8",
         "4, 0",
@@ -2229,14 +2229,14 @@ export const CATALOG = [
         "6, 20"
       ],
       "answer": 1,
-      "reason": "평균 (2+4+6)/3=4이고, (2−4)²+(4−4)²+(6−4)²=8이다.",
+      "reason": "평균(Mean) (2+4+6)/3=4이고, (2−4)²+(4−4)²+(6−4)²=8이다.",
       "wrong_reasons": [
-        "2번: 평균을 예측해도 서로 다른 실제 값의 잔차가 모두 0이 되지는 않는다.",
-        "3번: 최소제곱 잎 예측은 최소값 2가 아니라 평균이다.",
-        "4번: 6에서의 제곱오차는 20이지만 기준을 최소화하지 못한다."
+        "2번: 평균(Mean)을 예측해도 서로 다른 실제 값의 잔차(Residual)가 모두 0이 되지는 않는다.",
+        "3번: 최소제곱 잎 예측은 최소값 2가 아니라 평균(Mean)이다.",
+        "4번: 6에서의 제곱오차(Squared Error)는 20이지만 기준을 최소화하지 못한다."
       ]
     },
-    "goal": "극단값을 넣고 손실을 바꿔 평균과 중앙값의 차이를 본다.",
+    "goal": "극단값(Extreme Value)을 넣고 손실을 바꿔 평균(Mean)과 중앙값(Median)의 차이를 본다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-05"
@@ -2253,9 +2253,9 @@ export const CATALOG = [
   {
     "code": "3-09",
     "subject": 3,
-    "title": "순전파는 층마다 값을 넘긴다",
-    "lead": "가중합을 모두 구한 뒤 지정된 활성화를 적용한다.",
-    "cue": "가중합 뒤 활성화, 그 출력이 다음 입력.",
+    "title": "인공신경망(ANN, Artificial Neural Network)의 순전파(Forward Propagation)",
+    "lead": "가중합(Weighted Sum)을 모두 구한 뒤 지정된 활성화를 적용한다.",
+    "cue": "가중합(Weighted Sum) 뒤 활성화, 그 출력이 다음 입력.",
     "question": {
       "givens": "x=(2,1). h₁=ReLU(x₁+x₂−1), h₂=ReLU(x₁−x₂), y=h₁+2h₂.",
       "stem": "출력 y는?",
@@ -2268,12 +2268,12 @@ export const CATALOG = [
       "answer": 4,
       "reason": "h₁=2, h₂=1이고 y=2+2×1=4다.",
       "wrong_reasons": [
-        "1번: h₂ 한 뉴런의 출력일 뿐 최종 출력이 아니다.",
+        "1번: h₂ 한 뉴런(Neuron)의 출력일 뿐 최종 출력이 아니다.",
         "2번: h₁만 계산하고 h₂ 경로를 빠뜨렸다.",
-        "3번: h₁+h₂를 사용해 두 번째 출력 가중치 2를 누락했다."
+        "3번: h₁+h₂를 사용해 두 번째 출력 가중치(Weight) 2를 누락했다."
       ]
     },
-    "goal": "입력 값을 바꾸며 ReLU의 차단과 출력 가중치를 확인한다.",
+    "goal": "입력 값을 바꾸며 정류 선형 유닛(ReLU, Rectified Linear Unit)의 차단과 출력 가중치(Weight)를 확인한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-11",
@@ -2291,27 +2291,27 @@ export const CATALOG = [
   {
     "code": "3-10",
     "subject": 3,
-    "title": "XOR는 비선형 표현이 필요한 이유를 보여 준다",
+    "title": "다층 퍼셉트론(MLP, Multilayer Perceptron)과 XOR(Exclusive OR)의 비선형성(Nonlinearity)",
     "lead": "층 수만 늘려도 모든 활성화가 선형이면 한 선형식으로 합쳐진다.",
-    "cue": "깊이보다 먼저 중간의 비선형을 확인한다.",
+    "cue": "깊이보다 먼저 중간의 비선형성(Nonlinearity)을 확인한다.",
     "question": {
-      "givens": "XOR 네 점을 분류한다. 은닉층과 출력층이 모두 아핀 연산이며 비선형 활성화가 없다.",
+      "givens": "배타적 논리합(XOR, Exclusive OR) 네 점을 분류한다. 은닉층(Hidden Layer)과 출력층(Output Layer)이 모두 아핀 연산이며 비선형성(Nonlinearity) 활성화가 없다.",
       "stem": "층을 더 쌓으면 직선 한계를 없앨 수 있는가?",
       "choices": [
         "항상 가능하다",
-        "입력 표본 수만 늘면 가능하다",
-        "합성이 다시 아핀식이므로 이 구성만으로는 어렵다",
+        "입력 표본(Sample) 수만 늘면 가능하다",
+        "합성이 다시 아핀변환(Affine Transformation)이므로 이 구성만으로는 어렵다",
         "편향을 없애면 반드시 가능하다"
       ],
       "answer": 3,
-      "reason": "아핀 함수의 합성은 아핀 함수다. 직선 하나로 분리할 수 없는 XOR를 이 구조만으로 완전 분류할 수 없다.",
+      "reason": "아핀 함수의 합성은 아핀 함수다. 직선 하나로 분리할 수 없는 배타적 논리합(XOR, Exclusive OR)을 이 구조만으로 완전 분류할 수 없다.",
       "wrong_reasons": [
-        "1번: 깊이와 비선형 표현을 같은 것으로 보았다.",
-        "2번: 표본 수가 함수족의 선형성을 바꾸지는 않는다.",
-        "4번: 편향 제거는 표현을 더 제한하며 XOR 해결을 보장하지 않는다."
+        "1번: 깊이와 비선형성(Nonlinearity) 표현을 같은 것으로 보았다.",
+        "2번: 표본(Sample) 수가 함수족의 선형성을 바꾸지는 않는다.",
+        "4번: 편향 제거는 표현을 더 제한하며 배타적 논리합(XOR, Exclusive OR) 해결을 보장하지 않는다."
       ]
     },
-    "goal": "같은 고정 가중치에서 중간 비선형을 제거했을 때 XOR 네 점 결과를 비교한다.",
+    "goal": "같은 고정 가중치에서 중간 비선형성(Nonlinearity)을 제거했을 때 배타적 논리합(XOR, Exclusive OR) 네 점 결과를 비교한다.",
     "kind": "decision",
     "relatedCodes": [
       "3-09",
@@ -2329,11 +2329,11 @@ export const CATALOG = [
   {
     "code": "3-11",
     "subject": 3,
-    "title": "활성화 함수의 값과 범위를 따로 본다",
+    "title": "활성화 함수(Activation Function): 시그모이드(Sigmoid), 쌍곡탄젠트(Tanh), ReLU(Rectified Linear Unit)",
     "lead": "출력이 0이 될 수 있는지, 음수가 가능한지, 상한이 있는지 비교한다.",
-    "cue": "시그모이드는 반, 나머지 둘은 원점에서 영.",
+    "cue": "시그모이드 함수(Sigmoid Function)는 반, 나머지 둘은 원점에서 영.",
     "question": {
-      "givens": "입력 z=0. 순서는 sigmoid, tanh, ReLU다.",
+      "givens": "입력 z=0. 순서는 시그모이드 함수(Sigmoid Function), 쌍곡탄젠트(tanh, Hyperbolic Tangent), ReLU다.",
       "stem": "세 함수값의 순서는?",
       "choices": [
         "(0,0,0)",
@@ -2344,9 +2344,9 @@ export const CATALOG = [
       "answer": 2,
       "reason": "sigmoid(0)=1/(1+1)=0.5, tanh(0)=0, ReLU(0)=0이다.",
       "wrong_reasons": [
-        "1번: sigmoid가 원점에서 0.5라는 점을 놓쳤다.",
+        "1번: 시그모이드 함수(Sigmoid Function)가 원점에서 0.5라는 점을 놓쳤다.",
         "3번: 함수값을 이진 레이블처럼 취급했다.",
-        "4번: 서로 다른 세 함수에 sigmoid의 값을 모두 적용했다."
+        "4번: 서로 다른 세 함수에 시그모이드 함수(Sigmoid Function)의 값을 모두 적용했다."
       ]
     },
     "goal": "입력 부호와 함수 선택을 바꿔 값·상한을 비교한다.",
@@ -2367,11 +2367,11 @@ export const CATALOG = [
   {
     "code": "3-12",
     "subject": 3,
-    "title": "역전파와 갱신은 서로 다른 단계다",
-    "lead": "기울기를 구했다는 사실만으로 가중치가 바뀌지는 않는다.",
-    "cue": "역전파는 기울기, 갱신은 새 가중치.",
+    "title": "역전파(Backpropagation)와 경사하강법(Gradient Descent)",
+    "lead": "기울기(Gradient)를 구했다는 사실만으로 가중치가 바뀌지는 않는다.",
+    "cue": "역전파(Backpropagation)는 기울기(Gradient), 갱신은 새 가중치.",
     "question": {
-      "givens": "ŷ=wx, L=(ŷ−t)²/2. x=2, t=0, w=1. 학습률 0.1로 한 번 갱신한다.",
+      "givens": "ŷ=wx, L=(ŷ−t)²/2. x=2, t=0, w=1. 학습률(Learning Rate) 0.1로 한 번 갱신한다.",
       "stem": "갱신 뒤 w는?",
       "choices": [
         "0.6",
@@ -2382,12 +2382,12 @@ export const CATALOG = [
       "answer": 1,
       "reason": "∂L/∂w=(wx−t)x=4다. 따라서 1−0.1×4=0.6이다.",
       "wrong_reasons": [
-        "2번: 갱신을 하지 않고 기울기만 구했을 때의 w다.",
-        "3번: 손실을 줄이는 음의 기울기 방향 대신 더했다.",
-        "4번: 기울기 4를 새 가중치로 착각했다."
+        "2번: 갱신을 하지 않고 기울기(Gradient)만 구했을 때의 w다.",
+        "3번: 손실을 줄이는 음의 기울기(Negative Gradient) 방향 대신 더했다.",
+        "4번: 기울기(Gradient) 4를 새 가중치로 착각했다."
       ]
     },
-    "goal": "역전파만 수행하는 상태와 갱신까지 수행하는 상태를 분리한다.",
+    "goal": "역전파(Backpropagation)만 수행하는 상태와 갱신까지 수행하는 상태를 분리한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-09",
@@ -2405,12 +2405,12 @@ export const CATALOG = [
   {
     "code": "3-13",
     "subject": 3,
-    "title": "기울기의 반복 곱은 작아지거나 커질 수 있다",
-    "lead": "클리핑이 막는 것은 큰 기울기이며 사라진 신호를 복원하는 장치는 아니다.",
-    "cue": "노름 클리핑은 큰 길이만 줄인다.",
+    "title": "기울기 소실(Vanishing Gradient), 기울기 폭발(Exploding Gradient), 기울기 클리핑(Gradient Clipping)",
+    "lead": "클리핑(Clipping)이 막는 것은 큰 기울기이며 사라진 신호를 복원하는 장치는 아니다.",
+    "cue": "기울기 노름 클리핑(Gradient Norm Clipping)은 큰 길이만 줄인다.",
     "question": {
-      "givens": "기울기 g=(6,8), L2 노름 10. 노름 문턱 5로 방향을 유지해 클리핑한다.",
-      "stem": "클리핑 뒤 기울기는?",
+      "givens": "기울기 g=(6,8), L2 노름(L2 Norm) 10. 노름(Norm) 임계값(Threshold) 5로 방향을 유지해 클리핑(Clipping)한다.",
+      "stem": "클리핑(Clipping) 뒤 기울기는?",
       "choices": [
         "(5,5)",
         "(6,8)",
@@ -2418,14 +2418,14 @@ export const CATALOG = [
         "(0,0)"
       ],
       "answer": 3,
-      "reason": "노름 비율 5/10=0.5를 두 좌표에 곱하면 (3,4)다.",
+      "reason": "노름(Norm) 비율 5/10=0.5를 두 좌표에 곱하면 (3,4)다.",
       "wrong_reasons": [
-        "1번: 좌표별 값 클리핑과 노름 클리핑을 혼동했다.",
-        "2번: 원래 노름이 문턱 5를 초과하므로 조정이 필요하다.",
+        "1번: 좌표별 값 클리핑(Clipping)과 기울기 노름 클리핑(Gradient Norm Clipping)을 혼동했다.",
+        "2번: 원래 노름(Norm)이 임계값(Threshold) 5를 초과하므로 조정이 필요하다.",
         "4번: 길이를 제한하는 것이지 기울기를 지우는 것은 아니다."
       ]
     },
-    "goal": "문턱보다 큰 기울기만 줄이고 작은 기울기는 유지되는지 확인한다.",
+    "goal": "임계값(Threshold)보다 큰 기울기만 줄이고 작은 기울기는 유지되는지 확인한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-12"
@@ -2442,12 +2442,12 @@ export const CATALOG = [
   {
     "code": "3-14",
     "subject": 3,
-    "title": "서포트벡터는 경계에 가까운 제약을 만든다",
-    "lead": "하드 마진의 간단한 선형 예제로 경계와 두 지지선을 분리한다.",
-    "cue": "하드 마진은 가장 가까운 양쪽 점을 본다.",
+    "title": "서포트 벡터 머신(SVM, Support Vector Machine)의 서포트 벡터(Support Vector)와 마진(Margin)",
+    "lead": "하드 마진(Hard Margin)의 간단한 선형 예제로 경계와 두 지지선을 분리한다.",
+    "cue": "하드 마진(Hard Margin)은 가장 가까운 양쪽 점을 본다.",
     "question": {
-      "givens": "1차원 하드 마진. 음성은 −3·−1, 양성은 1·3. 경계 x=0.",
-      "stem": "서포트벡터 좌표 쌍은?",
+      "givens": "1차원 하드 마진(Hard Margin). 음성은 −3·−1, 양성은 1·3. 경계 x=0.",
+      "stem": "서포트 벡터(SV, Support Vector) 좌표 쌍은?",
       "choices": [
         "−1과 1",
         "−3과 3",
@@ -2455,14 +2455,14 @@ export const CATALOG = [
         "1과 3"
       ],
       "answer": 1,
-      "reason": "두 클래스에서 경계에 가장 가까운 −1과 1이 여유 없는 제약을 만든다.",
+      "reason": "두 클래스(Class)에서 경계에 가장 가까운 −1과 1이 여유 없는 제약을 만든다.",
       "wrong_reasons": [
         "2번: 가장 먼 두 점을 골랐다.",
-        "3번: 한 클래스만 골라 양쪽 마진을 제한하는 점을 놓쳤다.",
-        "4번: 양성 클래스만 골랐다."
+        "3번: 한 클래스(Class)만 골라 양쪽 마진(Margin)을 제한하는 점을 놓쳤다.",
+        "4번: 양성 클래스(Class)만 골랐다."
       ]
     },
-    "goal": "좌표 단위를 바꾸면서 정규화된 w와 기하 마진을 함께 바꾼다.",
+    "goal": "좌표 단위를 바꾸면서 정규화된 w와 기하 마진(Margin)을 함께 바꾼다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2477,11 +2477,11 @@ export const CATALOG = [
   {
     "code": "3-15",
     "subject": 3,
-    "title": "커널과 C는 서로 다른 부분을 바꾼다",
-    "lead": "특징 공간의 내적과 마진 위반 벌점의 비중을 구별한다.",
-    "cue": "커널은 내적, C는 위반의 가격.",
+    "title": "서포트 벡터 머신(SVM, Support Vector Machine)의 커널(Kernel)과 규제 매개변수(Regularization Parameter) C",
+    "lead": "특징공간(Feature Space)의 내적(Inner Product)과 마진(Margin) 위반 벌점의 비중을 구별한다.",
+    "cue": "커널(Kernel)은 내적(Inner Product), C는 위반의 가격.",
     "question": {
-      "givens": "목적식 ½‖w‖²+CΣξ. A=(1,2), B=(3,0)는 두 항의 값이다. C=2.",
+      "givens": "목적함수(Objective Function) ½‖w‖²+CΣξ. A=(1,2), B=(3,0)는 두 항의 값이다. C=2.",
       "stem": "두 후보 중 목적값이 작은 쪽은?",
       "choices": [
         "A, 목적값 1",
@@ -2494,7 +2494,7 @@ export const CATALOG = [
       "wrong_reasons": [
         "1번: A의 위반 벌점 항을 무시했다.",
         "2번: C와 두 항을 제시된 목적식대로 결합하지 않았다.",
-        "3번: B의 위반량이 0이라는 이유로 가중치 노름 항까지 지웠다."
+        "3번: B의 위반량이 0이라는 이유로 가중치 노름(Norm) 항까지 지웠다."
       ]
     },
     "goal": "C를 바꾸며 같은 두 후보의 목적값 우열이 뒤집히는 지점을 찾는다.",
@@ -2512,12 +2512,12 @@ export const CATALOG = [
   {
     "code": "3-16",
     "subject": 3,
-    "title": "연관규칙의 분모를 바꾸면 질문도 바뀐다",
-    "lead": "전체 거래·선행 품목 거래·후행 품목 기본 비율을 순서대로 구별한다.",
-    "cue": "신뢰도 분모는 화살표 앞, 향상도는 기본 비율 비교.",
+    "title": "연관규칙 분석(Association Rule Analysis)의 지지도(Support), 신뢰도(Confidence), 향상도(Lift)",
+    "lead": "전체 거래(Transaction)·선행항(Antecedent) 거래(Transaction)·후행항(Consequent) 기본 비율을 순서대로 구별한다.",
+    "cue": "신뢰도(Confidence) 분모는 화살표 앞, 향상도(Lift)는 기본 비율 비교.",
     "question": {
-      "givens": "거래 40장, A 10장, B 20장, 동시 8장. 결측은 없다.",
-      "stem": "A→B 향상도는?",
+      "givens": "거래(Transaction) 40장, A 10장, B 20장, 동시 8장. 결측은 없다.",
+      "stem": "A→B 향상도(Lift)는?",
       "choices": [
         "0.2",
         "0.8",
@@ -2525,14 +2525,14 @@ export const CATALOG = [
         "2.0"
       ],
       "answer": 3,
-      "reason": "신뢰도 8/10=0.8을 B의 기본 지지도 20/40=0.5로 나누면 1.6이다.",
+      "reason": "신뢰도(Confidence) 8/10=0.8을 B의 기본 지지도(Support) 20/40=0.5로 나누면 1.6이다.",
       "wrong_reasons": [
         "1번: 동시 지지도다.",
-        "2번: A→B 신뢰도이며 기본 비율과 비교하기 전이다.",
-        "4번: 신뢰도 계산에 동시 거래 수 8을 반영하지 않았다."
+        "2번: A→B 신뢰도(Confidence)이며 기본 비율과 비교하기 전이다.",
+        "4번: 신뢰도(Confidence) 계산에 동시 거래(Transaction) 수 8을 반영하지 않았다."
       ]
     },
-    "goal": "방향을 바꿔 신뢰도의 분모가 달라져도 향상도는 같은지 확인한다.",
+    "goal": "방향을 바꿔 신뢰도(Confidence)의 분모가 달라져도 향상도(Lift)는 같은지 확인한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2547,11 +2547,11 @@ export const CATALOG = [
   {
     "code": "3-20",
     "subject": 3,
-    "title": "K-means의 중심과 DBSCAN의 이웃을 구별한다",
+    "title": "군집 분석(Clustering): K-평균 군집화(K-means Clustering)와 DBSCAN(Density-Based Spatial Clustering of Applications with Noise)",
     "lead": "군집 수를 정하는 방식과 잡음을 남기는 방식을 비교한다.",
-    "cue": "평균 중심인가, 반경 안 이웃 수인가.",
+    "cue": "평균(Mean) 중심인가, 반경 안 이웃 수인가.",
     "question": {
-      "givens": "좌표 0·0.1·0.2·2. DBSCAN eps=0.11, min_samples=3, 자기 자신 포함.",
+      "givens": "좌표 0·0.1·0.2·2. DBSCAN(Density-Based Spatial Clustering of Applications with Noise) 이웃 반경(Neighborhood Radius)=0.11, 최소 표본 수(Minimum Number of Samples)=3, 자기 자신 포함.",
       "stem": "잡음으로 남는 좌표는?",
       "choices": [
         "2만",
@@ -2560,14 +2560,14 @@ export const CATALOG = [
         "없다"
       ],
       "answer": 1,
-      "reason": "앞의 세 점은 핵심점 0.1을 통해 한 군집이다. 멀리 있는 2는 핵심점과 연결되지 않는다.",
+      "reason": "앞의 세 점은 핵심점(Core Point) 0.1을 통해 한 군집이다. 멀리 있는 2는 핵심점(Core Point)과 연결되지 않는다.",
       "wrong_reasons": [
-        "2번: 경계점을 잡음과 혼동했다.",
+        "2번: 경계점(Border Point)을 잡음과 혼동했다.",
         "3번: 0.1 주변에 자기 포함 세 점이 있다는 사실을 놓쳤다.",
-        "4번: 떨어진 2는 핵심점이거나 핵심점 이웃이라는 조건을 만족하지 못한다."
+        "4번: 떨어진 2는 핵심점(Core Point)이거나 핵심점(Core Point) 이웃이라는 조건을 만족하지 못한다."
       ]
     },
-    "goal": "이웃 반경과 최소 수를 직접 바꿔 핵심·경계·잡음을 다시 분류한다.",
+    "goal": "이웃 반경(Neighborhood Radius)과 최소 수를 직접 바꿔 핵심·경계·잡음을 다시 분류한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2586,12 +2586,12 @@ export const CATALOG = [
   {
     "code": "3-21",
     "subject": 3,
-    "title": "고윳값은 축의 분산 몫을 보여 준다",
+    "title": "주성분 분석(PCA, Principal Component Analysis)과 설명 분산 비율(Explained Variance Ratio)",
     "lead": "단일 축의 비율과 누적 비율을 구별해 남길 개수를 정한다.",
     "cue": "한 축은 나누고, 남길 개수는 누적한다.",
     "question": {
-      "givens": "PCA 고윳값 6·3·1. 누적 설명분산비 80% 이상을 만족하는 최소 개수를 고른다.",
-      "stem": "남길 주성분 수는?",
+      "givens": "주성분 분석(PCA, Principal Component Analysis) 고유값(Eigenvalue) 6·3·1. 누적 설명 분산 비율(Cumulative Explained Variance Ratio) 80% 이상을 만족하는 최소 개수를 고른다.",
+      "stem": "남길 주성분(PC, Principal Component) 수는?",
       "choices": [
         "1개",
         "2개",
@@ -2603,7 +2603,7 @@ export const CATALOG = [
       "wrong_reasons": [
         "1번: 60%라서 기준 80%에 미달한다.",
         "3번: 기준은 만족하지만 최소 개수가 아니다.",
-        "4번: 고윳값 6을 주성분 개수로 읽었다."
+        "4번: 고유값(Eigenvalue) 6을 주성분(PC, Principal Component) 개수로 읽었다."
       ]
     },
     "goal": "누적 기준을 바꾸며 필요한 최소 축 수가 바뀌는 지점을 찾는다.",
@@ -2621,12 +2621,12 @@ export const CATALOG = [
   {
     "code": "3-22",
     "subject": 3,
-    "title": "교차표는 관측빈도를 독립 기대빈도와 비교한다",
+    "title": "교차표(Contingency Table)와 카이제곱 독립성 검정(Chi-Square Test of Independence)",
     "lead": "행의 합과 열의 합을 이용해 독립일 때의 기준을 만든다.",
     "cue": "기대 셀은 행 합 곱하기 열 합, 전체로 나누기.",
     "question": {
-      "givens": "교차표에서 A행 합 20, 구매열 합 20, 전체 40명이다.",
-      "stem": "독립 가정 아래 A·구매 셀 기대빈도는?",
+      "givens": "교차표(Contingency Table)에서 A행 합 20, 구매열 합 20, 전체 40명이다.",
+      "stem": "독립 가정 아래 A·구매 셀 기대빈도(Expected Frequency)는?",
       "choices": [
         "5",
         "8",
@@ -2637,11 +2637,11 @@ export const CATALOG = [
       "reason": "행 합과 열 합을 곱해 전체 수로 나눈다. 20×20/40=10이다.",
       "wrong_reasons": [
         "1번: 행·열의 비율을 인원수로 바꾸는 계산이 맞지 않는다.",
-        "2번: 예제의 다른 셀 관측빈도이며 독립 기대빈도가 아니다.",
-        "4번: 주변합 자체이며 셀 기대빈도가 아니다."
+        "2번: 예제의 다른 셀 관측빈도(Observed Frequency)이며 독립 기대빈도(Expected Frequency)가 아니다.",
+        "4번: 주변 합계(Marginal Total) 자체이며 셀 기대빈도(Expected Frequency)가 아니다."
       ]
     },
-    "goal": "주변합을 고정하고 관측 도수 차이를 바꿔 Pearson χ²가 달라짐을 확인한다.",
+    "goal": "주변 합계(Marginal Total)를 고정하고 관측도수(Observed Frequency) 차이를 바꿔 Pearson χ²가 달라짐을 확인한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2656,24 +2656,24 @@ export const CATALOG = [
   {
     "code": "3-23",
     "subject": 3,
-    "title": "MANOVA는 여러 반응의 평균벡터를 비교한다",
-    "lead": "반응변수 수와 집단 수를 먼저 구분한다.",
-    "cue": "여러 반응을 묶은 집단 평균벡터.",
+    "title": "다변량 분산분석(MANOVA, Multivariate Analysis of Variance)",
+    "lead": "반응변수(Response Variable) 수와 집단 수를 먼저 구분한다.",
+    "cue": "여러 반응을 묶은 집단 평균벡터(Mean Vector).",
     "question": {
-      "givens": "서로 독립인 세 교육 집단에서 각 사람의 시간·점수 두 수치 반응을 함께 측정했다. 일원 MANOVA를 검토한다.",
-      "stem": "기본 귀무가설은?",
+      "givens": "서로 독립인 세 교육 집단에서 각 사람의 시간·점수 두 수치 반응을 함께 측정했다. 일원 다변량 분산분석(MANOVA, Multivariate Analysis of Variance)을 검토한다.",
+      "stem": "기본 귀무가설(Null Hypothesis)은?",
       "choices": [
         "모든 관측값이 같다",
-        "두 반응의 상관계수가 0이다",
-        "각 집단의 표본 수가 같다",
-        "세 집단의 모평균벡터가 같다"
+        "두 반응의 상관계수(Correlation Coefficient)가 0이다",
+        "각 집단의 표본(Sample) 수가 같다",
+        "세 집단의 모평균벡터(Population Mean Vector)가 같다"
       ],
       "answer": 4,
-      "reason": "집단별 두 반응의 모평균을 묶은 벡터가 모두 같다는 가설이다.",
+      "reason": "집단별 두 반응의 모평균(Population Mean)을 묶은 벡터가 모두 같다는 가설이다.",
       "wrong_reasons": [
-        "1번: 평균이 같다는 것과 모든 관측이 같다는 것은 다르다.",
+        "1번: 평균(Mean)이 같다는 것과 모든 관측(Observation)이 같다는 것은 다르다.",
         "2번: 반응 사이 무상관 검정이 아니다.",
-        "3번: 동일 표본 수는 여기서 검정하려는 효과 가설이 아니다."
+        "3번: 동일 표본(Sample) 수는 여기서 검정하려는 효과 가설이 아니다."
       ]
     },
     "goal": "반응 수와 독립·반복측정 설계에 따라 기본 질문을 구별한다.",
@@ -2693,27 +2693,27 @@ export const CATALOG = [
   {
     "code": "3-24",
     "subject": 3,
-    "title": "정준상관은 두 묶음에서 점수를 하나씩 만든다",
-    "lead": "한 쌍의 원래 변수보다 두 변수 집합의 선형결합을 비교한다.",
-    "cue": "두 묶음, 두 선형결합, 그 사이 상관.",
+    "title": "정준상관분석(CCA, Canonical Correlation Analysis)",
+    "lead": "한 쌍의 원래 변수보다 두 변수집합(Variable Set)의 선형결합(Linear Combination)을 비교한다.",
+    "cue": "두 묶음, 두 선형결합(Linear Combination), 그 사이 상관관계(Correlation).",
     "question": {
-      "givens": "여러 사람 각각에게서 시험 두 과목과 직무지표 세 개를 함께 관측해 두 변수 묶음의 선형 관계를 탐색한다.",
-      "stem": "CCA가 직접 비교하는 것은?",
+      "givens": "여러 사람 각각에게서 시험 두 과목과 직무지표 세 개를 함께 관측(Observation)해 두 변수집합(Variable Set)의 선형 관계를 탐색한다.",
+      "stem": "정준상관분석(CCA, Canonical Correlation Analysis)이 직접 비교하는 것은?",
       "choices": [
-        "각 묶음에서 만든 선형결합 점수",
+        "각 묶음에서 만든 선형결합(Linear Combination) 점수",
         "모든 원래 값의 합 하나",
-        "집단별 수치 반응의 평균벡터",
+        "집단별 수치 반응의 평균벡터(Mean Vector)",
         "정답 레이블의 다수결"
       ],
       "answer": 1,
-      "reason": "두 변수 집합에서 선형결합을 하나씩 만들고 그 점수 사이 상관을 다룬다.",
+      "reason": "두 변수집합(Variable Set)에서 선형결합(Linear Combination)을 하나씩 만들고 그 점수 사이 상관관계(Correlation)를 다룬다.",
       "wrong_reasons": [
         "2번: 두 묶음의 구분과 가중치를 모두 잃는다.",
-        "3번: 집단 간 평균벡터 비교는 MANOVA의 질문이다.",
+        "3번: 집단 간 평균벡터(Mean Vector) 비교는 다변량 분산분석(MANOVA, Multivariate Analysis of Variance)의 질문이다.",
         "4번: 여러 분류기의 예측을 투표로 합치는 문제가 아니다."
       ]
     },
-    "goal": "미리 정한 두 선형결합의 값을 바꾸되 이것이 CCA 적합은 아님을 확인한다.",
+    "goal": "미리 정한 두 선형결합(Linear Combination)의 값을 바꾸되 이것이 정준상관분석(CCA, Canonical Correlation Analysis) 적합은 아님을 확인한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-23",
@@ -2735,12 +2735,12 @@ export const CATALOG = [
   {
     "code": "3-25",
     "subject": 3,
-    "title": "ARIMA의 MA는 과거 관측의 단순 평균이 아니다",
-    "lead": "자기회귀·차분·과거 오차의 세 역할을 식에서 찾는다.",
-    "cue": "AR은 과거 값, I는 차분, MA는 과거 오차.",
+    "title": "자기회귀누적이동평균 모형(ARIMA, Autoregressive Integrated Moving Average)",
+    "lead": "자기회귀(AR, Autoregressive)·차분(Differencing)·과거 오차의 세 역할을 식에서 찾는다.",
+    "cue": "자기회귀(AR, Autoregressive)는 과거 값, I는 차분(Differencing), 이동평균(MA, Moving Average)은 과거 오차.",
     "question": {
-      "givens": "모형 wₜ=0.5wₜ₋₁+εₜ+0.2εₜ₋₁. w=Δy, 과거 w=4·ε=1, 다음 ε의 조건부 기대 0.",
-      "stem": "다음 차분의 조건부 예측은?",
+      "givens": "모형(Model) wₜ=0.5wₜ₋₁+εₜ+0.2εₜ₋₁. w=Δy, 과거 w=4·ε=1, 다음 ε의 조건부 기대 0.",
+      "stem": "다음 차분(Differencing)의 조건부 예측은?",
       "choices": [
         "0.2",
         "2.0",
@@ -2748,14 +2748,14 @@ export const CATALOG = [
         "4.2"
       ],
       "answer": 3,
-      "reason": "AR 기여 2와 MA 기여 0.2를 더한다. 예측 대상이 원수준이 아니라 차분이라는 조건도 유지한다.",
+      "reason": "자기회귀(AR, Autoregressive) 기여 2와 이동평균(MA, Moving Average) 기여 0.2를 더한다. 예측 대상이 원수준이 아니라 차분(Differencing)이라는 조건도 유지한다.",
       "wrong_reasons": [
-        "1번: AR 항을 누락했다.",
-        "2번: 주어진 과거 혁신 오차의 MA 항을 누락했다.",
-        "4번: AR 계수 0.5를 적용하지 않았다."
+        "1번: 자기회귀(AR, Autoregressive) 항을 누락했다.",
+        "2번: 주어진 과거 혁신 오차의 이동평균(MA, Moving Average) 항을 누락했다.",
+        "4번: 자기회귀(AR, Autoregressive) 계수 0.5를 적용하지 않았다."
       ]
     },
-    "goal": "차분 예측과 원수준 복원을 선택해 같은 수치를 다르게 해석한다.",
+    "goal": "차분(Differencing) 예측과 원수준 복원을 선택해 같은 수치를 다르게 해석한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2770,11 +2770,11 @@ export const CATALOG = [
   {
     "code": "3-27",
     "subject": 3,
-    "title": "슬라이딩 윈도우는 예측 시점을 고정해 만든다",
+    "title": "시계열(Time Series)의 슬라이딩 윈도우(Sliding Window)와 시계열 교차검증(Time Series Cross-Validation)",
     "lead": "입력의 끝과 정답의 시점을 별도로 적는다.",
     "cue": "창 끝 t, 정답은 t+h.",
     "question": {
-      "givens": "시간순 관측 5개. 창 길이 3, 한 시점 앞을 예측하고 창을 1칸씩 이동한다.",
+      "givens": "시간순 관측(Observation) 5개. 창 길이(Window Length) 3, 한 시점 앞을 예측하고 창을 1칸씩 이동한다.",
       "stem": "만들 수 있는 완전한 입력·정답 쌍은?",
       "choices": [
         "1개",
@@ -2787,10 +2787,10 @@ export const CATALOG = [
       "wrong_reasons": [
         "1번: 한 창만 만들고 다음 가능한 창을 누락했다.",
         "3번: 정답이 없는 마지막 입력 창까지 셌다.",
-        "4번: 각 시점을 창 하나로 셌으며 앞뒤에 필요한 관측을 고려하지 않았다."
+        "4번: 각 시점을 창 하나로 셌으며 앞뒤에 필요한 관측(Observation)을 고려하지 않았다."
       ]
     },
-    "goal": "창 길이와 예측 수평을 바꿔 완전한 입력·정답 쌍을 센다.",
+    "goal": "창 길이(Window Length)와 예측 수평을 바꿔 완전한 입력·정답 쌍을 센다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2805,9 +2805,9 @@ export const CATALOG = [
   {
     "code": "3-28",
     "subject": 3,
-    "title": "베이즈는 관찰 뒤 분모를 다시 정한다",
-    "lead": "사전 규모에 가능도를 곱하고 관찰된 전체 안에서 정규화한다.",
-    "cue": "사전 곱하기 가능도, 관찰된 전체로 나누기.",
+    "title": "베이즈 정리(Bayes’ Theorem)와 사후확률(Posterior Probability)",
+    "lead": "사전 규모(Volume)에 가능도(Likelihood)를 곱하고 관찰된 전체 안에서 정규화(Normalization)한다.",
+    "cue": "사전 곱하기 가능도(Likelihood), 관찰된 전체로 나누기.",
     "question": {
       "givens": "A형 25%·B형 75%. 경고 확률은 A에서 20%, B에서 4%다. 두 유형이 전체다.",
       "stem": "경고를 보았을 때 A형일 확률은?",
@@ -2821,11 +2821,11 @@ export const CATALOG = [
       "reason": "관찰의 전체 확률은 0.25×0.20+0.75×0.04=0.08이다. A와 경고가 함께인 확률 0.05를 나누면 62.5%다.",
       "wrong_reasons": [
         "1번: P(경고|A)를 P(A|경고)와 뒤바꾸었다.",
-        "2번: 관찰 전의 사전확률을 그대로 사용했다.",
-        "3번: 두 가능도에 사전 규모가 다르다는 조건을 반영하지 않았다."
+        "2번: 관찰 전의 사전확률(Prior Probability)을 그대로 사용했다.",
+        "3번: 두 가능도(Likelihood)에 사전 규모(Volume)가 다르다는 조건을 반영하지 않았다."
       ]
     },
-    "goal": "사전 비율을 바꿔 같은 가능도의 사후확률을 다시 정규화한다.",
+    "goal": "사전 비율을 바꿔 같은 가능도(Likelihood)의 사후확률(Posterior Probability)을 다시 정규화(Normalization)한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-29",
@@ -2843,12 +2843,12 @@ export const CATALOG = [
   {
     "code": "3-29",
     "subject": 3,
-    "title": "나이브 베이즈는 클래스 안에서 곱으로 나눈다",
-    "lead": "특성의 무조건 독립이 아니라 클래스 조건을 붙인 독립 가정이다.",
-    "cue": "클래스를 고정한 뒤, 특성 가능도를 곱한다.",
+    "title": "나이브 베이즈 분류기(Naive Bayes Classifier)와 조건부 독립(Conditional Independence)",
+    "lead": "특성(Feature)의 무조건 독립이 아니라 클래스(Class) 조건을 붙인 독립 가정이다.",
+    "cue": "클래스(Class)를 고정한 뒤, 특성(Feature) 가능도(Likelihood)를 곱한다.",
     "question": {
-      "givens": "사전 A/B 각 0.5. 두 관찰 특성의 가능도는 A=(0.8,0.5), B=(0.4,0.5). 조건부 독립을 가정한다.",
-      "stem": "A의 비정규화 점수는?",
+      "givens": "사전 A/B 각 0.5. 두 관찰 특성(Feature)의 가능도(Likelihood)는 A=(0.8,0.5), B=(0.4,0.5). 조건부 독립(Conditional Independence)을 가정한다.",
+      "stem": "A의 비정규화 사후 점수(Unnormalized Posterior Score)는?",
       "choices": [
         "0.20",
         "0.40",
@@ -2858,12 +2858,12 @@ export const CATALOG = [
       "answer": 1,
       "reason": "사전까지 곱해 0.5×0.8×0.5=0.20이다.",
       "wrong_reasons": [
-        "2번: 두 가능도만 곱하고 사전 0.5를 빠뜨렸다.",
-        "3번: 제시된 곱셈 모형 대신 확률을 임의로 더하거나 평균했다.",
-        "4번: 첫 특성 가능도만 사용했다."
+        "2번: 두 가능도(Likelihood)만 곱하고 사전 0.5를 빠뜨렸다.",
+        "3번: 제시된 곱셈 모형(Model) 대신 확률을 임의로 더하거나 평균(Mean)했다.",
+        "4번: 첫 특성(Feature) 가능도(Likelihood)만 사용했다."
       ]
     },
-    "goal": "사전 또는 특성 가능도를 바꾸어 점수와 사후확률을 분리한다.",
+    "goal": "사전 또는 특성(Feature) 가능도(Likelihood)를 바꾸어 점수와 사후확률(Posterior Probability)을 분리한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-28"
@@ -2880,11 +2880,11 @@ export const CATALOG = [
   {
     "code": "3-30",
     "subject": 3,
-    "title": "배깅은 표본을 바꾸고 부스팅은 순서대로 보완한다",
-    "lead": "여러 모형을 쓴다는 공통점 뒤에 학습 자료와 이전 단계 의존성의 차이가 있다.",
-    "cue": "배깅은 표본의 변화, 부스팅은 앞 단계의 보완.",
+    "title": "앙상블 학습(Ensemble Learning): 배깅(Bagging, Bootstrap Aggregating)과 부스팅(Boosting)",
+    "lead": "여러 모형(Model)을 쓴다는 공통점 뒤에 학습 자료와 이전 단계 의존성(Dependency)의 차이가 있다.",
+    "cue": "배깅(Bagging, Bootstrap Aggregating)은 표본(Sample)의 변화, 부스팅(Boosting)은 앞 단계의 보완.",
     "question": {
-      "givens": "기울기 부스팅에서 F₀=(2,2), h=(1,3), 학습률 0.5. F₁=F₀+0.5h.",
+      "givens": "기울기 부스팅(Gradient Boosting)에서 F₀=(2,2), h=(1,3), 학습률(Learning Rate) 0.5. F₁=F₀+0.5h.",
       "stem": "새 예측 F₁은?",
       "choices": [
         "(1,3)",
@@ -2896,8 +2896,8 @@ export const CATALOG = [
       "reason": "현재 예측에 보정의 절반을 더한다. 2+0.5×1=2.5, 2+0.5×3=3.5다.",
       "wrong_reasons": [
         "1번: 보정값만 출력하고 기존 예측을 버렸다.",
-        "3번: 학습률 1로 더한 결과다.",
-        "4번: 두 관측의 서로 다른 보정을 구분하지 않았다."
+        "3번: 학습률(Learning Rate) 1로 더한 결과다.",
+        "4번: 두 관측(Observation)의 서로 다른 보정을 구분하지 않았다."
       ]
     },
     "goal": "새 보정의 기여를 바꾸되 기존 예측에 더한다는 구조를 유지한다.",
@@ -2915,27 +2915,27 @@ export const CATALOG = [
   {
     "code": "3-31",
     "subject": 3,
-    "title": "랜덤포레스트의 무작위성은 두 곳에 있다",
-    "lead": "훈련 행을 뽑는 일과 노드에서 분할 후보 특성을 뽑는 일을 나눈다.",
+    "title": "랜덤 포레스트(RF, Random Forest)의 부트스트랩(Bootstrap)과 특성 무작위 추출(Random Feature Subsampling)",
+    "lead": "훈련 행을 뽑는 일과 노드(Node)에서 분할 후보 특성(Feature)을 뽑는 일을 나눈다.",
     "cue": "행은 나무별로, 후보 열은 노드별로.",
     "question": {
-      "givens": "랜덤포레스트의 노드별 분할 후보 특성을 무작위로 선택하는 설정을 생각한다.",
+      "givens": "랜덤 포레스트(RF, Random Forest)의 노드별 분할 후보 특성(Feature)을 무작위로 선택하는 설정을 생각한다.",
       "stem": "올바른 설명은?",
       "choices": [
         "정답 레이블을 무작위로 바꾼다",
-        "한 나무는 처음 고른 특성만 계속 쓴다",
-        "노드마다 후보 특성 집합이 달라질 수 있다",
-        "특성 선택이 부트스트랩 행 추출과 같은 일이다"
+        "한 나무는 처음 고른 특성(Feature)만 계속 쓴다",
+        "노드마다 후보 특성(Feature) 집합이 달라질 수 있다",
+        "특성 선택(Feature Selection)이 부트스트랩 표본(Bootstrap Sample) 행 추출과 같은 일이다"
       ],
       "answer": 3,
-      "reason": "노드의 분할을 검토할 때 후보 특성의 부분집합을 선택하므로 서로 다른 노드에서 후보가 달라질 수 있다.",
+      "reason": "노드 분할(Node Split)을 검토할 때 후보 특성(Feature)의 부분집합을 선택하므로 서로 다른 노드(Node)에서 후보가 달라질 수 있다.",
       "wrong_reasons": [
         "1번: 분류 정답을 섞는 것은 이 학습 절차의 설명이 아니다.",
-        "2번: 노드별 후보 선택을 나무 전체의 고정 특성 선택으로 바꾸었다.",
+        "2번: 노드별 후보 선택을 나무 전체의 고정 특성 선택(Feature Selection)으로 바꾸었다.",
         "4번: 행과 열이라는 서로 다른 대상을 혼동했다."
       ]
     },
-    "goal": "노드 후보 특성 수를 바꿔 가능한 부분집합 수와 무작위화의 범위를 비교한다.",
+    "goal": "노드(Node) 후보 특성(Feature) 수를 바꿔 가능한 부분집합 수와 무작위화의 범위를 비교한다.",
     "kind": "decision",
     "relatedCodes": [],
     "sources": [
@@ -2950,12 +2950,12 @@ export const CATALOG = [
   {
     "code": "3-32",
     "subject": 3,
-    "title": "투표와 메타학습의 입력은 다르다",
-    "lead": "레이블을 세는지 확률을 평균하는지, 예측을 다시 학습하는지 확인한다.",
-    "cue": "레이블은 표 수, 소프트는 확률 평균.",
+    "title": "보팅(Voting), 스태킹(Stacking, Stacked Generalization), 블렌딩(Blending)",
+    "lead": "레이블을 세는지 확률을 평균(Mean)하는지, 예측을 다시 학습하는지 확인한다.",
+    "cue": "레이블은 표 수, 소프트는 확률 평균(Mean).",
     "question": {
-      "givens": "클래스 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.",
-      "stem": "하드·소프트 보팅의 범주 순서는?",
+      "givens": "클래스(Class) 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.",
+      "stem": "하드·소프트 보팅(Soft Voting)의 범주 순서는?",
       "choices": [
         "(1,0)",
         "(1,1)",
@@ -2963,14 +2963,14 @@ export const CATALOG = [
         "(0,0)"
       ],
       "answer": 1,
-      "reason": "개별 범주는 1,1,0이므로 하드는 1이다. 평균은 1.03/3≈0.343이므로 소프트는 0이다.",
+      "reason": "개별 범주는 1,1,0이므로 하드는 1이다. 평균(Mean)은 1.03/3≈0.343이므로 소프트는 0이다.",
       "wrong_reasons": [
-        "2번: 확률 평균을 계산하지 않고 다수 레이블을 두 번 사용했다.",
+        "2번: 확률 평균(Mean)을 계산하지 않고 다수 레이블을 두 번 사용했다.",
         "3번: 두 결합 방식의 결과를 서로 바꾸었다.",
-        "4번: 하드 보팅에서 1이 두 표라는 사실을 놓쳤다."
+        "4번: 하드 보팅(Hard Voting)에서 1이 두 표라는 사실을 놓쳤다."
       ]
     },
-    "goal": "같은 다수표여도 확률 평균이 다른 결론을 낼 수 있음을 확인한다.",
+    "goal": "같은 다수표여도 확률 평균(Mean)이 다른 결론을 낼 수 있음을 확인한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -2985,12 +2985,12 @@ export const CATALOG = [
   {
     "code": "3-33",
     "subject": 3,
-    "title": "TF는 문서 안을, IDF는 문서 전체를 본다",
+    "title": "TF-IDF(Term Frequency–Inverse Document Frequency)와 텍스트 특성 추출(Text Feature Extraction)",
     "lead": "단어가 나온 횟수와 그 단어를 포함한 문서 수를 구별한다.",
-    "cue": "TF는 한 문서, DF는 문서 수. 수식도 적는다.",
+    "cue": "단어빈도(TF, Term Frequency)는 한 문서, 문서빈도(DF, Document Frequency)는 문서 수. 수식도 적는다.",
     "question": {
-      "givens": "IDF=ln(N/DF), TF는 원시 빈도, 정규화 없음. N=4, DF=2, 해당 문서 TF=2.",
-      "stem": "TF-IDF는?",
+      "givens": "역문서빈도(IDF, Inverse Document Frequency)=ln(N/DF), 단어빈도(TF, Term Frequency)는 원시 빈도(Raw Count), 벡터 정규화(Vector Normalization) 없음. N=4, 문서빈도(DF, Document Frequency)=2, 해당 문서 단어빈도(TF, Term Frequency)=2.",
+      "stem": "TF-IDF(Term Frequency–Inverse Document Frequency)는?",
       "choices": [
         "0",
         "ln2",
@@ -2998,14 +2998,14 @@ export const CATALOG = [
         "4ln2"
       ],
       "answer": 3,
-      "reason": "IDF는 ln2이고 TF 2를 곱하므로 2ln2다.",
+      "reason": "역문서빈도(IDF, Inverse Document Frequency)는 ln2이고 단어빈도(TF, Term Frequency) 2를 곱하므로 2ln2다.",
       "wrong_reasons": [
-        "1번: 단어가 모든 문서에 있는 조건 N=DF가 아니다.",
-        "2번: IDF만 구하고 TF 2를 곱하지 않았다.",
-        "4번: TF 또는 문서 수를 중복으로 곱했다."
+        "1번: 단어가 모든 문서에 있는 조건 N=문서빈도(DF, Document Frequency)가 아니다.",
+        "2번: 역문서빈도(IDF, Inverse Document Frequency)만 구하고 단어빈도(TF, Term Frequency) 2를 곱하지 않았다.",
+        "4번: 단어빈도(TF, Term Frequency) 또는 문서 수를 중복으로 곱했다."
       ]
     },
-    "goal": "DF와 명시적 IDF 수식을 바꿔 같은 TF의 가중치를 비교한다.",
+    "goal": "문서빈도(DF, Document Frequency)와 명시적 역문서빈도(IDF, Inverse Document Frequency) 수식을 바꿔 같은 단어빈도(TF, Term Frequency)의 가중치를 비교한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -3020,24 +3020,24 @@ export const CATALOG = [
   {
     "code": "3-34",
     "subject": 3,
-    "title": "CBOW와 Skip-gram은 예측 화살표가 반대다",
-    "lead": "주변 문맥을 넣는지 중심 단어를 넣는지 먼저 그린다.",
-    "cue": "CBOW는 문맥에서 중심, Skip-gram은 반대.",
+    "title": "워드투벡(Word2Vec): CBOW(Continuous Bag-of-Words)와 스킵그램(Skip-gram)",
+    "lead": "문맥 단어(Context Word)를 넣는지 중심 단어(Center Word)를 넣는지 먼저 그린다.",
+    "cue": "CBOW(Continuous Bag-of-Words)는 문맥에서 중심, 스킵그램(Skip-gram)은 반대.",
     "question": {
-      "givens": "[새벽,기차,출발]의 중심은 기차. 반경 1의 주변 단어로 중심을 예측한다.",
+      "givens": "[새벽,기차,출발]의 중심은 기차. 반경 1의 문맥 단어(Context Word)로 중심을 예측한다.",
       "stem": "해당 학습 방향은?",
       "choices": [
-        "CBOW: 문맥→기차",
-        "Skip-gram: 문맥→기차",
-        "PCA: 문맥→기차",
-        "CCA: 문맥→기차"
+        "CBOW(Continuous Bag-of-Words): 문맥→기차",
+        "스킵그램(Skip-gram): 문맥→기차",
+        "주성분 분석(PCA, Principal Component Analysis): 문맥→기차",
+        "정준상관분석(CCA, Canonical Correlation Analysis): 문맥→기차"
       ],
       "answer": 1,
-      "reason": "주변 문맥을 입력으로 중심 단어를 예측하는 방향은 CBOW다.",
+      "reason": "문맥 단어(Context Word)를 입력으로 중심 단어(Center Word)를 예측하는 방향은 CBOW다.",
       "wrong_reasons": [
-        "2번: Skip-gram은 중심에서 주변을 예측하는 반대 방향이다.",
-        "3번: PCA는 이러한 중심 단어 예측 과제를 정의하는 이름이 아니다.",
-        "4번: CCA는 두 변수 묶음의 선형결합 상관을 다루는 기법이다."
+        "2번: 스킵그램(Skip-gram)은 중심에서 주변을 예측하는 반대 방향이다.",
+        "3번: 주성분 분석(PCA, Principal Component Analysis)은 이러한 중심 단어(Center Word) 예측 과제를 정의하는 이름이 아니다.",
+        "4번: 정준상관분석(CCA, Canonical Correlation Analysis)은 두 변수 묶음의 선형결합(Linear Combination) 상관을 다루는 기법이다."
       ]
     },
     "goal": "예측 방향과 중심 위치를 바꾸어 문맥·목표를 직접 만든다.",
@@ -3055,8 +3055,8 @@ export const CATALOG = [
   {
     "code": "3-35",
     "subject": 3,
-    "title": "RNN은 이전 상태를 받아 다음 상태를 만든다",
-    "lead": "입력 순서와 상태 전달을 함께 보면 seq2seq의 역할도 구별된다.",
+    "title": "순환신경망(RNN, Recurrent Neural Network)과 시퀀스 투 시퀀스(Seq2Seq, Sequence-to-Sequence)",
+    "lead": "입력 순서와 상태 전달을 함께 보면 시퀀스 투 시퀀스(Seq2Seq, Sequence-to-Sequence)의 역할도 구별된다.",
     "cue": "현재 입력과 이전 상태를 한 줄에 놓는다.",
     "question": {
       "givens": "hₜ=0.5hₜ₋₁+xₜ, h₀=0. 입력은 x₁=2, x₂=0이다.",
@@ -3094,11 +3094,11 @@ export const CATALOG = [
   {
     "code": "3-36",
     "subject": 3,
-    "title": "Attention은 가중치를 구해 Value를 합친다",
-    "lead": "Query·Key가 정한 비중과 실제로 집계되는 Value를 구별한다.",
-    "cue": "Q와 K로 비중, V를 가중합.",
+    "title": "어텐션(Attention)의 쿼리(Query), 키(Key), 값(Value)과 스케일 내적 어텐션(Scaled Dot-Product Attention)",
+    "lead": "쿼리(Q, Query)·키(K, Key)가 정한 비중과 실제로 집계(Aggregation)되는 값(V, Value)을 구별한다.",
+    "cue": "Q와 K로 비중, V를 가중합(Weighted Sum).",
     "question": {
-      "givens": "Attention 가중치 (0.25,0.75), Value (2,6). 출력은 Value의 가중합이다.",
+      "givens": "어텐션(Attention) 가중치 (0.25,0.75), Value (2,6). 출력은 값(V, Value)의 가중합(Weighted Sum)이다.",
       "stem": "출력값은?",
       "choices": [
         "2",
@@ -3109,12 +3109,12 @@ export const CATALOG = [
       "answer": 4,
       "reason": "0.25×2+0.75×6=0.5+4.5=5다.",
       "wrong_reasons": [
-        "1번: 첫 Value만 선택했다.",
-        "2번: 가중치를 무시하고 단순 평균을 냈다.",
-        "3번: 가장 큰 가중치의 Value만 선택했다."
+        "1번: 첫 값(V, Value)만 선택했다.",
+        "2번: 가중치를 무시하고 단순 평균(Mean)을 냈다.",
+        "3번: 가장 큰 가중치의 값(V, Value)만 선택했다."
       ]
     },
-    "goal": "합이1인 두 비중을 바꾸며 Value 가중합의 이동을 본다.",
+    "goal": "합이1인 두 비중을 바꾸며 값(V, Value) 가중합(Weighted Sum)의 이동을 본다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-35"
@@ -3131,12 +3131,12 @@ export const CATALOG = [
   {
     "code": "3-37",
     "subject": 3,
-    "title": "오토인코더는 입력을 복원하는 표현을 배운다",
+    "title": "오토인코더(AE, Autoencoder)와 복원오차(Reconstruction Error)",
     "lead": "범주 라벨이 없어도 학습 목표가 없는 것은 아니다.",
     "cue": "라벨 대신 입력 복원, 오차와 고장은 구별.",
     "question": {
       "givens": "x=(2,4), 복원 x̂=(1,5). 손실은 두 좌표의 평균제곱오차다.",
-      "stem": "복원 MSE는?",
+      "stem": "복원 평균제곱오차(MSE, Mean Squared Error)는?",
       "choices": [
         "0",
         "1",
@@ -3147,11 +3147,11 @@ export const CATALOG = [
       "reason": "좌표별 차이 1과 −1을 제곱해 합한 2를 좌표 수 2로 나누면 1이다.",
       "wrong_reasons": [
         "1번: 부호가 있는 오차를 그대로 더했다.",
-        "3번: 제곱합 2를 평균으로 나누지 않았다.",
+        "3번: 제곱합 2를 평균(Mean)으로 나누지 않았다.",
         "4번: 손실 정의에 없는 추가 제곱을 했다."
       ]
     },
-    "goal": "복원 두 좌표를 직접 바꿔 부호 상쇄와 평균제곱오차를 비교한다.",
+    "goal": "복원 두 좌표를 직접 바꿔 부호 상쇄와 평균제곱오차(MSE, Mean Squared Error)를 비교한다.",
     "kind": "calculation",
     "relatedCodes": [],
     "sources": [
@@ -3166,27 +3166,27 @@ export const CATALOG = [
   {
     "code": "3-38",
     "subject": 3,
-    "title": "HMM은 상태의 이동과 관측의 발생을 나눈다",
+    "title": "은닉 마르코프 모형(HMM, Hidden Markov Model)의 전이확률(Transition Probability)과 방출확률(Emission Probability)",
     "lead": "안 보이는 상태를 센서 값과 같은 것으로 취급하지 않는다.",
-    "cue": "전이는 상태에서 상태, 방출은 상태에서 관측.",
+    "cue": "전이는 상태에서 상태, 방출은 상태에서 관측(Observation).",
     "question": {
       "givens": "장비의 내부 상태는 정상·마모, 센서는 낮음·높음이다.",
-      "stem": "전이확률이 설명하는 것은?",
+      "stem": "전이확률(Transition Probability)이 설명하는 것은?",
       "choices": [
         "상태가 주어졌을 때 센서값의 확률",
         "현재 상태에서 다음 상태로 갈 확률",
         "첫 상태의 확률만",
-        "관측 뒤 특정 상태일 확률"
+        "관측(Observation) 뒤 특정 상태일 확률"
       ],
       "answer": 2,
-      "reason": "전이는 숨은 상태 사이의 이동이다. 관측값이 나올 조건부 확률은 방출이다.",
+      "reason": "전이는 숨은 상태 사이의 이동이다. 관측(Observation)이 나올 조건부 확률(Conditional Probability)은 방출이다.",
       "wrong_reasons": [
-        "1번: 방출확률의 역할이다.",
-        "3번: 초기분포의 역할이다.",
-        "4번: 관측을 조건으로 한 사후 상태 추론과 다르다."
+        "1번: 방출확률(Emission Probability)의 역할이다.",
+        "3번: 초기분포(Initial Distribution)의 역할이다.",
+        "4번: 관측(Observation)을 조건으로 한 사후 상태 추론과 다르다."
       ]
     },
-    "goal": "한 경로의 전이확률을 바꿔 지정 경로·관측의 결합확률을 계산한다.",
+    "goal": "한 경로의 전이확률(Transition Probability)을 바꿔 지정 경로·관측(Observation)의 결합확률을 계산한다.",
     "kind": "calculation",
     "relatedCodes": [
       "3-28"
@@ -3203,12 +3203,12 @@ export const CATALOG = [
   {
     "code": "4-01",
     "subject": 4,
-    "title": "포아송 적합도 자유도는 모수를 어디에서 구했는지부터 본다",
-    "lead": "최종 범주 수가 같아도 포아송 모수 λ를 외부에서 고정했는지, 같은 범주도수로 추정했는지에 따라 적합도 검정의 기준 분포가 달라진다. ‘포아송이므로 하나 뺀다’보다 추정한 정보의 수를 먼저 센다.",
-    "cue": "최종 범주 − 합계 제약 − 같은 자료의 추정 모수.",
+    "title": "포아송 분포(Poisson Distribution)의 카이제곱 적합도 검정(Chi-Square Goodness-of-Fit Test)",
+    "lead": "최종 범주 수가 같아도 포아송 모수(Parameter) λ를 외부에서 고정했는지, 같은 범주도수로 추정했는지에 따라 적합도 검정(Goodness-of-fit Test)의 기준 분포가 달라진다. ‘포아송이므로 하나 뺀다’보다 추정한 정보의 수를 먼저 센다.",
+    "cue": "최종 범주 − 합계 제약 − 같은 자료의 추정 모수(Parameter).",
     "question": {
-      "givens": "독립 표본을 최종 6개 범주로 나눴다. 기대도수는 충분하다. A는 λ를 외부에서 고정하고, B는 최종 범주 도수의 다항 우도로 λ 한 개를 정규적인 최대우도 추정한다.",
-      "stem": "A와 B의 카이제곱 근사 자유도는 각각?",
+      "givens": "독립 표본(Independent Samples)을 최종 6개 범주로 나눴다. 기대도수(Expected Frequency)는 충분하다. A는 λ를 외부에서 고정하고, B는 최종 범주 도수(Frequency)의 다항우도(Multinomial Likelihood)로 λ 한 개를 정규적인 최대우도 추정(MLE, Maximum Likelihood Estimation)한다.",
+      "stem": "A와 B의 카이제곱 근사 자유도(df, Degrees of Freedom)는 각각?",
       "choices": [
         "5와 4",
         "4와 5",
@@ -3216,14 +3216,14 @@ export const CATALOG = [
         "6과 5"
       ],
       "answer": 1,
-      "reason": "A는 추정 모수가 없어 6−1=5, B는 같은 범주 도수에서 추정한 모수가 하나라 6−1−1=4다. 합계 제약과 모수 추정을 따로 센다.",
+      "reason": "A는 추정 모수(Parameter)가 없어 6−1=5, B는 같은 범주 도수(Frequency)에서 추정한 모수(Parameter)가 하나라 6−1−1=4다. 합계 제약과 모수(Parameter) 추정을 따로 센다.",
       "wrong_reasons": [
-        "2번: 외부 고정 모수와 같은 자료에서 추정한 모수를 반대로 취급했다.",
-        "3번: B에서 λ를 추정해 기대도수를 조정한 조건을 빠뜨렸다.",
+        "2번: 외부 고정 모수(Parameter)와 같은 자료에서 추정한 모수(Parameter)를 반대로 취급했다.",
+        "3번: B에서 λ를 추정해 기대도수(Expected Frequency)를 조정한 조건을 빠뜨렸다.",
         "4번: 고정된 총도수 때문에 생기는 합계 제약 한 개를 반영하지 않았다."
       ]
     },
-    "goal": "최종 범주 수와 λ 추정 출처를 바꾸어 근사 자유도를 계산한다.",
+    "goal": "최종 범주 수와 λ 추정 출처를 바꾸어 근사 자유도(df, Degrees of Freedom)를 계산한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-02"
@@ -3244,12 +3244,12 @@ export const CATALOG = [
   {
     "code": "4-02",
     "subject": 4,
-    "title": "구간을 합쳤다면 최종 도수표로 자유도를 다시 센다",
-    "lead": "8구간으로 시작했더라도 검정을 6구간 도수표에서 수행한다면 범주 수는 6이다. 정규분포의 평균·표준편차를 그 최종 도수로 추정한 조건까지 함께 확인한다.",
+    "title": "정규분포(Normal Distribution)의 적합도 검정(Goodness-of-Fit Test)과 자유도(Degrees of Freedom)",
+    "lead": "8구간으로 시작했더라도 검정을 6구간 도수표에서 수행한다면 범주 수는 6이다. 정규분포(Normal Distribution)의 평균(Mean)·표준편차(SD, Standard Deviation)를 그 최종 도수(Frequency)로 추정한 조건까지 함께 확인한다.",
     "cue": "처음 그린 칸 말고, 검정에 남은 칸을 센다.",
     "question": {
-      "givens": "독립 표본의 정규 적합도 검정에서 8개 구간을 규칙에 따라 6개 구간으로 합쳤다. 최종 도수의 다항 우도로 μ·σ를 정규적인 최대우도 추정하며 기대도수는 충분하다.",
-      "stem": "이 최종 검정의 카이제곱 근사 자유도는?",
+      "givens": "독립 표본(Independent Samples)의 정규 적합도 검정(Goodness-of-Fit Test)에서 8개 구간을 규칙에 따라 6개 구간으로 합쳤다. 최종 도수(Frequency)의 다항 우도(Likelihood)로 μ·σ를 정규적인 최대우도 추정(MLE, Maximum Likelihood Estimation)하며 기대도수(Expected Frequency)는 충분하다.",
+      "stem": "이 최종 검정의 카이제곱 근사 자유도(df, Degrees of Freedom)는?",
       "choices": [
         "7",
         "5",
@@ -3257,14 +3257,14 @@ export const CATALOG = [
         "1"
       ],
       "answer": 3,
-      "reason": "최종 k=6에서 합계 제약 1개와 추정 모수 2개를 뺀다. 6−1−2=3이며 병합 전 8구간은 계산의 k가 아니다.",
+      "reason": "최종 k=6에서 합계 제약 1개와 추정 모수(Parameter) 2개를 뺀다. 6−1−2=3이며 병합 전 8구간은 계산의 k가 아니다.",
       "wrong_reasons": [
-        "1번: 7은 원래 8구간에서 합계 제약만 뺀 값이다. 병합과 모수 추정을 모두 놓쳤다.",
-        "2번: 5는 최종 6구간에서 모수를 추정하지 않았을 때의 값이며, 병합 전 8−1−2와도 우연히 같다.",
+        "1번: 7은 원래 8구간에서 합계 제약만 뺀 값이다. 병합과 모수(Parameter) 추정을 모두 놓쳤다.",
+        "2번: 5는 최종 6구간에서 모수(Parameter)를 추정하지 않았을 때의 값이며, 병합 전 8−1−2와도 우연히 같다.",
         "4번: 구간 두 개를 합친 효과를 최종 k에 이미 반영하고도 다시 두 번 뺀 셈이다."
       ]
     },
-    "goal": "최종 k와 외부 모수 고정 여부를 바꾸어 자유도를 다시 센다.",
+    "goal": "최종 k와 외부 모수(Parameter) 고정 여부를 바꾸어 자유도(df, Degrees of Freedom)를 다시 센다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-01"
@@ -3285,7 +3285,7 @@ export const CATALOG = [
   {
     "code": "4-03",
     "subject": 4,
-    "title": "행을 고르는 작업과 표현을 다듬는 작업을 구분한다",
+    "title": "데이터 시각화(Data Visualization)의 필터링(Filter)과 정제(Refine)",
     "lead": "시각화 과정에서는 자료에 무엇을 남기는지와 남긴 자료를 어떻게 보이게 하는지를 구분한다. 색상을 바꾸었다고 자료가 걸러지는 것은 아니고, 행을 지웠다고 표현이 개선된 것도 아니다.",
     "cue": "행이 바뀌나, 보여주는 방식이 바뀌나.",
     "question": {
@@ -3323,12 +3323,12 @@ export const CATALOG = [
   {
     "code": "4-04",
     "subject": 4,
-    "title": "정밀도와 재현율은 같은 분자를 다른 집합으로 나눈다",
-    "lead": "정밀도와 재현율은 모두 맞게 찾은 양성 TP를 쓰지만 분모가 다르다. 양성=스팸이라는 기준을 고정하고, 예측한 스팸부터 모을지 실제 스팸부터 모을지 확인한다.",
-    "cue": "정밀도는 예측한 것, 재현율은 실제인 것부터.",
+    "title": "정밀도(Precision)와 재현율(Recall)",
+    "lead": "정밀도(Precision)와 재현율(Recall)은 모두 맞게 찾은 양성 참양성(TP, True Positive)을 쓰지만 분모가 다르다. 양성=스팸이라는 기준을 고정하고, 예측한 스팸부터 모을지 실제 스팸부터 모을지 확인한다.",
+    "cue": "정밀도(Precision)는 예측한 것, 재현율(Recall)은 실제인 것부터.",
     "question": {
-      "givens": "양성은 스팸이다. TP=3, FP=1, FN=2, TN=4인 자체 메일 10통의 같은 판정 결과다.",
-      "stem": "정밀도와 재현율은 각각 얼마인가?",
+      "givens": "양성은 스팸이다. 참양성(TP, True Positive)=3, 거짓양성(FP, False Positive)=1, 거짓음성(FN, False Negative)=2, 참음성(TN, True Negative)=4인 자체 메일 10통의 같은 판정 결과다.",
+      "stem": "정밀도(Precision)와 재현율(Recall)은 각각 얼마인가?",
       "choices": [
         "60%와 75%",
         "75%와 60%",
@@ -3336,14 +3336,14 @@ export const CATALOG = [
         "75%와 70%"
       ],
       "answer": 2,
-      "reason": "정밀도는 예측 양성 4통 중 3통인 75%, 재현율은 실제 양성 5통 중 3통인 60%다. 분모가 예측 집합인지 실제 집합인지 구별한다.",
+      "reason": "정밀도(Precision)는 예측 양성 4통 중 3통인 75%, 재현율(Recall)은 실제 양성 5통 중 3통인 60%다. 분모가 예측 집합인지 실제 집합인지 구별한다.",
       "wrong_reasons": [
         "1번: 실제 양성 분모와 예측 양성 분모를 바꾸어 사용했다.",
-        "3번: 정밀도 자리에 전체 정답 비율인 정확도 70%를 넣었다.",
-        "4번: 재현율 자리에 TN까지 포함한 정확도 70%를 넣었다."
+        "3번: 정밀도(Precision) 자리에 전체 정답 비율인 정확도(Accuracy) 70%를 넣었다.",
+        "4번: 재현율(Recall) 자리에 참음성(TN, True Negative)까지 포함한 정확도(Accuracy) 70%를 넣었다."
       ]
     },
-    "goal": "네 칸과 분모를 바꿔 정밀도·재현율의 차이를 직접 확인한다.",
+    "goal": "네 칸과 분모를 바꿔 정밀도(Precision)·재현율(Recall)의 차이를 직접 확인한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-06",
@@ -3362,12 +3362,12 @@ export const CATALOG = [
   {
     "code": "4-06",
     "subject": 4,
-    "title": "희귀 양성에서는 정확도와 놓친 양성을 함께 본다",
-    "lead": "양성이100개 중1개뿐이면 모두 음성으로 찍어도 정확도99%다. 높은 숫자가 양성을 찾았다는 뜻인지는 실제 양성의 결과와 오경보 비용을 함께 확인해야 한다.",
-    "cue": "많이 맞힌 클래스와 꼭 찾아야 할 클래스를 나눈다.",
+    "title": "불균형 데이터(Imbalanced Data)의 정확도(Accuracy)와 재현율(Recall)",
+    "lead": "양성이100개 중1개뿐이면 모두 음성으로 찍어도 정확도(Accuracy)99%다. 높은 숫자가 양성을 찾았다는 뜻인지는 실제 양성의 결과와 오경보 비용을 함께 확인해야 한다.",
+    "cue": "많이 맞힌 클래스(Class)와 꼭 찾아야 할 클래스(Class)를 나눈다.",
     "question": {
-      "givens": "실제 양성 1건·음성 99건인 100건에서 모형 A가 전부 음성으로 예측했다. 양성 탐지가 평가 목적이다.",
-      "stem": "A의 정확도와 양성 재현율은 각각?",
+      "givens": "실제 양성 1건·음성 99건인 100건에서 모형(Model) A가 전부 음성으로 예측했다. 양성 탐지가 평가(Evaluation) 목적이다.",
+      "stem": "A의 정확도(Accuracy)와 양성 재현율(Recall)은 각각?",
       "choices": [
         "99%와 0%",
         "99%와 99%",
@@ -3375,11 +3375,11 @@ export const CATALOG = [
         "1%와 100%"
       ],
       "answer": 1,
-      "reason": "정상 99건을 맞혔으므로 정확도 99%지만 유일한 양성을 놓쳐 재현율은 0/1=0%다. 높은 정확도만으로 양성 탐지에 성공했다고 고를 수 없다.",
+      "reason": "정상 99건을 맞혔으므로 정확도(Accuracy) 99%지만 유일한 양성을 놓쳐 재현율(Recall)은 0/1=0%다. 높은 정확도(Accuracy)만으로 양성 탐지에 성공했다고 고를 수 없다.",
       "wrong_reasons": [
-        "2번: 전체 정답 비율 99%를 양성 집합의 재현율로 그대로 옮겼다.",
-        "3번: 놓친 양성 1건도 오답이므로 정확도 100%가 아니다.",
-        "4번: 양성의 자료 비중 1%를 정확도로 오인했고 실제로는 양성을 찾지 못했다."
+        "2번: 전체 정답 비율 99%를 양성 집합의 재현율(Recall)로 그대로 옮겼다.",
+        "3번: 놓친 양성 1건도 오답이므로 정확도(Accuracy) 100%가 아니다.",
+        "4번: 양성의 자료 비중 1%를 정확도(Accuracy)로 오인했고 실제로는 양성을 찾지 못했다."
       ]
     },
     "goal": "같은 100건에서 양성 탐지와 오경보를 바꾸어 지표를 비교한다.",
@@ -3404,12 +3404,12 @@ export const CATALOG = [
   {
     "code": "4-07",
     "subject": 4,
-    "title": "ROC의 한 점과 점수 순서를 요약한 AUC를 구분한다",
-    "lead": "ROC는 임곗값을 바꾸며 실제 음성의 오경보율과 실제 양성의 탐지율을 함께 그린다. AUC는 한 번의 판정 정확도가 아니라 여러 임곗값을 거친 순위 정보를 요약한다.",
-    "cue": "ROC는 판정 지점들, AUC는 그 점수의 순위.",
+    "title": "ROC 곡선(Receiver Operating Characteristic Curve)과 ROC-AUC(Area Under the ROC Curve)",
+    "lead": "ROC 곡선(ROC, Receiver Operating Characteristic Curve)은 임곗값을 바꾸며 실제 음성의 오경보율과 실제 양성의 탐지율을 함께 그린다. 곡선 아래 면적(AUC, Area Under the Curve)은 한 번의 판정 정확도(Accuracy)가 아니라 여러 임곗값을 거친 순위 정보를 요약한다.",
+    "cue": "ROC 곡선(ROC, Receiver Operating Characteristic Curve)은 판정 지점들, 곡선 아래 면적(AUC, Area Under the Curve)은 그 점수의 순위.",
     "question": {
-      "givens": "이진 평가 4건이다. 양성 점수는 0.9·0.6, 음성 점수는 0.8·0.2다. 높을수록 양성이며 동점은 없다.",
-      "stem": "이 점수의 ROC-AUC는?",
+      "givens": "이진 평가(Evaluation) 4건이다. 양성 점수는 0.9·0.6, 음성 점수는 0.8·0.2다. 높을수록 양성이며 동점은 없다.",
+      "stem": "이 점수의 ROC 곡선(ROC, Receiver Operating Characteristic Curve)-곡선 아래 면적(AUC, Area Under the Curve)은?",
       "choices": [
         "0.25",
         "0.50",
@@ -3417,14 +3417,14 @@ export const CATALOG = [
         "1.00"
       ],
       "answer": 3,
-      "reason": "양성 2개와 음성 2개의 4쌍을 비교하면 양성이 높은 쌍은 3개다. 0.75는 점수 순위의 요약이지 특정 임곗값에서 계산한 TPR이나 FPR이 아니다.",
+      "reason": "양성 2개와 음성 2개의 4쌍을 비교하면 양성이 높은 쌍은 3개다. 0.75는 점수 순위의 요약이지 특정 임곗값에서 계산한 참양성률(TPR, True Positive Rate)이나 거짓양성률(FPR, False Positive Rate)이 아니다.",
       "wrong_reasons": [
         "1번: 잘못된 순서 1쌍의 비율을 양성이 앞서는 비율과 바꾸었다.",
         "2번: 올바른 쌍은 2개가 아니라 3개다. 0.5라는 임곗값과도 무관하다.",
         "4번: 양성 0.6은 음성 0.8보다 낮으므로 모든 쌍의 순서가 맞지 않는다."
       ]
     },
-    "goal": "한 양성 점수와 판정 임곗값을 독립적으로 바꾸어 AUC와 ROC 점을 비교한다.",
+    "goal": "한 양성 점수와 판정 임곗값을 독립적으로 바꾸어 곡선 아래 면적(AUC, Area Under the Curve)과 ROC 곡선(ROC, Receiver Operating Characteristic Curve) 점을 비교한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-04",
@@ -3446,12 +3446,12 @@ export const CATALOG = [
   {
     "code": "4-08",
     "subject": 4,
-    "title": "같은 오차도 제곱하면 큰 오차의 영향이 커진다",
-    "lead": "MAE는 오차의 절댓값을 평균하고 MSE는 제곱을 평균한다. RMSE는 MSE에 제곱근을 씌워 원래 단위로 돌아오지만 큰 오차를 강조한 계산 구조는 유지한다.",
-    "cue": "제곱을 먼저 했는지, 평균을 먼저 했는지.",
+    "title": "평균 절대 오차(MAE, Mean Absolute Error)·평균 제곱 오차(MSE, Mean Squared Error)·평균 제곱근 오차(RMSE, Root Mean Squared Error)",
+    "lead": "평균 절대 오차(MAE, Mean Absolute Error)는 오차의 절댓값을 평균(Mean)하고 평균제곱오차(MSE, Mean Squared Error)는 제곱을 평균(Mean)한다. 평균 제곱근 오차(RMSE, Root Mean Squared Error)는 평균제곱오차(MSE, Mean Squared Error)에 제곱근을 씌워 원래 단위로 돌아오지만 큰 오차를 강조한 계산 구조는 유지한다.",
+    "cue": "제곱을 먼저 했는지, 평균(Mean)을 먼저 했는지.",
     "question": {
-      "givens": "평가 3건의 오차 e=y−ŷ는 −1·1·4이며 모든 관측의 가중치는 같다.",
-      "stem": "이 예측의 MSE는?",
+      "givens": "평가(Evaluation) 3건의 오차 e=y−ŷ는 −1·1·4이며 모든 관측(Observation)의 가중치는 같다.",
+      "stem": "이 예측의 평균제곱오차(MSE, Mean Squared Error)는?",
       "choices": [
         "2",
         "6",
@@ -3459,14 +3459,14 @@ export const CATALOG = [
         "18"
       ],
       "answer": 2,
-      "reason": "오차를 먼저 제곱해 1·1·16을 만든 뒤 3으로 나누므로 MSE=18/3=6이다. 2는 MAE,√6은 RMSE,18은 제곱오차의 합이다.",
+      "reason": "오차를 먼저 제곱해 1·1·16을 만든 뒤 3으로 나누므로 평균제곱오차(MSE, Mean Squared Error)=18/3=6이다. 2는 평균 절대 오차(MAE, Mean Absolute Error),√6은 평균 제곱근 오차(RMSE, Root Mean Squared Error),18은 제곱오차(Squared Error)의 합이다.",
       "wrong_reasons": [
-        "1번: 절대오차 평균 2를 구했으며 제곱오차 평균과 다르다.",
-        "3번: MSE에 다시 제곱근을 씌운 RMSE다.",
-        "4번: 세 관측의 제곱오차를 합한 뒤 평가 건수 3으로 나누지 않았다."
+        "1번: 절대오차(Absolute Error) 평균(Mean) 2를 구했으며 제곱오차(Squared Error) 평균(Mean)과 다르다.",
+        "3번: 평균제곱오차(MSE, Mean Squared Error)에 다시 제곱근을 씌운 RMSE다.",
+        "4번: 세 관측(Observation)의 제곱오차(Squared Error)를 합한 뒤 평가(Evaluation) 건수 3으로 나누지 않았다."
       ]
     },
-    "goal": "세 오차에서 MAE·MSE·RMSE를 계산하고 큰 오차만 바꾼다.",
+    "goal": "세 오차에서 평균 절대 오차(MAE, Mean Absolute Error)·평균제곱오차(MSE, Mean Squared Error)·평균 제곱근 오차(RMSE, Root Mean Squared Error)를 계산하고 큰 오차만 바꾼다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-25",
@@ -3489,12 +3489,12 @@ export const CATALOG = [
   {
     "code": "4-14",
     "subject": 4,
-    "title": "회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다",
-    "lead": "회귀계수가0.6이라는 크기와0인지 검정하는 판단은 다르다. 추정값이 표준오차에 비해 얼마나 큰지 계산하고, 귀무가설 아래 그 정도 통계량이 나올 가능성을 p값으로 읽는다.",
-    "cue": "추정값만 보지 말고, 표준오차로 나눈다.",
+    "title": "회귀계수(Regression Coefficient)의 t검정(t-Test)",
+    "lead": "회귀계수(Regression Coefficient)가0.6이라는 크기와0인지 검정하는 판단은 다르다. 추정값(Estimate)이 표준오차(SE, Standard Error)에 비해 얼마나 큰지 계산하고, 귀무가설(Null Hypothesis) 아래 그 정도 통계량(Statistic)이 나올 가능성을 p값(p-Value)으로 읽는다.",
+    "cue": "추정값(Estimate)만 보지 말고, 표준오차(SE, Standard Error)로 나눈다.",
     "question": {
-      "givens": "고전적 선형회귀 조건과 잔차 자유도 10을 가정한다. 한 계수의 추정값은 0.6, 표준오차는 0.2다. H0: βj=0의 양측 검정이다.",
-      "stem": "이 계수의 t 통계량은?",
+      "givens": "고전적 선형회귀(Linear Regression) 조건과 잔차(Residual) 자유도(df, Degrees of Freedom) 10을 가정한다. 한 계수의 추정값(Estimate)은 0.6, 표준오차(SE, Standard Error)는 0.2다. H0: βj=0의 양측검정(Two-sided Test)이다.",
+      "stem": "이 계수의 t 통계량(Statistic)은?",
       "choices": [
         "0.12",
         "0.4",
@@ -3502,14 +3502,14 @@ export const CATALOG = [
         "6"
       ],
       "answer": 3,
-      "reason": "(0.6−0)/0.2=3이다. 표준오차에 비해 추정값이 몇 배 떨어져 있는지 계산하며, p값은 이 통계량과 기준 자유도를 이용해 따로 구한다.",
+      "reason": "(0.6−0)/0.2=3이다. 표준오차(SE, Standard Error)에 비해 추정값(Estimate)이 몇 배 떨어져 있는지 계산하며, p값(p-Value)은 이 통계량(Statistic)과 기준 자유도(df, Degrees of Freedom)를 이용해 따로 구한다.",
       "wrong_reasons": [
-        "1번: 추정값과 표준오차를 곱했다. t 통계량은 차이를 표준오차로 나눈다.",
-        "2번: 0.6−0.2를 계산했으며 표준오차로 표준화하지 않았다.",
-        "4번: 실제 표준오차 0.2 대신 0.1을 사용한 값이다."
+        "1번: 추정값(Estimate)과 표준오차(SE, Standard Error)를 곱했다. t 통계량(Statistic)은 차이를 표준오차(SE, Standard Error)로 나눈다.",
+        "2번: 0.6−0.2를 계산했으며 표준오차(SE, Standard Error)로 표준화(Standardization)하지 않았다.",
+        "4번: 실제 표준오차(SE, Standard Error) 0.2 대신 0.1을 사용한 값이다."
       ]
     },
-    "goal": "계수와 표준오차를 바꾸어 고정 T10 양측 기준과 비교한다.",
+    "goal": "계수와 표준오차(SE, Standard Error)를 바꾸어 고정 T10 양측 기준과 비교한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-15",
@@ -3531,12 +3531,12 @@ export const CATALOG = [
   {
     "code": "4-15",
     "subject": 4,
-    "title": "전체 F검정은 모든 기울기를 함께 묻는다",
-    "lead": "회귀 ANOVA의 전체 F검정은 절편을 제외한 기울기가 모두0인지 공동으로 묻는다. 결과가 유의하더라도 각 계수가 하나씩 모두 유의하다는 결론으로 바꾸지 않는다.",
+    "title": "선형회귀(Linear Regression)의 전체 F검정(Overall F-Test)",
+    "lead": "회귀 단변량 분산분석(ANOVA, Analysis of Variance)의 전체 F검정(Overall F-Test)은 절편(Intercept)을 제외한 기울기가 모두0인지 공동으로 묻는다. 결과가 유의하더라도 각 계수가 하나씩 모두 유의하다는 결론으로 바꾸지 않는다.",
     "cue": "제곱합이 아니라 평균제곱을 비교한다.",
     "question": {
-      "givens": "절편 포함 OLS에서 n=12, 설명변수 p=2, SSR=80, SSE=20이다. 완전계수와 독립 정규·등분산 오차의 고전적 전체 F 검정이다.",
-      "stem": "전체 F 통계량은?",
+      "givens": "절편(Intercept) 포함 최소제곱법(OLS, Ordinary Least Squares)에서 n=12, 설명변수(Explanatory Variable) p=2, 회귀제곱합(SSR, Regression Sum of Squares)=80, 잔차제곱합(SSE, Residual Sum of Squares)=20이다. 완전계수와 독립 정규·등분산성(Homoscedasticity) 오차의 고전적 전체 F검정(Overall F-Test)이다.",
+      "stem": "전체 F 통계량(Statistic)은?",
       "choices": [
         "4",
         "9",
@@ -3544,11 +3544,11 @@ export const CATALOG = [
         "40"
       ],
       "answer": 3,
-      "reason": "회귀 평균제곱 40을 잔차 평균제곱 20/9로 나누어 18을 얻는다. 절편은 설명변수 p에 넣지 않고 잔차 자유도에서 따로 반영한다.",
+      "reason": "회귀 평균제곱 40을 잔차(Residual) 평균제곱 20/9로 나누어 18을 얻는다. 절편(Intercept)은 설명변수(Explanatory Variable) p에 넣지 않고 잔차(Residual) 자유도(df, Degrees of Freedom)에서 따로 반영한다.",
       "wrong_reasons": [
-        "1번: 80/20만 계산해 회귀와 잔차의 서로 다른 자유도를 빠뜨렸다.",
-        "2번: 잔차 자유도 12−2−1=9를 F 통계량과 혼동했다.",
-        "4번: 분자인 회귀 평균제곱만 구하고 잔차 평균제곱으로 나누지 않았다."
+        "1번: 80/20만 계산해 회귀와 잔차(Residual)의 서로 다른 자유도(df, Degrees of Freedom)를 빠뜨렸다.",
+        "2번: 잔차(Residual) 자유도(df, Degrees of Freedom) 12−2−1=9를 F 통계량(Statistic)과 혼동했다.",
+        "4번: 분자인 회귀 평균제곱만 구하고 잔차(Residual) 평균제곱으로 나누지 않았다."
       ]
     },
     "goal": "주어진 요약에서 p와 n을 바꾸어 평균제곱 비를 계산한다.",
@@ -3568,27 +3568,27 @@ export const CATALOG = [
   {
     "code": "4-16",
     "subject": 4,
-    "title": "로지스틱 적합도와 분류 정확도는 다른 질문이다",
-    "lead": "같은0·1 판정을 내린 두 모형도 양성확률을 다르게 줄 수 있다. 정확도는 임곗값을 넘긴 라벨을 평가하고 적합도·보정 진단은 확률과 관측 결과의 일치까지 살핀다.",
+    "title": "로지스틱 회귀(Logistic Regression)의 적합도(Goodness of Fit)와 확률 보정(Probability Calibration)",
+    "lead": "같은0·1 판정을 내린 두 모형(Model)도 양성확률을 다르게 줄 수 있다. 정확도(Accuracy)는 임곗값을 넘긴 라벨을 평가(Evaluation)하고 적합도(Goodness of Fit)·보정 진단은 확률과 관측(Observation) 결과의 일치까지 살핀다.",
     "cue": "같은 라벨 뒤에 다른 확률이 숨어 있다.",
     "question": {
-      "givens": "자체 평가 10건은 양성 8건·음성 2건이다. A의 양성 확률은 모두 0.6, B는 모두 0.9다. 임곗값 0.5에서 둘 다 전부 양성으로 판정한다.",
+      "givens": "자체 평가(Evaluation) 10건은 양성 8건·음성 2건이다. A의 양성 확률은 모두 0.6, B는 모두 0.9다. 임곗값 0.5에서 둘 다 전부 양성으로 판정한다.",
       "stem": "이 기록에서 가능한 판단은?",
       "choices": [
-        "정확도가 같으므로 확률 적합도도 같다",
-        "두 모형의 정확도는 80%지만 확률 평가는 다를 수 있다",
-        "B의 정확도는 90%다",
-        "정확도가 같으므로 적합도 검정은 불필요하다"
+        "정확도(Accuracy)가 같으므로 확률 적합도(Goodness of Fit)도 같다",
+        "두 모형(Model)의 정확도(Accuracy)는 80%지만 확률 평가(Evaluation)는 다를 수 있다",
+        "B의 정확도(Accuracy)는 90%다",
+        "정확도(Accuracy)가 같으므로 적합도 검정(Goodness-of-fit Test)은 불필요하다"
       ],
       "answer": 2,
-      "reason": "둘 다 실제 양성 8건만 맞혀 정확도 80%다. 그러나 예측 확률 자체가 다르므로 관측 양성 비율과의 일치나 확률 오차는 달라질 수 있다.",
+      "reason": "둘 다 실제 양성 8건만 맞혀 정확도(Accuracy) 80%다. 그러나 예측 확률(Predicted Probability) 자체가 다르므로 관측(Observation) 양성 비율과의 일치나 확률 오차는 달라질 수 있다.",
       "wrong_reasons": [
-        "1번: 임곗값으로 버린 확률의 차이를 라벨 정확도만으로 복원할 수 없다.",
-        "3번: 0.9는 모형이 내놓은 확률이며 실제 정답을 맞힌 비율이 아니다.",
-        "4번: 같은 정확도는 확률모형의 형태·보정·누락 구조 진단을 면제하지 않는다."
+        "1번: 임곗값으로 버린 확률의 차이를 라벨 정확도(Accuracy)만으로 복원할 수 없다.",
+        "3번: 0.9는 모형(Model)이 내놓은 확률이며 실제 정답을 맞힌 비율이 아니다.",
+        "4번: 같은 정확도(Accuracy)는 확률모형의 형태·보정·누락 구조 진단을 면제하지 않는다."
       ]
     },
-    "goal": "일정 예측확률만 바꾸어 라벨 정확도와 확률 제곱오차를 비교한다.",
+    "goal": "일정 예측확률(Predicted Probability)만 바꾸어 라벨 정확도(Accuracy)와 확률 제곱오차(Squared Error)를 비교한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-07",
@@ -3610,27 +3610,27 @@ export const CATALOG = [
   {
     "code": "4-20",
     "subject": 4,
-    "title": "가지치기·드롭아웃·조기종료는 제한하는 대상이 다르다",
-    "lead": "세 기법은 모두 과대적합을 줄이는 데 사용할 수 있지만 같은 동작은 아니다. 나무의 가지, 훈련 중 활성값, 반복 학습의 종료 시점 중 무엇을 제한하는지 나누어 본다.",
+    "title": "과대적합(Overfitting) 방지와 가지치기(Pruning)·드롭아웃(Dropout)·조기 종료(Early Stopping)",
+    "lead": "세 기법은 모두 과대적합(Overfitting)을 줄이는 데 사용할 수 있지만 같은 동작은 아니다. 나무의 가지, 훈련 중 활성값, 반복 학습의 종료 시점 중 무엇을 제한하는지 나누어 본다.",
     "cue": "구조를 줄이나, 잠깐 끄나, 반복을 멈추나.",
     "question": {
-      "givens": "신경망 훈련마다 일부 활성값을 무작위로 0으로 만들고, 통상 평가 때는 이 동작을 끈다.",
+      "givens": "신경망(Neural Network) 훈련마다 일부 활성값을 무작위로 0으로 만들고, 통상 평가(Evaluation) 때는 이 동작을 끈다.",
       "stem": "이 설명에 해당하는 것은?",
       "choices": [
         "나무 가지의 영구 삭제",
         "시험 정답 무작위 변경",
-        "드롭아웃",
+        "드롭아웃(Dropout)",
         "검증 지표를 보지 않는 고정 종료"
       ],
       "answer": 3,
-      "reason": "훈련 중 일시적인 무작위 활성 비활성화는 드롭아웃이다. 나무 구조를 줄이는 가지치기나 반복 시점을 정하는 조기종료와 직접 바꾸는 대상이 다르다.",
+      "reason": "훈련 중 일시적인 무작위 활성 비활성화는 드롭아웃(Dropout)이다. 나무 구조를 줄이는 가지치기나 반복 시점을 정하는 조기 종료(Early Stopping)와 직접 바꾸는 대상이 다르다.",
       "wrong_reasons": [
         "1번: 노드나 가지의 영구 구조 삭제를 훈련마다 바뀌는 활성 마스크와 혼동했다.",
-        "2번: 드롭아웃은 정답 라벨을 바꾸는 방법이 아니다.",
+        "2번: 드롭아웃(Dropout)은 정답 라벨을 바꾸는 방법이 아니다.",
         "4번: 제시된 설명은 종료 시점을 정하지 않고 훈련 중 활성값을 바꾼다."
       ]
     },
-    "goal": "훈련·평가 모드와 마스크 상태를 바꿔 출력 크기를 확인한다.",
+    "goal": "훈련·평가(Evaluation) 모드와 마스크 상태를 바꿔 출력 크기를 확인한다.",
     "kind": "numeric",
     "relatedCodes": [
       "3-13",
@@ -3656,23 +3656,23 @@ export const CATALOG = [
   {
     "code": "4-21",
     "subject": 4,
-    "title": "성능을 탓하기 전에 자료 품질과 입력 조건을 점검한다",
-    "lead": "출력값이 달라졌다면 모형을 다시 학습하기 전에 자료형·단위·결측·전처리와 적용 대상을 확인한다. 입력 변화는 원인 후보이며, 실제 성능 저하와 그 원인을 확정하는 근거는 따로 필요하다.",
+    "title": "모형 진단(Model Diagnostics)과 학습·서빙 편향(Training-Serving Skew)",
+    "lead": "출력값이 달라졌다면 모형(Model)을 다시 학습하기 전에 자료형·단위·결측·전처리(Preprocessing)와 적용 대상을 확인한다. 입력 변화는 원인 후보이며, 실제 성능 저하와 그 원인을 확정하는 근거는 따로 필요하다.",
     "cue": "값이 달라졌나, 값의 뜻이 달라졌나.",
     "question": {
       "givens": "훈련 입력의 가격 단위는 천원이다. 같은 상품이 전개 입력에서는 원 단위의 수치 10000으로 들어온다. 이 기간의 실제 정답은 아직 없다.",
       "stem": "가장 먼저 확인할 진단은?",
       "choices": [
         "학습 epoch만 두 배로 늘린다",
-        "단위·전처리 계약을 맞추고 입력과 출력을 점검한다",
-        "분포가 달라졌으므로 정확도 하락을 확정한다",
-        "모든 이상값을 삭제한다"
+        "단위·전처리(Preprocessing) 계약을 맞추고 입력과 출력을 점검한다",
+        "분포가 달라졌으므로 정확도(Accuracy) 하락을 확정한다",
+        "모든 이상값(Outlier)을 삭제한다"
       ],
       "answer": 2,
-      "reason": "같은 가격이 다른 단위로 전달된 경로를 확인하고 천원 기준을 일치시켜야 한다. 실제 성능의 변화는 정답을 확보해 별도로 평가한다.",
+      "reason": "같은 가격이 다른 단위로 전달된 경로를 확인하고 천원 기준을 일치시켜야 한다. 실제 성능의 변화는 정답을 확보해 별도로 평가(Evaluation)한다.",
       "wrong_reasons": [
         "1번: 단위 불일치가 남은 채 학습 횟수를 늘려도 입력 계약의 오류는 해결되지 않는다.",
-        "3번: 입력 변화만으로 라벨 기반 정확도 하락을 계산하거나 인과 원인을 확정할 수 없다.",
+        "3번: 입력 변화만으로 라벨 기반 정확도(Accuracy) 하락을 계산하거나 인과 원인을 확정할 수 없다.",
         "4번: 10000이라는 숫자는 원 단위에서 정상일 수 있으며 삭제보다 의미와 단위를 먼저 확인한다."
       ]
     },
@@ -3695,27 +3695,27 @@ export const CATALOG = [
   {
     "code": "4-23",
     "subject": 4,
-    "title": "탐색 방법은 같은 예산에서 다음 후보를 고르는 규칙이 다르다",
-    "lead": "격자·무작위·베이지안 탐색을 비교할 때는 후보 공간, 평가 지표, 분할과 예산을 먼저 맞춘다. 특정 이름을 썼다는 이유로 항상 더 좋은 모형을 찾았다고 말할 수 없다.",
+    "title": "하이퍼파라미터 최적화(Hyperparameter Optimization): 격자 탐색(Grid Search)·무작위 탐색(Random Search)·베이지안 최적화(Bayesian Optimization)",
+    "lead": "격자·무작위·베이지안 최적화(Bayesian Optimization)를 비교할 때는 후보 공간, 평가 지표(Evaluation Metric), 분할과 예산을 먼저 맞춘다. 특정 이름을 썼다는 이유로 항상 더 좋은 모형(Model)을 찾았다고 말할 수 없다.",
     "cue": "다음 후보를 고를 때 이전 점수를 쓰는가.",
     "question": {
-      "givens": "검증 점수로 설정을 평가한다. 이전 후보·점수와 불확실성을 표현한 대리모형을 갱신해 다음 후보를 고르려 한다.",
+      "givens": "검증 점수로 설정을 평가(Evaluation)한다. 이전 후보·점수와 불확실성을 표현한 대리모형(Surrogate Model)을 갱신해 다음 후보를 고르려 한다.",
       "stem": "이 방식과 가장 직접 연결되는 것은?",
       "choices": [
-        "고정된 전체 격자만 순서대로 평가",
+        "고정된 전체 격자만 순서대로 평가(Evaluation)",
         "이전 점수와 무관한 무작위 추출만 수행",
         "시험 정답으로 후보를 선택",
-        "베이지안 최적화"
+        "베이지안 최적화(Bayesian Optimization)"
       ],
       "answer": 4,
-      "reason": "베이지안 최적화는 관측한 결과로 대리모형을 갱신하고 획득함수를 이용해 다음 평가 위치를 정한다. 설정과 예산 안의 순차 의사결정이며 전역 최적의 보장은 아니다.",
+      "reason": "베이지안 최적화(Bayesian Optimization)는 관측(Observation)한 결과로 대리모형(Surrogate Model)을 갱신하고 획득함수를 이용해 다음 평가(Evaluation) 위치를 정한다. 설정과 예산 안의 순차 의사결정(Decision-Making)이며 전역 최적의 보장은 아니다.",
       "wrong_reasons": [
-        "1번: 고정 격자의 조합은 이전 검증 결과를 이용해 새 평가 위치를 정하는 방식이 아니다.",
+        "1번: 고정 격자의 조합은 이전 검증 결과를 이용해 새 평가(Evaluation) 위치를 정하는 방식이 아니다.",
         "2번: 이 문제는 이전 점수와 불확실성을 다음 결정에 반영한다고 명시했다.",
-        "3번: 최종 시험 정답을 탐색에 쓰면 독립 성능 평가를 위한 역할이 무너진다."
+        "3번: 최종 시험 정답을 탐색에 쓰면 독립 성능 평가(Evaluation)를 위한 역할이 무너진다."
       ]
     },
-    "goal": "같은 공간·fold에서 평가 후보 수와 학습 횟수를 계산한다.",
+    "goal": "같은 공간·fold에서 평가(Evaluation) 후보 수와 학습 횟수를 계산한다.",
     "kind": "numeric",
     "relatedCodes": [
       "1-10",
@@ -3737,24 +3737,24 @@ export const CATALOG = [
   {
     "code": "4-25",
     "subject": 4,
-    "title": "융합했다는 사실과 더 좋아졌다는 결과를 구분한다",
-    "lead": "여러 모형의 예측을 평균해도 가장 좋은 단일 모형보다 나쁠 수 있다. 결합 규칙을 정한 뒤 같은 평가자료와 지표에서 결과를 직접 비교해야 한다.",
-    "cue": "모형 개수 대신, 같은 표의 오차를 비교한다.",
+    "title": "회귀 앙상블(Regression Ensemble)과 평균 결합(Averaging)",
+    "lead": "여러 모형(Model)의 예측을 평균(Mean)해도 가장 좋은 단일 모형(Model)보다 나쁠 수 있다. 결합 규칙을 정한 뒤 같은 평가자료와 지표에서 결과를 직접 비교해야 한다.",
+    "cue": "모형(Model) 개수 대신, 같은 표의 오차를 비교한다.",
     "question": {
-      "givens": "정답이 0인 같은 평가 사례에서 A의 예측 1과 B의 예측 3을 동일 가중치로 평균한다.",
-      "stem": "평균 융합의 절대오차와 A 대비 판단은?",
+      "givens": "정답이 0인 같은 평가(Evaluation) 사례에서 A의 예측 1과 B의 예측 3을 동일 가중치로 평균(Mean)한다.",
+      "stem": "평균 결합(Averaging)의 절대오차(Absolute Error)와 A 대비 판단은?",
       "choices": [
         "오차 0으로 반드시 개선",
         "오차 2로 A보다 나쁨",
         "오차 1로 A와 같음",
-        "모형이 2개라 일반화 향상 보장"
+        "모형(Model)이 2개라 일반화 향상 보장"
       ],
       "answer": 2,
-      "reason": "평균 예측은(1+3)/2=2, 절대오차는|0−2|=2다. A의 절대오차 1보다 커서 이 사례에서는 융합이 나쁘다.",
+      "reason": "평균(Mean) 예측은(1+3)/2=2, 절대오차(Absolute Error)는|0−2|=2다. A의 절대오차(Absolute Error) 1보다 커서 이 사례에서는 융합이 나쁘다.",
       "wrong_reasons": [
-        "1번: 서로 같은 방향의 오차는 평균한다고 0으로 상쇄되지 않는다.",
-        "3번: 두 예측의 평균은 1이 아니라 2다.",
-        "4번: 모형 개수는 예측 오차나 새 자료 성능을 자동으로 보장하지 않는다."
+        "1번: 서로 같은 방향의 오차는 평균(Mean)한다고 0으로 상쇄되지 않는다.",
+        "3번: 두 예측의 평균(Mean)은 1이 아니라 2다.",
+        "4번: 모형(Model) 개수는 예측 오차나 새 자료 성능을 자동으로 보장하지 않는다."
       ]
     },
     "goal": "B의 예측과 결합 가중치를 바꿔 상쇄 여부를 확인한다.",
@@ -3775,7 +3775,7 @@ export const CATALOG = [
   {
     "code": "4-27",
     "subject": 4,
-    "title": "시간 추세와 공간 분포는 먼저 묻는 질문이 다르다",
+    "title": "시계열 시각화(Time Series Visualization)와 공간 시각화(Spatial Visualization)",
     "lead": "같은 매출표도 한 지역의 월별 변화, 한 달의 지역 차이, 지역별 시간 변화를 묻는지에 따라 표현이 달라진다. 좌표가 있다는 이유만으로 언제나 지도가 가장 좋은 선택은 아니다.",
     "cue": "어디의 차이인가, 언제의 변화인가.",
     "question": {
@@ -3783,12 +3783,12 @@ export const CATALOG = [
       "stem": "이 목적에 가장 직접 맞는 표현은?",
       "choices": [
         "한 달의 지역별 면적 지도만",
-        "시간 순서가 있는 선그래프",
+        "시간 순서가 있는 선 그래프(Line Chart)",
         "합계만 나타낸 원그래프",
         "지역 이름의 가나다순 목록만"
       ],
       "answer": 2,
-      "reason": "월별 값과 시간 순서를 같은 축에 놓은 선그래프는 추세와 변화 시점을 직접 보여준다. 지도나 합계만으로는 이 질문의 시간 변화를 충분히 나타내지 못한다.",
+      "reason": "월별 값과 시간 순서를 같은 축에 놓은 선 그래프(Line Chart)는 추세와 변화 시점을 직접 보여준다. 지도나 합계만으로는 이 질문의 시간 변화를 충분히 나타내지 못한다.",
       "wrong_reasons": [
         "1번: 한 달의 공간 배치만 보여주면 A의 월별 변화가 빠진다.",
         "3번: 합계를 부분 비중으로 바꾸면 언제 값이 달라졌는지 보이지 않는다.",
@@ -3817,11 +3817,11 @@ export const CATALOG = [
   {
     "code": "4-28",
     "subject": 4,
-    "title": "카토그램의 면적은 실제 땅보다 선택한 통계량을 나타낸다",
-    "lead": "실제 지리면적과 인구에 비례해 다시 그린 면적은 다른 정보다. 지역이 크게 보이면 땅이 넓다는 뜻인지, 표시한 통계량이 많다는 뜻인지 범례부터 확인한다.",
+    "title": "카토그램(Cartogram)의 면적 부호화(Area Encoding)",
+    "lead": "실제 지리면적과 인구에 비례해 다시 그린 면적은 다른 정보다. 지역이 크게 보이면 땅이 넓다는 뜻인지, 표시한 통계량(Statistic)이 많다는 뜻인지 범례부터 확인한다.",
     "cue": "지도에서 큰 것이, 땅인가 사람인가.",
     "question": {
-      "givens": "인구가 A는 10만 명, B는 30만 명인 두 지역을 인구 비례 면적의 카토그램으로 그린다. 같은 비례상수를 사용한다.",
+      "givens": "인구가 A는 10만 명, B는 30만 명인 두 지역을 인구 비례 면적의 카토그램(Cartogram)으로 그린다. 같은 비례상수를 사용한다.",
       "stem": "B의 표시 면적은 A의 몇 배인가?",
       "choices": [
         "1/3배",
@@ -3833,7 +3833,7 @@ export const CATALOG = [
       "reason": "표시 면적을 인구에 비례시켰으므로 30/10=3배다. 실제 지리 면적 비율은 이 인코딩의 크기를 정하는 기준이 아니다.",
       "wrong_reasons": [
         "1번: 인구의 분자와 분모를 반대로 나누었다.",
-        "2번: 자체 예제의 실제 지리 면적A/B=2를 카토그램의B/A 비율로 옮겼다.",
+        "2번: 자체 예제의 실제 지리 면적A/B=2를 카토그램(Cartogram)의B/A 비율로 옮겼다.",
         "4번: 이 문제는 인구 비례라고 명시했으므로 인구 비율만으로 표시 면적 비율을 구할 수 있다."
       ]
     },
@@ -3855,8 +3855,8 @@ export const CATALOG = [
   {
     "code": "4-29",
     "subject": 4,
-    "title": "버블의 값 비율과 반지름 비율은 다르다",
-    "lead": "버블차트는 위치와 크기에 서로 다른 변수를 담는다. 원의 면적을 값에 비례시켰다면 값이4배여도 반지름은2배이며, 크기 범례 없이는 단순히 지름을 값처럼 읽으면 안 된다.",
+    "title": "버블 차트(Bubble Chart)의 면적·반지름 해석",
+    "lead": "버블 차트(Bubble Chart)는 위치와 크기에 서로 다른 변수를 담는다. 원의 면적을 값에 비례시켰다면 값이4배여도 반지름은2배이며, 크기 범례 없이는 단순히 지름을 값처럼 읽으면 안 된다.",
     "cue": "면적의 네 배는, 반지름의 두 배.",
     "question": {
       "givens": "같은 원형 버블의 면적이 값에 비례한다. A의 값은 10, B의 값은 40이고 테두리 영향은 제외한다.",
@@ -3893,8 +3893,8 @@ export const CATALOG = [
   {
     "code": "4-30",
     "subject": 4,
-    "title": "히트맵의 재정렬은 값을 바꾸지 않고 이웃을 바꾼다",
-    "lead": "행·열의 순서만 바꾸면 가까운 패턴을 모아 볼 수 있지만 관측값 자체가 바뀌지는 않는다. 재정렬과 표준화·값 변환을 같은 작업으로 설명하지 않는다.",
+    "title": "히트맵(Heatmap)의 행·열 재정렬(Row and Column Reordering)",
+    "lead": "행·열의 순서만 바꾸면 가까운 패턴을 모아 볼 수 있지만 관측값 자체가 바뀌지는 않는다. 재정렬과 표준화(Standardization)·값 변환을 같은 작업으로 설명하지 않는다.",
     "cue": "자리만 바뀌었나, 숫자도 바뀌었나.",
     "question": {
       "givens": "A=(1,2), B=(8,9), C=(2,1), D=(9,8)의 행 순서만 A·C·B·D로 바꾼다. 값 변환은 없고 색 범위도 같다.",
@@ -3902,18 +3902,18 @@ export const CATALOG = [
       "choices": [
         "전체 합계 40과 각 이름에 연결된 값은 같다",
         "서로 이웃한 모든 행의 상관은 1이 된다",
-        "관측 수가 4에서 8로 늘어난다",
-        "값이 자동으로 평균 0으로 표준화된다"
+        "관측(Observation) 수가 4에서 8로 늘어난다",
+        "값이 자동으로 평균(Mean) 0으로 표준화(Standardization)된다"
       ],
       "answer": 1,
       "reason": "행의 위치만 달라졌으므로 값·합계·행 수는 변하지 않는다. 비슷한 행을 이웃하게 보여주는 효과와 수치 변환을 구별한다.",
       "wrong_reasons": [
         "2번: 이웃 배치는 새로운 상관을 만들거나 완전한 상관을 보장하지 않는다.",
-        "3번: 4행의 순서를 바꿨을 뿐 관측을 추가하지 않았다.",
-        "4번: 평균을 빼는 표준화는 이 문제에서 수행하지 않았다고 명시한 별도 연산이다."
+        "3번: 4행의 순서를 바꿨을 뿐 관측(Observation)을 추가하지 않았다.",
+        "4번: 평균(Mean)을 빼는 표준화(Standardization)는 이 문제에서 수행하지 않았다고 명시한 별도 연산이다."
       ]
     },
-    "goal": "행 재정렬과 A행 평균 중심화의 결과를 비교한다.",
+    "goal": "행 재정렬과 A행 평균(Mean) 중심화(Centering)의 결과를 비교한다.",
     "kind": "decision",
     "relatedCodes": [
       "4-03",
@@ -3931,8 +3931,8 @@ export const CATALOG = [
   {
     "code": "4-31",
     "subject": 4,
-    "title": "히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다",
-    "lead": "도수가 같아도 구간 너비가 다르면 밀도 높이는 다르다. density로 정규화한 히스토그램은 막대 높이의 합이 아니라 높이×너비의 총합이1이 되도록 계산한다.",
+    "title": "히스토그램(Histogram)의 확률밀도(Probability Density)",
+    "lead": "도수(Frequency)가 같아도 구간 너비(Bin Width)가 다르면 밀도 높이는 다르다. density로 정규화한 히스토그램(Histogram)은 막대 높이의 합이 아니라 높이×너비의 총합이1이 되도록 계산한다.",
     "cue": "밀도 그림은, 높이 곱하기 너비.",
     "question": {
       "givens": "관측값 0.2·0.6·1.2·2.4를 구간 [0,1), [1,3]으로 나눈다. 가중치 없이 전체 4개를 density로 정규화한다.",
@@ -3944,14 +3944,14 @@ export const CATALOG = [
         "1과 0.5"
       ],
       "answer": 3,
-      "reason": "첫 구간은 2/(4×1)=0.5, 둘째는 2/(4×2)=0.25다. 각각 높이에 구간 너비를 곱하면 관측의 절반에 해당하는 면적 0.5가 된다.",
+      "reason": "첫 구간은 2/(4×1)=0.5, 둘째는 2/(4×2)=0.25다. 각각 높이에 구간 너비(Bin Width)를 곱하면 관측(Observation)의 절반에 해당하는 면적 0.5가 된다.",
       "wrong_reasons": [
-        "1번: 구간의 도수를 밀도 높이로 그대로 썼다.",
-        "2번: 상대도수는 둘 다 0.5지만 두 번째 구간 너비 2로 다시 나누지 않았다.",
-        "4번: 전체 관측 수 4가 아니라 2로 나누어 면적 총합이 2가 된다."
+        "1번: 구간의 도수(Frequency)를 밀도 높이로 그대로 썼다.",
+        "2번: 상대도수(Relative Frequency)는 둘 다 0.5지만 두 번째 구간 너비(Bin Width) 2로 다시 나누지 않았다.",
+        "4번: 전체 관측(Observation) 수 4가 아니라 2로 나누어 면적 총합이 2가 된다."
       ]
     },
-    "goal": "구간과 마지막 관측을 바꾸어 밀도 높이와 면적을 계산한다.",
+    "goal": "구간과 마지막 관측(Observation)을 바꾸어 밀도 높이와 면적을 계산한다.",
     "kind": "distribution",
     "relatedCodes": [
       "4-30",
@@ -3969,12 +3969,12 @@ export const CATALOG = [
   {
     "code": "4-32",
     "subject": 4,
-    "title": "축을 잘라도 자료의 증가율이 바뀌지는 않는다",
+    "title": "막대 그래프(Bar Chart)의 축 절단(Truncated Axis)과 증가율(Growth Rate)",
     "lead": "값20과30은50% 증가다. 막대의 세로축을18부터 그려 보이는 길이가2와12가 되었다고 자료값이6배가 된 것은 아니다. 실제값·단위·분모와 시각적 길이를 나누어 읽는다.",
-    "cue": "눈에 보인 길이 말고, 원자료의 분모.",
+    "cue": "눈에 보인 길이 말고, 원자료(Raw Data)의 분모.",
     "question": {
       "givens": "같은 단위의 통계값이 20→30으로 증가했다. 막대의 축은 18부터 시작해 보이는 높이가 2→12가 됐다.",
-      "stem": "실제 통계값의 증가율은?",
+      "stem": "실제 통계값의 증가율(Growth Rate)은?",
       "choices": [
         "600%",
         "500%",
@@ -3982,14 +3982,14 @@ export const CATALOG = [
         "10%"
       ],
       "answer": 3,
-      "reason": "(30−20)/20=0.5이므로 50%다. 보이는 높이의 비 6이나 높이 증가율 500%는 실제 자료값의 증가율이 아니다.",
+      "reason": "(30−20)/20=0.5이므로 50%다. 보이는 높이의 비 6이나 높이 증가율(Growth Rate) 500%는 실제 자료값의 증가율(Growth Rate)이 아니다.",
       "wrong_reasons": [
-        "1번: 보이는 높이 12/2=6을 실제값의 증가율로 읽었다. 배율과 증가율도 혼동했다.",
-        "2번: 잘린 높이의 증가율(12−2)/2=500%를 원자료에 적용했다.",
+        "1번: 보이는 높이 12/2=6을 실제값의 증가율(Growth Rate)로 읽었다. 배율과 증가율(Growth Rate)도 혼동했다.",
+        "2번: 잘린 높이의 증가율(Growth Rate)(12−2)/2=500%를 원자료(Raw Data)에 적용했다.",
         "4번: 차이 10을 이전 값 20으로 나누지 않고 그대로 퍼센트로 붙였다."
       ]
     },
-    "goal": "축 시작과 자료의 비율 단위를 바꾸어 원자료 증가율을 유지한다.",
+    "goal": "축 시작과 자료의 비율 단위를 바꾸어 원자료(Raw Data) 증가율(Growth Rate)을 유지한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-27",
@@ -4007,22 +4007,22 @@ export const CATALOG = [
   {
     "code": "4-33",
     "subject": 4,
-    "title": "회귀계수의 크기는 원인의 크기가 아니다",
-    "lead": "예측식의 계수는 다른 입력을 고정하고 한 입력을 한 단위 바꿀 때 예측값이 얼마나 바뀌는지 말한다. 단위와 모형을 지우고 중요도나 인과효과로 바꾸어 읽으면 설명 범위를 넘는다.",
-    "cue": "계수는 단위, 중요도는 평가 조건부터.",
+    "title": "회귀계수(Regression Coefficient) 해석과 인과효과(Causal Effect)",
+    "lead": "예측식의 계수는 다른 입력을 고정하고 한 입력을 한 단위 바꿀 때 예측값(Predicted Value)이 얼마나 바뀌는지 말한다. 단위와 모형(Model)을 지우고 중요도나 인과효과(Causal Effect)로 바꾸어 읽으면 설명 범위를 넘는다.",
+    "cue": "계수는 단위, 중요도는 평가(Evaluation) 조건부터.",
     "question": {
       "givens": "예측식 ŷ=2x₁+0.01x₂에서 x₁은 천원 단위다. 원 단위 w₁=1000x₁로 바꾸고 같은 예측을 유지한다.",
       "stem": "w₁의 계수와 해석으로 옳은 것은?",
       "choices": [
-        "계수 2000, 현실의 인과효과도 1000배다",
+        "계수 2000, 현실의 인과효과(Causal Effect)도 1000배다",
         "계수 0.002, 단위가 바뀌었을 뿐 예측식은 동등하다",
         "계수 2, 입력 단위와 계수는 무관하다",
         "계수 0.01, 더 작은 계수가 언제나 덜 중요한 변수다"
       ],
       "answer": 2,
-      "reason": "x₁=w₁/1000이므로 2x₁=0.002w₁다. 동일한 입력값을 단위에 맞게 환산하면 예측은 같고, 이 변환은 인과효과를 증명하지 않는다.",
+      "reason": "x₁=w₁/1000이므로 2x₁=0.002w₁다. 동일한 입력값을 단위에 맞게 환산하면 예측은 같고, 이 변환은 인과효과(Causal Effect)를 증명하지 않는다.",
       "wrong_reasons": [
-        "1번: 입력 수치가 1000배가 되므로 계수는 1000분의 1로 줄여야 한다. 인과효과의 확대도 도출되지 않는다.",
+        "1번: 입력 수치가 1000배가 되므로 계수는 1000분의 1로 줄여야 한다. 인과효과(Causal Effect)의 확대도 도출되지 않는다.",
         "3번: 계수 2를 유지하면 첫 항이 1000배가 되어 원래 식과 다른 예측을 만든다.",
         "4번: 두 번째 변수의 계수를 가져왔다. 서로 다른 단위의 계수 크기로 중요도를 단정할 수도 없다."
       ]
@@ -4050,27 +4050,27 @@ export const CATALOG = [
   {
     "code": "4-34",
     "subject": 4,
-    "title": "예측할 때도 학습한 전처리를 그대로 연결한다",
-    "lead": "모형 파일이 같아도 열 순서와 단위, 결측값 처리, 학습한 변환이 달라지면 다른 입력을 계산한다. 실제 적용에서는 원시 입력부터 출력의 의미까지 한 계약으로 확인한다.",
+    "title": "전처리 파이프라인(Preprocessing Pipeline)과 모형 배포(Model Deployment)",
+    "lead": "모형(Model) 파일이 같아도 열 순서와 단위, 결측값(Missing Value) 처리, 학습한 변환이 달라지면 다른 입력을 계산한다. 실제 적용에서는 원시 입력부터 출력의 의미까지 한 계약으로 확인한다.",
     "cue": "새 입력에는 fit 말고 저장한 transform.",
     "question": {
-      "givens": "저장된 전처리는 z=(x−10)/2, 모형은 ŷ=3z+1이다. 운영 입력 x=14에 같은 파이프라인을 적용한다.",
+      "givens": "저장된 전처리(Preprocessing)는 z=(x−10)/2, 모형(Model)은 ŷ=3z+1이다. 운영 입력 x=14에 같은 파이프라인(Pipeline)을 적용한다.",
       "stem": "올바른 처리와 출력은?",
       "choices": [
         "원시 입력 14를 바로 넣어 43을 출력한다",
-        "새 입력의 평균을 다시 학습해 항상 1을 출력한다",
-        "저장한 평균·표준편차로 변환해 7을 출력한다",
+        "새 입력의 평균(Mean)을 다시 학습해 항상 1을 출력한다",
+        "저장한 평균(Mean)·표준편차(SD, Standard Deviation)로 변환해 7을 출력한다",
         "출력 단위는 숫자만 맞으면 확인하지 않는다"
       ],
       "answer": 3,
-      "reason": "저장한 변환에서 z=2이고 ŷ=7이다. 학습된 변환과 입력·출력 의미를 함께 유지해야 동일한 파이프라인을 적용한 것이다.",
+      "reason": "저장한 변환에서 z=2이고 ŷ=7이다. 학습된 변환과 입력·출력 의미를 함께 유지해야 동일한 파이프라인(Pipeline)을 적용한 것이다.",
       "wrong_reasons": [
-        "1번: 표준화 단계를 빠뜨려 학습 때와 다른 숫자를 모형에 넣었다.",
-        "2번: 저장된 평균 10·표준편차 2를 적용하면 입력 14는 z=2가 된다. 새 요청 한 건으로 평균을 14로 다시 맞추면 중심화 값 0에서 출력 1이 나올 수 있지만, 학습 때 정한 변환을 바꾼 계산이다. 이 보기를 제외하는 이유는 1이라는 숫자가 불가능해서가 아니라 저장한 파이프라인을 유지하지 않았기 때문이다.",
-        "4번: 같은 숫자라도 단위·기간·클래스 의미가 다르면 사용자가 다른 행동을 할 수 있다. 출력 계약도 확인한다."
+        "1번: 표준화(Standardization) 단계를 빠뜨려 학습 때와 다른 숫자를 모형(Model)에 넣었다.",
+        "2번: 저장된 평균(Mean) 10·표준편차(SD, Standard Deviation) 2를 적용하면 입력 14는 z=2가 된다. 새 요청 한 건으로 평균(Mean)을 14로 다시 맞추면 중심화(Centering) 값 0에서 출력 1이 나올 수 있지만, 학습 때 정한 변환을 바꾼 계산이다. 이 보기를 제외하는 이유는 1이라는 숫자가 불가능해서가 아니라 저장한 파이프라인(Pipeline)을 유지하지 않았기 때문이다.",
+        "4번: 같은 숫자라도 단위·기간·클래스(Class) 의미가 다르면 사용자가 다른 행동을 할 수 있다. 출력 계약도 확인한다."
       ]
     },
-    "goal": "입력 값과 전처리 경로를 바꾸어 지정 파이프라인의 결과를 비교한다.",
+    "goal": "입력 값과 전처리(Preprocessing) 경로를 바꾸어 지정 파이프라인(Pipeline)의 결과를 비교한다.",
     "kind": "numeric",
     "relatedCodes": [
       "1-16",
@@ -4093,24 +4093,24 @@ export const CATALOG = [
   {
     "code": "4-35",
     "subject": 4,
-    "title": "입력 변화는 경보이고 성능 저하는 정답으로 확인한다",
+    "title": "데이터 드리프트(Data Drift)와 성능 모니터링(Performance Monitoring)",
     "lead": "새 데이터의 분포가 달라졌다는 사실만으로 오답이 늘었다고 말할 수 없다. 정답이 늦게 도착하는 동안은 입력·시스템 경보를 관찰하고, 나중에 같은 예측과 연결한 정답으로 성능을 계산한다.",
     "cue": "입력 경보와 정답 기반 성능을 나눈다.",
     "question": {
       "givens": "입력값 1의 비율이 이전 5개 중 1개에서 새 5개 중 3개로 바뀌었다. 새 구간의 정답은 아직 없다.",
       "stem": "현재 근거로 내릴 수 있는 결론은?",
       "choices": [
-        "정확도가 40퍼센트포인트 하락했다",
+        "정확도(Accuracy)가 40퍼센트포인트 하락했다",
         "입력 비율은 달라졌지만 성능 저하 여부는 아직 확인할 수 없다",
-        "재현율은 반드시 0이다",
-        "정답 없이도 새 구간 AUC를 계산할 수 있다"
+        "재현율(Recall)은 반드시 0이다",
+        "정답 없이도 새 구간 곡선 아래 면적(AUC, Area Under the Curve)을 계산할 수 있다"
       ],
       "answer": 2,
-      "reason": "입력값 1의 비율은 20%에서 60%로 달라졌다. 정확도·재현율·AUC는 실제 정답과 예측을 연결해야 하므로 입력 비율 변화만으로 그 변화를 확정할 수 없다.",
+      "reason": "입력값 1의 비율은 20%에서 60%로 달라졌다. 정확도(Accuracy)·재현율(Recall)·곡선 아래 면적(AUC, Area Under the Curve)은 실제 정답과 예측을 연결해야 하므로 입력 비율 변화만으로 그 변화를 확정할 수 없다.",
       "wrong_reasons": [
-        "1번: 입력 비율 차이를 정확도 차이로 바꾸었다. 정답이 없으므로 정확도 자체를 계산하지 못했다.",
+        "1번: 입력 비율 차이를 정확도(Accuracy) 차이로 바꾸었다. 정답이 없으므로 정확도(Accuracy) 자체를 계산하지 못했다.",
         "3번: 실제 양성과 그중 맞춘 수를 모른다. 입력 1을 정답 양성이나 오답으로 대신 셀 수 없다.",
-        "4번: AUC에는 실제 정답 클래스와 그 관측의 예측 점수가 필요하다. 점수는 이산적일 수도 있지만 입력 분포만으로 정답과의 순위를 구할 수는 없다."
+        "4번: 곡선 아래 면적(AUC, Area Under the Curve)에는 실제 정답 클래스(Class)와 그 관측(Observation)의 예측 점수가 필요하다. 점수는 이산적일 수도 있지만 입력 분포만으로 정답과의 순위를 구할 수는 없다."
       ]
     },
     "goal": "정답 도착 여부와 저장 예측을 바꾸어 계산 가능한 성능의 범위를 확인한다.",
@@ -4140,27 +4140,27 @@ export const CATALOG = [
   {
     "code": "4-36",
     "subject": 4,
-    "title": "재학습했다는 사실과 교체할 근거를 구분한다",
-    "lead": "새 데이터가 늘었다고 새 모형을 곧바로 운영에 올리지 않는다. 원인을 진단하고 같은 평가 조건에서 기존 모형과 비교한 뒤, 정한 성능·비용·운영 조건을 통과한 후보를 검토한다.",
-    "cue": "재학습은 작업, 교체는 비교 후 판단.",
+    "title": "모형 재학습(Model Retraining)과 모형 선택(Model Selection)",
+    "lead": "새 데이터가 늘었다고 새 모형(Model)을 곧바로 운영에 올리지 않는다. 원인을 진단하고 같은 평가(Evaluation) 조건에서 기존 모형(Model)과 비교한 뒤, 정한 성능·비용·운영 조건을 통과한 후보를 검토한다.",
+    "cue": "모형 재학습(Model Retraining)은 작업, 교체는 비교 후 판단.",
     "question": {
-      "givens": "같은 검증 정답 [10,20]에 기존 예측은 [12,18], 재학습 후보의 예측은 [13,17]이다. 낮은 MAE가 기준이고 다른 조건은 같다.",
+      "givens": "같은 검증 정답 [10,20]에 기존 예측은 [12,18], 모형 재학습(Model Retraining) 후보의 예측은 [13,17]이다. 낮은 평균 절대 오차(MAE, Mean Absolute Error)가 기준이고 다른 조건은 같다.",
       "stem": "이 검증 결과에 맞는 판단은?",
       "choices": [
         "새 자료로 학습했으므로 후보를 바로 교체한다",
-        "기존 MAE는 2, 후보 MAE는 3이므로 이 결과는 후보 교체를 지지하지 않는다",
-        "후보 MAE는 0이므로 교체한다",
-        "두 모형을 비교할 때 정답 자료를 각각 바꾼다"
+        "기존 평균 절대 오차(MAE, Mean Absolute Error)는 2, 후보 평균 절대 오차(MAE, Mean Absolute Error)는 3이므로 이 결과는 후보 교체를 지지하지 않는다",
+        "후보 평균 절대 오차(MAE, Mean Absolute Error)는 0이므로 교체한다",
+        "두 모형(Model)을 비교할 때 정답 자료를 각각 바꾼다"
       ],
       "answer": 2,
-      "reason": "기존 절대 오차는 2·2로 MAE가 2이고, 후보는 3·3으로 MAE가 3이다. 정한 낮은 MAE 기준에서는 기존이 낫다. 이 작은 검증만으로 모든 환경의 우열을 주장하지는 않는다.",
+      "reason": "기존 절대 오차는 2·2로 평균 절대 오차(MAE, Mean Absolute Error)가 2이고, 후보는 3·3으로 평균 절대 오차(MAE, Mean Absolute Error)가 3이다. 정한 낮은 평균 절대 오차(MAE, Mean Absolute Error) 기준에서는 기존이 낫다. 이 작은 검증만으로 모든 환경의 우열을 주장하지는 않는다.",
       "wrong_reasons": [
-        "1번: 재학습 여부를 검증 성능 대신 교체 근거로 삼았다. 후보는 이 조건에서 오히려 오차가 크다.",
-        "3번: 후보 예측은 정답과 각각 3만큼 다르므로 MAE는 3이다.",
-        "4번: 서로 다른 평가 자료를 쓰면 자료 난이도와 구성 차이가 모형 차이에 섞인다. 공정한 비교 조건을 유지한다."
+        "1번: 모형 재학습(Model Retraining) 여부를 검증 성능 대신 교체 근거로 삼았다. 후보는 이 조건에서 오히려 오차가 크다.",
+        "3번: 후보 예측은 정답과 각각 3만큼 다르므로 평균 절대 오차(MAE, Mean Absolute Error)는 3이다.",
+        "4번: 서로 다른 평가(Evaluation) 자료를 쓰면 자료 난이도와 구성 차이가 모형(Model) 차이에 섞인다. 공정한 비교 조건을 유지한다."
       ]
     },
-    "goal": "같은 두 정답에서 후보 예측만 바꾸어 낮은 MAE 기준과 비교한다.",
+    "goal": "같은 두 정답에서 후보 예측만 바꾸어 낮은 평균 절대 오차(MAE, Mean Absolute Error) 기준과 비교한다.",
     "kind": "numeric",
     "relatedCodes": [
       "4-08",
@@ -4183,22 +4183,22 @@ export const CATALOG = [
   {
     "code": "4-37",
     "subject": 4,
-    "title": "예측값 다음에 누가 무엇을 결정하는지 적는다",
-    "lead": "같은 수요80개도 발주 담당자와 배송 담당자가 필요한 설명은 다르다. 예측 단위·시점·불확실성과 사용자의 행동 규칙을 연결해야 결과가 실제 의사결정에 쓰인다.",
-    "cue": "예측값 옆에 사용자·행동·조건.",
+    "title": "의사결정(Decision-Making)을 위한 분석 결과 활용",
+    "lead": "같은 수요80개도 발주 담당자와 배송 담당자가 필요한 설명은 다르다. 예측 단위·시점·불확실성과 사용자의 행동 규칙을 연결해야 결과가 실제 의사결정(Decision-Making)에 쓰인다.",
+    "cue": "예측값(Predicted Value) 옆에 사용자·행동·조건.",
     "question": {
-      "givens": "내일 수요 예측은 80개, 재고는 20개다. 입고·폐기·안전 재고·포장 제약은 없다. 단순 정책은 추가 발주=max(예측 수요−재고,0)이다.",
+      "givens": "내일 수요 예측(Demand Forecasting)은 80개, 재고는 20개다. 입고·폐기·안전 재고·포장 제약은 없다. 단순 정책은 추가 발주=max(예측 수요−재고,0)이다.",
       "stem": "이 정책의 추가 발주량과 올바른 설명은?",
       "choices": [
         "80개, 예측은 항상 최적 행동과 같다",
         "100개, 재고를 더해야 한다",
         "60개, 명시한 단순 정책의 결과다",
-        "20개, 예측값은 의사결정에 쓰지 않는다"
+        "20개, 예측값(Predicted Value)은 의사결정(Decision-Making)에 쓰지 않는다"
       ],
       "answer": 3,
       "reason": "max(80−20,0)=60이다. 재고를 고려한 지정 정책의 산출이며, 현실의 모든 비용·제약을 반영한 최적 주문이나 업무 성과 개선을 뜻하지 않는다.",
       "wrong_reasons": [
-        "1번: 재고 20개를 빠뜨렸다. 예측값과 제약을 반영한 행동은 구별한다.",
+        "1번: 재고 20개를 빠뜨렸다. 예측값(Predicted Value)과 제약을 반영한 행동은 구별한다.",
         "2번: 현재 재고는 수요를 충당하므로 지정 식에서는 빼야 한다.",
         "4번: 재고를 그대로 발주량으로 읽었다. 주어진 정책은 예측 수요와 재고를 함께 쓴다."
       ]

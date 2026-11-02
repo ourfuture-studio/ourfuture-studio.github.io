@@ -1,21 +1,22 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>활성화 함수의 값과 범위를 따로 본다 · 빅분기 공부방</title><meta name="description" content="출력이 0이 될 수 있는지, 음수가 가능한지, 상한이 있는지 비교한다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>활성화 함수(Activation Function): 시그모이드(Sigmoid), 쌍곡탄젠트(Tanh), ReLU(Rectified Linear Unit) · 빅분기 공부방</title><meta content="출력이 0이 될 수 있는지, 음수가 가능한지, 상한이 있는지 비교한다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="3-11">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=3">3과목 · 빅데이터 모델링</a><span class="separator" aria-hidden="true">/</span><span>3-11</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-11 · 이론 읽기</span><h1>활성화 함수의 값과 범위를 따로 본다</h1><p class="theory-lead">출력이 0이 될 수 있는지, 음수가 가능한지, 상한이 있는지 비교한다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=3">3과목 · 빅데이터(Big Data) 모델링(Modeling)</a><span aria-hidden="true" class="separator">/</span><span>3-11</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">3과목 · 3-11 · 이론 읽기</span><h1>활성화 함수(Activation Function): 시그모이드(Sigmoid), 쌍곡탄젠트(Tanh), ReLU(Rectified Linear Unit)</h1><p class="theory-lead">출력이 0이 될 수 있는지, 음수가 가능한지, 상한이 있는지 비교한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-11">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-11.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>sigmoid는 실수 입력 z를 1/(1+exp(−z))로 바꾼다. 유한한 실수 z에 대해 수학적 값은 0보다 크고 1보다 작으며 z=0에서 0.5다. 확률처럼 해석할 수 있는 출력 형식이지만, 모든 sigmoid 출력이 잘 보정된 사건 확률이라는 뜻은 아니다.</p>
-<p>tanh는 음수와 양수를 모두 내며 범위는 (−1,1), 원점의 값은 0이다. ReLU는 max(0,z)이므로 음수에서는 0, 양수에서는 z를 유지한다. ReLU는 양의 방향 상한이 없어서 출력이 항상 0과 1 사이라는 보기는 틀린다. 범위와 특정 입력에서의 값을 혼동하지 않는다.</p>
-<p>기울기를 물으면 입력 위치를 확인한다. sigmoid와 tanh는 큰 절댓값 구간에서 기울기가 작아질 수 있다. ReLU도 음수 영역에서는 기울기가 0이고 원점에서는 수학적 미분이 유일하지 않다. 이 때문에 ReLU가 기울기 문제를 전부 해결한다고 단정하지 않는다. 아래 문항은 원점의 함수값만 물으며 미분값은 묻지 않는다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>입력 z=0에 세 함수를 적용한다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>활성화 함수(Activation Function)는 신경망(Neural Network) 뉴런(Neuron)의 입력을 변환하며, 시그모이드(Sigmoid), 쌍곡탄젠트(tanh, Hyperbolic Tangent), 정류 선형 유닛(ReLU, Rectified Linear Unit)은 값의 범위와 미분 특성이 다르다. 시그모이드 함수(Sigmoid Function)는 유한한 실수 입력에서 (0, 1), 쌍곡탄젠트(tanh, Hyperbolic Tangent)는 (-1, 1), 정류 선형 유닛(ReLU, Rectified Linear Unit)은 [0, ∞)의 값을 가지므로 원점의 함수값과 도함수(Derivative)를 구분해야 한다.</p><ul class="terminology-terms"><li>활성화 함수(Activation Function)</li><li>시그모이드 함수(Sigmoid Function)</li><li>쌍곡탄젠트(tanh, Hyperbolic Tangent)</li><li>정류 선형 유닛(ReLU, Rectified Linear Unit)</li><li>도함수(Derivative)</li><li>치역(Range)</li><li>기울기 소실(Vanishing Gradient)</li><li>확률 보정(Probability Calibration)</li></ul><p class="terminology-sources">정의 참고: <a href="https://cs231n.github.io/neural-networks-1/">Stanford CS231n: Neural Networks, Part 1</a> · <a href="https://scikit-learn.org/stable/modules/neural_networks_supervised.html">scikit-learn: Neural Network Models, Supervised</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>시그모이드 함수(Sigmoid Function)는 실수 입력 z를 1/(1+exp(−z))로 바꾼다. 유한한 실수 z에 대해 수학적 값은 0보다 크고 1보다 작으며 z=0에서 0.5다. 확률처럼 해석할 수 있는 출력 형식이지만, 모든 시그모이드 함수(Sigmoid Function) 출력이 잘 보정된 사건 확률이라는 뜻은 아니다.</p>
+<p>쌍곡탄젠트(tanh, Hyperbolic Tangent)는 음수와 양수를 모두 내며 범위는 (−1,1), 원점의 값은 0이다. 정류 선형 유닛(ReLU, Rectified Linear Unit)은 max(0,z)이므로 음수에서는 0, 양수에서는 z를 유지한다. 정류 선형 유닛(ReLU, Rectified Linear Unit)은 양의 방향 상한이 없어서 출력이 항상 0과 1 사이라는 보기는 틀린다. 범위와 특정 입력에서의 값을 혼동하지 않는다.</p>
+<p>기울기를 물으면 입력 위치를 확인한다. 시그모이드 함수(Sigmoid Function)와 쌍곡탄젠트(tanh, Hyperbolic Tangent)는 큰 절댓값 구간에서 기울기가 작아질 수 있다. 정류 선형 유닛(ReLU, Rectified Linear Unit)도 음수 영역에서는 기울기가 0이고 원점에서는 수학적 미분이 유일하지 않다. 이 때문에 정류 선형 유닛(ReLU, Rectified Linear Unit)이 기울기 문제를 전부 해결한다고 단정하지 않는다. 아래 문항은 원점의 함수값만 물으며 도함수(Derivative)는 묻지 않는다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>입력 z=0에 세 함수를 적용한다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
@@ -26,44 +27,44 @@
 </thead>
 <tbody>
 <tr>
-<td>sigmoid</td>
+<td>시그모이드 함수(Sigmoid Function)</td>
 <td>1/(1+e^(−z))</td>
 <td style="text-align: right;">0.5</td>
 </tr>
 <tr>
-<td>tanh</td>
+<td>쌍곡탄젠트(tanh, Hyperbolic Tangent)</td>
 <td>(e^z−e^(−z))/(e^z+e^(−z))</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr>
-<td>ReLU</td>
+<td>정류 선형 유닛(ReLU, Rectified Linear Unit)</td>
 <td>max(0,z)</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table></div>
-<p>sigmoid의 0.5는 클래스 레이블 0 또는 1로 문턱 처리하기 전 값이다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/3-11.png" alt="입력 z가 −4~4일 때 sigmoid·tanh·ReLU의 함수 곡선을 비교한다. 세로축 눈금은 −1, 0, 1, 2, 3, 4이며, sigmoid(0)=0.5와 ReLU(2)=2를 표시한다." width="1200" height="820" loading="lazy" decoding="async"><figcaption>같은 입력에 대한 sigmoid·tanh·ReLU의 출력 범위를 비교한다. 유한한 입력에서 sigmoid는 (0,1), tanh는 (−1,1) 범위이며, ReLU에는 양의 상한이 없다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>입력 z=0. 순서는 sigmoid, tanh, ReLU다.</p>
+<p>시그모이드 함수(Sigmoid Function)의 0.5는 클래스(Class) 레이블 0 또는 1로 문턱 처리하기 전 값이다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="입력 z가 −4~4일 때 시그모이드 함수(Sigmoid Function)·쌍곡탄젠트(tanh, Hyperbolic Tangent)·정류 선형 유닛(ReLU, Rectified Linear Unit)의 함수 곡선을 비교한다. 세로축 눈금은 −1, 0, 1, 2, 3, 4이며, sigmoid(0)=0.5와 ReLU(2)=2를 표시한다." decoding="async" height="1455" loading="lazy" src="../assets/figures/3-11.png?v=83b8f67c2447" width="1200"/><figcaption>같은 입력에 대한 시그모이드 함수(Sigmoid Function)·쌍곡탄젠트(tanh, Hyperbolic Tangent)·정류 선형 유닛(ReLU, Rectified Linear Unit)의 치역(Range)을 비교한다. 유한한 입력에서 시그모이드 함수(Sigmoid Function)는 (0,1), 쌍곡탄젠트(tanh, Hyperbolic Tangent)는 (−1,1) 범위이며, 정류 선형 유닛(ReLU, Rectified Linear Unit)에는 양의 상한이 없다.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>입력 z=0. 순서는 시그모이드 함수(Sigmoid Function), 쌍곡탄젠트(tanh, Hyperbolic Tangent), ReLU다.</p>
 <p><strong>세 함수값의 순서는?</strong></p>
 <ul>
 <li>1. (0,0,0)</li>
 <li>2. (0.5,0,0)</li>
 <li>3. (1,0,1)</li>
 <li>4. (0.5,0.5,0.5)</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — (0.5,0,0)</strong></p>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 2번 — (0.5,0,0)</strong></p>
 <p>sigmoid(0)=1/(1+1)=0.5, tanh(0)=0, ReLU(0)=0이다.</p>
 <ul>
-<li>1번: sigmoid가 원점에서 0.5라는 점을 놓쳤다.</li>
+<li>1번: 시그모이드 함수(Sigmoid Function)가 원점에서 0.5라는 점을 놓쳤다.</li>
 <li>3번: 함수값을 이진 레이블처럼 취급했다.</li>
-<li>4번: 서로 다른 세 함수에 sigmoid의 값을 모두 적용했다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>입력을 z=2로 바꿨다. 세 함수 중 출력이 1을 넘는 함수는?</p>
-<p><strong>풀이:</strong> ReLU만 해당한다.</p>
-<p>ReLU(2)=2다. sigmoid와 tanh는 각각 상한 1 아래에 있다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>시그모이드는 반, 나머지 둘은 원점에서 영.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
-<li><a href="https://cs231n.github.io/neural-networks-1/" rel="noopener noreferrer" target="_blank">Stanford CS231n Neural Networks 1</a> — Activation functions: sigmoid·tanh·ReLU의 정의와 포화. 확인일 2026-10-30.</li>
+<li>4번: 서로 다른 세 함수에 시그모이드 함수(Sigmoid Function)의 값을 모두 적용했다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>입력을 z=2로 바꿨다. 세 함수 중 출력이 1을 넘는 함수는?</p>
+<p><strong>풀이:</strong> 정류 선형 유닛(ReLU, Rectified Linear Unit)만 해당한다.</p>
+<p>ReLU(2)=2다. 시그모이드 함수(Sigmoid Function)와 쌍곡탄젠트(tanh, Hyperbolic Tangent)는 각각 상한 1 아래에 있다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>시그모이드 함수(Sigmoid Function)는 반, 나머지 둘은 원점에서 영.</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
+<li><a href="https://cs231n.github.io/neural-networks-1/" rel="noopener noreferrer" target="_blank">Stanford CS231n Neural Networks 1</a> — Activation functions: 시그모이드 함수(Sigmoid Function)·쌍곡탄젠트(tanh, Hyperbolic Tangent)·정류 선형 유닛(ReLU, Rectified Linear Unit)의 정의와 포화. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-11">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-11.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>함수값만 계산한다. 원점의 ReLU 미분을 정의하거나 보정 확률을 주장하지 않는다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="3-10.html"><small>이전 개념 · 3-10</small>XOR는 비선형 표현이 필요한 이유를 보여 준다</a><a class="next" rel="next" data-role="theory-next" href="3-12.html"><small>다음 개념 · 3-12</small>역전파와 갱신은 서로 다른 단계다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=3-11">관련 문제 풀기</a><a class="btn btn-secondary" href="../3-11.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>함수값만 계산한다. 원점의 정류 선형 유닛(ReLU, Rectified Linear Unit) 미분을 정의하거나 보정 확률을 주장하지 않는다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="3-10.html" rel="prev">이전 개념 · 3-10다층 퍼셉트론(MLP, Multilayer Perceptron)과 배타적 논리합(XOR, Exclusive OR)의 비선형성(Nonlinearity)</a><a class="next" data-role="theory-next" href="3-12.html" rel="next">다음 개념 · 3-12역전파(Backpropagation)와 경사하강법(Gradient Descent)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-09</span><a href="3-09.html">순전파는 층마다 값을 넘긴다</a><div class="related-actions"><a href="../practice.html?code=3-09">문제 풀기</a><a href="../3-09.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-13</span><a href="3-13.html">기울기의 반복 곱은 작아지거나 커질 수 있다</a><div class="related-actions"><a href="../practice.html?code=3-13">문제 풀기</a><a href="../3-13.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "3-11"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">3-09</span><a href="3-09.html">인공신경망(ANN, Artificial Neural Network)의 순전파(Forward Propagation)</a><div class="related-actions"><a href="../practice.html?code=3-09">문제 풀기</a><a href="../3-09.html">조건 바꿔 체험</a></div></li><li><span class="related-code">3-13</span><a href="3-13.html">기울기 소실(Vanishing Gradient), 기울기 폭발(Exploding Gradient), 기울기 클리핑(Gradient Clipping)</a><div class="related-actions"><a href="../practice.html?code=3-13">문제 풀기</a><a href="../3-13.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "3-11"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

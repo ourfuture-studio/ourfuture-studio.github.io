@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>추론통계 · 표본에서 판단까지 · 빅분기 공부방</title><meta name="description" content="오늘 본 주문으로 전체를 어디까지 말할 수 있을까요? 표본평균의 흔들림에서 신뢰구간과 p값, 검정 선택까지 연결합니다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="statistics.css?v=c6bc687f436e"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>추론통계(Inferential Statistics): 표본(Sample)·추정(Estimation)·가설검정(Hypothesis Testing) · 빅분기 공부방</title><meta content="오늘 본 주문으로 전체를 어디까지 말할 수 있을까요? 표본평균의 흔들림에서 신뢰구간과 p값, 검정 선택까지 연결합니다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="statistics.css?v=c6bc687f436e" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page statistics-page"><a class="learning-skip" href="#main">본문으로 건너뛰기</a>
-<header class="learning-header"><div class="learning-container header-inner"><a class="learning-brand" href="../index.html" aria-label="빅분기 공부방 홈"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a><nav class="learning-nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html">과목별 핵심</a><a href="index.html" aria-current="page">통계 쉽게 읽기</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav></div></header>
-<main class="learning-container" id="main" tabindex="-1"><nav class="statistics-breadcrumb" aria-label="현재 위치"><a href="../index.html">빅분기 공부방</a><span aria-hidden="true">/</span><a href="index.html">통계 쉽게 읽기</a><span aria-hidden="true">/</span><span>추론통계</span></nav><div class="statistics-title"><p class="statistics-eyebrow">02 · 표본을 근거로 판단하기</p><h1>추론통계 · 표본에서 판단까지</h1><p class="statistics-deck">오늘 본 주문으로 전체를 어디까지 말할 수 있을까요? 표본평균의 흔들림에서 신뢰구간과 p값, 검정 선택까지 연결합니다.</p></div><div class="statistics-route" aria-label="학습 순서"><span>작은 사례로 읽기</span><span class="route-arrow" aria-hidden="true">→</span><span>조건 바꿔 체험</span><span class="route-arrow" aria-hidden="true">→</span><span>관련 문제 풀기</span></div><div class="statistics-layout"><article class="statistics-article">
-<p><strong>표본에서 구한 숫자는 출발점이고, 추론통계는 그 숫자로 어느 범위까지 판단할지 정하는 방법이다.</strong> 기술통계로 오늘 조사한 배달시간을 정리했다면, 이제 이렇게 묻는다. “이 결과를 보고 가게의 전체 평균도 비슷하다고 말할 수 있을까?”</p>
-<p>이 글의 배달가게와 수치는 모두 교육용 가상 사례다. 먼저 <a href="descriptive.html">기술통계 · 데이터를 읽는 법</a>에서 평균과 표준편차를 읽고 오면 좋다.</p>
-<section class="statistics-section" id="section-1"><h2>1 오늘 본 주문과 알고 싶은 주문은 같은 범위일까</h2>
-<p>점심시간에 처리한 주문 36건의 평균이 100분이었다. 계산은 맞다. 그런데 이 36건으로 주말과 저녁까지 포함한 가게 전체의 평균이 100분이라고 말할 수 있을까?</p>
+<header class="learning-header"><div class="learning-container header-inner"><a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a><nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a href="../study.html">과목별 핵심</a><a aria-current="page" href="index.html">통계 쉽게 읽기</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav></div></header>
+<main class="learning-container" id="main" tabindex="-1"><nav aria-label="현재 위치" class="statistics-breadcrumb"><a href="../index.html">빅분기 공부방</a><span aria-hidden="true">/</span><a href="index.html">통계 쉽게 읽기</a><span aria-hidden="true">/</span><span>추론통계(Inferential Statistics)</span></nav><div class="statistics-title"><p class="statistics-eyebrow">02 · 표본(Sample)을 근거로 판단하기</p><h1>추론통계(Inferential Statistics): 표본(Sample)·추정(Estimation)·가설검정(Hypothesis Testing)</h1><p class="statistics-deck">오늘 본 주문으로 전체를 어디까지 말할 수 있을까요? 표본평균(Sample Mean)의 흔들림에서 신뢰구간(CI, Confidence Interval)과 p값(p-value), 검정 선택까지 연결합니다.</p></div><div aria-label="학습 순서" class="statistics-route"><span>작은 사례로 읽기</span><span aria-hidden="true" class="route-arrow">→</span><span>조건 바꿔 체험</span><span aria-hidden="true" class="route-arrow">→</span><span>관련 문제 풀기</span></div><div class="statistics-layout"><article class="statistics-article">
+<p><strong>표본(Sample)에서 구한 숫자는 출발점이고, 추론통계(Inferential Statistics)는 그 숫자로 어느 범위까지 판단할지 정하는 방법이다.</strong> 기술통계(Descriptive Statistics)로 오늘 조사한 배달시간을 정리했다면, 이제 이렇게 묻는다. “이 결과를 보고 가게의 전체 평균(Mean)도 비슷하다고 말할 수 있을까?”</p>
+<p>이 글의 배달가게와 수치는 모두 교육용 가상 사례다. 먼저 <a href="descriptive.html">기술통계(Descriptive Statistics) · 데이터를 읽는 법</a>에서 평균(Mean)과 표준편차(SD, Standard Deviation)를 읽고 오면 좋다.</p>
+<section class="statistics-section" id="section-1"><h2>1 모집단(Population)·표본(Sample)·모수(Parameter)·통계량(Statistic)</h2>
+<p>점심시간에 처리한 주문 36건의 평균(Mean)이 100분이었다. 계산은 맞다. 그런데 이 36건으로 주말과 저녁까지 포함한 가게 전체의 평균(Mean)이 100분이라고 말할 수 있을까?</p>
 <p>점심 주문만 고르면 저녁의 교통 상황은 자료에 들어오지 않는다. 가까운 동네의 주문만 고르면 먼 지역도 빠진다. <strong>많이 모았다는 것과 알고 싶은 대상을 잘 대표한다는 것은 다른 문제다.</strong></p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
 <thead>
@@ -20,39 +21,39 @@
 </thead>
 <tbody>
 <tr>
-<td>모집단</td>
+<td>모집단(Population)</td>
 <td>조사 대상으로 정한 기간·지역·영업 조건의 전체 주문</td>
 </tr>
 <tr>
-<td>표본</td>
-<td>그 모집단을 알아보기 위해 실제로 고른 주문</td>
+<td>표본(Sample)</td>
+<td>그 모집단(Population)을 알아보기 위해 실제로 고른 주문</td>
 </tr>
 <tr>
-<td>모수</td>
-<td>알고 싶은 모집단 평균 μ, 모집단 표준편차 σ 같은 값</td>
+<td>모수(Parameter)</td>
+<td>알고 싶은 모집단(Population) 평균(Mean) μ, 모표준편차(Population Standard Deviation) σ 같은 값</td>
 </tr>
 <tr>
-<td>통계량</td>
-<td>표본으로 계산하는 평균·표본분산 같은 양. 표본을 뽑기 전에는 어떤 값이 될지 달라질 수 있음</td>
+<td>통계량(Statistic)</td>
+<td>표본(Sample)으로 계산하는 평균(Mean)·표본분산(Sample Variance) 같은 양. 표본(Sample)을 뽑기 전에는 어떤 값이 될지 달라질 수 있음</td>
 </tr>
 <tr>
-<td>관측한 추정값</td>
-<td>이번 표본에서 실제로 계산한 평균 100분처럼 구체적으로 나온 값</td>
+<td>관측(Observation)한 추정값(Estimate)</td>
+<td>이번 표본(Sample)에서 실제로 계산한 평균(Mean) 100분처럼 구체적으로 나온 값</td>
 </tr>
 </tbody>
 </table></div>
-<p>‘표본평균을 이용한다’는 계산 규칙은 <strong>추정량</strong>, 이번에 얻은 100분은 <strong>추정값</strong>이라고 구별할 수 있다. 어려운 용어보다 먼저 “무엇을 알고 싶은가, 무엇을 실제로 봤는가”를 나눠 적자.</p>
-<p>표본 수를 늘리면 무작위로 생기는 흔들림은 줄일 수 있다. 그러나 저녁 주문을 계속 빼고 점심 주문만 더 모으는 방식으로는 누락 문제가 해결되지 않는다. 조사 전에 대상·표본틀·추출 방법을 확인하는 이유다.</p>
-<p><strong>잠깐 판단:</strong> 근처 주문 3,600건과 전체 지역에서 적절히 뽑은 주문 360건 중 어느 쪽이 항상 더 낫다고 할 수 있을까? <strong>건수만으로 결정할 수 없다.</strong> 알고 싶은 대상과 추출 설계가 먼저다. <a href="../theory/2-32.html">기존 표본틀 이론과 체험</a>에서 이 차이를 확인할 수 있다.</p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본을 늘려도 표본틀에서 빠진 사람은 돌아오지 않는다</span><a href="../2-32.html">조건 바꿔 체험</a><a href="../practice.html?code=2-32">관련 문제 풀기</a><a href="../theory/2-32.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-2"><h2>2 한 건의 시간과 평균 시간은 다르게 흔들린다</h2>
-<p>다음 계산은 <strong>같은 모집단에서 서로 독립이고 같은 분포인 관측을 뽑으며, 모집단 분산이 유한하다</strong>고 가정한다. 먼저 모집단 SD가 12분으로 알려진 교육용 모형을 사용하자.</p>
-<p>배달 한 건은 꽤 늦어질 수 있다. 반면 36건을 평균내면 빠른 건과 느린 건이 함께 들어오며 변동이 일부 상쇄된다. 다른 36건으로 다시 평균내면 새 평균을 얻는다. 이 평균들을 반복해서 모았을 때의 분포를 <strong>표본평균의 표본분포</strong>라고 한다.</p>
+<p>‘표본평균(Sample Mean)을 이용한다’는 계산 규칙은 <strong>추정량(Estimator)</strong>, 이번에 얻은 100분은 <strong>추정값(Estimate)</strong>이라고 구별할 수 있다. 어려운 용어보다 먼저 “무엇을 알고 싶은가, 무엇을 실제로 봤는가”를 나눠 적자.</p>
+<p>표본(Sample) 수를 늘리면 무작위로 생기는 흔들림은 줄일 수 있다. 그러나 저녁 주문을 계속 빼고 점심 주문만 더 모으는 방식으로는 누락 문제가 해결되지 않는다. 조사 전에 대상·표본추출틀(Sampling Frame)·추출 방법을 확인하는 이유다.</p>
+<p><strong>잠깐 판단:</strong> 근처 주문 3,600건과 전체 지역에서 적절히 뽑은 주문 360건 중 어느 쪽이 항상 더 낫다고 할 수 있을까? <strong>건수만으로 결정할 수 없다.</strong> 알고 싶은 대상과 추출 설계가 먼저다. <a href="../theory/2-32.html">기존 표본추출틀(Sampling Frame) 이론과 체험</a>에서 이 차이를 확인할 수 있다.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본오차(Sampling Error)와 비표본오차(Non-sampling Error)</span><a href="../2-32.html">조건 바꿔 체험</a><a href="../practice.html?code=2-32">관련 문제 풀기</a><a href="../theory/2-32.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-2"><h2>2 표본분포(Sampling Distribution)와 표준오차(SE, Standard Error)</h2>
+<p>다음 계산은 <strong>같은 모집단(Population)에서 서로 독립이고 같은 분포인 관측(Observation)을 뽑으며, 모집단(Population) 분산(Variance)이 유한하다</strong>고 가정한다. 먼저 모집단(Population) 표준편차(SD, Standard Deviation)가 12분으로 알려진 교육용 모형(Model)을 사용하자.</p>
+<p>배달 한 건은 꽤 늦어질 수 있다. 반면 36건을 평균내면 빠른 건과 느린 건이 함께 들어오며 변동이 일부 상쇄된다. 다른 36건으로 다시 평균내면 새 평균(Mean)을 얻는다. 이 평균들을 반복해서 모았을 때의 분포를 <strong>표본평균의 표본분포(Sampling Distribution of the Sample Mean)</strong>라고 한다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th scope="col">대상</th>
 <th scope="col">무엇의 흩어짐인가</th>
-<th scope="col" style="text-align: right;">이론적인 표준편차</th>
+<th scope="col" style="text-align: right;">이론적인 표준편차(SD, Standard Deviation)</th>
 </tr>
 </thead>
 <tbody>
@@ -62,50 +63,50 @@
 <td style="text-align: right;">σ=12분</td>
 </tr>
 <tr>
-<td>36건의 평균</td>
+<td>36건의 평균(Mean)</td>
 <td>반복해서 구한 36건 평균들</td>
-<td style="text-align: right;">SE=12/√36=2분</td>
+<td style="text-align: right;">표준오차(SE, Standard Error)=12/√36=2분</td>
 </tr>
 <tr>
-<td>144건의 평균</td>
+<td>144건의 평균(Mean)</td>
 <td>반복해서 구한 144건 평균들</td>
-<td style="text-align: right;">SE=12/√144=1분</td>
+<td style="text-align: right;">표준오차(SE, Standard Error)=12/√144=1분</td>
 </tr>
 </tbody>
 </table></div>
-<p>SD는 개별 값의 흩어짐을, <strong>평균의 SE는 표본평균이 표본마다 흔들리는 정도</strong>를 나타낸다. n은 한 번 평균낼 때 쓰는 관측 수다. 모의실험을 몇 번 반복했는지와는 다르다.</p>
-<p>왜 √n으로 나눌까? 독립인 값 n개의 합은 분산이 n배가 된다. 평균을 내려고 그 합을 n으로 나누면 분산은 n²으로 나누어진다. 결국 평균의 분산은 <code>nσ²/n²=σ²/n</code>, 그 제곱근인 표준오차는 <code>σ/√n</code>이다. 서로 관련된 관측에서는 공분산 항도 생기므로 같은 계산을 그대로 사용할 수 없다.</p>
-<p><strong>표본을 4배로 늘리면 평균의 SE는 절반이다. 개별 배달시간의 모집단 SD가 절반이 되는 것은 아니다.</strong></p>
-<figure class="statistics-figure"><a aria-label="그림 원본 크게 보기" href="assets/sampling-means.png" rel="noopener noreferrer" target="_blank"><img alt="교육용 균등모집단의 개별 시간 분포와 반복 표본평균 분포를 같은 분 단위 축에서 비교한다. 개별 모집단 SD는12, n36과 n144 평균의 이론 SE는2와1이다." decoding="async" height="1137" loading="lazy" src="assets/sampling-means.png" width="1500"/></a><figcaption>교육용 가상 자료 · 그림을 누르면 원본을 크게 볼 수 있습니다.</figcaption></figure>
-<p>그림은 평균100·SD12인 <strong>균등모집단</strong>에서 만든 모의실험이다. 실제 표본의 SD와 모의 평균들의 SD는 이론값과 정확히 같을 필요가 없다. 생성 모형·반복수·seed는 그림에 함께 표시했다. 평균의 표본분포와 n의 뜻은 <a href="https://openstax.org/books/introductory-statistics-2e/pages/7-1-the-central-limit-theorem-for-sample-means-averages" rel="noopener noreferrer" target="_blank">OpenStax 표본평균 설명</a>에서도 확인할 수 있다.</p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">개별 관측의 산포와 표본평균의 산포는 다르다</span><a href="../2-36.html">조건 바꿔 체험</a><a href="../practice.html?code=2-36">관련 문제 풀기</a><a href="../theory/2-36.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-3"><h2>3 중심극한정리는 원자료를 바꾸지 않는다</h2>
-<p>원자료가 고르게 퍼져 있는 균등분포라면, 표본을 더 많이 모아도 원자료의 모집단은 그대로 균등분포다. 바뀌는 것은 여러 관측을 평균낸 값들의 분포다.</p>
-<p>중심극한정리는 독립·동일분포이고 분산이 유한한 양수인 등의 조건에서, <strong>평균에서 모평균을 빼고 평균의 SE로 나눈 값의 분포</strong>가 정규분포에 가까워진다는 내용이다. 표본평균을 정규모형으로 근사할 근거를 준다. 어느 크기부터 근사가 충분한지는 꼬리와 비대칭 등 원래 분포에 따라 달라진다. <code>n≥30</code>이라는 숫자 하나로 항상 보장되지 않는다.</p>
-<p>정리하면 세 질문을 나눠야 한다. 평균의 중심은 무엇인가? 얼마나 흔들리는가? 분포 모양은 무엇으로 근사할 수 있는가? 앞의 표에 있는 평균과 SE 공식이 맞는 것과 정규 근사가 충분한 것은 같은 판단이 아니다.</p>
-<p><strong>잠깐 판단:</strong> 반복해서 36건 평균을 계산했더니 종 모양이 나타났다. 개별 배달시간도 정규분포로 바뀌었을까? <strong>아니다. 평균들의 분포와 원자료의 분포를 구별해야 한다.</strong> <a href="../theory/2-36.html">기존 표본평균 이론</a>으로 이어 읽을 수 있다.</p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">개별 관측의 산포와 표본평균의 산포는 다르다</span><a href="../2-36.html">조건 바꿔 체험</a><a href="../practice.html?code=2-36">관련 문제 풀기</a><a href="../theory/2-36.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-4"><h2>4 평균 하나 옆에 불확실성의 범위를 붙인다</h2>
-<p>이번에는 <strong>정규모집단에서 독립으로 뽑고 모집단 SD σ=12분을 알고 있는 별도의 모형</strong>으로 넘어간다. 앞 그림의 균등분포와 구별하자. 표본 수36, 이번 표본평균100분이면 평균의 SE는2분이다.</p>
-<p>점추정은 모평균을 하나의 숫자 100분으로 추정한다. 구간추정은 그 주변에 범위를 붙인다. 양측95% z신뢰구간을 계산할 때, 표준정규분포의 가운데 약95%에 해당하는 경계값 1.96을 사용한다.</p>
+<p>표준편차(SD, Standard Deviation)는 개별 값의 흩어짐을, <strong>평균(Mean)의 표준오차(SE, Standard Error)는 표본평균(Sample Mean)이 표본마다 흔들리는 정도</strong>를 나타낸다. n은 한 번 평균낼 때 쓰는 관측(Observation) 수다. 모의실험을 몇 번 반복했는지와는 다르다.</p>
+<p>왜 √n으로 나눌까? 독립인 값 n개의 합은 분산(Variance)이 n배가 된다. 평균(Mean)을 내려고 그 합을 n으로 나누면 분산(Variance)은 n²으로 나누어진다. 결국 평균(Mean)의 분산(Variance)은 <code>nσ²/n²=σ²/n</code>, 그 제곱근인 표준오차(SE, Standard Error)는 <code>σ/√n</code>이다. 서로 관련된 관측(Observation)에서는 공분산(Covariance) 항도 생기므로 같은 계산을 그대로 사용할 수 없다.</p>
+<p><strong>표본(Sample)을 4배로 늘리면 평균(Mean)의 표준오차(SE, Standard Error)는 절반이다. 개별 배달시간의 모집단(Population) 표준편차(SD, Standard Deviation)가 절반이 되는 것은 아니다.</strong></p>
+<figure class="statistics-figure"><a aria-label="그림 원본 크게 보기" href="assets/sampling-means.png?v=9df81f1924f5" rel="noopener noreferrer" target="_blank"><img alt="교육용 균등모집단의 개별 시간 분포와 반복 표본평균(Sample Mean) 분포를 같은 분 단위 축에서 비교한다. 개별 모집단(Population) 표준편차(SD, Standard Deviation)는12, n36과 n144 평균(Mean)의 이론 표준오차(SE, Standard Error)는2와1이다." decoding="async" height="1545" loading="lazy" src="assets/sampling-means.png?v=9df81f1924f5" width="1200"/></a><figcaption>교육용 가상 자료 · 그림을 누르면 원본을 크게 볼 수 있습니다.</figcaption></figure>
+<p>그림은 평균(Mean)100·표준편차(SD, Standard Deviation)12인 <strong>균등모집단</strong>에서 만든 모의실험이다. 실제 표본(Sample)의 표준편차(SD, Standard Deviation)와 모의 평균들의 표준편차(SD, Standard Deviation)는 이론값과 정확히 같을 필요가 없다. 생성 모형(Model)·반복수·seed는 그림에 함께 표시했다. 평균(Mean)의 표본분포(Sampling Distribution)와 n의 뜻은 <a href="https://openstax.org/books/introductory-statistics-2e/pages/7-1-the-central-limit-theorem-for-sample-means-averages" rel="noopener noreferrer" target="_blank">OpenStax 표본평균(Sample Mean) 설명</a>에서도 확인할 수 있다.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본분포(Sampling Distribution)·표준오차(SE, Standard Error)·중심극한정리(CLT, Central Limit Theorem)</span><a href="../2-36.html">조건 바꿔 체험</a><a href="../practice.html?code=2-36">관련 문제 풀기</a><a href="../theory/2-36.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-3"><h2>3 중심극한정리(CLT, Central Limit Theorem)와 정규근사(Normal Approximation)</h2>
+<p>원자료(Raw Data)가 고르게 퍼져 있는 균등분포라면, 표본(Sample)을 더 많이 모아도 원자료(Raw Data)의 모집단(Population)은 그대로 균등분포다. 바뀌는 것은 여러 관측(Observation)을 평균낸 값들의 분포다.</p>
+<p>중심극한정리(CLT, Central Limit Theorem)는 독립·동일분포(iid, Independent and Identically Distributed)이고 분산(Variance)이 유한한 양수인 등의 조건에서, <strong>평균(Mean)에서 모평균(Population Mean)을 빼고 평균(Mean)의 표준오차(SE, Standard Error)로 나눈 값의 분포</strong>가 정규분포(Normal Distribution)에 가까워진다는 내용이다. 표본평균(Sample Mean)을 정규모형으로 근사할 근거를 준다. 어느 크기부터 근사가 충분한지는 꼬리와 비대칭 등 원래 분포에 따라 달라진다. <code>n≥30</code>이라는 숫자 하나로 항상 보장되지 않는다.</p>
+<p>정리하면 세 질문을 나눠야 한다. 평균(Mean)의 중심은 무엇인가? 얼마나 흔들리는가? 분포 모양은 무엇으로 근사할 수 있는가? 앞의 표에 있는 평균(Mean)과 표준오차(SE, Standard Error) 공식이 맞는 것과 정규 근사가 충분한 것은 같은 판단이 아니다.</p>
+<p><strong>잠깐 판단:</strong> 반복해서 36건 평균(Mean)을 계산했더니 종 모양이 나타났다. 개별 배달시간도 정규분포(Normal Distribution)로 바뀌었을까? <strong>아니다. 평균들의 분포와 원자료(Raw Data)의 분포를 구별해야 한다.</strong> <a href="../theory/2-36.html">기존 표본평균(Sample Mean) 이론</a>으로 이어 읽을 수 있다.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본분포(Sampling Distribution)·표준오차(SE, Standard Error)·중심극한정리(CLT, Central Limit Theorem)</span><a href="../2-36.html">조건 바꿔 체험</a><a href="../practice.html?code=2-36">관련 문제 풀기</a><a href="../theory/2-36.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-4"><h2>4 점추정(Point Estimation)·구간추정(Interval Estimation)·신뢰구간(CI, Confidence Interval)</h2>
+<p>이번에는 <strong>정규모집단에서 독립으로 뽑고 모집단(Population) 표준편차(SD, Standard Deviation) σ=12분을 알고 있는 별도의 모형(Model)</strong>으로 넘어간다. 앞 그림의 균등분포와 구별하자. 표본(Sample) 수36, 이번 표본평균(Sample Mean)100분이면 평균(Mean)의 표준오차(SE, Standard Error)는2분이다.</p>
+<p>점추정(Point Estimation)은 모평균(Population Mean)을 하나의 숫자 100분으로 추정한다. 구간추정(Interval Estimation)은 그 주변에 범위를 붙인다. 양측95% z신뢰구간을 계산할 때, 표준정규분포의 가운데 약95%에 해당하는 경계값 1.96을 사용한다.</p>
 <p><code>표본평균 ± 임계값 × 평균의 SE</code></p>
 <p><code>100 ± 1.96×2 = [96.08, 103.92]분</code></p>
-<p>공식의 각 부분에 역할이 있다. 가운데 100은 이번 표본의 위치, SE2는 평균이 표본마다 흔들리는 크기, 1.96은 선택한 신뢰수준과 방법에서 정한 배수다. 더 높은 신뢰수준을 요구하면 같은 자료에서 보통 더 넓은 구간이 필요하다. 더 좁은 구간을 원한다면 신뢰수준뿐 아니라 표본 수와 산포도 함께 봐야 한다.</p>
-<p>그렇다면 95%는 어디에 붙는 말일까? 같은 모집단에서 같은 방식으로 표본을 뽑아 구간을 계속 만들면, <strong>그 절차로 만든 구간들이 고정된 모평균을 포함하는 장기 비율</strong>이95%다. 이번 구간 안에 관측값의95%가 들어간다는 뜻이 아니다. 계산이 끝난 한 구간은 모평균을 포함하거나 포함하지 않는다. 이 해석에서 이미 계산한 한 구간에 대해 ‘모평균이 그 안에 있을 확률이95%’라고 바꾸어 읽지 않는다. <a href="https://www.itl.nist.gov/div898/handbook/prc/section1/prc14.htm" rel="noopener noreferrer" target="_blank">NIST 신뢰구간 해석과 z구간</a></p>
-<figure class="statistics-figure"><a aria-label="그림 원본 크게 보기" href="assets/confidence-intervals.png" rel="noopener noreferrer" target="_blank"><img alt="모평균100을 고정하고 정규모집단에서 표본마다 만든95% 신뢰구간40개를 비교한다. 포함 여부를 표시하며 이번 포함 비율은 장기 신뢰수준과 구별한다." decoding="async" height="1412" loading="lazy" src="assets/confidence-intervals.png" width="1500"/></a><figcaption>교육용 가상 자료 · 그림을 누르면 원본을 크게 볼 수 있습니다.</figcaption></figure>
-<p>그림에서는 모의실험을 만든 사람이 참값100을 정해 두었으므로 포함 여부를 확인할 수 있다. 실제 자료에서는 바로 그 모평균을 모르기 때문에 구간을 구한다. 40개 중 정확히38개가 포함되도록 표본을 고른 것은 아니며, 유한 반복에서 관측한 포함 비율은95%와 다를 수 있다.</p>
-<p>현실에서는 σ를 모르는 경우가 많다. <strong>정규모집단의 독립 표본에서 σ 대신 표본 SD s=12를 사용하는 경우</strong>에는 자유도35의 t임계값 약2.0301로 계산한다. 같은 표본평균100·n36이라도 구간은 약 <code>[95.94, 104.06]분</code>이다. 자료에서 산포까지 추정한 불확실성을 반영한 것이다. ‘표본 SD를 구했으니 언제나1.96’으로 처리하지 말자. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm" rel="noopener noreferrer" target="_blank">NIST 평균의 t신뢰구간</a></p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">95% 신뢰구간의 비율은 구간을 만드는 절차에 붙는다</span><span class="apply-context">기존 예제: 평균40·표본SD10·n=25 · t24구간에서 신뢰수준만 바꾸어 비교합니다.</span><a href="../2-02.html">조건 바꿔 체험</a><a href="../practice.html?code=2-02">관련 문제 풀기</a><a href="../theory/2-02.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-5"><h2>5 차이 5분이 평균의 흔들림에 비해 큰가</h2>
-<p>가게의 기준 평균을100분이라고 두고 “실제 평균이100분과 다른가?”를 묻자. 다음 검정 예시는 다시 <strong>독립인 정규모집단·알려진 σ=12분</strong>의 z검정이다. 자료를 보기 전에 양측검정과 유의수준 α=.05를 정했다고 가정한다.</p>
+<p>공식의 각 부분에 역할이 있다. 가운데 100은 이번 표본(Sample)의 위치, 표준오차(SE, Standard Error)2는 평균(Mean)이 표본마다 흔들리는 크기, 1.96은 선택한 신뢰수준(Confidence Level)과 방법에서 정한 배수다. 더 높은 신뢰수준(Confidence Level)을 요구하면 같은 자료에서 보통 더 넓은 구간이 필요하다. 더 좁은 구간을 원한다면 신뢰수준뿐 아니라 표본(Sample) 수와 산포(Dispersion) 함께 봐야 한다.</p>
+<p>그렇다면 95%는 어디에 붙는 말일까? 같은 모집단(Population)에서 같은 방식으로 표본(Sample)을 뽑아 구간을 계속 만들면, <strong>그 절차로 만든 구간들이 고정된 모평균(Population Mean)을 포함하는 장기 비율</strong>이95%다. 이번 구간 안에 관측값의95%가 들어간다는 뜻이 아니다. 계산이 끝난 한 구간은 모평균(Population Mean)을 포함하거나 포함하지 않는다. 이 해석에서 이미 계산한 한 구간에 대해 ‘모평균(Population Mean)이 그 안에 있을 확률이95%’라고 바꾸어 읽지 않는다. <a href="https://www.itl.nist.gov/div898/handbook/prc/section1/prc14.htm" rel="noopener noreferrer" target="_blank">NIST 신뢰구간(CI, Confidence Interval) 해석과 z구간</a></p>
+<figure class="statistics-figure"><a aria-label="그림 원본 크게 보기" href="assets/confidence-intervals.png?v=810023594147" rel="noopener noreferrer" target="_blank"><img alt="모평균(Population Mean)100을 고정하고 정규모집단에서 표본마다 만든95% 신뢰구간(CI, Confidence Interval)40개를 비교한다. 포함 여부를 표시하며 이번 포함 비율은 장기 신뢰수준(Confidence Level)과 구별한다." decoding="async" height="1717" loading="lazy" src="assets/confidence-intervals.png?v=810023594147" width="1200"/></a><figcaption>교육용 가상 자료 · 그림을 누르면 원본을 크게 볼 수 있습니다.</figcaption></figure>
+<p>그림에서는 모의실험을 만든 사람이 참값100을 정해 두었으므로 포함 여부를 확인할 수 있다. 실제 자료에서는 바로 그 모평균(Population Mean)을 모르기 때문에 구간을 구한다. 40개 중 정확히38개가 포함되도록 표본(Sample)을 고른 것은 아니며, 유한 반복에서 관측(Observation)한 포함 비율은95%와 다를 수 있다.</p>
+<p>현실에서는 σ를 모르는 경우가 많다. <strong>정규모집단의 독립 표본(Independent Samples)에서 σ 대신 표본 표준편차(Sample Standard Deviation) s=12를 사용하는 경우</strong>에는 자유도(df, Degrees of Freedom)35의 t임계값 약2.0301로 계산한다. 같은 표본평균(Sample Mean)100·n36이라도 구간은 약 <code>[95.94, 104.06]분</code>이다. 자료에서 산포(Dispersion)까지 추정한 불확실성을 반영한 것이다. ‘표본 표준편차(Sample Standard Deviation)를 구했으니 언제나1.96’으로 처리하지 말자. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm" rel="noopener noreferrer" target="_blank">NIST 평균(Mean)의 t신뢰구간</a></p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">신뢰구간(CI, Confidence Interval)과 신뢰수준(Confidence Level)</span><span class="apply-context">기존 예제: 평균(Mean)40·표본SD10·n=25 · t24구간에서 신뢰수준(Confidence Level)만 바꾸어 비교합니다.</span><a href="../2-02.html">조건 바꿔 체험</a><a href="../practice.html?code=2-02">관련 문제 풀기</a><a href="../theory/2-02.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-5"><h2>5 가설검정(Hypothesis Testing)·검정통계량(Test Statistic)·p값(p-value)</h2>
+<p>가게의 기준 평균(Mean)을100분이라고 두고 “실제 평균(Mean)이100분과 다른가?”를 묻자. 다음 검정 예시는 다시 <strong>독립인 정규모집단·알려진 σ=12분</strong>의 z검정(Z-test)이다. 자료를 보기 전에 양측검정(Two-sided Test)과 유의수준(Significance Level) α=.05를 정했다고 가정한다.</p>
 <ul>
-<li>귀무가설 H0: μ=100분.</li>
-<li>대립가설 H1: μ≠100분.</li>
-<li>이번 관측: n36, 표본평균105분.</li>
+<li>귀무가설(Null Hypothesis) H0: μ=100분.</li>
+<li>대립가설(Alternative Hypothesis) H1: μ≠100분.</li>
+<li>이번 관측(Observation): n36, 표본평균(Sample Mean)105분.</li>
 </ul>
-<p>차이는5분이고 평균의 SE는2분이다. <strong>검정통계량은 차이를 평균의 흔들림 단위로 바꾼 값</strong>이다.</p>
+<p>차이는5분이고 평균(Mean)의 표준오차(SE, Standard Error)는2분이다. <strong>검정통계량(Test Statistic)은 차이를 평균(Mean)의 흔들림 단위로 바꾼 값</strong>이다.</p>
 <p><code>z = (105−100)/2 = 2.5</code></p>
-<p>H0와 모형 가정이 맞다면 z는 표준정규분포를 따른다. 양측 p값은 그 모형에서 <code>z≥2.5</code> 또는 <code>z≤−2.5</code>처럼 <strong>관측한 통계량만큼 또는 더 극단적인 결과가 나올 확률</strong>이며 약.0124다. 값105 자체가 나올 확률이나 H0가 참일 확률을 계산한 것이 아니다.</p>
-<p>사전에 정한 규칙이 <code>p≤α이면 기각</code>이고 α=.05이므로 H0를 기각한다. 문장으로 쓰면 “명시한 모형과 표집 가정 아래, 모평균이100분이라는 가설에 반하는 근거가 있다”가 된다. α=.01로 정한 별도의 계획이었다면 같은 p값으로는 기각하지 못한다. 결과를 보고 α나 단측·양측을 골라 바꾸면 사전에 정한 검정이 아니다.</p>
-<p><strong>기각 못함은 같음의 증명이 아니다.</strong> 표본이 적거나 산포가 크면 실제 차이가 있어도 뚜렷한 근거를 얻기 어렵다. 반대로 아주 큰 표본에서는 실무적으로 작은 차이도 유의할 수 있다. 차이의 크기와 구간, 의사결정에서 중요한 최소 차이도 함께 읽어야 한다. <a href="https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf" rel="noopener noreferrer" target="_blank">ASA p값 성명의 원칙</a></p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다</span><span class="apply-context">기존 체험: 주어진 p값과 유의수준을 비교해 기각 여부를 판단합니다.</span><a href="../2-38.html">조건 바꿔 체험</a><a href="../practice.html?code=2-38">관련 문제 풀기</a><a href="../theory/2-38.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-6"><h2>6 잘못 울린 경보와 놓친 변화를 구별한다</h2>
+<p>H0와 모형(Model) 가정이 맞다면 z는 표준정규분포를 따른다. 양측 p값(p-value)은 그 모형(Model)에서 <code>z≥2.5</code> 또는 <code>z≤−2.5</code>처럼 <strong>관측(Observation)한 통계량(Statistic)만큼 또는 더 극단적인 결과가 나올 확률</strong>이며 약.0124다. 값105 자체가 나올 확률이나 H0가 참일 확률을 계산한 것이 아니다.</p>
+<p>사전에 정한 규칙이 <code>p≤α이면 기각</code>이고 α=.05이므로 H0를 기각한다. 문장으로 쓰면 “명시한 모형(Model)과 표본추출(Sampling) 가정 아래, 모평균(Population Mean)이100분이라는 가설에 반하는 근거가 있다”가 된다. α=.01로 정한 별도의 계획이었다면 같은 p값(p-value)으로는 기각하지 못한다. 결과를 보고 α나 단측·양측을 골라 바꾸면 사전에 정한 검정이 아니다.</p>
+<p><strong>기각 못함은 같음의 증명이 아니다.</strong> 표본(Sample)이 적거나 산포(Dispersion)가 크면 실제 차이가 있어도 뚜렷한 근거를 얻기 어렵다. 반대로 아주 큰 표본(Sample)에서는 실무적으로 작은 차이도 유의할 수 있다. 차이의 크기와 구간, 의사결정(Decision-Making)에서 중요한 최소 차이도 함께 읽어야 한다. <a href="https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf" rel="noopener noreferrer" target="_blank">ASA p값(p-value) 성명의 원칙</a></p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">가설검정(Hypothesis Testing)·p값(p-value)·유의수준(Significance Level)</span><span class="apply-context">기존 체험: 주어진 p값(p-value)과 유의수준(Significance Level)을 비교해 기각 여부를 판단합니다.</span><a href="../2-38.html">조건 바꿔 체험</a><a href="../practice.html?code=2-38">관련 문제 풀기</a><a href="../theory/2-38.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-6"><h2>6 제1종 오류(Type I Error)·제2종 오류(Type II Error)·검정력(Statistical Power)</h2>
 <p>배달시간이 달라졌다는 검정은 경보와 닮은 점이 있다. 그러나 오류의 이름은 ‘실제로 H0가 참인지’와 ‘검정이 기각했는지’를 함께 놓아야 정해진다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
 <thead>
@@ -118,20 +119,20 @@
 <tbody>
 <tr>
 <td>H0가 참</td>
-<td>제1종 오류</td>
+<td>제1종 오류(Type I Error)</td>
 <td>올바른 판단</td>
 </tr>
 <tr>
 <td>H0가 거짓</td>
 <td>변화를 검출</td>
-<td>제2종 오류</td>
+<td>제2종 오류(Type II Error)</td>
 </tr>
 </tbody>
 </table></div>
-<p>α는 유효한 검정에서 H0가 참일 때 잘못 기각할 확률을 통제하는 기준이다. <strong>검정력은 특정한 실제 차이가 있을 때 그 차이를 검출할 확률</strong>이다. 그 차이에서 제2종 오류확률 β가.20이면 검정력은 <code>1−β=.80</code>이다. 어떤 실제 차이를 말하는지 빼고 검정력80%라고만 쓰면 정보가 부족하다.</p>
-<p>같은 검정에서 표본 수·산포·특정 차이를 고정하고 α를 낮추면, 기각하기가 어려워져 제1종 오류 위험은 줄지만 그 차이를 놓칠 가능성은 커진다. 표본 수를 늘리거나 구별하려는 차이가 더 크면 검출 가능성을 높일 수 있다. 두 오류를 생각하지 않고 ‘더 엄격하면 모든 면에서 좋아진다’고 판단하지 말자. <a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc222.htm" rel="noopener noreferrer" target="_blank">NIST 표본 수와 α·β·산포의 관계</a></p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다</span><span class="apply-context">기존 체험: 주어진 p값과 유의수준을 비교해 기각 여부를 판단합니다.</span><a href="../2-38.html">조건 바꿔 체험</a><a href="../practice.html?code=2-38">관련 문제 풀기</a><a href="../theory/2-38.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-7"><h2>7 검정 이름보다 비교할 대상을 먼저 적는다</h2>
-<p>“어떤 함수를 쓰지?”보다 “무엇의 차이를 묻고 있지?”가 먼저다. 다음 표는 후보를 찾는 길잡이다. 정규성 검정 p값 하나로 함수를 자동 선택하는 표가 아니다.</p>
+<p>α는 유효한 검정에서 H0가 참일 때 잘못 기각할 확률을 통제하는 기준이다. <strong>검정력(Statistical Power)은 특정한 실제 차이가 있을 때 그 차이를 검출할 확률</strong>이다. 그 차이에서 제2종 오류확률 β가.20이면 검정력(Statistical Power)은 <code>1−β=.80</code>이다. 어떤 실제 차이를 말하는지 빼고 검정력(Statistical Power)80%라고만 쓰면 정보가 부족하다.</p>
+<p>같은 검정에서 표본(Sample) 수·산포(Dispersion)·특정 차이를 고정하고 α를 낮추면, 기각하기가 어려워져 제1종 오류(Type I Error) 위험(Risk)은 줄지만 그 차이를 놓칠 가능성은 커진다. 표본(Sample) 수를 늘리거나 구별하려는 차이가 더 크면 검출 가능성을 높일 수 있다. 두 오류를 생각하지 않고 ‘더 엄격하면 모든 면에서 좋아진다’고 판단하지 말자. <a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc222.htm" rel="noopener noreferrer" target="_blank">NIST 표본(Sample) 수와 α·β·산포(Dispersion)의 관계</a></p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">가설검정(Hypothesis Testing)·p값(p-value)·유의수준(Significance Level)</span><span class="apply-context">기존 체험: 주어진 p값(p-value)과 유의수준(Significance Level)을 비교해 기각 여부를 판단합니다.</span><a href="../2-38.html">조건 바꿔 체험</a><a href="../practice.html?code=2-38">관련 문제 풀기</a><a href="../theory/2-38.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-7"><h2>7 통계적 검정(Statistical Test)의 선택: 비교 대상과 가정</h2>
+<p>“어떤 함수를 쓰지?”보다 “무엇의 차이를 묻고 있지?”가 먼저다. 다음 표는 후보를 찾는 길잡이다. 정규성(Normality) 검정 p값(p-value) 하나로 함수를 자동 선택하는 표가 아니다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -142,14 +143,14 @@
 </thead>
 <tbody>
 <tr>
-<td>한 집단의 평균이 기준과 다른가</td>
-<td>독립 관측, 평균모형과 산포 정보</td>
+<td>한 집단의 평균(Mean)이 기준과 다른가</td>
+<td>독립 관측(Observation), 평균모형과 산포(Dispersion) 정보</td>
 <td>정규모형 또는 타당한 정규근사에서 σ를 알 때 z, σ를 추정하는 정규표본에서는 단일표본 t</td>
 </tr>
 <tr>
-<td>서로 다른 두 집단의 평균이 다른가</td>
-<td>집단 간 독립, 평균 추론의 타당성, 등분산 여부</td>
-<td>Welch t 또는 등분산을 가정한 독립표본 t</td>
+<td>서로 다른 두 집단의 평균(Mean)이 다른가</td>
+<td>집단 간 독립, 평균(Mean) 추론의 타당성, 등분산성(Homoscedasticity) 여부</td>
+<td>Welch t 또는 등분산성(Homoscedasticity)을 가정한 독립표본 t</td>
 </tr>
 <tr>
 <td>같은 사람이나 같은 주문 단위의 전후가 다른가</td>
@@ -157,39 +158,39 @@
 <td>대응표본 t. 정규모형은 두 열 각각보다 차이를 대상으로 확인</td>
 </tr>
 <tr>
-<td>세 집단 이상의 평균이 모두 같은가</td>
-<td>독립집단, 정규오차·등분산 등</td>
-<td>일원 ANOVA. 기각해도 모든 쌍이 다르다는 뜻은 아님</td>
+<td>세 집단 이상의 평균(Mean)이 모두 같은가</td>
+<td>독립집단, 정규오차·등분산성(Homoscedasticity) 등</td>
+<td>일원 단변량 분산분석(ANOVA, Analysis of Variance). 기각해도 모든 쌍이 다르다는 뜻은 아님</td>
 </tr>
 <tr>
 <td>범주형 두 변수의 관련성이 있는가</td>
-<td>독립 관측, 도수표, 기대도수와 근사 조건</td>
-<td>카이제곱 독립성 검정. 적합도 검정과 구별</td>
+<td>독립 관측(Observation), 도수표, 기대도수(Expected Frequency)와 근사 조건</td>
+<td>카이제곱 독립성 검정(Chi-Square Test of Independence). 적합도 검정(Goodness-of-fit Test)과 구별</td>
 </tr>
 <tr>
 <td>순위나 분포를 비교할까</td>
-<td>독립/대응, 질문, 대칭성 등 해당 검정의 조건</td>
-<td>Mann–Whitney, 부호순위, 부호검정 등을 구별</td>
+<td>독립/대응, 질문, 대칭성(Symmetry) 등 해당 검정의 조건</td>
+<td>맨-휘트니 U검정(Mann–Whitney U Test), 부호순위, 부호검정(Sign Test) 등을 구별</td>
 </tr>
 </tbody>
 </table></div>
-<p>비모수라고 가정이 없는 것은 아니다. 부호순위검정은 대응 차이의 대칭성 등을 확인해야 하고, Mann–Whitney 결과를 조건 없이 중앙값 차이로 읽지 않는다. 함수별 조건은 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html" rel="noopener noreferrer" target="_blank">SciPy 독립표본 t검정</a>과 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html" rel="noopener noreferrer" target="_blank">부호순위검정</a>에서 확인할 수 있다.</p>
-<p>검정 결과만으로 인과관계도 정해지지 않는다. 새 배달 시스템을 도입한 뒤 시간이 줄었더라도 날씨·주문 지역·업무량이 달라졌을 수 있다. 표집은 어떤 대상에 일반화할지, 무작위 배정 같은 연구 설계는 원인에 관한 주장을 어떻게 뒷받침할지와 연결된다. 어떤 설계로 얻은 자료인지 결과 해석에 함께 적어야 한다.</p>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">비모수검정은 표본의 연결부터 고른다</span><a href="../3-03.html">조건 바꿔 체험</a><a href="../practice.html?code=3-03">관련 문제 풀기</a><a href="../theory/3-03.html">상세 이론</a></li><li><span class="apply-topic">교차표는 관측빈도를 독립 기대빈도와 비교한다</span><a href="../3-22.html">조건 바꿔 체험</a><a href="../practice.html?code=3-22">관련 문제 풀기</a><a href="../theory/3-22.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-8"><h2>8 결과를 한 문장으로 쓴다면</h2>
+<p>비모수라고 가정이 없는 것은 아니다. 윌콕슨 부호순위검정(Wilcoxon Signed-rank Test)은 대응 차이의 대칭성(Symmetry) 등을 확인해야 하고, 맨-휘트니 U검정(Mann–Whitney U Test) 결과를 조건 없이 중앙값(Median) 차이로 읽지 않는다. 함수별 조건은 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html" rel="noopener noreferrer" target="_blank">SciPy 독립표본 t검정(Independent-samples t-test)</a>과 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html" rel="noopener noreferrer" target="_blank">윌콕슨 부호순위검정(Wilcoxon Signed-rank Test)</a>에서 확인할 수 있다.</p>
+<p>검정 결과만으로 인과관계(Causality)도 정해지지 않는다. 새 배달 시스템을 도입한 뒤 시간이 줄었더라도 날씨·주문 지역·업무량이 달라졌을 수 있다. 표본추출(Sampling)은 어떤 대상에 일반화할지, 무작위 배정 같은 연구 설계는 원인에 관한 주장을 어떻게 뒷받침할지와 연결된다. 어떤 설계로 얻은 자료인지 결과 해석에 함께 적어야 한다.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">비모수 검정(Nonparametric Test): 맨-휘트니 U 검정(Mann–Whitney U Test)과 윌콕슨 부호순위 검정(Wilcoxon Signed-Rank Test)</span><a href="../3-03.html">조건 바꿔 체험</a><a href="../practice.html?code=3-03">관련 문제 풀기</a><a href="../theory/3-03.html">상세 이론</a></li><li><span class="apply-topic">교차표(Contingency Table)와 카이제곱 독립성 검정(Chi-Square Test of Independence)</span><a href="../3-22.html">조건 바꿔 체험</a><a href="../practice.html?code=3-22">관련 문제 풀기</a><a href="../theory/3-22.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-8"><h2>8 추정(Estimation)·가설검정(Hypothesis Testing) 결과와 해석 범위</h2>
 <p>결과를 적을 때는 <strong>대상과 설계 → 추정한 차이와 불확실성 → 검정 판단 → 해석 범위</strong>를 순서대로 쓴다.</p>
-<p>앞의 z검정 예시를 사용하면 이렇게 정리할 수 있다.</p>
+<p>앞의 z검정(Z-test) 예시를 사용하면 이렇게 정리할 수 있다.</p>
 <blockquote>
-<p>정규모집단에서 독립으로 뽑은36건, 알려진 모집단 SD12분을 가정했을 때 표본평균은105분이었다. 기준100분과의 차이는5분이고 모평균의 양측95% z구간은 약[101.08,108.92]분이다. 사전에 α=.05로 정한 양측검정의 p값은 약.0124로 H0를 기각한다. 이 결과만으로 지연의 원인이나5분 차이의 운영상 중요성까지 판단할 수는 없다.</p>
+<p>정규모집단에서 독립으로 뽑은36건, 알려진 모집단(Population) 표준편차(SD, Standard Deviation)12분을 가정했을 때 표본평균(Sample Mean)은105분이었다. 기준100분과의 차이는5분이고 모평균(Population Mean)의 양측95% z구간은 약[101.08,108.92]분이다. 사전에 α=.05로 정한 양측검정(Two-sided Test)의 p값(p-value)은 약.0124로 H0를 기각한다. 이 결과만으로 지연의 원인이나5분 차이의 운영상 중요성까지 판단할 수는 없다.</p>
 </blockquote>
 <p>공식 이름보다 이 문장의 각 부분에 어떤 입력과 가정이 필요한지 설명할 수 있는지 확인하자.</p>
 <p><strong>스스로 확인할 세 질문</strong></p>
-<div class="statistics-checks"><details class="statistics-check"><summary>표본을4배로 늘렸는데 개별 배달시간의 모집단 SD도 절반이라고 썼다. 맞을까?</summary><div class="check-answer"><strong>아니다. 조건 아래 절반이 되는 것은 평균의 이론 SE다.</strong></div></details><details class="statistics-check"><summary>p=.20이라서 두 평균이 같다고 입증했다고 썼다. 맞을까?</summary><div class="check-answer"><strong>아니다. 정한 검정에서 차이에 관한 충분한 근거를 얻지 못한 것과 같음의 입증은 다르다.</strong></div></details><details class="statistics-check"><summary>95% 신뢰구간이 좁으면 표집 대상 누락도 해결된 것일까?</summary><div class="check-answer"><strong>아니다. 구간의 정밀도와 표집 편향은 구별해야 한다.</strong></div></details></div>
-<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">회귀계수의 t검정은 추정값을 불확실성과 함께 읽는다</span><span class="apply-context">기존 회귀 예제: 개별 회귀계수의 t통계량을 읽습니다.</span><a href="../4-14.html">조건 바꿔 체험</a><a href="../practice.html?code=4-14">관련 문제 풀기</a><a href="../theory/4-14.html">상세 이론</a></li><li><span class="apply-topic">전체 F검정은 모든 기울기를 함께 묻는다</span><span class="apply-context">기존 회귀 예제: 모든 기울기를 함께 묻는 전체 F검정을 읽습니다.</span><a href="../4-15.html">조건 바꿔 체험</a><a href="../practice.html?code=4-15">관련 문제 풀기</a><a href="../theory/4-15.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-9"><h2>직접 확인하고 이어 읽기</h2>
+<div class="statistics-checks"><details class="statistics-check"><summary>표본(Sample)을4배로 늘렸는데 개별 배달시간의 모집단(Population) 표준편차(SD, Standard Deviation)도 절반이라고 썼다. 맞을까?</summary><div class="check-answer"><strong>아니다. 조건 아래 절반이 되는 것은 평균(Mean)의 이론 SE다.</strong></div></details><details class="statistics-check"><summary>p=.20이라서 두 평균(Mean)이 같다고 입증했다고 썼다. 맞을까?</summary><div class="check-answer"><strong>아니다. 정한 검정에서 차이에 관한 충분한 근거를 얻지 못한 것과 같음의 입증은 다르다.</strong></div></details><details class="statistics-check"><summary>95% 신뢰구간(CI, Confidence Interval)이 좁으면 표본추출(Sampling) 대상 누락도 해결된 것일까?</summary><div class="check-answer"><strong>아니다. 구간의 정밀도(Precision)와 표본추출(Sampling) 편향은 구별해야 한다.</strong></div></details></div>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">회귀계수(Regression Coefficient)의 t검정(t-test)</span><span class="apply-context">기존 회귀 예제: 개별 회귀계수(Regression Coefficient)의 t통계량을 읽습니다.</span><a href="../4-14.html">조건 바꿔 체험</a><a href="../practice.html?code=4-14">관련 문제 풀기</a><a href="../theory/4-14.html">상세 이론</a></li><li><span class="apply-topic">선형회귀(Linear Regression)의 전체 F검정(Overall F-Test)</span><span class="apply-context">기존 회귀 예제: 모든 기울기를 함께 묻는 전체 F검정(Overall F-Test)을 읽습니다.</span><a href="../4-15.html">조건 바꿔 체험</a><a href="../practice.html?code=4-15">관련 문제 풀기</a><a href="../theory/4-15.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-9"><h2>직접 확인하고 이어 읽기</h2>
 <ul>
-<li>SD와 SE: <a href="../2-36.html">기존 표본평균 체험</a> → <a href="../practice.html?code=2-36">관련 문제</a>.</li>
-<li>구간의 폭: <a href="../2-02.html">기존 신뢰구간 체험</a><span class="statistics-example-context">（기존 예제: 평균40·표본SD10·n=25·t24, 신뢰수준 변경）</span> → <a href="../practice.html?code=2-02">관련 문제</a>.</li>
-<li>p값과 판단: <a href="../2-38.html">기존 가설검정 체험</a> → <a href="../practice.html?code=2-38">관련 문제</a>.</li>
+<li>표준편차(SD, Standard Deviation)와 표준오차(SE, Standard Error): <a href="../2-36.html">기존 표본평균(Sample Mean) 체험</a> → <a href="../practice.html?code=2-36">관련 문제</a>.</li>
+<li>구간의 폭: <a href="../2-02.html">기존 신뢰구간(CI, Confidence Interval) 체험</a><span class="statistics-example-context">（기존 예제: 평균(Mean)40·표본SD10·n=25·t24, 신뢰수준(Confidence Level) 변경）</span> → <a href="../practice.html?code=2-02">관련 문제</a>.</li>
+<li>p값(p-value)과 판단: <a href="../2-38.html">기존 가설검정(Hypothesis Testing) 체험</a> → <a href="../practice.html?code=2-38">관련 문제</a>.</li>
 <li>독립과 대응: <a href="../theory/3-03.html">기존 비모수 이론</a>.</li>
-<li>카이제곱과 회귀의 다음 단계: <a href="../theory/3-22.html">교차표</a>, <a href="../theory/4-01.html">적합도</a>, <a href="../theory/4-14.html">회귀 t검정</a>, <a href="../theory/4-15.html">전체 F검정</a>.</li>
-</ul></section><nav class="statistics-pager" aria-label="다음 학습"><a href="index.html"><small>전체 흐름</small>통계 쉽게 읽기</a><a href="descriptive.html"><small>기초 다시 읽기</small>기술통계 · 데이터를 읽는 법 →</a></nav></article><aside class="statistics-sidebar" aria-label="이 글의 목차"><nav class="statistics-toc" aria-label="본문 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">오늘 본 주문과 알고 싶은 주문은 같은 범위일까</a></li><li><a href="#section-2">한 건의 시간과 평균 시간은 다르게 흔들린다</a></li><li><a href="#section-3">중심극한정리는 원자료를 바꾸지 않는다</a></li><li><a href="#section-4">평균 하나 옆에 불확실성의 범위를 붙인다</a></li><li><a href="#section-5">차이 5분이 평균의 흔들림에 비해 큰가</a></li><li><a href="#section-6">잘못 울린 경보와 놓친 변화를 구별한다</a></li><li><a href="#section-7">검정 이름보다 비교할 대상을 먼저 적는다</a></li><li><a href="#section-8">결과를 한 문장으로 쓴다면</a></li><li><a href="#section-9">직접 확인하고 이어 읽기</a></li></ol></nav><a class="statistics-side-next" href="descriptive.html"><small>기초 다시 읽기</small>기술통계 · 데이터를 읽는 법 →</a></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 예제로 공부합니다. 공식 기출문항·합격 예측 서비스가 아닙니다.<br>연결된 체험과 문제는 기존 빅분기 공부방 자료입니다. 문제풀이 기록은 기존과 같이 현재 브라우저에 저장됩니다.</p></div></footer></body></html>
+<li>카이제곱과 회귀의 다음 단계: <a href="../theory/3-22.html">교차표(Contingency Table)</a>, <a href="../theory/4-01.html">적합도(Goodness of Fit)</a>, <a href="../theory/4-14.html">회귀 t검정(t-test)</a>, <a href="../theory/4-15.html">전체 F검정(Overall F-Test)</a>.</li>
+</ul></section><nav aria-label="다음 학습" class="statistics-pager"><a href="index.html"><small>전체 흐름</small>통계 쉽게 읽기</a><a href="descriptive.html"><small>기초 다시 읽기</small>기술통계(Descriptive Statistics) · 데이터를 읽는 법 →</a></nav></article><aside aria-label="이 글의 목차" class="statistics-sidebar"><nav aria-label="본문 목차" class="statistics-toc"><h2>이 글의 순서</h2><ol><li><a href="#section-1">모집단(Population)·표본(Sample)·모수(Parameter)·통계량(Statistic)</a></li><li><a href="#section-2">표본분포(Sampling Distribution)와 표준오차(SE, Standard Error)</a></li><li><a href="#section-3">중심극한정리(CLT, Central Limit Theorem)와 정규근사(Normal Approximation)</a></li><li><a href="#section-4">점추정(Point Estimation)·구간추정(Interval Estimation)·신뢰구간(CI, Confidence Interval)</a></li><li><a href="#section-5">가설검정(Hypothesis Testing)·검정통계량(Test Statistic)·p값(p-value)</a></li><li><a href="#section-6">제1종 오류(Type I Error)·제2종 오류(Type II Error)·검정력(Statistical Power)</a></li><li><a href="#section-7">통계적 검정(Statistical Test)의 선택: 비교 대상과 가정</a></li><li><a href="#section-8">추정(Estimation)·가설검정(Hypothesis Testing) 결과와 해석 범위</a></li><li><a href="#section-9">직접 확인하고 이어 읽기</a></li></ol></nav><a class="statistics-side-next" href="descriptive.html"><small>기초 다시 읽기</small>기술통계(Descriptive Statistics) · 데이터를 읽는 법 →</a></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 예제로 공부합니다. 공식 기출문항·합격 예측 서비스가 아닙니다.<br/>연결된 체험과 문제는 기존 빅분기 공부방 자료입니다. 문제풀이 기록은 기존과 같이 현재 브라우저에 저장됩니다.</p></div></footer><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>

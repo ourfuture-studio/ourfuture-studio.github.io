@@ -1,64 +1,65 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>좋은 추정량의 네 성질은 서로 다른 질문이다 · 빅분기 공부방</title><meta name="description" content="한 번의 추정값이 참값과 가까웠다는 사실만으로 추정량을 평가할 수 없다. 불편성·일치성·효율성·충분성은 반복 표집과 자료 축약의 서로 다른 성질을 말한다.">
-<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="../theory.css?v=20261031-topic1"></head>
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>점추정(Point Estimation)과 추정량(Estimator)의 성질(Properties of Estimators) · 빅분기 공부방</title><meta content="한 번의 추정값이 참값과 가까웠다는 사실만으로 추정량을 평가할 수 없다. 불편성·일치성·효율성·충분성은 반복 표집과 자료 축약의 서로 다른 성질을 말한다." name="description"/>
+<meta content="#ffffff" name="theme-color"/><link href="../favicon.svg?v=f893a6f60418" rel="icon" type="image/svg+xml"/>
+<link href="../learner.css?v=49c717dc5b5d" rel="stylesheet"/><link href="../theory.css?v=9192cabbce56" rel="stylesheet"/><link data-terminology="" href="../terminology.css?v=2613a322785a" rel="stylesheet"/></head>
 <body class="learning-page theory-page" data-code="2-37">
 <a class="learning-skip" href="#main">본문으로 건너뛰기</a><header class="learning-header"><div class="learning-container header-inner">
-<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
+<a aria-label="빅분기 공부방 홈" class="learning-brand" href="../index.html"><span aria-hidden="true" class="studio-wordmark"><img alt="" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/></span><span>빅분기 공부방<small>ourfuture studio</small></span></a>
 <nav aria-label="주 메뉴" class="learning-nav"><a href="../index.html">홈</a><a aria-current="page" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a><a href="../statistics/">통계 입문</a></nav><span class="local-badge"><span></span> 로그인 없이 공부</span>
 </div></header>
 <main class="learning-container" id="main" tabindex="-1">
-<nav class="theory-breadcrumb" aria-label="현재 위치"><a href="../study.html?subject=2">2과목 · 빅데이터 탐색</a><span class="separator" aria-hidden="true">/</span><span>2-37</span></nav>
-<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-37 · 이론 읽기</span><h1>좋은 추정량의 네 성질은 서로 다른 질문이다</h1><p class="theory-lead">한 번의 추정값이 참값과 가까웠다는 사실만으로 추정량을 평가할 수 없다. 불편성·일치성·효율성·충분성은 반복 표집과 자료 축약의 서로 다른 성질을 말한다.</p>
+<nav aria-label="현재 위치" class="theory-breadcrumb"><a href="../study.html?subject=2">2과목 · 빅데이터(Big Data) 탐색</a><span aria-hidden="true" class="separator">/</span><span>2-37</span></nav>
+<div class="theory-heading"><span class="theory-eyebrow">2과목 · 2-37 · 이론 읽기</span><h1>점추정(Point Estimation)과 추정량(Estimator)의 성질(Properties of Estimators)</h1><p class="theory-lead">한 번의 추정값(Estimate)이 참값과 가까웠다는 사실만으로 추정량(Estimator)을 평가(Evaluation)할 수 없다. 불편성(Unbiasedness)·일치성(Consistency)·효율성(Efficiency)·충분성(Sufficiency)은 반복 표본추출(Sampling)과 자료 축약의 서로 다른 성질을 말한다.</p>
 <div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-37.html">조건 바꿔 체험</a></div>
-<nav class="theory-quicknav" aria-label="본문 바로 이동"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
-<div class="theory-layout"><article class="theory-article"><section id="theory-overview" class="theory-section "><h2>핵심 이론</h2><p>추정량은 표본으로 값을 계산하는 규칙이며 추정값은 특정 표본에 그 규칙을 적용한 결과다. 모수 θ는 모집단 평균이나 성공확률처럼 알고 싶은 고정된 수이고, Eθ(T)는 그 θ를 가진 모집단에서 표본을 반복해 뽑을 때 추정량 T의 평균을 뜻한다. 불편성은 모든 해당 θ에서 Eθ(T)=θ가 성립하는 성질로, 한 번 정확한 숫자가 나왔는지와 다르다. 일치성은 허용오차를 아무리 작게 정해도 표본 수가 커질수록 추정값이 그 오차 범위 안에 있을 확률이 1에 가까워진다는 점근적 성질이다.</p>
-<p>같은 목표를 추정하는 불편추정량들을 비교할 때 분산이 더 작은 추정량을 더 효율적이라고 비교할 수 있다. 유한 표본에서의 불편성이 표본 수 증가에 따른 일치성을 자동으로 보장하지는 않는다. 새 자료가 늘어도 첫 관측 하나만 쓰는 규칙은 불편할 수 있지만 불확실성이 줄지 않을 수 있다.</p>
-<p>충분성은 정한 확률모형과 모수에 관한 정보를 통계량이 보존하는 성질이다. 예를 들어 독립 베르누이 표본의 p에 대한 우도는 성공 횟수와 표본 수로 표현되어 성공 횟수가 충분통계량이 된다. 어떤 표 하나가 모든 분석 목적에 충분하다는 일반적 칭찬이 아니다. 효율성 비교와 충분성 판단 모두 대상 모형·모수를 명시해야 한다.</p></section><section id="theory-example" class="theory-section "><h2>작은 예제로 확인하기</h2><p>각 시행의 성공을 1, 실패를 0으로 기록하고 성공확률 p가 같은 독립 시행 n개를 모은다. 이런 0·1 변수를 베르누이(p) 변수라고 한다. 전체 표본평균은 성공 횟수/n이고, 첫 관측만 쓰는 규칙은 나머지 n−1개를 버리고 첫 0 또는 1 하나만 추정값으로 쓴다.</p>
+<nav aria-label="본문 바로 이동" class="theory-quicknav"><a href="#theory-overview">핵심 이론</a><a href="#theory-example">작은 예제</a><a href="#theory-question">직접 고르기</a></nav></div>
+<div class="theory-layout"><article class="theory-article"><section aria-label="정식 용어와 정의" class="terminology-summary"><h2>정식 용어와 정의</h2><p>추정량(Estimator)은 표본(Sample)으로 모수(Parameter)를 추정하는 규칙이며 특정 표본(Sample)에서 나온 추정값(Estimate)과 구별한다. 불편성(Unbiasedness), 일치성(Consistency), 효율성(Efficiency), 충분성(Sufficiency)은 모형(Model)과 모수(Parameter)에 관해 서로 다른 조건을 평가(Evaluation)한다.</p><ul class="terminology-terms"><li>추정량(Estimator)</li><li>추정값(Estimate)</li><li>점추정(Point Estimation)</li><li>모수(Parameter)</li><li>불편성(Unbiasedness)</li><li>불편추정량(Unbiased Estimator)</li><li>일치성(Consistency)</li><li>효율성(Efficiency)</li></ul><p class="terminology-sources">정의 참고: <a href="https://hsong1.github.io/teachings/psu-sp21-stat415/2_Point%20Estimation.html">Hyebin Song, Penn State STAT 415: Point Estimation</a></p></section><section class="theory-section" id="theory-overview"><h2>핵심 이론</h2><p>추정량(Estimator)은 표본(Sample)으로 값을 계산하는 규칙이며 추정값(Estimate)은 특정 표본(Sample)에 그 규칙을 적용한 결과다. 모수(Parameter) θ는 모집단(Population) 평균(Mean)이나 성공확률처럼 알고 싶은 고정된 수이고, Eθ(T)는 그 θ를 가진 모집단(Population)에서 표본(Sample)을 반복해 뽑을 때 추정량(Estimator) T의 평균(Mean)을 뜻한다. 불편성(Unbiasedness)은 모든 해당 θ에서 Eθ(T)=θ가 성립하는 성질로, 한 번 정확한 숫자가 나왔는지와 다르다. 일치성(Consistency)은 허용오차를 아무리 작게 정해도 표본(Sample) 수가 커질수록 추정값(Estimate)이 그 오차 범위 안에 있을 확률이 1에 가까워진다는 점근적 성질이다.</p>
+<p>같은 목표를 추정하는 불편추정량들을 비교할 때 분산(Variance)이 더 작은 추정량(Estimator)을 더 효율적이라고 비교할 수 있다. 유한 표본(Sample)에서의 불편성(Unbiasedness)이 표본(Sample) 수 증가에 따른 일치성(Consistency)을 자동으로 보장하지는 않는다. 새 자료가 늘어도 첫 관측(Observation) 하나만 쓰는 규칙은 불편할 수 있지만 불확실성이 줄지 않을 수 있다.</p>
+<p>충분성(Sufficiency)은 정한 확률모형과 모수(Parameter)에 관한 정보를 통계량(Statistic)이 보존하는 성질이다. 예를 들어 독립 베르누이 표본(Sample)의 p에 대한 우도(Likelihood)는 성공 횟수와 표본(Sample) 수로 표현되어 성공 횟수가 충분통계량(Sufficient Statistic)이 된다. 어떤 표 하나가 모든 분석 목적에 충분하다는 일반적 칭찬이 아니다. 효율성(Efficiency) 비교와 충분성(Sufficiency) 판단 모두 대상 모형(Model)·모수(Parameter)를 명시해야 한다.</p></section><section class="theory-section" id="theory-example"><h2>작은 예제로 확인하기</h2><p>각 시행의 성공을 1, 실패를 0으로 기록하고 성공확률 p가 같은 독립 시행 n개를 모은다. 이런 0·1 변수를 베르누이(p) 변수라고 한다. 전체 표본평균(Sample Mean)은 성공 횟수/n이고, 첫 관측(Observation)만 쓰는 규칙은 나머지 n−1개를 버리고 첫 0 또는 1 하나만 추정값(Estimate)으로 쓴다.</p>
 <div aria-label="가로로 스크롤할 수 있는 예제 표" class="theory-table-wrap" role="region" tabindex="0"><table aria-label="작은 예제의 조건과 값">
 <thead>
 <tr>
 <th scope="col">추정 규칙</th>
-<th scope="col">기댓값</th>
-<th scope="col">분산</th>
+<th scope="col">기댓값(Expected Value)</th>
+<th scope="col">분산(Variance)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>전체 n개의 표본평균</td>
+<td>전체 n개의 표본평균(Sample Mean)</td>
 <td>p</td>
 <td>p(1−p)/n</td>
 </tr>
 <tr>
-<td>첫 관측 X1만 사용</td>
+<td>첫 관측(Observation) X1만 사용</td>
 <td>p</td>
 <td>p(1−p)</td>
 </tr>
 </tbody>
 </table></div>
-<p>두 규칙은 모두 불편하지만 0&lt;p&lt;1에서 첫 관측만 쓰는 규칙은 표본 수가 늘어도 분산이 줄지 않는다.</p></section><section id="theory-figure" class="theory-section "><h2>그림으로 확인하기</h2><figure class="theory-figure"><img src="../assets/figures/2-37.png" alt="자체 예제의 같은 불편성을 가진 두 추정 규칙의 분산을 표본 수에 따라 비교한다.. p=0.5에서 전체 평균 분산은0.25/n, 첫값 분산은0.25다. 불편성만으로 일치성을 보장하지 않는다." width="1200" height="1086" loading="lazy" decoding="async"><figcaption>p=0.5에서 전체 평균 분산은0.25/n, 첫값 분산은0.25다. 불편성만으로 일치성을 보장하지 않는다.</figcaption></figure></section><section id="theory-question" class="theory-section "><h2>직접 고르기</h2><div class="theory-question"><p>모수 θ의 추정량 T에 대해 모든 θ에서 Eθ(T)=θ가 성립한다.</p>
+<p>두 규칙은 모두 불편하지만 0&lt;p&lt;1에서 첫 관측(Observation)만 쓰는 규칙은 표본(Sample) 수가 늘어도 분산(Variance)이 줄지 않는다.</p></section><section class="theory-section" id="theory-figure"><h2>그림으로 확인하기</h2><figure class="theory-figure"><img alt="자체 예제의 같은 불편성(Unbiasedness)을 가진 두 추정 규칙의 분산(Variance)을 표본(Sample) 수에 따라 비교한다.. p=0.5에서 전체 평균(Mean) 분산(Variance)은0.25/n, 첫값 분산(Variance)은0.25다. 불편성(Unbiasedness)만으로 일치성(Consistency)을 보장하지 않는다." decoding="async" height="1721" loading="lazy" src="../assets/figures/2-37.png?v=f9e052d6f595" width="1200"/><figcaption>p=0.5에서 전체 평균(Mean) 분산(Variance)은0.25/n, 첫값 분산(Variance)은0.25다. 불편성(Unbiasedness)만으로 일치성(Consistency)을 보장하지 않는다.</figcaption></figure></section><section class="theory-section" id="theory-question"><h2>직접 고르기</h2><div class="theory-question"><p>모수(Parameter) θ의 추정량(Estimator) T에 대해 모든 θ에서 Eθ(T)=θ가 성립한다.</p>
 <p><strong>이 조건이 직접 말하는 성질은?</strong></p>
 <ul>
-<li>1. 표본 수가 커지면 반드시 참값과 정확히 같다</li>
-<li>2. 모든 모수의 정보를 항상 보존한다</li>
-<li>3. 분산이 가능한 모든 추정량 중 가장 작다</li>
-<li>4. 불편성</li>
-</ul></div></section><details id="theory-answer" class="theory-answer theory-section"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 불편성</strong></p>
-<p>추정량의 기댓값과 목표 모수가 같다는 것은 불편성의 정의다.</p>
+<li>1. 표본(Sample) 수가 커지면 반드시 참값과 정확히 같다</li>
+<li>2. 모든 모수(Parameter)의 정보를 항상 보존한다</li>
+<li>3. 분산(Variance)이 가능한 모든 추정량(Estimator) 중 가장 작다</li>
+<li>4. 불편성(Unbiasedness)</li>
+</ul></div></section><details class="theory-answer theory-section" id="theory-answer"><summary>정답과 오답의 이유 확인하기</summary><div class="answer-body"><p><strong>정답 4번 — 불편성(Unbiasedness)</strong></p>
+<p>추정량(Estimator)의 기댓값(Expected Value)과 목표 모수(Parameter)가 같다는 것은 불편성(Unbiasedness)의 정의다.</p>
 <ul>
-<li>① 일치성도 확률적 가까워짐을 말하며 정확한 일치를 보장하지 않는다.</li>
-<li>② 충분성은 조건부 분포나 우도 구조를 별도로 확인해야 한다.</li>
-<li>③ 효율성은 분산과 비교 집합에 관한 추가 조건이 필요하다.</li>
-</ul></div></details><section id="theory-variation" class="theory-section "><h2>조건 하나 바꾸어 풀기</h2><p>n이 커져도 베르누이(p) 자료의 첫 값 X1만 p의 추정량으로 쓴다. 불편하면 반드시 일치할까?</p>
+<li>① 일치성(Consistency)도 확률적 가까워짐을 말하며 정확한 일치를 보장하지 않는다.</li>
+<li>② 충분성(Sufficiency)은 조건부 분포나 우도(Likelihood) 구조를 별도로 확인해야 한다.</li>
+<li>③ 효율성(Efficiency)은 분산(Variance)과 비교 집합에 관한 추가 조건이 필요하다.</li>
+</ul></div></details><section class="theory-section" id="theory-variation"><h2>조건 하나 바꾸어 풀기</h2><p>n이 커져도 베르누이(p) 자료의 첫 값 X1만 p의 추정량(Estimator)으로 쓴다. 불편하면 반드시 일치할까?</p>
 <p><strong>풀이:</strong> 아니다.</p>
-<p>0&lt;p&lt;1에서 X1의 분포가 n과 무관하다. 예를 들어 p=0.5면 |X1−0.5|&gt;0.25일 확률은 언제나 1이라 참값으로 모이지 않는다.</p></section><section id="theory-cue" class="theory-section "><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>평균이 맞는가, 모이는가, 덜 흔들리는가, 정보를 남기는가.</p></div></section><section id="theory-sources" class="theory-section theory-sources"><h2>근거와 적용 조건</h2><ul>
+<p>0&lt;p&lt;1에서 X1의 분포가 n과 무관하다. 예를 들어 p=0.5면 |X1−0.5|&gt;0.25일 확률은 언제나 1이라 참값으로 모이지 않는다.</p></section><section class="theory-section" id="theory-cue"><h2>다시 떠올릴 단서</h2><div class="theory-cue"><p>평균(Mean)이 맞는가, 모이는가, 덜 흔들리는가, 정보를 남기는가.</p></div></section><section class="theory-section theory-sources" id="theory-sources"><h2>근거와 적용 조건</h2><ul>
 <li><a href="https://hsong1.github.io/teachings/psu-sp21-stat415/2_Point%20Estimation.html" rel="noopener noreferrer" target="_blank">Hyebin Song, Penn State STAT 415 (2021): Point Estimation</a> — Properties of Point Estimators・Sufficient statistics and the factorization theorem. 확인일 2026-10-30.</li>
 </ul>
-<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section id="theory-next" class="theory-section theory-bottom-actions"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-37.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>분산이 줄지 않는다는 이유만으로 모든 추정량의 비일치성을 단정하지 않는다. 여기서는 X1의 분포가 n과 무관하고 p=0.5에서 고정 오차 확률이1임도 확인한다.</p></div></section><nav class="theory-pager" aria-label="같은 과목의 이전·다음 개념"><a class="prev" rel="prev" data-role="theory-prev" href="2-36.html"><small>이전 개념 · 2-36</small>개별 관측의 산포와 표본평균의 산포는 다르다</a><a class="next" rel="next" data-role="theory-next" href="2-38.html"><small>다음 개념 · 2-38</small>p값을 읽을 때 가정과 결론의 방향을 바꾸지 않는다</a></nav></article>
-<aside class="theory-sidebar" aria-label="목차와 학습 기록"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
-<div class="theory-actions"><button type="button" class="btn btn-primary" id="theory-mark-read" aria-pressed="false">읽음 표시</button><button type="button" class="btn btn-secondary" id="theory-bookmark" aria-pressed="false">북마크</button></div>
-<p id="theory-status" role="status" aria-live="polite">학습 기록은 현재 브라우저에 저장됩니다.</p><div id="theory-storage-warning" role="status" hidden></div>
+<p>상황·수치·보기·조건 변경은 자체 교육 예제다. 민간 복원 문항의 공식 정답이나 실제 성능·학습 효과를 뜻하지 않는다.</p></section><section class="theory-section theory-bottom-actions" id="theory-next"><h2>읽은 내용을 적용해 보기</h2><div class="theory-actions"><a class="btn btn-primary" href="../practice.html?code=2-37">관련 문제 풀기</a><a class="btn btn-secondary" href="../2-37.html">조건 바꿔 체험</a></div><div class="theory-boundary"><p>분산(Variance)이 줄지 않는다는 이유만으로 모든 추정량(Estimator)의 비일치성을 단정하지 않는다. 여기서는 X1의 분포가 n과 무관하고 p=0.5에서 고정 오차 확률이1임도 확인한다.</p></div></section><nav aria-label="같은 과목의 이전·다음 개념" class="theory-pager"><a class="prev" data-role="theory-prev" href="2-36.html" rel="prev">이전 개념 · 2-36표본분포(Sampling Distribution)·표준오차(SE, Standard Error)·중심극한정리(CLT, Central Limit Theorem)</a><a class="next" data-role="theory-next" href="2-38.html" rel="next">다음 개념 · 2-38가설검정(Hypothesis Testing)·p값(p-value)·유의수준(Significance Level)</a></nav></article>
+<aside aria-label="목차와 학습 기록" class="theory-sidebar"><div class="theory-toc"><h2>이 글의 순서</h2><nav aria-label="이론 목차"><ol><li><a href="#theory-overview">핵심 이론</a></li><li><a href="#theory-example">작은 예제</a></li><li><a href="#theory-figure">그림으로 확인</a></li><li><a href="#theory-question">직접 고르기</a></li><li><a href="#theory-answer">정답과 오답 이유</a></li><li><a href="#theory-variation">조건 바꾸어 풀기</a></li><li><a href="#theory-cue">기억할 단서</a></li><li><a href="#theory-sources">근거와 적용 조건</a></li><li><a href="#theory-next">문제풀이와 체험</a></li></ol></nav></div>
+<div class="theory-actions"><button aria-pressed="false" class="btn btn-primary" id="theory-mark-read" type="button">읽음 표시</button><button aria-pressed="false" class="btn btn-secondary" id="theory-bookmark" type="button">북마크</button></div>
+<p aria-live="polite" id="theory-status" role="status">학습 기록은 현재 브라우저에 저장됩니다.</p><div hidden="" id="theory-storage-warning" role="status"></div>
 <p class="theory-norecord">이론을 읽거나 정답을 펼치는 것만으로 문제풀이 기록이 생기지는 않습니다.</p>
-<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-25</span><a href="2-25.html">표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다</a><div class="related-actions"><a href="../practice.html?code=2-25">문제 풀기</a><a href="../2-25.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-36</span><a href="2-36.html">개별 관측의 산포와 표본평균의 산포는 다르다</a><div class="related-actions"><a href="../practice.html?code=2-36">문제 풀기</a><a href="../2-36.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
-<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script type="application/json" id="theory-data">{"code": "2-37"}</script><script type="module" src="../theory.mjs?v=8792ba29386b"></script></body></html>
+<section class="theory-related"><h2>연결해서 읽기</h2><ul><li><span class="related-code">2-25</span><a href="2-25.html">표본분산(Sample Variance)과 자유도(df, Degrees of Freedom)</a><div class="related-actions"><a href="../practice.html?code=2-25">문제 풀기</a><a href="../2-25.html">조건 바꿔 체험</a></div></li><li><span class="related-code">2-36</span><a href="2-36.html">표본분포(Sampling Distribution)·표준오차(SE, Standard Error)·중심극한정리(CLT, Central Limit Theorem)</a><div class="related-actions"><a href="../practice.html?code=2-36">문제 풀기</a><a href="../2-36.html">조건 바꿔 체험</a></div></li></ul></section></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../index.html">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 연습문제입니다. 학습 기록은 현재 브라우저에 저장하며, 체험 입력값과 답안을 서버로 전송하지 않습니다.<br/>공식 기출문항·합격 예측 서비스가 아닙니다. 기록은 오답노트에서 내보내고 불러올 수 있습니다.</p></div></footer><script id="theory-data" type="application/json">{"code": "2-37"}</script><script src="../theory.mjs?v=1d79c5e85108" type="module"></script><script data-terminology="" src="../terminology.mjs?v=ff7b342f9f9e" type="module"></script></body></html>
