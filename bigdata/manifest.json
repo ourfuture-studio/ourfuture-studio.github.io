@@ -123,8 +123,8 @@
     },
     {
       "path": "2-02.html",
-      "sha256": "559884f8fa4a432ada29220ad63293c506b2d65473cef49082489fb60dd41630",
-      "bytes": 9240
+      "sha256": "f85604e000501b48ff89aa353d83ba6211604af8011389eb5a6a05b93b0db4b6",
+      "bytes": 9512
     },
     {
       "path": "2-03.html",
@@ -208,8 +208,8 @@
     },
     {
       "path": "2-25.html",
-      "sha256": "20e205070a29d7a83de0d45801da2d5304994cb0604d0148cd1a5854fe7e47e5",
-      "bytes": 8761
+      "sha256": "f67bd48ea0dbff434166e7c03addc3059d1eb5739ab3b3c97b7c85b5b1d04533",
+      "bytes": 9042
     },
     {
       "path": "2-26.html",
@@ -343,8 +343,8 @@
     },
     {
       "path": "3-22.html",
-      "sha256": "a22bb243059f3a8c914c07269c6386c7029764336f2b1f7387cf06a8f8cbd1e7",
-      "bytes": 8162
+      "sha256": "7777d7608a1d0156cdebe807a61b65c9d4c5303d4cd58e22d92542e81de22532",
+      "bytes": 8443
     },
     {
       "path": "3-23.html",
@@ -458,13 +458,13 @@
     },
     {
       "path": "4-14.html",
-      "sha256": "4e55fdeedafa4980ff3a1aab81321dc74966474b8883d43f6d9779a0499e9023",
-      "bytes": 9034
+      "sha256": "0250e96ad0fca258c53ea1a0f8a38f4a8c8fdb92e90a3cf37f562da4e3ffd29d",
+      "bytes": 9306
     },
     {
       "path": "4-15.html",
-      "sha256": "4ef0250c99645fce86531775e25c09d279ff6864f73028b1e7d568cb934c2006",
-      "bytes": 9304
+      "sha256": "8c29e5cd802b5c243e1822838b139b0183f7a4de1fc469173da609942e6fbd43",
+      "bytes": 9576
     },
     {
       "path": "4-16.html",
@@ -2658,8 +2658,8 @@
     },
     {
       "path": "experiments.html",
-      "sha256": "9aa1afaf767328f13756f4809977430171cc49d6849bd9b5bfdc4dea213c0de4",
-      "bytes": 3710
+      "sha256": "f9df1c7578c63515be8d4de6c3bdc28b9e2535a8f0331e855a4843998ef80f46",
+      "bytes": 4120
     },
     {
       "path": "favicon.svg",
@@ -2668,8 +2668,8 @@
     },
     {
       "path": "index.html",
-      "sha256": "aa92d35dec42ac9931446a472b1a3abad9782e18639228d691e05746c6c9167d",
-      "bytes": 3700
+      "sha256": "8e76df27f81f731a0483e128e19bfe5a525bc170ecb83cdab50b2e62c7df5944",
+      "bytes": 4110
     },
     {
       "path": "learner.css",
@@ -2777,9 +2777,29 @@
       "bytes": 44194
     },
     {
+      "path": "statistics/distribution-lab.css",
+      "sha256": "ad4fd1fedd299ae4a989f315826a05160533c3421d56597f4b5107bf6f179eca",
+      "bytes": 11176
+    },
+    {
+      "path": "statistics/distribution-lab.html",
+      "sha256": "d6769b410e5d8ff779adbe4d168da63083f74ae21b51c02949779d221fd0c12f",
+      "bytes": 27682
+    },
+    {
+      "path": "statistics/distribution-lab.mjs",
+      "sha256": "611147d627762655ad389f45ea6ed516e76511f30d895c1a83785ce5acd16bfb",
+      "bytes": 12678
+    },
+    {
+      "path": "statistics/distribution-math.mjs",
+      "sha256": "4140ecb8e5fe493f5422e25305122163b0abced398e50857542604e576173243",
+      "bytes": 8626
+    },
+    {
       "path": "statistics/index.html",
-      "sha256": "98dc5291fdc822d440720f1b66f2d48a3f2fb8cc391aaef1d209694410a3deff",
-      "bytes": 13781
+      "sha256": "a3526ae0a73c031d350ca5a6df792d74f84fb8407280348ab3cdbed5e097bb61",
+      "bytes": 14197
     },
     {
       "path": "statistics/inference-lab.css",
@@ -2788,8 +2808,8 @@
     },
     {
       "path": "statistics/inference-lab.html",
-      "sha256": "86c28d6fa11e28f5453b0f79788c9ff0a63edc96a77d5991e503cb7cd1f768c8",
-      "bytes": 18133
+      "sha256": "b6cab720905de13fdcc33a963be63fc1412efe1132d13b10b7298b1a9ded937f",
+      "bytes": 18408
     },
     {
       "path": "statistics/inference-lab.mjs",
@@ -2798,8 +2818,8 @@
     },
     {
       "path": "statistics/inferential.html",
-      "sha256": "fac44c34b5a2950d6e6c23a7f75034ac5f97bcf0574a3eb13105f10e5f6d7f04",
-      "bytes": 75993
+      "sha256": "be3216eca1dd7468c804de857c4310be17e33e7c3efa329b76eff0dab60e56dc",
+      "bytes": 76577
     },
     {
       "path": "statistics/statistics-lab.mjs",
@@ -2818,8 +2838,8 @@
     },
     {
       "path": "study.html",
-      "sha256": "a41978ac010ab90c828486e0b636b536f40dab1f87f049b4dae2597ba9beb3ec",
-      "bytes": 3714
+      "sha256": "dedd4b33572e9f3918f366f793952a3fa55b3358c5764a05e5ebf24ced2ed1e1",
+      "bytes": 4124
     },
     {
       "path": "summary.css",
@@ -2828,8 +2848,8 @@
     },
     {
       "path": "summary.html",
-      "sha256": "091bb42bde2ee2f3ccc93b9d015c85cd0d4aade2ec9de0cda31c9e47e5814732",
-      "bytes": 20376
+      "sha256": "c1c4e54adecc9a996049cc7c79b2a02eb331eb8bda6a1520caa7b0f880d786c3",
+      "bytes": 20928
     },
     {
       "path": "summary.mjs",
@@ -2963,8 +2983,8 @@
     },
     {
       "path": "theory/2-02.html",
-      "sha256": "5b06071798e61c21fc560d4bb8ab50da29db5317aa54941ec81cd4200a5d9566",
-      "bytes": 23062
+      "sha256": "4ac6ce15662277fdca0701d1d9b012755bd4f2f29a5388a5c551b63e2e4bd6f3",
+      "bytes": 23337
     },
     {
       "path": "theory/2-03.html",
@@ -3048,8 +3068,8 @@
     },
     {
       "path": "theory/2-25.html",
-      "sha256": "76de4b79553474cc97dc2988febc87120d2857e7c650a2a5091a0b9a7dc513da",
-      "bytes": 21286
+      "sha256": "b49acb87ecf04a527f80fd7f19db1298fcf91a8cf57a4abd571f70c9d7341735",
+      "bytes": 21570
     },
     {
       "path": "theory/2-26.html",
@@ -3183,8 +3203,8 @@
     },
     {
       "path": "theory/3-22.html",
-      "sha256": "2a82d7ba3e605ccf3d9dc0c9fc9daf12665385f8b3e3bff5d5ec986604b000c4",
-      "bytes": 21350
+      "sha256": "f414328f95da1224d584841c6b3de56c5670e00ce2c1de46ecf7b7e5d0e38d0b",
+      "bytes": 21634
     },
     {
       "path": "theory/3-23.html",
@@ -3298,13 +3318,13 @@
     },
     {
       "path": "theory/4-14.html",
-      "sha256": "7bb17acb9981c21754bf441e5542021fde13dedc17d315c2eee695badbb800e8",
-      "bytes": 23420
+      "sha256": "37048581d5d09528c4892c4d9a7307006ab3e1200cc2ee88cf6914abfe73f3f5",
+      "bytes": 23695
     },
     {
       "path": "theory/4-15.html",
-      "sha256": "73fc926428e8498758d219259c82b960519e7cbff30b423d89aadab9b1b00966",
-      "bytes": 22482
+      "sha256": "11178c1f43b2c89b3d31fe2f7411ebcb4f16673b3e0cc4b40a939f7cdd518bcf",
+      "bytes": 22757
     },
     {
       "path": "theory/4-16.html",
@@ -3408,19 +3428,21 @@
     }
   ],
   "reviewed_on": "2026-11-02",
-  "review_scope": "108 bilingual theories; graphical confidence intervals and normal z tests with one/two-sided tails; seeded CLT; compact terminology/method comparisons and full topic index",
+  "review_scope": "108 bilingual topics with preserved questions; CLT, confidence intervals, normal tests and interactive t/chi-square/F distributions; formal assumptions, degrees of freedom and linked theory/practice",
   "statisticsTheories": 2,
   "statisticsFigures": 7,
   "statisticsIndex": "statistics/index.html",
   "terminologyTopics": 108,
   "terminologyPolicy": "Formal Korean names with authentic full English names; explanatory analogies remain supporting prose.",
   "statisticsVisualVersion": 2,
-  "statisticsInteractiveLabs": 3,
+  "statisticsInteractiveLabs": 6,
   "conceptVisualVersion": 1,
   "conceptFigures": 108,
   "visualTheories": 108,
   "visualFormulaCards": 70,
   "visualRuleCards": 38,
   "inferenceGraphVersion": 1,
-  "summaryTopics": 108
+  "summaryTopics": 108,
+  "distributionGraphVersion": 1,
+  "statisticsDistributionLabs": 3
 }
