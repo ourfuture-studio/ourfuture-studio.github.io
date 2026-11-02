@@ -1,3 +1,4 @@
+import { statisticsDestination, statisticsLink } from './statistics-links.mjs?v=b51b199471ae';
 import { CATALOG } from './catalog.mjs';
 import { createProgressStore } from './progress.mjs';
 
@@ -20,7 +21,7 @@ if (lessonNode && !document.getElementById('learning-lesson-nav')) {
     for (const [label, href] of [
       ['홈', 'index.html'], ['과목별 핵심', 'study.html'],
       ['문제 풀기', 'practice.html'], ['체험', 'experiments.html'],
-      ['오답노트', 'review.html']
+      ['오답노트', 'review.html'], ['통계 입문', 'statistics/']
     ]) {
       const link = document.createElement('a');
       link.textContent = label;
@@ -47,6 +48,13 @@ if (lessonNode && !document.getElementById('learning-lesson-nav')) {
     theory.href = 'theory/' + encodeURIComponent(code) + '.html';
     theory.textContent = '이론 읽기';
     tools.append(theory, read, bookmark, status);
+
+    const reading=statisticsDestination(code);
+    if(reading){
+      const link=document.createElement('a');link.className='learning-theory-link statistics-reading-link';
+      link.href=reading.href;link.textContent=reading.label;tools.prepend(link);
+    }
+
     const privacy = document.createElement('p');
     privacy.id = 'learning-storage-note';
     privacy.className = 'learner-status';

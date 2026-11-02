@@ -1,3 +1,4 @@
+import { statisticsDestination, statisticsLink } from './statistics-links.mjs?v=b51b199471ae';
 import { CATALOG } from './catalog.mjs';
 import { createProgressStore } from './progress.mjs';
 
@@ -11,6 +12,15 @@ const status=document.querySelector('#theory-status');
 const warning=document.querySelector('#theory-storage-warning');
 if(lesson&&read&&bookmark&&status){
   const store=createProgressStore({catalog:CATALOG});
+
+  const reading=statisticsDestination(code,'../');
+  if(reading&&!document.querySelector('.statistics-theory-bridge')){
+    const panel=document.createElement('p');panel.className='statistics-theory-bridge';
+    const link=document.createElement('a');link.href=reading.href;link.textContent=reading.label+' →';
+    panel.append('이 개념의 큰 흐름이 궁금하다면 ',link);
+    document.querySelector('.theory-heading')?.append(panel);
+  }
+
   const update=snapshot=>{
     const record=snapshot.records[code]||{};
     read.disabled=!!record.read;

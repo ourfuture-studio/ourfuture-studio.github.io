@@ -19,3 +19,11 @@
 그림과 설명의 출처는 각 체험 페이지에서 확인할 수 있습니다.
 
 https://ourfuture-studio.github.io/bigdata/
+
+## 통계 쉽게 읽기
+
+- 통계 입문: `statistics/`
+- 기술통계: `statistics/descriptive.html` · 평균·산포·표·상관
+- 추론통계: `statistics/inferential.html` · 표본·구간·검정
+- 두 공통 이론에서 기존 체험과 단일문제로 연결하고 관련 자료에서 해당 설명으로 돌아옵니다.
+- 통계 보강용 새36문항은 아직 추가하지 않았습니다. 기존108문항과 학습 기록 형식은 유지합니다.

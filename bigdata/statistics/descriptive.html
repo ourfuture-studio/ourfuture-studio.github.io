@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>기술통계 · 데이터를 읽는 법 · 빅분기 공부방</title><meta name="description" content="평균이 같은 두 기록도 모습은 다릅니다. 배달가게의 작은 자료를 따라 대표값과 흩어짐을 읽고, 조건을 바꾸며 확인합니다.">
+<meta name="theme-color" content="#ffffff"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../learner.css?v=49c717dc5b5d"><link rel="stylesheet" href="statistics.css?v=f827af68d5bf"></head>
+<body class="learning-page statistics-page"><a class="learning-skip" href="#main">본문으로 건너뛰기</a>
+<header class="learning-header"><div class="learning-container header-inner"><a class="learning-brand" href="../index.html" aria-label="빅분기 공부방 홈"><span class="studio-wordmark" aria-hidden="true"><img src="../../home-assets/ourfuture-wordmark.png" width="1678" height="391" alt=""></span><span>빅분기 공부방<small>ourfuture studio</small></span></a><nav class="learning-nav" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../study.html">과목별 핵심</a><a href="index.html" aria-current="page">통계 쉽게 읽기</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">체험</a><a href="../review.html">오답노트</a></nav></div></header>
+<main class="learning-container" id="main" tabindex="-1"><nav class="statistics-breadcrumb" aria-label="현재 위치"><a href="../index.html">빅분기 공부방</a><span aria-hidden="true">/</span><a href="index.html">통계 쉽게 읽기</a><span aria-hidden="true">/</span><span>기술통계</span></nav><div class="statistics-title"><p class="statistics-eyebrow">01 · 모인 자료의 모습 읽기</p><h1>기술통계 · 데이터를 읽는 법</h1><p class="statistics-deck">평균이 같은 두 기록도 모습은 다릅니다. 배달가게의 작은 자료를 따라 대표값과 흩어짐을 읽고, 조건을 바꾸며 확인합니다.</p></div><div class="statistics-route" aria-label="학습 순서"><span>작은 사례로 읽기</span><span class="route-arrow" aria-hidden="true">→</span><span>조건 바꿔 체험</span><span class="route-arrow" aria-hidden="true">→</span><span>관련 문제 풀기</span></div><div class="statistics-layout"><article class="statistics-article">
+<p>“평균 배송시간이 100분입니다.” 이 말만 들으면 어떤 배송을 떠올릴까요? 거의 모두 100분쯤 걸렸을 수도 있고, 빨리 도착한 건과 늦게 도착한 건을 합친 결과일 수도 있습니다. 평균 하나로는 둘을 가릴 수 없습니다.</p>
+<p><strong>기술통계는 모인 자료를 표·그림·숫자로 요약해 그 모습을 읽는 일입니다.</strong> 이 글에서는 가상의 배달가게 기록을 사용합니다. 실제 가게의 관측자료나 서비스 성능을 보고한 수치는 아닙니다.</p>
+<section class="statistics-section" id="section-1"><h2>1 평균이 같아도 같은 배송은 아니다</h2>
+<p>두 가게의 배송시간을 다섯 건씩 적어 보겠습니다. 단위는 분입니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">기록</th>
+<th scope="col">다섯 건의 배송시간</th>
+<th scope="col" style="text-align: right;">평균</th>
+<th scope="col" style="text-align: right;">표본 표준편차</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>88, 88, 100, 112, 112</td>
+<td style="text-align: right;">100분</td>
+<td style="text-align: right;">12분</td>
+</tr>
+<tr>
+<td>B</td>
+<td>100, 100, 100, 100, 100</td>
+<td style="text-align: right;">100분</td>
+<td style="text-align: right;">0분</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 기록의 합은 모두 500분입니다. 이를 다섯 건에 똑같이 나누면 100분이 됩니다. <strong>평균은 실제로 모두가 겪은 시간을 말하는 값이 아니라, 전체 합을 같은 몫으로 나눈 값</strong>입니다. A에서는 100분인 배송이 한 건뿐이지만 평균은 여전히 100분입니다.</p>
+<figure class="statistics-figure"><a aria-label="그림 원본 크게 보기" href="assets/descriptive-comparison.png" rel="noopener noreferrer" target="_blank"><img alt="같은 시간축에서 비교한 A의 다섯 값, 모두 100인 B의 다섯 값, A의 마지막 값만 162로 바꾼 기록. 평균이 같아도 흩어짐은 다르고 큰 값 하나에 평균이 이동한다." decoding="async" height="1062" loading="lazy" src="assets/descriptive-comparison.png" width="1500"/></a><figcaption>교육용 가상 자료 · 그림을 누르면 원본을 크게 볼 수 있습니다.</figcaption></figure>
+<p>평균만 보면 A와 B가 같아 보입니다. 값을 펼치면 B는 이 다섯 건의 시간이 모두 같고 A는 다릅니다. 그래서 자료를 설명할 때는 <strong>대표값과 흩어짐을 함께</strong> 봅니다. 이 다섯 건만 보고 B의 모든 배송이 항상 일정하다고 말하는 것은 다른 문제입니다.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다</span><a href="../2-25.html">조건 바꿔 체험</a><a href="../practice.html?code=2-25">관련 문제 풀기</a><a href="../theory/2-25.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-2"><h2>2 평균과 중앙값은 서로 다른 질문에 답한다</h2>
+<p>이번에는 A의 마지막 배송 112분만 162분으로 바꾸겠습니다. 나머지 네 건은 그대로입니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">기록</th>
+<th scope="col">정렬한 값</th>
+<th scope="col" style="text-align: right;">평균</th>
+<th scope="col" style="text-align: right;">중앙값</th>
+<th scope="col">최빈값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>원래 A</td>
+<td>88, 88, 100, 112, 112</td>
+<td style="text-align: right;">100분</td>
+<td style="text-align: right;">100분</td>
+<td>88분과 112분</td>
+</tr>
+<tr>
+<td>한 건 변경</td>
+<td>88, 88, 100, 112, 162</td>
+<td style="text-align: right;">110분</td>
+<td style="text-align: right;">100분</td>
+<td>88분</td>
+</tr>
+</tbody>
+</table></div>
+<p>평균은 <strong>값의 크기</strong>를 모두 사용합니다. 한 건이 50분 늘어 합계가 50분 늘었으므로 평균은 <code>50÷5=10분</code> 올라갑니다. 중앙값은 정렬했을 때 <strong>가운데 위치</strong>를 봅니다. 다섯 값의 세 번째는 계속 100분이어서 중앙값은 움직이지 않습니다. 자료 수가 짝수이면 가운데 두 값의 평균을 중앙값으로 정합니다.</p>
+<p>“전체 배송에 든 시간을 같은 몫으로 나누면?”에는 평균이, “정렬했을 때 가운데 배송은?”에는 중앙값이 답합니다. 오른쪽에 아주 큰 값이 있으면 평균이 그쪽으로 끌릴 수 있습니다. 그렇다고 중앙값이 언제나 더 좋은 답인 것은 아닙니다. 긴 지연까지 포함한 총시간이 관심이라면 그 영향이 평균에 나타나는 것도 필요한 정보입니다.</p>
+<p>최빈값은 가장 자주 나온 값입니다. 원래 A에는 88분과 112분이 각각 두 번 나와 최빈값이 두 개입니다. 연속시간을 초 단위까지 측정하면 같은 값이 거의 안 나올 수 있으므로, 최빈값이 의미 있게 보이는지는 측정 정밀도와 묶는 구간도 확인합니다. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm" rel="noopener noreferrer" target="_blank">대표값의 정의와 선택 기준: NIST</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다</span><a href="../2-26.html">조건 바꿔 체험</a><a href="../practice.html?code=2-26">관련 문제 풀기</a><a href="../theory/2-26.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-3"><h2>3 흩어짐을 재려면 부호부터 해결해야 한다</h2>
+<p>원래 A를 평균 100분과 비교하면 다음과 같습니다. 평균을 뺀 차이를 <strong>편차</strong>라고 합니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col" style="text-align: right;">시간 x</th>
+<th scope="col" style="text-align: right;">평균과의 차이 x−100</th>
+<th scope="col" style="text-align: right;">차이의 제곱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">−12</td>
+<td style="text-align: right;">144</td>
+</tr>
+<tr>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">−12</td>
+<td style="text-align: right;">144</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">144</td>
+</tr>
+<tr>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">144</td>
+</tr>
+<tr>
+<td style="text-align: right;">합계</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">576</td>
+</tr>
+</tbody>
+</table></div>
+<p>편차를 그냥 더하면 빠른 배송의 음수와 늦은 배송의 양수가 상쇄됩니다. 이렇게는 얼마나 흩어졌는지 알 수 없습니다. <strong>분산은 편차를 제곱해 합친 뒤 정해진 분모로 나눕니다.</strong> 먼 값이 더 큰 몫을 차지하므로 극단값에 민감합니다. 제곱 대신 절댓값을 쓰는 산포 지표도 있지만 여기서는 분산과 표준편차를 구분하겠습니다.</p>
+<p>다섯 건을 표본으로 보고 모분산을 추정할 때 사용하는 표본분산은 다음과 같습니다.</p>
+<p><code>표본분산 s² = 편차제곱합 ÷ (n−1) = 576÷4 = 144분²</code></p>
+<p>분산의 단위는 분의 제곱입니다. 여기에 제곱근을 씌워 원래 시간 단위로 돌린 값이 표준편차입니다. 따라서 <code>표본 표준편차 s=√144=12분</code>입니다. <strong>12분은 평균으로부터의 전형적인 흩어짐을 읽는 척도이며, 다섯 값이 모두 정확히 12분씩 떨어져 있다는 뜻은 아닙니다.</strong> <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm" rel="noopener noreferrer" target="_blank">분산·표준편차·다른 산포 지표: NIST</a>.</p>
+<p>그런데 왜 다섯 건을 5로 나누지 않고 4로 나눌까요? 같은 다섯 값에서 평균 100도 구했기 때문입니다. 이 평균을 기준으로 한 편차 합은 반드시 0입니다. 네 편차를 정하면 마지막 편차는 합을 맞춰야 해 자유롭게 정할 수 없습니다. 이것이 여기서 자유도가 <code>n−1</code>인 이유입니다.</p>
+<p>서로 독립이며 같은 분포에서 나온 표본이고 모분산이 유한하다면, 편차제곱합을 <code>n−1</code>로 나눈 s²는 반복 표집에서 모분산을 평균적으로 맞춥니다. 이를 <strong>불편 추정</strong>이라고 합니다. 한 번 계산한 144가 진짜 모분산이라는 뜻은 아닙니다. 표본분산이 불편하다고 그 제곱근인 s까지 자동으로 불편한 것도 아닙니다.</p>
+<p>반대로 “관심 대상은 바로 이 다섯 건 전부다”라며 이 기록 자체의 분산을 기술하면 분모를 5로 정해 <code>576÷5=115.2분²</code>를 쓸 수 있습니다. 계산 목적과 정의가 다릅니다. 시험에서도 <strong>자료 전체를 기술하는가, 모분산을 추정하는 표본분산을 묻는가</strong>를 먼저 읽습니다. <a href="../theory/2-25.html">분모를 바꾸고 배율을 비교하는 기존 이론</a> · <a href="../2-25.html">직접 체험</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">표본분산의 분모 n−1은 평균을 추정한 제약과 연결된다</span><a href="../2-25.html">조건 바꿔 체험</a><a href="../practice.html?code=2-25">관련 문제 풀기</a><a href="../theory/2-25.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-4"><h2>4 가운데 구간을 보면 긴 지연에 덜 끌린다</h2>
+<p>표준편차는 큰 편차를 제곱하기 때문에 긴 지연 한 건의 영향을 크게 받습니다. 자료의 가운데 부분이 얼마나 넓은지 보고 싶다면 <strong>사분위수와 사분위범위 IQR</strong>을 살펴볼 수 있습니다.</p>
+<p>다른 날의 가상 기록 여덟 건을 사용하겠습니다.</p>
+<p><code>80, 90, 100, 110 │ 120, 130, 140, 200</code></p>
+<p>여기서는 <strong>정렬한 자료를 반으로 나누고 각 반의 중앙값을 구하는 규칙</strong>을 사용합니다. 아래 반의 중앙값인 Q1은 <code>(90+100)÷2=95</code>, 위 반의 중앙값인 Q3은 <code>(130+140)÷2=135</code>입니다. 두 값의 차이인 <code>IQR=135−95=40분</code>은 가운데 부분의 폭을 보여 줍니다. 전체 중앙값은 <code>(110+120)÷2=115분</code>입니다.</p>
+<p>사분위수는 작은 표본에서 계산 규칙에 따라 값이 달라질 수 있습니다. 예를 들어 같은 자료에 선형보간 R7 규칙을 쓰면 Q1은 97.5, Q3은 132.5가 됩니다. 답이 다르면 계산 실수부터 단정하지 말고 <strong>어떤 분위수 규칙을 썼는지</strong> 확인합니다. <a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm" rel="noopener noreferrer" target="_blank">분위수 계산 방법의 차이: NIST</a>.</p>
+<p>상자그림에서는 보통 Q1부터 Q3까지 상자를 그리고 중앙값에 선을 긋습니다. 상자 안의 선을 평균으로 읽으면 안 됩니다. 평균을 따로 표시했는지는 범례를 봐야 합니다.</p>
+<p>우리가 정한 사분위수에서 위쪽 울타리 <code>Q3+1.5×IQR</code>은 195분입니다. 그보다 큰 200분은 검토할 점으로 표시됩니다. 이 방식의 수염은 195분까지 무조건 그리는 것이 아니라, 울타리 안에 있는 가장 큰 관측값인 140분까지 그립니다. <strong>울타리 밖이라는 사실은 입력 오류나 삭제 대상임을 뜻하지 않습니다.</strong> 실제 지연인지 기록 오류인지 맥락을 확인할 출발점입니다. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/boxplot.htm" rel="noopener noreferrer" target="_blank">상자그림과 울타리: NIST</a> · <a href="../theory/2-26.html">기존 상자그림 이론</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">상자그림에 그리지 않은 평균을 중앙선으로 읽지 않는다</span><a href="../2-26.html">조건 바꿔 체험</a><a href="../practice.html?code=2-26">관련 문제 풀기</a><a href="../theory/2-26.html">상세 이론</a></li><li><span class="apply-topic">이상값의 표시 기준을 바꾸면 선택되는 점도 달라진다</span><a href="../2-08.html">조건 바꿔 체험</a><a href="../practice.html?code=2-08">관련 문제 풀기</a><a href="../theory/2-08.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-5"><h2>5 히스토그램은 높이를 읽기 전에 축부터 본다</h2>
+<p>앞의 여덟 시간을 구간으로 묶어 보겠습니다. 왼쪽 경계는 포함하고 오른쪽은 제외하되 마지막 구간은 200을 포함합니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">시간 구간</th>
+<th scope="col" style="text-align: right;">건수</th>
+<th scope="col" style="text-align: right;">전체 8건 중 비율</th>
+<th scope="col" style="text-align: right;">구간 폭</th>
+<th scope="col" style="text-align: right;">밀도 높이인 비율÷폭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 이상 100 미만</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">20분</td>
+<td style="text-align: right;">0.0125/분</td>
+</tr>
+<tr>
+<td>100 이상 140 미만</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">40분</td>
+<td style="text-align: right;">0.0125/분</td>
+</tr>
+<tr>
+<td>140 이상 200 이하</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">60분</td>
+<td style="text-align: right;">약 0.00417/분</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 두 막대의 밀도 높이는 같습니다. 그렇다고 건수도 같은 것은 아닙니다. 두 번째 구간은 폭이 두 배여서 <strong>면적이 두 배</strong>, 비율도 25%가 아닌 50%입니다.</p>
+<p>밀도 히스토그램은 <code>높이×구간 폭=그 구간의 비율</code>로 읽습니다. 세 막대의 면적을 합하면 1입니다. 건수나 상대도수를 높이로 그린 그래프와 구별해야 하며, 폭이 다른 구간을 비교할 때는 이 차이가 특히 중요합니다. 구간 경계를 바꾸면 봉우리 모양도 달라질 수 있으니 작은 자료에서는 원래 값도 함께 봅니다. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm" rel="noopener noreferrer" target="_blank">히스토그램의 두 정규화 방식: NIST</a> · <a href="../theory/4-31.html">기존 밀도 이론</a> · <a href="../4-31.html">직접 체험</a>.</p>
+<p>긴 지연이 오른쪽으로 이어지면 ‘오른쪽 꼬리가 길다’고 설명할 수 있습니다. 이를 수치로 요약하는 왜도도 있지만, 평균이 중앙값보다 크다는 이유만으로 모든 자료의 모양을 확정하지는 않습니다. 봉우리가 여러 개인지, 서로 다른 집단이 섞였는지도 그림으로 확인합니다. 첨도는 단순히 봉우리의 높이만을 재는 값으로 외우기보다 꼬리와 극단값에 민감한 지표로 읽습니다. 정규분포의 첨도를 3, 초과첨도를 0으로 정하는 두 관례도 구별합니다. <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm" rel="noopener noreferrer" target="_blank">왜도·첨도의 정의와 관례: NIST</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">히스토그램의 밀도는 높이가 아니라 면적으로 비율을 읽는다</span><a href="../4-31.html">조건 바꿔 체험</a><a href="../practice.html?code=4-31">관련 문제 풀기</a><a href="../theory/4-31.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-6"><h2>6 숫자를 계산할 수 있다고 비교가 뜻을 갖는 것은 아니다</h2>
+<p>가게 코드 1, 2, 3을 더해 평균 2를 계산할 수는 있습니다. 하지만 ‘평균 가게가 2번’이라는 결론은 의미가 없습니다. 숫자가 이름표인지, 순위인지, 실제 크기인지부터 구별해야 합니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 예제 표" class="statistics-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">기록의 예</th>
+<th scope="col">가능한 해석의 출발점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가게 코드·결제수단</td>
+<td>범주를 세고 비율로 비교한다. 코드의 크기는 양이 아니다.</td>
+</tr>
+<tr>
+<td>만족도 ‘불만·보통·만족’</td>
+<td>순서는 있지만 단계 간 간격이 같다고 자동 가정하지 않는다.</td>
+</tr>
+<tr>
+<td>섭씨온도</td>
+<td>차이는 해석할 수 있지만 20℃를 10℃의 두 배 온도라고 부르지 않는다.</td>
+</tr>
+<tr>
+<td>경과 시간·중량</td>
+<td>의미 있는 0이 있어 양의 값 사이의 비율을 해석할 수 있다.</td>
+</tr>
+</tbody>
+</table></div>
+<p>척도는 어떤 연산이 의미 있는지 판단하는 근거입니다. 범주형 자료도 빈도와 최빈범주로 요약할 수 있습니다. 만족도 점수의 평균을 쓴다면 점수 간 간격을 어떻게 취급했는지 밝혀야 합니다. <a href="https://openstax.org/books/introductory-statistics-2e/pages/1-3-frequency-frequency-tables-and-levels-of-measurement" rel="noopener noreferrer" target="_blank">측정척도와 빈도: OpenStax</a>.</p>
+<p>이번에는 별도의 가상 중량 요약값입니다. 제품 P의 평균은 100g·SD는 10g, 제품 Q의 평균은 20g·SD는 4g이라고 하겠습니다. 몇 g씩 흩어졌는지를 보면 P가 큽니다. 자기 평균에 비해 얼마나 흩어졌는지 보면 <code>P:10÷100=10%</code>, <code>Q:4÷20=20%</code>여서 Q가 큽니다.</p>
+<p>이때 쓴 <strong>변동계수 CV는 표준편차를 평균으로 나눈 값</strong>입니다. 양의 평균과 의미 있는 0을 가진 비율척도에서 비교하고, 평균이 0 근처라면 작은 변화에도 비율이 크게 흔들린다는 점을 확인합니다. 섭씨온도에 그대로 적용하면 원점을 바꾸는 것만으로 값이 달라집니다. ‘몇 g’과 ‘평균의 몇 %’는 다른 질문이며 CV가 크다는 사실만으로 불량률이나 품질을 판정할 수는 없습니다. <a href="https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm" rel="noopener noreferrer" target="_blank">CV의 정의와 적용 조건: NIST</a> · <a href="../theory/2-01.html">기존 상대 산포 이론</a> · <a href="../2-01.html">직접 체험</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">평균이 다른 두 제품의 상대 산포를 비교하는 법</span><a href="../2-01.html">조건 바꿔 체험</a><a href="../practice.html?code=2-01">관련 문제 풀기</a><a href="../theory/2-01.html">상세 이론</a></li><li><span class="apply-topic">같은 숫자라도 척도에 따라 가능한 해석이 다르다</span><a href="../2-23.html">조건 바꿔 체험</a><a href="../practice.html?code=2-23">관련 문제 풀기</a><a href="../theory/2-23.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-7"><h2>7 두 변수가 같이 움직이면 산점도를 먼저 본다</h2>
+<p>배달거리와 배송시간을 함께 적었다면 각 배송을 점 하나로 그릴 수 있습니다. 이 그림이 산점도입니다. 점들이 대체로 오른쪽 위로 이어지면 양의 관계, 오른쪽 아래로 이어지면 음의 관계를 생각해 볼 수 있습니다.</p>
+<p>Pearson 상관계수 r은 <strong>선형 관계의 방향과 강도</strong>를 −1부터 1 사이로 요약합니다. 단위를 분에서 초로 바꾸어도 r은 유지되지만 단위가 있는 공분산의 크기는 달라집니다. 한 변수가 모두 같은 상수라면 분모에 쓰는 표준편차가 0이므로 r은 정의되지 않습니다. <a href="../theory/2-28.html">단위를 바꾸는 기존 이론</a> · <a href="../2-28.html">직접 체험</a>.</p>
+<p>상관계수가 0이어도 관계가 없다고 끝낼 수는 없습니다. 작은 수학 예로 <code>x=−2,−1,0,1,2</code>, <code>y=x²</code>를 그리면 완전한 U자형이지만 Pearson r은 0입니다. 직선의 기울기를 따라 함께 움직이는 정도와 모든 형태의 관계는 다릅니다. 순위상관은 값 대신 순위의 함께 움직임을 보는 별도 선택입니다.</p>
+<p>거리와 시간이 함께 증가한 기록을 봤다고 거리만의 인과효과를 확인한 것도 아닙니다. 시간대·교통상황·가게 준비시간 같은 다른 조건을 확인해야 합니다. <strong>연관성을 기술한 문장과 원인을 주장하는 문장을 구별</strong>하면, 상관을 작게도 크게도 해석하지 않을 수 있습니다. <a href="https://openstax.org/books/introductory-statistics-2e/pages/12-3-the-regression-equation" rel="noopener noreferrer" target="_blank">선형 상관의 범위와 인과 해석: OpenStax</a>.</p>
+<aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">공분산의 크기와 상관계수의 크기는 단위 변화에 다르게 반응한다</span><a href="../2-28.html">조건 바꿔 체험</a><a href="../practice.html?code=2-28">관련 문제 풀기</a><a href="../theory/2-28.html">상세 이론</a></li></ul></aside></section><section class="statistics-section" id="section-8"><h2>8 이제 어디까지 말할 수 있을까</h2>
+<p>기술통계로 “기록된 A의 다섯 건은 평균 100분·중앙값 100분·표본 SD 12분이다”라고 말할 수 있습니다. “가게의 모든 배송시간 평균은 100분이다”라고 대상을 넓히려면 표본을 어떻게 골랐고 다른 표본에서는 요약값이 얼마나 달라질지를 살펴야 합니다. 그 질문부터 추론통계로 이어집니다.</p>
+<p>읽은 내용을 세 질문으로 점검해 보겠습니다.</p>
+<div class="statistics-checks"><details class="statistics-check"><summary>A의 마지막 112를 162로 바꾸면 평균과 중앙값은?</summary><div class="check-answer"> 평균은 110분, 중앙값은 100분입니다. 평균은 값의 증가를 모두 반영하지만 가운데 순서는 그대로입니다.</div></details><details class="statistics-check"><summary>A의 표본분산이 144분²일 때 표본 표준편차는?</summary><div class="check-answer"> 12분입니다. 제곱근으로 단위를 분으로 돌립니다. 이 12가 모표준편차라는 뜻은 아닙니다.</div></details><details class="statistics-check"><summary>위 밀도표의 첫 두 막대 높이가 같다면 배송 비율도 같은가요?</summary><div class="check-answer"> 아닙니다. 폭이 달라 면적은 25%와 50%입니다.</div></details></div>
+<p>평균만 보고 두 기록이 같다고 판단했다면 첫 그림으로, 분모 n과 n−1이 헷갈리면 분산 표로, 높은 막대가 무조건 많은 건수라고 생각했다면 밀도표로 돌아가 봅니다. 다음에는 <strong>이렇게 구한 평균을 다른 표본에서도 다시 구하면 얼마나 달라질까</strong>를 살펴봅니다.</p><aside aria-label="이 절의 체험과 문제" class="statistics-apply"><h3>읽은 개념을 직접 확인하기</h3><ul><li><span class="apply-topic">개별 관측의 산포와 표본평균의 산포는 다르다</span><a href="../2-36.html">조건 바꿔 체험</a><a href="../practice.html?code=2-36">관련 문제 풀기</a><a href="../theory/2-36.html">상세 이론</a></li></ul></aside></section><nav class="statistics-pager" aria-label="다음 학습"><a href="index.html"><small>전체 흐름</small>통계 쉽게 읽기</a><a href="inferential.html"><small>다음 이론</small>추론통계 · 표본에서 판단까지 →</a></nav></article><aside class="statistics-sidebar" aria-label="이 글의 목차"><nav class="statistics-toc" aria-label="본문 목차"><h2>이 글의 순서</h2><ol><li><a href="#section-1">평균이 같아도 같은 배송은 아니다</a></li><li><a href="#section-2">평균과 중앙값은 서로 다른 질문에 답한다</a></li><li><a href="#section-3">흩어짐을 재려면 부호부터 해결해야 한다</a></li><li><a href="#section-4">가운데 구간을 보면 긴 지연에 덜 끌린다</a></li><li><a href="#section-5">히스토그램은 높이를 읽기 전에 축부터 본다</a></li><li><a href="#section-6">숫자를 계산할 수 있다고 비교가 뜻을 갖는 것은 아니다</a></li><li><a href="#section-7">두 변수가 같이 움직이면 산점도를 먼저 본다</a></li><li><a href="#section-8">이제 어디까지 말할 수 있을까</a></li></ol></nav><a class="statistics-side-next" href="inferential.html"><small>다음 이론</small>추론통계 · 표본에서 판단까지 →</a></aside></div></main>
+<footer class="learning-footer"><div class="learning-container"><div><a href="../../">ourfuture studio ↗</a><span>새로운 지식, 뜻밖의 연결.</span></div><p>직접 만든 교육용 예제로 공부합니다. 공식 기출문항·합격 예측 서비스가 아닙니다.<br>연결된 체험과 문제는 기존 빅분기 공부방 자료입니다. 문제풀이 기록은 기존과 같이 현재 브라우저에 저장됩니다.</p></div></footer></body></html>
