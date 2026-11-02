@@ -10,8 +10,8 @@ const inferential = {
   '4-14':8, '4-15':8,
 };
 export function statisticsDestination(code, prefix='') {
-  if (Object.hasOwn(descriptive,code)) return {href:`${prefix}statistics/descriptive.html#section-${descriptive[code]}`,label:'기술통계 흐름으로 읽기'};
-  if (Object.hasOwn(inferential,code)) return {href:`${prefix}statistics/inferential.html#section-${inferential[code]}`,label:'추론통계 흐름으로 읽기'};
+  if (Object.hasOwn(descriptive,code)) return {href:`${prefix}statistics/descriptive.html#section-${descriptive[code]}`,label:'기술통계(Descriptive Statistics) 흐름으로 읽기'};
+  if (Object.hasOwn(inferential,code)) return {href:`${prefix}statistics/inferential.html#section-${inferential[code]}`,label:'추론통계(Inferential Statistics) 흐름으로 읽기'};
   return null;
 }
 export function statisticsLink(code,prefix='') {

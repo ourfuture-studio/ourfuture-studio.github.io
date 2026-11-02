@@ -2106,7 +2106,7 @@ export const CATALOG = [
   {
     "code": "3-05",
     "subject": 3,
-    "title": "최소제곱법(OLS, Ordinary Least Squares)과 잔차제곱합(RSS, Residual Sum of Squares)",
+    "title": "보통최소제곱법(OLS, Ordinary Least Squares)과 잔차제곱합(RSS, Residual Sum of Squares)",
     "lead": "잔차(Residual) 합이 0이라는 사실과 오차가 작다는 판단을 구별한다.",
     "cue": "잔차(Residual)를 더하지 말고, 제곱해서 더한다.",
     "question": {
