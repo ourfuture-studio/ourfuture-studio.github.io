@@ -1,60 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1510" viewBox="0 0 800 1510" role="img"><title>모집단과 표본: 같은 항목이 전체에서 일부로 선택된다</title><desc>모집단을 나타내는 12개 항목 중 03,07,11을 선택해 같은 번호를 표본에 다시 그렸다. 모수는 알고 싶은 전체의 값, 통계량은 표본에서 계산한 값이다.</desc><rect width="800" height="1510" fill="#faf9f4"/>
-<text x="40" y="64" font-family="Malgun Gothic,sans-serif" font-size="35" font-weight="700" fill="#203e39" text-anchor="start">전체와 일부의 관계부터 보기</text>
-<text x="40" y="107" font-family="Malgun Gothic,sans-serif" font-size="28" font-weight="400" fill="#203e39" text-anchor="start">모집단(Population) → 표본(Sample)</text>
-<rect x="35" y="145" width="730" height="490" rx="15" fill="#f0f5ee" stroke="#bdd1c5" stroke-width="2"/>
-<text x="65" y="190" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" fill="#203e39" text-anchor="start">알고 싶은 전체: 모집단(Population)</text>
-<text x="65" y="230" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" fill="#5f786d" text-anchor="start">주황색 03·07·11을 골랐다고 해 보세요.</text>
-<circle cx="130" cy="273" r="13" fill="#8ba89b"/><path d="M108 308 Q109 286 130 286 Q151 286 152 308 Z" fill="#8ba89b"/>
-<text x="130" y="349" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">01</text>
-<circle cx="310" cy="273" r="13" fill="#8ba89b"/><path d="M288 308 Q289 286 310 286 Q331 286 332 308 Z" fill="#8ba89b"/>
-<text x="310" y="349" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">02</text>
-<circle cx="490" cy="273" r="13" fill="#b56a42"/><path d="M468 308 Q469 286 490 286 Q511 286 512 308 Z" fill="#b56a42"/>
-<circle cx="490" cy="288" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="490" y="349" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">03</text>
-<circle cx="670" cy="273" r="13" fill="#8ba89b"/><path d="M648 308 Q649 286 670 286 Q691 286 692 308 Z" fill="#8ba89b"/>
-<text x="670" y="349" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">04</text>
-<circle cx="130" cy="383" r="13" fill="#8ba89b"/><path d="M108 418 Q109 396 130 396 Q151 396 152 418 Z" fill="#8ba89b"/>
-<text x="130" y="459" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">05</text>
-<circle cx="310" cy="383" r="13" fill="#8ba89b"/><path d="M288 418 Q289 396 310 396 Q331 396 332 418 Z" fill="#8ba89b"/>
-<text x="310" y="459" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">06</text>
-<circle cx="490" cy="383" r="13" fill="#b56a42"/><path d="M468 418 Q469 396 490 396 Q511 396 512 418 Z" fill="#b56a42"/>
-<circle cx="490" cy="398" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="490" y="459" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">07</text>
-<circle cx="670" cy="383" r="13" fill="#8ba89b"/><path d="M648 418 Q649 396 670 396 Q691 396 692 418 Z" fill="#8ba89b"/>
-<text x="670" y="459" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">08</text>
-<circle cx="130" cy="493" r="13" fill="#8ba89b"/><path d="M108 528 Q109 506 130 506 Q151 506 152 528 Z" fill="#8ba89b"/>
-<text x="130" y="569" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">09</text>
-<circle cx="310" cy="493" r="13" fill="#8ba89b"/><path d="M288 528 Q289 506 310 506 Q331 506 332 528 Z" fill="#8ba89b"/>
-<text x="310" y="569" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">10</text>
-<circle cx="490" cy="493" r="13" fill="#b56a42"/><path d="M468 528 Q469 506 490 506 Q511 506 512 528 Z" fill="#b56a42"/>
-<circle cx="490" cy="508" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="490" y="569" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">11</text>
-<circle cx="670" cy="493" r="13" fill="#8ba89b"/><path d="M648 528 Q649 506 670 506 Q691 506 692 528 Z" fill="#8ba89b"/>
-<text x="670" y="569" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">12</text>
-<path d="M400 650V717" fill="none" stroke="#34776b" stroke-width="4"/><path d="M389 715L400 733L411 715Z" fill="#34776b"/>
-<text x="425" y="689" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" fill="#203e39" text-anchor="start">표본추출(Sampling)</text>
-<rect x="35" y="755" width="730" height="245" rx="15" fill="#fff6eb" stroke="#d3b89f" stroke-width="2"/>
-<text x="65" y="802" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" fill="#203e39" text-anchor="start">실제로 조사한 일부: 표본(Sample)</text>
-<circle cx="170" cy="847.4" r="13.65" fill="#b56a42"/><path d="M146.9 884.15 Q147.95 861.05 170 861.05 Q192.05 861.05 193.1 884.15 Z" fill="#b56a42"/>
-<circle cx="170" cy="863.15" r="39.9" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="170" y="927.2" font-family="Malgun Gothic,sans-serif" font-size="23.1" font-weight="600" fill="#b56a42" text-anchor="middle">03</text>
-<circle cx="400" cy="847.4" r="13.65" fill="#b56a42"/><path d="M376.9 884.15 Q377.95 861.05 400 861.05 Q422.05 861.05 423.1 884.15 Z" fill="#b56a42"/>
-<circle cx="400" cy="863.15" r="39.9" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="400" y="927.2" font-family="Malgun Gothic,sans-serif" font-size="23.1" font-weight="600" fill="#b56a42" text-anchor="middle">07</text>
-<circle cx="630" cy="847.4" r="13.65" fill="#b56a42"/><path d="M606.9 884.15 Q607.95 861.05 630 861.05 Q652.05 861.05 653.1 884.15 Z" fill="#b56a42"/>
-<circle cx="630" cy="863.15" r="39.9" fill="none" stroke="#b56a42" stroke-width="3"/>
-<text x="630" y="927.2" font-family="Malgun Gothic,sans-serif" font-size="23.1" font-weight="600" fill="#b56a42" text-anchor="middle">11</text>
-<text x="400" y="976" font-family="Malgun Gothic,sans-serif" font-size="23" font-weight="400" fill="#7a624f" text-anchor="middle">같은 번호 = 전체 안에 있던 바로 그 항목</text>
-<rect x="35" y="1045" width="350" height="210" rx="15" fill="#fff" stroke="#bdd1c5" stroke-width="2"/>
-<rect x="415" y="1045" width="350" height="210" rx="15" fill="#fff" stroke="#bdd1c5" stroke-width="2"/>
-<text x="60" y="1090" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" fill="#203e39" text-anchor="start">모수(Parameter) μ</text>
-<text x="60" y="1138" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#203e39" text-anchor="start">모집단을 설명하는 값</text>
-<text x="60" y="1178" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#5f786d" text-anchor="start">알고 싶지만 아직 모름</text>
-<text x="440" y="1090" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" fill="#203e39" text-anchor="start">통계량(Statistic) x̄</text>
-<text x="440" y="1138" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#203e39" text-anchor="start">표본에서 계산한 값</text>
-<text x="440" y="1178" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#5f786d" text-anchor="start">조사한 자료로 구함</text>
-<text x="400" y="1300" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="400" fill="#34776b" text-anchor="middle">표본의 값과 불확실성을 근거로 전체를 추론</text>
-<text x="400" y="1360" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" fill="#203e39" text-anchor="middle">표본평균을 구했다고 모평균을 안 것은 아닙니다.</text>
-<text x="40" y="1420" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="400" fill="#687b70" text-anchor="start">12개 중 3개를 고른 교육용 도식입니다.</text>
-<text x="40" y="1456" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="400" fill="#687b70" text-anchor="start">실제 표본 수와 추출 방법은 예제의 조건을 확인하세요.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="840" viewBox="0 0 1400 840" role="img"><title>모집단과 표본: 같은 항목을 전체와 일부에서 찾기</title><desc>전체01부터12 중03,07,11이 표본에 다시 표시된다. 모수와 통계량을 구별한다.</desc><rect width="1400" height="840" fill="#faf9f4"/>
+<text x="50" y="66" font-family="Malgun Gothic,sans-serif" font-size="36" font-weight="700" fill="#203e39" text-anchor="start">전체와 일부에서 같은 번호를 찾아보세요</text>
+<rect x="50" y="115" width="800" height="450" rx="15" fill="#f0f5ee" stroke="#bdd1c5" stroke-width="2" data-region="population"/>
+<rect x="950" y="115" width="400" height="450" rx="15" fill="#fff6eb" stroke="#d3b89f" stroke-width="2" data-region="sample"/>
+<text x="80" y="160" font-family="Malgun Gothic,sans-serif" font-size="31" font-weight="700" fill="#203e39" text-anchor="start">모집단(Population)</text>
+<text x="80" y="201" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" fill="#5f786d" text-anchor="start">알고 싶은 전체 · 여기서는12개로 표현</text>
+<circle cx="155" cy="246" r="13" fill="#8ba89b"/><path d="M133 281 Q134 259 155 259 Q176 259 177 281 Z" fill="#8ba89b"/>
+<text x="155" y="322" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">01</text>
+<circle cx="345" cy="246" r="13" fill="#8ba89b"/><path d="M323 281 Q324 259 345 259 Q366 259 367 281 Z" fill="#8ba89b"/>
+<text x="345" y="322" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">02</text>
+<circle cx="535" cy="246" r="13" fill="#b56a42"/><path d="M513 281 Q514 259 535 259 Q556 259 557 281 Z" fill="#b56a42"/>
+<circle cx="535" cy="261" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="535" y="322" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">03</text>
+<circle cx="725" cy="246" r="13" fill="#8ba89b"/><path d="M703 281 Q704 259 725 259 Q746 259 747 281 Z" fill="#8ba89b"/>
+<text x="725" y="322" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">04</text>
+<circle cx="155" cy="349" r="13" fill="#8ba89b"/><path d="M133 384 Q134 362 155 362 Q176 362 177 384 Z" fill="#8ba89b"/>
+<text x="155" y="425" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">05</text>
+<circle cx="345" cy="349" r="13" fill="#8ba89b"/><path d="M323 384 Q324 362 345 362 Q366 362 367 384 Z" fill="#8ba89b"/>
+<text x="345" y="425" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">06</text>
+<circle cx="535" cy="349" r="13" fill="#b56a42"/><path d="M513 384 Q514 362 535 362 Q556 362 557 384 Z" fill="#b56a42"/>
+<circle cx="535" cy="364" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="535" y="425" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">07</text>
+<circle cx="725" cy="349" r="13" fill="#8ba89b"/><path d="M703 384 Q704 362 725 362 Q746 362 747 384 Z" fill="#8ba89b"/>
+<text x="725" y="425" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">08</text>
+<circle cx="155" cy="452" r="13" fill="#8ba89b"/><path d="M133 487 Q134 465 155 465 Q176 465 177 487 Z" fill="#8ba89b"/>
+<text x="155" y="528" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">09</text>
+<circle cx="345" cy="452" r="13" fill="#8ba89b"/><path d="M323 487 Q324 465 345 465 Q366 465 367 487 Z" fill="#8ba89b"/>
+<text x="345" y="528" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">10</text>
+<circle cx="535" cy="452" r="13" fill="#b56a42"/><path d="M513 487 Q514 465 535 465 Q556 465 557 487 Z" fill="#b56a42"/>
+<circle cx="535" cy="467" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="535" y="528" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">11</text>
+<circle cx="725" cy="452" r="13" fill="#8ba89b"/><path d="M703 487 Q704 465 725 465 Q746 465 747 487 Z" fill="#8ba89b"/>
+<text x="725" y="528" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#8ba89b" text-anchor="middle">12</text>
+<text x="980" y="160" font-family="Malgun Gothic,sans-serif" font-size="31" font-weight="700" fill="#203e39" text-anchor="start">표본(Sample)</text>
+<text x="980" y="201" font-family="Malgun Gothic,sans-serif" font-size="25" font-weight="400" fill="#7a624f" text-anchor="start">실제로 조사한 일부</text>
+<circle cx="1020" cy="318" r="13" fill="#b56a42"/><path d="M998 353 Q999 331 1020 331 Q1041 331 1042 353 Z" fill="#b56a42"/>
+<circle cx="1020" cy="333" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="1020" y="394" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">03</text>
+<circle cx="1150" cy="318" r="13" fill="#b56a42"/><path d="M1128 353 Q1129 331 1150 331 Q1171 331 1172 353 Z" fill="#b56a42"/>
+<circle cx="1150" cy="333" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="1150" y="394" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">07</text>
+<circle cx="1280" cy="318" r="13" fill="#b56a42"/><path d="M1258 353 Q1259 331 1280 331 Q1301 331 1302 353 Z" fill="#b56a42"/>
+<circle cx="1280" cy="333" r="38" fill="none" stroke="#b56a42" stroke-width="3"/>
+<text x="1280" y="394" font-family="Malgun Gothic,sans-serif" font-size="22" font-weight="600" fill="#b56a42" text-anchor="middle">11</text>
+<text x="1150" y="455" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="700" fill="#203e39" text-anchor="middle">같은03·07·11</text>
+<text x="1150" y="499" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#203e39" text-anchor="middle">전체 안에 있던 그 항목</text>
+<path d="M868 340H922" fill="none" stroke="#34776b" stroke-width="4"/><path d="M917 329L935 340L917 351Z" fill="#34776b"/>
+<text x="866" y="387" font-family="Malgun Gothic,sans-serif" font-size="23" font-weight="400" fill="#203e39" text-anchor="start">추출</text>
+<text x="859" y="419" font-family="Malgun Gothic,sans-serif" font-size="19" font-weight="400" fill="#203e39" text-anchor="start">Sampling</text>
+<rect x="50" y="615" width="620" height="145" rx="15" fill="#fff" stroke="#bdd1c5" stroke-width="2"/>
+<rect x="730" y="615" width="620" height="145" rx="15" fill="#fff" stroke="#bdd1c5" stroke-width="2"/>
+<text x="80" y="659" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" fill="#203e39" text-anchor="start">모수(Parameter) μ</text>
+<text x="80" y="714" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" fill="#203e39" text-anchor="start">모집단에서 알고 싶은 값</text>
+<text x="760" y="659" font-family="Malgun Gothic,sans-serif" font-size="29" font-weight="700" fill="#203e39" text-anchor="start">통계량(Statistic) x̄</text>
+<text x="760" y="714" font-family="Malgun Gothic,sans-serif" font-size="27" font-weight="400" fill="#203e39" text-anchor="start">표본에서 실제로 계산한 값</text>
+<text x="700" y="810" font-family="Malgun Gothic,sans-serif" font-size="24" font-weight="400" fill="#60796c" text-anchor="middle">교육용12개 중3개의 도식 · 실제 표본 수와 추출 방법은 예제 조건을 확인합니다.</text>
 </svg>

@@ -2763,8 +2763,8 @@
     },
     {
       "path": "statistics/assets/population-sample.svg",
-      "sha256": "9eea171e976f1790ed40a29d302868299b05d33a64cda719b6bc795e09eedd12",
-      "bytes": 8595
+      "sha256": "21f5bbbda6ab6cfb9b9c9b724d8d6d97f0951a5cb62279f879e7ac829055e9a2",
+      "bytes": 7778
     },
     {
       "path": "statistics/assets/sampling-means.png",
@@ -2773,18 +2773,18 @@
     },
     {
       "path": "statistics/descriptive.html",
-      "sha256": "bf5afaaf629ff4800e62c65e4a6e32996fef455b2bd17aff37a4fcd82de3dc14",
+      "sha256": "2e72f64655205089f89d633ba104618c678d30a477532c07ceec596ffc28ccb3",
       "bytes": 44102
     },
     {
       "path": "statistics/index.html",
-      "sha256": "35cf715c00fcd96805730f73ce108f820b9c15fa23645729f9acc42983b57868",
+      "sha256": "987a8715c52d434bf7c6e919e53b37c54e0b94479e1c454c92844b085f230208",
       "bytes": 12943
     },
     {
       "path": "statistics/inferential.html",
-      "sha256": "db6627ac300d3ff1a5cc9b91420b56b8b8ba136471e1295da030872822beb4ca",
-      "bytes": 74778
+      "sha256": "f9c07d267d3a590c3a8470e871b82fff0ef2547603a6641f8c96b46a0fc468de",
+      "bytes": 74911
     },
     {
       "path": "statistics/statistics-lab.mjs",
@@ -2793,8 +2793,8 @@
     },
     {
       "path": "statistics/statistics.css",
-      "sha256": "0ab2915276b57e38e0299dcd4915d3fc91f94c48e5cd5173ee69a663a16764cc",
-      "bytes": 17957
+      "sha256": "74e8ff95a86e6a479097782d1a7ec17c23810882fbeccf137caa141d60a270fd",
+      "bytes": 18005
     },
     {
       "path": "statistics-links.mjs",

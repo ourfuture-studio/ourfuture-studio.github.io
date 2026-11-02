@@ -20,6 +20,7 @@
 
 /* Visual explanations: concepts, formulas, worked numbers and experiments. */
 .statistics-formula{scroll-margin-top:120px}
+#population-sample-map{scroll-margin-top:120px}
 .statistics-story{scroll-margin-top:120px}
 .statistics-story .story-step{width:auto;min-width:48px;padding:0 9px;white-space:nowrap;flex-shrink:0;border-radius:20px}
 .statistics-page .statistics-formula math{overflow:visible;max-width:none}.statistics-page .formula-expression{overflow-y:hidden;padding-top:15px;padding-bottom:22px}
