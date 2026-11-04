@@ -10,7 +10,7 @@
       "condition": "PostgreSQL 18 명세 사례. 처음 비어 있는 P(k integer NOT NULL)는 범위 [0,10),[10,20),[20,30)를 각각 P0,P1,P2로 분할하며 DEFAULT 파티션과 다른 제약은 없다. 삽입 k=12. 별개 비분할 테이블 U(id integer PRIMARY KEY,k integer NOT NULL)의 행은 (1,21),(2,8),(3,12), k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 수행한다. 이후 U에 변경은 없다. SQL 출력 순서는 ORDER BY로만 요구한다. 실제 서버 실행은 없다.",
       "code": null,
       "result": "k=12 → P1; CLUSTER는 일회성 재배열",
-      "explanation": "범위의 하한은 포함하고 상한은 제외한다. PostgreSQL CLUSTER는 분할 명령이 아니며 후속 변경을 자동으로 인덱스 순서에 맞추지 않는다.",
+      "explanation": "12는 10 이상 20 미만이라 P1 범위에 들어간다. CLUSTER는 별개 테이블 U의 일회성 재배열이다.",
       "trace": [
         "분할 하한 포함·상한 제외",
         "12 → P1",
@@ -23,7 +23,7 @@
       "condition": "PostgreSQL 18 명세 사례. 처음 비어 있는 P(k integer NOT NULL)는 범위 [0,10),[10,20),[20,30)를 각각 P0,P1,P2로 분할하며 DEFAULT 파티션과 다른 제약은 없다. 삽입 k=10. 별개 비분할 테이블 U(id integer PRIMARY KEY,k integer NOT NULL)의 행은 (1,21),(2,8),(3,12), k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 수행한다. 이후 U에 변경은 없다. SQL 출력 순서는 ORDER BY로만 요구한다. 실제 서버 실행은 없다.",
       "code": null,
       "result": "k=10 → P1; CLUSTER는 일회성 재배열",
-      "explanation": "범위의 하한은 포함하고 상한은 제외한다. PostgreSQL CLUSTER는 분할 명령이 아니며 후속 변경을 자동으로 인덱스 순서에 맞추지 않는다.",
+      "explanation": "경계값 10은 [10,20)의 하한이므로 P0이 아니라 P1에 들어간다. 하한 포함·상한 제외 규칙이 갈림길이다.",
       "trace": [
         "분할 하한 포함·상한 제외",
         "10 → P1",
@@ -36,7 +36,7 @@
       "condition": "PostgreSQL 18 명세 사례. 처음 비어 있는 P(k integer NOT NULL)는 범위 [0,10),[10,20),[20,30)를 각각 P0,P1,P2로 분할하며 DEFAULT 파티션과 다른 제약은 없다. 삽입 k=29. 별개 비분할 테이블 U(id integer PRIMARY KEY,k integer NOT NULL)의 행은 (1,21),(2,8),(3,12), k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 수행한다. 그 뒤 U에 (4,9)를 삽입한다. 삽입 뒤의 실제 물리 위치나 출력 순서는 확정하지 않는다. SQL 출력 순서는 ORDER BY로만 요구한다. 실제 서버 실행은 없다.",
       "code": null,
       "result": "k=29 → P2; CLUSTER는 일회성 재배열",
-      "explanation": "범위의 하한은 포함하고 상한은 제외한다. PostgreSQL CLUSTER는 분할 명령이 아니며 후속 변경을 자동으로 인덱스 순서에 맞추지 않는다.",
+      "explanation": "29는 [20,30) 범위라 P2다. CLUSTER 뒤에 U에 넣은 (4,9)는 자동으로 인덱스 순서 위치에 놓인다고 보장되지 않는다.",
       "trace": [
         "분할 하한 포함·상한 제외",
         "29 → P2",

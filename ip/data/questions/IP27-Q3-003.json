@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q3-003",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-3-03"
   ],
@@ -44,8 +44,8 @@
       "id": "R1",
       "title": "WG14 N1570 C11 공개 위원회 초안",
       "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
-      "scope": "6.5p3와 각주85~86, 6.5.5~6.5.6 문법의 묶음·결합 규칙; 공개 위원회 초안.",
-      "checked_on": "2026-10-31"
+      "scope": "6.5p3과 각주 85~86, 6.5.5~6.5.6 문법의 묶음·결합 규칙; 공개 위원회 초안.",
+      "checked_on": "2026-11-04"
     }
   ],
   "status": "verified"

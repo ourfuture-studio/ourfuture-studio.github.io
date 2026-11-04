@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>키의 일부와 비키 속성을 거치는 경로 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=29ebb46fb1f275b9" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipv-style="" href="../visual.css?v=5de6a527fa82" rel="stylesheet"/></head>
-<body data-page="theory" data-topic="IP27-2-06"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="OurFuture Studio 통합 홈"><span class="brand-wordmark"><img alt="OurFuture Studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-06 · 이론 읽기</p><h1>키의 일부와 비키 속성을 거치는 경로</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-2-06" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-06">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>부분 종속은 복합키의 일부를 보고, 이행 종속은 결정 경로의 중간 속성을 본다.</p><aside class="ipv-reading" data-ipv-owned=""><h3>표와 행으로 보는 SQLD 그림 체험</h3><p>같은 개념을 다른 교육용 자료로 확인합니다. 정보처리기사 문항의 입력과는 구분합니다.</p><div class="actions"><a class="button primary" href="../../sql/visual.html#normalization">그림 체험 →</a><a class="button" href="../practice.html?topic=IP27-2-06">관련 문제</a></div></aside>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>키의 일부와 비키 속성을 거치는 경로 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=4c2e93999df5" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipv-style="" href="../visual.css?v=755be50fb8c9" rel="stylesheet"/></head>
+<body data-page="theory" data-topic="IP27-2-06"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">2과목 · 2-06 · 이론 읽기</p><h1>키의 일부와 비키 속성을 거치는 경로</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-2-06" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-2-06">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>부분 종속은 복합키의 일부를 보고, 이행 종속은 결정 경로의 중간 속성을 본다.</p><aside class="ipv-reading" data-ipv-owned=""><h3>표와 행으로 보는 SQLD 그림 체험</h3><p>같은 개념을 다른 교육용 자료로 확인합니다. 정보처리기사 문항의 입력과는 구분합니다.</p><div class="actions"><a class="button primary" href="../../sql/visual.html#normalization">그림 체험 →</a><a class="button" href="../practice.html?topic=IP27-2-06">관련 문제</a></div></aside>
 <h2 id="section-1">핵심 이론</h2>
-<p>부분 함수 종속은 복합 후보키의 진부분집합이 비주요 속성을 결정하는 경우다. 비주요 속성은 어떤 후보키에도 포함되지 않는 속성이다. 2정규형은 1정규형을 전제로 이런 부분 종속을 배제한다.</p>
+<p><strong>핵심 용어</strong>: 이행 함수 종속(Transitive Functional Dependency).</p>
+<p>부분 함수 종속(partial functional dependency)은 복합 후보키의 진부분집합이 비주요 속성을 결정하는 경우다. 비주요 속성은 어떤 후보키에도 포함되지 않는 속성이다. 2정규형은 1정규형을 전제로 이런 부분 종속을 배제한다.</p>
 <p>이행 종속은 키에서 비키 결정자를 거쳐 다른 속성을 결정하는 경로에서 살펴본다. 예를 들어 직원번호→부서코드와 부서코드→부서명이 있고 부서코드가 슈퍼키가 아니면 부서명 중복을 따로 분리할 이유가 있다.</p>
 <p>정규형은 기본키 하나만 보지 않고 모든 후보키와 주어진 FD를 기준으로 판단한다. 여기서는 속성값이 원자적이고 NULL이 없으며 명시한 FD와 그 논리적 귀결만 존재한다고 고정한다. 분해 뒤에는 무손실 조인과 종속 보존도 따로 확인한다.</p>
-<h2 id="section-2">작은 예제로 확인하기</h2>
+<h3>이상 현상과 정규형의 비교 기준</h3>
+<p>정규화(Normalization)는 중복으로 생기는 삽입 이상(Insertion Anomaly), 삭제 이상(Deletion Anomaly), 갱신 이상(Update Anomaly)을 줄이도록 관계를 설계하는 과정이다. 주문 정보 하나를 지웠는데 상품의 유일한 설명까지 사라지면 삭제 이상을 의심한다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">정규형</th>
+<th scope="col">확인하는 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제1정규형(1NF, First Normal Form)</td>
+<td>각 속성에 원자값을 둠</td>
+</tr>
+<tr>
+<td>제2정규형(2NF, Second Normal Form)</td>
+<td>1NF이며, 모든 후보키에 대해 비주요 속성의 부분 함수 종속을 배제</td>
+</tr>
+<tr>
+<td>제3정규형(3NF, Third Normal Form)</td>
+<td>비자명 FD의 결정자가 슈퍼키이거나 우변의 각 새 속성이 주요 속성</td>
+</tr>
+<tr>
+<td>보이스-코드 정규형(BCNF, Boyce-Codd Normal Form)</td>
+<td>모든 비자명 FD의 결정자가 슈퍼키</td>
+</tr>
+<tr>
+<td>제4정규형(4NF, Fourth Normal Form)</td>
+<td>모든 비자명 다치 종속(Multivalued Dependency)의 결정자가 슈퍼키</td>
+</tr>
+<tr>
+<td>제5정규형(5NF, Fifth Normal Form)</td>
+<td>성립하는 비자명 조인 종속(Join Dependency)이 후보키들로부터 함의됨</td>
+</tr>
+</tbody>
+</table></div>
+<p>“도·부·이·결·다·조”는 암기 단서다. 3NF를 단순히 모든 이행 종속 금지, BCNF를 모든 결정자가 최소 후보키라고 바꾸면 정확한 정의와 달라진다. 분해할 때는 원래 정보를 무손실로 다시 조인할 수 있는지도 함께 확인한다.</p>
+<section class="ipv-reading" data-ipv-owned="" id="review-figure-IP27-2-06-normal-forms"><h3>정규형(Normal Forms)과 종속 조건</h3><figure><a aria-label="세로 도식 원본 크게 보기" href="../assets/concepts/IP27-2-06-normal-forms.png?v=bf5c6ff75a1e" rel="noopener noreferrer" target="_blank"><picture><source media="(min-width:761px)" srcset="../assets/concepts/IP27-2-06-normal-forms.svg?v=90b96029454c" type="image/svg+xml"/><img alt="1NF는 원자 도메인, 2NF는 비주요 속성의 후보키 부분 종속 배제, 3NF는 비주요 속성의 후보키 이행 종속 배제다. BCNF와 4NF의 비자명 종속 결정자는 슈퍼키여야 하고 5NF의 비자명 조인 종속은 후보키로부터 유도되어야 한다." height="2601" loading="lazy" src="../assets/concepts/IP27-2-06-normal-forms.png?v=bf5c6ff75a1e" width="960"/></picture></a><figcaption>BCNF는 비자명 함수 종속의 결정자가 슈퍼키여야 한다.<br/><a class="ipv-zoom" href="../assets/concepts/IP27-2-06-normal-forms.png?v=bf5c6ff75a1e" rel="noopener noreferrer" target="_blank">도식 크게 보기 ↗</a></figcaption></figure><nav aria-label="도식에서 학습으로" class="ipv-links"><a href="../practice.html?topic=IP27-2-06">관련 문제풀이</a><a href="../lab.html?topic=IP27-2-06">기존 조건 체험</a><a href="../visual.html#concept-diagrams">전체 도식 보기</a></nav></section><h2 id="section-2">작은 예제로 확인하기</h2>
 <p>관계 R(S,C,N,G)의 F={SC→G,S→N}이며 논리적 귀결 외 제약은 없다. S=학생번호, C=과목번호, N=학생명, G=성적이다. NULL·복합값은 없다.</p>
 <div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
@@ -30,9 +68,10 @@
 <h2 id="section-3">다시 떠올릴 단서</h2>
 <p>모든 후보키를 구한 뒤 키의 일부가 비주요 속성을 결정하는지 찾는다.</p>
 <h2 id="section-4">적용 범위</h2>
-<p>명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p>
+<p>이 예제에 명시한 자료·조건·DBMS를 기준으로 판단한다.</p>
 <h2 id="section-5">근거와 확인 범위</h2>
 <ul>
 <li><a href="https://www.db-book.com/slides-dir/PDF-dir/ch7.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 7판 저자 슬라이드: Normalization</a> — 슬라이드 7.12~7.16, 7.23~7.28, 7.43~7.45: 모든 적법한 관계에서의 FD, 후보키, BCNF·3NF, 속성 폐쇄. 확인일 2026-10-31.</li>
 <li><a href="https://www.db-book.com/Practice-Exercises/PDF-practice-exer-dir/7.pdf" rel="noopener noreferrer" target="_blank">Database System Concepts 저자 제공 7장 연습문제의 정의</a> — PDF 4쪽 7.18~7.19의 정의: 주요 속성, 이행 종속, 진부분집합에 대한 부분 종속, 모든 후보키를 기준으로 한 2NF. 원문의 문제·예제는 복제하지 않음. 확인일 2026-10-31.</li>
-</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-006">S→N 때문에 직접 위반하는 가장 이른 정규형은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=c60a92a66d1e41ce" type="module"></script></body></html>
+</ul>
+<p>검토 범위: 명시한 작은 예제의 조건에서 판단한다. 다른 DBMS의 실행 결과나 실제 성능 측정으로 일반화하지 않는다.</p></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q2-006">키의 일부와 비키 속성을 거치는 경로 · S→N 때문에 직접 위반하는 가장 이른 정규형은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=1efba2cdaa9dcc3c" type="module"></script></body></html>

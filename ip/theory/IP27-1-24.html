@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>기능 정답과 변경·환경 적응의 품질 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=29ebb46fb1f275b9" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/></head>
-<body data-page="theory" data-topic="IP27-1-24"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="OurFuture Studio 통합 홈"><span class="brand-wordmark"><img alt="OurFuture Studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-24 · 이론 읽기</p><h1>기능 정답과 변경·환경 적응의 품질</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-1-24" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-24">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>같은 계산 결과를 내더라도 수정과 실행 환경의 조건은 다를 수 있다.</p>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>기능 정답과 변경·환경 적응의 품질 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=4c2e93999df5" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/></head>
+<body data-page="theory" data-topic="IP27-1-24"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-24 · 이론 읽기</p><h1>기능 정답과 변경·환경 적응의 품질</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-1-24" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-24">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>같은 계산 결과를 내더라도 수정과 실행 환경의 조건은 다를 수 있다.</p>
 <h2 id="section-1">핵심 이론</h2>
-<p>제품 품질은 기능의 정확성 한 가지로만 평가하지 않는다. 유지보수성은 수정 가능성, 이식성은 다른 환경으로 옮길 때의 적응과 관련된 관점이다.</p>
+<p>제품 품질은 기능의 정확성 한 가지로만 평가하지 않는다. 유지보수성(maintainability)은 수정 가능성, 이식성(portability)은 다른 환경으로 옮길 때의 적응과 관련된 관점이다.</p>
 <p>이 예제는 세율 변경에 손댈 위치와 운영체제별 실행 여부를 따로 측정한다. 두 프로그램의 기능 결과가 같아도 이 값들은 다를 수 있다.</p>
-<p>품질 모델은 판본마다 특성과 묶음이 달라진다. ISO/IEC 25010:2011과 2023을 같은 목록으로 취급하지 않으며 여기서는 관찰한 두 지표만 비교한다.</p>
+<p>품질 모델은 판본마다 특성과 묶음이 달라진다. ISO/IEC 25010:2011과 2023을 같은 목록으로 취급하지 않으며 작은 예제에서는 관찰한 두 지표만 비교한다.</p>
+<h3>판본별 품질 특성 이름</h3>
+<p>ISO/IEC 25010:2011의 제품 품질 모델은 여덟 특성, 2023판은 아홉 특성을 사용한다. 판본을 먼저 확인해야 같은 한국어 이름이나 관찰 지표를 잘못 대응시키지 않는다. 다음은 ISTQB 공식 교육과정의 판본 비교표와 ISO의 공개 소개·미리보기로 대조한 주요 특성이다. 한국어 이름은 학습용 번역이며 공인 국문 번역 전체를 옮긴 것이 아니다.</p>
+<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">ISO/IEC 25010:2011</th>
+<th scope="col">ISO/IEC 25010:2023</th>
+<th scope="col">구별할 점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기능 적합성(Functional Suitability)</td>
+<td>기능 적합성(Functional Suitability)</td>
+<td>요구한 기능을 갖추고 올바르게 수행하는 관점</td>
+</tr>
+<tr>
+<td>성능 효율성(Performance Efficiency)</td>
+<td>성능 효율성(Performance Efficiency)</td>
+<td>시간·자원·용량 관점</td>
+</tr>
+<tr>
+<td>호환성(Compatibility)</td>
+<td>호환성(Compatibility)</td>
+<td>함께 사용하거나 정보를 교환하는 관점</td>
+</tr>
+<tr>
+<td>사용성(Usability)</td>
+<td>상호작용 능력(Interaction Capability)</td>
+<td>2023판의 이름과 범위를 판본에 맞춰 읽음</td>
+</tr>
+<tr>
+<td>신뢰성(Reliability)</td>
+<td>신뢰성(Reliability)</td>
+<td>정해진 조건에서 기능을 계속 수행하는 관점</td>
+</tr>
+<tr>
+<td>보안성(Security)</td>
+<td>보안성(Security)</td>
+<td>정보·동작을 보호하는 관점</td>
+</tr>
+<tr>
+<td>유지보수성(Maintainability)</td>
+<td>유지보수성(Maintainability)</td>
+<td>분석·수정·시험 등 유지보수 관점</td>
+</tr>
+<tr>
+<td>이식성(Portability)</td>
+<td>유연성(Flexibility)</td>
+<td>2023판에는 확장성(Scalability)도 포함</td>
+</tr>
+<tr>
+<td>—</td>
+<td>안전성(Safety)</td>
+<td>2023판에서 추가된 피해·위험 방지 관점</td>
+</tr>
+</tbody>
+</table></div>
+<p>기존 예제의 수정 위치 수와 실행 환경 수는 이 관점들을 생각해 보는 일부 관찰값이다. 그 두 값만으로 제품 품질 전체의 우열을 확정하지 않는다.</p>
 <h2 id="section-2">작은 예제로 확인하기</h2>
 <p>자체 평가에서 A와 B는 10개 금액 계산 시험에 모두 통과했다. 동일한 세율 수정에 A는 1개, B는 8개 코드 위치를 바꾼다. A는 Windows/Linux에서 실행되고 B는 Windows에서만 실행된다. 다른 지표는 측정하지 않았다.</p>
 <div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
@@ -34,10 +93,12 @@
 <h2 id="section-3">다시 떠올릴 단서</h2>
 <p>통과한 기능과 별도로 변경·환경 조건을 비교한다.</p>
 <h2 id="section-4">적용 범위</h2>
-<p>코드 위치 수 하나가 유지보수성 전체를 대표하지 않는다. 판본별 품질 특성 암기표를 대신하지 않는다.</p>
+<p>작은 예제의 변경 위치 수와 실행 환경 수는 품질을 살피는 일부 지표다.</p>
 <h2 id="section-5">근거와 확인 범위</h2>
 <ul>
 <li><a href="https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf" rel="noopener noreferrer" target="_blank">IEEE Computer Society SWEBOK Guide v4.0a</a> — 3장 6.2 Quality Attributes; 7장 2.1.4 Maintainability. 확인일 2026-10-31.</li>
 <li><a href="https://www.iso.org/standard/35733.html" rel="noopener noreferrer" target="_blank">ISO/IEC 25010:2011 공개 소개</a> — 공개 소개: 2011판 철회 및 후속 2023판 연결. 확인일 2026-10-31.</li>
 <li><a href="https://www.iso.org/standard/78176.html" rel="noopener noreferrer" target="_blank">ISO/IEC 25010:2023 공개 소개</a> — 공개 소개: 2023판 제품 품질 모델은 9개 특성; 세부 유료 본문 전체 열람 아님. 확인일 2026-10-31.</li>
-</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-024">관찰로 뒷받침되는 결론은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=c60a92a66d1e41ce" type="module"></script></body></html>
+<li><a href="https://istqb.org/?download_id=5745&amp;sdm_process_download=1" rel="noopener noreferrer" target="_blank">ISTQB CTAL-TA Syllabus v4.0 (2025-05-02)</a> — 공식 교육과정 Appendix F, PDF 72~73쪽: 2023판 9특성과 2011판 8특성의 이름 비교. ISTQB 및 해당 교육과정 저자들의 표를 기준으로 학습용 요약. 확인일 2026-11-04.</li>
+<li><a href="https://cdn.standards.iteh.ai/samples/78176/13ff8ea97048443f99318920757df124/ISO-IEC-25010-2023.pdf" rel="noopener noreferrer" target="_blank">ISO/IEC 25010:2023 공개 미리보기</a> — 원문 공개 미리보기 Foreword(iv쪽): Safety 추가, Usability·Portability 이름 변경. 유료 표준 전체 본문을 열람했다는 의미는 아님. 확인일 2026-11-04.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-024">기능 정답과 변경·환경 적응의 품질 · 관찰로 뒷받침되는 결론은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=1efba2cdaa9dcc3c" type="module"></script></body></html>

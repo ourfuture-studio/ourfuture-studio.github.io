@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-026",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-26"
   ],
@@ -11,7 +11,7 @@
     "물리 데이터베이스 설계"
   ],
   "kind": "single-choice",
-  "givens": "PostgreSQL 18 명세에서 P는 k의 [0,10),[10,20),[20,30) 범위로 분할한다. U는 별개 테이블이고 기존 k 인덱스를 사용해 CLUSTER를 한 번 수행한다. PostgreSQL 18 명세 사례. 처음 비어 있는 P(k integer NOT NULL)는 범위 [0,10),[10,20),[20,30)를 각각 P0,P1,P2로 분할하며 DEFAULT 파티션과 다른 제약은 없다. 삽입 k=12. 별개 비분할 테이블 U(id integer PRIMARY KEY,k integer NOT NULL)의 행은 (1,21),(2,8),(3,12), k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 수행한다. 이후 U에 변경은 없다. SQL 출력 순서는 ORDER BY로만 요구한다. 실제 서버 실행은 없다.",
+  "givens": "PostgreSQL 18 명세 사례다. 처음 비어 있는 P(k integer NOT NULL)를 [0,10), [10,20), [20,30) 범위의 P0, P1, P2로 각각 분할한다. DEFAULT 파티션과 다른 제약은 없으며 k=12를 삽입한다. 별개의 비분할 테이블 U에는 (id,k)=(1,21),(2,8),(3,12)가 있고 k의 비유일 B-tree 인덱스 idx_u_k가 있다. CLUSTER U USING idx_u_k를 한 번 실행한 뒤 변경은 없다. 조회 순서는 ORDER BY가 있을 때만 요구한다.",
   "code": null,
   "language": null,
   "stem": "명시한 제품에서 맞는 설명은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "A",
-  "solution": "k12는 10≤12<20이므로 P1이다. U의 CLUSTER는 별도 일회성 재배열이므로 A다.",
+  "solution": "k12는 10≤12<20이므로 P1이다. U의 CLUSTER는 별도 일회성 재배열이므로 ‘k12는 P1에 배치되고 CLUSTER는 U의 일회성 물리 재배열이다’가 정답이다.",
   "references": [
     {
       "id": "PART",

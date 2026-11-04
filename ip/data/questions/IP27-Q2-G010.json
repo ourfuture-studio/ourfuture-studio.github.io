@@ -1,0 +1,64 @@
+{
+  "id": "IP27-Q2-G010",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-10"
+  ],
+  "subject": 2,
+  "title": "Oracle 19c에서 DELETE와 DDL의 롤백",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "Oracle Database 19c의 일반 영구 테이블 T(id,c)에 행이 있다. 필요한 권한이 있고 참조 제약·DDL 트리거·동시 거래는 없다. 각 보기의 명령은 같은 초기 상태에서 독립적으로 성공한다고 가정한다. 자동 커밋은 꺼져 있고, 선택한 명령 외의 작업 없이 곧바로 ROLLBACK을 실행한다.",
+  "code": null,
+  "language": null,
+  "stem": "ROLLBACK으로 지운 행을 되돌릴 수 있는 명령은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "TRUNCATE TABLE T",
+      "explanation": "일반 영구 테이블에 대한 TRUNCATE TABLE은 롤백할 수 없다고 Oracle 19c 공식 명세가 정한다."
+    },
+    {
+      "id": "B",
+      "text": "DELETE FROM T",
+      "explanation": "DELETE는 데이터 조작어(DML, Data Manipulation Language)이며 아직 커밋하지 않아 현재 거래의 삭제를 취소할 수 있다."
+    },
+    {
+      "id": "C",
+      "text": "DROP TABLE T",
+      "explanation": "성공한 DROP TABLE은 데이터 정의어(DDL, Data Definition Language)이며 암묵적 커밋이 발생한다. 휴지통 등 다른 복구 기능은 ROLLBACK과 별개다."
+    },
+    {
+      "id": "D",
+      "text": "ALTER TABLE T DROP COLUMN c",
+      "explanation": "ALTER TABLE의 열 삭제는 성공한 DDL이므로 현재 거래의 ROLLBACK으로 취소되지 않는다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "이 Oracle 19c 일반 영구 테이블 사례에서는 성공한 DDL인 TRUNCATE·DROP·ALTER에 암묵적 커밋(Implicit Commit)이 연결된다. 아직 커밋하지 않은 DELETE는 현재 거래의 DML이므로 ROLLBACK으로 삭제를 취소할 수 있다.",
+  "references": [
+    {
+      "title": "Oracle Database 19c SQL Language Reference — TRUNCATE TABLE",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/TRUNCATE-TABLE.html",
+      "scope": "Purpose의 TRUNCATE TABLE 롤백 불가. 이 문항은 private temporary table 예외가 아닌 일반 영구 테이블을 대상으로 한다.",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Oracle Database 19c SQL Language Reference — COMMIT",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COMMIT.html",
+      "scope": "Purpose: 문법적으로 유효한 DDL 전과 오류 없이 완료한 DDL 후 implicit COMMIT; 커밋 전에는 ROLLBACK으로 변경을 취소할 수 있다.",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Oracle Database 19c SQL Language Reference — ROLLBACK",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html",
+      "scope": "Purpose: 현재 거래의 작업을 취소한다. Oracle 실제 서버 실행 없이 공식 명세로 검토했다.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

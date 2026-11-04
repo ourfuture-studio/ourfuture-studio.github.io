@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-G010",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-10"
+  ],
+  "subject": 1,
+  "title": "여섯 결합도 등급의 강약 순서",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "모듈 독립성 관점의 고전적인 여섯 결합도(Coupling) 등급을 비교한다. 외부 결합(External Coupling)은 외부 장치·프로토콜·데이터 형식 등에 대한 공동 의존을 뜻한다.",
+  "code": null,
+  "language": null,
+  "stem": "결합도가 약한 것부터 강한 것 순으로 바르게 나열한 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "자료 → 스탬프 → 제어 → 외부 → 공통 → 내용",
+      "explanation": "값만 넘기는 자료 결합도가 가장 약하고, 남의 내부에 직접 접근하는 내용 결합도가 가장 강하다."
+    },
+    {
+      "id": "B",
+      "text": "내용 → 공통 → 외부 → 제어 → 스탬프 → 자료",
+      "explanation": "강한 것부터 나열한 순서다."
+    },
+    {
+      "id": "C",
+      "text": "자료 → 제어 → 스탬프 → 공통 → 외부 → 내용",
+      "explanation": "스탬프와 제어, 외부와 공통의 순서가 바뀌었다."
+    },
+    {
+      "id": "D",
+      "text": "스탬프 → 자료 → 제어 → 외부 → 공통 → 내용",
+      "explanation": "구조체 전체를 넘기는 스탬프는 값만 넘기는 자료보다 강하다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "이 여섯 등급 분류에서는 자료(Data) < 스탬프(Stamp) < 제어(Control) < 외부(External) < 공통(Common) < 내용(Content) 결합도 순으로 의존이 강해진다. 모듈 독립성을 높이는 설계에서는 불필요한 결합을 줄인다.",
+  "references": [
+    {
+      "title": "UTEP CS4311 Lecture 6 — Cohesion and Coupling",
+      "url": "https://cs.utep.edu/isalamah/courses/4311/CS4311-Lecture-6.pdf",
+      "scope": "Type of Coupling, slide23/PDF12쪽의 Content→Common→External→Control→Stamp→Data 강약 사다리; slides24~32 정의와 설계상 절충을 확인했다. 국제표준이 강제한 유일 분류라고 주장하지 않는다.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

@@ -6,7 +6,7 @@
       "IP27-1-01"
     ],
     "subject": 1,
-    "title": "R1과 R2의 분류로 맞는 것은?",
+    "title": "기능 요구사항과 품질 조건 · R1과 R2의 분류로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -24,7 +24,7 @@
       "IP27-1-02"
     ],
     "subject": 1,
-    "title": "변경된 내용을 직접 드러내는 산출물은?",
+    "title": "구조와 메시지 순서를 구분하는 UML · 변경된 내용을 직접 드러내는 산출물은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -42,7 +42,7 @@
       "IP27-1-03"
     ],
     "subject": 1,
-    "title": "이 조건을 표현한 관계와 방향은?",
+    "title": "include와 extend의 방향과 실행 조건 · 이 조건을 표현한 관계와 방향은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -60,7 +60,7 @@
       "IP27-1-04"
     ],
     "subject": 1,
-    "title": "명세에 따른 P의 결과는?",
+    "title": "집약과 합성에서 부분 객체 다루기 · 명세에 따른 P의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -73,12 +73,12 @@
   },
   {
     "id": "IP27-Q1-005",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-1-05"
     ],
     "subject": 1,
-    "title": "이 팀이 피드백을 반복에 반영했다는 직접 근거는?",
+    "title": "애자일의 반복에 피드백 넣기 · 이 팀이 피드백을 반복에 반영했다는 직접 근거는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -96,7 +96,7 @@
       "IP27-1-06"
     ],
     "subject": 1,
-    "title": "이 화살표에서 직접 확인할 수 있는 것은?",
+    "title": "자료흐름도의 화살표 읽기 · 이 화살표에서 직접 확인할 수 있는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -114,7 +114,7 @@
       "IP27-1-07"
     ],
     "subject": 1,
-    "title": "현재 상태에 대한 판단으로 맞는 것은?",
+    "title": "모델 검사와 요구사항 타당성 · 현재 상태에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -132,7 +132,7 @@
       "IP27-1-08"
     ],
     "subject": 1,
-    "title": "직접 갱신해야 할 내용은?",
+    "title": "UI 공통 규칙과 화면 흐름 명세 · 직접 갱신해야 할 내용은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -150,7 +150,7 @@
       "IP27-1-09"
     ],
     "subject": 1,
-    "title": "현재 책임으로 정당화하기 어려운 추가 함수는?",
+    "title": "모듈 안의 책임과 응집도 · 현재 책임으로 정당화하기 어려운 추가 함수는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -163,12 +163,12 @@
   },
   {
     "id": "IP27-Q1-010",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-1-10"
     ],
     "subject": 1,
-    "title": "이 목표에 맞는 인터페이스는?",
+    "title": "모듈 사이 정보와 결합도 · 이 목표에 맞는 인터페이스는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -186,7 +186,7 @@
       "IP27-1-11"
     ],
     "subject": 1,
-    "title": "변경 후 상태는?",
+    "title": "클래스와 개별 객체의 상태 · 변경 후 상태는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -204,7 +204,7 @@
       "IP27-1-12"
     ],
     "subject": 1,
-    "title": "호출 후 규칙 충족 여부와 필요한 수정은?",
+    "title": "캡슐화와 상태 변경 규칙 · 호출 후 규칙 충족 여부와 필요한 수정은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -222,7 +222,7 @@
       "IP27-1-13"
     ],
     "subject": 1,
-    "title": "주어진 관계를 표현하는 선택은?",
+    "title": "상속 관계와 구성 관계 · 주어진 관계를 표현하는 선택은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -240,7 +240,7 @@
       "IP27-1-14"
     ],
     "subject": 1,
-    "title": "직접 수정할 책임은?",
+    "title": "MVC의 화면과 업무 규칙 책임 · 직접 수정할 책임은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -258,7 +258,7 @@
       "IP27-1-15"
     ],
     "subject": 1,
-    "title": "이 규칙으로 B에 전달되는 값은?",
+    "title": "미들웨어와 연결 계약 · 이 규칙으로 B에 전달되는 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -276,7 +276,7 @@
       "IP27-1-16"
     ],
     "subject": 1,
-    "title": "확정할 수 있는 결과는?",
+    "title": "생성 책임과 인스턴스 수 제한 · 확정할 수 있는 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -294,7 +294,7 @@
       "IP27-1-17"
     ],
     "subject": 1,
-    "title": "이 절차의 선택 기준을 가장 정확히 표현한 것은?",
+    "title": "생명주기 모형과 남아 있는 위험 · 이 절차의 선택 기준을 가장 정확히 표현한 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -307,12 +307,12 @@
   },
   {
     "id": "IP27-Q1-018",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-1-18"
     ],
     "subject": 1,
-    "title": "주어진 조직 규칙을 충족하는 조치는?",
+    "title": "테일러링의 기준과 기록 · 주어진 조직 규칙을 충족하는 조치는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -330,7 +330,7 @@
       "IP27-1-19"
     ],
     "subject": 1,
-    "title": "이 모형의 기간은?",
+    "title": "개발 노력과 달력 기간 · 이 모형의 기간은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -348,7 +348,7 @@
       "IP27-1-20"
     ],
     "subject": 1,
-    "title": "c2/s1/m1의 현재 상태는?",
+    "title": "버전 이력과 승인 기준선 · c2/s1/m1의 현재 상태는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -366,7 +366,7 @@
       "IP27-1-21"
     ],
     "subject": 1,
-    "title": "이번 실행에서 확인되는 상태는?",
+    "title": "컴파일·빌드·패키징의 완료 범위 · 이번 실행에서 확인되는 상태는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -384,7 +384,7 @@
       "IP27-1-22"
     ],
     "subject": 1,
-    "title": "주어진 조건에서 맞는 판단은?",
+    "title": "DRM 이용 통제와 권리의 구분 · 주어진 조건에서 맞는 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -402,7 +402,7 @@
       "IP27-1-23"
     ],
     "subject": 1,
-    "title": "두 작업을 안내할 문서 배치로 맞는 것은?",
+    "title": "설치 작업과 사용 작업의 매뉴얼 · 두 작업을 안내할 문서 배치로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -420,7 +420,7 @@
       "IP27-1-24"
     ],
     "subject": 1,
-    "title": "관찰로 뒷받침되는 결론은?",
+    "title": "기능 정답과 변경·환경 적응의 품질 · 관찰로 뒷받침되는 결론은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -438,7 +438,7 @@
       "IP27-1-25"
     ],
     "subject": 1,
-    "title": "이 사례 선택의 근거를 분류하면?",
+    "title": "명세 기반 사례와 구조 기반 사례 · 이 사례 선택의 근거를 분류하면?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -451,12 +451,12 @@
   },
   {
     "id": "IP27-Q1-026",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-1-26"
     ],
     "subject": 1,
-    "title": "필요한 경계값 집합은?",
+    "title": "동등분할과 정수 경계값 · 필요한 경계값 집합은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -474,7 +474,7 @@
       "IP27-1-27"
     ],
     "subject": 1,
-    "title": "문장·결정·조건 커버리지의 순서로 맞는 값은?",
+    "title": "문장·결정·조건 커버리지의 분모 · 문장·결정·조건 커버리지의 순서로 맞는 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -492,7 +492,7 @@
       "IP27-1-28"
     ],
     "subject": 1,
-    "title": "X의 역할은?",
+    "title": "스텁과 드라이버의 호출 방향 · X의 역할은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -510,7 +510,7 @@
       "IP27-1-29"
     ],
     "subject": 1,
-    "title": "이 시험의 직접 대상에 맞는 수준은?",
+    "title": "테스트 수준의 대상과 목적 · 이 시험의 직접 대상에 맞는 수준은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -528,7 +528,7 @@
       "IP27-1-30"
     ],
     "subject": 1,
-    "title": "P와 Q의 검사 방식은?",
+    "title": "정적 분석과 실행 관찰 · P와 Q의 검사 방식은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -546,7 +546,7 @@
       "IP27-1-31"
     ],
     "subject": 1,
-    "title": "명세를 기준으로 한 판단은?",
+    "title": "통과 판정과 기대 결과의 정확성 · 명세를 기준으로 한 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -564,7 +564,7 @@
       "IP27-1-32"
     ],
     "subject": 1,
-    "title": "한 회전 직후 배열은?",
+    "title": "버블 정렬 한 회전의 범위 · 한 회전 직후 배열은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -582,7 +582,7 @@
       "IP27-1-33"
     ],
     "subject": 1,
-    "title": "가운데 비교 인덱스 순서와 반환 값은?",
+    "title": "이진 탐색의 정렬 전제 · 가운데 비교 인덱스 순서와 반환 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -600,7 +600,7 @@
       "IP27-1-34"
     ],
     "subject": 1,
-    "title": "B가 해석한 시간과 A가 의도한 시간은?",
+    "title": "인터페이스의 타입과 단위 계약 · B가 해석한 시간과 A가 의도한 시간은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -618,7 +618,7 @@
       "IP27-1-35"
     ],
     "subject": 1,
-    "title": "출력과 덧셈 횟수 비교로 맞는 것은?",
+    "title": "짧은 코드와 실제 계산 비용 · 출력과 덧셈 횟수 비교로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -630,13 +630,70 @@
     "path": "data/questions/IP27-Q1-035.json"
   },
   {
+    "id": "IP27-Q1-G009",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-09"
+    ],
+    "subject": 1,
+    "title": "모듈 안의 책임과 응집도 · 시작 시점으로 묶인 모듈의 응집도",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q1-G009.json"
+  },
+  {
+    "id": "IP27-Q1-G010",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-10"
+    ],
+    "subject": 1,
+    "title": "모듈 사이 정보와 결합도 · 여섯 결합도 등급의 강약 순서",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q1-G010.json"
+  },
+  {
+    "id": "IP27-Q1-G029",
+    "revision": 1,
+    "topicIds": [
+      "IP27-1-29"
+    ],
+    "subject": 1,
+    "title": "테스트 수준의 대상과 목적 · 사용자 요구와 인수 테스트",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q1-G029.json"
+  },
+  {
     "id": "IP27-Q2-001",
-    "revision": 2,
+    "revision": 3,
     "topicIds": [
       "IP27-2-01"
     ],
     "subject": 2,
-    "title": "이 변경을 가장 직접적으로 설명하는 것은?",
+    "title": "응용의 열을 유지하고 저장 방법 바꾸기 · 이 변경을 가장 직접적으로 설명하는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -649,12 +706,12 @@
   },
   {
     "id": "IP27-Q2-002",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-02"
     ],
     "subject": 2,
-    "title": "현재 수강이 없는 S2에 대한 판단으로 맞는 것은?",
+    "title": "관계의 최대 수와 최소 참여 수 · 현재 수강이 없는 S2에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -667,12 +724,12 @@
   },
   {
     "id": "IP27-Q2-003",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-03"
     ],
     "subject": 2,
-    "title": "다음 중 슈퍼키이지만 후보키는 아닌 것은?",
+    "title": "유일성 다음에 최소성 검사하기 · 다음 중 슈퍼키이지만 후보키는 아닌 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -685,12 +742,12 @@
   },
   {
     "id": "IP27-Q2-004",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-04"
     ],
     "subject": 2,
-    "title": "DELETE FROM Parent WHERE id=7의 결과는?",
+    "title": "외래키의 삭제 정책과 NULL 허용 · DELETE FROM Parent WHERE id=7의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -703,12 +760,12 @@
   },
   {
     "id": "IP27-Q2-005",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-05"
     ],
     "subject": 2,
-    "title": "이름→부서에 대한 가장 정확한 판단은?",
+    "title": "표본의 패턴과 함수 종속의 차이 · 이름→부서에 대한 가장 정확한 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -721,12 +778,12 @@
   },
   {
     "id": "IP27-Q2-006",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-06"
     ],
     "subject": 2,
-    "title": "S→N 때문에 직접 위반하는 가장 이른 정규형은?",
+    "title": "키의 일부와 비키 속성을 거치는 경로 · S→N 때문에 직접 위반하는 가장 이른 정규형은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -739,12 +796,12 @@
   },
   {
     "id": "IP27-Q2-007",
-    "revision": 2,
+    "revision": 3,
     "topicIds": [
       "IP27-2-07"
     ],
     "subject": 2,
-    "title": "이 스키마에 대한 판단으로 맞는 것은?",
+    "title": "BCNF는 모든 비자명 종속의 결정자를 검사한다 · 이 스키마에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -757,12 +814,12 @@
   },
   {
     "id": "IP27-Q2-008",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-08"
     ],
     "subject": 2,
-    "title": "현재 상태에 대한 판단으로 맞는 것은?",
+    "title": "조인을 줄인 뒤 늘어나는 갱신 대상 · 현재 상태에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -775,12 +832,12 @@
   },
   {
     "id": "IP27-Q2-009",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-09"
     ],
     "subject": 2,
-    "title": "REVOKE SELECT ON Member FROM reader의 직접 목적은?",
+    "title": "SQL 명령이 바꾸는 대상을 구별하기 · REVOKE SELECT ON Member FROM reader의 직접 목적은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -793,12 +850,12 @@
   },
   {
     "id": "IP27-Q2-010",
-    "revision": 2,
+    "revision": 3,
     "topicIds": [
       "IP27-2-10"
     ],
     "subject": 2,
-    "title": "T의 정의와 id=1,3 행을 남기고 id=2 행만 제거하려면?",
+    "title": "삭제 대상을 먼저 고정하는 DELETE·TRUNCATE·DROP · T의 정의와 id=1,3 행을 남기고 id=2 행만 제거하려면?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -811,12 +868,12 @@
   },
   {
     "id": "IP27-Q2-011",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-11"
     ],
     "subject": 2,
-    "title": "아래 SQL의 결과는?",
+    "title": "WHERE는 행을, HAVING은 그룹을 거른다 · 아래 SQL의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -829,12 +886,12 @@
   },
   {
     "id": "IP27-Q2-012",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-12"
     ],
     "subject": 2,
-    "title": "COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
+    "title": "COUNT는 행과 값을 다르게 센다 · COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -847,12 +904,12 @@
   },
   {
     "id": "IP27-Q2-013",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-13"
     ],
     "subject": 2,
-    "title": "결과 한 행의 의미와 값이 맞는 것은?",
+    "title": "GROUP BY 키가 결과 한 행의 뜻을 정한다 · 결과 한 행의 의미와 값이 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -865,12 +922,12 @@
   },
   {
     "id": "IP27-Q2-014",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-14"
     ],
     "subject": 2,
-    "title": "아래 LEFT JOIN의 결과는?",
+    "title": "LEFT JOIN에서 ON과 WHERE의 위치 · 아래 LEFT JOIN의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -883,12 +940,12 @@
   },
   {
     "id": "IP27-Q2-015",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-15"
     ],
     "subject": 2,
-    "title": "아래 UNION 결과를 오름차순으로 나열한 것은?",
+    "title": "UNION ALL은 반복 행도 보존한다 · 아래 UNION 결과를 오름차순으로 나열한 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -901,12 +958,12 @@
   },
   {
     "id": "IP27-Q2-016",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-16"
     ],
     "subject": 2,
-    "title": "id NOT IN(SELECT id FROM Blocked)을 만족하는 Item 행은?",
+    "title": "NOT IN 안의 NULL을 추적하기 · id NOT IN(SELECT id FROM Blocked)을 만족하는 Item 행은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -919,12 +976,12 @@
   },
   {
     "id": "IP27-Q2-017",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-17"
     ],
     "subject": 2,
-    "title": "아래 질의가 반환하는 행과 합계는?",
+    "title": "그룹 합계를 원래 행마다 붙이는 윈도우 함수 · 아래 질의가 반환하는 행과 합계는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -937,12 +994,12 @@
   },
   {
     "id": "IP27-Q2-018",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-18"
     ],
     "subject": 2,
-    "title": "수정 직후 Ready의 결과는?",
+    "title": "일반 뷰는 저장된 조회 정의다 · 수정 직후 Ready의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -955,12 +1012,12 @@
   },
   {
     "id": "IP27-Q2-019",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-19"
     ],
     "subject": 2,
-    "title": "이 실험과 인덱스 명세에서 뒷받침되는 판단은?",
+    "title": "인덱스의 접근 경로와 유지 비용 · 이 실험과 인덱스 명세에서 뒷받침되는 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -973,12 +1030,12 @@
   },
   {
     "id": "IP27-Q2-020",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-20"
     ],
     "subject": 2,
-    "title": "취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?",
+    "title": "원자성은 작업 안의 실패, 격리성은 동시 관찰을 다룬다 · 취소 뒤 잔액과 이 사례가 직접 확인하는 성질의 조합은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -991,12 +1048,12 @@
   },
   {
     "id": "IP27-Q2-021",
-    "revision": 2,
+    "revision": 3,
     "topicIds": [
       "IP27-2-21"
     ],
     "subject": 2,
-    "title": "T1의 두 읽기와 해당 현상의 조합은?",
+    "title": "같은 행 재조회와 격리 수준 · T1의 두 읽기와 해당 현상의 조합은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1009,12 +1066,12 @@
   },
   {
     "id": "IP27-Q2-022",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-22"
     ],
     "subject": 2,
-    "title": "마지막 요청 직후의 상태는?",
+    "title": "잠금의 대기 방향으로 교착 찾기 · 마지막 요청 직후의 상태는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1027,12 +1084,12 @@
   },
   {
     "id": "IP27-Q2-023",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-23"
     ],
     "subject": 2,
-    "title": "정해진 모형으로 복구한 최종 값은?",
+    "title": "로그의 새 값 재현과 이전 값 복원 · 정해진 모형으로 복구한 최종 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1045,12 +1102,12 @@
   },
   {
     "id": "IP27-Q2-024",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-24"
     ],
     "subject": 2,
-    "title": "Audit에 저장되는 행은?",
+    "title": "트리거는 등록한 사건과 조건에서 실행된다 · Audit에 저장되는 행은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1063,12 +1120,12 @@
   },
   {
     "id": "IP27-Q2-025",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-25"
     ],
     "subject": 2,
-    "title": "이 배치를 설명하는 것은?",
+    "title": "행을 나누는 분할과 사본을 두는 복제 · 이 배치를 설명하는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1081,12 +1138,12 @@
   },
   {
     "id": "IP27-Q2-026",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-26"
     ],
     "subject": 2,
-    "title": "명시한 제품에서 맞는 설명은?",
+    "title": "PostgreSQL에서 범위 분할과 CLUSTER 구별하기 · 명시한 제품에서 맞는 설명은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1099,12 +1156,12 @@
   },
   {
     "id": "IP27-Q2-027",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-27"
     ],
     "subject": 2,
-    "title": "행 수·키 종류 수·누락 키 수·금액 불일치 행 수의 순서로 맞는 값은?",
+    "title": "ETL 성공 뒤 행·키·단위를 대조하기 · 행 수·키 종류 수·누락 키 수·금액 불일치 행 수의 순서로 맞는 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1117,12 +1174,12 @@
   },
   {
     "id": "IP27-Q2-028",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-28"
     ],
     "subject": 2,
-    "title": "최종 관계의 차수와 카디널리티는?",
+    "title": "관계대수의 선택은 행, 투영은 속성을 고른다 · 최종 관계의 차수와 카디널리티는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1135,12 +1192,12 @@
   },
   {
     "id": "IP27-Q2-029",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-2-29"
     ],
     "subject": 2,
-    "title": "WHERE NOT(value=0)을 통과하는 id는?",
+    "title": "UNKNOWN은 FALSE와 다르다 · WHERE NOT(value=0)을 통과하는 id는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1152,13 +1209,51 @@
     "path": "data/questions/IP27-Q2-029.json"
   },
   {
+    "id": "IP27-Q2-G010",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-10"
+    ],
+    "subject": 2,
+    "title": "삭제 대상을 먼저 고정하는 DELETE·TRUNCATE·DROP · Oracle 19c에서 DELETE와 DDL의 롤백",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q2-G010.json"
+  },
+  {
+    "id": "IP27-Q2-G021",
+    "revision": 1,
+    "topicIds": [
+      "IP27-2-21"
+    ],
+    "subject": 2,
+    "title": "같은 행 재조회와 격리 수준 · 격리 수준과 금지되는 읽기 현상",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q2-G021.json"
+  },
+  {
     "id": "IP27-Q3-001",
     "revision": 1,
     "topicIds": [
       "IP27-3-01"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "형변환은 나눗셈 앞에 두는가 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1176,7 +1271,7 @@
       "IP27-3-02"
     ],
     "subject": 3,
-    "title": "이 프로그램에 대한 올바른 판단은?",
+    "title": "괄호로 해결되지 않는 C의 비순서 부수효과 · 이 프로그램에 대한 올바른 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1189,12 +1284,12 @@
   },
   {
     "id": "IP27-Q3-003",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-3-03"
     ],
     "subject": 3,
-    "title": "2+3*4의 해석으로 옳은 것은?",
+    "title": "식의 묶음과 평가 순서를 나누어 읽기 · 2+3*4의 해석으로 옳은 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1212,7 +1307,7 @@
       "IP27-3-04"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "sizeof가 보는 배열과 포인터 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1230,7 +1325,7 @@
       "IP27-3-05"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "포인터 한 칸은 원소 한 개 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1248,7 +1343,7 @@
       "IP27-3-06"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "인자의 복사와 포인터가 가리키는 대상 수정 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1266,7 +1361,7 @@
       "IP27-3-07"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "문자열 길이와 배열 용량을 구분하기 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1284,7 +1379,7 @@
       "IP27-3-08"
     ],
     "subject": 3,
-    "title": "a.f(x)의 출력은?",
+    "title": "오버로드를 고른 뒤 오버라이드를 찾기 · a.f(x)의 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1302,7 +1397,7 @@
       "IP27-3-09"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "필드와 메서드는 같은 방식으로 선택되지 않는다 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1320,7 +1415,7 @@
       "IP27-3-10"
     ],
     "subject": 3,
-    "title": "출력 순서는?",
+    "title": "자식 생성자 본문 전 부모 생성자 호출 · 출력 순서는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1338,7 +1433,7 @@
       "IP27-3-11"
     ],
     "subject": 3,
-    "title": "a.n과 b.n 출력은?",
+    "title": "참조를 복사한 뒤 수정과 재대입 · a.n과 b.n 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1356,7 +1451,7 @@
       "IP27-3-12"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "문자열의 같은 내용과 같은 참조 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1374,7 +1469,7 @@
       "IP27-3-13"
     ],
     "subject": 3,
-    "title": "a를 출력한 결과는?",
+    "title": "얕은 복사는 어느 깊이까지 새로 만드는가 · a를 출력한 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1392,7 +1487,7 @@
       "IP27-3-14"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "슬라이스는 끝값을 포함하지 않는다 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1410,7 +1505,7 @@
       "IP27-3-15"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "컨테이너별 순서·중복·변경 가능성 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1428,7 +1523,7 @@
       "IP27-3-16"
     ],
     "subject": 3,
-    "title": "리스트와 길이 출력은?",
+    "title": "range의 종료값과 실제 원소 수 · 리스트와 길이 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1446,7 +1541,7 @@
       "IP27-3-17"
     ],
     "subject": 3,
-    "title": "saved.append(7) 뒤 출력은?",
+    "title": "이름의 유효 범위와 객체의 생존 · saved.append(7) 뒤 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1464,7 +1559,7 @@
       "IP27-3-18"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "예외 처리와 작업 성공은 별도 상태 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1482,7 +1577,7 @@
       "IP27-3-19"
     ],
     "subject": 3,
-    "title": "스택과 큐의 제거값을 순서대로 쓰면?",
+    "title": "스택과 큐는 제거할 끝이 다르다 · 스택과 큐의 제거값을 순서대로 쓰면?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1500,7 +1595,7 @@
       "IP27-3-20"
     ],
     "subject": 3,
-    "title": "중위 순회 결과는?",
+    "title": "트리 순회에서 루트를 읽는 시점 · 중위 순회 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1518,7 +1613,7 @@
       "IP27-3-21"
     ],
     "subject": 3,
-    "title": "출력은 무엇인가?",
+    "title": "해시 충돌과 키의 동등성 · 출력은 무엇인가?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1536,7 +1631,7 @@
       "IP27-3-22"
     ],
     "subject": 3,
-    "title": "옳은 설명은?",
+    "title": "프로세스 자원과 스레드 실행 상태 · 옳은 설명은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1554,7 +1649,7 @@
       "IP27-3-23"
     ],
     "subject": 3,
-    "title": "Q의 반환시간과 대기시간은?",
+    "title": "반환시간에서 실행시간을 빼면 대기시간인가 · Q의 반환시간과 대기시간은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1572,7 +1667,7 @@
       "IP27-3-24"
     ],
     "subject": 3,
-    "title": "선택 공간과 그 공간에서 남는 자유 크기는?",
+    "title": "최초 적합과 최적 적합의 선택 기준 · 선택 공간과 그 공간에서 남는 자유 크기는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1590,7 +1685,7 @@
       "IP27-3-25"
     ],
     "subject": 3,
-    "title": "페이지 부재 횟수는?",
+    "title": "FIFO의 입장 순서와 LRU의 사용 순서 · 페이지 부재 횟수는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1608,7 +1703,7 @@
       "IP27-3-26"
     ],
     "subject": 3,
-    "title": "직접 차단하려는 교착 필요조건은?",
+    "title": "잠금 순서를 통일해 순환 대기 막기 · 직접 차단하려는 교착 필요조건은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1626,7 +1721,7 @@
       "IP27-3-27"
     ],
     "subject": 3,
-    "title": "자식이 출력하는 값은?",
+    "title": "일반 변수와 자식 프로세스 환경 · 자식이 출력하는 값은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1644,7 +1739,7 @@
       "IP27-3-28"
     ],
     "subject": 3,
-    "title": "이 동작에 대응하는 OSI 계층은?",
+    "title": "OSI 계층은 장치 이름보다 기능으로 판단 · 이 동작에 대응하는 OSI 계층은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1662,7 +1757,7 @@
       "IP27-3-29"
     ],
     "subject": 3,
-    "title": "네트워크 주소, 브로드캐스트 주소, 사용 가능한 호스트 수는?",
+    "title": "IPv4 프리픽스로 네트워크 경계 계산 · 네트워크 주소, 브로드캐스트 주소, 사용 가능한 호스트 수는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1680,7 +1775,7 @@
       "IP27-3-30"
     ],
     "subject": 3,
-    "title": "선택할 다음 홉과 프리픽스는?",
+    "title": "최장 프리픽스와 짧은 메트릭의 비교 순서 · 선택할 다음 홉과 프리픽스는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1698,7 +1793,7 @@
       "IP27-3-31"
     ],
     "subject": 3,
-    "title": "확인 가능한 결론은?",
+    "title": "TCP 전달 보장과 응용의 업무 완료 · 확인 가능한 결론은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1716,7 +1811,7 @@
       "IP27-3-32"
     ],
     "subject": 3,
-    "title": "/price 요청의 역할 대응으로 맞는 것은?",
+    "title": "웹·응용·DB 역할을 요청 경로로 구분 · /price 요청의 역할 대응으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1734,7 +1829,7 @@
       "IP27-3-33"
     ],
     "subject": 3,
-    "title": "이 설계에 대한 옳은 설명은?",
+    "title": "배치 처리의 단위와 시작 계기 · 이 설계에 대한 옳은 설명은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1752,7 +1847,7 @@
       "IP27-3-34"
     ],
     "subject": 3,
-    "title": "main의 출력은?",
+    "title": "finally의 새 반환과 예외가 남기는 결과 · main의 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1770,7 +1865,7 @@
       "IP27-3-01"
     ],
     "subject": 3,
-    "title": "프로그램의 표준 출력은 무엇인가?",
+    "title": "형변환은 나눗셈 앞에 두는가 · 음수 정수 나눗셈과 형변환 위치",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1791,7 +1886,7 @@
       "IP27-3-01"
     ],
     "subject": 3,
-    "title": "프로그램의 표준 출력은 무엇인가?",
+    "title": "형변환은 나눗셈 앞에 두는가 · double 변수에 저장하면 소수 몫이 생기는가",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1812,7 +1907,7 @@
       "IP27-3-06"
     ],
     "subject": 3,
-    "title": "프로그램의 표준 출력은 무엇인가?",
+    "title": "인자의 복사와 포인터가 가리키는 대상 수정 · 정수 복사본 수정과 포인터 역참조 비교",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1834,7 +1929,7 @@
       "IP27-3-06"
     ],
     "subject": 3,
-    "title": "프로그램의 표준 출력은 무엇인가?",
+    "title": "인자의 복사와 포인터가 가리키는 대상 수정 · 포인터 매개변수의 대상을 바꾼 뒤 역참조",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1850,13 +1945,51 @@
     "path": "data/questions/IP27-Q3-C104.json"
   },
   {
+    "id": "IP27-Q3-G026",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-26"
+    ],
+    "subject": 3,
+    "title": "잠금 순서를 통일해 순환 대기 막기 · 교착상태의 네 필요조건",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q3-G026.json"
+  },
+  {
+    "id": "IP27-Q3-G028",
+    "revision": 1,
+    "topicIds": [
+      "IP27-3-28"
+    ],
+    "subject": 3,
+    "title": "OSI 계층은 장치 이름보다 기능으로 판단 · Ethernet 프레임과 MAC 주소",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q3-G028.json"
+  },
+  {
     "id": "IP27-Q3-J101",
     "revision": 1,
     "topicIds": [
       "IP27-3-08"
     ],
     "subject": 3,
-    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "title": "오버로드를 고른 뒤 오버라이드를 찾기 · 프로그래밍 실행 추적 · Java",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1877,7 +2010,7 @@
       "IP27-3-08"
     ],
     "subject": 3,
-    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "title": "오버로드를 고른 뒤 오버라이드를 찾기 · 프로그래밍 실행 추적 · Java",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1898,7 +2031,7 @@
       "IP27-3-11"
     ],
     "subject": 3,
-    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "title": "참조를 복사한 뒤 수정과 재대입 · 프로그래밍 실행 추적 · Java",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1919,7 +2052,7 @@
       "IP27-3-11"
     ],
     "subject": 3,
-    "title": "다음 프로그램의 표준 출력은 무엇인가?",
+    "title": "참조를 복사한 뒤 수정과 재대입 · 프로그래밍 실행 추적 · Java",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1940,7 +2073,7 @@
       "IP27-3-13"
     ],
     "subject": 3,
-    "title": "얕은 복사 후 두 종류의 append를 수행하면 출력은?",
+    "title": "얕은 복사는 어느 깊이까지 새로 만드는가 · 얕은 복사 후 두 종류의 append를 수행하면 출력은?",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1960,7 +2093,7 @@
       "IP27-3-13"
     ],
     "subject": 3,
-    "title": "깊은 복사한 내부 리스트를 수정한 결과는?",
+    "title": "얕은 복사는 어느 깊이까지 새로 만드는가 · 깊은 복사한 내부 리스트를 수정한 결과는?",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -1981,7 +2114,7 @@
       "IP27-3-16"
     ],
     "subject": 3,
-    "title": "음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?",
+    "title": "슬라이스는 끝값을 포함하지 않는다 · 음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2001,7 +2134,7 @@
       "IP27-3-14"
     ],
     "subject": 3,
-    "title": "음수 step에서 생략한 stop과 명시한 -1의 차이는?",
+    "title": "슬라이스는 끝값을 포함하지 않는다 · 음수 step에서 생략한 stop과 명시한 -1의 차이는?",
     "origin": "additional",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2021,7 +2154,7 @@
       "IP27-4-01"
     ],
     "subject": 4,
-    "title": "직접 확인된 피해는?",
+    "title": "기밀성·무결성·가용성의 피해 · 직접 확인된 피해는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2039,7 +2172,7 @@
       "IP27-4-02"
     ],
     "subject": 4,
-    "title": "서버의 권한 판정은?",
+    "title": "인증과 요청별 권한 검사 · 서버의 권한 판정은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2057,7 +2190,7 @@
       "IP27-4-03"
     ],
     "subject": 4,
-    "title": "이 허용의 직접 근거에 맞는 모델은?",
+    "title": "DAC·MAC·RBAC의 권한 근거 · 이 허용의 직접 근거에 맞는 모델은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2075,7 +2208,7 @@
       "IP27-4-04"
     ],
     "subject": 4,
-    "title": "이 계획의 목적에 맞는 실행은?",
+    "title": "개발 단계마다 보안 근거 남기기 · 이 계획의 목적에 맞는 실행은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2093,7 +2226,7 @@
       "IP27-4-05"
     ],
     "subject": 4,
-    "title": "요구 규칙을 서버에서 보장하기 위한 조치는?",
+    "title": "브라우저 검증과 서버 신뢰 경계 · 요구 규칙을 서버에서 보장하기 위한 조치는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2111,7 +2244,7 @@
       "IP27-4-06"
     ],
     "subject": 4,
-    "title": "검색 값의 의미를 유지하며 이 쿼리를 수행한 결과는?",
+    "title": "SQL 값 바인딩과 문자열 보존 · 검색 값의 의미를 유지하며 이 쿼리를 수행한 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2129,7 +2262,7 @@
       "IP27-4-07"
     ],
     "subject": 4,
-    "title": "명시된 정책과 출력 문맥을 함께 반영한 조치는?",
+    "title": "출력 위치에 맞춘 XSS 방어 · 명시된 정책과 출력 문맥을 함께 반영한 조치는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2147,7 +2280,7 @@
       "IP27-4-08"
     ],
     "subject": 4,
-    "title": "S1을 첨부한 편집 요청의 결과는?",
+    "title": "세션 유효성과 현재 권한 · S1을 첨부한 편집 요청의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2165,7 +2298,7 @@
       "IP27-4-09"
     ],
     "subject": 4,
-    "title": "이 관찰로 뒷받침되는 목적은?",
+    "title": "암호화·해시·서명의 확인 목적 · 이 관찰로 뒷받침되는 목적은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2183,7 +2316,7 @@
       "IP27-4-10"
     ],
     "subject": 4,
-    "title": "정책S의 비밀키 수와 정책P의 키 쌍 수는?",
+    "title": "공유 비밀키와 공개·개인키 쌍 · 정책S의 비밀키 수와 정책P의 키 쌍 수는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2201,7 +2334,7 @@
       "IP27-4-11"
     ],
     "subject": 4,
-    "title": "이 예제에서 솔트의 역할을 올바르게 설명한 것은?",
+    "title": "비밀번호 KDF와 솔트의 역할 · 이 예제에서 솔트의 역할을 올바르게 설명한 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2219,7 +2352,7 @@
       "IP27-4-12"
     ],
     "subject": 4,
-    "title": "두 조건을 함께 만족하는 처리는?",
+    "title": "API 공개 오류와 운영 진단 기록 · 두 조건을 함께 만족하는 처리는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2232,12 +2365,12 @@
   },
   {
     "id": "IP27-Q4-013",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-13"
     ],
     "subject": 4,
-    "title": "이 모형의 경계 밖 쓰기와 guard 검사에 대한 설명은?",
+    "title": "버퍼 경계 확인과 Canary의 역할 · 이 모형의 경계 밖 쓰기와 guard 검사에 대한 설명은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2250,12 +2383,12 @@
   },
   {
     "id": "IP27-Q4-014",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-14"
     ],
     "subject": 4,
-    "title": "명시한 행동에 가장 직접적으로 대응하는 용어는?",
+    "title": "도청·위장·사용 방해를 행동으로 구별하기 · 명시한 행동에 가장 직접적으로 대응하는 용어는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2268,12 +2401,12 @@
   },
   {
     "id": "IP27-Q4-015",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-15"
     ],
     "subject": 4,
-    "title": "제시한 분류에 대한 판단으로 맞는 것은?",
+    "title": "악성코드의 전파 방식과 피해를 따로 보기 · 제시한 분류에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2286,12 +2419,12 @@
   },
   {
     "id": "IP27-Q4-016",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-16"
     ],
     "subject": 4,
-    "title": "이 처리 모형의 결과는?",
+    "title": "방화벽 통과·탐지 경보·차단을 나누어 보기 · 이 처리 모형의 결과는?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2304,12 +2437,12 @@
   },
   {
     "id": "IP27-Q4-017",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-17"
     ],
     "subject": 4,
-    "title": "이 정보가 뒷받침하는 판단은?",
+    "title": "시간대와 오차를 맞춘 뒤 로그 순서 판단하기 · 이 정보가 뒷받침하는 판단은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2322,12 +2455,12 @@
   },
   {
     "id": "IP27-Q4-018",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-18"
     ],
     "subject": 4,
-    "title": "현재 확인 가능한 결론은?",
+    "title": "취약 조건과 실제 침해 증거 구별하기 · 현재 확인 가능한 결론은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2340,12 +2473,12 @@
   },
   {
     "id": "IP27-Q4-019",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-19"
     ],
     "subject": 4,
-    "title": "이 조건의 저장 구성은?",
+    "title": "DAS·NAS·SAN을 연결과 접근 단위로 나누기 · 이 조건의 저장 구성은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2358,12 +2491,12 @@
   },
   {
     "id": "IP27-Q4-020",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-20"
     ],
     "subject": 4,
-    "title": "키2의 삭제 전 값 보존에 대한 판단으로 맞는 것은?",
+    "title": "현재 사본과 과거 백업의 복구 목적 · 키2의 삭제 전 값 보존에 대한 판단으로 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2376,12 +2509,12 @@
   },
   {
     "id": "IP27-Q4-021",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-21"
     ],
     "subject": 4,
-    "title": "역할 구분과 이 패킷의 동작이 맞는 것은?",
+    "title": "SDN의 규칙 결정과 패킷 전달 · 역할 구분과 이 패킷의 동작이 맞는 것은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2394,12 +2527,12 @@
   },
   {
     "id": "IP27-Q4-022",
-    "revision": 1,
+    "revision": 2,
     "topicIds": [
       "IP27-4-22"
     ],
     "subject": 4,
-    "title": "응용이 직접 사용하는 커널과 사용자 공간의 구분은?",
+    "title": "컨테이너와 VM이 공유하는 커널의 범위 · 응용이 직접 사용하는 커널과 사용자 공간의 구분은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,
@@ -2409,5 +2542,24 @@
       "IT프로젝트 정보시스템 구축관리"
     ],
     "path": "data/questions/IP27-Q4-022.json"
+  },
+  {
+    "id": "IP27-Q4-G003",
+    "revision": 1,
+    "topicIds": [
+      "IP27-4-03"
+    ],
+    "subject": 4,
+    "title": "DAC·MAC·RBAC의 권한 근거 · 보안 등급과 강제적 접근 통제",
+    "origin": "original",
+    "sourceExamYear": null,
+    "sourceSession": null,
+    "kind": "single-choice",
+    "status": "verified",
+    "tags": [
+      "용어 확인",
+      "review-20261103"
+    ],
+    "path": "data/questions/IP27-Q4-G003.json"
   }
 ]

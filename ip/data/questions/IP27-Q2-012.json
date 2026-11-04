@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-012",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-12"
   ],
@@ -11,7 +11,7 @@
     "SQL 응용"
   ],
   "kind": "single-choice",
-  "givens": "Measure에는 (1,5),(2,5),(3,NULL),(4,9)만 있다. 삭제나 다른 필터는 없다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Measure는 명시한 네 행만 있다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "givens": "Measure에는 (1,5),(2,5),(3,NULL),(4,9)만 있다. 삭제나 다른 필터는 없다. 실행 환경: SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB.",
   "code": "CREATE TABLE Measure(id INTEGER PRIMARY KEY, value INTEGER);\nINSERT INTO Measure VALUES(1,5),(2,5),(3,NULL),(4,9);\nSELECT COUNT(*),COUNT(value),COUNT(DISTINCT value) FROM Measure;",
   "language": "sql",
   "stem": "COUNT(*), COUNT(value), COUNT(DISTINCT value)의 순서대로 맞는 값은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "COUNT(*)=4, COUNT(value)=3, COUNT(DISTINCT value)=2로 C다. NULL 제외와 중복 제거는 다른 연산이다.",
+  "solution": "COUNT(*)=4, COUNT(value)=3, COUNT(DISTINCT value)=2로 ‘4,3,2’가 정답이다. NULL 제외와 중복 제거는 다른 연산이다.",
   "references": [
     {
       "id": "AGG",

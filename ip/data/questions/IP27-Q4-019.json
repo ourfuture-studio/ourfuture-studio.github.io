@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q4-019",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-4-19"
   ],
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "B",
-  "solution": "네트워크를 통해 NFS 파일 서비스를 사용한다는 접근 방식이 결정 조건이므로 B다. 용량은 분류 근거가 아니다.",
+  "solution": "네트워크를 통해 NFS 파일 서비스를 사용한다는 접근 방식이 결정 조건이므로 ‘NAS: 네트워크 파일 서비스’가 정답이다. 용량은 분류 근거가 아니다.",
   "references": [
     {
       "id": "STORAGE",

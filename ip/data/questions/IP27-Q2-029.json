@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-029",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-29"
   ],
@@ -11,7 +11,7 @@
     "SQL 응용"
   ],
   "kind": "single-choice",
-  "givens": "Observation의 행은 (1,NULL),(2,0),(3,4)다. 정수 비교의 SQL 3값 논리를 적용한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Observation은 아래 세 행이며 value에만 NULL을 허용한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "givens": "Observation의 행은 (1,NULL),(2,0),(3,4)다. 정수 비교의 SQL 3값 논리를 적용한다. 실행 환경: SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB.",
   "code": "CREATE TABLE Observation(id INTEGER PRIMARY KEY, value INTEGER);\nINSERT INTO Observation VALUES(1,NULL),(2,0),(3,4);\nSELECT id FROM Observation WHERE NOT(value=0) ORDER BY id;",
   "language": "sql",
   "stem": "WHERE NOT(value=0)을 통과하는 id는?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "D",
-  "solution": "id1:NOT UNKNOWN=UNKNOWN, id2:NOT TRUE=FALSE, id3:NOT FALSE=TRUE다. TRUE만 남겨 D다.",
+  "solution": "id1:NOT UNKNOWN=UNKNOWN, id2:NOT TRUE=FALSE, id3:NOT FALSE=TRUE다. TRUE만 남겨 ‘id3만’이 정답이다.",
   "references": [
     {
       "id": "NULL",

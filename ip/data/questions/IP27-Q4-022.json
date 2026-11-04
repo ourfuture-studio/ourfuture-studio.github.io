@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q4-022",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-4-22"
   ],
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "일반 Linux 컨테이너C1·C2는 같은 호스트K에서 실행한다. 응용은 같은 커널K를 쓰면서 사용자 공간을 구분하므로 C다.",
+  "solution": "일반 Linux 컨테이너C1·C2는 같은 호스트K에서 실행한다. 응용은 같은 커널K를 쓰면서 사용자 공간을 구분하므로 ‘두 응용은 커널K를 공유하고 사용자 공간은 구분한다’가 정답이다.",
   "references": [
     {
       "id": "DOCKER",

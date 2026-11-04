@@ -1,0 +1,64 @@
+{
+  "id": "IP27-Q3-G028",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-28"
+  ],
+  "subject": 3,
+  "title": "Ethernet 프레임과 MAC 주소",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "Ethernet 위에서 IPv4와 TCP를 사용하는 예를 OSI(Open Systems Interconnection) 계층 기능에 대응시킨다. Ethernet 링크의 데이터 단위와 주소를 묻는다.",
+  "code": null,
+  "language": null,
+  "stem": "데이터링크 계층의 데이터 단위와 주소로 알맞은 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "패킷, IP 주소",
+      "explanation": "네트워크 계층의 단위와 주소다."
+    },
+    {
+      "id": "B",
+      "text": "세그먼트, 포트 번호",
+      "explanation": "TCP를 사용하는 전송 계층의 단위와 식별자다. UDP 데이터그램과 혼동하지 않는다."
+    },
+    {
+      "id": "C",
+      "text": "프레임, MAC 주소",
+      "explanation": "Ethernet 링크에서 프레임을 송수신하며 목적지·송신자 MAC 주소를 사용한다."
+    },
+    {
+      "id": "D",
+      "text": "비트, 주소 없음",
+      "explanation": "물리 계층의 단위다."
+    }
+  ],
+  "correctChoiceId": "C",
+  "solution": "이 Ethernet 사례의 데이터링크 계층(Data Link Layer)은 프레임(Frame)과 MAC 주소를 사용한다. IPv4의 패킷·IP 주소는 네트워크 계층이고, TCP의 세그먼트·포트 번호는 전송 계층에 대응한다. 모든 데이터링크 프로토콜이 같은 주소 체계를 쓴다는 뜻은 아니다.",
+  "references": [
+    {
+      "title": "RFC 894 — IP Datagrams over Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc894.html",
+      "scope": "Introduction과 Frame Format: Ethernet 48비트 주소와 Ethernet 프레임 안 IP 데이터그램 구분.",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "RFC 826 — Ethernet Address Resolution Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "scope": "Packet Format의 Ethernet transmission layer에 48비트 목적지·송신자 Ethernet 주소가 있다.",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "RFC 9293 — Transmission Control Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "scope": "2.2 Key TCP Concepts의 TCP segment/IP datagram 구분,3.1 Header Format의 출발·도착 포트 필드. 전송계층 단위를 TCP 예로 한정했다.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

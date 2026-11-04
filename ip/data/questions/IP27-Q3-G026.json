@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q3-G026",
+  "revision": 1,
+  "topicIds": [
+    "IP27-3-26"
+  ],
+  "subject": 3,
+  "title": "교착상태의 네 필요조건",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "스레드가 재사용 가능한 자원을 보유하고 다른 자원을 기다리는 교착상태(Deadlock)의 네 필요조건을 다룬다.",
+  "code": null,
+  "language": null,
+  "stem": "교착상태의 필요조건이 아닌 것은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "상호 배제(Mutual Exclusion)",
+      "explanation": "자원을 한 번에 하나만 쓰는 조건으로 필요조건이다."
+    },
+    {
+      "id": "B",
+      "text": "선점 가능(Preemption Allowed)",
+      "explanation": "필요조건은 비선점(No Preemption)이다. 안전하게 자원을 강제 회수하도록 설계하면 이 조건을 깨는 예방 방법이 될 수 있다."
+    },
+    {
+      "id": "C",
+      "text": "점유와 대기(Hold and Wait)",
+      "explanation": "자원을 가진 채 다른 자원을 기다리는 조건으로 필요조건이다."
+    },
+    {
+      "id": "D",
+      "text": "환형 대기(Circular Wait)",
+      "explanation": "대기 관계가 원을 이루는 조건으로 필요조건이다."
+    }
+  ],
+  "correctChoiceId": "B",
+  "solution": "네 필요조건은 상호 배제(Mutual Exclusion), 점유와 대기(Hold and Wait), 비선점(No Preemption), 환형 대기(Circular Wait)다. 선점 가능은 비선점의 반대이므로 필요조건이 아니다.",
+  "references": [
+    {
+      "title": "Operating Systems: Three Easy Pieces — Common Concurrency Problems",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf",
+      "scope": "32.3 Conditions for Deadlock, 본문7쪽(PDF7쪽): Mutual exclusion, Hold-and-wait, No preemption, Circular wait. 어느 하나가 성립하지 않으면 교착 불가.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

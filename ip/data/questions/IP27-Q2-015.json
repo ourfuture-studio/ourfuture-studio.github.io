@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-015",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-15"
   ],
@@ -11,7 +11,7 @@
     "SQL 활용"
   ],
   "kind": "single-choice",
-  "givens": "L은 2,2,4의 세 행, R은 4,5의 두 행이다. 값은 정수·NOT NULL이며 질의는 value 한 열만 반환한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. L 세 행·R 두 행의 값은 아래 코드와 같고 NULL이 없다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "givens": "L은 2,2,4의 세 행, R은 4,5의 두 행이다. 값은 정수·NOT NULL이며 질의는 value 한 열만 반환한다. 실행 환경: SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB.",
   "code": "CREATE TABLE L(value INTEGER NOT NULL);\nCREATE TABLE R(value INTEGER NOT NULL);\nINSERT INTO L VALUES(2),(2),(4);\nINSERT INTO R VALUES(4),(5);\nSELECT value FROM L UNION SELECT value FROM R ORDER BY value;",
   "language": "sql",
   "stem": "아래 UNION 결과를 오름차순으로 나열한 것은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "B",
-  "solution": "두 입력을 합친 2,2,4,4,5에서 동일 value 행을 제거하면 2,4,5로 B다.",
+  "solution": "두 입력을 합친 2,2,4,4,5에서 동일 value 행을 제거하면 2,4,5로 ‘2,4,5’가 정답이다.",
   "references": [
     {
       "id": "UNION",

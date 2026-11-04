@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-009",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-09"
   ],
@@ -11,7 +11,7 @@
     "SQL 응용"
   ],
   "kind": "single-choice",
-  "givens": "PostgreSQL 18 명세 사례다. Member는 존재하고 실행자에게 필요한 권한이 있으며 reader 역할도 존재한다. 실제 서버에서 실행한 사례가 아니다. PostgreSQL 18 명세. Member와 reader 존재. 실행자는 권한 회수 가능. 명령 REVOKE SELECT ON Member FROM reader. 다른 권한 경로의 유무는 판단하지 않는다.",
+  "givens": "PostgreSQL 18 명세 사례다. Member는 존재하고 실행자에게 권한을 회수할 권한이 있으며 reader 역할도 존재한다. 다른 권한 경로를 통해 reader가 SELECT를 계속할 수 있는지는 판단하지 않는다.",
   "code": null,
   "language": null,
   "stem": "REVOKE SELECT ON Member FROM reader의 직접 목적은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "명령의 동사는 REVOKE이고 대상은 Member에 대한 reader의 SELECT 권한이다. 따라서 C다.",
+  "solution": "명령의 동사는 REVOKE이고 대상은 Member에 대한 reader의 SELECT 권한이다. 따라서 ‘reader에 부여한 SELECT 권한 회수’가 정답이다.",
   "references": [
     {
       "id": "DB1",

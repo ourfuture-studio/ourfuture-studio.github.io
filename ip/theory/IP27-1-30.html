@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>정적 분석과 실행 관찰 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=29ebb46fb1f275b9" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/></head>
-<body data-page="theory" data-topic="IP27-1-30"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="OurFuture Studio 통합 홈"><span class="brand-wordmark"><img alt="OurFuture Studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-30 · 이론 읽기</p><h1>정적 분석과 실행 관찰</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-1-30" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-30">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>프로그램을 실행했는지에 따라 확인한 근거가 달라진다.</p>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>정적 분석과 실행 관찰 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=4c2e93999df5" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/></head>
+<body data-page="theory" data-topic="IP27-1-30"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">1과목 · 1-30 · 이론 읽기</p><h1>정적 분석과 실행 관찰</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-1-30" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-1-30">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>프로그램을 실행했는지에 따라 확인한 근거가 달라진다.</p>
 <h2 id="section-1">핵심 이론</h2>
-<p>정적 분석은 대상 프로그램을 실행하지 않고 코드 등의 구조를 도구로 검사한다. 동적 테스트는 실행한 결과를 기대 결과와 비교한다.</p>
+<p>정적 분석(static analysis)은 대상 프로그램을 실행하지 않고 코드 등의 구조를 도구로 검사한다. 동적 테스트(dynamic test)는 실행한 결과를 기대 결과와 비교한다.</p>
 <p>도구가 코드를 읽어 도달 불가능한 부분을 보고한 것과 실행 중 응답 시간이 기준을 넘은 것은 서로 다른 관찰이다.</p>
 <p>정적 분석기가 모든 결함을 찾거나 한 실행이 모든 경로를 확인한다고 보장하지 않는다. 분석 규칙·실행 입력·환경의 범위를 기록한다.</p>
 <h2 id="section-2">작은 예제로 확인하기</h2>
@@ -17,7 +17,7 @@
 </thead>
 <tbody>
 <tr>
-<td>P=소스/제어 흐름 분석, 대상 실행 없음; Q=대상 실행, 응답4초 측정.</td>
+<td><code>P=소스/제어 흐름 분석, 대상 실행 없음; Q=대상 실행, 응답 4초 측정.</code></td>
 <td>P 정적, Q 동적</td>
 </tr>
 <tr>
@@ -25,7 +25,7 @@
 <td>정적 테스트의 리뷰</td>
 </tr>
 <tr>
-<td>코드 구조 분석 없음; 대상 프로그램에 입력10을 넣어 결과20과 기대20을 비교.</td>
+<td>코드 구조 분석 없음; 대상 프로그램에 입력 10을 넣어 결과 20과 기대 20을 비교.</td>
 <td>동적 테스트</td>
 </tr>
 </tbody>
@@ -38,4 +38,4 @@
 <h2 id="section-5">근거와 확인 범위</h2>
 <ul>
 <li><a href="https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf" rel="noopener noreferrer" target="_blank">ISTQB CTFL Syllabus v4.0.1 (2024-09-15)</a> — 3.1 Static Testing Basics, 3.1.3 Differences between Static and Dynamic Testing; 문서33~34쪽. 확인일 2026-10-31.</li>
-</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-030">P와 Q의 검사 방식은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=c60a92a66d1e41ce" type="module"></script></body></html>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q1-030">정적 분석과 실행 관찰 · P와 Q의 검사 방식은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=1efba2cdaa9dcc3c" type="module"></script></body></html>

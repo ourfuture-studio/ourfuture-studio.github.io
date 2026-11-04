@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q2-G021",
+  "revision": 1,
+  "topicIds": [
+    "IP27-2-21"
+  ],
+  "subject": 2,
+  "title": "격리 수준과 금지되는 읽기 현상",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "SQL 표준의 격리 수준(Isolation Level)별 금지 현상, 즉 최소 보장을 비교한다. 특정 DBMS가 추가로 제공하는 더 강한 보장은 묻지 않는다.",
+  "code": null,
+  "language": null,
+  "stem": "더티 읽기는 막지만 비반복 읽기는 허용하는 격리 수준은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "READ UNCOMMITTED",
+      "explanation": "SQL 표준의 최소 보장에서 더티 읽기를 금지하지 않는 수준이다. 특정 DBMS의 강화 구현과 구분한다."
+    },
+    {
+      "id": "B",
+      "text": "REPEATABLE READ",
+      "explanation": "비반복 읽기까지 막는다."
+    },
+    {
+      "id": "C",
+      "text": "SERIALIZABLE",
+      "explanation": "세 현상을 모두 막는다."
+    },
+    {
+      "id": "D",
+      "text": "READ COMMITTED",
+      "explanation": "더티 읽기(Dirty Read)는 금지하지만 비반복 읽기(Nonrepeatable Read)는 가능한 현상으로 분류한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "READ COMMITTED의 최소 보장에서는 더티 읽기(Dirty Read)가 금지되지만 비반복 읽기(Nonrepeatable Read)는 가능하다. 실제 DBMS는 표준의 최소 보장보다 강한 동작을 제공할 수도 있다.",
+  "references": [
+    {
+      "title": "PostgreSQL 18 Documentation — Transaction Isolation",
+      "url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+      "scope": "13.2 Table13.1에서 SQL표준상 Read Committed는 dirty read 금지/nonrepeatable read 가능으로 설명한다. 표준은 최소 금지 현상을 정하며 구현이 더 강한 보장을 제공할 수 있다는 단서도 확인했다.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

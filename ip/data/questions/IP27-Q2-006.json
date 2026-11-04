@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-006",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-06"
   ],
@@ -11,7 +11,7 @@
     "논리 데이터베이스 설계"
   ],
   "kind": "single-choice",
-  "givens": "관계 R(S,C,N,G)의 F={SC→G,S→N}이며 논리적 귀결 외 제약은 없다. S=학생번호, C=과목번호, N=학생명, G=성적이다. NULL·복합값은 없다. R(S,C,N,G), F={SC→G,S→N}. 그 귀결 외 FD 없음. NULL·복합값 없음.",
+  "givens": "관계 R(S,C,N,G)의 F={SC→G,S→N}이며 논리적 귀결 외 제약은 없다. S=학생번호, C=과목번호, N=학생명, G=성적이다. NULL·복합값은 없다.",
   "code": null,
   "language": null,
   "stem": "S→N 때문에 직접 위반하는 가장 이른 정규형은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "B",
-  "solution": "SC+={S,C,N,G}, S+={S,N}, C+={C}이므로 후보키는 SC다. S→N이 부분 종속이므로 2NF를 위반해 B다.",
+  "solution": "SC+={S,C,N,G}, S+={S,N}, C+={C}이므로 후보키는 SC다. S→N이 부분 종속이므로 2NF를 위반해 ‘2정규형’이 정답이다.",
   "references": [
     {
       "id": "FD",

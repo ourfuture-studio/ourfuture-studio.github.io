@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q1-G029",
+  "revision": 1,
+  "topicIds": [
+    "IP27-1-29"
+  ],
+  "subject": 1,
+  "title": "사용자 요구와 인수 테스트",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "V-모델(V-model)의 단위·통합·시스템·인수 테스트 수준을 비교한다. 고객과 사용자가 업무 요구를 충족하는지 보고 시스템의 인수 여부를 판단하려 한다.",
+  "code": null,
+  "language": null,
+  "stem": "사용자 요구와 인수 기준을 바탕으로 실제 업무에 쓸 수 있는지를 판단하는 테스트 수준은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "단위 테스트(Unit Testing)",
+      "explanation": "개별 모듈의 동작을 검증하는 수준이며 이 장면의 사용자 인수 판단이 목적은 아니다."
+    },
+    {
+      "id": "B",
+      "text": "통합 테스트(Integration Testing)",
+      "explanation": "모듈·시스템 사이 연결과 상호작용을 검증하는 수준이다."
+    },
+    {
+      "id": "C",
+      "text": "시스템 테스트(System Testing)",
+      "explanation": "전체 시스템의 명세상 동작을 검증한다. 이 장면은 사용자·업무 요구에 따른 인수 판단에 초점을 둔다."
+    },
+    {
+      "id": "D",
+      "text": "인수 테스트(Acceptance Testing)",
+      "explanation": "고객·사용자가 요구와 인수 기준을 충족하는지 확인해 인수 여부를 판단한다."
+    }
+  ],
+  "correctChoiceId": "D",
+  "solution": "사용자·업무 요구와 인수 기준에 따라 시스템을 실제 업무에 사용할 수 있는지 판단하는 것은 인수 테스트(Acceptance Testing)다. V-모델에서는 개발 단계의 요구와 오른쪽 테스트 수준을 연결해 검증 근거를 준비한다.",
+  "references": [
+    {
+      "title": "ISTQB CTFL Syllabus 2018 v3.1.1",
+      "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB-CTFL_Syllabus_2018_v3.1.1.pdf",
+      "scope": "2.1.1 V-model과 개발단계별 테스트 수준; 2.2.4 Acceptance Testing 및 User Acceptance Testing, 인수 시험의 근거인 사용자·업무 요구사항(PDF36~37쪽).",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}

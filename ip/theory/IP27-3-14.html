@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>슬라이스는 끝값을 포함하지 않는다 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=29ebb46fb1f275b9" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipp-style="" href="../programming.css?v=52c27dedc8fd" rel="stylesheet"/></head>
-<body data-page="theory" data-topic="IP27-3-14"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="OurFuture Studio 통합 홈"><span class="brand-wordmark"><img alt="OurFuture Studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-14 · 이론 읽기</p><h1>슬라이스는 끝값을 포함하지 않는다</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-3-14" id="question-count">관련 문제 3개</a><a class="button" href="../lab.html?topic=IP27-3-14">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>시작점에서 간격만큼 이동하되 끝 경계에 닿기 전에 멈춘다.</p><aside class="ipp-discovery" data-ipp-owned=""><h3>코드 한 줄씩 추적하기</h3><p>변수·객체·실행 순서를 함께 살펴보고 같은 개념의 문제로 이어갑니다.</p><div class="ipp-links"><a href="../programming.html#python-slice">프로그래밍 학습 →</a><a href="../practice.html?topic=IP27-3-14">관련 문제풀이</a></div></aside>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>슬라이스는 끝값을 포함하지 않는다 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=4c2e93999df5" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipp-style="" href="../programming.css?v=f09a674c260e" rel="stylesheet"/></head>
+<body data-page="theory" data-topic="IP27-3-14"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-14 · 이론 읽기</p><h1>슬라이스는 끝값을 포함하지 않는다</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-3-14" id="question-count">관련 문제 3개</a><a class="button" href="../lab.html?topic=IP27-3-14">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>시작점에서 간격만큼 이동하되 끝 경계에 닿기 전에 멈춘다.</p><aside class="ipp-discovery" data-ipp-owned=""><h3>코드 한 줄씩 추적하기</h3><p>변수·객체·실행 순서를 함께 살펴보고 같은 개념의 문제로 이어갑니다.</p><div class="ipp-links"><a href="../programming.html#python-slice">프로그래밍 학습 →</a><a href="../practice.html?topic=IP27-3-14">관련 문제풀이</a></div></aside>
 <h2 id="section-1">핵심 이론</h2>
-<p>a[start:stop:step]에서 start는 시작 인덱스, stop은 포함하지 않는 끝 경계, step은 이동 간격이다. 인덱스는 0부터 센다. a[1:5:2]는 1,3번 원소를 선택한다.</p>
-<p>step이 음수이면 인덱스가 감소한다. a[5:1:-2]는 5,3을 선택하고 1은 제외한다. 생략한 경계와 명시한 -1의 의미는 음수 간격에서 다를 수 있어 여기서는 둘 다 명시한다.</p>
+<p><strong>핵심 용어</strong>: 슬라이싱(slicing).</p>
+<p>a[start:stop:step]에서 start는 시작 인덱스, stop은 포함하지 않는 끝 경계, step은 이동 간격이다. 인덱스는 0부터 센다. a[1:5:2]는 1, 3번 원소를 선택한다.</p>
+<p>step이 음수이면 인덱스가 감소한다. a[5:1:-2]는 5, 3을 선택하고 1은 제외한다. 생략한 경계와 명시한 -1의 의미는 음수 간격에서 다를 수 있어 여기서는 둘 다 명시한다.</p>
 <p>일반 슬라이스의 범위 밖 경계는 허용 범위로 조정되지만 step=0은 ValueError이다. 단일 인덱스 접근의 IndexError 규칙을 슬라이스 전체에 그대로 적용하지 않는다.</p>
 <h2 id="section-2">작은 예제로 확인하기</h2>
-<p>Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[0,1,2,3,4,5]; a[1:5:2].</p>
+<p>Python 3.13, UTF-8 독립 스크립트, 외부 입력 없음.  a=[0, 1, 2, 3, 4, 5]; a[1:5:2].</p>
 <div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -17,16 +18,16 @@
 </thead>
 <tbody>
 <tr>
-<td>a=[0,1,2,3,4,5]</td>
+<td><code>a=[0, 1, 2, 3, 4, 5]</code></td>
 <td>인덱스와 값이 같음</td>
 </tr>
 <tr>
 <td>a[1:5:2]</td>
-<td>[1,3]</td>
+<td>[1, 3]</td>
 </tr>
 <tr>
-<td>끝 경계5</td>
-<td>원소5는 제외</td>
+<td>끝 경계 5</td>
+<td>원소 5는 제외</td>
 </tr>
 </tbody>
 </table></div>
@@ -38,4 +39,4 @@
 <h2 id="section-5">근거와 확인 범위</h2>
 <ul>
 <li><a href="https://docs.python.org/3.13/library/stdtypes.html" rel="noopener noreferrer" target="_blank">Python 3.13 Built-in Types</a> — Sequence Types의 슬라이스·range; set, tuple, dict의 가변성·키 제약. 확인일 2026-10-31.</li>
-</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-014">출력은 무엇인가?</a></li><li><a href="../practice.html?question=IP27-Q3-P103">음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?</a></li><li><a href="../practice.html?question=IP27-Q3-P104">음수 step에서 생략한 stop과 명시한 -1의 차이는?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=c60a92a66d1e41ce" type="module"></script></body></html>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-014">슬라이스는 끝값을 포함하지 않는다 · 출력은 무엇인가?</a></li><li><a href="../practice.html?question=IP27-Q3-P103">슬라이스는 끝값을 포함하지 않는다 · 음수 경계를 슬라이싱과 range에 각각 쓰면 출력은?</a></li><li><a href="../practice.html?question=IP27-Q3-P104">슬라이스는 끝값을 포함하지 않는다 · 음수 step에서 생략한 stop과 명시한 -1의 차이는?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=1efba2cdaa9dcc3c" type="module"></script></body></html>

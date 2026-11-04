@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-003",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-03"
   ],
@@ -11,7 +11,7 @@
     "물리 데이터베이스 설계"
   ],
   "kind": "single-choice",
-  "givens": "NULL 없는 관계 R(M,E,N)에서 성립하는 FD는 M→EN, E→M이며 이들로부터 추론되는 종속뿐이다. M은 회원번호, E는 이메일, N은 이름이다. R(M,E,N), NULL 없음. F={M→EN,E→M}; 이 밖의 제약은 F의 논리적 귀결뿐. {M,N}을 검사한다.",
+  "givens": "NULL 없는 관계 R(M,E,N)에서 성립하는 FD는 M→EN, E→M이며 이들로부터 추론되는 종속뿐이다. M은 회원번호, E는 이메일, N은 이름이다.",
   "code": null,
   "language": null,
   "stem": "다음 중 슈퍼키이지만 후보키는 아닌 것은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "M+={M,E,N}, E+={E,M,N}, N+={N}이다. {M,N}은 M을 포함해 슈퍼키지만 N을 빼도 되므로 C다.",
+  "solution": "M+={M,E,N}, E+={E,M,N}, N+={N}이다. {M,N}은 M을 포함해 슈퍼키지만 N을 빼도 되므로 ‘{M,N}’이 정답이다.",
   "references": [
     {
       "id": "DB2",

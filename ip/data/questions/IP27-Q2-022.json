@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-022",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-22"
   ],
@@ -11,7 +11,7 @@
     "SQL 활용"
   ],
   "kind": "single-choice",
-  "givens": "배타 잠금만 있는 교육 모형이다. A·B는 서로 다른 객체이며 각 거래는 커밋까지 잠금을 유지한다. 순서 T1 lock A, T2 lock B, T1 request B, T2 request A이고 아직 커밋·중단·타임아웃·교착 탐지는 수행되지 않았다. 배타 잠금 교육 모형. A·B 서로 다른 객체. 커밋까지 잠금 보유. 일정 T1 lock A; T2 lock B; T1 request B; T2 request A. 커밋·중단·타임아웃·탐지 전.",
+  "givens": "배타 잠금만 있는 교육 모형이다. A·B는 서로 다른 객체이며 각 거래는 커밋까지 잠금을 유지한다. 순서 T1 lock A, T2 lock B, T1 request B, T2 request A이고 아직 커밋·중단·타임아웃·교착 탐지는 수행되지 않았다.",
   "code": null,
   "language": null,
   "stem": "마지막 요청 직후의 상태는?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "B",
-  "solution": "T1은 B 소유자인 T2를, T2는 A 소유자인 T1을 기다린다. 두 간선이 순환하므로 B다.",
+  "solution": "T1은 B 소유자인 T2를, T2는 A 소유자인 T1을 기다린다. 두 간선이 순환하므로 ‘T1과 T2의 상호 대기로 교착상태다’가 정답이다.",
   "references": [
     {
       "id": "LOCK",

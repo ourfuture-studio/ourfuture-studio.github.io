@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-010",
-  "revision": 2,
+  "revision": 3,
   "topicIds": [
     "IP27-2-10"
   ],
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "대상은 특정 행이고 구조와 나머지 행은 보존해야 한다. WHERE를 쓸 수 있는 DELETE가 맞으므로 C다.",
+  "solution": "대상은 특정 행이고 구조와 나머지 행은 보존해야 한다. WHERE를 쓸 수 있는 DELETE가 맞으므로 ‘DELETE FROM T WHERE id=2’가 정답이다.",
   "references": [
     {
       "id": "DEL",

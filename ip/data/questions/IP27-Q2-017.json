@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-017",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-17"
   ],
@@ -11,7 +11,7 @@
     "SQL 응용"
   ],
   "kind": "single-choice",
-  "givens": "Work의 행은 (1,A,4),(2,A,6),(3,B,3)뿐이며 NULL이 없다. 윈도우 안에는 ORDER BY가 없고 파티션 전체를 합산한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Work 세 행, NULL 없음. 윈도우 ORDER BY 생략. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "givens": "Work의 행은 (1,A,4),(2,A,6),(3,B,3)뿐이며 NULL이 없다. 윈도우 안에는 ORDER BY가 없고 파티션 전체를 합산한다. 실행 환경: SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB.",
   "code": "CREATE TABLE Work(id INTEGER PRIMARY KEY, team TEXT NOT NULL, hours INTEGER NOT NULL);\nINSERT INTO Work VALUES(1,'A',4),(2,'A',6),(3,'B',3);\nSELECT id,team,hours,SUM(hours) OVER(PARTITION BY team) AS total FROM Work ORDER BY id;",
   "language": "sql",
   "stem": "아래 질의가 반환하는 행과 합계는?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "B",
-  "solution": "A팀 파티션 합계는 4+6=10, B팀은 3이다. 원래 세 행을 유지해 10,10,3을 붙이므로 B다.",
+  "solution": "A팀 파티션 합계는 4+6=10, B팀은 3이다. 원래 세 행을 유지해 10,10,3을 붙이므로 ‘3행: id1에10, id2에10, id3에3’이 정답이다.",
   "references": [
     {
       "id": "WIN",

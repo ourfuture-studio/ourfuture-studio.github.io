@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-021",
-  "revision": 2,
+  "revision": 3,
   "topicIds": [
     "IP27-2-21"
   ],
@@ -11,7 +11,7 @@
     "SQL 활용"
   ],
   "kind": "single-choice",
-  "givens": "PostgreSQL 18 명세. 초기 R(id=7,v=20) 한 행. T1은 READ COMMITTED에서 일반 SELECT로 id7을 읽는다. 이어 T2가 v25로 UPDATE하고 COMMIT한 뒤 T1이 같은 행을 다시 읽는다. T1의 쓰기·잠금 SELECT·그 밖의 거래는 없다. PostgreSQL 18 명세. 초기 R(7,20) 한 행. 순서: T1 BEGIN ISOLATION LEVEL READ COMMITTED; T1 일반 SELECT v WHERE id=7; T2 UPDATE v=25 WHERE id=7; T2 COMMIT; T1 동일 SELECT. T1 쓰기·잠금 SELECT·다른 거래 없음.",
+  "givens": "PostgreSQL 18 명세. 초기 R(id=7,v=20) 한 행. T1은 READ COMMITTED에서 일반 SELECT로 id7을 읽는다. 이어 T2가 v25로 UPDATE하고 COMMIT한 뒤 T1이 같은 행을 다시 읽는다. T1의 쓰기·잠금 SELECT·그 밖의 거래는 없다.",
   "code": null,
   "language": null,
   "stem": "T1의 두 읽기와 해당 현상의 조합은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "A",
-  "solution": "첫 문장 시점에는 v20, 두 번째 문장 전에는 T2의 v25가 커밋되어 있다. Read Committed의 문장별 스냅샷으로 20→25가 되어 A다.",
+  "solution": "첫 문장 시점에는 v20, 두 번째 문장 전에는 T2의 v25가 커밋되어 있다. Read Committed의 문장별 스냅샷으로 20→25가 되어 ‘20→25, 비반복 읽기’가 정답이다.",
   "references": [
     {
       "id": "ISO",

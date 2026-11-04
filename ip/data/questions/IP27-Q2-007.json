@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-007",
-  "revision": 2,
+  "revision": 3,
   "topicIds": [
     "IP27-2-07"
   ],
@@ -11,7 +11,7 @@
     "논리 데이터베이스 설계"
   ],
   "kind": "single-choice",
-  "givens": "NULL 없는 관계 R(A,B,C)에서 F={AB→C,C→B}와 그 논리적 귀결만 성립한다. 모든 속성값은 원자적이다. R(A,B,C), F={AB→C,C→B}와 그 귀결만 존재. NULL·복합값 없음.",
+  "givens": "NULL 없는 관계 R(A,B,C)에서 F={AB→C,C→B}와 그 논리적 귀결만 성립한다. 모든 속성값은 원자적이다.",
   "code": null,
   "language": null,
   "stem": "이 스키마에 대한 판단으로 맞는 것은?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "AB+와 AC+는 ABC이고 각각 최소다. C+는 BC다. C→B의 우변 B는 주요 속성이라 3NF 조건을 충족하지만 결정자 C가 비슈퍼키라 BCNF를 위반하여 C다.",
+  "solution": "AB+와 AC+는 ABC이고 각각 최소다. C+는 BC다. C→B의 우변 B는 주요 속성이라 3NF 조건을 충족하지만 결정자 C가 비슈퍼키라 BCNF를 위반하여 ‘3NF를 만족하지만 C→B 때문에 BCNF는 위반한다’가 정답이다.",
   "references": [
     {
       "id": "FD",

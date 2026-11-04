@@ -1,6 +1,6 @@
 {
   "id": "IP27-Q2-018",
-  "revision": 1,
+  "revision": 2,
   "topicIds": [
     "IP27-2-18"
   ],
@@ -11,7 +11,7 @@
     "SQL 활용"
   ],
   "kind": "single-choice",
-  "givens": "Stock은 (1,4),(2,7), Ready는 SELECT id,qty FROM Stock WHERE qty>=5로 정의한 일반 뷰다. 같은 연결에서 id1의 qty를 6으로 바꾼 뒤 Ready를 조회한다. SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB. Stock과 일반 뷰 Ready는 아래 정의와 같다. id1 qty를 6으로 변경 후 조회한다. 모든 DDL·입력값은 아래 코드에 있다. 결과 순서는 ORDER BY에만 의존한다.",
+  "givens": "Stock은 (1,4),(2,7), Ready는 SELECT id,qty FROM Stock WHERE qty>=5로 정의한 일반 뷰다. 같은 연결에서 id1의 qty를 6으로 바꾼 뒤 Ready를 조회한다. 실행 환경: SQLite 3.51.0 (Python 3.13.9 sqlite3)의 새 메모리 DB.",
   "code": "CREATE TABLE Stock(id INTEGER PRIMARY KEY, qty INTEGER NOT NULL);\nINSERT INTO Stock VALUES(1,4),(2,7);\nCREATE VIEW Ready AS SELECT id,qty FROM Stock WHERE qty>=5;\nUPDATE Stock SET qty=6 WHERE id=1;\nSELECT id,qty FROM Ready ORDER BY id;",
   "language": "sql",
   "stem": "수정 직후 Ready의 결과는?",
@@ -38,7 +38,7 @@
     }
   ],
   "correctChoiceId": "C",
-  "solution": "원본 변경 후 qty는 6과 7이다. 두 값이 모두 5 이상이어서 뷰에 두 행이 나와 C다.",
+  "solution": "원본 변경 후 qty는 6과 7이다. 두 값이 모두 5 이상이어서 뷰에 두 행이 나와 ‘(1,6),(2,7)이 나온다’가 정답이다.",
   "references": [
     {
       "id": "VIEW",

@@ -1,0 +1,52 @@
+{
+  "id": "IP27-Q4-G003",
+  "revision": 1,
+  "topicIds": [
+    "IP27-4-03"
+  ],
+  "subject": 4,
+  "title": "보안 등급과 강제적 접근 통제",
+  "origin": "original",
+  "tags": [
+    "용어 확인",
+    "review-20261103"
+  ],
+  "kind": "single-choice",
+  "givens": "접근 통제(Access Control) 모델을 비교한다. 보안 레이블과 인가 수준에 따라 중앙 정책이 적용되며, 일반 소유자가 재량으로 그 정책을 변경할 수 없는 사례다.",
+  "code": null,
+  "language": null,
+  "stem": "주체와 객체의 보안 등급을 비교해 중앙 정책으로 접근을 결정하는 모델은?",
+  "choices": [
+    {
+      "id": "A",
+      "text": "강제적 접근 통제(MAC, Mandatory Access Control)",
+      "explanation": "보안 등급(레이블)과 인가 수준을 시스템이 강제로 비교한다."
+    },
+    {
+      "id": "B",
+      "text": "임의적 접근 통제(DAC, Discretionary Access Control)",
+      "explanation": "소유자가 재량으로 권한을 준다."
+    },
+    {
+      "id": "C",
+      "text": "역할 기반 접근 통제(RBAC, Role-Based Access Control)",
+      "explanation": "사용자에게 부여한 역할에 권한을 연결한다."
+    },
+    {
+      "id": "D",
+      "text": "비밀번호 기반 인증",
+      "explanation": "신원 확인(인증) 방법이며 접근 통제 모델이 아니다."
+    }
+  ],
+  "correctChoiceId": "A",
+  "solution": "보안 등급을 비교해 소유자 재량 없이 중앙에서 접근을 정하는 방식은 강제적 접근 통제(MAC, Mandatory Access Control)다.",
+  "references": [
+    {
+      "title": "NIST CSRC Glossary — Mandatory Access Control",
+      "url": "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+      "scope": "NIST SP800-192의 중앙정책/소유자재량제한 정의와 SP800-44v2의 보안레이블·인가수준 비교 정의를 확인했다.",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "status": "verified"
+}
