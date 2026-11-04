@@ -11,6 +11,8 @@ const decimal=n=>Object.is(n,-0)?'-0.00':n.toFixed(2);
 
 export function modelCast(a=9,b=4){
   if(!isInt(a,-24,24)||!DIVISORS.includes(b))throw new RangeError('a must be an integer -24..24 and b must be ±1, ±2 or ±4.');
+  // The generated C initializer is 0 even if the browser input was '-0'.
+  a=a===0?0:a;
   const quotient=Math.trunc(a/b)||0,ratio=a/b;
   const code=['#include <stdio.h>','','int main(void) {',`    int a = ${a}, b = ${b};`,'    double late = (double)(a / b);','    double early = (double)a / b;','    printf("%.2f %.2f\\n", late, early);','    return 0;','}'].join('\n');
   const output=`${decimal(quotient)} ${decimal(ratio)}`;

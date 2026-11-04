@@ -1,6 +1,6 @@
-import {mountC} from './programming-c.mjs?v=43c1bff09a1f';
+import {mountC} from './programming-c.mjs?v=606d05fbe15f';
 import {mountJava} from './programming-java.mjs?v=8e41e64c2ac6';
-import {mountPython} from './programming-python.mjs?v=5dc6b7c2a4aa';
+import {mountPython} from './programming-python.mjs?v=f12c539f123c';
 mountC();
 mountJava();
 mountPython();

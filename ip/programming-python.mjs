@@ -8,14 +8,15 @@ const html=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;
 export function modelCopy({mode='shallow',value=9}={}){
   if(!['assignment','shallow','deep'].includes(mode)||!Number.isSafeInteger(value)||value< -99||value>99)throw new RangeError('Unsupported copy model input');
   const expression={assignment:'a',shallow:'a.copy()',deep:'copy.deepcopy(a)'}[mode];
-  const code=['import copy','a = [[1], [2]]',`b = ${expression}`,`b[0].append(${value})`,'b.append([7])','print(a)','print(b)'];
-  const states=[];let a=null,b=null,output=[];
-  const save=(line,description)=>states.push({line,description,a:copyValue(a),b:copyValue(b),outerSame:mode==='assignment'&&b!==null,innerShared:mode!=='deep'&&b!==null,output:[...output]});
-  save(1,'copy 모듈을 가져왔습니다. a와 b는 아직 만들지 않았습니다.');a=[[1],[2]];save(2,'a가 바깥 리스트 O1을 가리키고, O1은 내부 리스트 N1과 N2를 가리킵니다.');
-  b=mode==='assignment'?a:mode==='shallow'?[...a]:copyValue(a);save(3,mode==='assignment'?'a와 b가 같은 바깥 리스트 O1을 가리킵니다.':mode==='shallow'?'b의 바깥 리스트 O2는 새 객체지만, N1·N2는 a와 함께 가리킵니다.':'b의 바깥 리스트 O2와 내부 리스트 N3·N4가 새 객체입니다.');
-  b[0].push(value);save(4,mode==='deep'?'b가 가리키는 새 내부 리스트 N3만 바뀝니다.':'b[0]이 가리키는 N1을 수정합니다. a에서도 같은 내부 객체의 변화를 봅니다.');
-  b.push([7]);save(5,mode==='assignment'?'a와 b가 같은 바깥 리스트를 가리키므로 [7]도 함께 보입니다.':'b의 바깥 리스트 O2에 [7]을 추가합니다. a의 바깥 리스트 O1은 늘어나지 않습니다.');
-  output.push(pyRepr(a));save(6,'a의 현재 값을 출력했습니다.');output.push(pyRepr(b));save(7,'b의 현재 값을 출력했습니다.');
+  const code=[...(mode==='deep'?['import copy']:[]),'a = [[1], [2]]',`b = ${expression}`,`b[0].append(${value})`,'b.append([7])','print(a)','print(b)'];
+  const states=[];let a=null,b=null,output=[],line=0;
+  const save=description=>states.push({line:++line,description,a:copyValue(a),b:copyValue(b),outerSame:mode==='assignment'&&b!==null,innerShared:mode!=='deep'&&b!==null,output:[...output]});
+  if(mode==='deep')save('copy 모듈을 가져왔습니다. 다음 복사 단계에서 copy.deepcopy(a)를 호출합니다. a와 b는 아직 만들지 않았습니다.');
+  a=[[1],[2]];save('a가 바깥 리스트 O1을 가리키고, O1은 내부 리스트 N1과 N2를 가리킵니다.');
+  b=mode==='assignment'?a:mode==='shallow'?[...a]:copyValue(a);save(mode==='assignment'?'a와 b가 같은 바깥 리스트 O1을 가리킵니다.':mode==='shallow'?'b의 바깥 리스트 O2는 새 객체지만, N1·N2는 a와 함께 가리킵니다.':'b의 바깥 리스트 O2와 내부 리스트 N3·N4가 새 객체입니다.');
+  b[0].push(value);save(mode==='deep'?'b가 가리키는 새 내부 리스트 N3만 바뀝니다.':'b[0]이 가리키는 N1을 수정합니다. a에서도 같은 내부 객체의 변화를 봅니다.');
+  b.push([7]);save(mode==='assignment'?'a와 b가 같은 바깥 리스트를 가리키므로 [7]도 함께 보입니다.':'b의 바깥 리스트 O2에 [7]을 추가합니다. a의 바깥 리스트 O1은 늘어나지 않습니다.');
+  output.push(pyRepr(a));save('a의 현재 값을 출력했습니다.');output.push(pyRepr(b));save('b의 현재 값을 출력했습니다.');
   return{mode,value,code,states,output:output.join('\n')};
 }
 function boundary(v){if(v===null||v===undefined)return null;if(!Number.isSafeInteger(v)||v< -99||v>99)throw new RangeError('start/stop must be -99..99 or null');return v;}

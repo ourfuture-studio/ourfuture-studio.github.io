@@ -1632,8 +1632,8 @@
     },
     {
       "path": "programming-c.mjs",
-      "sha256": "43c1bff09a1fd6fead8026cd3dedd89f37e2d3cab2eac92c9b0f6903475934c5",
-      "bytes": 12243
+      "sha256": "606d05fbe15f7688bc1ea602d902648f9815f52ebe827c3856f86868582553b5",
+      "bytes": 12332
     },
     {
       "path": "programming-java.mjs",
@@ -1642,8 +1642,8 @@
     },
     {
       "path": "programming-python.mjs",
-      "sha256": "5dc6b7c2a4aac0bb0ebb6e240fe664bfb4a710fb2058858e20f658d942dfa281",
-      "bytes": 10227
+      "sha256": "f12c539f123ce7066f1e89db9be292dd5a09eab5b2c0bd79bad05ca1a946d17b",
+      "bytes": 10328
     },
     {
       "path": "programming.css",
@@ -1652,12 +1652,12 @@
     },
     {
       "path": "programming.html",
-      "sha256": "9ce5ef5b40ac4824e4245c0bbb4d47467f2d1f7af1c2c03143e7b67dd02dfc06",
-      "bytes": 41356
+      "sha256": "500eeb8bc9429280800736b53fc7539bea2a8b2904b6db8fbbca5005394fdd54",
+      "bytes": 41733
     },
     {
       "path": "programming.mjs",
-      "sha256": "2ca4d1c0ae42c90829b1aae1b8d32648da5e86df697fa3f690e6f91e1e119630",
+      "sha256": "aeed2fb86d26d597eab3fefbcc478d9efebd956ee1a596ad99dc4841b1ea1704",
       "bytes": 231
     },
     {
