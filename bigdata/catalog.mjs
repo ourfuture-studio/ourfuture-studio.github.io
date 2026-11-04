@@ -285,12 +285,14 @@ export const CATALOG = [
         "세 과제 동점"
       ],
       "answer": 2,
-      "reason": "A=5, B=12, C=6이므로 가장 큰 12점을 얻은 B다.",
+      "reason": "A=5, B=12, C=6이다. 가장 큰 12점을 얻은 과제 B를 선택하므로 정답은 2번이다.",
       "wrong_reasons": [
         "1번은 긴급성(Urgency)만 비교한 선택이다.",
         "3번의 점수 6은 B의 12보다 작다.",
         "4번은 계산한 점수가 서로 다르므로 틀리다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "같은 자체 규칙에서 실행 가능성(Feasibility) 변경과 동점을 확인한다.",
     "kind": "numeric",
@@ -369,8 +371,10 @@ export const CATALOG = [
       "wrong_reasons": [
         "1번은 입력 자료를 분석 가능한 형태로 준비하는 단계다.",
         "2번은 예측 규칙을 학습하는 작업에 해당한다.",
-        "4번은 전체 검토를 자료 범위 선정으로 축소(Shrinkage)한다."
-      ]
+        "4번은 전체 검토를 자료 범위 선정만으로 한정해 해석한다."
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "학습 후 현재 해야 할 일을 바꾸어 단계를 고른다.",
     "kind": "decision",
@@ -1040,8 +1044,8 @@ export const CATALOG = [
       "stem": "가장 직접적인 품질 문제의 연결은?",
       "choices": [
         "A 완전성(Completeness)·B 유효성(Validity)",
-        "A 유일성·B 완전성(Completeness)",
-        "A 적시성·B 유일성",
+        "A 유일성(Uniqueness)·B 완전성(Completeness)",
+        "A 적시성(Timeliness)·B 유일성(Uniqueness)",
         "A와 B 모두 실제 점수가 확인됐다"
       ],
       "answer": 1,
@@ -1050,7 +1054,9 @@ export const CATALOG = [
         "② 중복 여부는 주어지지 않았고 B의 값은 존재한다.",
         "③ 입력 시점이나 중복에 관한 정보는 없다.",
         "④ 두 기록 모두 실제 점수와의 대조는 하지 않았다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "값의 존재·허용 규칙·원기록을 바꿔 어떤 품질 검사가 실패하는지 확인한다.",
     "kind": "condition-choice",
@@ -1400,12 +1406,15 @@ export const CATALOG = [
       "wrong_reasons": [
         "② 산출물의 구조를 뒤집었다.",
         "③ B는 새 축 하나이고 원래 두 열이 그대로 남지 않는다.",
-        "④ 선택·축소(Shrinkage) 과정에서 필요한 정보가 사라질 수도 있다."
-      ]
+        "④ 특성 선택(Feature Selection)·차원 축소(Dimensionality Reduction) 과정에서 필요한 정보가 사라질 수도 있다."
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "같은 입력에서 원래 열을 선택하거나 새 값을 결합하는 차이를 확인한다.",
     "kind": "feature-transform",
     "relatedCodes": [
+      "3-21",
       "2-16",
       "2-21"
     ],
@@ -1545,11 +1554,11 @@ export const CATALOG = [
     "code": "2-24",
     "subject": 2,
     "title": "산술평균(Arithmetic Mean)·기하평균(Geometric Mean)·조화평균(Harmonic Mean)",
-    "lead": "평균(Mean)은 무조건 더하고 개수로 나누는 한 종류의 계산이 아니다. 같은 시간의 속도(Velocity), 같은 거리의 속도(Velocity), 기간별 성장배율은 서로 다른 합계와 관계를 보존해야 한다.",
-    "cue": "속도(Velocity) 평균(Mean)은 총거리 나누기 총시간에서 시작한다.",
+    "lead": "평균(Mean)은 무조건 더하고 개수로 나누는 한 종류의 계산이 아니다. 같은 시간의 속도(Speed), 같은 거리의 속도(Speed), 기간별 성장배율은 서로 다른 합계와 관계를 보존해야 한다.",
+    "cue": "속도(Speed) 평균(Mean)은 총거리 나누기 총시간에서 시작한다.",
     "question": {
       "givens": "같은 거리 60km씩을 시속 30km와 60km로 이동했다. 정차 시간은 없다.",
-      "stem": "전체 평균(Mean) 속도(Velocity)는 몇 km/h인가?",
+      "stem": "전체 평균(Mean) 속도(Speed)는 몇 km/h인가?",
       "choices": [
         "30",
         "40",
@@ -1559,12 +1568,14 @@ export const CATALOG = [
       "answer": 2,
       "reason": "총거리 120km, 총시간 60/30+60/60=3h이므로 40km/h다.",
       "wrong_reasons": [
-        "① 느린 구간 속도(Velocity)만 골랐다.",
+        "① 느린 구간 속도(Speed)만 골랐다.",
         "③ 같은 시간일 때의 산술평균(Arithmetic Mean)을 같은 거리 조건에 적용했다.",
-        "④ 빠른 구간 속도(Velocity)만 골랐다."
-      ]
+        "④ 빠른 구간 속도(Speed)만 골랐다."
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
-    "goal": "두 속도(Velocity)와 동일 거리·동일 시간 조건을 바꾸어 평균(Mean) 속도(Velocity)를 계산한다.",
+    "goal": "두 속도(Speed)와 동일 거리·동일 시간 조건을 바꾸어 평균(Mean) 속도(Speed)를 계산한다.",
     "kind": "weighted-rate",
     "relatedCodes": [
       "2-17",
@@ -2080,12 +2091,14 @@ export const CATALOG = [
         "범주 빈도 카이제곱 검정(Chi-square Test)"
       ],
       "answer": 3,
-      "reason": "두 집단 사이에 짝이 없고 순위(Rank) 기반 분포 비교를 원하므로 맨-휘트니 U검정(Mann–Whitney U Test) U가 맞는다.",
+      "reason": "두 집단 사이에 짝이 없고 순위(Rank) 기반 분포 비교를 원하므로 맨-휘트니 U 검정(Mann–Whitney U Test)가 맞는다.",
       "wrong_reasons": [
         "1번: 같은 사람의 차이 평균(Mean)을 다루는 설계가 아니다.",
         "2번: 짝별 차이가 필요한 검정인데 여기에는 짝이 없다.",
         "4번: 반응을 범주별 빈도로 정리하는 상황을 제시하지 않았다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "짝 정보와 차이의 대칭성(Symmetry)에 따라 검토할 순위검정을 바꾼다.",
     "kind": "decision",
@@ -2193,12 +2206,14 @@ export const CATALOG = [
         "B, 0.7"
       ],
       "answer": 4,
-      "reason": "정보 이득(Information Gain)은 1−가중 자식 H다. A는 0.2, B는 0.7이므로 B다.",
+      "reason": "정보 이득(Information Gain)은 부모 엔트로피(Entropy)에서 가중 자식 엔트로피를 뺀 값이다. 분할 A는 1−0.8=0.2, 분할 B는 1−0.3=0.7이다. 더 큰 정보 이득 0.7을 얻은 분할 B를 선택하므로 정답은 4번이다.",
       "wrong_reasons": [
         "1번: 남은 불순도(Impurity) 0.8을 이득으로 읽었다.",
         "2번: A의 이득은 맞지만 B보다 작다.",
         "3번: B에 남은 불순도(Impurity)이며 줄어든 양이 아니다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "자식의 실제 도수(Frequency)를 바꿔 부모·가중 자식·정보 이득(Information Gain)을 함께 다시 계산한다.",
     "kind": "calculation",
@@ -2295,7 +2310,7 @@ export const CATALOG = [
     "lead": "층 수만 늘려도 모든 활성화가 선형이면 한 선형식으로 합쳐진다.",
     "cue": "깊이보다 먼저 중간의 비선형성(Nonlinearity)을 확인한다.",
     "question": {
-      "givens": "배타적 논리합(XOR, Exclusive OR) 네 점을 분류한다. 은닉층(Hidden Layer)과 출력층(Output Layer)이 모두 아핀 연산이며 비선형성(Nonlinearity) 활성화가 없다.",
+      "givens": "배타적 논리합(XOR, Exclusive OR) 네 점을 분류한다. 은닉층(Hidden Layer)과 출력층(Output Layer)이 모두 아핀 연산이며 비선형 활성화 함수(Nonlinear Activation Function)가 없다.",
       "stem": "층을 더 쌓으면 직선 한계를 없앨 수 있는가?",
       "choices": [
         "항상 가능하다",
@@ -2309,7 +2324,9 @@ export const CATALOG = [
         "1번: 깊이와 비선형성(Nonlinearity) 표현을 같은 것으로 보았다.",
         "2번: 표본(Sample) 수가 함수족의 선형성을 바꾸지는 않는다.",
         "4번: 편향 제거는 표현을 더 제한하며 배타적 논리합(XOR, Exclusive OR) 해결을 보장하지 않는다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "같은 고정 가중치에서 중간 비선형성(Nonlinearity)을 제거했을 때 배타적 논리합(XOR, Exclusive OR) 네 점 결과를 비교한다.",
     "kind": "decision",
@@ -2822,8 +2839,10 @@ export const CATALOG = [
       "wrong_reasons": [
         "1번: P(경고|A)를 P(A|경고)와 뒤바꾸었다.",
         "2번: 관찰 전의 사전확률(Prior Probability)을 그대로 사용했다.",
-        "3번: 두 가능도(Likelihood)에 사전 규모(Volume)가 다르다는 조건을 반영하지 않았다."
-      ]
+        "3번: 두 가능도(Likelihood)에 사전확률(Prior Probability)이 다르다는 조건을 반영하지 않았다."
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "사전 비율을 바꿔 같은 가능도(Likelihood)의 사후확률(Posterior Probability)을 다시 정규화(Normalization)한다.",
     "kind": "calculation",
@@ -2955,7 +2974,7 @@ export const CATALOG = [
     "cue": "레이블은 표 수, 소프트는 확률 평균(Mean).",
     "question": {
       "givens": "클래스(Class) 1 확률 0.51·0.51·0.01. 동등 가중치, 모든 문턱 0.5.",
-      "stem": "하드·소프트 보팅(Soft Voting)의 범주 순서는?",
+      "stem": "하드 보팅(Hard Voting)·소프트 보팅(Soft Voting)의 범주 순서는?",
       "choices": [
         "(1,0)",
         "(1,1)",
@@ -2968,7 +2987,9 @@ export const CATALOG = [
         "2번: 확률 평균(Mean)을 계산하지 않고 다수 레이블을 두 번 사용했다.",
         "3번: 두 결합 방식의 결과를 서로 바꾸었다.",
         "4번: 하드 보팅(Hard Voting)에서 1이 두 표라는 사실을 놓쳤다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "같은 다수표여도 확률 평균(Mean)이 다른 결론을 낼 수 있음을 확인한다.",
     "kind": "calculation",
@@ -3535,7 +3556,7 @@ export const CATALOG = [
     "lead": "회귀 단변량 분산분석(ANOVA, Analysis of Variance)의 전체 F검정(Overall F-Test)은 절편(Intercept)을 제외한 기울기가 모두0인지 공동으로 묻는다. 결과가 유의하더라도 각 계수가 하나씩 모두 유의하다는 결론으로 바꾸지 않는다.",
     "cue": "제곱합이 아니라 평균제곱을 비교한다.",
     "question": {
-      "givens": "절편(Intercept) 포함 최소제곱법(OLS, Ordinary Least Squares)에서 n=12, 설명변수(Explanatory Variable) p=2, 회귀제곱합(SSR, Regression Sum of Squares)=80, 잔차제곱합(SSE, Residual Sum of Squares)=20이다. 완전계수와 독립 정규·등분산성(Homoscedasticity) 오차의 고전적 전체 F검정(Overall F-Test)이다.",
+      "givens": "절편(Intercept) 포함 최소제곱법(OLS, Ordinary Least Squares)에서 n=12, 설명변수(Explanatory Variable) p=2, 회귀제곱합(SSR, Regression Sum of Squares)=80, 잔차제곱합(SSE, Residual Sum of Squares)=20이다. 설계행렬(Design Matrix)의 완전 열랭크(Full Column Rank), 독립 정규오차(Normal Errors), 등분산성(Homoscedasticity)을 가정하는 고전적 전체 F검정(Overall F-Test)이다.",
       "stem": "전체 F 통계량(Statistic)은?",
       "choices": [
         "4",
@@ -3549,7 +3570,9 @@ export const CATALOG = [
         "1번: 80/20만 계산해 회귀와 잔차(Residual)의 서로 다른 자유도(df, Degrees of Freedom)를 빠뜨렸다.",
         "2번: 잔차(Residual) 자유도(df, Degrees of Freedom) 12−2−1=9를 F 통계량(Statistic)과 혼동했다.",
         "4번: 분자인 회귀 평균제곱만 구하고 잔차(Residual) 평균제곱으로 나누지 않았다."
-      ]
+      ],
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "goal": "주어진 요약에서 p와 n을 바꾸어 평균제곱 비를 계산한다.",
     "kind": "numeric",

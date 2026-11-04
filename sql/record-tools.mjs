@@ -1,6 +1,6 @@
-import {CATALOG} from './catalog.mjs';
-import {PROGRESS_CATALOG,questionsForLesson,lessonPracticeUrl} from './practice-data.mjs';
-import {createProgressStore} from './progress.mjs';
+import {CATALOG} from './catalog.mjs?v=cedc4a26530a';
+import {PROGRESS_CATALOG,questionsForLesson,lessonPracticeUrl} from './practice-data.mjs?v=28eacc4a4dd4';
+import {createProgressStore} from './progress.mjs?v=d07932bb141d';
 
 /** Shared reader/lab record mount. Does not touch SQL inputs or engine state. */
 export function mountRecordTools({code,mount,base='',kind='theory',includeLinks=false}={}){

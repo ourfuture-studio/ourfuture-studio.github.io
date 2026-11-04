@@ -433,23 +433,23 @@
     },
     {
       "file": "figures.html",
-      "sha256": "866fbea08f249b806a039f5f8af53fb7fa3d761c9fd9dd44e9f59a17a0444581",
-      "bytes": 12831
+      "sha256": "8119f8d318e97c2c21ad44daf56bc5e0bf18b478b956ece7211166eded2770cc",
+      "bytes": 13670
     },
     {
       "file": "guide.html",
-      "sha256": "f5401d34db5cb92633eff61d602c3b0187e631808854203e9668855fe3f00fd1",
-      "bytes": 19117
+      "sha256": "0dc876338a6119727f315a2b025efd6b5495116beb03ea8376eb64be4e385d49",
+      "bytes": 19956
     },
     {
       "file": "index.html",
-      "sha256": "e9bc975f6ce824fd916b10fc2b0b47ca410210397c1c23d497462a8b7110ad9a",
-      "bytes": 2184
+      "sha256": "bb405289e363a766bdcca845d8e1ca3fc76c71919cecaa4c3e5ae1131caf3bd7",
+      "bytes": 3023
     },
     {
       "file": "lab.html",
-      "sha256": "ccc1f9d3d8a265642a4cb7597412c38d7e3de887be680bf21f606a7db8002399",
-      "bytes": 882
+      "sha256": "d2cc25e3b09920fa590faf61c6142c01deb9aeb9173d58fa5b0cdcfc6ca372c7",
+      "bytes": 1721
     },
     {
       "file": "modules/part12/m01-cost.js",
@@ -546,5 +546,6 @@
       "sha256": "34d66d8497bb3c93ffc17a7218b8163cd862757bbe99899aead8fbe630c80f17",
       "bytes": 8338
     }
-  ]
+  ],
+  "rightsNoticeVersion": 1
 }

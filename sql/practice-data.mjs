@@ -1,4 +1,4 @@
-import {CATALOG} from './catalog.mjs';
+import {CATALOG} from './catalog.mjs?v=cedc4a26530a';
 // Stable IDs extend the existing v1 answer catalog without changing its 12 original keys.
 const additions = [
   {

@@ -36,22 +36,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E001-C3",
-      "reason": "두 값이 같아도 각각 기록된 행이다. NULL인 표현식은 세지 않지만 중복을 자동 제거하지도 않는다.",
+      "reason": "집계 함수(Aggregate Function) COUNT(coupon_amount)는 널(NULL)이 아닌 표현식 값을 센다. 500이 두 행에 각각 기록되어 있으므로 2다. 중복 제거(DISTINCT)를 쓰지 않았으므로 같은 금액도 각각 센다.",
       "wrongReasons": [
         {
           "choiceId": "E001-C1",
-          "reason": "이 COUNT는 나머지 두 값을 센다."
+          "reason": "0은 세 행의 coupon_amount가 모두 NULL일 때의 값이다. 현재 201·203의 500은 NULL이 아니므로 두 행을 센다."
         },
         {
           "choiceId": "E001-C2",
-          "reason": "그것은 COUNT(DISTINCT coupon_amount)의 결과다."
+          "reason": "1은 COUNT(DISTINCT coupon_amount)의 결과다. 현재 식에는 DISTINCT가 없어서 같은 500도 두 번 센다."
         },
         {
           "choiceId": "E001-C4",
-          "reason": "COUNT(*)의 결과와 바뀌었다."
+          "reason": "3은 COUNT(*)의 결과다. COUNT(coupon_amount)는 NULL인 202번을 세지 않으므로 2다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-01-check",
@@ -75,7 +77,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 5
+    "variantCount": 5,
+    "reviewTerms": "집계 함수(Aggregate Function), 널(NULL), 중복 제거(DISTINCT)"
   },
   {
     "code": "E025",
@@ -114,26 +117,42 @@ export const CATALOG = [
         }
       ],
       "answerId": "E025-C1",
-      "reason": "A의 입력은 10, NULL, 10이 되어 20이다. B는 금액 합계 27과 수수료 합계 5를 구한 뒤 더해 32다. SUM을 열 합계인지 행 합계인지로만 외우지 않고 인수 표현식을 읽는다.",
+      "reason": "널 전파(NULL Propagation) 때문에 행별 amount+fee는 10, NULL, 10이다. A의 SUM은 이 중 NULL 아닌 10 두 개를 더해 20이다. B는 amount의 합 27과 fee의 합 5를 각각 구한 뒤 더하므로 32다. 두 식은 집계 함수(Aggregate Function)의 인수가 다르다.",
       "wrongReasons": [
         {
           "choiceId": "E025-C2",
-          "reason": "NULL 산술 결과를 자동으로 0 대입하지 않는다."
+          "reason": "A에서 12+NULL은 NULL이다. 이를 12로 읽으려면 fee를 먼저 COALESCE 등으로 대체하는 별도 식이 필요하다. 따라서 A는 32가 아닌 20이다."
         },
         {
           "choiceId": "E025-C3",
-          "reason": "B의 amount 12는 그 열의 SUM에 들어간다."
+          "reason": "B의 SUM(amount)에는 202번의 amount 12도 포함된다. SUM(fee)가 그 행의 NULL을 제외해도 다른 열 집계의 12까지 제외하지 않으므로 B는 32다."
         },
         {
           "choiceId": "E025-C4",
-          "reason": "이 데이터에는 NULL이 아닌 집계 입력도 있다."
+          "reason": "각 SUM에는 NULL 아닌 입력도 있다. A는 10과 10, B는 각 열의 NULL 아닌 값들을 합하므로 두 결과 모두 NULL이 아니다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": null,
-    "sources": [],
-    "variantCount": 4
+    "sources": [
+      {
+        "title": "Oracle 19c Nulls",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+      },
+      {
+        "title": "Oracle 19c SUM",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html"
+      },
+      {
+        "title": "Oracle 19c Aggregate-Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
+      }
+    ],
+    "variantCount": 4,
+    "reviewTerms": "집계 함수(Aggregate Function), 널 전파(NULL Propagation), 널 대체(COALESCE)"
   },
   {
     "code": "E004",
@@ -172,22 +191,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E004-C2",
-      "reason": "11번 고객이 두 주문과 각각 대응해 두 행이 된다. 22는 한 행, 주문이 없는 33은 오른쪽 값이 NULL인 한 행이 된다.",
+      "reason": "왼쪽 외부 조인(Left Outer Join)은 일치하는 행의 쌍과 왼쪽의 미일치 행을 보존한다. 고객 11은 주문 201·202와 각각 연결되어 2행, 22는 주문 203과 1행, 주문 없는 33은 오른쪽 열이 NULL인 1행이다. 따라서 2+1+1=4행이다.",
       "wrongReasons": [
         {
           "choiceId": "E004-C1",
-          "reason": "11이 두 번 대응한다."
+          "reason": "왼쪽 고객 수 3과 결과 행 수를 같다고 본 경우다. 고객 11이 주문 두 행과 각각 연결되므로 그 고객은 두 행으로 나온다."
         },
         {
           "choiceId": "E004-C3",
-          "reason": "조인은 두 목록의 단순 합치기가 아니다."
+          "reason": "고객 수와 주문 수를 단순히 더하지 않는다. 조인 조건이 TRUE인 쌍과 미일치 왼쪽 행을 세면 4행이다."
         },
         {
           "choiceId": "E004-C4",
-          "reason": "3×3은 이 조건 없는 CROSS JOIN의 계산이다."
+          "reason": "9는 조건 없이 모든 쌍을 만드는 교차 조인(Cross Join)의 3×3이다. 현재는 고객 번호 일치 조건을 만족하는 쌍만 연결한다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-09-check",
@@ -207,7 +228,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 5
+    "variantCount": 5,
+    "reviewTerms": "왼쪽 외부 조인(Left Outer Join), 내부 조인(Inner Join), 조인 조건(Join Condition)"
   },
   {
     "code": "E016",
@@ -246,22 +268,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E016-C2",
-      "reason": "A에서는 붙일 주문이 없어 22를 빈 주문 행으로 남긴다. B에서는 22의 실제 주문 7이 먼저 붙고, 이후 필터에서 그 행이 사라진다. 33도 B의 결과에 남지 않는다.",
+      "reason": "조인 조건(Join Condition, ON)은 연결할 주문을 고르고 행 필터(Row Filter, WHERE)는 조인 후 행을 고른다. A는 고객 11의 금액 12인 주문 1행과 22·33의 미일치 보존 행을 합쳐 3행이다. B는 금액 7인 22와 오른쪽 NULL인 33이 WHERE를 통과하지 못해 11의 주문 1행만 남는다.",
       "wrongReasons": [
         {
           "choiceId": "E016-C1",
-          "reason": "A에는 22·33의 빈 주문 행이 남는다."
+          "reason": "A에서는 조건을 만족하는 주문이 없는 22·33도 LEFT JOIN의 왼쪽 행 보존 때문에 남으므로 1행이 아니라 3행이다."
         },
         {
           "choiceId": "E016-C3",
-          "reason": "B의 NULL>=10은 TRUE가 아니어서 남지 않는다."
+          "reason": "B의 WHERE는 금액 7과 NULL을 모두 남기지 않는다. NULL>=10은 미정(UNKNOWN)이므로 TRUE만 통과시키는 WHERE에서 제외된다."
         },
         {
           "choiceId": "E016-C4",
-          "reason": "A가 3행, B가 1행이다."
+          "reason": "ON과 WHERE의 적용 위치를 뒤집었다. A는 고객을 보존하여 3행이고 B는 조인 후 조건에 맞는 주문만 남겨 1행이다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-10-check",
@@ -285,7 +309,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 3
+    "variantCount": 3,
+    "reviewTerms": "왼쪽 외부 조인(Left Outer Join), 조인 조건(Join Condition, ON), 행 필터(Row Filter, WHERE)"
   },
   {
     "code": "E019",
@@ -324,26 +349,38 @@ export const CATALOG = [
         }
       ],
       "answerId": "E019-C1",
-      "reason": "22에 대해서는 22<>11 AND 22<>NULL을 읽는다. TRUE AND UNKNOWN이므로 UNKNOWN이고 WHERE를 통과하지 못한다. 33도 같다. 11은 FALSE다. 모든 행이 UNKNOWN인 것은 아니다.",
+      "reason": "3값 논리(Three-valued Logic)로 판단한다. 11 NOT IN (11,NULL)은 11과의 불일치가 FALSE여서 FALSE다. 22에서는 22<>11 AND 22<>NULL이 TRUE AND 미정(UNKNOWN)이므로 UNKNOWN이며 33도 같다. WHERE는 TRUE만 남겨 최종 0명이다.",
       "wrongReasons": [
         {
           "choiceId": "E019-C2",
-          "reason": "이것은 NOT IN이 묻는 방향과 반대다."
+          "reason": "11 한 명을 남겼다면 IN과 NOT IN을 뒤집어 읽은 것이다. 11은 목록과 일치하므로 NOT IN이 FALSE이고, 22·33도 UNKNOWN이라 남지 않는다."
         },
         {
           "choiceId": "E019-C3",
-          "reason": "NOT IN은 이 항목을 자동 제거하지 않는다."
+          "reason": "NULL을 목록에서 자동으로 빼면 22·33을 남기게 된다. 현재 SQL에는 NULL 제외 조건이 없으므로 이 두 행의 NOT IN은 UNKNOWN이다."
         },
         {
           "choiceId": "E019-C4",
-          "reason": "11은 명확히 일치해 제외된다."
+          "reason": "11은 목록에 일치하는 값이 있어 FALSE이고 22·33은 UNKNOWN이다. TRUE인 고객이 한 명도 없으므로 세 명 모두 반환되지 않는다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": null,
-    "sources": [],
-    "variantCount": 4
+    "sources": [
+      {
+        "title": "Oracle 19c Nulls",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+      },
+      {
+        "title": "Oracle 19c IN-Condition",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/IN-Condition.html"
+      }
+    ],
+    "variantCount": 4,
+    "reviewTerms": "미포함 조건(NOT IN Condition), 3값 논리(Three-valued Logic), 미정(UNKNOWN)"
   },
   {
     "code": "E026",
@@ -382,22 +419,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E026-C2",
-      "reason": "둘 다 입력 행은 유지한다. A의 2일차 누계는 10·19이고 B는 두 행 모두 19다. 같은 날짜만으로 ROWS 행 순서를 단정하지 않도록 A에는 고유 ID를 지정했다.",
+      "reason": "윈도우 프레임(Window Frame) A는 날짜와 고유 영수증 번호 순으로 현재 행까지 누적하여 2일차에 10·19를 붙인다. B는 날짜 기준의 논리적 값 범위(RANGE)여서 같은 날짜 동률(Peer)인 두 행을 함께 포함한다. 두 행 모두 4+6+9=19가 되므로 B만 해당한다.",
       "wrongReasons": [
         {
           "choiceId": "E026-C1",
-          "reason": "둘 다 입력 행은 유지한다. A의 2일차 누계는 10·19이고 B는 두 행 모두 19다. 같은 날짜만으로 ROWS 행 순서를 단정하지 않도록 A에는 고유 ID를 지정했다."
+          "reason": "A의 물리적 행 범위(ROWS)는 고유 번호로 순서가 정해져 402까지 4+6=10, 403까지 4+6+9=19다. 날짜가 같아도 누계가 서로 다르다."
         },
         {
           "choiceId": "E026-C3",
-          "reason": "둘 다 입력 행은 유지한다. A의 2일차 누계는 10·19이고 B는 두 행 모두 19다. 같은 날짜만으로 ROWS 행 순서를 단정하지 않도록 A에는 고유 ID를 지정했다."
+          "reason": "두 쿼리 모두 입력 행을 유지하지만 프레임은 다르다. 날짜 동률을 함께 포함하는 B만 두 행에 19를 붙이고 A는 10·19를 붙인다."
         },
         {
           "choiceId": "E026-C4",
-          "reason": "둘 다 입력 행은 유지한다. A의 2일차 누계는 10·19이고 B는 두 행 모두 19다. 같은 날짜만으로 ROWS 행 순서를 단정하지 않도록 A에는 고유 ID를 지정했다."
+          "reason": "B의 RANGE ... CURRENT ROW는 현재 날짜와 동률인 행을 함께 포함한다. 따라서 2일차 두 행 모두 19가 되어 조건에 해당한다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-27-check",
@@ -417,7 +456,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SUM.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "윈도우 프레임(Window Frame), 물리적 행 범위(ROWS), 논리적 값 범위(RANGE), 동률(Peer)"
   },
   {
     "code": "E002",
@@ -456,26 +496,38 @@ export const CATALOG = [
         }
       ],
       "answerId": "E002-C1",
-      "reason": "정답. A는 TRUE가 되는 행이 없고 B는 주문 302를 남긴다.",
+      "reason": "널(NULL)과 등호 비교의 결과는 미정(UNKNOWN)이며 NULL끼리도 TRUE가 아니다. A의 coupon=NULL은 모든 행에서 TRUE가 아니므로 0행이다. B의 IS NULL은 NULL 여부 검사여서 coupon이 NULL인 주문 302 한 행을 찾는다. 0원인 303은 이 검사와 별개다.",
       "wrongReasons": [
         {
           "choiceId": "E002-C2",
-          "reason": "등호도 NULL을 찾는 검사로 읽은 오답이다."
+          "reason": "A의 =NULL은 NULL 여부 검사가 아니다. NULL인 302에서도 UNKNOWN이므로 WHERE를 통과하지 못해 A는 0행이다."
         },
         {
           "choiceId": "E002-C3",
-          "reason": "IS NULL까지 일반 값 비교처럼 처리한 오답이다."
+          "reason": "IS NULL은 NULL 여부를 검사하므로 NULL인 302 한 행을 찾는다. 일반 값 비교인 =NULL과 같게 취급하지 않는다."
         },
         {
           "choiceId": "E002-C4",
-          "reason": "두 조건의 역할을 뒤집은 오답이다."
+          "reason": "두 조건의 역할을 뒤집었다. =NULL은 TRUE인 행이 없고 IS NULL만 NULL인 302를 반환한다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": null,
-    "sources": [],
-    "variantCount": 4
+    "sources": [
+      {
+        "title": "Oracle 19c Nulls",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+      },
+      {
+        "title": "Oracle 19c COUNT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html"
+      }
+    ],
+    "variantCount": 4,
+    "reviewTerms": "널(NULL), 3값 논리(Three-valued Logic), 미정(UNKNOWN)"
   },
   {
     "code": "E011",
@@ -514,22 +566,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E011-C3",
-      "reason": "DISTINCT는 SELECT 목록의 값이 모두 같은 행을 중복으로 판단한다. (11, 커피) 두 건은 한 번 남고, (11, 차), (22, 커피)가 각각 남는다. 아래 표는 설명용 순서이며 ORDER BY가 없는 쿼리의 출력 순서를 보장하지 않는다.",
+      "reason": "중복 제거(DISTINCT)는 SELECT 목록 전체의 튜플(Tuple), 즉 (customer_id,menu)를 비교한다. (11,커피) 두 행은 하나가 되고 (11,차), (22,커피)는 서로 달라 총 3행이다. 선택하지 않은 order_id는 이 중복 판단에 참여하지 않으며 ORDER BY 없는 출력 순서는 보장하지 않는다.",
       "wrongReasons": [
         {
           "choiceId": "E011-C1",
-          "reason": "전체를 한 그룹처럼 처리한 결과다. 서로 다른 값의 묶음이 세 개 있다."
+          "reason": "전체 결과를 한 그룹으로 합치는 집계가 아니다. 선택한 두 열의 값 조합은 세 종류여서 한 행만 남지 않는다."
         },
         {
           "choiceId": "E011-C2",
-          "reason": "고객번호만 비교하면 2행이지만, 이 SELECT에는 메뉴도 포함된다. 메뉴만 비교해도 2종류지만 두 열의 조합과는 다르다."
+          "reason": "customer_id만 또는 menu만 고르면 각각 두 종류지만, 현재는 두 열을 함께 비교하므로 (11,커피), (11,차), (22,커피)의 세 조합이다."
         },
         {
           "choiceId": "E011-C4",
-          "reason": "중복 제거 전 구매 행 수다. 선택하지 않은 order_id가 다르다는 이유로 결과를 4행으로 세면 안 된다."
+          "reason": "4는 중복 제거 전 구매 수다. 선택하지 않은 order_id가 달라도 SELECT한 (11,커피)가 두 행에서 같으면 DISTINCT는 한 행만 남긴다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-18-check",
@@ -545,7 +599,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "중복 제거(DISTINCT), 투영(Projection), 튜플(Tuple)"
   },
   {
     "code": "E005",
@@ -584,22 +639,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E005-C2",
-      "reason": "UNION에는 11, 22, 33이 남고, UNION ALL에는 입력의 다섯 행이 남는다.",
+      "reason": "합집합(UNION)은 선택한 열 전체가 같은 결과 행을 한 번만 남겨 11·22·33의 3행이 된다. UNION ALL은 중복 제거 없이 A의 3행과 B의 2행을 모두 유지하여 5행이다. 원본 표의 행을 삭제하는 연산은 아니다.",
       "wrongReasons": [
         {
           "choiceId": "E005-C1",
-          "reason": "①은 ALL에서도 중복을 없앤 경우"
+          "reason": "UNION ALL은 A 내부의 11 두 행과 두 입력의 22를 모두 유지한다. ALL에서도 중복을 제거하면 B를 3행으로 잘못 세게 된다."
         },
         {
           "choiceId": "E005-C3",
-          "reason": "③은 두 표 사이의 22만 합치고 A 내부의 11은 두 번 남긴 경우"
+          "reason": "UNION은 두 입력 사이에 겹치는 22뿐 아니라 A 내부의 11 중복도 제거한다. 따라서 A 결과는 4행이 아닌 3행이다."
         },
         {
           "choiceId": "E005-C4",
-          "reason": "④는 UNION도 모두 보존한다고 생각한 경우다."
+          "reason": "UNION과 UNION ALL을 같은 연산으로 읽었다. UNION은 11과 22의 반복을 제거하여 3행만 남긴다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-19-check",
@@ -619,7 +676,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "합집합(UNION), 중복을 유지하는 합치기(UNION ALL), 결과 행(Result Row)"
   },
   {
     "code": "E003",
@@ -658,22 +716,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E003-C1",
-      "reason": "고객 11의 합계는 8+7=15, 고객 22는 12다.",
+      "reason": "그룹화(Grouping, GROUP BY)로 고객별 합계를 구하면 11은 8+7=15, 22는 12다. 그룹 필터(Group Filter, HAVING)는 이 합계가 15 이상인지 검사하므로 경계값 15를 포함하는 11만 반환한다. 개별 주문 금액을 검사하는 WHERE 조건으로 바꾸면 다른 결과가 된다.",
       "wrongReasons": [
         {
           "choiceId": "E003-C2",
-          "reason": "②는 합계 대신 가장 큰 개별 주문을 고른 경우"
+          "reason": "가장 큰 개별 주문 12를 고른 경우다. HAVING은 고객별 합계에 적용되므로 11의 15가 통과하고 22의 12는 탈락한다."
         },
         {
           "choiceId": "E003-C3",
-          "reason": "③은 고객을 묶기만 하고 조건을 적용하지 않은 경우"
+          "reason": "GROUP BY 후 HAVING 조건도 적용해야 한다. 고객 22의 합계 12는 15 미만이므로 두 고객을 모두 반환하지 않는다."
         },
         {
           "choiceId": "E003-C4",
-          "reason": "④는 개별 주문이 모두 15 미만이므로 탈락시킨 경우다."
+          "reason": "각 주문이 15 미만이라는 사실로 합계까지 15 미만이라고 결론낼 수 없다. 고객 11은 8+7=15이고 >=는 경계값을 포함한다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-17-check",
@@ -693,7 +753,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "행 필터(Row Filter, WHERE), 그룹 필터(Group Filter, HAVING), 그룹화(Grouping, GROUP BY)"
   },
   {
     "code": "E018",
@@ -732,22 +793,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E018-C3",
-      "reason": "고객 11과 22에는 일치하는 주문 행이 있다. SELECT 목록이 NULL이어도 해당 행이 사라지는 것은 아니다.",
+      "reason": "존재 조건(EXISTS Condition)은 상관 서브쿼리(Correlated Subquery)의 결과 행이 있는지 검사한다. 고객 11·22에는 같은 고객 번호의 주문이 있어 TRUE이고, 33에는 없어 FALSE다. SELECT NULL은 출력 값만 NULL로 만들며 찾은 행을 없애지 않으므로 결과는 두 고객이다.",
       "wrongReasons": [
         {
           "choiceId": "E018-C1",
-          "reason": "①은 반환 값 NULL을 0행으로 오해한 경우"
+          "reason": "SELECT 목록의 NULL을 결과 0행과 혼동했다. 주문이 있는 11·22에서는 NULL을 담은 행이 존재하여 EXISTS가 TRUE다."
         },
         {
           "choiceId": "E018-C2",
-          "reason": "②는 주문이 두 건 이상인 고객만 남긴다고 읽은 경우"
+          "reason": "EXISTS는 두 건 이상인지가 아니라 한 건이라도 있는지를 본다. 한 건인 고객 22도 두 건인 11과 함께 통과한다."
         },
         {
           "choiceId": "E018-C4",
-          "reason": "④는 상관 조건을 놓쳐 전체에 주문이 있으면 고객 33까지 남긴다고 판단한 경우다."
+          "reason": "상관 조건 o.customer_id=c.customer_id를 무시했다. 전체 orders가 비어 있지 않아도 33과 일치하는 행은 없어 33은 제외된다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-14-check",
@@ -767,7 +830,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "존재 조건(EXISTS Condition), 상관 서브쿼리(Correlated Subquery), 결과 집합(Result Set)"
   },
   {
     "code": "E021",
@@ -806,22 +870,24 @@ export const CATALOG = [
         }
       ],
       "answerId": "E021-C4",
-      "reason": "90점 두 명이 공동 1위이므로 RANK에서는 80점이 3위, DENSE_RANK에서는 2위다.",
+      "reason": "순위(RANK)는 앞선 행 수에 1을 더하고 밀집 순위(DENSE_RANK)는 앞선 서로 다른 정렬 키 수에 1을 더한다. 80점 고객 33보다 앞선 행은 90점 두 행, 앞선 점수 종류는 90점 하나이므로 A=3위, B=2위다. 동률은 OVER 안의 score DESC 한 열로 정한다.",
       "wrongReasons": [
         {
           "choiceId": "E021-C1",
-          "reason": "①은 RANK도 순위를 건너뛰지 않는다고 생각한 경우"
+          "reason": "2위는 DENSE_RANK에는 맞지만 RANK에는 맞지 않는다. 앞선 90점 두 행이 공동 1위를 차지하므로 다음 RANK는 3이다."
         },
         {
           "choiceId": "E021-C2",
-          "reason": "②는 두 함수 모두 앞선 사람 수로 판단한 경우"
+          "reason": "RANK의 앞선 행 수를 DENSE_RANK에도 적용했다. DENSE_RANK는 앞선 서로 다른 점수 90 하나만 세어 2위다."
         },
         {
           "choiceId": "E021-C3",
-          "reason": "③은 두 함수의 역할을 뒤집은 경우다."
+          "reason": "두 함수의 기준을 뒤집었다. RANK는 3위, DENSE_RANK는 2위다."
         }
       ],
-      "origin": "자체 교육 문제"
+      "origin": "자체 교육 문제",
+      "revision": 2,
+      "reviewedOn": "2026-11-04"
     },
     "recall": {
       "id": "TH-25-check",
@@ -845,7 +911,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
       }
     ],
-    "variantCount": 4
+    "variantCount": 4,
+    "reviewTerms": "순위 함수(Ranking Function), 순위(RANK), 밀집 순위(DENSE_RANK), 동률(Peer)"
   },
   {
     "code": "TH-05",
@@ -887,7 +954,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "빈 집합(Empty Set), 전체 집계(Global Aggregation), 그룹 필터(Group Filter, HAVING)"
   },
   {
     "code": "TH-15",
@@ -925,7 +993,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "포함 조건(IN Condition), 존재 조건(EXISTS Condition), 부재 조건(NOT EXISTS Condition), 상관 서브쿼리(Correlated Subquery)"
   },
   {
     "code": "TH-16",
@@ -959,7 +1028,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "스칼라 서브쿼리(Scalar Subquery), 집계 함수(Aggregate Function)"
   },
   {
     "code": "TH-21",
@@ -993,7 +1063,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "그룹화(Grouping, GROUP BY), 정렬(Ordering, ORDER BY), 논리적 질의 처리(Logical Query Processing)"
   },
   {
     "code": "TH-22",
@@ -1027,7 +1098,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/GROUPING.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "계층적 소계(ROLLUP), 모든 조합 소계(CUBE), 그룹 집합(GROUPING SETS), 총계(Grand Total)"
   },
   {
     "code": "TH-23",
@@ -1061,7 +1133,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "그룹화 표시 함수(GROUPING Function), 소계(Subtotal), 널(NULL)"
   },
   {
     "code": "TH-28",
@@ -1095,7 +1168,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "그룹화(Grouping, GROUP BY), 파티션(Partition, PARTITION BY), 분석 함수(Analytic Function)"
   },
   {
     "code": "TH-31",
@@ -1133,7 +1207,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Analytic-Functions.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "이전 행 함수(LAG), 다음 행 함수(LEAD), 파티션(Partition), 오프셋(Offset)"
   },
   {
     "code": "TH-32",
@@ -1163,7 +1238,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Hierarchical-Queries.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "계층형 질의(Hierarchical Query), 루트 노드(Root Node), 부모 노드(Parent Node), 자식 노드(Child Node)"
   },
   {
     "code": "TH-33",
@@ -1193,7 +1269,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/sql-developer-data-modeler/24.3/dmdug/data-modeler-concepts-usage.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "엔터티 유형(Entity Type), 인스턴스(Instance), 속성(Attribute)"
   },
   {
     "code": "TH-34",
@@ -1227,7 +1304,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "기본 속성(Basic Attribute), 설계 속성(Designed Attribute), 파생 속성(Derived Attribute)"
   },
   {
     "code": "TH-35",
@@ -1257,7 +1335,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "슈퍼 키(Superkey), 후보 키(Candidate Key), 유일성(Uniqueness), 최소성(Minimality)"
   },
   {
     "code": "TH-36",
@@ -1291,7 +1370,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "식별 관계(Identifying Relationship), 비식별 관계(Non-identifying Relationship), 외래 키(Foreign Key), 주 식별자(Primary Identifier)"
   },
   {
     "code": "TH-37",
@@ -1329,7 +1409,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COUNT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "관계 차수(Cardinality), 필수 참여(Mandatory Participation), 선택 참여(Optional Participation), 참조 무결성(Referential Integrity)"
   },
   {
     "code": "TH-38",
@@ -1359,7 +1440,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/sql-developer-data-modeler/24.3/dmdug/data-modeler-concepts-usage.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "정규화(Normalization), 함수 종속(Functional Dependency), 부분 함수 종속(Partial Functional Dependency), 완전 함수 종속(Full Functional Dependency), 이행 함수 종속(Transitive Functional Dependency), 주요 속성(Prime Attribute), 비주요 속성(Non-prime Attribute), 비자명 종속(Nontrivial Dependency), 제2정규형(Second Normal Form, 2NF), 제3정규형(Third Normal Form, 3NF)"
   },
   {
     "code": "TH-39",
@@ -1393,7 +1475,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "인조 식별자(Surrogate Identifier), 자연 키(Natural Key), 업무 키(Business Key), 유일 제약(UNIQUE Constraint)"
   },
   {
     "code": "TH-40",
@@ -1435,7 +1518,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COMMIT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "개념 데이터 모델(Conceptual Data Model), 논리 데이터 모델(Logical Data Model), 물리 데이터 모델(Physical Data Model), 데이터 정의어(Data Definition Language, DDL), 데이터베이스 관리 시스템(Database Management System, DBMS)"
   },
   {
     "code": "TH-41",
@@ -1481,7 +1565,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/error-help/db/ora-01400/"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "검사 제약(CHECK Constraint), 널 금지 제약(NOT NULL Constraint), 미정(UNKNOWN)"
   },
   {
     "code": "TH-42",
@@ -1519,7 +1604,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LENGTH.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "빈 문자열(Empty String), 공백 문자(Space Character), 널(NULL), 문자 길이(Character Length)"
   },
   {
     "code": "TH-43",
@@ -1557,7 +1643,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/error-help/db/ora-01400/"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "기본 키(Primary Key), 유일 제약(UNIQUE Constraint), 널 금지 제약(NOT NULL Constraint)"
   },
   {
     "code": "TH-44",
@@ -1603,7 +1690,8 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "데이터 조작어(Data Manipulation Language, DML), 데이터 정의어(Data Definition Language, DDL), 삭제(DELETE), 전체 행 제거(TRUNCATE), 객체 삭제(DROP)"
   },
   {
     "code": "TH-45",
@@ -1641,6 +1729,7 @@ export const CATALOG = [
         "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/COMMIT.html"
       }
     ],
-    "variantCount": 2
+    "variantCount": 2,
+    "reviewTerms": "트랜잭션(Transaction), 확정(COMMIT), 전체 취소(ROLLBACK), 저장점(SAVEPOINT), 부분 취소(ROLLBACK TO SAVEPOINT)"
   }
 ];

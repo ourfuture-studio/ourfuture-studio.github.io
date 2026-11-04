@@ -6,6 +6,7 @@ const poly1 = (x, a) => a.reduce((y, c) => y * x + c, 1);
 // Cephes rational approximation to erfc, Stephen L. Moshier (1984–1992).
 // Coefficients verified against SciPy XSF, distributed under its BSD license:
 // https://github.com/scipy/xsf/blob/main/include/xsf/cephes/ndtr.h
+// Full attribution and BSD terms: THIRD-PARTY-NOTICES.txt and LICENSE-xsf.txt.
 function erfcPositive(x) {
   if (x < 1) {
     const z = x * x;

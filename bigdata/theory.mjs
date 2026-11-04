@@ -1,5 +1,5 @@
 import { statisticsDestination, statisticsLink } from './statistics-links.mjs?v=724b1282d2dc';
-import { CATALOG } from './catalog.mjs?v=a97b2c78257b';
+import { CATALOG } from './catalog.mjs?v=97da17caf15b';
 import { createProgressStore } from './progress.mjs';
 
 const dataNode=document.querySelector('#theory-data');

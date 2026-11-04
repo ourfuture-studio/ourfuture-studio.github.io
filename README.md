@@ -22,3 +22,9 @@ ourfuture studio · 새로운 지식, 뜻밖의 연결.
 
 
 - [빅분기 필기 조건 실험실](https://ourfuture-studio.github.io/bigdata/) — 네 과목108개 자체 교육 질문과 조건 변경 체험.
+
+## 저작권·이용 안내
+
+© 2026 ourfuture studio. 학습자료의 무단 복제·재배포·판매를 금합니다.
+법령상 허용되는 이용과 별도 라이선스는 예외입니다.
+[저작권·이용 안내](https://ourfuture-studio.github.io/copyright.html)와 [COPYRIGHT.md](COPYRIGHT.md)를 확인하세요.

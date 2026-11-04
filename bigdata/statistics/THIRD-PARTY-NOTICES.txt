@@ -1,0 +1,19 @@
+Third-party numerical approximation notice
+
+The erfc coefficients used in inference-lab.mjs were checked against SciPy XSF
+include/xsf/cephes/ndtr.h. The surrounding JavaScript interface and educational
+visualization are adapted for this site. Numerical algorithms and coefficients
+are not claimed as exclusive ourfuture studio content.
+
+SciPy XSF: Copyright (c) 2024, SciPy. BSD 3-Clause License; see LICENSE-xsf.txt.
+Original upstream attribution retained below:
+Cephes Math Library Release 2.2: June, 1992
+Copyright 1984, 1987, 1988, 1992 by Stephen L. Moshier
+
+Upstream source, verified 2026-11-04:
+https://github.com/scipy/xsf/blob/c6b62c159cdb8b63bafd51cc3e35628fd82decce/include/xsf/cephes/ndtr.h
+Upstream license:
+https://github.com/scipy/xsf/blob/c6b62c159cdb8b63bafd51cc3e35628fd82decce/LICENSE
+
+This separate license applies to the referenced third-party component; the
+site's educational-material reuse notice does not restrict its BSD permissions.

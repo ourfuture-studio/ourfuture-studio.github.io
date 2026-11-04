@@ -1,4 +1,4 @@
-import {SOLVERS} from './models.mjs';
+import {SOLVERS} from './models.mjs?v=c13be94ce73b';
 const $=s=>document.querySelector(s);
 const text=(el,value)=>{el.textContent=value==null?'':String(value)};
 const fmt=v=>{if(typeof v==='number')return Number.isFinite(v)?(Number.isInteger(v)?String(v):String(Number(v.toPrecision(8)))):'정의되지 않음';return typeof v==='object'?JSON.stringify(v):String(v)};

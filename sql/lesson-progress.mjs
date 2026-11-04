@@ -1,5 +1,5 @@
-import {CATALOG} from './catalog.mjs';
-import {mountRecordTools} from './record-tools.mjs';
+import {CATALOG} from './catalog.mjs?v=cedc4a26530a';
+import {mountRecordTools} from './record-tools.mjs?v=a015cbb8dcce';
 let current=null,currentCode=null;
 function connect(code){
  if(code===currentCode||!CATALOG.some(r=>r.code===code))return;

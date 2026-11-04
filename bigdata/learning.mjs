@@ -1,5 +1,5 @@
 import { statisticsDestination, statisticsLink } from './statistics-links.mjs?v=724b1282d2dc';
-import { CATALOG } from './catalog.mjs?v=a97b2c78257b';
+import { CATALOG } from './catalog.mjs?v=97da17caf15b';
 import { createProgressStore } from './progress.mjs';
 
 const store = createProgressStore({catalog: CATALOG});
@@ -98,9 +98,9 @@ function renderQuestion(){
     if(!selected){document.querySelector('#answer-alert').textContent='보기 하나를 고른 뒤 확인해 주세요.';return}
     const answer=Number(selected.value),correct=answer===q.answer;
     session.answers[session.position]={code:item.code,answer,correct};store.recordAnswer(item.code,answer);
-    form.querySelectorAll('input[name=answer]').forEach(input=>{input.disabled=true;const label=input.closest('label');if(Number(input.value)===q.answer)label.classList.add('is-correct');if(input.checked&&!correct)label.classList.add('is-wrong')});
+    form.querySelectorAll('input[name=answer]').forEach(input=>{input.disabled=true;const label=input.closest('label'),isAnswer=Number(input.value)===q.answer,isWrong=input.checked&&!correct;if(isAnswer)label.classList.add('is-correct');if(isWrong)label.classList.add('is-wrong');if(isAnswer||isWrong){const mark=document.createElement('span');mark.className='answer-mark';mark.textContent=isAnswer?'✓ 정답':'✗ 선택한 오답';label.append(mark)}});
     document.querySelector('#answer-alert').textContent='';
-    document.querySelector('#answer-feedback').innerHTML=`<div class="answer-feedback ${correct?'':'wrong'}"><h3>${correct?'맞았습니다. 이유도 확인해 보세요.':'조건을 한 번 더 살펴볼까요?'}</h3><p><strong>정답 ${q.answer}번 · ${esc(q.choices[q.answer-1])}</strong></p><p>${esc(q.reason)}</p><details><summary>다른 보기는 왜 다를까요?</summary><ul>${q.wrong_reasons.map(reason=>`<li>${esc(reason)}</li>`).join('')}</ul></details><p class="button-row">${statisticsLink(item.code)}<a class="line-link" href="${linkFor(item.code)}">${icon('book')} 이론 다시 읽기 ↗</a><a class="line-link" href="${linkFor(item.code,'lesson')}">${icon('flask')} 체험으로 확인 ↗</a></p></div>`;
+    document.querySelector('#answer-feedback').innerHTML=`<div class="answer-feedback ${correct?'':'wrong'}"><h3>${correct?'✓ 맞았습니다. 이유도 확인해 보세요.':'✗ 조건을 한 번 더 살펴볼까요?'}</h3><p><strong>정답 ${q.answer}번 · ${esc(q.choices[q.answer-1])}</strong></p><p>${esc(q.reason)}</p><details><summary>다른 보기는 왜 다를까요?</summary><ul>${q.wrong_reasons.map(reason=>`<li>${esc(reason)}</li>`).join('')}</ul></details><p class="button-row">${statisticsLink(item.code)}<a class="line-link" href="${linkFor(item.code)}">${icon('book')} 이론 다시 읽기 ↗</a><a class="line-link" href="${linkFor(item.code,'lesson')}">${icon('flask')} 체험으로 확인 ↗</a></p></div>`;
     const submit=document.querySelector('#submit-answer');submit.type='button';submit.id='next-question';submit.innerHTML=`${session.position+1===session.items.length?'이번 연습 결과 보기':'다음 문제'} ${icon('arrow')}`;
     submit.addEventListener('click',()=>{if(session.position+1===session.items.length){renderSessionResult()}else{session.position++;renderQuestion();document.querySelector('#question-title').focus()}});
     const aside=document.querySelector('.practice-aside');aside.outerHTML=quizAside();

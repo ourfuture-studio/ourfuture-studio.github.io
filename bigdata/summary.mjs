@@ -1,4 +1,4 @@
-import { CATALOG } from './catalog.mjs?v=a97b2c78257b';
+import { CATALOG } from './catalog.mjs?v=97da17caf15b';
 
 export function filterTopics(topics, query = '', subject = 'all') {
   const tokens = String(query).normalize('NFKC').toLocaleLowerCase('ko').trim().split(/\s+/u).filter(Boolean);
