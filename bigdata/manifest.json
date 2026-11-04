@@ -2668,8 +2668,8 @@
     },
     {
       "path": "assets/review-20261104/roc-threshold-steps.svg",
-      "sha256": "7615d4aee468c2a9e086b670d1f122dc1f165ffb7703ce42ce1b7201bbaa0c3d",
-      "bytes": 77872
+      "sha256": "68fac2205f4f142b8e1f2e6316216258bc8f994b1a7dedd1381ec32cbe04fd98",
+      "bytes": 71940
     },
     {
       "path": "catalog.mjs",
@@ -3338,7 +3338,7 @@
     },
     {
       "path": "theory/4-07.html",
-      "sha256": "e1cec0f6851d0c376a7f992f1a42bd2ba193bba70c492f245a93a018b4c0f5b4",
+      "sha256": "280608baa413633ec0abb71a9d58cd80a81405d1eca6e06b9b86a313db706c3f",
       "bytes": 25382
     },
     {
