@@ -78,3 +78,7 @@ pre,code,kbd,samp,.query-output,.sql-output,.output-value{font-family:"IBM Plex 
 .lesson-card,.question-panel,.reader-article,.theory-article{min-width:0;overflow-wrap:anywhere}
 .table-wrap{max-width:100%;overflow-x:auto;contain:inline-size}
 @media(max-width:700px){.learning-header::after{content:"↔ 상단 메뉴를 좌우로 밀어 더 볼 수 있어요";display:block;padding:0 16px 8px;font-size:12px;line-height:1.6;text-align:center;color:var(--learn-muted,#62675d)}.learning-nav{overflow-x:auto;scrollbar-width:thin}}
+
+/* Keep label-plus-control rows aligned with their action buttons. */
+.filter-row{align-items:flex-end}
+.filter-row .field select,.filter-row>.filter-btn,.filter-row>.search-wrap{min-height:45px}

@@ -114,3 +114,6 @@ summary{color:var(--ink);font-size:14px}.footer{background:transparent;border-co
 .topic-layout>*,.theory{min-width:0;max-width:100%}.theory{overflow-wrap:anywhere}.theory .table-wrap{contain:inline-size;max-width:100%;overflow-x:auto}
 
 #main h1,#main h2,#main h3{overflow-wrap:anywhere}
+
+/* Match filter inputs to the adjacent 44px subject buttons. */
+.filters input,.filters select{font-size:16px;line-height:1.25;min-height:44px}
