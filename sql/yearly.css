@@ -1,0 +1,57 @@
+/* One copy of each learning point, indexed through seven exam years. */
+.yearly-page{--yearly-ink:#1b2340;--yearly-accent:#2f45d8;--yearly-line:#e4e4e0;--yearly-muted:#5b5f67;--yearly-header-offset:102px;--yearly-nav-height:66px;--yearly-anchor-offset:184px;background:#fff;color:var(--yearly-ink)}
+.yearly-page [hidden]{display:none!important}
+.yearly-page #yearly-main{padding-top:42px;padding-bottom:70px;min-width:0}
+.yearly-intro{max-width:900px;margin:0 0 30px}
+.yearly-intro h1{font-family:var(--learn-serif,'Noto Serif KR',serif);font-size:40px;line-height:1.5;margin:10px 0 17px}
+.yearly-intro>p{font-size:15px;line-height:1.95;color:#3e424a;overflow-wrap:anywhere}
+.yearly-intro .yearly-kicker,.yearly-kicker{font-family:var(--learn-mono,'IBM Plex Mono',monospace);font-size:12px;line-height:1.7;letter-spacing:.05em;color:var(--yearly-accent);font-weight:600}
+.yearly-year-note{margin:20px 0;padding:15px 19px;border-left:3px solid var(--yearly-accent);background:#f4f4f2;font-size:13px;line-height:1.9;color:#3e424a;overflow-wrap:anywhere}
+.yearly-years{position:sticky;top:var(--yearly-header-offset,102px);z-index:4;display:flex;gap:6px;max-width:100%;overflow-x:auto;padding:10px 0;border-bottom:1px solid var(--yearly-ink);background:#fff;scrollbar-width:thin;scrollbar-color:#9aa4d4 #f1f3ff;overscroll-behavior-x:contain}
+.yearly-years a{flex:0 0 auto;min-height:45px;display:inline-flex;align-items:center;justify-content:center;padding:10px 17px;border:1px solid transparent;text-decoration:none;font-family:var(--learn-sans,'IBM Plex Sans KR',sans-serif);font-size:14px;font-weight:600;line-height:1.5;color:var(--yearly-muted);white-space:nowrap}
+.yearly-years a:hover{background:#f7f8ff;border-color:#c5ccef;color:var(--yearly-accent)}
+.yearly-years a[aria-current=page]{border-color:var(--yearly-accent);background:var(--yearly-accent);color:#fff}
+.yearly-years a:focus-visible,.yearly-page summary:focus-visible,.yearly-page .yearly-links a:focus-visible{outline:3px solid var(--yearly-accent);outline-offset:3px}
+.yearly-nav-hint{display:none;margin:7px 0 20px;font-size:12px;line-height:1.7;color:var(--yearly-muted)}
+@media(max-width:800px){.yearly-nav-hint{display:block}}
+.yearly-page #year-summary,.yearly-page .yearly-point{scroll-margin-top:var(--yearly-anchor-offset,184px)}
+.yearly-page #yearly-main :target{scroll-margin-top:var(--yearly-anchor-offset,184px)}
+.yearly-page #year-summary{padding:14px 0 24px;border-bottom:1px solid var(--yearly-line);min-width:0}
+.yearly-page #year-summary h2{font-family:var(--learn-sans,'IBM Plex Sans KR',sans-serif);font-size:22px;line-height:1.6;margin:12px 0}
+.yearly-page [data-year-panel]{min-width:0}
+.yearly-page [data-year-panel]>p{font-size:14px;line-height:1.95;color:#3e424a;overflow-wrap:anywhere}
+.yearly-page [data-year-count]{font-size:14px;line-height:1.8;font-weight:600;color:var(--yearly-ink);margin:24px 0 8px}
+.yearly-page #yearly-points{display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-width:0}
+.yearly-point{min-width:0;padding:31px 0 34px;border-bottom:1px solid var(--yearly-line)}
+.yearly-point h2{max-width:1000px;font-family:var(--learn-serif,'Noto Serif KR',serif);font-size:26px;line-height:1.65;letter-spacing:-.025em;margin:8px 0 15px;overflow-wrap:anywhere}
+.yearly-point>p,.yearly-point .yearly-lead{font-size:15px;line-height:1.95;max-width:980px;color:#3e424a;overflow-wrap:anywhere}
+.yearly-point-meta{font-size:12px;line-height:1.8;color:var(--yearly-muted);display:flex;flex-wrap:wrap;gap:5px 15px;margin:0 0 13px}
+.yearly-rule{padding:18px 21px;margin:21px 0;border-top:3px solid var(--yearly-accent);background:#f1f3ff;font-size:17px;line-height:1.9;color:var(--yearly-ink);overflow-wrap:anywhere}
+.yearly-rule p{margin:0}.yearly-rule strong{font-weight:700}
+.yearly-remember{padding-left:14px;border-left:2px solid var(--yearly-ink);font-size:14px;line-height:1.95;margin:20px 0;overflow-wrap:anywhere}
+.yearly-page details.yearly-example,.yearly-page details.yearly-evidence{min-width:0;margin:19px 0;border:1px solid var(--yearly-line);padding:16px 19px;background:#fff}
+.yearly-page details.yearly-example>summary,.yearly-page details.yearly-evidence>summary{font-size:14px;font-weight:600;line-height:1.8;cursor:pointer;color:var(--yearly-ink);overflow-wrap:anywhere}
+.yearly-page details[open]>summary{margin-bottom:16px}
+.yearly-example p,.yearly-example li{font-size:14px;line-height:1.95;overflow-wrap:anywhere}
+.yearly-example h3,.yearly-example h4{font-family:var(--learn-sans,'IBM Plex Sans KR',sans-serif);font-size:15px;line-height:1.8;margin:22px 0 11px}
+.yearly-page :is(.yearly-table-wrap,.table-wrap){width:100%;max-width:100%;min-width:0;overflow-x:auto;contain:inline-size;border:1px solid var(--yearly-line);margin:14px 0;scrollbar-width:thin}
+.yearly-page table{width:100%;min-width:340px;border-collapse:collapse;text-align:left;font-size:13px;line-height:1.85;color:var(--yearly-ink)}
+.yearly-page th,.yearly-page td{padding:11px 13px;border-bottom:1px solid var(--yearly-line);vertical-align:top;overflow-wrap:anywhere}
+.yearly-page th{font-weight:600;background:#f4f4f2}.yearly-page tbody tr:last-child>*{border-bottom:0}
+.yearly-page #year-summary th small{display:block;margin-top:4px;font-size:12px;font-weight:400;line-height:1.7;white-space:nowrap;color:var(--yearly-muted)}
+.yearly-page #year-summary tbody td a{display:block;padding-block:4px;line-height:1.8}
+.yearly-page #year-summary tbody td a+a{margin-top:7px}
+.yearly-page #year-summary tbody td>a+span{display:block;margin-top:6px;font-size:12px;line-height:1.8;color:var(--yearly-muted)}
+.yearly-page table caption{padding:10px 12px;text-align:left;font-size:13px;font-weight:600;background:#f7f8ff}
+.yearly-page .yearly-table-help{font-size:12px;line-height:1.7;color:var(--yearly-muted);margin:6px 0 14px}
+.yearly-page pre{max-width:100%;overflow:auto;border:1px solid var(--yearly-line);background:#f4f4f2;padding:15px 18px;font-family:var(--learn-mono,'IBM Plex Mono',Consolas,monospace);font-size:13px;line-height:1.85;tab-size:2}
+.yearly-page code{font-family:var(--learn-mono,'IBM Plex Mono',Consolas,monospace);font-size:inherit;overflow-wrap:anywhere}.yearly-page pre code{white-space:pre;overflow-wrap:normal}
+.yearly-boundary{font-size:12px!important;line-height:1.9;color:var(--yearly-muted)!important;padding-top:10px;border-top:1px solid var(--yearly-line)}
+.yearly-links{display:flex;flex-wrap:wrap;gap:9px 20px;margin:22px 0 12px;align-items:center}
+.yearly-links a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;line-height:1.7;color:var(--yearly-accent);text-underline-offset:4px;overflow-wrap:anywhere}
+.yearly-evidence p,.yearly-evidence li{font-size:12px;line-height:1.95;overflow-wrap:anywhere}.yearly-evidence ul{padding-left:20px;margin:8px 0}.yearly-evidence li+li{margin-top:12px}.yearly-evidence a{color:var(--yearly-accent);text-underline-offset:3px}
+.yearly-empty{padding:24px;background:#f4f4f2;border-left:3px solid var(--yearly-accent);font-size:14px;line-height:1.9}
+.yearly-discovery{margin:25px 0;border-block:1px solid #c9cdd9;padding:22px 0}.yearly-discovery h2{font-size:22px;line-height:1.65;margin:0 0 12px}.yearly-discovery p{font-size:14px;line-height:1.9}
+@media(max-width:800px){.yearly-page{--yearly-header-offset:0px;--yearly-anchor-offset:82px}.yearly-page #yearly-main{padding-top:26px}.yearly-intro h1{font-size:33px}.yearly-years a{padding:10px 15px;font-size:13px}.yearly-point h2{font-size:24px}.yearly-rule{font-size:16px}.yearly-point{padding:26px 0}.yearly-page table{font-size:13px}}
+@media(max-width:450px){.yearly-intro h1{font-size:29px}.yearly-intro>p,.yearly-point>p,.yearly-point .yearly-lead{font-size:14px}.yearly-years{gap:4px}.yearly-years a{padding:10px 13px;font-size:13px}.yearly-page #year-summary h2{font-size:20px}.yearly-point h2{font-size:22px}.yearly-rule{padding:15px 16px;font-size:15px}.yearly-page details.yearly-example,.yearly-page details.yearly-evidence{padding:14px 13px}.yearly-page th,.yearly-page td{padding:9px 10px}.yearly-links{gap:6px 16px}.yearly-links a{font-size:13px}.yearly-page pre{padding:13px;font-size:12px}}
+@media print{.yearly-years,.yearly-nav-hint{display:none}.yearly-page #yearly-main{padding-top:0}.yearly-point{break-inside:avoid}.yearly-page :is(.yearly-table-wrap,.table-wrap){overflow:visible}.yearly-page table{min-width:0}}
