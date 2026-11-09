@@ -1,0 +1,82 @@
+/* Only this card's shared lookup, probability and update views. */
+.neural-language-representation{width:100%;min-width:0;color:var(--text)}
+.neural-language-representation [hidden]{display:none!important}
+.neural-language-representation p,.neural-language-representation h4,.neural-language-representation h5,.neural-language-representation span,.neural-language-representation strong,.neural-language-representation label{word-break:keep-all;overflow-wrap:anywhere}
+.neural-language-representation button{font:11px/1.75 var(--sans);min-height:38px;max-width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);cursor:pointer;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.neural-language-representation button:hover{border-color:var(--accent);color:var(--accent)}
+.neural-language-representation button.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);color:var(--accent);background:var(--soft)}
+.neural-language-representation button:disabled{opacity:.4;cursor:default}
+.neural-language-representation button:focus-visible,.neural-language-representation select:focus-visible,.neural-language-representation a:focus-visible,.neural-language-representation summary:focus-visible,.neural-language-representation .nlm-svg-viewport:focus-visible,.neural-language-representation .nlm-table-viewport:focus-visible,.neural-language-representation .nlm-original-viewport:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.neural-language-representation .nlm-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;z-index:2;background:var(--bg);padding:5px 0 10px}
+.neural-language-representation .nlm-stage-text{font-size:12px;line-height:1.95;margin:0 0 18px;padding:13px 15px;background:var(--soft);border-radius:6px}
+.neural-language-representation .nlm-controls,.neural-language-representation .nlm-context-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;min-width:0;margin:18px 0}
+.neural-language-representation .nlm-context-controls{padding:14px 15px;border:1px solid var(--line);border-radius:6px}
+.neural-language-representation .nlm-field{display:grid;gap:7px;min-width:0;max-width:100%;flex:1 1 170px;font-size:10px;line-height:1.8;color:var(--muted)}
+.neural-language-representation select{font:11px/1.8 var(--sans);min-height:38px;min-width:0;max-width:100%;padding:7px 30px 7px 10px;border:1px solid var(--line);border-radius:5px;color:var(--ink);background:var(--bg)}
+.neural-language-representation .nlm-panel{border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px;min-width:0}
+.neural-language-representation h4{font:500 18px/1.8 var(--serif);color:var(--ink);margin:0 0 14px}
+.neural-language-representation h5{font:500 13px/1.9 var(--sans);color:var(--ink);margin:0 0 12px}
+.neural-language-representation .nlm-prose{font-size:12px;line-height:1.95;margin:0 0 16px}
+.neural-language-representation .nlm-note{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0;min-width:0}
+.neural-language-representation .nlm-sentence{font:500 21px/1.9 var(--serif);color:var(--ink);margin:22px 0 18px;padding:14px 17px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 6px 6px 0}
+.neural-language-representation .nlm-representation-grid,.neural-language-representation .nlm-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;min-width:0}
+.neural-language-representation .nlm-representation-grid>div{min-width:0}
+.neural-language-representation .nlm-svg-viewport,.neural-language-representation .nlm-table-viewport,.neural-language-representation .nlm-original-viewport{min-width:0;max-width:100%;overflow:auto;scrollbar-width:thin}
+.neural-language-representation svg{display:block;width:100%;height:auto;overflow:visible}
+.neural-language-representation .nlm-axis{fill:none;stroke:var(--line);stroke-width:1.2}
+.neural-language-representation .nlm-plot-note{font:10px var(--sans);fill:var(--muted)}
+.neural-language-representation .nlm-word-point circle{fill:var(--muted);stroke:var(--bg);stroke-width:2}
+.neural-language-representation .nlm-word-point.active circle{fill:var(--accent);r:8px}
+.neural-language-representation .nlm-word-point text{font:12px var(--mono);fill:var(--ink)}
+.neural-language-representation .nlm-table-block{min-width:0;margin:20px 0}
+.neural-language-representation table{border-collapse:collapse;min-width:100%;text-align:left}
+.neural-language-representation th{font:500 10px/1.9 var(--mono);padding:10px 11px;color:var(--muted);background:var(--soft);border-bottom:1px solid var(--line);white-space:nowrap}
+.neural-language-representation td{font:11px/1.9 var(--mono);padding:10px 11px;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+.neural-language-representation tr.selected td{background:var(--soft);color:var(--accent)}
+.neural-language-representation .nlm-network-node rect{fill:var(--bg);stroke:var(--line);stroke-width:1.3}
+.neural-language-representation .nlm-network-node.active rect{fill:var(--soft);stroke:var(--accent);stroke-width:1.6}
+.neural-language-representation .nlm-network-title{font:12px var(--sans);fill:var(--ink)}
+.neural-language-representation .nlm-network-value{font:10px var(--mono);fill:var(--muted)}
+.neural-language-representation .nlm-network-edge{fill:none;stroke:var(--accent);stroke-width:1.5}
+.neural-language-representation .nlm-bars{border:1px solid var(--line);border-radius:7px;padding:16px 14px;background:var(--bg);min-width:0}
+.neural-language-representation .nlm-bars h5{font-size:12px;margin-bottom:17px}
+.neural-language-representation .nlm-probability{display:grid;grid-template-columns:49px minmax(0,1fr) 50px;gap:8px;align-items:center;margin:9px 0;min-width:0}
+.neural-language-representation .nlm-word{font:10px/1.8 var(--mono);color:var(--muted)}
+.neural-language-representation .nlm-value{font:9px/1.8 var(--mono);text-align:right;color:var(--muted)}
+.neural-language-representation .nlm-probability.target .nlm-word,.neural-language-representation .nlm-probability.target .nlm-value{color:var(--accent)}
+.neural-language-representation .nlm-track{height:13px;background:var(--soft);border-radius:3px;position:relative;min-width:0}
+.neural-language-representation .nlm-bar,.neural-language-representation .nlm-bar-before{display:block;position:absolute;left:0;top:2px;height:9px;background:var(--muted);opacity:.65;border-radius:2px;max-width:100%}
+.neural-language-representation .nlm-bar-before{top:0;height:13px;background:var(--accent);opacity:.18}
+.neural-language-representation .nlm-probability.target .nlm-bar{background:var(--accent);opacity:1}
+.neural-language-representation .nlm-keypoint{border-left:2px solid var(--accent);border-radius:0 5px 5px 0;padding:13px 15px;background:var(--soft);color:var(--ink);font-size:12px;line-height:1.95;margin:20px 0;min-width:0}
+.neural-language-representation .nlm-details{border-top:1px solid var(--line);padding-top:15px;margin-top:20px;min-width:0}
+.neural-language-representation summary{font-size:12px;line-height:1.95;color:var(--ink);cursor:pointer;word-break:keep-all;overflow-wrap:anywhere}
+.neural-language-representation .nlm-details>div{margin-top:16px}
+.neural-language-representation .nlm-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.95;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.neural-language-representation .nlm-original-figure{min-width:0;margin:0;padding:17px;border:1px solid var(--line);border-radius:7px}
+.neural-language-representation .nlm-original-viewport{max-height:420px;background:#fff;border:1px solid var(--line);border-radius:5px}
+.neural-language-representation .nlm-original-figure img{display:block;width:100%;height:auto;max-width:1100px;margin:0 auto}
+.neural-language-representation .nlm-original-figure.expanded img{width:1250px;max-width:none}
+.neural-language-representation figcaption{font-size:11px;line-height:1.95;color:var(--text);margin:13px 0}
+@media(max-width:700px){
+ .neural-language-representation .nlm-panel{padding:15px}
+ .neural-language-representation h4{font-size:16px}
+ .neural-language-representation .nlm-stage-controls{gap:5px}
+ .neural-language-representation .nlm-stage-controls button{font-size:10px;line-height:1.6;min-height:42px;padding:6px 4px;min-width:0}
+ .neural-language-representation .nlm-field{flex-basis:140px}
+ .neural-language-representation .nlm-representation-grid,.neural-language-representation .nlm-chart-grid{grid-template-columns:minmax(0,1fr)}
+ .neural-language-representation .nlm-sentence{font-size:18px;padding:12px}
+ .neural-language-representation .nlm-predict svg{min-width:720px}
+ .neural-language-representation .nlm-represent svg{min-width:310px}
+ .neural-language-representation .nlm-bars{padding:14px 12px}
+ .neural-language-representation .nlm-probability{grid-template-columns:44px minmax(0,1fr) 46px;gap:6px}
+ .neural-language-representation .nlm-original-figure{padding:14px}
+}
+@media(max-width:360px){
+ .neural-language-representation .nlm-panel{padding:12px}
+ .neural-language-representation .nlm-field{flex-basis:100%}
+ .neural-language-representation .nlm-stage-controls button{padding:5px 3px}
+ .neural-language-representation .nlm-context-controls{padding:11px 12px}
+ .neural-language-representation .nlm-keypoint{padding:11px 12px}
+ .neural-language-representation .nlm-bars{padding:12px 10px}
+}

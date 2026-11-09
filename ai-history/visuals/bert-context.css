@@ -1,0 +1,79 @@
+/* Access and token-corruption diagrams stay within the available width. */
+.bert-context{width:100%;min-width:0;color:var(--text)}
+.bert-context [hidden]{display:none!important}
+.bert-context button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.bert-context button:hover{border-color:var(--accent);color:var(--accent)}
+.bert-context button:focus-visible,.bert-context a:focus-visible,.bert-context [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.bert-context button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.bert-context p{word-break:keep-all;overflow-wrap:anywhere}
+.bert-context h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.bert-context h5{font-size:13px;font-weight:500;line-height:1.8;color:var(--ink);margin:18px 0 11px;word-break:keep-all;overflow-wrap:anywhere}
+.bert-context .bert-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.bert-context .bert-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.bert-context .bert-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.bert-context .bert-context-panel,.bert-context .bert-pretrain-panel,.bert-context .bert-evidence{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.bert-context .bert-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.bert-context .bert-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.bert-context .bert-selection-status{font-size:12px;line-height:1.95;color:var(--accent);padding:11px 13px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:13px 0}
+.bert-context .bert-focus{display:flex;flex-direction:column;align-items:center;gap:5px;box-sizing:border-box;width:100%;padding:14px 16px;border:1px solid var(--accent);border-radius:6px;background:var(--soft);min-width:0;margin-top:18px;text-align:center}
+.bert-context .bert-focus span{max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere}
+.bert-context .bert-focus strong{max-width:100%;font:23px/1.8 var(--mono);font-weight:500;color:var(--accent);overflow-wrap:anywhere}
+.bert-context .bert-flow-arrow{text-align:center;font:23px/1.6 var(--mono);color:var(--accent);margin:6px 0}
+.bert-context .bert-flow-label{text-align:center;font-size:10px;line-height:1.9;color:var(--accent);margin:0 0 8px}
+.bert-context .bert-access-tokens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-width:0}
+.bert-context .bert-access-token{min-width:0;padding:11px 7px;border:1px solid var(--line);border-radius:5px;background:var(--bg);text-align:center}
+.bert-context .bert-access-token span{display:block;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere}
+.bert-context .bert-access-token strong{display:block;font:14px/1.9 var(--mono);font-weight:500;color:var(--ink);overflow-wrap:anywhere}
+.bert-context .bert-access-token[data-allowed=true]{background:var(--soft)}
+.bert-context .bert-access-token[data-allowed=false]{border-style:dashed}
+.bert-context .bert-access-token[data-allowed=false] strong{color:var(--muted)}
+.bert-context .bert-access-token[data-focus=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.bert-context .bert-access-token[data-focus=true] strong{color:var(--accent)}
+.bert-context .bert-token-row{display:flex;flex-wrap:wrap;gap:7px;min-width:0;width:100%;margin:10px 0 16px}
+.bert-context .bert-token{display:inline-block;box-sizing:border-box;max-width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--soft);font:12px/1.9 var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.bert-context .bert-token.is-focus{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.bert-context .bert-token.is-selected{color:var(--accent);border-color:var(--accent)}
+.bert-context .bert-token.is-muted{color:var(--muted);background:var(--bg);font-size:10px}
+.bert-context .bert-token.is-segment-a{background:var(--soft)}
+.bert-context .bert-token.is-segment-b{background:var(--bg);border-style:dashed}
+.bert-context .bert-token.is-marker{color:var(--accent)}
+.bert-context .bert-mlm-target{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin:15px 0 19px}
+.bert-context .bert-mlm-target>div{min-width:0;padding:13px;border:1px solid var(--accent);border-radius:6px;background:var(--soft)}
+.bert-context .bert-mlm-target span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.bert-context .bert-mlm-target strong{display:block;font:18px/1.9 var(--mono);font-weight:500;color:var(--accent);overflow-wrap:anywhere;margin-top:6px}
+.bert-context .bert-mlm-flow,.bert-context .bert-finetune-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0;margin:17px 0}
+.bert-context .bert-mlm-flow>div,.bert-context .bert-finetune-flow>div{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.bert-context .bert-mlm-flow strong,.bert-context .bert-finetune-flow strong{display:block;font-size:12px;line-height:1.9;font-weight:500;color:var(--ink);overflow-wrap:anywhere}
+.bert-context .bert-mlm-flow p,.bert-context .bert-finetune-flow p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.bert-context .bert-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.bert-context summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.bert-context .bert-details>div{padding-top:17px;min-width:0}
+.bert-context .bert-rate-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;min-width:0;margin:12px 0 15px}
+.bert-context .bert-rate-cell{display:block;aspect-ratio:1;min-width:0;border:1px solid var(--line);border-radius:2px;background:var(--bg)}
+.bert-context .bert-rate-cell.is-selected,.bert-context .bert-rate-cell.is-mask{background:var(--accent);border-color:var(--accent)}
+.bert-context .bert-rate-cell.is-random{background:var(--soft);border-color:var(--accent)}
+.bert-context .bert-rate-cell.is-same{background:var(--bg);border:2px solid var(--accent)}
+.bert-context .bert-feedback{padding:11px 14px;background:var(--soft);border-radius:5px;color:var(--accent);font-size:11px;line-height:1.95;margin:14px 0}
+.bert-context .bert-note,.bert-context .bert-scope,.bert-context .bert-credit,.bert-context .bert-legend{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.bert-context .bert-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.bert-context .bert-credit a{color:var(--muted);text-underline-offset:3px}
+.bert-context .bert-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.bert-context .bert-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.bert-context .bert-evidence-viewport img{display:block;width:100%;height:auto}
+.bert-context .bert-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.bert-context .bert-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .bert-context .bert-stage-controls{gap:5px}
+  .bert-context .bert-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .bert-context .bert-context-panel,.bert-context .bert-pretrain-panel,.bert-context .bert-evidence{padding:15px}
+  .bert-context .bert-access-tokens{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bert-context .bert-mlm-flow,.bert-context .bert-finetune-flow{grid-template-columns:minmax(0,1fr)}
+  .bert-context .bert-token{padding:6px 8px;font-size:11px}
+  .bert-context h4{font-size:16px}
+}
+@media(max-width:360px){
+  .bert-context .bert-stage-controls button{padding:5px 3px;min-height:42px}
+  .bert-context .bert-controls{gap:5px}
+  .bert-context .bert-mlm-target{grid-template-columns:minmax(0,1fr)}
+  .bert-context .bert-access-token{padding:10px 5px}
+}

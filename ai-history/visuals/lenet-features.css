@@ -1,0 +1,107 @@
+/* A source-based architecture and a separately defined local filter example. */
+.lenet-comparison{color:var(--text);min-width:0}
+.lenet-comparison .lenet-inspiration{min-width:0;margin:0 0 25px}
+.lenet-comparison .lenet-inspiration-title{margin:0 0 14px;font-size:16px;line-height:1.8}
+.lenet-comparison .lenet-inspiration-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lenet-comparison .lenet-inspiration-card{min-width:0;margin:0;padding:14px 13px 15px;border:1px solid var(--line);border-radius:8px;background:var(--bg);display:flex;flex-direction:column}
+.lenet-comparison .lenet-inspiration-card figcaption{min-width:0;min-height:66px}
+.lenet-comparison .lenet-inspiration-card .lenet-kicker{overflow-wrap:anywhere}
+.lenet-comparison .lenet-inspiration-card h5{font-size:13px;line-height:1.8;font-weight:500;word-break:keep-all;overflow-wrap:anywhere;margin:4px 0 0;color:var(--text)}
+.lenet-comparison .lenet-inspiration-drawing{min-width:0;margin:9px 0 10px;background:var(--soft);border-radius:5px}
+.lenet-comparison .lenet-inspiration-drawing svg{display:block;width:100%;height:auto}
+.lenet-comparison .lenet-inspiration-text{font-size:11px;line-height:1.95;word-break:keep-all;overflow-wrap:anywhere;margin:0;color:var(--text)}
+.lenet-comparison .lenet-inspiration-note{font-size:10px;line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;color:var(--muted);margin:12px 0 0;padding-left:11px;border-left:2px solid var(--line)}
+.lenet-comparison .lenet-inspiration-sources{display:flex;flex-wrap:wrap;gap:4px 17px;list-style:none;padding:0;margin:9px 0 0;font-size:9px;line-height:1.9}
+.lenet-comparison .lenet-inspiration-sources li{min-width:0;overflow-wrap:anywhere}
+.lenet-comparison .lenet-inspiration-sources a{color:var(--muted);text-underline-offset:3px}
+.lenet-comparison .lenet-inspiration-sources a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lenet-comparison .lenet-investigation-heading{border-top:1px solid var(--line);padding-top:21px;margin:0 0 5px;font-size:14px}
+.lenet-comparison .lenet-controls{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;position:sticky;top:55px;z-index:3;background:var(--bg);padding:9px 0 13px}
+.lenet-comparison button{border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;line-height:1.6;min-height:38px;padding:8px 13px;background:var(--bg)}
+.lenet-comparison button:hover{border-color:var(--accent)}
+.lenet-comparison button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lenet-comparison .lenet-controls button.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.lenet-comparison .lenet-map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px}
+.lenet-comparison .lenet-map-panel{margin:0;min-width:0;padding:17px 17px 13px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.lenet-comparison .lenet-kicker{font:8px/1.8 var(--mono);letter-spacing:.12em;color:var(--muted)}
+.lenet-comparison h4{font-size:14px;line-height:1.8;font-weight:500;margin:3px 0 11px;word-break:keep-all}
+.lenet-comparison .lenet-map{max-width:300px;margin:0 auto 7px}
+.lenet-comparison .lenet-map svg{display:block;width:100%;height:auto}
+.lenet-comparison .lenet-map-panel figcaption{min-height:55px}
+.lenet-comparison .lenet-options{display:flex;gap:6px;flex-wrap:wrap}
+.lenet-comparison .lenet-options button{font-size:10px;min-height:32px;padding:6px 10px}
+.lenet-comparison .lenet-options button.active,.lenet-comparison .lenet-scan button.active{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.lenet-comparison .lenet-map-note{font-size:10px;line-height:1.9;color:var(--muted);word-break:keep-all;margin:8px 0 0}
+.lenet-comparison .lenet-score{color:var(--accent);font-family:var(--mono)}
+.lenet-comparison .lenet-inspection{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;padding:10px 13px;margin-top:13px}
+.lenet-comparison .lenet-scan{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.lenet-comparison .lenet-small-label{font-size:10px;line-height:1.8;color:var(--muted);margin-right:4px}
+.lenet-comparison .lenet-scan button{font-size:10px;min-height:30px;padding:5px 9px}
+.lenet-comparison .lenet-kernel-box{display:flex;align-items:center;gap:10px;min-width:0}
+.lenet-comparison .lenet-kernel{display:block;width:34px;height:34px;flex:none}
+.lenet-comparison .lenet-kernel svg{width:100%;height:100%;display:block}
+.lenet-comparison .lenet-kernel-text{font-size:10px;line-height:1.8;color:var(--muted);word-break:keep-all}
+.lenet-comparison .lenet-legend{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;font-size:9px;line-height:1.9;color:var(--muted);margin:11px 0 0}
+.lenet-comparison .lenet-negative,.lenet-comparison .lenet-zero,.lenet-comparison .lenet-positive{display:inline-flex;align-items:center;gap:5px}
+.lenet-comparison .lenet-negative:before,.lenet-comparison .lenet-zero:before,.lenet-comparison .lenet-positive:before{content:"";width:12px;height:8px;border-radius:2px;background:var(--ink)}
+.lenet-comparison .lenet-zero:before{background:var(--bg);border:1px solid var(--line)}
+.lenet-comparison .lenet-positive:before{background:var(--accent)}
+.lenet-comparison .lenet-legend-note{margin-left:auto}
+.lenet-comparison .lenet-explanation{font-size:12px;line-height:1.95;word-break:keep-all;margin:14px 0 18px;padding:14px 18px;background:var(--soft);border-radius:6px;min-height:47px}
+.lenet-comparison .lenet-architecture{border:1px solid var(--line);border-radius:8px;padding:13px 14px 12px;margin:0 0 13px;min-width:0}
+.lenet-comparison .lenet-architecture>h4{font-size:12px;margin:0 0 10px}
+.lenet-comparison .lenet-layers{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.lenet-comparison .lenet-layer{position:relative;min-width:0;border:1px solid var(--line);border-radius:5px;padding:0;display:flex;background:var(--bg)}
+.lenet-comparison .lenet-layer-button{display:flex;align-items:center;flex-direction:column;gap:3px;width:100%;min-width:0;min-height:90px;height:100%;border:0;border-radius:4px;padding:7px 3px 8px;background:transparent;color:var(--text)}
+.lenet-comparison .lenet-layer-button:hover{border:0;background:var(--soft)}
+.lenet-comparison .lenet-layer[data-selected=true]{border-color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.lenet-comparison .lenet-layer[data-selected=true] .lenet-layer-button>strong{color:var(--accent);font-weight:600}
+.lenet-comparison .lenet-layer-number{font:7px/1.3 var(--mono);color:var(--muted);align-self:flex-start;margin-left:3px}
+.lenet-comparison .lenet-stack{display:block;position:relative;width:29px;height:23px;margin:1px 0 0}
+.lenet-comparison .lenet-stack i{display:block;position:absolute;width:20px;height:17px;background:var(--soft);border:1px solid var(--muted);left:0;top:0;opacity:.9}
+.lenet-comparison .lenet-stack i:nth-child(2){left:4px;top:3px}
+.lenet-comparison .lenet-stack i:nth-child(3){left:8px;top:6px}
+.lenet-comparison .lenet-layer[data-kind=dense] .lenet-stack i,.lenet-comparison .lenet-layer[data-kind=output] .lenet-stack i{width:7px}
+.lenet-comparison .lenet-layer-button>strong{font-size:10px;font-weight:500;line-height:1.7;color:var(--text)}
+.lenet-comparison .lenet-layer-size{font:8px/1.7 var(--mono);white-space:normal;text-align:center;overflow-wrap:anywhere;color:var(--muted)}
+.lenet-comparison .lenet-architecture-note{font-size:9px;line-height:1.9;color:var(--muted);word-break:keep-all;margin:9px 0 0}
+.lenet-comparison .lenet-architecture-link-note{font-size:10px;line-height:1.9;color:var(--accent);word-break:keep-all;margin:5px 0 0}
+.lenet-comparison[data-stage=local] .lenet-input-panel .lenet-window{stroke-width:3.4}
+.lenet-comparison[data-stage=shared] .lenet-kernel-box{color:var(--accent)}
+.lenet-comparison:not([data-layer-links=true])[data-stage=shared] .lenet-layer[data-layer=c1]{border-color:var(--accent)}
+.lenet-comparison[data-stage=hierarchy] .lenet-architecture{border-color:var(--accent);background:var(--soft)}
+.lenet-comparison:not([data-layer-links=true])[data-stage=hierarchy] .lenet-layer-button>strong{color:var(--accent)}
+.lenet-comparison .lenet-scope{font-size:10px;line-height:1.9;color:var(--muted);word-break:keep-all;margin:0 0 4px}
+.lenet-comparison .lenet-source{font-size:9px;line-height:1.8;color:var(--muted);text-underline-offset:3px}
+@media(max-width:700px){
+  .lenet-comparison .lenet-inspiration{margin-bottom:21px}
+  .lenet-comparison .lenet-inspiration-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .lenet-comparison .lenet-inspiration-card{padding:14px 14px 16px}
+  .lenet-comparison .lenet-inspiration-card figcaption{min-height:0}
+  .lenet-comparison .lenet-inspiration-card h5{font-size:14px}
+  .lenet-comparison .lenet-inspiration-drawing{width:100%;max-width:350px;align-self:center;margin:12px 0}
+  .lenet-comparison .lenet-inspiration-text{font-size:12px}
+  .lenet-comparison .lenet-inspiration-title{font-size:15px;margin-bottom:12px}
+  .lenet-comparison .lenet-inspiration-sources{display:block;font-size:10px}
+  .lenet-comparison .lenet-inspiration-sources li+li{margin-top:4px}
+  .lenet-comparison .lenet-investigation-heading{padding-top:18px}
+  .lenet-comparison .lenet-map-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .lenet-comparison .lenet-controls{gap:5px;padding:8px 0 12px}
+  .lenet-comparison .lenet-controls button{font-size:10px;padding:8px 10px;min-height:37px}
+  .lenet-comparison .lenet-map-panel{padding:14px 13px 12px}
+  .lenet-comparison .lenet-map-panel figcaption{min-height:0}
+  .lenet-comparison h4{font-size:14px;margin-bottom:8px}
+  .lenet-comparison .lenet-map{max-width:280px;margin-bottom:6px}
+  .lenet-comparison .lenet-inspection{padding:10px 11px;gap:10px}
+  .lenet-comparison .lenet-kernel-box{width:100%}
+  .lenet-comparison .lenet-legend-note{margin-left:0;width:100%}
+  .lenet-comparison .lenet-explanation{font-size:11px;padding:12px 13px;min-height:0}
+  .lenet-comparison .lenet-architecture{padding:12px 10px}
+  .lenet-comparison .lenet-layers{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .lenet-comparison .lenet-layer-size{font-size:9px}
+}
+@media(max-width:360px){
+  .lenet-comparison .lenet-layers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lenet-comparison .lenet-layer-size{font-size:10px}
+  .lenet-comparison .lenet-layer-button>strong{font-size:11px}
+}

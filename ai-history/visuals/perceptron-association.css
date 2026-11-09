@@ -1,0 +1,11 @@
+/* This card uses the shared two-panel grid without changing other diagrams. */
+.perceptron-comparison .neuron-figure-grid{align-items:stretch}
+.perceptron-comparison .neuron-drawing{padding:8px 6px 0}
+.perceptron-comparison .neuron-feature{transition:none}
+.perceptron-comparison:not([data-focus=all]) .neuron-feature[data-emphasis=false]{opacity:.32}
+.perceptron-comparison .neuron-figure-meaning{padding-top:7px;padding-bottom:10px}
+.perceptron-comparison .perceptron-explanation{font-size:12px;line-height:1.95;word-break:keep-all;overflow-wrap:anywhere;margin:0;color:var(--text);min-height:47px}
+@media(max-width:700px){
+  .perceptron-comparison .neuron-figure-meaning{min-height:0}
+  .perceptron-comparison .perceptron-explanation{font-size:11px;min-height:0}
+}

@@ -1,0 +1,65 @@
+/* Fig.1 response inspection, isolated from other cards and shared layout. */
+.backprop-comparison{color:var(--text);min-width:0}
+.backprop-comparison .backprop-controls{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;position:sticky;top:55px;z-index:3;background:var(--bg);padding:9px 0 13px}
+.backprop-comparison button{border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;line-height:1.6;min-height:38px;padding:8px 13px}
+.backprop-comparison button:hover{border-color:var(--accent)}
+.backprop-comparison button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.backprop-comparison .backprop-controls button.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.backprop-comparison .backprop-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:15px;align-items:stretch}
+.backprop-comparison .backprop-network,.backprop-comparison .backprop-concepts{margin:0;min-width:0;border:1px solid var(--line);border-radius:8px;padding:17px 17px 14px;background:var(--bg)}
+.backprop-comparison .backprop-kicker{font:8px/1.8 var(--mono);letter-spacing:.1em;color:var(--muted)}
+.backprop-comparison h4{font-size:14px;line-height:1.8;font-weight:500;margin:3px 0 11px;word-break:keep-all}
+.backprop-comparison .backprop-drawing{margin:0 -7px 7px}
+.backprop-comparison .backprop-drawing svg{display:block;width:100%;height:auto}
+.backprop-comparison .backprop-backward{opacity:0}
+.backprop-comparison[data-stage=feedback] .backprop-backward{opacity:1}
+.backprop-comparison[data-stage=feedback] .backprop-forward{opacity:.48}
+.backprop-comparison[data-stage=representation] .backprop-hidden-layer>circle{stroke:var(--accent);stroke-width:1.7}
+.backprop-comparison .backprop-inputs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;position:relative}
+.backprop-comparison .backprop-inputs:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed var(--accent);pointer-events:none;opacity:.4}
+.backprop-comparison .backprop-input{padding:5px 0;min-height:42px;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;position:relative;z-index:1;background:var(--bg)}
+.backprop-comparison .backprop-input.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.backprop-comparison .backprop-bit{font:14px/1.4 var(--mono)}
+.backprop-comparison .backprop-bit-index{font:8px/1.4 var(--mono);opacity:.6;align-self:flex-end;padding-bottom:3px}
+.backprop-comparison .backprop-presets{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px}
+.backprop-comparison .backprop-presets button{font-size:10px;min-height:31px;padding:6px 10px}
+.backprop-comparison .backprop-presets button.active{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.backprop-comparison .backprop-weight-legend{display:flex;gap:7px 12px;flex-wrap:wrap;font-size:9px;line-height:1.8;color:var(--muted);margin:8px 0 0}
+.backprop-comparison .backprop-positive,.backprop-comparison .backprop-negative{display:inline-flex;align-items:center;gap:5px;color:var(--text)}
+.backprop-comparison .backprop-positive:before,.backprop-comparison .backprop-negative:before{content:"";width:16px;border-top:2px solid var(--ink)}
+.backprop-comparison .backprop-negative:before{border-color:var(--accent)}
+.backprop-comparison .backprop-input-hint{font-size:10px;line-height:1.9;color:var(--muted);word-break:keep-all;margin:7px 0 0}
+.backprop-comparison .backprop-step{display:flex;gap:10px;border-top:1px solid var(--line);padding:11px 0;opacity:.8}
+.backprop-comparison .backprop-step.is-focus{opacity:1}
+.backprop-comparison .backprop-step-index{font:9px/1.9 var(--mono);color:var(--accent);padding-top:1px;flex:none}
+.backprop-comparison .backprop-step-body{min-width:0;flex:1}
+.backprop-comparison h5{font-size:11px;font-weight:500;line-height:1.8;margin:0 0 5px;word-break:keep-all}
+.backprop-comparison .backprop-step.is-focus h5{color:var(--accent)}
+.backprop-comparison .backprop-step p{font-size:10px;line-height:1.9;color:var(--text);margin:0;word-break:keep-all}
+.backprop-comparison .backprop-target{font-size:13px;line-height:1.9;display:block;font-weight:500;color:var(--accent);margin-bottom:3px}
+.backprop-comparison .backprop-discrepancy{display:block;font:9px/1.9 var(--mono);color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.backprop-comparison .backprop-response-bars{margin:9px 0 0}
+.backprop-comparison .backprop-response{display:grid;grid-template-columns:44px minmax(0,1fr) 38px;gap:9px;align-items:center;font-size:10px;line-height:1.9;margin:5px 0}
+.backprop-comparison .backprop-response code{font:10px/1.9 var(--mono);text-align:right;color:var(--text)}
+.backprop-comparison .backprop-bar{height:5px;background:var(--soft);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.backprop-comparison .backprop-bar>span{display:block;height:100%;background:var(--accent);border-radius:5px}
+.backprop-comparison .backprop-response:nth-child(2) .backprop-bar>span{background:var(--ink)}
+.backprop-comparison .backprop-readout{display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px;margin-top:2px;font-size:10px;line-height:1.9;color:var(--muted)}
+.backprop-comparison .backprop-readout strong{font:500 23px/1.5 var(--mono);color:var(--accent)}
+.backprop-comparison .backprop-readout>span:last-child{color:var(--text)}
+.backprop-comparison .backprop-explanation{font-size:12px;line-height:1.95;word-break:keep-all;margin:15px 0 10px;padding:14px 18px;background:var(--soft);border-radius:6px;min-height:47px}
+.backprop-comparison .backprop-scope{font-size:10px;line-height:1.9;color:var(--muted);word-break:keep-all;margin:0 0 4px}
+.backprop-comparison .backprop-source{font-size:9px;line-height:1.8;color:var(--muted);text-underline-offset:3px}
+@media(max-width:700px){
+  .backprop-comparison .backprop-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .backprop-comparison .backprop-controls{gap:5px;padding:8px 0 12px}
+  .backprop-comparison .backprop-controls button{font-size:10px;min-height:37px;padding:8px 9px}
+  .backprop-comparison .backprop-network,.backprop-comparison .backprop-concepts{padding:14px 13px 13px}
+  .backprop-comparison .backprop-drawing{margin-left:-8px;margin-right:-8px}
+  .backprop-comparison .backprop-drawing text[font-size="12"]{font-size:15px}
+  .backprop-comparison .backprop-drawing text[font-size="13"]{font-size:17px}
+  .backprop-comparison .backprop-inputs{gap:4px}
+  .backprop-comparison .backprop-input{gap:2px}
+  .backprop-comparison .backprop-bit-index{display:none}
+  .backprop-comparison .backprop-explanation{font-size:11px;padding:12px 13px;min-height:0}
+}

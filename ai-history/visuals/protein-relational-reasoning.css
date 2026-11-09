@@ -1,0 +1,52 @@
+.protein-relational-reasoning{width:100%;min-width:0;color:var(--text)}
+.protein-relational-reasoning [hidden]{display:none!important}
+.protein-relational-reasoning :is(p,h4,h5,label,span,figcaption){word-break:keep-all;overflow-wrap:anywhere}
+.protein-relational-reasoning button{font:11px/1.8 var(--sans);min-height:38px;padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);cursor:pointer;max-width:100%;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.protein-relational-reasoning button.active{background:var(--soft);color:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.protein-relational-reasoning button:hover{color:var(--accent);border-color:var(--accent)}
+.protein-relational-reasoning button:disabled{opacity:.4;cursor:default}
+.protein-relational-reasoning :is(button,select,summary,a,.af-svg-viewport,.af-table-viewport,.af-original-viewport):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.protein-relational-reasoning .af-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;z-index:2;background:var(--bg);padding:5px 0 10px}
+.protein-relational-reasoning .af-stage-text{font-size:12px;line-height:1.95;background:var(--soft);border-radius:6px;padding:13px 15px;margin:0 0 18px}
+.protein-relational-reasoning .af-controls{display:flex;flex-wrap:wrap;gap:10px;min-width:0;margin:16px 0}
+.protein-relational-reasoning .af-field{display:grid;gap:7px;flex:1 1 170px;min-width:0;max-width:100%;font-size:11px;line-height:1.8;color:var(--muted)}
+.protein-relational-reasoning select{font:11px/1.8 var(--sans);min-width:0;max-width:100%;min-height:38px;padding:7px 28px 7px 10px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px}
+.protein-relational-reasoning .af-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:18px}
+.protein-relational-reasoning h4{font:500 18px/1.8 var(--serif);color:var(--ink);margin:0 0 14px}
+.protein-relational-reasoning h5{font:500 13px/1.9 var(--sans);color:var(--ink);margin:0 0 12px}
+.protein-relational-reasoning .af-prose{font-size:12px;line-height:1.95;margin:0 0 17px}
+.protein-relational-reasoning .af-note{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0}
+.protein-relational-reasoning .af-cost{font:500 17px/1.8 var(--mono);padding:16px;background:var(--soft);border-radius:6px;color:var(--accent)}
+.protein-relational-reasoning .af-svg-viewport,.protein-relational-reasoning .af-table-viewport,.protein-relational-reasoning .af-original-viewport{min-width:0;max-width:100%;overflow:auto;scrollbar-width:thin}
+.protein-relational-reasoning svg{display:block;width:100%;height:auto;min-width:390px}
+.protein-relational-reasoning .af-axis{fill:none;stroke:var(--line);stroke-width:1.4}
+.protein-relational-reasoning .af-label{font:12px var(--sans);fill:var(--muted)}
+.protein-relational-reasoning .af-point{fill:var(--muted);stroke:var(--bg);stroke-width:1.5}
+.protein-relational-reasoning .af-selected-point{fill:var(--accent);stroke:var(--bg);stroke-width:2}
+.protein-relational-reasoning .af-filter-0{fill:none;stroke:var(--accent);stroke-width:3}
+.protein-relational-reasoning .af-filter-1{fill:none;stroke:#4c94ae;stroke-width:3;stroke-dasharray:7 4}
+.protein-relational-reasoning .af-circle{fill:none;stroke:var(--accent);stroke-width:2}
+.protein-relational-reasoning .af-level{fill:none;stroke:var(--line);stroke-dasharray:5 5;stroke-width:1.3}
+.protein-relational-reasoning .af-table-block{min-width:0;margin:22px 0}
+.protein-relational-reasoning table{border-collapse:collapse;min-width:100%;text-align:left}
+.protein-relational-reasoning th{font:500 10px/1.9 var(--mono);padding:11px;background:var(--soft);color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
+.protein-relational-reasoning td{font:11px/1.9 var(--mono);padding:11px;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap;background:color-mix(in srgb,var(--accent) calc(var(--activity,0)*18%),var(--bg))}
+.protein-relational-reasoning td.selected{outline:1px solid var(--accent);outline-offset:-2px}
+.protein-relational-reasoning .af-learning{border-top:1px solid var(--line);padding-top:20px;margin-top:23px}
+.protein-relational-reasoning .af-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.protein-relational-reasoning .af-status{font-size:12px;line-height:1.95;padding:14px;border-left:2px solid var(--accent);background:var(--soft)}
+.protein-relational-reasoning .af-details{border-top:1px solid var(--line);padding:15px 0;margin-top:8px;min-width:0}
+.protein-relational-reasoning summary{font-size:12px;line-height:1.9;cursor:pointer;color:var(--ink)}
+.protein-relational-reasoning .af-original{margin:20px 0 0;min-width:0}
+.protein-relational-reasoning .af-original img{display:block;width:100%;height:auto;background:#fff;border-radius:4px}
+.protein-relational-reasoning .af-original.expanded img{width:1100px;max-width:none}
+.protein-relational-reasoning figcaption{font-size:11px;line-height:1.95;margin-top:13px}
+.protein-relational-reasoning .af-source{display:inline-block;font-size:10px;line-height:1.9;color:var(--accent);margin:7px 0;word-break:break-word}
+@media(max-width:600px){.protein-relational-reasoning .af-panel{padding:15px}.protein-relational-reasoning h4{font-size:17px}.protein-relational-reasoning .af-stage-controls{gap:5px}.protein-relational-reasoning .af-stage-controls button{font-size:10px;padding:7px 5px}.protein-relational-reasoning .af-cost{font-size:13px}.protein-relational-reasoning .af-field{flex-basis:100%}}
+
+.protein-relational-reasoning .af-box{fill:var(--soft);stroke:var(--line)}
+.protein-relational-reasoning .af-residue{fill:var(--soft);stroke:var(--accent);stroke-width:2}
+.protein-relational-reasoning .af-target-edge{stroke:var(--accent);stroke-width:3;fill:none}
+.protein-relational-reasoning .af-side-edge{stroke:#598f9f;stroke-width:2;fill:none}
+.protein-relational-reasoning .af-recycle{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 4;fill:none}
+.protein-relational-reasoning .af-output{font:500 14px/1.9 var(--mono);color:var(--accent);padding:15px;background:var(--soft);border-radius:6px}

@@ -1,0 +1,81 @@
+{
+  "checked_on": "2026-11-05",
+  "purpose": "Local AI timeline prototype; not deployed",
+  "brand": {
+    "file": "ourfuture-wordmark.png",
+    "author": "ourfuture studio",
+    "license": "User-owned brand asset",
+    "changes": "None; original file copied byte-for-byte.",
+    "status": "copied",
+    "bytes": 43394,
+    "sha256": "d6eb630b2d23b4847dceedf13b9ea1de78293af95f496128fcf01b7ee4938dce"
+  },
+  "portraits": [
+    {
+      "person": "John McCarthy",
+      "file": "john-mccarthy.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:John_McCarthy_2006.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/John_McCarthy_2006.jpg",
+      "author": "Tom Varco",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "None; original file copied byte-for-byte.",
+      "width": 1600,
+      "height": 1200,
+      "status": "downloaded",
+      "bytes": 890727,
+      "sha256": "990831437c18a644c8928cdb60c42edd7664f6bf26afcf1c0101f34da699a296",
+      "used_in_prototype": true,
+      "display_changes": "CSS grayscale and crop; original file bytes unchanged."
+    },
+    {
+      "person": "Geoffrey Hinton",
+      "file": "geoffrey-hinton.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Geoffrey_Hinton_at_UBC_(cropped).jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Geoffrey_Hinton_at_UBC_%28cropped%29.jpg",
+      "author": "Eviatar Bach; Commons crop by WikiPedant",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "None by ourfuture studio; this is the existing Commons cropped version.",
+      "width": 591,
+      "height": 757,
+      "status": "downloaded",
+      "bytes": 123717,
+      "sha256": "b0690e2487643bed3420d5162220329609eed37bbd91f497f6bfb26afa4d6109",
+      "used_in_prototype": true,
+      "display_changes": "CSS grayscale and crop; original file bytes unchanged."
+    },
+    {
+      "person": "Yann LeCun",
+      "file": "yann-lecun.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yann_LeCun_-_2018_(cropped).jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Yann_LeCun_-_2018_%28cropped%29.jpg",
+      "author": "Jeremy Barande / Ecole polytechnique Universite Paris-Saclay",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "changes": "None by ourfuture studio; this is the existing Commons cropped version.",
+      "status": "not_downloaded",
+      "error": "HTTPError: HTTP Error 429: Too many requests (f061ab2)",
+      "used_in_prototype": false
+    },
+    {
+      "person": "Frank Rosenblatt",
+      "file": "frank-rosenblatt.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Frank_Rosenblatt.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Frank_Rosenblatt.jpg",
+      "author": "Unknown author, via Heinz Nixdorf MuseumsForum; Commons uploader Endebyrd",
+      "license": "CC BY-SA 4.0 (as stated on Commons)",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "changes": "None; original file copied byte-for-byte.",
+      "note": "Commons names an unknown author. Verify underlying provenance before public publication.",
+      "width": 350,
+      "height": 455,
+      "status": "downloaded_not_distributed",
+      "bytes": 79057,
+      "sha256": "d1490bb25ec217315a08329d453691f9f8911609691f1910c987ea985f463174",
+      "used_in_prototype": false,
+      "storage": "research-assets; excluded from dist and standalone preview"
+    }
+  ],
+  "display_attribution": "Show each photo author, Commons source link and license link in the prototype credits. Photos remain under their respective licenses."
+}

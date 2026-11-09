@@ -1,0 +1,87 @@
+/* Main diagrams wrap at every width; only numeric tables and enlarged sources pan. */
+.gpt1-transfer{width:100%;min-width:0;color:var(--text)}
+.gpt1-transfer [hidden]{display:none!important}
+.gpt1-transfer button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer button:hover{border-color:var(--accent);color:var(--accent)}
+.gpt1-transfer button:focus-visible,.gpt1-transfer a:focus-visible,.gpt1-transfer [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.gpt1-transfer button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.gpt1-transfer button:disabled{opacity:.5;cursor:default}
+.gpt1-transfer p{word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer h5{font-size:13px;font-weight:500;line-height:1.8;color:var(--ink);margin:18px 0 11px;word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.gpt1-transfer .gpt1-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.gpt1-transfer .gpt1-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.gpt1-transfer .gpt1-experience,.gpt1-transfer .gpt1-task-transfer,.gpt1-transfer .gpt1-evidence{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.gpt1-transfer .gpt1-controls,.gpt1-transfer .gpt1-play-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.gpt1-transfer .gpt1-play-controls button{min-width:48px;padding:6px 10px;min-height:34px}
+.gpt1-transfer .gpt1-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.gpt1-transfer .gpt1-selection-status{font-size:12px;line-height:1.95;color:var(--accent);padding:11px 13px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:12px 0}
+.gpt1-transfer .gpt1-token-row{display:flex;flex-wrap:wrap;gap:7px;min-width:0;width:100%;margin:10px 0 16px}
+.gpt1-transfer .gpt1-token{display:inline-block;box-sizing:border-box;max-width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--soft);font:12px/1.9 var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-token.is-current,.gpt1-transfer .gpt1-token.is-extract{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.gpt1-transfer .gpt1-token.is-blocked{border-style:dashed;background:var(--bg);color:var(--muted)}
+.gpt1-transfer .gpt1-token.is-target{color:var(--accent);border-color:var(--accent)}
+.gpt1-transfer .gpt1-token.is-marker{color:var(--accent);background:var(--bg)}
+.gpt1-transfer .gpt1-pretrain-flow{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0;margin:20px 0 13px}
+.gpt1-transfer .gpt1-backbone-box,.gpt1-transfer .gpt1-head-box{padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--soft);min-width:0}
+.gpt1-transfer .gpt1-backbone-box{border-color:var(--accent)}
+.gpt1-transfer .gpt1-pretrain-flow strong{display:block;font-size:13px;line-height:1.9;font-weight:500;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-pretrain-flow p{font-size:11px;line-height:1.95;margin:7px 0 0;color:var(--muted)}
+.gpt1-transfer .gpt1-flow-arrow{text-align:center;font:23px/1.2 var(--mono);color:var(--accent)}
+.gpt1-transfer .gpt1-next-target{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border:1px solid var(--accent);border-radius:6px;padding:11px 14px;margin:13px 0;min-width:0}
+.gpt1-transfer .gpt1-next-target span{font-size:11px;line-height:1.9;color:var(--muted)}
+.gpt1-transfer .gpt1-next-target strong{font:18px/1.8 var(--mono);font-weight:500;color:var(--accent);overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-feedback{padding:11px 14px;background:var(--soft);border-radius:5px;color:var(--accent);font-size:11px;line-height:1.95;margin:14px 0}
+.gpt1-transfer .gpt1-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.gpt1-transfer summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.gpt1-transfer .gpt1-details>div{padding-top:17px;min-width:0}
+.gpt1-transfer .gpt1-lineage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0;margin:17px 0}
+.gpt1-transfer .gpt1-lineage>div{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--soft)}
+.gpt1-transfer .gpt1-lineage strong{display:block;font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-lineage p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.gpt1-transfer .gpt1-task-rows{display:flex;flex-direction:column;gap:12px;min-width:0;margin:18px 0}
+.gpt1-transfer .gpt1-input-row{min-width:0;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.gpt1-transfer .gpt1-input-row h5{font-size:12px;margin:0 0 10px}
+.gpt1-transfer .gpt1-input-row .gpt1-token-row{margin-bottom:10px;gap:6px}
+.gpt1-transfer .gpt1-row-route{font-size:10px;line-height:1.95;color:var(--muted);margin:7px 0 0}
+.gpt1-transfer .gpt1-combine{padding:13px 15px;border:1px solid var(--accent);border-radius:6px;min-width:0;background:var(--soft);margin:16px 0}
+.gpt1-transfer .gpt1-combine strong{font-size:12px;font-weight:500;line-height:1.9;color:var(--accent)}
+.gpt1-transfer .gpt1-combine p{font-size:11px;line-height:1.95;margin:8px 0 0}
+.gpt1-transfer .gpt1-output-description{font-size:12px;line-height:1.95;color:var(--ink);margin:15px 0}
+.gpt1-transfer .gpt1-update-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0;margin:13px 0 19px}
+.gpt1-transfer .gpt1-update-diagram>div{padding:13px;border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:5px;min-width:0}
+.gpt1-transfer .gpt1-update-diagram strong{display:block;font-size:12px;font-weight:500;line-height:1.9;color:var(--accent);overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-update-diagram p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.gpt1-transfer .gpt1-loss-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin:14px 0 18px}
+.gpt1-transfer .gpt1-loss-values>div{min-width:0;padding:12px;border:1px solid var(--line);border-radius:5px;background:var(--soft)}
+.gpt1-transfer .gpt1-loss-values span{display:block;font-size:10px;line-height:1.95;color:var(--muted)}
+.gpt1-transfer .gpt1-loss-values strong{display:block;font:20px/1.9 var(--mono);font-weight:400;color:var(--accent);overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-table-viewport{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft);margin:12px 0 16px}
+.gpt1-transfer table{width:100%;border-collapse:collapse;text-align:left;font:10px/1.9 var(--mono)}
+.gpt1-transfer th,.gpt1-transfer td{font-weight:400;color:var(--text);padding:10px 9px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.gpt1-transfer th{font-family:var(--sans);font-size:10px;color:var(--muted)}
+.gpt1-transfer .gpt1-formula{font:11px/2 var(--mono);overflow-wrap:anywhere;color:var(--accent);padding:12px 14px;border:1px solid var(--line);border-radius:5px}
+.gpt1-transfer .gpt1-note,.gpt1-transfer .gpt1-scope,.gpt1-transfer .gpt1-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.gpt1-transfer .gpt1-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.gpt1-transfer .gpt1-credit a{color:var(--muted);text-underline-offset:3px}
+.gpt1-transfer .gpt1-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.gpt1-transfer .gpt1-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.gpt1-transfer .gpt1-evidence-viewport img{display:block;width:100%;height:auto}
+.gpt1-transfer .gpt1-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.gpt1-transfer .gpt1-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .gpt1-transfer .gpt1-stage-controls{gap:5px}
+  .gpt1-transfer .gpt1-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .gpt1-transfer .gpt1-experience,.gpt1-transfer .gpt1-task-transfer,.gpt1-transfer .gpt1-evidence{padding:15px}
+  .gpt1-transfer .gpt1-lineage,.gpt1-transfer .gpt1-update-diagram{grid-template-columns:minmax(0,1fr)}
+  .gpt1-transfer .gpt1-input-row{padding:12px}
+  .gpt1-transfer .gpt1-token{padding:6px 8px;font-size:11px}
+  .gpt1-transfer h4{font-size:16px}
+}
+@media(max-width:360px){
+  .gpt1-transfer .gpt1-stage-controls button{padding:5px 3px;min-height:42px}
+  .gpt1-transfer .gpt1-controls,.gpt1-transfer .gpt1-play-controls{gap:5px}
+  .gpt1-transfer .gpt1-play-controls button{padding:6px 7px;min-width:42px}
+  .gpt1-transfer .gpt1-loss-values>div{padding:10px}
+}

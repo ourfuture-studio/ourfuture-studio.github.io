@@ -1,0 +1,23 @@
+.public-paper-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(20px, 4vw, 36px);
+  margin: 4px 0 16px;
+  border: 1px solid var(--line, #ddd);
+  border-left: 3px solid var(--accent, #7a1f2e);
+  border-radius: 8px;
+  background: var(--soft, #f5f0e5);
+  color: var(--ink, #1b2340);
+  font: 400 14px/1.8 var(--sans, sans-serif);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  min-width: 0;
+}
+.public-paper-link strong { font-size: 16px; }
+.public-paper-link span { opacity: .8; }
+.public-paper-link:focus-visible { outline: 3px solid var(--accent, #7a1f2e); outline-offset: 4px; }
+.public-paper-link:hover strong { text-decoration: underline; }
+img[data-public-source] { display: none !important; }

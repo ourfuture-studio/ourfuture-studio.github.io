@@ -1,0 +1,80 @@
+/* Three stages share the same request; numerical details and source figures alone pan. */
+.instructgpt-feedback{width:100%;min-width:0;color:var(--text)}
+.instructgpt-feedback [hidden]{display:none!important}
+.instructgpt-feedback button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.instructgpt-feedback button:hover{border-color:var(--accent);color:var(--accent)}
+.instructgpt-feedback button:focus-visible,.instructgpt-feedback a:focus-visible,.instructgpt-feedback [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.instructgpt-feedback button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.instructgpt-feedback button:disabled{opacity:.5;cursor:default}
+.instructgpt-feedback p{word-break:keep-all;overflow-wrap:anywhere}
+.instructgpt-feedback h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.instructgpt-feedback h5{font-size:12px;font-weight:500;line-height:1.8;color:var(--ink);margin:0 0 9px;word-break:keep-all;overflow-wrap:anywhere}
+.instructgpt-feedback .instructgpt-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.instructgpt-feedback .instructgpt-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.instructgpt-feedback .instructgpt-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.instructgpt-feedback .instructgpt-request{padding:13px 16px;border:1px solid var(--accent);border-radius:6px;min-width:0;margin:0 0 18px;background:var(--bg)}
+.instructgpt-feedback .instructgpt-request span,.instructgpt-feedback .instructgpt-demonstration span{font-size:10px;line-height:1.9;color:var(--accent)}
+.instructgpt-feedback .instructgpt-request p,.instructgpt-feedback .instructgpt-demonstration p{font-size:12px;line-height:1.95;color:var(--ink);margin:7px 0 0;white-space:pre-wrap}
+.instructgpt-feedback .instructgpt-sft-panel,.instructgpt-feedback .instructgpt-reward-panel,.instructgpt-feedback .instructgpt-policy-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.instructgpt-feedback .instructgpt-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.instructgpt-feedback .instructgpt-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.instructgpt-feedback .instructgpt-demonstration{min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--soft);margin:16px 0}
+.instructgpt-feedback .instructgpt-flow,.instructgpt-feedback .instructgpt-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0;margin:17px 0}
+.instructgpt-feedback .instructgpt-flow>div,.instructgpt-feedback .instructgpt-roles>div{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.instructgpt-feedback .instructgpt-flow strong,.instructgpt-feedback .instructgpt-roles strong{display:block;font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);overflow-wrap:anywhere}
+.instructgpt-feedback .instructgpt-flow p,.instructgpt-feedback .instructgpt-roles p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.instructgpt-feedback .instructgpt-roles span{display:inline-block;font-size:10px;line-height:1.9;color:var(--accent);margin:0 0 7px}
+.instructgpt-feedback .instructgpt-roles>div[data-fixed=false]{border-color:var(--accent);background:var(--soft)}
+.instructgpt-feedback .instructgpt-param-state{padding:11px 13px;background:var(--soft);border-radius:5px;font-size:11px;line-height:1.95;color:var(--accent);margin:16px 0}
+.instructgpt-feedback .instructgpt-ranking-list{display:flex;flex-direction:column;gap:12px;min-width:0;margin:17px 0}
+.instructgpt-feedback .instructgpt-candidate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 15px;min-width:0;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.instructgpt-feedback .instructgpt-candidate h5{grid-column:1/-1;margin:0}
+.instructgpt-feedback .instructgpt-candidate[data-rank="1"]{border-color:var(--accent)}
+.instructgpt-feedback .instructgpt-response{min-width:0;font-size:12px;line-height:1.95;white-space:pre-wrap;margin:0;color:var(--ink)}
+.instructgpt-feedback .instructgpt-rank-controls{display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center}
+.instructgpt-feedback .instructgpt-rank-controls button{font-size:10px;min-height:32px;padding:5px 9px}
+.instructgpt-feedback .instructgpt-selection-status{font-size:12px;line-height:1.95;color:var(--accent);padding:11px 13px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:13px 0}
+.instructgpt-feedback .instructgpt-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.instructgpt-feedback summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.instructgpt-feedback .instructgpt-details>div{padding-top:17px;min-width:0}
+.instructgpt-feedback .instructgpt-table-viewport{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft);margin:12px 0 16px}
+.instructgpt-feedback table{width:100%;border-collapse:collapse;text-align:left;font:10px/1.9 var(--mono)}
+.instructgpt-feedback th,.instructgpt-feedback td{font-weight:400;color:var(--text);padding:10px 9px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.instructgpt-feedback th{font-family:var(--sans);font-size:10px;color:var(--muted)}
+.instructgpt-feedback .instructgpt-number-summary{font:13px/1.95 var(--mono);color:var(--accent);overflow-wrap:anywhere;margin:0 0 14px}
+.instructgpt-feedback .instructgpt-distributions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;min-width:0;margin:16px 0}
+.instructgpt-feedback .instructgpt-probability-card{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.instructgpt-feedback .instructgpt-probability-card strong{display:block;font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);overflow-wrap:anywhere}
+.instructgpt-feedback .instructgpt-probability-card>span{display:block;font:11px/1.9 var(--mono);color:var(--accent);margin-top:7px}
+.instructgpt-feedback .instructgpt-probability-card small{display:block;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;margin-top:8px}
+.instructgpt-feedback .instructgpt-track{height:7px;border-radius:4px;background:var(--soft);overflow:hidden;margin-top:9px}
+.instructgpt-feedback .instructgpt-track span{display:block;height:100%;background:var(--accent);border-radius:4px}
+.instructgpt-feedback .instructgpt-objective-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin:16px 0 19px}
+.instructgpt-feedback .instructgpt-objective-values>div{min-width:0;padding:12px;border:1px solid var(--line);border-radius:5px;background:var(--soft)}
+.instructgpt-feedback .instructgpt-objective-values span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.instructgpt-feedback .instructgpt-objective-values strong{display:block;font:20px/1.9 var(--mono);font-weight:400;color:var(--accent);overflow-wrap:anywhere;margin-top:5px}
+.instructgpt-feedback .instructgpt-formula{white-space:pre-wrap;font:11px/2 var(--mono);overflow-wrap:anywhere;color:var(--accent);padding:12px 14px;border:1px solid var(--line);border-radius:5px}
+.instructgpt-feedback .instructgpt-note,.instructgpt-feedback .instructgpt-scope,.instructgpt-feedback .instructgpt-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.instructgpt-feedback .instructgpt-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.instructgpt-feedback .instructgpt-credit a{color:var(--muted);text-underline-offset:3px}
+.instructgpt-feedback .instructgpt-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.instructgpt-feedback .instructgpt-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.instructgpt-feedback .instructgpt-evidence-viewport img{display:block;width:100%;height:auto}
+.instructgpt-feedback .instructgpt-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.instructgpt-feedback .instructgpt-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .instructgpt-feedback .instructgpt-stage-controls{gap:5px}
+  .instructgpt-feedback .instructgpt-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .instructgpt-feedback .instructgpt-sft-panel,.instructgpt-feedback .instructgpt-reward-panel,.instructgpt-feedback .instructgpt-policy-panel{padding:15px}
+  .instructgpt-feedback .instructgpt-flow,.instructgpt-feedback .instructgpt-roles,.instructgpt-feedback .instructgpt-distributions{grid-template-columns:minmax(0,1fr)}
+  .instructgpt-feedback .instructgpt-candidate{grid-template-columns:minmax(0,1fr);padding:12px}
+  .instructgpt-feedback .instructgpt-rank-controls{flex-direction:row;justify-content:flex-start}
+  .instructgpt-feedback h4{font-size:16px}
+}
+@media(max-width:360px){
+  .instructgpt-feedback .instructgpt-stage-controls button{padding:5px 3px;min-height:42px}
+  .instructgpt-feedback .instructgpt-controls{gap:5px}
+  .instructgpt-feedback .instructgpt-objective-values{grid-template-columns:minmax(0,1fr)}
+  .instructgpt-feedback .instructgpt-objective-values>div{padding:10px}
+  .instructgpt-feedback .instructgpt-objective-values strong{white-space:nowrap;overflow-wrap:normal;word-break:normal}
+}

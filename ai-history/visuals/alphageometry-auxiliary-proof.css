@@ -1,0 +1,73 @@
+.alphageometry-auxiliary-proof{--age-border:var(--line,#d9dedb);--age-ink:var(--ink,#18352e);--age-muted:var(--muted,#61736c);--age-accent:#237867;--age-soft:#eef7f3;min-width:0;color:var(--age-ink);line-height:1.75;overflow-wrap:anywhere}
+.alphageometry-auxiliary-proof *{box-sizing:border-box}
+.alphageometry-auxiliary-proof [hidden]{display:none!important}
+.alphageometry-auxiliary-proof button,.alphageometry-auxiliary-proof select{font:inherit;color:inherit;max-width:100%}
+.alphageometry-auxiliary-proof button{border:1px solid var(--age-border);border-radius:9px;background:var(--card,#fff);padding:8px 12px;cursor:pointer;line-height:1.45;white-space:normal;min-height:40px}
+.alphageometry-auxiliary-proof button:hover,.alphageometry-auxiliary-proof button.active{border-color:var(--age-accent);background:var(--age-soft)}
+.alphageometry-auxiliary-proof button:disabled{opacity:.5;cursor:default}
+.alphageometry-auxiliary-proof :is(button,select,input,summary,[tabindex]):focus-visible{outline:3px solid #73bda8;outline-offset:3px}
+.alphageometry-auxiliary-proof .age-stage-controls{position:sticky;top:60px;z-index:3;display:flex;gap:7px;padding:10px 0;background:var(--paper,#f8faf8);border-bottom:1px solid var(--age-border);flex-wrap:wrap}
+.alphageometry-auxiliary-proof .age-stage-controls button{flex:1;min-width:125px;font-weight:700}
+.alphageometry-auxiliary-proof .age-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:14px 0;min-width:0}
+.alphageometry-auxiliary-proof .age-stage-text{color:var(--age-muted);margin:12px 0 22px}
+.alphageometry-auxiliary-proof .age-panel{min-width:0;margin:22px 0}
+.alphageometry-auxiliary-proof h4{font-size:1.17rem;line-height:1.55;margin:24px 0 12px;letter-spacing:-.025em}
+.alphageometry-auxiliary-proof h5{font-size:.95rem;line-height:1.55;margin:16px 0 9px}
+.alphageometry-auxiliary-proof .age-prose{margin:12px 0 18px}
+.alphageometry-auxiliary-proof .age-input-summary{font-variant-numeric:tabular-nums;font-size:.88rem;color:var(--age-muted)}
+.alphageometry-auxiliary-proof .age-input-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px;padding:14px 0}
+.alphageometry-auxiliary-proof .age-check{display:flex;align-items:flex-start;gap:9px;min-width:0;font-size:.9rem}
+.alphageometry-auxiliary-proof .age-check input{accent-color:var(--age-accent);margin-top:6px;flex-shrink:0}
+.alphageometry-auxiliary-proof .age-field{display:flex;flex-direction:column;gap:4px;max-width:100%;font-size:.84rem;color:var(--age-muted)}
+.alphageometry-auxiliary-proof select{padding:7px;border:1px solid var(--age-border);border-radius:7px;background:var(--card,#fff);min-width:90px;min-height:40px}
+.alphageometry-auxiliary-proof .age-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:18px 0}
+.alphageometry-auxiliary-proof .age-rule{padding:13px;border:1px solid var(--age-border);border-radius:10px;background:var(--card,#fff);min-width:0}
+.alphageometry-auxiliary-proof .age-rule h5{margin-top:0}
+.alphageometry-auxiliary-proof code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.84rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.alphageometry-auxiliary-proof .age-formula{display:block;padding:8px 12px;background:var(--age-soft);border-radius:6px;margin:6px 0}
+.alphageometry-auxiliary-proof .age-keypoint{border-left:3px solid var(--age-accent);background:var(--age-soft);padding:13px 16px;margin:16px 0;font-size:.92rem}
+.alphageometry-auxiliary-proof .age-note{font-size:.83rem;color:var(--age-muted);margin:10px 0}
+.alphageometry-auxiliary-proof .age-svg-viewport,.alphageometry-auxiliary-proof .age-table-viewport,.alphageometry-auxiliary-proof .age-original-viewport{max-width:100%;width:100%;min-width:0;overflow:auto;overscroll-behavior:contain;border:1px solid var(--age-border);border-radius:10px;background:var(--card,#fff);margin:14px 0;touch-action:pan-x pan-y}
+.alphageometry-auxiliary-proof .age-svg-viewport>svg{display:block;width:100%;min-width:720px;height:auto;color:var(--age-ink);font-family:inherit}
+.alphageometry-auxiliary-proof .age-edge path{fill:none;stroke:#658b7f;stroke-width:2}
+.alphageometry-auxiliary-proof .age-edge.extra path{stroke:#a4b6af;stroke-width:1.4;stroke-dasharray:4 5}
+.alphageometry-auxiliary-proof .age-edge[data-enabled="false"] path{stroke:#c4ccc8;opacity:.65}
+.alphageometry-auxiliary-proof .age-edge.focused path{stroke:#c66c27;stroke-width:3}
+.alphageometry-auxiliary-proof .age-edge-number{font-size:11px;fill:var(--age-ink);paint-order:stroke;stroke:var(--card,#fff);stroke-width:4;stroke-linejoin:round}
+.alphageometry-auxiliary-proof .age-node rect{fill:#fff;stroke:#b9ccc3;stroke-width:1.5}
+.alphageometry-auxiliary-proof .age-node.hidden rect{fill:#eff7f2;stroke:#6c9e88}
+.alphageometry-auxiliary-proof .age-node.output rect{fill:#e2f1ec;stroke:#237867;stroke-width:2}
+.alphageometry-auxiliary-proof .age-node.added rect{fill:#fff5e7;stroke:#c7a76b;stroke-dasharray:5 3}
+.alphageometry-auxiliary-proof .age-node-title{font-size:12px;font-weight:700;fill:#18352e}
+.alphageometry-auxiliary-proof .age-node-value{font-size:11px;fill:#47675a}
+.alphageometry-auxiliary-proof .age-svg-note{font-size:11px;fill:var(--age-muted)}
+.alphageometry-auxiliary-proof .age-chart-axis{fill:none;stroke:#a9bab2;stroke-width:1.2}
+.alphageometry-auxiliary-proof .age-loss-line{fill:none;stroke:var(--age-accent);stroke-width:2.5}
+.alphageometry-auxiliary-proof .age-comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:15px 0}
+.alphageometry-auxiliary-proof .age-value{border:1px solid var(--age-border);border-radius:9px;padding:12px;background:var(--card,#fff)}
+.alphageometry-auxiliary-proof .age-value h5{font-size:.79rem;color:var(--age-muted);margin:0 0 6px}
+.alphageometry-auxiliary-proof .age-value strong{font-size:1.5rem;font-variant-numeric:tabular-nums}
+.alphageometry-auxiliary-proof .age-details{margin:20px 0;border-top:1px solid var(--age-border);padding-top:10px;min-width:0}
+.alphageometry-auxiliary-proof summary{cursor:pointer;font-weight:650;font-size:.91rem;padding:8px 0}
+.alphageometry-auxiliary-proof .age-table{border-collapse:collapse;width:100%;min-width:520px;font-size:.82rem;font-variant-numeric:tabular-nums}
+.alphageometry-auxiliary-proof .age-table th,.alphageometry-auxiliary-proof .age-table td{text-align:left;padding:8px 12px;white-space:nowrap;border-bottom:1px solid var(--age-border)}
+.alphageometry-auxiliary-proof .age-table button{font-size:.79rem;padding:3px 8px;min-height:32px}
+.alphageometry-auxiliary-proof .age-original{margin:0;min-width:0}
+.alphageometry-auxiliary-proof .age-original-viewport{max-height:420px}
+.alphageometry-auxiliary-proof .age-original-viewport img{display:block;width:100%;height:auto;max-width:none}
+.alphageometry-auxiliary-proof .age-original.is-expanded .age-original-viewport img{width:1100px;min-width:1100px}
+.alphageometry-auxiliary-proof figcaption{font-size:.87rem;line-height:1.7;margin:12px 0}
+.alphageometry-auxiliary-proof .age-source{font-size:.82rem;color:var(--age-accent);overflow-wrap:anywhere}
+@media(max-width:600px){.alphageometry-auxiliary-proof .age-rules{grid-template-columns:1fr}.alphageometry-auxiliary-proof .age-stage-controls{gap:5px}.alphageometry-auxiliary-proof .age-stage-controls button{min-width:0;flex-basis:100%;padding:7px}.alphageometry-auxiliary-proof .age-comparison{grid-template-columns:1fr}.alphageometry-auxiliary-proof .age-controls{align-items:flex-start}.alphageometry-auxiliary-proof .age-field{width:100%}.alphageometry-auxiliary-proof select{width:100%}.alphageometry-auxiliary-proof .age-value strong{font-size:1.3rem}.alphageometry-auxiliary-proof .age-keypoint{padding:10px 12px}.alphageometry-auxiliary-proof .age-svg-viewport>svg{min-width:720px}}
+.alphageometry-auxiliary-proof .age-side{fill:none;stroke:#5b7065;stroke-width:3}
+.alphageometry-auxiliary-proof .age-auxiliary{fill:none;stroke:#3d79d0;stroke-width:3}
+.alphageometry-auxiliary-proof .age-point{fill:#274438;stroke:#fff;stroke-width:1.5}
+.alphageometry-auxiliary-proof .age-point.auxiliary{fill:#3d79d0}
+.alphageometry-auxiliary-proof .age-point-label{fill:#254337;font-size:17px;font-weight:700}
+.alphageometry-auxiliary-proof .age-tick{fill:none;stroke:#7e987e;stroke-width:2}
+.alphageometry-auxiliary-proof .age-angle{fill:none;stroke:#3c9d68;stroke-width:3}
+.alphageometry-auxiliary-proof .age-triangle.left{fill:#d9e9fe;opacity:.6;stroke:none}
+.alphageometry-auxiliary-proof .age-triangle.right{fill:#dceee1;opacity:.6;stroke:none}
+.alphageometry-auxiliary-proof .age-proof-list{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.alphageometry-auxiliary-proof .age-proof-list button{text-align:left;width:100%}
+.alphageometry-auxiliary-proof .age-rule-controls{display:flex;flex-direction:column;gap:12px;padding:12px 0}

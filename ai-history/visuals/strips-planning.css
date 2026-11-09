@@ -1,0 +1,89 @@
+/* Each view owns only STRIPS content; diagrams and source images pan separately. */
+.strips-planning{width:100%;min-width:0;color:var(--text)}
+.strips-planning [hidden]{display:none!important}
+.strips-planning p,.strips-planning h4,.strips-planning h5,.strips-planning span,.strips-planning small,.strips-planning label{word-break:keep-all;overflow-wrap:anywhere}
+.strips-planning button{font:11px/1.75 var(--sans);color:var(--muted);border:1px solid var(--line);background:var(--bg);border-radius:5px;min-height:38px;padding:8px 11px;max-width:100%;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;cursor:pointer}
+.strips-planning button:hover{border-color:var(--accent);color:var(--accent)}
+.strips-planning button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.strips-planning button:disabled{opacity:.4;cursor:default}
+.strips-planning button:focus-visible,.strips-planning a:focus-visible,.strips-planning input:focus-visible,.strips-planning select:focus-visible,.strips-planning summary:focus-visible,.strips-planning .stp-svg-viewport:focus-visible,.strips-planning .stp-image-viewport:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.strips-planning .stp-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;z-index:2;background:var(--bg);padding:5px 0 10px}
+.strips-planning .stp-stage-text{font-size:12px;line-height:1.95;background:var(--soft);border-radius:6px;padding:13px 15px;margin:0 0 18px}
+.strips-planning h4{font:500 18px/1.8 var(--serif);color:var(--ink);margin:0 0 14px}
+.strips-planning h5{font:500 13px/1.9 var(--sans);color:var(--ink);margin:16px 0 11px}
+.strips-planning .stp-prose{font-size:12px;line-height:1.95;margin:0 0 16px}
+.strips-planning .stp-note{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0;min-width:0}
+.strips-planning .stp-panel,.strips-planning .stp-setup{border:1px solid var(--line);border-radius:8px;min-width:0;padding:20px;margin:0 0 18px}
+.strips-planning .stp-setup{background:var(--soft);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px}
+.strips-planning .stp-setup>h4,.strips-planning .stp-setup>p{grid-column:1/-1;margin-bottom:0}
+.strips-planning .stp-setup>h4{font-size:15px}
+.strips-planning .stp-check{display:flex;align-items:flex-start;gap:8px;min-width:0;font-size:11px;line-height:1.9;cursor:pointer;padding:10px 0}
+.strips-planning input[type=checkbox]{width:16px;height:16px;flex:0 0 16px;margin:3px 0 0;accent-color:var(--accent)}
+.strips-planning .stp-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0;margin:18px 0}
+.strips-planning select{font:11px/1.8 var(--sans);min-width:0;max-width:100%;min-height:38px;padding:7px 30px 7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink)}
+.strips-planning .stp-keypoint{font-size:12px;line-height:1.95;color:var(--ink);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;background:var(--soft);padding:13px 15px;margin:18px 0;min-width:0}
+.strips-planning .stp-facts{display:flex;flex-wrap:wrap;gap:7px;min-width:0;margin:12px 0}
+.strips-planning .stp-fact{display:grid;gap:5px;min-width:0;max-width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);box-sizing:border-box}
+.strips-planning .stp-fact code{font:10px/1.8 var(--mono);color:var(--ink);overflow-wrap:anywhere;word-break:break-all}
+.strips-planning .stp-fact small{font-size:10px;line-height:1.8;color:var(--muted)}
+.strips-planning .stp-fact[data-present=true]{border-color:var(--accent);background:var(--soft)}
+.strips-planning .stp-fact[data-present=false]{border-style:dashed}
+.strips-planning .stp-svg-viewport{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin;margin:20px 0 0}
+.strips-planning svg{display:block;width:100%;max-width:760px;height:auto;margin:0 auto;overflow:visible}
+.strips-planning .stp-room{stroke:var(--line);stroke-width:1.5;fill:var(--bg)}
+.strips-planning .stp-room-title{font:15px var(--sans);fill:var(--ink)}
+.strips-planning .stp-map-small{font:11px var(--sans);fill:var(--muted)}
+.strips-planning .stp-passage{fill:none;stroke:var(--muted);stroke-width:2}
+.strips-planning .stp-side{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 5}
+.strips-planning .stp-side.open{stroke:var(--accent);stroke-dasharray:none}
+.strips-planning .stp-door{fill:none;stroke:var(--ink);stroke-width:4}
+.strips-planning .stp-door.open{stroke:var(--accent)}
+.strips-planning .stp-robot{fill:var(--soft);stroke:var(--accent);stroke-width:1.8}
+.strips-planning .stp-robot-line{fill:none;stroke:var(--accent);stroke-width:1.8}
+.strips-planning .stp-eye{fill:var(--accent)}
+.strips-planning .stp-box{fill:var(--soft);stroke:var(--ink);stroke-width:1.4}
+.strips-planning .stp-box-label{font:9px var(--sans);fill:var(--ink)}
+.strips-planning .stp-key{fill:none;stroke:var(--ink);stroke-width:1.5}
+.strips-planning .stp-tree-edge{fill:none;stroke:var(--line);stroke-width:1.3}
+.strips-planning .stp-tree-edge.on-path{stroke:var(--accent);stroke-width:1.7}
+.strips-planning .stp-tree-node{fill:var(--bg);stroke:var(--line);stroke-width:1.3}
+.strips-planning .stp-tree-node.on-path{fill:var(--soft);stroke:var(--accent)}
+.strips-planning .stp-tree-node.selected{stroke:var(--accent);stroke-width:2.4}
+.strips-planning .stp-tree-title{font:10px var(--mono);fill:var(--ink)}
+.strips-planning .stp-tree-small{font:9px var(--sans);fill:var(--muted)}
+.strips-planning .stp-effects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;min-width:0;margin:20px 0}
+.strips-planning .stp-effect{padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--soft);min-width:0}
+.strips-planning .stp-effect h5{margin-top:0}
+.strips-planning .stp-effect .stp-facts{display:grid;grid-template-columns:minmax(0,1fr)}
+.strips-planning .stp-relevant,.strips-planning .stp-change{border:1px solid var(--line);border-radius:7px;padding:16px;margin:15px 0;background:var(--soft);min-width:0}
+.strips-planning .stp-relevant h5,.strips-planning .stp-change h5{margin-top:0}
+.strips-planning .stp-details{border-top:1px solid var(--line);padding-top:16px;margin-top:20px;min-width:0}
+.strips-planning summary{font-size:12px;line-height:1.95;color:var(--ink);cursor:pointer;word-break:keep-all;overflow-wrap:anywhere}
+.strips-planning .stp-details>div{margin-top:16px}
+.strips-planning .stp-source-panel,.strips-planning .stp-original{border:1px solid var(--line);border-radius:6px;min-width:0;padding:17px;margin:15px 0}
+.strips-planning .stp-source-panel h5,.strips-planning .stp-original h5{margin-top:0}
+.strips-planning .stp-code{font:10px/1.95 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-all;max-width:100%;min-width:0;box-sizing:border-box;background:var(--soft);color:var(--ink);padding:13px;border:1px solid var(--line);border-radius:5px}
+.strips-planning .stp-source{display:inline-block;font-size:10px;line-height:1.95;color:var(--muted);max-width:100%;overflow-wrap:anywhere;text-underline-offset:3px}
+.strips-planning .stp-image-viewport{max-width:100%;min-width:0;overflow:auto;scrollbar-width:thin;background:#fff;margin-top:15px;border:1px solid var(--line);border-radius:5px}
+.strips-planning .stp-image-viewport img{display:block;max-width:100%;height:auto;margin:0 auto}
+.strips-planning .stp-image-viewport.expanded{max-height:520px}
+.strips-planning .stp-image-viewport.expanded img{max-width:none;width:1100px}
+@media(max-width:700px){
+ .strips-planning .stp-panel,.strips-planning .stp-setup{padding:15px}
+ .strips-planning h4{font-size:16px}
+ .strips-planning .stp-stage-controls{gap:5px}
+ .strips-planning .stp-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+ .strips-planning .stp-setup{grid-template-columns:minmax(0,1fr);gap:0}
+ .strips-planning .stp-controls>*{max-width:100%}
+ .strips-planning .stp-controls select{width:100%}
+ .strips-planning svg{min-width:650px}
+ .strips-planning .stp-effects{grid-template-columns:minmax(0,1fr)}
+ .strips-planning .stp-fact{width:100%}
+ .strips-planning .stp-effect{padding:12px}
+}
+@media(max-width:360px){
+ .strips-planning .stp-panel,.strips-planning .stp-setup{padding:12px}
+ .strips-planning .stp-stage-controls button{padding:5px 3px}
+ .strips-planning .stp-keypoint{padding:11px 12px}
+ .strips-planning .stp-controls>button{flex:1 1 100%}
+}

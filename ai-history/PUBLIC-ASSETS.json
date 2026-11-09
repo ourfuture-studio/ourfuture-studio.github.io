@@ -1,0 +1,637 @@
+{
+  "version": "0.33-public.1",
+  "retainedSourceFigures": [
+    {
+      "file": "alexnet-conv1-96.png",
+      "bytes": 38357,
+      "sha256": "39be31d696822295d173db1f180441424405eb7e56d6ca9d790af4490ec8b965",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/alexnet-author-permission.json",
+        "pointer": "permissionText; scope",
+        "basis": "Author explicitly permits reuse of linked figures",
+        "url": "https://cave.cs.toronto.edu/kriz/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "alexnet",
+          "configPath": "content.article.visual.evidenceViews.0",
+          "title": "실제로 학습된 96개의 첫 층 필터",
+          "source": {
+            "title": "Krizhevsky·Sutskever·Hinton (2012) · PDF p.6 · Fig.3, 관찰 해석은 p.7 §6.1",
+            "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=6"
+          },
+          "credit": {
+            "title": "Krizhevsky·Sutskever·Hinton (2012) · Alex Krizhevsky 제공",
+            "url": "https://cave.cs.toronto.edu/kriz/",
+            "note": "저자 페이지에서 재사용을 허용한 그림 파일을 변경 없이 사용했습니다. 강조 테두리와 확대는 이 화면의 조작입니다."
+          },
+          "caption": "작은 타일 하나가 RGB 입력의 11×11×3 가중치를 시각화한 한 필터다. 선의 방향이나 색 변화에 대응하는 무늬를 볼 수 있다. 사진을 넣었을 때의 반응 지도와는 다른 그림이다.",
+          "alt": "",
+          "entryPath": "dist/entries/alexnet.js"
+        }
+      ],
+      "primarySourceUrl": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=6"
+    },
+    {
+      "file": "alexnet-test-similar.png",
+      "bytes": 375215,
+      "sha256": "6534579e515e1d22af8f978859f9f7e82f67e6331ccdcbd98cfdf2863c678ba0",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/alexnet-author-permission.json",
+        "pointer": "permissionText; scope",
+        "basis": "Author explicitly permits reuse of linked figures",
+        "url": "https://cave.cs.toronto.edu/kriz/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "alexnet",
+          "configPath": "content.article.visual.evidenceViews.1",
+          "title": "자세가 달라도, 배운 표현에서 가까울 수 있을까?",
+          "source": {
+            "title": "Krizhevsky·Sutskever·Hinton (2012) · PDF p.8 · §6.1, Fig.4 오른쪽 패널",
+            "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8"
+          },
+          "credit": {
+            "title": "Krizhevsky·Sutskever·Hinton (2012) · Alex Krizhevsky 제공",
+            "url": "https://cave.cs.toronto.edu/kriz/",
+            "note": "저자 페이지에서 재사용을 허용한 그림 파일을 변경 없이 사용했습니다. 강조 테두리와 확대는 이 화면의 조작입니다."
+          },
+          "caption": "원문 Fig.4 오른쪽 패널이다. 각 행의 맨 왼쪽은 시험 사진, 오른쪽 여섯 장은 마지막 은닉층의 4,096차원 표현에서 유클리드 거리가 가까운 훈련 사진이다. 화소가 같은지 대신 배운 특징 공간에서 비교했다.",
+          "alt": "",
+          "entryPath": "dist/entries/alexnet.js"
+        }
+      ],
+      "primarySourceUrl": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8"
+    },
+    {
+      "file": "alphageometry-2024-midpoint.png",
+      "bytes": 15748,
+      "sha256": "174a8698a987e236d26a1a39aab2953971e9c86514ad8c7311655da9f273221d",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/alphageometry-review/source-audit.json",
+        "pointer": "originalFigure.license",
+        "basis": "CC BY 4.0 article and official SVG; credit and crop changes retained",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "alphageometry",
+          "configPath": "content.article.visual.originalImage",
+          "title": "원논문 Figure1d · 중점D와 파란 보조선AD",
+          "source": {
+            "title": "AlphaGeometry 공식 저장소 · Figure1 원본SVG",
+            "url": "https://github.com/google-deepmind/alphageometry/blob/main/fig1.svg"
+          },
+          "credit": "Trieu H. Trinh 등5명, Nature625, 2024, Figure1d의 기하 도식 발췌. 원본: 연구팀공식GitHub fig1.svg. 논문은 CC-BY4.0이며 출처·라이선스를 표시한다. 변경: 삼각형 도식 영역만 잘라 설명을 밖에 붙였다. https://creativecommons.org/licenses/by/4.0/",
+          "caption": "논문Figure1d의 해결 도식에서 삼각형·점 이름·파란 보조선 부분만 발췌했다. 연구팀이 공개한Figure1 원본SVG를 동일하게 렌더링한 뒤 이 영역을 잘랐으며, 원문 도형 자체에는 표시를 덧붙이지 않았다. 전체Figure1은 언어모델의 보조 구성과 기호 엔진의 추론이 번갈아 이어지는 구조를 보여 준다.",
+          "alt": "AlphaGeometry2024 Figure1d의 삼각형 도식. 꼭짓점A와 밑변B·C에 새 중점D가 파란색으로 표시되고AD가 파란 보조선으로 그려져 있다.",
+          "entryPath": "dist/entries/alphageometry.js"
+        }
+      ],
+      "primarySourceUrl": "https://github.com/google-deepmind/alphageometry/blob/main/fig1.svg"
+    },
+    {
+      "file": "bert-2019-context-comparison.png",
+      "bytes": 93385,
+      "sha256": "27b7fbf838ec77ebddac908c1ce873fb85e296f057487b3cdc90d6f0152986aa",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/bert-2019-source-review.json",
+        "pointer": "asset provenance; current entry evidence credit.notes",
+        "basis": "Official NAACL/ACL2019 PDF source matches current entry config. ACL official FAQ explicitly licenses post-2016 ACL materials CC BY4.0 for commercial and noncommercial use.",
+        "url": "https://aclanthology.org/faq/copyright/",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "policyReadOn": "2026-11-10",
+        "requiredPublicCreditAddition": null
+      },
+      "publicReuseStatus": "Official post-2016 ACL policy verified; attribution and crop description retained",
+      "references": [
+        {
+          "cardId": "bert",
+          "configPath": "content.article.visual.evidence.2",
+          "title": "두 방향을 마지막에 붙이는 것과, 층마다 함께 섞는 것",
+          "source": {
+            "title": "Devlin 외 (2019) · PDF p.13 · 부록 · Fig.3 · 사전학습 구조 비교",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=13"
+          },
+          "credit": {
+            "title": "Devlin 외 (2019) · Fig.3",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=13",
+            "note": "NAACL 출판본의 비교 그림을 직접 렌더했습니다. BERT·GPT·ELMo의 이름·연결을 보존했습니다. 출처: ACL Anthology, CC BY 4.0."
+          },
+          "caption": "부록의 Fig.3은 BERT, OpenAI GPT, ELMo의 사전학습 구조를 나란히 그린다. BERT는 모든 층에서 두 방향의 문맥을 함께 사용하고, GPT는 왼쪽에서 오른쪽으로 읽으며, ELMo는 따로 학습한 양방향 언어모형의 표현을 결합한다.",
+          "alt": "",
+          "entryPath": "dist/entries/bert.js"
+        }
+      ],
+      "primarySourceUrl": "https://aclanthology.org/N19-1423.pdf#page=13"
+    },
+    {
+      "file": "bert-2019-input-representation.png",
+      "bytes": 60108,
+      "sha256": "0269102a42705a37aa1dc63dd42da32c957bd2f44631f46d713ad3a943f5088e",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/bert-2019-source-review.json",
+        "pointer": "asset provenance; current entry evidence credit.notes",
+        "basis": "Official NAACL/ACL2019 PDF source matches current entry config. ACL official FAQ explicitly licenses post-2016 ACL materials CC BY4.0 for commercial and noncommercial use.",
+        "url": "https://aclanthology.org/faq/copyright/",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "policyReadOn": "2026-11-10",
+        "requiredPublicCreditAddition": null
+      },
+      "publicReuseStatus": "Official post-2016 ACL policy verified; attribution and crop description retained",
+      "references": [
+        {
+          "cardId": "bert",
+          "configPath": "content.article.visual.evidence.1",
+          "title": "어느 토큰인지, 어느 구간인지, 어디에 놓였는지",
+          "source": {
+            "title": "Devlin 외 (2019) · PDF p.5 · Fig.2 · BERT 입력 표현",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=5"
+          },
+          "credit": {
+            "title": "Devlin 외 (2019) · Fig.2",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=5",
+            "note": "원그림의 세 임베딩과 합 표시를 보존했습니다. 출처: NAACL 2019 / ACL Anthology, CC BY 4.0. 원래 그림에 새 수치나 학습 결과를 추가하지 않았습니다."
+          },
+          "caption": "Fig.2는 WordPiece 토큰·구간 A/B·위치의 세 임베딩을 더해 입력을 만드는 모습을 보여 준다. [CLS]와 [SEP]로 경계를 나타내고, 첫 구간과 둘째 구간의 토큰에 서로 다른 segment 임베딩을 더한다.",
+          "alt": "",
+          "entryPath": "dist/entries/bert.js"
+        }
+      ],
+      "primarySourceUrl": "https://aclanthology.org/N19-1423.pdf#page=5"
+    },
+    {
+      "file": "bert-2019-pretraining-finetuning.png",
+      "bytes": 167993,
+      "sha256": "45852876d2f45f3b05f4a2b462f90efd2198c9f30c73fadc8222cdde33d05148",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/bert-2019-source-review.json",
+        "pointer": "asset provenance; current entry evidence credit.notes",
+        "basis": "Official NAACL/ACL2019 PDF source matches current entry config. ACL official FAQ explicitly licenses post-2016 ACL materials CC BY4.0 for commercial and noncommercial use.",
+        "url": "https://aclanthology.org/faq/copyright/",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "policyReadOn": "2026-11-10",
+        "requiredPublicCreditAddition": null
+      },
+      "publicReuseStatus": "Official post-2016 ACL policy verified; attribution and crop description retained",
+      "references": [
+        {
+          "cardId": "bert",
+          "configPath": "content.article.visual.evidence.0",
+          "title": "글에서 배우고, 과제의 정답으로 조정하다",
+          "source": {
+            "title": "Devlin 외 (2019) · PDF p.3 · Fig.1 · BERT의 사전학습과 미세조정",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=3"
+          },
+          "credit": {
+            "title": "Devlin·Chang·Lee·Toutanova (2019) · Fig.1",
+            "url": "https://aclanthology.org/N19-1423.pdf#page=3",
+            "note": "NAACL 출판본에서 직접 렌더한 원그림입니다. 원래 라벨·화살표를 보존하고 한국어 해설을 그림 밖에 붙였습니다. ACL Anthology의 2016년 이후 자료는 CC BY 4.0으로 제공됩니다."
+          },
+          "caption": "Fig.1 왼쪽은 바뀐 입력의 원래 토큰을 맞히는 Mask LM과 두 구간의 연결 여부를 맞히는 NSP다. 오른쪽은 질문과 본문을 함께 읽고 답의 시작·끝 위치를 고르는 미세조정이다. 같은 사전학습 가중치에서 과제별 학습을 시작하며 전체 모형을 조정한다.",
+          "alt": "",
+          "entryPath": "dist/entries/bert.js"
+        }
+      ],
+      "primarySourceUrl": "https://aclanthology.org/N19-1423.pdf#page=3"
+    },
+    {
+      "file": "constitutional-ai-2022-helpfulness-harmlessness.png",
+      "bytes": 255689,
+      "sha256": "d67cada8ff4abeafaf7ee383824cb04f09ff9812cde4a01217db7cf7060065b5",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/constitutional-ai-2022-source-review.json",
+        "pointer": "license",
+        "basis": "CC BY 4.0 source record directly checked; credit and crop changes retained",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "constitutional-ai",
+          "configPath": "content.article.visual.evidence.2",
+          "title": "원논문 Fig.2 · 유용성과 무해성을 함께 평가하다",
+          "source": {
+            "title": "Bai 외 (2022) · arXiv v1 PDF p.3 · Fig.2 · 52B 실행의 두 Elo",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=3"
+          },
+          "credit": {
+            "title": "Bai 외 (2022) · Fig.2 · CC BY 4.0",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=3",
+            "note": "원문 그림과 전체 캡션을 300dpi로 렌더해 영역만 잘랐습니다. 그림 안의 내용·색·수치는 바꾸지 않았으며 한국어 해설은 밖에 붙였습니다. 라이선스: https://creativecommons.org/licenses/by/4.0/"
+          },
+          "caption": "52B 실행의 사람 선호 비교. Elo는 차이만 의미하며 오차막대는 생략됐다.",
+          "alt": "",
+          "entryPath": "dist/entries/constitutional-ai.js"
+        }
+      ],
+      "primarySourceUrl": "https://arxiv.org/pdf/2212.08073v1#page=3"
+    },
+    {
+      "file": "constitutional-ai-2022-pipeline.png",
+      "bytes": 191617,
+      "sha256": "3c3f32cac658d679989f797dce0bd537810836e2b573669ad1fa0e0bcb8dd67a",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/constitutional-ai-2022-source-review.json",
+        "pointer": "license",
+        "basis": "CC BY 4.0 source record directly checked; credit and crop changes retained",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "constitutional-ai",
+          "configPath": "content.article.visual.evidence.0",
+          "title": "원논문 Fig.1 · 두 학습 단계를 잇다",
+          "source": {
+            "title": "Bai 외 (2022) · arXiv v1 PDF p.2 · Fig.1 · 전체 과정",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=2"
+          },
+          "credit": {
+            "title": "Bai 외 (2022) · Fig.1 · CC BY 4.0",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=2",
+            "note": "원문 그림과 전체 캡션을 300dpi로 렌더해 영역만 잘랐습니다. 그림 안의 내용·색·수치는 바꾸지 않았으며 한국어 해설은 밖에 붙였습니다. 라이선스: https://creativecommons.org/licenses/by/4.0/"
+          },
+          "caption": "비평·수정의 지도 학습과 AI 선호의 강화학습을 잇는 원그림.",
+          "alt": "",
+          "entryPath": "dist/entries/constitutional-ai.js"
+        }
+      ],
+      "primarySourceUrl": "https://arxiv.org/pdf/2212.08073v1#page=2"
+    },
+    {
+      "file": "constitutional-ai-2022-revision-scores.png",
+      "bytes": 142572,
+      "sha256": "04ffcab799ccf1c445c6d5eae8f1681d4e7ebf9d2029e145a870060fd1676e45",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/constitutional-ai-2022-source-review.json",
+        "pointer": "license",
+        "basis": "CC BY 4.0 source record directly checked; credit and crop changes retained",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "constitutional-ai",
+          "configPath": "content.article.visual.evidence.1",
+          "title": "원논문 Fig.5 · 수정이 늘 때 무엇이 달라졌나",
+          "source": {
+            "title": "Bai 외 (2022) · arXiv v1 PDF p.9 · Fig.5·§3.4 · 수정과 평가 PM의 점수",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=9"
+          },
+          "credit": {
+            "title": "Bai 외 (2022) · Fig.5 · CC BY 4.0",
+            "url": "https://arxiv.org/pdf/2212.08073v1#page=9",
+            "note": "원문 그림과 전체 캡션을 300dpi로 렌더해 영역만 잘랐습니다. 그림 안의 내용·색·수치는 바꾸지 않았으며 한국어 해설은 밖에 붙였습니다. 라이선스: https://creativecommons.org/licenses/by/4.0/"
+          },
+          "caption": "인간 피드백으로 학습한 52B 평가 PM. 수정이 늘며 harmlessness·HH 점수는 오르고 helpfulness 점수는 낮아진다.",
+          "alt": "",
+          "entryPath": "dist/entries/constitutional-ai.js"
+        }
+      ],
+      "primarySourceUrl": "https://arxiv.org/pdf/2212.08073v1#page=9"
+    },
+    {
+      "file": "dai-2019-segment-memory.png",
+      "bytes": 155333,
+      "sha256": "688ff96915bb6bef39b9ab840586beaea382524890423d73a6e0f1c82f7eb289",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "dist/entries/transformer-xl.js",
+        "pointer": "content.article.visual.originalImage.source and credit",
+        "basis": "Official NAACL/ACL2019 PDF source matches current entry config. ACL official FAQ explicitly licenses post-2016 ACL materials CC BY4.0 for commercial and noncommercial use.",
+        "url": "https://aclanthology.org/faq/copyright/",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "policyReadOn": "2026-11-10",
+        "requiredPublicCreditAddition": "Add explicit CC BY4.0 policy/license link alongside existing creator, source and crop credit."
+      },
+      "publicReuseStatus": "Official post-2016 ACL policy verified; attribution and crop description retained",
+      "references": [
+        {
+          "cardId": "transformer-xl",
+          "configPath": "content.article.visual.originalImage",
+          "title": "원논문 Fig.2 · 이전 상태를 고정해 읽는 경로",
+          "source": {
+            "title": "Dai 외 (2019) · Fig.2 · 구간 재귀와 상태 재사용",
+            "url": "https://aclanthology.org/P19-1285.pdf#page=4"
+          },
+          "credit": "©2019 Association for Computational Linguistics. Dai 외, ACL2019, PDF p.4 / 인쇄 p.2981, Fig.2 도식 발췌. 선·노드·영역·구간 표기는 보존했다.",
+          "caption": "Fig.2의 도식 부분만 발췌했다. 왼쪽은 앞 구간의 상태를 고정한 채 새 구간을 학습하는 경로이고, 오른쪽은 상태 재사용이 이어지는 평가의 문맥 경로다. 녹색 연결과 영역은 해당 정보 경로를 나타낸다. 실제 시간 측정이나 어텐션 가중치의 열지도는 아니다. 영어 캡션은 제외했다.",
+          "alt": "TransformerXL2019 Fig2 도식. 훈련에서 앞 구간의 상태를 고정하고 새 구간으로 연결하며, 평가에서는 더 긴 문맥을 재사용하는 경로를 녹색으로 표시한다.",
+          "entryPath": "dist/entries/transformer-xl.js"
+        }
+      ],
+      "primarySourceUrl": "https://aclanthology.org/P19-1285.pdf#page=4"
+    },
+    {
+      "file": "hubert-2025-proof-search.png",
+      "bytes": 41953,
+      "sha256": "2b469bd0f3d4a1133af2fec3fe3db6018916e9deb818ed6aeb4b983ec1d5c0f3",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/alphaproof-review/source-review.json",
+        "pointer": "figure.license",
+        "basis": "CC BY 4.0 verified in original article XML permissions",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "alphaproof",
+          "configPath": "content.article.visual.originalImage",
+          "title": "원논문 Fig.1c · 전술 후보가 다른 증명 상태로 이어지는 탐색",
+          "source": {
+            "title": "Nature · 원문 Fig.1과 전체 캡션",
+            "url": "https://www.nature.com/articles/s41586-025-09833-y#Fig1"
+          },
+          "credit": "© The Author(s)2025, Hubert 외, Olympiad-level formal mathematical reasoning with reinforcement learning, Nature. 공식 Fig.1c 도식 패널 발췌. 패널 밖만 잘랐으며 안의 수식·상태·색·화살표는 보존했다. CC BY4.0.",
+          "caption": "공식 Fig.1에서 c 패널만 발췌했다. 같은 Lean 상태에서 서로 다른 전술을 시도해 다른 경로를 조사하는 모습을 그렸다. 원문의 예제는 소수의 존재에 관한 Lean 상태이며 위의 P·Q 명제 사례와 다른 문제다. 이 도식 자체를 완성된 증명이나 실제 탐색 로그로 해석하지 않는다. 긴 영어 캡션은 제외했다.",
+          "alt": "AlphaProof 원논문Fig1c의 탐색 도식. Lean증명상태에서 let p와by_contra 전술 후보로 갈라지고,새 가정이 생긴 상태에서 탐색 경로가 이어진다.",
+          "entryPath": "dist/entries/alphaproof.js"
+        }
+      ],
+      "primarySourceUrl": "https://www.nature.com/articles/s41586-025-09833-y#Fig1"
+    },
+    {
+      "file": "rdf-1999-identified-creator.gif",
+      "bytes": 2767,
+      "sha256": "7ce861ed4bb4f2b4f06fa7ed51185bbdc8973d7af37bd7baaf7d3452152191eb",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/rdf-review/rdf-source-review.json",
+        "pointer": "sources[id=w3c-linked-document-license]; figures",
+        "basis": "Linked W3C document-use terms; original GIF bytes, original copyright, document status and source link retained",
+        "url": "https://www.w3.org/copyright/document-license-2023/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "rdf",
+          "configPath": "content.article.visual.evidence.1",
+          "title": "공식 표준 Fig.3 · 이름에서 식별된 대상으로",
+          "source": {
+            "title": "W3C RDF (1999) · §2.1.1 · Figure 3",
+            "url": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#basic"
+          },
+          "credit": {
+            "title": "W3C · Fig.3 원본 GIF·문서 상태",
+            "url": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/",
+            "note": "W3C Recommendation 22 February 1999. Copyright ©1997,1998,1999 W3C (MIT, INRIA, Keio), All Rights Reserved. 원본 GIF를 변경 없이 싣고 한국어 해설은 밖에 붙였습니다."
+          },
+          "caption": "작성자를 식별자로 가리킨 뒤 그 자원에 이름과 전자우편 값을 덧붙인다. 같은 대상에 관한 여러 진술이 이어진다.",
+          "alt": "",
+          "entryPath": "dist/entries/rdf.js"
+        }
+      ],
+      "primarySourceUrl": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#basic"
+    },
+    {
+      "file": "rdf-1999-simple-statement.gif",
+      "bytes": 1382,
+      "sha256": "074620442407b1e7f2ec2f39cd961f4e71e24e443fd6bfcb9d0164aa1fc9a2b3",
+      "category": "source-figure",
+      "status": "retain",
+      "permission": {
+        "audit": "research-assets/rdf-review/rdf-source-review.json",
+        "pointer": "sources[id=w3c-linked-document-license]; figures",
+        "basis": "Linked W3C document-use terms; original GIF bytes, original copyright, document status and source link retained",
+        "url": "https://www.w3.org/copyright/document-license-2023/"
+      },
+      "publicReuseStatus": "recorded permission or attribution terms retained",
+      "references": [
+        {
+          "cardId": "rdf",
+          "configPath": "content.article.visual.evidence.0",
+          "title": "공식 표준 Fig.1 · 하나의 진술",
+          "source": {
+            "title": "W3C RDF (1999) · §2.1.1 · Figure 1",
+            "url": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#basic"
+          },
+          "credit": {
+            "title": "W3C · Fig.1 원본 GIF·문서 상태",
+            "url": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/",
+            "note": "W3C Recommendation 22 February 1999. Copyright ©1997,1998,1999 W3C (MIT, INRIA, Keio), All Rights Reserved. 원본 GIF를 변경 없이 싣고 한국어 해설은 밖에 붙였습니다."
+          },
+          "caption": "문서 자원에서 Creator 관계를 따라 이름 문자열로 향한다. 타원은 자원, 사각형은 문자열 값이다.",
+          "alt": "",
+          "entryPath": "dist/entries/rdf.js"
+        }
+      ],
+      "primarySourceUrl": "https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#basic"
+    }
+  ],
+  "additionalAttribution": [
+    {
+      "file": "dai-2019-segment-memory.png",
+      "authors": "Zihang Dai, Zhilin Yang, Yiming Yang, Jaime Carbonell, Quoc V. Le, Ruslan Salakhutdinov",
+      "title": "Transformer-XL: Attentive Language Models beyond a Fixed-Length Context",
+      "source": "https://aclanthology.org/P19-1285/",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Figure 2 excerpt/crop; explanatory text and interactive drawing are independent."
+    }
+  ],
+  "sourceLinks": {
+    "alphago-2016-search-cycle.png": {
+      "url": "https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf#page=3",
+      "title": "원논문 Figure3 · 선택·확장·평가·되돌림 갱신"
+    },
+    "bengio-2003-architecture.png": {
+      "url": "https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf#page=6",
+      "title": "원논문 Fig.1 · 같은 표 C를 여러 위치에서 조회한다"
+    },
+    "cilp-1999-recurrent-network.png": {
+      "url": "https://openaccess.city.ac.uk/id/eprint/301/2/The_connectionist_inductive_learning.pdf#page=14",
+      "title": "원논문 Figure3 · 같은 원자의 출력을 입력에 되돌리다"
+    },
+    "deepproblog-2018-addition-program.png": {
+      "url": "https://arxiv.org/pdf/1805.10872v2#page=12",
+      "title": "원논문 Listing 1 · 읽을 부분과 더할 부분을 나누다"
+    },
+    "deepproblog-2018-learning-pipeline.png": {
+      "url": "https://arxiv.org/pdf/1805.10872v2#page=5",
+      "title": "원논문 Fig.2 · 질의의 오차를 신경망까지 보내다"
+    },
+    "dreamcoder-2021-map-abstraction.png": {
+      "url": "https://people.csail.mit.edu/asolar/papers/EllisWNSMHCST21.pdf#page=3",
+      "title": "원논문 Figure2 · 다른 해법에서 map을 드러내다"
+    },
+    "expert-1977-situation-action.png": {
+      "url": "https://ijcai.org/proceedings/1977/0231.pdf#page=6",
+      "title": "원문 §3.1.3 · 분야의 설명을 계산 가능한 규칙으로 적다"
+    },
+    "finn-2017-maml-initialization.png": {
+      "url": "https://proceedings.mlr.press/v70/finn17a/finn17a.pdf#page=2",
+      "title": "원논문 Fig.1 · 적응하기 쉬운 θ를 향한 메타학습"
+    },
+    "frames-1974-shared-terminals.png": {
+      "url": "https://dspace.mit.edu/server/api/core/bitstreams/d1a55020-5fff-458c-abc4-07432e3544bd/content#page=10",
+      "title": "원문 Figure1.2 · 다른 장면 틀이 같은 면의 기록을 공유하다"
+    },
+    "goodfellow-2014-distribution-game.png": {
+      "url": "https://arxiv.org/pdf/1406.2661v1#page=3",
+      "title": "원논문 Fig.1 · 두 분포와 판별자가 바뀌는 네 장면"
+    },
+    "gpt1-2018-architecture-tasks.png": {
+      "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf#page=4",
+      "title": "원문의 구조와 네 과제의 입력 변환"
+    },
+    "gpt1-2018-transfer-zero-shot.png": {
+      "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf#page=7",
+      "title": "얼마나 전이했는가와, 사전학습 중 나타난 별도 관찰"
+    },
+    "gpt2-2019-summary-hint.png": {
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf#page=6",
+      "title": "같은 언어모형에 TL;DR:를 붙였을 때"
+    },
+    "gpt2-2019-task-transfer.png": {
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf#page=2",
+      "title": "모형을 키웠을 때, 서로 다른 과제에서 무엇이 달라졌나"
+    },
+    "gpt3-2020-arithmetic.png": {
+      "url": "https://arxiv.org/pdf/2005.14165v4#page=23",
+      "title": "두 자리 덧셈의 성공이, 모든 산술의 성공은 아니다"
+    },
+    "gpt3-2020-context-scaling.png": {
+      "url": "https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf#page=2",
+      "title": "모형의 크기와 문맥 속 예시를 함께 바꾸어 살피다"
+    },
+    "gpt3-2020-learning-settings.png": {
+      "url": "https://arxiv.org/pdf/2005.14165v4#page=7",
+      "title": "예시를 입력에 둘 때와, 가중치 갱신에 쓸 때"
+    },
+    "gruber-1993-portable-ontology.png": {
+      "url": "https://tomgruber.org/writing/ontolingua-kaj-1993.pdf#page=8",
+      "title": "원논문 Fig.1 · 하나의 온톨로지, 여러 응용"
+    },
+    "gruber-1993-translation-architecture.png": {
+      "url": "https://tomgruber.org/writing/ontolingua-kaj-1993.pdf#page=17",
+      "title": "원논문 Fig.2 · 공통 표현에서 대상별 번역으로"
+    },
+    "instructgpt-2022-human-preference.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Paper-Conference.pdf#page=2",
+      "title": "사람이 더 선호한 답인가를, 같은 비교 기준에서 평가하다"
+    },
+    "instructgpt-2022-pretraining-mix.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Supplemental-Conference.pdf#page=34",
+      "title": "선호 보상과 기존 언어능력을 함께 살피다"
+    },
+    "instructgpt-2022-three-stages.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Paper-Conference.pdf#page=4",
+      "title": "원문의 세 단계: 시범·비교·강화학습"
+    },
+    "jumper-2021-outer-product-mean.png": {
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf#page=18",
+      "title": "원논문 보충 Fig.5 · MSA 표현에서 잔기쌍 표현으로"
+    },
+    "kbann-1990-rule-network.png": {
+      "url": "https://cdn.aaai.org/AAAI/1990/AAAI90-129.pdf#page=3",
+      "title": "원논문 Figure 1 · 지식베이스를 신경망으로 옮기기"
+    },
+    "kimi-k2-2025-agent-trajectories.png": {
+      "url": "https://arxiv.org/pdf/2507.20534v1#page=10",
+      "title": "원문 Figure8(b) · 도구를 쓰는 경로를 만들고 검수하다"
+    },
+    "kr-1982-meaning-postulate.png": {
+      "url": "https://cdn.aaai.org/AAAI/1982/AAAI82-045.pdf#page=3",
+      "title": "원문 §4 · 개념의 뜻이 사실의 이론에 들어오는 의미 공준"
+    },
+    "ltn-2022-grounding-graph.png": {
+      "url": "https://openaccess.city.ac.uk/id/eprint/27580/1/2012.13635.pdf#page=8",
+      "title": "원논문 Figure1 · 기호의 결합을 tensor계산으로 옮기다"
+    },
+    "ngiam-2011-competition.png": {
+      "url": "https://cs.stanford.edu/~jngiam/papers/NgiamKohChenBhaskarNg2011.pdf#page=4",
+      "title": "원논문 Fig.1 · 정규화와 경쟁의 기하"
+    },
+    "nscl-2019-concept-space.png": {
+      "url": "https://nscl.csail.mit.edu/data/papers/2019ICLR-NSCL.pdf#page=4",
+      "title": "원논문 Fig.3 · 물체 특징을 개념과 비교하다"
+    },
+    "nscl-2019-curriculum-execution.png": {
+      "url": "https://nscl.csail.mit.edu/data/papers/2019ICLR-NSCL.pdf#page=5",
+      "title": "원논문 Fig.4 · 쉬운 질문에서 복잡한 조합으로"
+    },
+    "nscl-2019-framework.png": {
+      "url": "https://nscl.csail.mit.edu/data/papers/2019ICLR-NSCL.pdf#page=3",
+      "title": "원논문 Fig.2 · 질문의 답이 두 경로를 잇다"
+    },
+    "peebles-2023-latent-transformer.png": {
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Peebles_Scalable_Diffusion_Models_with_Transformers_ICCV_2023_paper.pdf#page=3",
+      "title": "원논문 Fig.3 왼쪽 · 잠재 격자에서 잡음·공분산 출력까지"
+    },
+    "pi05-2025-hierarchical-factorization.png": {
+      "url": "https://arxiv.org/pdf/2504.16054v1#page=5",
+      "title": "원문 §IV-A · 언어 하위과제와 행동 묶음의 조건부 연결"
+    },
+    "prolog-1974-member-computations.png": {
+      "url": "https://www.doc.ic.ac.uk/~rak/papers/IFIP%2074.pdf#page=3",
+      "title": "원문 Fig.2 · 같은 질문에서 두 답과 실패 경로가 생기다"
+    },
+    "robinson-1965-refutation-example.png": {
+      "url": "https://web.stanford.edu/class/linguist289/robinson65.pdf#page=14",
+      "title": "원논문 §6 Example 2 · C₉가 빈 절이 되는 반박"
+    },
+    "semantic-web-2001-cook-search.png": {
+      "url": "https://lassila.org/publications/2001/SciAm.pdf#page=6",
+      "title": "원문 도식 · 한 페이지에 없는 답을 여러 관계로 찾다"
+    },
+    "semantic-web-2001-intelligent-agents.png": {
+      "url": "https://lassila.org/publications/2001/SciAm.pdf#page=8",
+      "title": "원문 도식 · 온톨로지와 여러 서비스를 거쳐 계획으로"
+    },
+    "seq2seq-sentences-pca.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/file/5a18e133cbf9f257297f410bb7eca942-Paper.pdf#page=6",
+      "title": "원문이 학습한 문장 표현"
+    },
+    "strips-1971-search-tree.png": {
+      "url": "https://www.ijcai.org/proceedings/1971/0063.pdf#page=4",
+      "title": "원문 Figure 1 · 세계 모형과 남은 목표가 함께 있는 탐색 나무"
+    },
+    "transformer-2017-architecture.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf#page=3",
+      "title": "원문의 전체 구조 · Attention 다음에도 계산은 이어진다"
+    },
+    "transformer-2017-attention-anaphora.png": {
+      "url": "https://arxiv.org/pdf/1706.03762v5#page=14",
+      "title": "its를 표현할 때, 서로 다른 Head가 참고한 곳"
+    },
+    "transformer-2017-attention-long-distance.png": {
+      "url": "https://arxiv.org/pdf/1706.03762v5#page=13",
+      "title": "떨어진 말을 직접 참고한, 학습 후의 관찰"
+    },
+    "visual-genome-2016-scene-graph.png": {
+      "url": "https://arxiv.org/pdf/1602.07332v1#page=6",
+      "title": "원문 Fig.4 하단 · 객체·속성·관계를 연결한 장면 그래프 부분"
+    },
+    "word2vec-capitals-pca.png": {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf#page=4",
+      "title": "나라와 수도의 관계가, 학습된 표현에서 나타나다"
+    }
+  },
+  "portraitPolicy": "38 file-specific Commons records; three pending source reviews use initials. Each displayed photo retains its author, source and license link."
+}

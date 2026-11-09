@@ -1,0 +1,71 @@
+/* Authored text and role diagrams wrap; only enlarged original figures pan. */
+.constitutional-feedback{width:100%;min-width:0;color:var(--text)}
+.constitutional-feedback [hidden]{display:none!important}
+.constitutional-feedback button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.constitutional-feedback button:hover{border-color:var(--accent);color:var(--accent)}
+.constitutional-feedback button:focus-visible,.constitutional-feedback a:focus-visible,.constitutional-feedback [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.constitutional-feedback button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.constitutional-feedback p{word-break:keep-all;overflow-wrap:anywhere}
+.constitutional-feedback h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.constitutional-feedback h5{font-size:12px;font-weight:500;line-height:1.8;color:var(--ink);margin:0 0 9px;word-break:keep-all;overflow-wrap:anywhere}
+.constitutional-feedback .constitutional-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.constitutional-feedback .constitutional-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.constitutional-feedback .constitutional-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.constitutional-feedback .constitutional-principles{min-width:0;padding:14px 16px;border:1px solid var(--accent);border-radius:6px;background:var(--bg);margin:0 0 18px}
+.constitutional-feedback .constitutional-eyebrow{display:block;font-size:10px;line-height:1.9;color:var(--muted);margin:0 0 10px}
+.constitutional-feedback .constitutional-principle-text{font-size:12px;line-height:1.95;color:var(--accent);margin:9px 0 5px}
+.constitutional-feedback .constitutional-revise-panel,.constitutional-feedback .constitutional-preference-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.constitutional-feedback .constitutional-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.constitutional-feedback .constitutional-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.constitutional-feedback .constitutional-request,.constitutional-feedback .constitutional-draft{min-width:0;padding:13px 15px;border:1px solid var(--line);border-radius:6px;background:var(--bg);margin:14px 0}
+.constitutional-feedback .constitutional-request{background:var(--soft)}
+.constitutional-feedback .constitutional-request span,.constitutional-feedback .constitutional-draft span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.constitutional-feedback .constitutional-request p,.constitutional-feedback .constitutional-draft p{font-size:12px;line-height:1.95;color:var(--ink);white-space:pre-wrap;margin:7px 0 0}
+.constitutional-feedback .constitutional-highlight{color:var(--accent);background:var(--soft);padding:1px 2px;border-radius:2px;box-shadow:inset 0 -2px 0 var(--accent)}
+.constitutional-feedback .constitutional-prepared-label{font-size:11px;line-height:1.9;color:var(--accent);margin:18px 0 12px}
+.constitutional-feedback .constitutional-revision-flow{display:grid;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);gap:10px;min-width:0;align-items:stretch}
+.constitutional-feedback .constitutional-revision-flow>section{min-width:0;padding:13px 15px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.constitutional-feedback .constitutional-revision-flow p{font-size:12px;line-height:1.95;white-space:pre-wrap;margin:8px 0 0;color:var(--ink)}
+.constitutional-feedback .constitutional-revision-flow .constitutional-revised{border-color:var(--accent)}
+.constitutional-feedback .constitutional-revision-arrow{display:flex;justify-content:center;align-items:center;font:23px/1.3 var(--mono);color:var(--accent)}
+.constitutional-feedback .constitutional-selection-status{font-size:12px;line-height:1.95;color:var(--accent);padding:11px 13px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:13px 0}
+.constitutional-feedback .constitutional-training-inputs,.constitutional-feedback .constitutional-learning-roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin:17px 0}
+.constitutional-feedback .constitutional-training-inputs>div,.constitutional-feedback .constitutional-learning-roles>div{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.constitutional-feedback .constitutional-training-inputs strong,.constitutional-feedback .constitutional-learning-roles strong,.constitutional-feedback .constitutional-training-model strong{display:block;font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);overflow-wrap:anywhere}
+.constitutional-feedback .constitutional-training-inputs p,.constitutional-feedback .constitutional-learning-roles p,.constitutional-feedback .constitutional-training-model p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.constitutional-feedback .constitutional-learning-roles>div[data-learning=true]{border-color:var(--accent);background:var(--soft)}
+.constitutional-feedback .constitutional-learning-roles span{display:block;font-size:10px;line-height:1.9;color:var(--accent);margin-bottom:6px;overflow-wrap:anywhere}
+.constitutional-feedback .constitutional-flow-arrow{text-align:center;font:23px/1.3 var(--mono);color:var(--accent);margin:8px 0}
+.constitutional-feedback .constitutional-training-model{min-width:0;padding:13px 15px;border:1px solid var(--accent);border-radius:6px;background:var(--soft)}
+.constitutional-feedback .constitutional-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;margin:16px 0}
+.constitutional-feedback .constitutional-candidates>section{min-width:0;padding:13px 15px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.constitutional-feedback .constitutional-candidates>section[data-preferred=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.constitutional-feedback .constitutional-candidates p{font-size:12px;line-height:1.95;color:var(--ink);white-space:pre-wrap;margin:8px 0 0}
+.constitutional-feedback .constitutional-judgment{min-width:0;padding:13px 15px;border:1px solid var(--accent);border-radius:6px;background:var(--soft);margin:16px 0}
+.constitutional-feedback .constitutional-judgment span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.constitutional-feedback .constitutional-judgment strong{display:block;font-size:13px;line-height:1.9;font-weight:500;color:var(--accent);overflow-wrap:anywhere;margin-top:6px}
+.constitutional-feedback .constitutional-judgment p{font-size:12px;line-height:1.95;color:var(--ink);margin:8px 0 0}
+.constitutional-feedback .constitutional-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.constitutional-feedback summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.constitutional-feedback .constitutional-details>div{padding-top:17px;min-width:0}
+.constitutional-feedback .constitutional-note,.constitutional-feedback .constitutional-scope,.constitutional-feedback .constitutional-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.constitutional-feedback .constitutional-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.constitutional-feedback .constitutional-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.constitutional-feedback .constitutional-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.constitutional-feedback .constitutional-evidence-viewport img{display:block;width:100%;height:auto}
+.constitutional-feedback .constitutional-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.constitutional-feedback .constitutional-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .constitutional-feedback .constitutional-stage-controls{gap:5px}
+  .constitutional-feedback .constitutional-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .constitutional-feedback .constitutional-revise-panel,.constitutional-feedback .constitutional-preference-panel{padding:15px}
+  .constitutional-feedback .constitutional-revision-flow,.constitutional-feedback .constitutional-training-inputs,.constitutional-feedback .constitutional-learning-roles,.constitutional-feedback .constitutional-candidates{grid-template-columns:minmax(0,1fr)}
+  .constitutional-feedback .constitutional-revision-arrow{margin:4px 0}
+  .constitutional-feedback .constitutional-revision-arrow span{transform:rotate(90deg)}
+  .constitutional-feedback h4{font-size:16px}
+}
+@media(max-width:360px){
+  .constitutional-feedback .constitutional-stage-controls button{padding:5px 3px;min-height:42px}
+  .constitutional-feedback .constitutional-controls{gap:5px}
+  .constitutional-feedback .constitutional-principles{padding:12px}
+}

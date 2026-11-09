@@ -1,0 +1,82 @@
+/* Object drawings, soft selections and program values stay in the card width. */
+.nscl-execution{width:100%;min-width:0;color:var(--text)}
+.nscl-execution [hidden]{display:none!important}
+.nscl-execution button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.nscl-execution button:hover{border-color:var(--accent);color:var(--accent)}
+.nscl-execution button:focus-visible,.nscl-execution a:focus-visible,.nscl-execution [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.nscl-execution button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.nscl-execution button:disabled{opacity:.5;cursor:default}
+.nscl-execution p{word-break:keep-all;overflow-wrap:anywhere}
+.nscl-execution h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.nscl-execution h5{font-size:12px;font-weight:500;line-height:1.8;color:var(--ink);margin:0 0 10px;word-break:keep-all;overflow-wrap:anywhere}
+.nscl-execution .nscl-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.nscl-execution .nscl-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.nscl-execution .nscl-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.nscl-execution .nscl-controls,.nscl-execution .nscl-play-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.nscl-execution .nscl-play-controls button{min-width:47px;min-height:34px;padding:6px 10px}
+.nscl-execution .nscl-question{font-size:15px;line-height:1.9;color:var(--ink);padding:13px 16px;border-left:2px solid var(--accent);background:var(--soft);margin:14px 0 19px}
+.nscl-execution .nscl-execute-panel,.nscl-execution .nscl-learn-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.nscl-execution .nscl-prepared-label{font-size:10px;line-height:1.9;color:var(--muted);margin:0 0 15px}
+.nscl-execution .nscl-workspace{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;min-width:0;align-items:start}
+.nscl-execution .nscl-scene-column,.nscl-execution .nscl-program-column{min-width:0}
+.nscl-execution .nscl-scene{position:relative;width:100%;min-width:0;min-height:270px;aspect-ratio:1.5;border:1px solid var(--line);border-radius:7px;background:var(--soft);box-sizing:border-box;isolation:isolate}
+.nscl-execution .nscl-scene:before{content:"";position:absolute;inset:22% 4% 8%;border:1px solid var(--line);border-radius:50%;transform:rotate(-7deg);opacity:.75;pointer-events:none}
+.nscl-execution .nscl-scene .nscl-scene-object{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;width:22%;min-width:44px;max-width:100px;min-height:0;padding:3px 0;border:1px solid transparent;background:transparent;border-radius:6px;color:var(--ink);box-shadow:none;z-index:1}
+.nscl-execution .nscl-scene .nscl-scene-object:hover,.nscl-execution .nscl-scene .nscl-scene-object[data-selected=true]{border-color:var(--accent);z-index:2;background:var(--bg)}
+.nscl-execution .nscl-object-figure{display:block;width:100%;height:62px;transition:opacity .15s ease}
+.nscl-execution .nscl-object-figure svg{display:block;width:100%;height:100%}
+.nscl-execution .nscl-object-id,.nscl-execution .nscl-object-weight{display:block;font:10px/1.6 var(--mono);color:var(--ink);max-width:100%}
+.nscl-execution .nscl-object-weight{color:var(--accent)}
+.nscl-execution .nscl-inspector{min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:6px;margin-top:13px}
+.nscl-execution .nscl-inspector>strong{display:block;font-size:12px;line-height:1.9;color:var(--ink);font-weight:500;overflow-wrap:anywhere}
+.nscl-execution .nscl-object-attributes{font-size:10px;line-height:1.9;color:var(--muted);margin:5px 0 9px}
+.nscl-execution .nscl-inspector-label{font-size:10px;line-height:1.9;color:var(--muted)}
+.nscl-execution .nscl-concept-chips{display:flex;flex-wrap:wrap;gap:5px;min-width:0;margin-top:8px}
+.nscl-execution .nscl-concept-chips span{font:10px/1.9 var(--mono);padding:3px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted);max-width:100%;overflow-wrap:anywhere}
+.nscl-execution .nscl-concept-chips span[data-current=true]{color:var(--accent);border-color:var(--accent)}
+.nscl-execution .nscl-step-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;min-width:0;margin:12px 0 16px}
+.nscl-execution .nscl-step-controls button{font:10px/1.7 var(--mono);min-width:0;padding:6px 7px;min-height:37px}
+.nscl-execution .nscl-selection-status{font-size:11px;line-height:1.95;color:var(--accent);padding:10px 12px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:13px 0}
+.nscl-execution .nscl-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.nscl-execution .nscl-values{display:flex;flex-direction:column;gap:7px;min-width:0;margin-top:13px}
+.nscl-execution .nscl-value-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:5px;background:var(--bg)}
+.nscl-execution .nscl-value-row[data-selected=true]{border-color:var(--accent)}
+.nscl-execution .nscl-value-row>span{font-size:11px;line-height:1.9;color:var(--ink);overflow-wrap:anywhere}
+.nscl-execution .nscl-value-row>strong{font:12px/1.9 var(--mono);font-weight:400;color:var(--accent);white-space:nowrap}
+.nscl-execution .nscl-value-track{grid-column:1/-1;height:5px;border-radius:3px;overflow:hidden;background:var(--soft)}
+.nscl-execution .nscl-value-track span{display:block;height:100%;border-radius:3px;background:var(--accent)}
+.nscl-execution .nscl-qa-result{min-width:0;padding:13px 15px;border:1px solid var(--accent);border-radius:6px;background:var(--soft);margin:17px 0}
+.nscl-execution .nscl-qa-result>span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.nscl-execution .nscl-qa-result>strong{display:block;font:13px/1.95 var(--mono);font-weight:400;color:var(--accent);overflow-wrap:anywhere;margin-top:7px}
+.nscl-execution .nscl-qa-result>p{font-size:12px;line-height:1.95;color:var(--ink);margin:9px 0 0}
+.nscl-execution .nscl-flow-arrow{text-align:center;font:23px/1.3 var(--mono);color:var(--accent);margin:8px 0}
+.nscl-execution .nscl-learning-fork{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;margin:17px 0}
+.nscl-execution .nscl-learning-fork>section{min-width:0;padding:13px 15px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.nscl-execution .nscl-route-label{display:block;font-size:10px;line-height:1.9;color:var(--accent);margin-bottom:9px}
+.nscl-execution .nscl-learning-fork p{font-size:12px;line-height:1.95;color:var(--ink);margin:8px 0 0}
+.nscl-execution .nscl-keypoint,.nscl-execution .nscl-initialization{padding:12px 14px;background:var(--soft);border-radius:5px;color:var(--ink);font-size:11px;line-height:1.95;margin:15px 0}
+.nscl-execution .nscl-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.nscl-execution summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.nscl-execution .nscl-details>div{padding-top:17px;min-width:0}
+.nscl-execution .nscl-note,.nscl-execution .nscl-scope,.nscl-execution .nscl-credit,.nscl-execution .nscl-legend{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.nscl-execution .nscl-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.nscl-execution .nscl-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.nscl-execution .nscl-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.nscl-execution .nscl-evidence-viewport img{display:block;width:100%;height:auto}
+.nscl-execution .nscl-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.nscl-execution .nscl-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .nscl-execution .nscl-stage-controls{gap:5px}
+  .nscl-execution .nscl-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .nscl-execution .nscl-execute-panel,.nscl-execution .nscl-learn-panel{padding:15px}
+  .nscl-execution .nscl-workspace,.nscl-execution .nscl-learning-fork{grid-template-columns:minmax(0,1fr)}
+  .nscl-execution .nscl-scene{min-height:260px}
+  .nscl-execution h4{font-size:16px}
+}
+@media(max-width:360px){
+  .nscl-execution .nscl-stage-controls button{padding:5px 3px;min-height:42px}
+  .nscl-execution .nscl-controls,.nscl-execution .nscl-play-controls{gap:5px}
+  .nscl-execution .nscl-play-controls button{min-width:40px;padding:6px 7px}
+  .nscl-execution .nscl-object-figure{height:50px}
+}
+@media(prefers-reduced-motion:reduce){.nscl-execution .nscl-object-figure{transition:none}}

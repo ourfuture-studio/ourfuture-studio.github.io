@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ko" data-theme="light" data-release="0.33-public.1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="연결주의 AI, 심볼릭 AI, 결합 연구를 연구 연도와 인물별 기록으로 탐색하는 ourfuture studio 인터랙티브 연표.">
+  <meta name="theme-color" content="#121829">
+  <title>AI 과거와 미래 — ourfuture studio</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="study.css">
+  <link rel="stylesheet" href="portraits.css">
+  <link rel="stylesheet" href="article-view.css">
+  <link rel="stylesheet" href="learning-bridge.css">
+  <link rel="stylesheet" href="visuals/perceptron-association.css">
+  <link rel="stylesheet" href="visuals/advice-taker.css">
+  <link rel="stylesheet" href="visuals/logic-theorist.css">
+  <link rel="stylesheet" href="visuals/backprop-representation.css">
+  <link rel="stylesheet" href="visuals/lenet-features.css">
+  <link rel="stylesheet" href="visuals/vision-system.css">
+  <link rel="stylesheet" href="visuals/lstm-memory.css">
+  <link rel="stylesheet" href="visuals/imagenet-experience.css">
+  <link rel="stylesheet" href="visuals/alexnet-vision.css">
+  <link rel="stylesheet" href="visuals/word2vec-context.css">
+  <link rel="stylesheet" href="visuals/seq2seq-language.css">
+  <link rel="stylesheet" href="visuals/transformer-attention.css">
+  <link rel="stylesheet" href="visuals/gpt1-transfer.css">
+  <link rel="stylesheet" href="visuals/bert-context.css">
+  <link rel="stylesheet" href="visuals/gpt2-multitask.css">
+  <link rel="stylesheet" href="visuals/gpt3-incontext.css">
+  <link rel="stylesheet" href="visuals/instructgpt-feedback.css">
+  <link rel="stylesheet" href="visuals/chatgpt-dialogue.css">
+  <link rel="stylesheet" href="visuals/constitutional-feedback.css">
+  <link rel="stylesheet" href="visuals/deepproblog-inference.css">
+  <link rel="stylesheet" href="visuals/nscl-execution.css">
+  <link rel="stylesheet" href="visuals/ontology-sharing.css">
+  <link rel="stylesheet" href="visuals/rdf-knowledge-graph.css">
+  <link rel="stylesheet" href="visuals/semantic-web-composition.css">
+  <link rel="stylesheet" href="visuals/owl-logical-definitions.css">
+  <link rel="stylesheet" href="visuals/sparql-pattern-query.css">
+  <link rel="stylesheet" href="visuals/resolution-refutation.css">
+  <link rel="stylesheet" href="visuals/strips-planning.css">
+  <link rel="stylesheet" href="visuals/neural-language-representation.css">
+  <link rel="stylesheet" href="visuals/kbann-knowledge-network.css">
+  <link rel="stylesheet" href="visuals/sparse-filtering-activations.css">
+  <link rel="stylesheet" href="visuals/prolog-relations.css">
+  <link rel="stylesheet" href="visuals/cilp-program-network.css">
+  <link rel="stylesheet" href="visuals/gan-distribution-game.css">
+  <link rel="stylesheet" href="visuals/frames-situation.css">
+  <link rel="stylesheet" href="visuals/maml-adaptation.css">
+  <link rel="stylesheet" href="visuals/alphago-guided-search.css">
+  <link rel="stylesheet" href="visuals/segment-memory-attention.css">
+  <link rel="stylesheet" href="visuals/expert-knowledge.css">
+  <link rel="stylesheet" href="visuals/dreamcoder-library-cycle.css">
+  <link rel="stylesheet" href="visuals/protein-relational-reasoning.css">
+  <link rel="stylesheet" href="visuals/knowledge-competence.css">
+  <link rel="stylesheet" href="visuals/latent-patch-denoising.css">
+  <link rel="stylesheet" href="visuals/ltn-satisfaction-learning.css">
+  <link rel="stylesheet" href="visuals/visual-genome-annotations.css">
+  <link rel="stylesheet" href="visuals/spacetime-patch-layout.css">
+  <link rel="stylesheet" href="visuals/alphageometry-auxiliary-proof.css">
+  <link rel="stylesheet" href="visuals/pi05-language-action.css">
+  <link rel="stylesheet" href="visuals/formal-proof-search.css">
+  <link rel="stylesheet" href="visuals/kimi-k2-tool-loop.css">
+  <link rel="stylesheet" href="public-images.css"><script src="public-images.js" defer></script><script src="timeline-data.js" defer></script>
+  <script src="people-data.js" defer></script>
+  <script src="turing-data.js" defer></script>
+  <script src="modern-research.js" defer></script>
+  <script src="ontology-data.js" defer></script>
+  <script src="gpt1-data.js" defer></script>
+  <script src="bert-data.js" defer></script>
+  <script src="gpt2-data.js" defer></script>
+  <script src="instructgpt-data.js" defer></script>
+  <script src="chatgpt-data.js" defer></script>
+  <script src="industry-profiles.js" defer></script>
+  <script src="focus-profiles.js" defer></script>
+  <script src="card-content.js" defer></script>
+  <script src="extra-content.js" defer></script>
+  <script src="entry-registry.js" defer></script>
+  <script src="entries/mcculloch-pitts.js" defer></script>
+  <script src="entries/perceptron.js" defer></script>
+  <script src="entries/advice-taker.js" defer></script>
+  <script src="entries/logic-theorist.js" defer></script>
+  <script src="entries/backprop.js" defer></script>
+  <script src="entries/lenet.js" defer></script>
+  <script src="entries/lstm.js" defer></script>
+  <script src="entries/imagenet.js" defer></script>
+  <script src="entries/alexnet.js" defer></script>
+  <script src="entries/word2vec.js" defer></script>
+  <script src="entries/seq2seq.js" defer></script>
+  <script src="entries/transformer.js" defer></script>
+  <script src="entries/gpt1.js" defer></script>
+  <script src="entries/bert.js" defer></script>
+  <script src="entries/gpt2.js" defer></script>
+  <script src="entries/gpt3.js" defer></script>
+  <script src="entries/instructgpt.js" defer></script>
+  <script src="entries/chatgpt.js" defer></script>
+  <script src="entries/constitutional-ai.js" defer></script>
+  <script src="entries/deepproblog.js" defer></script>
+  <script src="entries/nscl.js" defer></script>
+  <script src="entries/ontology-sharing.js" defer></script>
+  <script src="entries/rdf.js" defer></script>
+  <script src="entries/semantic-web.js" defer></script>
+  <script src="entries/owl.js" defer></script>
+  <script src="entries/sparql.js" defer></script>
+  <script src="entries/resolution.js" defer></script>
+  <script src="entries/strips.js" defer></script>
+  <script src="entries/neural-language-model.js" defer></script>
+  <script src="entries/kbann.js" defer></script>
+  <script src="entries/sparse-filtering.js" defer></script>
+  <script src="entries/prolog.js" defer></script>
+  <script src="entries/cilp.js" defer></script>
+  <script src="entries/gan.js" defer></script>
+  <script src="entries/frames.js" defer></script>
+  <script src="entries/maml.js" defer></script>
+  <script src="entries/alphago.js" defer></script>
+  <script src="entries/transformer-xl.js" defer></script>
+  <script src="entries/expert-systems.js" defer></script>
+  <script src="entries/dreamcoder.js" defer></script>
+  <script src="entries/alphafold2.js" defer></script>
+  <script src="entries/knowledge-representation.js" defer></script>
+  <script src="entries/dit.js" defer></script>
+  <script src="entries/ltn.js" defer></script>
+  <script src="entries/visual-genome.js" defer></script>
+  <script src="entries/sora.js" defer></script>
+  <script src="entries/alphageometry.js" defer></script>
+  <script src="entries/pi05.js" defer></script>
+  <script src="entries/alphaproof.js" defer></script>
+  <script src="entries/kimi-k2.js" defer></script>
+  <script src="catalog-setup.js" defer></script>
+  <script src="art.js" defer></script>
+  <script src="visuals/biological-neuron.js" defer></script>
+  <script src="visuals/neuron-to-logic.js" defer></script>
+  <script src="visuals/perceptron-association.js" defer></script>
+  <script src="visuals/advice-taker.js" defer></script>
+  <script src="visuals/logic-theorist.js" defer></script>
+  <script src="visuals/backprop-representation.js" defer></script>
+  <script src="visuals/vision-system-art.js" defer></script>
+  <script src="visuals/vision-system.js" defer></script>
+  <script src="visuals/lenet-features.js" defer></script>
+  <script src="visuals/lstm-memory.js" defer></script>
+  <script src="visuals/imagenet-experience.js" defer></script>
+  <script src="visuals/alexnet-vision.js" defer></script>
+  <script src="visuals/word2vec-context.js" defer></script>
+  <script src="visuals/seq2seq-language.js" defer></script>
+  <script src="visuals/transformer-attention.js" defer></script>
+  <script src="visuals/gpt1-transfer.js" defer></script>
+  <script src="visuals/bert-context.js" defer></script>
+  <script src="visuals/gpt2-multitask.js" defer></script>
+  <script src="visuals/gpt3-incontext.js" defer></script>
+  <script src="visuals/instructgpt-feedback.js" defer></script>
+  <script src="visuals/chatgpt-dialogue.js" defer></script>
+  <script src="visuals/constitutional-feedback.js" defer></script>
+  <script src="visuals/deepproblog-inference.js" defer></script>
+  <script src="visuals/nscl-execution.js" defer></script>
+  <script src="visuals/ontology-sharing.js" defer></script>
+  <script src="visuals/rdf-knowledge-graph.js" defer></script>
+  <script src="visuals/semantic-web-composition.js" defer></script>
+  <script src="visuals/owl-logical-definitions.js" defer></script>
+  <script src="visuals/sparql-pattern-query.js" defer></script>
+  <script src="visuals/resolution-refutation.js" defer></script>
+  <script src="visuals/strips-planning.js" defer></script>
+  <script src="visuals/neural-language-representation.js" defer></script>
+  <script src="visuals/kbann-knowledge-network.js" defer></script>
+  <script src="visuals/sparse-filtering-activations.js" defer></script>
+  <script src="visuals/prolog-relations.js" defer></script>
+  <script src="visuals/cilp-program-network.js" defer></script>
+  <script src="visuals/gan-distribution-game.js" defer></script>
+  <script src="visuals/frames-situation.js" defer></script>
+  <script src="visuals/maml-adaptation.js" defer></script>
+  <script src="visuals/alphago-guided-search.js" defer></script>
+  <script src="visuals/segment-memory-attention.js" defer></script>
+  <script src="visuals/expert-knowledge.js" defer></script>
+  <script src="visuals/dreamcoder-library-cycle.js" defer></script>
+  <script src="visuals/protein-relational-reasoning.js" defer></script>
+  <script src="visuals/knowledge-competence.js" defer></script>
+  <script src="visuals/latent-patch-denoising.js" defer></script>
+  <script src="visuals/ltn-satisfaction-learning.js" defer></script>
+  <script src="visuals/visual-genome-annotations.js" defer></script>
+  <script src="visuals/spacetime-patch-layout.js" defer></script>
+  <script src="visuals/alphageometry-auxiliary-proof.js" defer></script>
+  <script src="visuals/pi05-language-action.js" defer></script>
+  <script src="visuals/formal-proof-search.js" defer></script>
+  <script src="visuals/kimi-k2-tool-loop.js" defer></script>
+  <script src="learning-links.js" defer></script>
+  <script src="article-view.js" defer></script>
+  <script src="study.js" defer></script>
+  <script src="portrait-data.js" defer></script>
+  <script src="portraits.js" defer></script>
+  <script src="people.js" defer></script>
+  <script src="search-core.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="search.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#explorer">타임라인으로 건너뛰기</a>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="ourfuture studio AI Atlas 처음으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
+    <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
+    <div class="header-actions"><span class="prototype"><span></span>VERSION 0.33</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-main"><div class="eyebrow mono">기계와 생각 <span>/</span> INTERACTIVE HISTORY</div><h1 id="page-title">AI를 만든 생각들<span class="brand-dot">.</span></h1><p>배우는 기계, 추론하는 기계. 그리고 두 생각이 만나는 곳.</p></div>
+      <div class="intro-aside"><span class="intro-period mono">1943 <span>—</span> 2025</span><span class="intro-meta">인물과 연구로 읽는 인공지능의 역사</span></div>
+    </section>
+
+    <div class="browse-mode" role="group" aria-label="탐색 기준"><button id="research-mode" class="active" aria-pressed="true"><span class="mono">01</span> 연구 흐름</button><button id="people-mode" aria-pressed="false"><span class="mono">02</span> 인물별 기록</button><span class="browse-mode-hint" id="browse-mode-hint">연도 위에서 세 가지 접근을 비교합니다</span></div>
+    <section id="explorer" class="explorer" aria-label="AI 역사 타임라인">
+      <div class="toolbar">
+        <div class="track-filters" role="group" aria-label="연구 흐름 필터">
+          <button class="filter active" data-filter="all" aria-pressed="true"><span id="all-filter-label">전체 흐름</span><span class="filter-count" id="all-count">24</span></button>
+          <button class="filter" data-filter="neural" aria-pressed="false" title="연결주의 AI · Connectionist AI · 신경망 기반 접근"><span class="track-dot neural"></span>연결주의 AI</button>
+          <button class="filter" data-filter="symbolic" aria-pressed="false" title="심볼릭 AI · Symbolic AI · 기호주의 접근"><span class="track-dot symbolic"></span>심볼릭 AI</button>
+          <button class="filter" data-filter="hybrid" aria-pressed="false"><span class="track-dot hybrid"></span>결합 연구</button>
+        </div>
+        <div class="toolbar-end"><button id="search-open" class="icon-button search-toggle" aria-label="통합 검색창으로 이동" title="인물·연도·기술 검색 /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button><span class="toolbar-divider"></span><div class="view-switch" role="group" aria-label="보기 방식"><button class="active" id="journey-view" aria-label="시간 여행 보기" aria-pressed="true"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3 15 4-12h4l4 12M9 4v2m0 2v2m0 2v3"/></svg><span>시간 여행</span></button><button id="timeline-view" aria-label="연표 보기" aria-pressed="false"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14M5 3v4m7 4v4"/></svg><span>연표</span></button></div></div>
+      </div>
+
+      <div class="search-bar global-search-bar" id="search-bar" role="search" aria-label="인물·연도·기술 통합 검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><label class="sr-only" for="search-input">인물, 연도, 기술 검색</label><input type="search" id="search-input" placeholder="인물, 연도, 기술 검색 — 예: 튜링, 2023, DiT" autocomplete="off" aria-controls="search-results" aria-describedby="search-help"><button id="search-count" class="mono" aria-label="검색 결과 보기" hidden></button><button class="icon-button" id="search-close" aria-label="검색어 지우기" hidden>×</button><kbd id="search-shortcut" aria-hidden="true">/</kbd></div>
+      <div class="search-examples" id="search-examples"><span id="search-help">인물과 연구 기록을 함께 찾습니다</span><div role="group" aria-label="검색 예시"><button data-search-example="튜링">튜링</button><button data-search-example="1950">1950</button><button data-search-example="LSTM">LSTM</button><button data-search-example="역전파">역전파</button><button data-search-example="DiT">DiT</button><button data-search-example="첼시 핀">첼시 핀</button></div></div>
+      <section id="search-results" class="global-search-results" aria-label="통합 검색 결과" hidden><div class="search-results-heading"><h2>검색 결과</h2><span id="search-results-summary" aria-live="polite" aria-atomic="true"></span><button id="search-hide" aria-label="검색 결과 접기">접기 ↑</button></div><div class="search-scope" role="group" aria-label="검색 결과 종류"><button data-search-scope="all" class="active" aria-pressed="true">전체</button><button data-search-scope="person" aria-pressed="false">인물</button><button data-search-scope="work" aria-pressed="false">연구 기록</button><span>모든 연구 흐름에서 검색합니다 · 연도는 대표 기록의 표시 연도 기준</span></div><div id="search-result-groups" class="search-result-groups"></div><p id="search-empty" class="search-empty" hidden>검색 결과가 없습니다. 이름·연도·기술을 바꾸거나 한 단어부터 검색해 보세요.</p><button id="search-more" class="search-more" hidden>결과 더 보기 ↓</button></section>
+
+      <div class="journey-shell" id="journey-shell">
+        <div class="scene" id="scene" tabindex="0" role="region" aria-label="시간 여행. 휠 또는 위아래 방향키로 이동하고, 연구 카드를 눌러 상세 내용을 여세요.">
+          <div class="scene-topline"><span class="mono">THREE THREADS OF INTELLIGENCE</span><span class="scene-scale mono">CHRONOLOGICAL JOURNEY</span></div>
+          <svg id="road" class="road" aria-hidden="true"></svg>
+          <div class="scene-era" id="scene-era" aria-hidden="true"><span id="era-word">표현을 배우다</span><span class="era-year mono" id="era-year">1986</span><span class="era-caption" id="era-caption">학습과 지식, 서로 다른 질문들</span></div>
+          <div id="journey-cards" class="journey-cards"></div>
+          <div class="scene-empty" id="scene-empty" hidden>일치하는 연구가 없습니다.<br><button id="clear-search">전체 흐름 다시 보기</button></div>
+          <div class="scene-bottomline"><span><svg viewBox="0 0 18 22" aria-hidden="true"><rect x="4" y="2" width="10" height="17" rx="5"/><path d="M9 5v4"/></svg><span class="desktop-hint">스크롤하거나 드래그해 시간을 이동하세요</span><span class="mobile-hint">위아래로 쓸어 시간을 이동하세요</span></span><button id="reset-view">처음부터 둘러보기 <span>↗</span></button></div>
+        </div>
+      </div>
+
+      <div id="flat-shell" class="flat-shell" hidden><div class="flat-labels" aria-hidden="true"><span class="neural-label">연결주의 AI</span><span class="symbolic-label">심볼릭 AI</span><span class="hybrid-label">결합 연구</span></div><div id="flat-scroll" class="flat-scroll" tabindex="0" role="region" aria-label="평면 연표. 가로로 스크롤해 연구를 탐색하세요."><div id="flat-world" class="flat-world"></div></div><div class="flat-controls"><span>사건 간 거리는 연도 차이에 비례합니다</span><div><button class="icon-button" id="zoom-out" aria-label="연표 축소">−</button><span id="zoom-label" class="mono">1×</span><button class="icon-button" id="zoom-in" aria-label="연표 확대">+</button></div></div></div>
+
+      <div class="people-shell" id="people-shell" hidden>
+        <aside class="people-catalog" aria-label="인물 목록"><div class="catalog-heading"><span class="mono">PEOPLE INDEX</span><span id="people-count"></span></div><p class="catalog-intro">24명의 주요 인물을 중심으로<br>연구와 산업의 기록을 읽습니다.</p><div class="catalog-scope" role="group" aria-label="인물 목록 범위"><button class="active" data-people-scope="all" aria-pressed="true">전체 인물</button><button data-people-scope="featured" aria-pressed="false">주요 24명</button></div><div id="people-list" class="people-list"></div><p class="catalog-footnote">분류는 연구의 접근을 나타냅니다.<br>한 인물에게 여러 접근이 연결될 수 있습니다.</p></aside>
+        <section class="person-panel" id="person-panel" aria-label="선택한 인물의 연구 기록"></section>
+      </div>
+
+      <div class="timeline-nav">
+        <div class="minimap-meta"><span class="mono">THE BIG PICTURE</span><span><b id="visible-count">24</b>개의 연구 · <span id="current-track">세 가지 흐름</span></span></div>
+        <div id="minimap" class="minimap" role="group" aria-label="전체 연표에서 이동할 연구 선택"><div class="minimap-line"></div><div class="minimap-years" aria-hidden="true"><span>1943</span><span>1960</span><span>1980</span><span>2000</span><span>2025</span></div><div id="mini-marks"></div><div id="mini-cursor" class="mini-cursor" aria-hidden="true"></div><label class="sr-only" for="time-range">시간 여행 위치</label><input id="time-range" type="range" min="0" max="23" step="0.01" value="10" aria-label="시간 여행 위치"></div>
+      </div>
+    </section>
+
+    <section class="selection-strip" aria-label="선택한 연구"><div class="selection-label mono"><span id="selection-number">11 / 24</span><span>SELECTED MOMENT</span></div><div class="selection-copy"><span class="selection-year mono" id="selection-year">1986</span><button id="selection-title">중간층의 표현을 배우다</button><p id="selection-people">David Rumelhart · Geoffrey Hinton · Ronald Williams</p></div><button id="selection-open" class="detail-link">연구 자세히 <span>↗</span></button><div class="step-buttons"><button class="icon-button" id="prev-event" aria-label="이전 연구">←</button><button class="icon-button" id="next-event" aria-label="다음 연구">→</button></div></section>
+
+    <footer class="page-footer"><span>ourfuture studio <i></i> 새로운 지식, 뜻밖의 연결.</span><button id="sources-open">원문과 읽는 방법 <span>↗</span></button></footer>
+  </main>
+
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="detail-top"><span class="mono" id="detail-category"></span><button class="icon-button dialog-close" aria-label="상세 닫기">×</button></div><div class="detail-art" id="detail-art"></div><div class="detail-content"><div class="detail-date mono" id="detail-year"></div><h2 id="detail-title"></h2><p class="detail-subtitle" id="detail-subtitle"></p><p class="detail-people" id="detail-people"></p><div class="detail-person-links" id="detail-person-links" aria-label="인물별 연구 기록으로 이동"></div><div class="detail-rule"></div><p class="detail-summary" id="detail-summary"></p><p class="detail-body" id="detail-body"></p><div id="detail-study" class="detail-study"></div><div class="detail-question"><span class="mono">생각해 볼 질문</span><p id="detail-question"></p></div><p class="detail-caveat" id="detail-caveat"></p><div class="detail-sources"><h3>연구·기록 출처</h3><div id="detail-sources"></div></div><div class="related"><h3>이어 볼 연구</h3><div id="detail-related"></div></div></div></dialog>
+
+  <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title"><div class="detail-top"><span class="mono">ABOUT THIS ATLAS</span><button class="icon-button dialog-close" aria-label="안내 닫기">×</button></div><div class="about-content"><span class="eyebrow mono">ourfuture studio</span><h2 id="about-title">서로 다른 생각이<br>만나는 시간을 읽습니다<span class="brand-dot">.</span></h2><p>인공지능의 역사는 하나의 방법이 다른 방법을 교체한 이야기만으로 설명되지 않습니다. 이 지도는 연결주의 AI, 심볼릭 AI, 결합 연구의 대표 사건을 같은 시간 위에 놓습니다. 연구 흐름은 사건을 연도순으로, 인물별 기록은 같은 사람이 참여한 여러 연구를 연도순으로 보여 줍니다.</p><div class="about-tracks"><p><span class="track-dot neural"></span><strong>연결주의 AI</strong> 신경망 모형의 연결과 가중치로 계산과 학습을 다룹니다.</p><p><span class="track-dot symbolic"></span><strong>심볼릭 AI</strong> 기호와 명시적인 지식·규칙으로 탐색하고 추론합니다.</p><p><span class="track-dot hybrid"></span><strong>결합 연구</strong> 학습·탐색·추론·검증을 여러 방식으로 연결합니다.</p></div><p>연결주의(Connectionist AI)는 연구 접근이고 신경망은 그 접근에서 사용하는 모형 계열입니다. 심볼릭 AI(Symbolic AI, 기호주의 AI)와 연결주의 AI는 AI 전체를 빠짐없이 나누는 유일한 분류가 아닙니다. 태그는 해당 연구의 방법을 가리킵니다. 한 인물의 모든 연구를 하나의 진영에 배정하지 않습니다. 표시된 연도는 논문이나 기록의 연도이며 인물의 생애를 뜻하지 않습니다.</p><p class="about-note">분류 설명: <a href="https://www.mit.edu/~dxh/marvin/web.media.mit.edu/~minsky/papers/SymbolicVs.Connectionist.html" target="_blank" rel="noopener noreferrer">Minsky의 Symbolic vs. Connectionist</a> · <a href="https://web.stanford.edu/~jlmcc/papers/McCCleeremans09CnxMdlsOCC.pdf" target="_blank" rel="noopener noreferrer">McClelland·Cleeremans의 Connectionist Models</a></p><h3>이렇게 둘러보세요</h3><p>시간 여행에서는 스크롤·드래그·방향키로 이동합니다. 아래 미니맵을 누르면 해당 시기로 건너뜁니다. 연표 보기에서는 실제 연도 간격으로 세 흐름을 비교할 수 있습니다.</p><p class="about-note">시간 여행의 카드 간격은 읽기 편하도록 조정했습니다. 평면 연표의 거리는 연도에 비례합니다. 카드의 도식은 직접 만든 설명용 그림입니다. 논문 결과를 재현하는 실험 화면은 아닙니다.</p><p class="about-note">각 카드에서 연구의 핵심 아이디어와 직접 구성한 시각화를 살펴볼 수 있습니다. 원문 도판은 이용 조건을 확인한 자료를 표시하고, 그 밖의 자료는 원문 링크로 연결합니다. 연구의 전체 역사를 망라한 목록은 아닙니다.</p><h3>기록을 읽는 기준</h3><p class="about-note">주요 인물 24명은 사용자 선정 목록입니다. 논문 공동연구와 기업 설립·데이터 구축·계산 인프라의 기여를 구분합니다. 각 카드의 예시는 아이디어를 설명하기 위한 상황이며, 실제 실험이나 일화의 근거와 구분해 읽습니다. 연구 맥락에는 해당 출처를 연결했습니다. 영상은 외부 YouTube로 열리며 영상 재생이나 전체 내용의 검증을 뜻하지 않습니다. 원문을 읽은 범위와 서지·초록만 확인한 자료는 카드의 확인 위치에 표시합니다.</p><h3>사진과 소재 출처</h3><div id="asset-credits" class="asset-credits"></div><p class="about-note">동작 참고: <a href="https://www.chronoflotimeline.com/timeline/shared/11043/Kings-and-Queens-of-England-and-Great-Britain/" target="_blank" rel="noopener noreferrer">ChronoFlo의 영국 왕실 타임라인 ↗</a>. 코드·이미지·스타일을 복사하지 않고 독립적으로 구현했습니다.</p></div></dialog>
+  <p id="live-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="noscript">이 타임라인의 이동과 상세 보기는 JavaScript를 사용합니다. 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+</body>
+</html>

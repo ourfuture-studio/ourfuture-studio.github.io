@@ -1,0 +1,60 @@
+/* Scoped to McCarthy's premise-to-action drawing. */
+.advice-comparison{color:var(--text);min-width:0}
+.advice-comparison .advice-controls{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;position:sticky;top:55px;z-index:3;padding:9px 0 13px;background:var(--bg)}
+.advice-comparison .advice-controls button{font-size:11px;min-height:38px;border:1px solid var(--line);border-radius:5px;padding:8px 15px;color:var(--muted)}
+.advice-comparison .advice-controls button.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.advice-comparison .advice-controls button:hover{border-color:var(--accent)}
+.advice-comparison .advice-controls button:focus-visible,.advice-comparison input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.advice-comparison .advice-premise{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:14px;background:var(--bg)}
+.advice-comparison .advice-premise-label{display:flex;align-items:center;gap:8px;font-size:11px;line-height:1.8;cursor:pointer;min-height:24px}
+.advice-comparison input{width:15px;height:15px;accent-color:var(--accent);margin:0;flex:none}
+.advice-comparison .advice-premise-note{margin:0;font-size:10px;line-height:1.8;color:var(--muted);word-break:keep-all}
+.advice-comparison .advice-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.07fr);gap:15px;align-items:stretch}
+.advice-comparison .advice-scene,.advice-comparison .advice-proof{margin:0;min-width:0;border:1px solid var(--line);border-radius:8px;padding:17px 17px 14px;background:var(--bg)}
+.advice-comparison .advice-kicker{font:8px/1.8 var(--mono);letter-spacing:.14em;color:var(--muted)}
+.advice-comparison h4{font-size:14px;line-height:1.8;font-weight:500;margin:3px 0 11px;word-break:keep-all}
+.advice-comparison .advice-map{margin:0 -8px 8px}
+.advice-comparison .advice-map svg{width:100%;height:auto;display:block}
+.advice-comparison .advice-facts{display:flex;gap:6px;flex-wrap:wrap;padding:1px 0 0}
+.advice-comparison .advice-facts code{font:10px/1.7 var(--mono);border:1px solid var(--line);border-radius:4px;padding:5px 8px;overflow-wrap:anywhere;color:var(--text);min-width:0;max-width:100%}
+.advice-comparison .advice-facts .advice-goal{border-color:var(--accent);color:var(--accent)}
+.advice-comparison .advice-step{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);opacity:.75}
+.advice-comparison .advice-step.is-focus{opacity:1}
+.advice-comparison .advice-step.is-focus h5{color:var(--accent)}
+.advice-comparison .advice-step-index{font:9px/1.9 var(--mono);color:var(--accent);padding-top:1px;flex:none}
+.advice-comparison .advice-step-body{min-width:0;flex:1}
+.advice-comparison h5{font-size:11px;line-height:1.8;font-weight:500;margin:0 0 4px}
+.advice-comparison .advice-step p{font-size:10px;line-height:1.8;margin:0;word-break:keep-all}
+.advice-comparison .advice-condition{display:block;font:9px/1.85 var(--mono);overflow-wrap:anywhere;color:var(--muted)}
+.advice-comparison .advice-condition-label{font-size:9px!important;color:var(--text)}
+.advice-comparison .advice-condition+.advice-condition-label{margin-top:5px}
+.advice-comparison .advice-plan-chain{font-size:14px!important;line-height:1.9!important;letter-spacing:.02em;color:var(--accent)}
+.advice-comparison .advice-command{display:block;font:10px/1.9 var(--mono);color:var(--accent);overflow-wrap:anywhere}
+.advice-comparison .advice-command-meaning{color:var(--muted)}
+.advice-comparison .advice-explanation{padding:14px 18px;margin:15px 0 10px;background:var(--soft);border-radius:6px;font-size:12px;line-height:1.95;word-break:keep-all;min-height:47px}
+.advice-comparison .advice-source-scope{font-size:9px;line-height:1.8;color:var(--muted);margin:0 0 4px;word-break:keep-all}
+.advice-comparison .advice-source{font-size:9px;line-height:1.8;color:var(--muted);text-underline-offset:3px}
+.advice-comparison .advice-car-unknown{opacity:0}
+.advice-comparison[data-stage=knowledge] .advice-route,.advice-comparison[data-stage=knowledge] .advice-route-label{opacity:.25}
+.advice-comparison[data-stage=action] .advice-walk{stroke-width:2.4}
+.advice-comparison[data-car-known=false] .advice-car>path,.advice-comparison[data-car-known=false] .advice-car>circle{opacity:.18}
+.advice-comparison[data-car-known=false] .advice-car-unknown{opacity:1}
+.advice-comparison[data-car-known=false] .advice-route,.advice-comparison[data-car-known=false] .advice-route-label{opacity:.12}
+.advice-comparison[data-car-known=false] .advice-car-fact{border-style:dashed;color:var(--muted)}
+.advice-comparison .advice-step.is-unsupported .advice-plan-chain,.advice-comparison .advice-step.is-unsupported .advice-command{color:var(--muted);font-size:11px!important;letter-spacing:0}
+@media(max-width:700px){
+  .advice-comparison .advice-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .advice-comparison .advice-controls{gap:5px;padding:8px 0 12px}
+  .advice-comparison .advice-controls button{font-size:10px;padding:8px 10px;min-height:37px}
+  .advice-comparison .advice-premise{padding:9px 11px;gap:3px}
+  .advice-comparison .advice-premise-note{font-size:10px}
+  .advice-comparison .advice-scene,.advice-comparison .advice-proof{padding:14px 13px 13px}
+  .advice-comparison h4{font-size:14px}
+  .advice-comparison .advice-map{margin:0 -7px 8px}
+  .advice-comparison .advice-map text[font-size="12"],.advice-comparison .advice-map text[font-size="13"]{font-size:15px}
+  .advice-comparison .advice-map text[font-size="11"]{font-size:13px}
+  .advice-comparison .advice-map text[font-size="10"]{font-size:12px}
+  .advice-comparison .advice-condition{font-size:10px}
+  .advice-comparison .advice-explanation{font-size:11px;padding:12px 13px;min-height:0}
+  .advice-comparison .advice-facts code{font-size:9px;padding:4px 6px}
+}

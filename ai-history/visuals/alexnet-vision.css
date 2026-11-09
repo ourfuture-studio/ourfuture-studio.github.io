@@ -1,0 +1,107 @@
+/* Scoped presentation for the source-based AlexNet article. */
+.alexnet-vision{min-width:0;width:100%;color:var(--text)}
+.alexnet-vision [hidden]{display:none!important}
+.alexnet-vision button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.alexnet-vision button:hover{border-color:var(--accent);color:var(--accent)}
+.alexnet-vision button:focus-visible,.alexnet-vision a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.alexnet-vision button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.alexnet-vision h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;margin:0 0 13px;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+.alexnet-vision p{word-break:keep-all;overflow-wrap:anywhere}
+.alexnet-vision .alexnet-stage-controls{position:sticky;top:55px;z-index:3;display:flex;justify-content:center;gap:7px;flex-wrap:wrap;background:var(--bg);padding:9px 0 13px}
+.alexnet-vision .alexnet-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.alexnet-vision .alexnet-stage-text{font-size:12px;line-height:1.95;margin:0 0 18px;padding:13px 16px;border-radius:6px;background:var(--soft)}
+.alexnet-vision .alexnet-architecture{border:1px solid var(--line);border-radius:8px;padding:17px 17px 12px;min-width:0;margin:0 0 18px}
+.alexnet-vision .alexnet-architecture h4{font-size:14px;margin-bottom:13px}
+.alexnet-vision .alexnet-layers{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px 12px}
+.alexnet-vision .alexnet-layers li{min-width:0;border:1px solid var(--line);border-radius:5px;position:relative;background:var(--bg)}
+.alexnet-vision .alexnet-layers li:after{content:'→';position:absolute;right:-12px;top:43px;z-index:1;color:var(--muted);font:11px/1 var(--sans);pointer-events:none}
+.alexnet-vision .alexnet-layers li:nth-child(6n):after{content:'다음 줄 ↙';top:auto;bottom:-18px;right:0;width:70px;text-align:right;font-size:8px;line-height:1.4}
+.alexnet-vision .alexnet-layers li:last-child:after{display:none}
+.alexnet-vision .alexnet-layers li[data-kind=pool]{border-style:dashed}
+.alexnet-vision .alexnet-layer-button{display:flex;width:100%;height:100%;min-height:108px;align-items:center;flex-direction:column;padding:15px 4px 8px;border:0;border-radius:4px;color:var(--text);gap:5px}
+.alexnet-vision .alexnet-layer-order{position:absolute;top:4px;left:6px;font:7px/1.3 var(--mono);color:var(--muted)}
+.alexnet-vision .alexnet-layer-button.active{background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.alexnet-vision .alexnet-layer-button:disabled{opacity:1;cursor:default;color:var(--text)}
+.alexnet-vision .alexnet-layer-button strong{font:11px/1.7 var(--mono);font-weight:500;color:var(--ink)}
+.alexnet-vision .alexnet-layer-size{font:8px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere;text-align:center}
+.alexnet-vision .alexnet-layer-stack{display:block;position:relative;width:30px;height:25px;margin:2px 0 1px}
+.alexnet-vision .alexnet-layer-stack i{position:absolute;display:block;width:20px;height:17px;left:0;top:0;border:1px solid var(--muted);background:var(--soft)}
+.alexnet-vision .alexnet-layer-stack i:nth-child(2){left:4px;top:4px}
+.alexnet-vision .alexnet-layer-stack i:nth-child(3){left:8px;top:8px}
+.alexnet-vision li[data-kind=pool] .alexnet-layer-stack i{width:14px;height:13px}
+.alexnet-vision li[data-kind=fc] .alexnet-layer-stack i,.alexnet-vision li[data-kind=output] .alexnet-layer-stack i{width:6px}
+.alexnet-vision[data-stage=train] .alexnet-layers li[data-design-active=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.alexnet-vision[data-stage=train] .alexnet-layers li[data-design-active=true] strong{color:var(--accent)}
+.alexnet-vision .alexnet-inspection{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:17px;min-width:0}
+.alexnet-vision figure{min-width:0;margin:0}
+.alexnet-vision .alexnet-sample,.alexnet-vision .alexnet-layer-description{border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.alexnet-vision .alexnet-sample-wrap{position:relative;aspect-ratio:1;width:100%;background:var(--soft);overflow:hidden;border-radius:5px}
+.alexnet-vision .alexnet-sample-wrap>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.alexnet-vision .alexnet-range{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 11%,transparent);box-shadow:0 0 0 2px var(--bg),0 0 0 1000px #0004;box-sizing:border-box;pointer-events:none}
+.alexnet-vision .alexnet-range[data-full=true]{box-shadow:inset 0 0 0 2px var(--bg)}
+.alexnet-vision figcaption{font-size:11px;line-height:1.8;margin:9px 0 0;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+.alexnet-vision .alexnet-credit{font-size:9px;line-height:1.9;color:var(--muted);margin:7px 0 0;overflow-wrap:anywhere}
+.alexnet-vision .alexnet-credit a{color:var(--muted);text-underline-offset:3px}
+.alexnet-vision .alexnet-layer-description h4{font-size:17px}
+.alexnet-vision .alexnet-layer-description>p{font-size:12px;line-height:1.95;margin:0 0 12px}
+.alexnet-vision .alexnet-layer-description .alexnet-layer-idea{font-size:11px;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:11px}
+.alexnet-vision .alexnet-layer-description .alexnet-range-value{font-size:11px;line-height:1.9;color:var(--accent);padding:10px 11px;border-radius:5px;background:var(--soft);margin-top:14px}
+.alexnet-vision .alexnet-layer-description .alexnet-mini-note{font-size:10px;color:var(--muted)}
+.alexnet-vision .alexnet-feedback{position:relative;border:1px solid var(--accent);border-radius:8px;margin:18px 0 0;padding:16px 17px 16px 53px;background:var(--soft)}
+.alexnet-vision .alexnet-feedback h4{font-size:14px;margin:0 0 7px}
+.alexnet-vision .alexnet-feedback p{font-size:12px;line-height:1.95;margin:0}
+.alexnet-vision .alexnet-feedback-arrow{position:absolute;left:16px;top:14px;font:27px/1.5 var(--mono);color:var(--accent)}
+.alexnet-vision .alexnet-view-controls,.alexnet-vision .alexnet-design-controls,.alexnet-vision .alexnet-filter-controls,.alexnet-vision .alexnet-small-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 15px}
+.alexnet-vision .alexnet-design-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.alexnet-vision .alexnet-filter-controls button,.alexnet-vision .alexnet-small-controls button{font-size:10px;min-height:34px;padding:6px 10px}
+.alexnet-vision .alexnet-evidence-panel,.alexnet-vision .alexnet-feature{min-width:0;padding:19px;border:1px solid var(--line);border-radius:8px}
+.alexnet-vision .alexnet-evidence-caption,.alexnet-vision .alexnet-design-text{font-size:12px;line-height:1.95;margin:0 0 15px}
+.alexnet-vision .alexnet-zoom{font-size:10px;min-height:33px;padding:6px 10px;margin:0 0 4px}
+.alexnet-vision .alexnet-evidence-viewport,.alexnet-vision .alexnet-gpu-viewport{min-width:0;max-width:100%;width:100%;background:var(--soft);border-radius:5px;margin:10px 0 0}
+.alexnet-vision .alexnet-evidence-image{position:relative;min-width:0;width:100%}
+.alexnet-vision .alexnet-evidence-image>img{display:block;width:100%;height:auto;background:#fff}
+.alexnet-vision .alexnet-evidence-viewport[data-expanded=true],.alexnet-vision .alexnet-gpu-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.alexnet-vision .alexnet-evidence-viewport[data-expanded=true][data-evidence=filters] .alexnet-evidence-image{width:1264px;max-width:none}
+.alexnet-vision .alexnet-evidence-viewport[data-expanded=true][data-evidence=neighbors] .alexnet-evidence-image{width:968px;max-width:none}
+.alexnet-vision .alexnet-evidence-viewport:focus-visible,.alexnet-vision .alexnet-gpu-viewport:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.alexnet-vision .alexnet-filter-selection{display:none;position:absolute;left:0;right:0;height:50%;border:3px solid var(--accent);box-sizing:border-box;pointer-events:none;box-shadow:inset 0 0 0 1px #fff}
+.alexnet-vision .alexnet-evidence-image[data-group=top] .alexnet-filter-selection{display:block;top:0}
+.alexnet-vision .alexnet-evidence-image[data-group=bottom] .alexnet-filter-selection{display:block;bottom:0}
+.alexnet-vision .alexnet-group-text{font-size:12px;line-height:1.95;background:var(--soft);padding:12px 14px;border-radius:5px;margin:13px 0 0;min-height:1.9em}
+.alexnet-vision .alexnet-source{font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px;display:inline-block;max-width:100%}
+.alexnet-vision .alexnet-scope,.alexnet-vision .alexnet-mini-note{font-size:10px;line-height:1.95;color:var(--muted);word-break:keep-all;overflow-wrap:anywhere;margin:12px 0 6px}
+.alexnet-vision .alexnet-result{font:14px/1.9 var(--mono);color:var(--accent);background:var(--soft);padding:10px 13px;border-radius:5px;margin:11px 0 0}
+.alexnet-vision .alexnet-relu-picture{max-width:420px;margin:auto}
+.alexnet-vision .alexnet-relu-picture svg,.alexnet-vision .alexnet-dropout-pictures svg,.alexnet-vision .alexnet-gpu-viewport svg{width:100%;height:auto;display:block}
+.alexnet-vision .alexnet-gpu-viewport[data-expanded=true] svg{min-width:1060px;max-width:none}
+.alexnet-vision .alexnet-crop-pictures,.alexnet-vision .alexnet-dropout-pictures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;min-width:0}
+.alexnet-vision .alexnet-crop-frame{width:100%;aspect-ratio:1;overflow:hidden;border-radius:5px;background:var(--soft)}
+.alexnet-vision .alexnet-crop-frame img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.alexnet-vision .alexnet-dropout-pictures>div{min-width:0;border:1px solid var(--line);border-radius:5px;background:var(--soft)}
+@media(max-width:700px){
+  .alexnet-vision .alexnet-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+  .alexnet-vision .alexnet-stage-controls button{padding:8px 4px;font-size:10px;min-width:0}
+  .alexnet-vision .alexnet-layers{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 10px}
+  .alexnet-vision .alexnet-layers li:nth-child(n):after{content:'→';top:43px;bottom:auto;right:-10px;width:auto;text-align:left;font-size:10px;line-height:1}
+  .alexnet-vision .alexnet-layers li:nth-child(3n):after{content:'다음 줄 ↙';top:auto;bottom:-18px;right:0;width:70px;text-align:right;font-size:8px;line-height:1.4}
+  .alexnet-vision .alexnet-layer-button{min-height:105px;padding:15px 3px 8px}
+  .alexnet-vision .alexnet-layer-button strong{font-size:12px}
+  .alexnet-vision .alexnet-layer-size{font-size:10px;line-height:1.7}
+  .alexnet-vision .alexnet-inspection{grid-template-columns:minmax(0,1fr);gap:12px}
+  .alexnet-vision .alexnet-sample-wrap{max-width:330px;margin:auto}
+  .alexnet-vision .alexnet-sample,.alexnet-vision .alexnet-layer-description,.alexnet-vision .alexnet-architecture{padding:14px}
+  .alexnet-vision .alexnet-evidence-panel,.alexnet-vision .alexnet-feature{padding:15px}
+  .alexnet-vision .alexnet-design-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .alexnet-vision .alexnet-dropout-pictures{grid-template-columns:minmax(0,1fr)}
+  .alexnet-vision .alexnet-feedback{padding:15px 14px 15px 43px}
+  .alexnet-vision .alexnet-feedback-arrow{left:12px}
+  .alexnet-vision h4{font-size:16px}
+}
+@media(max-width:360px){
+  .alexnet-vision .alexnet-layers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .alexnet-vision .alexnet-layers li:nth-child(n):after{content:'→';top:43px;bottom:auto;right:-10px;width:auto;text-align:left;font-size:10px;line-height:1}
+  .alexnet-vision .alexnet-layers li:nth-child(2n):after{content:'다음 줄 ↙';top:auto;bottom:-18px;right:0;width:70px;text-align:right;font-size:8px;line-height:1.4}
+  .alexnet-vision .alexnet-view-controls{display:grid;grid-template-columns:minmax(0,1fr)}
+  .alexnet-vision .alexnet-crop-pictures{grid-template-columns:minmax(0,1fr)}
+  .alexnet-vision .alexnet-architecture,.alexnet-vision .alexnet-sample,.alexnet-vision .alexnet-layer-description{padding:12px}
+}

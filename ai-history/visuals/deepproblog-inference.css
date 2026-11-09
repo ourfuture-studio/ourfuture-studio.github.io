@@ -1,0 +1,82 @@
+/* The small assignment model wraps; only enlarged original figures pan. */
+.deepproblog-inference{width:100%;min-width:0;color:var(--text)}
+.deepproblog-inference [hidden]{display:none!important}
+.deepproblog-inference button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.deepproblog-inference button:hover{border-color:var(--accent);color:var(--accent)}
+.deepproblog-inference button:focus-visible,.deepproblog-inference a:focus-visible,.deepproblog-inference input:focus-visible,.deepproblog-inference [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.deepproblog-inference button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.deepproblog-inference p{word-break:keep-all;overflow-wrap:anywhere}
+.deepproblog-inference h4{font-size:17px;font-weight:500;line-height:1.8;letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.deepproblog-inference h5{font-size:12px;font-weight:500;line-height:1.8;color:var(--ink);margin:16px 0 10px;word-break:keep-all;overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-stage-controls{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;background:var(--bg);padding:9px 0 13px}
+.deepproblog-inference .deepproblog-stage-controls button.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:none}
+.deepproblog-inference .deepproblog-stage-text{font-size:12px;line-height:1.95;padding:13px 16px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.deepproblog-inference .deepproblog-controls{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-width:0}
+.deepproblog-inference .deepproblog-common,.deepproblog-inference .deepproblog-query-panel,.deepproblog-inference .deepproblog-learn-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.deepproblog-inference .deepproblog-shared-label{font-size:12px;line-height:1.95;color:var(--accent);padding:10px 12px;border:1px solid var(--accent);border-radius:5px;margin:0 0 12px;background:var(--soft)}
+.deepproblog-inference .deepproblog-prose{font-size:12px;line-height:1.95;margin:0 0 13px}
+.deepproblog-inference .deepproblog-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+.deepproblog-inference .deepproblog-input{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.deepproblog-inference .deepproblog-input h5{margin:0 0 9px}
+.deepproblog-inference .deepproblog-digit-picture{width:84px;max-width:100%;height:84px;margin:0 auto 11px;color:var(--ink)}
+.deepproblog-inference .deepproblog-digit-picture svg{display:block;width:100%;height:100%}
+.deepproblog-inference .deepproblog-probability{min-width:0;margin:8px 0}
+.deepproblog-inference .deepproblog-probability>span{font:11px/1.9 var(--mono);color:var(--ink)}
+.deepproblog-inference .deepproblog-track{height:7px;border-radius:4px;background:var(--soft);overflow:hidden;margin-top:4px}
+.deepproblog-inference .deepproblog-track span{display:block;height:100%;border-radius:4px;background:var(--accent)}
+.deepproblog-inference input[type=range]{box-sizing:border-box;display:block;width:100%;min-width:0;max-width:100%;margin:15px 0 7px;accent-color:var(--accent)}
+.deepproblog-inference .deepproblog-readout{font:10px/1.95 var(--mono);color:var(--muted);overflow-wrap:anywhere;margin:7px 0 0}
+.deepproblog-inference .deepproblog-rules{min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:6px;margin:15px 0;background:var(--bg)}
+.deepproblog-inference .deepproblog-rules span{font-size:10px;line-height:1.9;color:var(--muted)}
+.deepproblog-inference .deepproblog-rules pre{font:11px/1.95 var(--mono);color:var(--accent);white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;margin:8px 0 0}
+.deepproblog-inference .deepproblog-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin:14px 0}
+.deepproblog-inference .deepproblog-path{min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.deepproblog-inference .deepproblog-path[data-matches=true]{border-color:var(--accent);background:var(--soft)}
+.deepproblog-inference .deepproblog-path strong{display:block;font:14px/1.8 var(--mono);font-weight:500;color:var(--ink)}
+.deepproblog-inference .deepproblog-path span{display:block;font:10px/1.95 var(--mono);color:var(--muted);margin-top:5px;overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-path b{display:block;font:16px/1.9 var(--mono);font-weight:400;color:var(--accent);white-space:nowrap;margin-top:5px}
+.deepproblog-inference .deepproblog-sums,.deepproblog-inference .deepproblog-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;min-width:0;margin:15px 0}
+.deepproblog-inference .deepproblog-sums>div,.deepproblog-inference .deepproblog-metrics>div{min-width:0;padding:11px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.deepproblog-inference .deepproblog-sums>div[data-selected=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.deepproblog-inference .deepproblog-sums span,.deepproblog-inference .deepproblog-sums small,.deepproblog-inference .deepproblog-metrics span{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.deepproblog-inference .deepproblog-sums strong,.deepproblog-inference .deepproblog-metrics strong{display:block;font:16px/1.9 var(--mono);font-weight:400;color:var(--accent);white-space:nowrap;overflow-wrap:normal;margin:5px 0}
+.deepproblog-inference .deepproblog-selection-status{font-size:12px;line-height:1.95;color:var(--accent);padding:11px 13px;background:var(--soft);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;margin:13px 0}
+.deepproblog-inference .deepproblog-mode-comparison{min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:6px;margin:16px 0;background:var(--soft)}
+.deepproblog-inference .deepproblog-mode-comparison>p{font-size:12px;line-height:1.95;margin:8px 0}
+.deepproblog-inference .deepproblog-prepared-label{font-size:11px;line-height:1.95;color:var(--accent);margin:15px 0}
+.deepproblog-inference .deepproblog-matching{display:flex;flex-wrap:wrap;gap:7px;min-width:0;margin:13px 0}
+.deepproblog-inference .deepproblog-match{max-width:100%;font:11px/1.95 var(--mono);padding:7px 10px;border:1px solid var(--accent);border-radius:5px;color:var(--accent);background:var(--bg);overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-flow-arrow{text-align:center;font:23px/1.3 var(--mono);color:var(--accent);margin:8px 0}
+.deepproblog-inference .deepproblog-gradient-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;margin:15px 0}
+.deepproblog-inference .deepproblog-gradient-cards>section{min-width:0;padding:13px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.deepproblog-inference .deepproblog-gradient-cards h5{margin:0 0 10px}
+.deepproblog-inference .deepproblog-gradient-row{min-width:0;padding:10px 0;border-top:1px solid var(--line)}
+.deepproblog-inference .deepproblog-gradient-row strong{display:block;font:11px/1.95 var(--mono);font-weight:400;color:var(--ink);overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-gradient-row span{display:block;font-size:10px;line-height:1.95;color:var(--accent);margin-top:5px}
+.deepproblog-inference .deepproblog-gradient-merge{min-width:0;padding:13px 15px;border:1px solid var(--accent);border-radius:6px;background:var(--soft);margin:15px 0}
+.deepproblog-inference .deepproblog-gradient-merge strong{font-size:12px;line-height:1.9;font-weight:500;color:var(--ink);overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-gradient-merge p{font-size:10px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.deepproblog-inference .deepproblog-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.deepproblog-inference summary{font-size:12px;line-height:1.9;color:var(--ink);cursor:pointer;word-break:keep-all}
+.deepproblog-inference .deepproblog-details>div{padding-top:17px;min-width:0}
+.deepproblog-inference .deepproblog-formula{white-space:pre-wrap;font:11px/2 var(--mono);color:var(--accent);overflow-wrap:anywhere;padding:12px 14px;border:1px solid var(--line);border-radius:5px}
+.deepproblog-inference .deepproblog-derivative-rows p{font:10px/1.95 var(--mono);overflow-wrap:anywhere;margin:8px 0}
+.deepproblog-inference .deepproblog-note,.deepproblog-inference .deepproblog-scope,.deepproblog-inference .deepproblog-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0 8px;word-break:keep-all;overflow-wrap:anywhere}
+.deepproblog-inference .deepproblog-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.9;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.deepproblog-inference .deepproblog-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.deepproblog-inference .deepproblog-evidence-viewport{width:100%;max-width:100%;min-width:0;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.deepproblog-inference .deepproblog-evidence-viewport img{display:block;width:100%;height:auto}
+.deepproblog-inference .deepproblog-evidence-viewport[data-expanded=true]{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.deepproblog-inference .deepproblog-evidence-viewport[data-expanded=true] img{width:1600px;min-width:1600px;max-width:none}
+@media(max-width:700px){
+  .deepproblog-inference .deepproblog-stage-controls{gap:5px}
+  .deepproblog-inference .deepproblog-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+  .deepproblog-inference .deepproblog-common,.deepproblog-inference .deepproblog-query-panel,.deepproblog-inference .deepproblog-learn-panel{padding:15px}
+  .deepproblog-inference .deepproblog-inputs,.deepproblog-inference .deepproblog-paths,.deepproblog-inference .deepproblog-gradient-cards{grid-template-columns:minmax(0,1fr)}
+  .deepproblog-inference h4{font-size:16px}
+}
+@media(max-width:360px){
+  .deepproblog-inference .deepproblog-stage-controls button{padding:5px 3px;min-height:42px}
+  .deepproblog-inference .deepproblog-controls{gap:5px}
+  .deepproblog-inference .deepproblog-sums,.deepproblog-inference .deepproblog-metrics{grid-template-columns:minmax(0,1fr)}
+}

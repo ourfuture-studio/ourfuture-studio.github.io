@@ -1,0 +1,92 @@
+/* RDF is read as statements, identified terms and a shared graph. */
+.rdf-knowledge-graph{width:100%;min-width:0;color:var(--text)}
+.rdf-knowledge-graph [hidden]{display:none!important}
+.rdf-knowledge-graph p,.rdf-knowledge-graph span,.rdf-knowledge-graph strong,.rdf-knowledge-graph code{word-break:keep-all;overflow-wrap:anywhere}
+.rdf-knowledge-graph button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere;cursor:pointer}
+.rdf-knowledge-graph button:hover{border-color:var(--accent);color:var(--accent)}
+.rdf-knowledge-graph button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.rdf-knowledge-graph button:focus-visible,.rdf-knowledge-graph a:focus-visible,.rdf-knowledge-graph input:focus-visible,.rdf-knowledge-graph [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rdf-knowledge-graph .rdf-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;background:var(--bg);z-index:2;padding:5px 0 10px}
+.rdf-knowledge-graph .rdf-stage-text{font-size:12px;line-height:1.95;padding:13px 15px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.rdf-knowledge-graph .rdf-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.rdf-knowledge-graph h4{font:18px/1.8 var(--serif);font-weight:500;color:var(--ink);margin:0 0 14px}
+.rdf-knowledge-graph .rdf-prose{font-size:12px;line-height:1.95;margin:0 0 16px}
+.rdf-knowledge-graph .rdf-controls{display:flex;flex-wrap:wrap;gap:7px;min-width:0;margin:14px 0}
+.rdf-knowledge-graph .rdf-sentence{font:17px/1.9 var(--serif);color:var(--ink);padding:16px 18px;border-left:2px solid var(--accent);background:var(--soft);margin:18px 0}
+.rdf-knowledge-graph .rdf-triple-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:17px 0;min-width:0}
+.rdf-knowledge-graph .rdf-triple-parts button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;padding:12px 10px}
+.rdf-knowledge-graph .rdf-eyebrow{font-size:10px;line-height:1.8;color:var(--muted);display:block}
+.rdf-knowledge-graph .rdf-triple-parts strong{font-size:14px;line-height:1.9;font-weight:500;color:var(--ink);margin:7px 0}
+.rdf-knowledge-graph .rdf-term-type{font-size:10px;line-height:1.9;color:var(--muted);display:block}
+.rdf-knowledge-graph .rdf-graph-view{min-width:0;max-width:100%;border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:6px;margin:17px 0}
+.rdf-knowledge-graph .rdf-graph-picture{width:100%;min-width:0}
+.rdf-knowledge-graph .rdf-network{display:block;width:100%;height:auto;overflow:visible}
+.rdf-knowledge-graph .rdf-network-mobile{display:none}
+.rdf-knowledge-graph .rdf-network-edge path{fill:none;stroke:var(--muted);stroke-width:1.4}
+.rdf-knowledge-graph .rdf-network-edge[data-selected=true] path{stroke:var(--accent);stroke-width:2.4}
+.rdf-knowledge-graph .rdf-arrow-head{fill:var(--accent)}
+.rdf-knowledge-graph .rdf-network-edge rect{fill:var(--bg)}
+.rdf-knowledge-graph .rdf-network-edge text{font:13px var(--sans);fill:var(--muted)}
+.rdf-knowledge-graph .rdf-network-edge[data-selected=true] text{fill:var(--accent);font-weight:600}
+.rdf-knowledge-graph .rdf-network-node>ellipse,.rdf-knowledge-graph .rdf-network-node>rect{fill:var(--soft);stroke:var(--line);stroke-width:1.3}
+.rdf-knowledge-graph .rdf-network-node[data-highlight=true]>ellipse,.rdf-knowledge-graph .rdf-network-node[data-highlight=true]>rect{stroke:var(--accent);stroke-width:2.6}
+.rdf-knowledge-graph .rdf-network-node text{font:14px var(--sans);fill:var(--ink)}
+.rdf-knowledge-graph .rdf-network-node .rdf-network-kind{font-size:10px;fill:var(--muted)}
+.rdf-knowledge-graph .rdf-network-mobile .rdf-network-node text{font-size:17px}
+.rdf-knowledge-graph .rdf-network-mobile .rdf-network-edge text{font-size:16px}
+.rdf-knowledge-graph .rdf-network-mobile .rdf-network-node .rdf-network-kind{font-size:12px}
+.rdf-knowledge-graph .rdf-graph-legend,.rdf-knowledge-graph .rdf-note,.rdf-knowledge-graph .rdf-scope,.rdf-knowledge-graph .rdf-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0}
+.rdf-knowledge-graph .rdf-graph-legend{text-align:center;margin:5px 9px 12px}
+.rdf-knowledge-graph .rdf-keypoint{font-size:12px;line-height:1.95;color:var(--ink);padding:13px 15px;border-left:2px solid var(--accent);background:var(--soft);margin:17px 0 0}
+.rdf-knowledge-graph .rdf-identity-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0;min-width:0}
+.rdf-knowledge-graph .rdf-term-card{min-width:0;border:1px solid var(--line);border-radius:6px;padding:15px;background:var(--bg)}
+.rdf-knowledge-graph .rdf-term-card>strong{display:block;color:var(--ink);font-size:15px;line-height:1.9;font-weight:500;margin:9px 0}
+.rdf-knowledge-graph .rdf-term-card[data-term-type=iri]{border-radius:24px}
+.rdf-knowledge-graph .rdf-term-code{display:block;font:10px/1.95 var(--mono);color:var(--muted);white-space:pre-wrap;margin-top:12px}
+.rdf-knowledge-graph .rdf-identity-result{min-width:0;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:5px;background:var(--soft)}
+.rdf-knowledge-graph .rdf-identity-result>strong{display:block;font-size:14px;line-height:1.9;font-weight:500;color:var(--ink)}
+.rdf-knowledge-graph .rdf-identity-result>p{font-size:12px;line-height:1.95;margin:9px 0 0}
+.rdf-knowledge-graph .rdf-source-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:17px 0}
+.rdf-knowledge-graph .rdf-source-option{display:flex;gap:10px;align-items:flex-start;min-width:0;border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--soft);font-size:12px;line-height:1.95;cursor:pointer}
+.rdf-knowledge-graph input[type=checkbox]{width:16px;height:16px;flex:0 0 16px;margin:4px 0 0;accent-color:var(--accent)}
+.rdf-knowledge-graph .rdf-share-summary{padding:13px 15px;border:1px solid var(--line);border-radius:5px;background:var(--soft)}
+.rdf-knowledge-graph .rdf-share-summary>strong{display:block;font:16px/1.9 var(--mono);font-weight:500;color:var(--ink)}
+.rdf-knowledge-graph .rdf-share-summary>span{font-size:11px;line-height:1.95;color:var(--muted);display:block;margin-top:5px}
+.rdf-knowledge-graph .rdf-share-triples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:16px 0}
+.rdf-knowledge-graph .rdf-share-triples button{font-size:10px;line-height:1.9;min-width:0;text-align:left}
+.rdf-knowledge-graph .rdf-source-trace{font-size:10px;line-height:1.95;color:var(--muted);margin:12px 0}
+.rdf-knowledge-graph .rdf-empty{font-size:12px;line-height:1.95;color:var(--muted);text-align:center;padding:30px 12px}
+.rdf-knowledge-graph .rdf-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.rdf-knowledge-graph summary{font-size:12px;line-height:1.95;color:var(--ink);cursor:pointer;word-break:keep-all;overflow-wrap:anywhere}
+.rdf-knowledge-graph .rdf-details>.rdf-prose{margin-top:16px}
+.rdf-knowledge-graph .rdf-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.95;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.rdf-knowledge-graph .rdf-code{font:11px/1.95 var(--mono);color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-all;padding:16px;border:1px solid var(--line);border-radius:5px;background:var(--soft);max-width:100%;min-width:0;box-sizing:border-box}
+.rdf-knowledge-graph .rdf-evidence h4{margin-top:15px}
+.rdf-knowledge-graph .rdf-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.rdf-knowledge-graph .rdf-evidence-viewport{width:100%;max-width:100%;min-width:0;box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.rdf-knowledge-graph .rdf-evidence-viewport img{display:block;width:100%;height:auto}
+.rdf-knowledge-graph .rdf-evidence-viewport[data-expanded=true]{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.rdf-knowledge-graph .rdf-evidence-viewport[data-expanded=true] img{width:1250px;min-width:1250px;max-width:none}
+@media(max-width:700px){
+ .rdf-knowledge-graph .rdf-panel{padding:15px}
+ .rdf-knowledge-graph h4{font-size:16px}
+ .rdf-knowledge-graph .rdf-stage-controls{gap:5px}
+ .rdf-knowledge-graph .rdf-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+ .rdf-knowledge-graph .rdf-triple-parts{grid-template-columns:minmax(0,1fr);gap:6px}
+ .rdf-knowledge-graph .rdf-triple-parts button{display:grid;grid-template-columns:1fr 1fr;column-gap:8px;align-items:center;padding:8px 10px}
+ .rdf-knowledge-graph .rdf-triple-parts strong{font-size:13px;margin:0;grid-column:2;grid-row:1 / span 2}
+ .rdf-knowledge-graph .rdf-triple-parts .rdf-term-type{grid-column:1}
+ .rdf-knowledge-graph .rdf-identity-cards{grid-template-columns:minmax(0,1fr);gap:9px}
+ .rdf-knowledge-graph .rdf-network-desktop{display:none}
+ .rdf-knowledge-graph .rdf-network-mobile{display:block}
+ .rdf-knowledge-graph .rdf-source-controls,.rdf-knowledge-graph .rdf-share-triples{grid-template-columns:minmax(0,1fr)}
+ .rdf-knowledge-graph .rdf-sentence{font-size:16px;padding:13px 14px}
+ .rdf-knowledge-graph .rdf-code{font-size:10px;padding:12px}
+}
+@media(max-width:360px){
+ .rdf-knowledge-graph .rdf-panel{padding:12px}
+ .rdf-knowledge-graph .rdf-stage-controls button{padding:5px 3px}
+ .rdf-knowledge-graph .rdf-triple-parts button{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+ .rdf-knowledge-graph .rdf-keypoint{padding:11px 12px}
+ .rdf-knowledge-graph .rdf-source-option{padding:10px}
+}

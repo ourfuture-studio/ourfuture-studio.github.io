@@ -2,6 +2,7 @@
 
 블로그 「기계와 생각」·기술 노트·SQLD 공부에 연결되는 정적 체험 모음입니다.
 
+- AI 과거와 미래 · 50개 연구 카드: https://ourfuture-studio.github.io/ai-history/
 - 첫 화면: https://ourfuture-studio.github.io/
 - AI 수학 체험16개·그림19개: https://ourfuture-studio.github.io/math/
 - 머신러닝과 기술 노트 31개: https://ourfuture-studio.github.io/viz/

@@ -1,0 +1,120 @@
+/* The same authored records are read as sources, explicit meanings and a plan trace. */
+.semantic-web-composition{width:100%;min-width:0;color:var(--text)}
+.semantic-web-composition [hidden]{display:none!important}
+.semantic-web-composition p,.semantic-web-composition span,.semantic-web-composition strong,.semantic-web-composition code{word-break:keep-all;overflow-wrap:anywhere}
+.semantic-web-composition button{font:11px/1.7 var(--sans);min-height:38px;max-width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);white-space:normal;word-break:keep-all;overflow-wrap:anywhere;cursor:pointer}
+.semantic-web-composition button:hover{border-color:var(--accent);color:var(--accent)}
+.semantic-web-composition button.active{border-color:var(--accent);color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.semantic-web-composition button:focus-visible,.semantic-web-composition a:focus-visible,.semantic-web-composition input:focus-visible,.semantic-web-composition select:focus-visible,.semantic-web-composition [tabindex="0"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.semantic-web-composition .semweb-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;background:var(--bg);z-index:2;padding:5px 0 10px}
+.semantic-web-composition .semweb-stage-text{font-size:12px;line-height:1.95;padding:13px 15px;border-radius:6px;background:var(--soft);margin:0 0 18px}
+.semantic-web-composition .semweb-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0 0 18px}
+.semantic-web-composition h4{font:18px/1.8 var(--serif);font-weight:500;color:var(--ink);margin:0 0 14px}
+.semantic-web-composition h5{font:14px/1.9 var(--sans);font-weight:500;color:var(--ink);margin:0 0 10px}
+.semantic-web-composition h4,.semantic-web-composition h5{word-break:keep-all;overflow-wrap:anywhere}
+.semantic-web-composition .semweb-prose{font-size:12px;line-height:1.95;margin:0 0 16px}
+.semantic-web-composition .semweb-controls{display:flex;flex-wrap:wrap;gap:7px;min-width:0;margin:14px 0}
+.semantic-web-composition .semweb-sources-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:19px 0;min-width:0}
+.semantic-web-composition .semweb-source-card{border:1px solid var(--line);border-radius:7px;min-width:0;background:var(--bg);overflow:hidden}
+.semantic-web-composition .semweb-source-toggle{display:flex;gap:9px;align-items:flex-start;padding:13px;background:var(--soft);min-width:0;cursor:pointer}
+.semantic-web-composition .semweb-source-toggle>span{min-width:0}
+.semantic-web-composition .semweb-source-toggle strong{font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);display:block}
+.semantic-web-composition .semweb-source-toggle span span{font-size:10px;line-height:1.95;color:var(--muted);display:block;margin-top:4px}
+.semantic-web-composition input[type=checkbox]{width:16px;height:16px;flex:0 0 16px;margin:4px 0 0;accent-color:var(--accent)}
+.semantic-web-composition .semweb-source-rows{list-style:none;padding:0 13px;margin:0}
+.semantic-web-composition .semweb-source-rows li{border-top:1px solid var(--line);padding:12px 0;min-width:0}
+.semantic-web-composition .semweb-source-rows li:first-child{border-top:0}
+.semantic-web-composition .semweb-source-rows strong{font-size:12px;font-weight:500;line-height:1.9;color:var(--ink);display:block}
+.semantic-web-composition .semweb-source-rows span{font-size:10px;line-height:1.95;color:var(--muted);display:block}
+.semantic-web-composition .semweb-source-card[data-enabled=false] .semweb-source-rows{opacity:.45}
+.semantic-web-composition .semweb-keypoint{font-size:12px;line-height:1.95;color:var(--ink);padding:13px 15px;border-left:2px solid var(--accent);background:var(--soft);margin:17px 0 0}
+.semantic-web-composition .semweb-mapping-toggle{display:flex;gap:10px;align-items:flex-start;padding:15px;border:1px solid var(--accent);border-radius:6px;background:var(--soft);cursor:pointer;margin:18px 0}
+.semantic-web-composition .semweb-mapping-toggle>span{min-width:0}
+.semantic-web-composition .semweb-mapping-toggle strong{display:block;font-size:13px;font-weight:500;line-height:1.9;color:var(--ink)}
+.semantic-web-composition .semweb-mapping-toggle span span{display:block;font-size:11px;line-height:1.95;color:var(--muted);margin-top:5px}
+.semantic-web-composition .semweb-mappings{display:grid;gap:12px;margin:20px 0}
+.semantic-web-composition .semweb-mapping-row{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:center;min-width:0}
+.semantic-web-composition .semweb-mapping-row>div{font:17px/1.8 var(--serif);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:16px 12px;min-width:0;background:var(--bg)}
+.semantic-web-composition .semweb-map-arrow{text-align:center;font-size:21px;color:var(--accent)}
+.semantic-web-composition .semweb-mapping-row p{grid-column:1/-1;font-size:11px;line-height:1.95;color:var(--muted);margin:8px 0 0}
+.semantic-web-composition .semweb-mappings[data-enabled=false] .semweb-map-arrow{color:var(--muted);opacity:.3}
+.semantic-web-composition .semweb-request-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:19px 0;min-width:0}
+.semantic-web-composition .semweb-request{min-width:0}
+.semantic-web-composition .semweb-request>span{display:block;font-size:11px;line-height:1.9;color:var(--muted);margin-bottom:5px}
+.semantic-web-composition select{box-sizing:border-box;width:100%;max-width:100%;min-width:0;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);padding:9px 7px;font:12px/1.6 var(--sans);min-height:39px}
+.semantic-web-composition .semweb-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:17px 0}
+.semantic-web-composition .semweb-summary>span{display:flex;align-items:center;gap:8px;padding:12px;border:1px solid var(--line);border-radius:6px;min-width:0}
+.semantic-web-composition .semweb-summary strong{font:20px/1.3 var(--mono);font-weight:500;color:var(--ink)}
+.semantic-web-composition .semweb-summary span span{font-size:10px;line-height:1.8;color:var(--muted)}
+.semantic-web-composition .semweb-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:17px 0}
+.semantic-web-composition .semweb-candidates>button{display:block;min-width:0;text-align:left;padding:13px 14px}
+.semantic-web-composition .semweb-candidates strong{display:block;font-size:14px;font-weight:500;line-height:1.85;color:var(--ink);margin:7px 0}
+.semantic-web-composition .semweb-candidate-meta{display:block;font-size:10px;line-height:1.9;color:var(--muted)}
+.semantic-web-composition .semweb-status{font-size:10px;line-height:1.8;display:inline-block;padding:2px 7px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}
+.semantic-web-composition [data-status=accepted]>.semweb-status{border-color:var(--accent);color:var(--accent)}
+.semantic-web-composition [data-status=unknown]>.semweb-status{border-style:dashed}
+.semantic-web-composition .semweb-result{padding-top:19px;margin-top:24px;border-top:1px solid var(--line);min-width:0}
+.semantic-web-composition .semweb-result-status{display:inline-block;font-size:11px;line-height:1.9;font-weight:500;color:var(--ink);padding:4px 9px;background:var(--soft);border:1px solid var(--line);border-radius:15px;margin:0 0 16px}
+.semantic-web-composition .semweb-result-status[data-status=accepted]{border-color:var(--accent);color:var(--accent)}
+.semantic-web-composition .semweb-result-status[data-status=unknown]{border-style:dashed}
+.semantic-web-composition .semweb-join{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;align-items:stretch;margin:6px 0 20px;min-width:0}
+.semantic-web-composition .semweb-join>.semweb-join-card{grid-column:1/-1}
+.semantic-web-composition .semweb-join-branch{min-width:0;display:flex;flex-direction:column}
+.semantic-web-composition .semweb-join-branch>.semweb-join-card{flex:1}
+.semantic-web-composition .semweb-join-card{border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:13px 11px;min-width:0}
+.semantic-web-composition .semweb-join-card[data-highlight=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.semantic-web-composition .semweb-eyebrow{font-size:10px;line-height:1.9;color:var(--muted);display:block}
+.semantic-web-composition .semweb-join-card strong{font-size:14px;line-height:1.9;font-weight:500;display:block;color:var(--ink);margin:8px 0}
+.semantic-web-composition .semweb-row-ref{font:10px/1.9 var(--mono);display:block;color:var(--muted);overflow-wrap:anywhere;word-break:break-all}
+.semantic-web-composition .semweb-join-arrow{font-size:10px;line-height:1.9;color:var(--accent);display:flex;align-items:center;justify-content:center;min-height:35px;text-align:center}
+.semantic-web-composition .semweb-checks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:17px 0}
+.semantic-web-composition .semweb-checks button{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left;padding:10px}
+.semantic-web-composition .semweb-checks strong{font-size:12px;font-weight:500;line-height:1.9;color:var(--ink)}
+.semantic-web-composition .semweb-checks span{font-size:10px;line-height:1.9;display:block;color:var(--muted);margin-top:5px}
+.semantic-web-composition .semweb-checks button[data-state=unknown]{border-style:dashed}
+.semantic-web-composition .semweb-proof{border:1px solid var(--line);border-radius:6px;background:var(--soft);padding:15px 16px;min-width:0}
+.semantic-web-composition .semweb-proof>p{font-size:12px;line-height:1.95;margin:0 0 12px}
+.semantic-web-composition .semweb-proof-evidence{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.semantic-web-composition .semweb-proof-evidence li{padding:11px 13px;border:1px solid var(--line);border-radius:5px;background:var(--bg);font-size:11px;line-height:1.95;min-width:0}
+.semantic-web-composition .semweb-proof-evidence strong{display:block;font-size:11px;line-height:1.95;font-weight:500;color:var(--ink);margin-bottom:4px}
+.semantic-web-composition .semweb-proof-evidence span{display:block}
+.semantic-web-composition .semweb-empty{font-size:12px;line-height:1.95;color:var(--muted);padding:22px 13px;border:1px dashed var(--line);border-radius:6px}
+.semantic-web-composition .semweb-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+.semantic-web-composition summary{font-size:12px;line-height:1.95;color:var(--ink);cursor:pointer;word-break:keep-all;overflow-wrap:anywhere}
+.semantic-web-composition .semweb-details>div{margin-top:15px}
+.semantic-web-composition .semweb-details>.semweb-prose{margin-top:16px}
+.semantic-web-composition .semweb-source{display:inline-block;max-width:100%;font-size:10px;line-height:1.95;color:var(--muted);overflow-wrap:anywhere;text-underline-offset:3px}
+.semantic-web-composition .semweb-note,.semantic-web-composition .semweb-scope,.semantic-web-composition .semweb-credit{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0}
+.semantic-web-composition .semweb-code{font:10px/1.95 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-all;color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:14px;background:var(--soft);min-width:0;max-width:100%;box-sizing:border-box}
+.semantic-web-composition .semweb-source-details>h5{margin-top:20px}
+.semantic-web-composition .semweb-evidence h4{margin-top:15px}
+.semantic-web-composition .semweb-zoom{font-size:10px;min-height:34px;padding:6px 10px}
+.semantic-web-composition .semweb-evidence-viewport{width:100%;max-width:100%;min-width:0;box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:5px;margin:14px 0}
+.semantic-web-composition .semweb-evidence-viewport img{display:block;width:100%;height:auto}
+.semantic-web-composition .semweb-evidence-viewport[data-expanded=true]{max-height:65vh;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--muted) var(--soft)}
+.semantic-web-composition .semweb-evidence-viewport[data-expanded=true] img{width:1450px;min-width:1450px;max-width:none}
+@media(max-width:700px){
+ .semantic-web-composition .semweb-panel{padding:15px}
+ .semantic-web-composition h4{font-size:16px}
+ .semantic-web-composition .semweb-stage-controls{gap:5px}
+ .semantic-web-composition .semweb-stage-controls button{font-size:10px;line-height:1.6;padding:6px 4px;min-width:0;min-height:42px}
+ .semantic-web-composition .semweb-sources-grid{grid-template-columns:minmax(0,1fr)}
+ .semantic-web-composition .semweb-request-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .semantic-web-composition .semweb-candidates{grid-template-columns:minmax(0,1fr)}
+ .semantic-web-composition .semweb-summary>span{display:block;padding:10px}
+ .semantic-web-composition .semweb-summary span span{display:block;margin-top:5px}
+ .semantic-web-composition .semweb-join{grid-template-columns:minmax(0,1fr)}
+ .semantic-web-composition .semweb-join-arrow{min-height:32px}
+ .semantic-web-composition .semweb-join-card strong{font-size:15px}
+ .semantic-web-composition .semweb-checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .semantic-web-composition .semweb-mapping-row{grid-template-columns:minmax(0,1fr)}
+ .semantic-web-composition .semweb-map-arrow{transform:rotate(90deg);padding:4px}
+ .semantic-web-composition .semweb-mapping-row>div{font-size:17px;padding:13px}
+}
+@media(max-width:360px){
+ .semantic-web-composition .semweb-panel{padding:12px}
+ .semantic-web-composition .semweb-stage-controls button{padding:5px 3px}
+ .semantic-web-composition .semweb-request-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+ .semantic-web-composition .semweb-keypoint{padding:11px 12px}
+ .semantic-web-composition .semweb-proof{padding:12px}
+}

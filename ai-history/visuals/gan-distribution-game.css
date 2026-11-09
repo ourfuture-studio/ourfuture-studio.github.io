@@ -1,0 +1,61 @@
+.gan-distribution-game{width:100%;min-width:0;color:var(--text)}
+.gan-distribution-game [hidden]{display:none!important}
+.gan-distribution-game :is(p,h4,h5,label,span,figcaption){word-break:keep-all;overflow-wrap:anywhere}
+.gan-distribution-game button{font:11px/1.8 var(--sans);min-height:38px;padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--muted);cursor:pointer;max-width:100%;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.gan-distribution-game button.active{background:var(--soft);color:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.gan-distribution-game button:hover{color:var(--accent);border-color:var(--accent)}
+.gan-distribution-game button:disabled{opacity:.4;cursor:default}
+.gan-distribution-game :is(button,select,summary,a,.gg-svg-viewport,.gg-table-viewport,.gg-original-viewport):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.gan-distribution-game .gg-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;z-index:2;background:var(--bg);padding:5px 0 10px}
+.gan-distribution-game .gg-stage-text{font-size:12px;line-height:1.95;background:var(--soft);border-radius:6px;padding:13px 15px;margin:0 0 18px}
+.gan-distribution-game .gg-controls{display:flex;flex-wrap:wrap;gap:10px;min-width:0;margin:16px 0}
+.gan-distribution-game .gg-field{display:grid;gap:7px;flex:1 1 170px;min-width:0;max-width:100%;font-size:11px;line-height:1.8;color:var(--muted)}
+.gan-distribution-game select{font:11px/1.8 var(--sans);min-width:0;max-width:100%;min-height:38px;padding:7px 28px 7px 10px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px}
+.gan-distribution-game .gg-panel{min-width:0;border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:18px}
+.gan-distribution-game h4{font:500 18px/1.8 var(--serif);color:var(--ink);margin:0 0 14px}
+.gan-distribution-game h5{font:500 13px/1.9 var(--sans);color:var(--ink);margin:0 0 12px}
+.gan-distribution-game .gg-prose{font-size:12px;line-height:1.95;margin:0 0 17px}
+.gan-distribution-game .gg-note{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0}
+.gan-distribution-game .gg-cost{font:500 17px/1.8 var(--mono);padding:16px;background:var(--soft);border-radius:6px;color:var(--accent)}
+.gan-distribution-game .gg-svg-viewport,.gan-distribution-game .gg-table-viewport,.gan-distribution-game .gg-original-viewport{min-width:0;max-width:100%;overflow:auto;scrollbar-width:thin}
+.gan-distribution-game svg{display:block;width:100%;height:auto;min-width:390px}
+.gan-distribution-game .gg-axis{fill:none;stroke:var(--line);stroke-width:1.4}
+.gan-distribution-game .gg-label{font:12px var(--sans);fill:var(--muted)}
+.gan-distribution-game .gg-point{fill:var(--muted);stroke:var(--bg);stroke-width:1.5}
+.gan-distribution-game .gg-selected-point{fill:var(--accent);stroke:var(--bg);stroke-width:2}
+.gan-distribution-game .gg-filter-0{fill:none;stroke:var(--accent);stroke-width:3}
+.gan-distribution-game .gg-filter-1{fill:none;stroke:#4c94ae;stroke-width:3;stroke-dasharray:7 4}
+.gan-distribution-game .gg-circle{fill:none;stroke:var(--accent);stroke-width:2}
+.gan-distribution-game .gg-level{fill:none;stroke:var(--line);stroke-dasharray:5 5;stroke-width:1.3}
+.gan-distribution-game .gg-table-block{min-width:0;margin:22px 0}
+.gan-distribution-game table{border-collapse:collapse;min-width:100%;text-align:left}
+.gan-distribution-game th{font:500 10px/1.9 var(--mono);padding:11px;background:var(--soft);color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
+.gan-distribution-game td{font:11px/1.9 var(--mono);padding:11px;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap;background:color-mix(in srgb,var(--accent) calc(var(--activity,0)*18%),var(--bg))}
+.gan-distribution-game td.selected{outline:1px solid var(--accent);outline-offset:-2px}
+.gan-distribution-game .gg-learning{border-top:1px solid var(--line);padding-top:20px;margin-top:23px}
+.gan-distribution-game .gg-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.gan-distribution-game .gg-status{font-size:12px;line-height:1.95;padding:14px;border-left:2px solid var(--accent);background:var(--soft)}
+.gan-distribution-game .gg-details{border-top:1px solid var(--line);padding:15px 0;margin-top:8px;min-width:0}
+.gan-distribution-game summary{font-size:12px;line-height:1.9;cursor:pointer;color:var(--ink)}
+.gan-distribution-game .gg-original{margin:20px 0 0;min-width:0}
+.gan-distribution-game .gg-original img{display:block;width:100%;height:auto;background:#fff;border-radius:4px}
+.gan-distribution-game .gg-original.expanded img{width:1100px;max-width:none}
+.gan-distribution-game figcaption{font-size:11px;line-height:1.95;margin-top:13px}
+.gan-distribution-game .gg-source{display:inline-block;font-size:10px;line-height:1.9;color:var(--accent);margin:7px 0;word-break:break-word}
+@media(max-width:600px){.gan-distribution-game .gg-panel{padding:15px}.gan-distribution-game h4{font-size:17px}.gan-distribution-game .gg-stage-controls{gap:5px}.gan-distribution-game .gg-stage-controls button{font-size:10px;padding:7px 5px}.gan-distribution-game .gg-cost{font-size:13px}.gan-distribution-game .gg-field{flex-basis:100%}}
+
+.gan-distribution-game .gg-grid{stroke:var(--line);stroke-width:1;fill:none}
+.gan-distribution-game .gg-real{fill:var(--muted)}
+.gan-distribution-game .gg-generated{fill:var(--accent)}
+.gan-distribution-game .gg-d{fill:#588eae}
+.gan-distribution-game .gg-optimal{stroke:var(--accent);stroke-width:2;stroke-dasharray:5 4}
+.gan-distribution-game .gg-zone-0{fill:#6c8298}
+.gan-distribution-game .gg-zone-1{fill:#b4a58d}
+.gan-distribution-game .gg-zone-2{fill:var(--accent)}
+.gan-distribution-game .gg-zone-label{fill:white;font:12px var(--mono)}
+.gan-distribution-game .gg-marker{stroke:var(--ink);stroke-width:2}
+.gan-distribution-game .gg-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.gan-distribution-game .gg-metric{display:grid;gap:8px;padding:13px;background:var(--soft);border-radius:6px;min-width:0}
+.gan-distribution-game .gg-metric span{font-size:10px;line-height:1.9;color:var(--muted)}
+.gan-distribution-game .gg-metric strong{font:18px var(--mono);color:var(--accent)}
+@media(max-width:600px){.gan-distribution-game .gg-metrics{grid-template-columns:1fr}}

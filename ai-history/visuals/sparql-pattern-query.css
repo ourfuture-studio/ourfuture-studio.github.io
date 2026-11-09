@@ -1,0 +1,100 @@
+/* The SPARQL card owns its tables, pattern drawing and controls. */
+.sparql-pattern-query{width:100%;min-width:0;color:var(--text)}
+.sparql-pattern-query [hidden]{display:none!important}
+.sparql-pattern-query p,.sparql-pattern-query h4,.sparql-pattern-query h5,.sparql-pattern-query h6,.sparql-pattern-query span,.sparql-pattern-query strong,.sparql-pattern-query label{word-break:keep-all;overflow-wrap:anywhere}
+.sparql-pattern-query button{font:11px/1.7 var(--sans);color:var(--muted);border:1px solid var(--line);background:var(--bg);border-radius:5px;min-height:38px;padding:8px 11px;max-width:100%;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;cursor:pointer}
+.sparql-pattern-query button:hover{color:var(--accent);border-color:var(--accent)}
+.sparql-pattern-query button.active,.sparql-pattern-query button[aria-pressed=true]{color:var(--accent);border-color:var(--accent);background:var(--soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.sparql-pattern-query button:focus-visible,.sparql-pattern-query a:focus-visible,.sparql-pattern-query input:focus-visible,.sparql-pattern-query select:focus-visible,.sparql-pattern-query summary:focus-visible,.sparql-pattern-query .spq-svg-viewport:focus-visible,.sparql-pattern-query .spq-table-viewport:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sparql-pattern-query .spq-stage-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;position:sticky;top:60px;background:var(--bg);z-index:2;padding:5px 0 10px}
+.sparql-pattern-query .spq-stage-text{font-size:12px;line-height:1.95;padding:13px 15px;background:var(--soft);border-radius:6px;margin:0 0 18px}
+.sparql-pattern-query .spq-panel{border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0;margin-bottom:18px}
+.sparql-pattern-query h4{font:500 18px/1.8 var(--serif);color:var(--ink);margin:0 0 14px}
+.sparql-pattern-query h5{font:500 13px/1.9 var(--sans);color:var(--ink);margin:0 0 12px}
+.sparql-pattern-query h6{font:500 12px/1.8 var(--sans);color:var(--ink);margin:0 0 10px}
+.sparql-pattern-query .spq-prose{font-size:12px;line-height:1.95;margin:0 0 16px}
+.sparql-pattern-query .spq-note{font-size:10px;line-height:1.95;color:var(--muted);margin:10px 0;min-width:0}
+.sparql-pattern-query .spq-controls{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;min-width:0;align-items:flex-end}
+.sparql-pattern-query .spq-controls>button{align-self:center}
+.sparql-pattern-query .spq-field{display:grid;gap:7px;min-width:0;max-width:100%;font-size:10px;line-height:1.8;color:var(--muted)}
+.sparql-pattern-query .spq-field select{font:11px/1.8 var(--sans);min-height:38px;min-width:0;max-width:100%;padding:7px 30px 7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink)}
+.sparql-pattern-query .spq-check{display:flex;gap:8px;align-items:center;min-height:38px;font-size:11px;line-height:1.85;padding:8px 10px;border:1px solid var(--line);border-radius:5px;background:var(--bg);cursor:pointer;min-width:0;box-sizing:border-box}
+.sparql-pattern-query input[type=checkbox]{width:16px;height:16px;flex:0 0 16px;margin:0;accent-color:var(--accent)}
+.sparql-pattern-query .spq-keypoint{padding:13px 15px;border-left:2px solid var(--accent);border-radius:0 5px 5px 0;background:var(--soft);color:var(--ink);font-size:12px;line-height:1.95;margin:18px 0;min-width:0;overflow-wrap:anywhere;word-break:break-word}
+.sparql-pattern-query .spq-svg-viewport,.sparql-pattern-query .spq-table-viewport{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin}
+.sparql-pattern-query .spq-svg-viewport{margin:20px 0 0}
+.sparql-pattern-query svg{display:block;width:100%;max-width:710px;height:auto;margin:0 auto;overflow:visible}
+.sparql-pattern-query .spq-pattern-node rect{stroke:var(--line);stroke-width:1.5;fill:var(--bg)}
+.sparql-pattern-query .spq-pattern-node text{font:14px var(--mono);fill:var(--ink)}
+.sparql-pattern-query .spq-pattern-node.active rect{stroke:var(--accent);fill:var(--soft)}
+.sparql-pattern-query .spq-pattern-node.active text{fill:var(--accent)}
+.sparql-pattern-query .spq-pattern-edge{fill:none;stroke:var(--line);stroke-width:1.6}
+.sparql-pattern-query .spq-pattern-edge.active{stroke:var(--accent);stroke-width:2}
+.sparql-pattern-query .spq-edge-label{font:11px var(--mono);fill:var(--muted)}
+.sparql-pattern-query .spq-svg-note{font:10px var(--sans);fill:var(--muted)}
+.sparql-pattern-query .spq-rdf-graph{min-width:0;margin:25px 0 18px;padding-top:17px;border-top:1px solid var(--line)}
+.sparql-pattern-query .spq-rdf-graph svg{max-width:880px}
+.sparql-pattern-query .spq-rdf-edge{opacity:.3}
+.sparql-pattern-query .spq-rdf-edge.active{opacity:1}
+.sparql-pattern-query .spq-rdf-edge path{fill:none;stroke:var(--muted);stroke-width:1.1}
+.sparql-pattern-query .spq-rdf-edge.active path{stroke:var(--accent);stroke-width:2}
+.sparql-pattern-query .spq-rdf-edge text{font:9px var(--sans);fill:var(--muted)}
+.sparql-pattern-query .spq-rdf-edge.active text{fill:var(--accent)}
+.sparql-pattern-query .spq-rdf-node rect{fill:var(--bg);stroke:var(--line);stroke-width:1.1}
+.sparql-pattern-query .spq-rdf-node.active rect{fill:var(--soft);stroke:var(--accent);stroke-width:1.5}
+.sparql-pattern-query .spq-rdf-node text{font:12px var(--sans);fill:var(--ink)}
+.sparql-pattern-query .spq-rdf-node .spq-rdf-kind{font:8px var(--sans);fill:var(--muted)}
+.sparql-pattern-query .spq-triple-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;min-width:0}
+.sparql-pattern-query .spq-triple-tags code{font:9px/1.9 var(--mono);padding:2px 7px;border:1px solid var(--line);border-radius:4px;color:var(--accent);overflow-wrap:anywhere}
+.sparql-pattern-query .spq-table-block{min-width:0;margin:20px 0}
+.sparql-pattern-query .spq-table{border-collapse:collapse;min-width:100%;font-size:11px;line-height:1.9;text-align:left}
+.sparql-pattern-query .spq-table th{font:500 10px/1.9 var(--mono);color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line);background:var(--soft);white-space:nowrap}
+.sparql-pattern-query .spq-table td{font-size:11px;line-height:1.9;padding:11px 12px;border-bottom:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.sparql-pattern-query .spq-table tr.selected td{background:var(--soft)}
+.sparql-pattern-query .spq-table td button{font:10px/1.7 var(--mono);min-height:29px;min-width:30px;padding:3px 6px}
+.sparql-pattern-query .spq-table .spq-empty{white-space:normal;font-size:11px;color:var(--muted);text-align:center;padding:20px 10px}
+.sparql-pattern-query .spq-unbound{font-size:10px;line-height:1.8;display:inline-block;border:1px dashed var(--line);border-radius:3px;padding:1px 6px;color:var(--muted)}
+.sparql-pattern-query .spq-matching-facts{display:grid;gap:8px;min-width:0}
+.sparql-pattern-query .spq-matching-facts p{margin:0;padding:10px 12px;background:var(--soft);border-radius:5px;min-width:0}
+.sparql-pattern-query .spq-matching-facts code{font:10px/1.9 var(--mono);overflow-wrap:anywhere;word-break:break-word}
+.sparql-pattern-query .spq-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:21px 0}
+.sparql-pattern-query .spq-flow-step{display:grid;grid-template-columns:26px minmax(0,1fr);gap:4px 10px;align-items:center;min-width:0;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--soft)}
+.sparql-pattern-query .spq-flow-step>span{font:12px/1.8 var(--mono);color:var(--accent);grid-row:span 2}
+.sparql-pattern-query .spq-flow-step strong{font-size:12px;line-height:1.8;font-weight:500;color:var(--ink)}
+.sparql-pattern-query .spq-flow-step small{font:10px/1.8 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.sparql-pattern-query .spq-code{font:10px/1.95 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-all;min-width:0;max-width:100%;box-sizing:border-box;padding:15px;border:1px solid var(--line);border-radius:6px;background:var(--soft);color:var(--ink);margin:20px 0}
+.sparql-pattern-query .spq-proof{padding:18px;border:1px solid var(--line);border-radius:7px;background:var(--soft);min-width:0;margin-top:22px}
+.sparql-pattern-query .spq-proof-path{border-top:1px solid var(--line);padding-top:15px;margin-top:15px;min-width:0}
+.sparql-pattern-query .spq-proof-path ol{padding-left:22px;margin:0}
+.sparql-pattern-query .spq-proof-path li{padding:6px 0;font-size:11px;line-height:1.95;color:var(--ink)}
+.sparql-pattern-query .spq-proof-path li code{display:block;font:9px/1.9 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.sparql-pattern-query .spq-details{border-top:1px solid var(--line);padding-top:15px;margin-top:19px;min-width:0}
+.sparql-pattern-query summary{font-size:12px;line-height:1.95;color:var(--ink);cursor:pointer;word-break:keep-all;overflow-wrap:anywhere}
+.sparql-pattern-query .spq-details>div{margin-top:16px}
+.sparql-pattern-query .spq-source-panels{display:grid;gap:14px}
+.sparql-pattern-query .spq-source-panel{border:1px solid var(--line);border-radius:6px;padding:17px;min-width:0}
+.sparql-pattern-query .spq-source{display:inline-block;font-size:10px;line-height:1.95;color:var(--muted);max-width:100%;overflow-wrap:anywhere;text-underline-offset:3px}
+@media(max-width:700px){
+ .sparql-pattern-query .spq-panel{padding:15px}
+ .sparql-pattern-query h4{font-size:16px}
+ .sparql-pattern-query .spq-stage-controls{gap:5px}
+ .sparql-pattern-query .spq-stage-controls button{font-size:10px;line-height:1.6;min-height:42px;padding:6px 4px;min-width:0}
+ .sparql-pattern-query .spq-controls{gap:7px}
+ .sparql-pattern-query .spq-field{flex:1 1 140px}
+ .sparql-pattern-query .spq-check{flex:1 1 150px}
+ .sparql-pattern-query svg{min-width:545px}
+ .sparql-pattern-query .spq-rdf-graph svg{min-width:750px}
+ .sparql-pattern-query .spq-flow{grid-template-columns:minmax(0,1fr);gap:8px}
+ .sparql-pattern-query .spq-flow-step{grid-template-columns:25px minmax(0,1fr) 65px;padding:11px}
+ .sparql-pattern-query .spq-flow-step>span{grid-row:auto}
+ .sparql-pattern-query .spq-flow-step small{text-align:right}
+ .sparql-pattern-query .spq-proof{padding:14px}
+ .sparql-pattern-query .spq-table td,.sparql-pattern-query .spq-table th{padding:9px 10px}
+}
+@media(max-width:360px){
+ .sparql-pattern-query .spq-panel{padding:12px}
+ .sparql-pattern-query .spq-stage-controls button{padding:5px 3px}
+ .sparql-pattern-query .spq-keypoint{padding:11px 12px}
+ .sparql-pattern-query .spq-field,.sparql-pattern-query .spq-check{flex-basis:100%}
+ .sparql-pattern-query .spq-proof{padding:12px}
+}
