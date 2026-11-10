@@ -1,5 +1,5 @@
 {
-  "version": "0.45-public.1",
+  "version": "0.46-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,15 +772,15 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "jensen-huang",
-    "workId": "huang-cuda-2006",
-    "source": "Official NVIDIA CUDA, GPU computing and AI infrastructure documentation, dated company records and primary research sources; dates and evidence scope appear in the article.",
-    "implementation": "Refines the existing CUDA2006 record. Original diagrams distinguish logical parallel work, exact small matrix arithmetic, neural-network computation and system infrastructure. No actual CUDA execution, GPU benchmark or AI training is claimed.",
+    "personId": "elon-musk",
+    "workId": "musk-grok-2023",
+    "source": "Official xAI Grok and Colossus records, NVIDIA infrastructure documentation and xAI developer documentation; dates and evidence scope appear in the article.",
+    "implementation": "Refines the existing Grok2023 record. Original diagrams connect GPU infrastructure, model learning, model checkpoints and answer service while distinguishing company reports, conceptual explanation and actual browser interactions. No actual GPU cluster, model training, live inference or hardware benchmark is executed.",
     "newRasterAssets": 0,
-    "priorNvidia1993RecordPreserved": true,
-    "priorGtc2025RecordPreserved": true,
+    "priorOpenai2015RecordPreserved": true,
+    "priorSpacex2026RecordPreserved": true,
     "existingIndustryCatalogPreserved": true,
-    "officialCudaEvidenceUrl": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+    "officialGrokEvidenceUrl": "https://x.ai/news/grok"
   },
   "priorPersonCardRevisions": [
     {
@@ -851,6 +851,17 @@
       "priorMeta2025RecordPreserved": true,
       "existingIndustryCatalogPreserved": true,
       "companyAnnouncementEvidenceUrl": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution"
+    },
+    {
+      "personId": "jensen-huang",
+      "workId": "huang-cuda-2006",
+      "source": "Official NVIDIA CUDA, GPU computing and AI infrastructure documentation, dated company records and primary research sources; dates and evidence scope appear in the article.",
+      "implementation": "Refines the existing CUDA2006 record. Original diagrams distinguish logical parallel work, exact small matrix arithmetic, neural-network computation and system infrastructure. No actual CUDA execution, GPU benchmark or AI training is claimed.",
+      "newRasterAssets": 0,
+      "priorNvidia1993RecordPreserved": true,
+      "priorGtc2025RecordPreserved": true,
+      "existingIndustryCatalogPreserved": true,
+      "officialCudaEvidenceUrl": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
     }
   ],
   "homeNavigation": {

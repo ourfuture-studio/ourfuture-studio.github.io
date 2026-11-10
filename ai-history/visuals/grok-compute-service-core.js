@@ -1,0 +1,65 @@
+/* Dated official records and an authored map of training, inference, and organizations. */
+(function(){
+  'use strict';
+  const freeze=x=>{if(x&&typeof x==='object'&&!Object.isFrozen(x)){Object.values(x).forEach(freeze);Object.freeze(x);}return x;};
+  const sources={
+    grok:{title:'xAI · Announcing Grok',url:'https://x.ai/news/grok',location:'2023-11-03 · The journey to Grok-1 / Engineering at xAI. 서비스·모델과 분산 학습·추론 기반을 구분'},
+    model:{title:'xAI · Grok-1 Model Card',url:'https://x.ai/news/grok/model-card',location:'2023-11-03 · Model details / Limitations. 다음 토큰 예측과 미세조정, 모델 단독의 검색 한계'},
+    nvidia:{title:'NVIDIA · xAI Colossus와 Spectrum-X',url:'https://nvidianews.nvidia.com/news/spectrum-x-ethernet-networking-xai-colossus',location:'2024-10-28 · 도입과 본문. 당시 100,000 Hopper GPU, Spectrum-X·RDMA 및 xAI·NVIDIA 구축 발표. 당시 200,000 확장은 진행 중'},
+    grok3:{title:'xAI · Grok 3 Beta',url:'https://x.ai/news/grok-3',location:'2025-02-19 · Next-Generation Intelligence / Thinking Harder. Colossus 학습, 강화학습과 응답 시 계산의 구분'},
+    grok4:{title:'xAI · Grok 4',url:'https://x.ai/news/grok-4',location:'2025-07-09 · Scaling Up Reinforcement Learning / Native Tool Use. 당시 200,000 GPU 클러스터의 RL 이용 및 API 제공을 알린 회사 발표'},
+    text:{title:'xAI Docs · Generate Text',url:'https://docs.x.ai/developers/model-capabilities/text/generate-text',location:'현행 문서 · Creating a new model response / Chaining conversation. 모델·입력과 대화 문맥. 확인 2026-11-10'},
+    responses:{title:'xAI Docs · Responses API',url:'https://docs.x.ai/developers/rest-api-reference/inference/responses',location:'현행 문서 · Create new response, model·input·output. 모델 응답을 만드는 인터페이스. 확인 2026-11-10'},
+    web:{title:'xAI Docs · Web Search',url:'https://docs.x.ai/developers/tools/web-search',location:'현행 문서 · 검색 도구를 제공하는 요청과 검색 결과의 이용. 확인 2026-11-10'},
+    streaming:{title:'xAI Docs · Streaming',url:'https://docs.x.ai/developers/model-capabilities/text/streaming',location:'현행 문서 · Server-Sent Events로 응답 내용을 점진적으로 전달. 확인 2026-11-10'},
+    leadership:{title:'Tesla · FY2025 Form 10-K/A',url:'https://ir.tesla.com/_flysystem/s3/sec/000110465926053166/tm2611837d1_10ka-gen.pdf',location:'2026-04-30 기준 인물소개 · FY2025 Form 10-K/A, Item 10, 인쇄 p.1 / PDF p.5. 2023년 3월–2025년 3월 X.AI Corp. CEO·이사회 역할과 후속 회사 변경 기록'},
+    history:{title:'NVIDIA · Corporate Timeline',url:'https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/',location:'1993 공동설립자 세 명과 2006 CUDA 기록. 젠슨 황의 기업 역할을 연구자의 모델 기여와 구분. 확인 2026-11-10'}
+  };
+  const n=(id,label,short,icon,type,input,role,output,sourceIds)=>({id,label,short,icon,type,input,role,output,sourceIds});
+  const nodes=[
+    n('data-objective','데이터와 학습 목표','무엇을 배울지 정하기','data','배울 대상','텍스트와 다음 토큰 등의 학습 신호','Grok-1은 다음 토큰을 예측하는 언어모델로 출발했다. 후속 Grok의 강화학습은 응답을 평가하는 신호로 학습을 더 조정했다. 계산 장치의 수와 학습 목표는 서로 다른 조건이다.','학습에서 비교할 입력과 신호',['model','grok4']),
+    n('gpu-compute','GPU의 계산','모델 계산을 나누어 맡기','chip','계산 자원','모델의 큰 배열과 반복되는 연산','대규모 모델을 학습하려면 수많은 연산을 수행해야 한다. NVIDIA의 2024년 발표는 Colossus에 Hopper GPU 100,000개가 구성됐다고 기록했다. 이 수는 당시 발표값이며 현재 시설 규모나 지능 점수가 아니다.','학습을 수행할 계산 자원',['nvidia']),
+    n('network-fabric','GPU 사이의 연결','떨어진 계산을 함께 진행하기','network','계산 사이의 통신','여러 장치에 나뉜 계산에서 오갈 값','NVIDIA는 Colossus가 Spectrum-X Ethernet과 RDMA 네트워크를 이용했다고 밝혔다. GPU를 늘리는 일에는 장치 사이의 데이터 이동을 연결하는 일도 포함된다. 이 그림은 실제 통신 배선도나 벤치마크가 아니다.','분산 계산을 연결하는 통신 기반',['nvidia']),
+    n('reliable-stack','계속 실행되는 학습 기반','오류를 찾아 긴 작업 이어가기','stack','운영 소프트웨어','장치·작업·오류와 데이터 흐름','초기 Grok 공개 글은 Kubernetes·Rust·JAX 기반의 자체 학습·추론 스택과 하드웨어 오류 대응을 설명했다. 큰 학습에서는 장치 확보뿐 아니라 작업을 안정적으로 계속 실행하는 기반도 필요했다.','학습이 중단되지 않도록 다루는 운영 기반',['grok']),
+    n('training-updates','학습으로 가중치를 바꾸기','예측과 평가 신호를 매개변수에 반영','model','학습의 역할','데이터·학습 목표·계산·통신 기반','학습은 모델의 매개변수를 조정한다. xAI는 Grok 3의 사전학습과 강화학습, Grok 4의 대규모 강화학습을 별도 단계로 설명했다. 학습 자원의 증가만으로 특정 과제의 정답률을 계산할 수는 없다.','학습을 거친 모델 매개변수',['model','grok3','grok4']),
+    n('model-snapshot','학습된 모델','저장된 가중치가 다음 단계로','snapshot','학습에서 추론으로 잇는 개념','학습으로 조정한 매개변수와 모델 구성','학습된 모델을 서비스에서 이용하는 연결을 ‘모델 스냅샷’으로 표현했다. 다음 보기의 추론은 이 모델과 새 요청을 이용하는 역할이다. Colossus와 실제 추론 서비스가 같은 장치에서 실행된다고 뜻하지 않는다.','서비스가 이용할 모델 버전',['model','grok4','responses']),
+    n('request-context','질문과 대화 문맥','이번 응답에서 참고할 입력','text','요청마다 달라지는 정보','사용자 질문과 포함한 이전 대화','API는 모델과 입력을 지정해 응답을 요청한다. 이전 대화를 새 입력에 포함하거나 문서가 제공하는 대화 연결 기능을 이용하면 응답이 참고할 문맥이 달라진다. 문맥을 바꾸는 일은 여기서 보여 주는 모델 재학습과 다르다.','이번 생성에 주어지는 문맥',['text','responses']),
+    n('serving-model','사용할 모델 버전','이번 응답이 이용할 학습 결과','snapshot','모델과 요청을 구분','선택한 모델과 이미 학습된 매개변수','같은 모델 버전을 이용해도 질문과 문맥에 따라 다른 응답이 나온다. 아래 구조 예시는 요청을 바꿔도 같은 모델 스냅샷을 유지한다. xAI의 실제 가중치나 비공개 서비스 배치는 재현하지 않는다.','추론에서 이용할 모델',['model','responses']),
+    n('inference-work','응답을 만드는 계산','문맥을 읽고 출력을 이어가기','chip','추론의 역할','학습된 모델과 요청 문맥','추론은 현재 요청에서 출력을 생성하는 계산이다. Grok 3 공개 글의 응답 시 계산과 학습 시 계산은 목적과 시점이 다르다. 응답을 더 오래 생성하는 것을 곧바로 가중치 갱신으로 표시하지 않는다.','출력 또는 도구를 이용할 요청',['grok3','responses']),
+    n('optional-tools','필요하면 검색 도구로','외부 정보를 요청 문맥에 더하기','search','모델 밖의 정보','제공된 검색 도구와 질의','웹 검색 도구는 모델의 학습된 가중치와 별도 경로다. 도구를 사용할 수 있는 요청에서는 외부 자료를 가져와 응답의 문맥에 이용한다. 도구 없이 모든 최신 사실을 알고 있다고 전제하지 않는다.','검색 결과와 출처가 포함될 수 있는 문맥',['model','web']),
+    n('answer-stream','생성된 응답을 전달','응답의 일부를 순서대로 받기','stream','출력의 전달','모델이 생성한 출력과 가능한 도구 결과','Streaming은 응답의 내용을 점진적으로 전달하는 인터페이스다. 글자가 화면에 나타나는 과정은 모델을 새로 학습시키는 과정이 아니다. 출처가 붙은 응답도 정확성은 별도로 확인해야 한다.','사용자나 프로그램이 받는 응답',['streaming','model']),
+    n('grok-product','Grok 서비스·API','모델을 사람들이 이용하는 접점','app','제품과 인터페이스','질문·모델 계산·서비스의 연결','Grok은 사용자가 만나는 제품 이름이며 Grok-1·Grok 3·Grok 4는 날짜가 있는 모델 기록이다. 2025년 Grok 4 발표는 구독 서비스와 API 제공을 함께 알렸다. 현행 제품과 모델 목록 전체를 이때로 소급하지 않는다.','대화 화면 또는 응용 프로그램의 기능',['grok','grok4','responses']),
+    n('musk','일론 머스크','당시의 경영·조직과 인프라 기록','person','인물의 역할','2023–25년 X.AI Corp. 경영·조직 기록','Tesla의 2026년 공시는 머스크가 2023년 3월부터 2025년 3월까지 X.AI Corp. CEO·이사회 역할을 맡았다고 기록한다. 당시의 경영·조직 역할과 연구·개발팀의 모델 기여를 구분하며 현재 직함으로 옮기지 않는다.','xAI라는 조직과 기업 기록',['leadership','nvidia']),
+    n('xai','xAI','연구·모델·서비스를 잇는 조직','company','조직의 역할','연구팀·학습 시스템·제품 개발','xAI 팀은 Grok의 모델, 학습·추론 기반과 서비스를 공개했다. 회사의 발표는 당시의 제품·기술 주장을 확인하는 자료이며 모델 능력의 독립 재현 결과와는 구분한다.','Colossus 학습과 Grok 제품의 회사 기록',['grok','grok4']),
+    n('colossus','Colossus','날짜가 있는 대규모 학습 시스템','racks','계산 인프라','GPU·통신·운영 기반','2024년 NVIDIA의 구축 발표와 2025년 xAI의 학습 이용 발표를 나누어 읽는다. 두 발표의 GPU 수는 같은 시점의 수가 아니며 이 그림으로 현재 시설이나 서비스의 배치를 추정하지 않는다.','Grok 학습에 사용됐다고 발표한 계산 기반',['nvidia','grok4']),
+    n('grok-family','Grok','연구팀의 모델과 서비스','model','학습 결과와 제품','학습된 모델·요청을 다루는 서비스','제품 공개, 모델 학습과 검색·API 기능은 연결되지만 동일한 사건은 아니다. Grok 초기 공개에서 Colossus를 이용한 후속 학습과 서비스의 접점까지 날짜별로 이어 읽는다.','기존 카드의 모델·제품 기록',['grok','grok4']),
+    n('nvidia-company','NVIDIA','GPU와 네트워크·구축의 연결','company','기업 간 기반의 관계','Hopper GPU와 Spectrum-X 플랫폼','2024-10-28 NVIDIA 발표는 xAI·NVIDIA의 구축과 GPU·네트워크 기반을 설명한다. 하드웨어·플랫폼 제공의 역할을 xAI 모델의 저자라는 뜻으로 옮기지 않는다.','Colossus에 연결된 계산·통신 기반',['nvidia']),
+    n('jensen','젠슨 황','NVIDIA 공동설립 · CUDA 카드로','person','인물과 기업','NVIDIA의 기업·플랫폼 경로','NVIDIA의 연혁은 젠슨 황·크리스 말라초스키·커티스 프림의 1993년 공동설립을 기록한다. 황의 기존 카드에서는 CUDA의 병렬 계산이 AI 학습의 기반으로 이어지는 아이디어를 읽는다.','기업·인프라 목록에서 이어 읽을 인물',['history'])
+  ];
+  const e=(id,from,to,label,kind,sourceIds)=>({id,from,to,label,kind,sourceIds});
+  const edges=[
+    e('data-learning','data-objective','training-updates','데이터·학습 신호','concept',['model','grok4']),e('compute-learning','gpu-compute','training-updates','계산 자원','concept',['nvidia','grok4']),e('network-gpu','network-fabric','gpu-compute','분산 계산의 통신','concept',['nvidia']),e('stack-learning','reliable-stack','training-updates','작업·오류 대응','concept',['grok']),e('learning-model','training-updates','model-snapshot','학습된 매개변수','concept',['model','responses']),
+    e('context-inference','request-context','inference-work','이번 요청의 입력','concept',['text','responses']),e('model-inference','serving-model','inference-work','선택한 모델','concept',['responses']),e('inference-tools','inference-work','optional-tools','필요한 도구 이용','optional',['grok4','web']),e('tools-inference','optional-tools','inference-work','검색 결과를 참고','optional',['web']),e('inference-output','inference-work','answer-stream','생성된 출력','concept',['responses','streaming']),e('output-service','answer-stream','grok-product','화면·프로그램으로','concept',['grok4','responses']),
+    e('musk-xai','musk','xai','2023–25 경영·조직','organization',['leadership']),e('xai-colossus','xai','colossus','학습 기반의 구축·이용','dated',['nvidia','grok4']),e('colossus-grok','colossus','grok-family','후속 모델의 학습 이용','dated',['nvidia','grok4']),e('xai-grok','xai','grok-family','연구팀의 모델·제품','organization',['grok']),e('nvidia-colossus','nvidia-company','colossus','2024 GPU·통신·구축 발표','dated',['nvidia']),e('jensen-nvidia','jensen','nvidia-company','1993 공동설립','organization',['history'])
+  ];
+  const views=[
+    {id:'training',label:'01 인프라에서 모델 학습으로',title:'GPU를 많이 모으는 일에서, 함께 학습을 계속하는 시스템으로',intro:'계산·통신·운영 기반이 데이터를 배우는 작업을 뒷받침하고, 학습된 모델이 남는 관계를 봅니다. 위에서 아래로 한 번씩 지나가는 장치 배선도가 아닙니다.',nodeIds:['data-objective','gpu-compute','network-fabric','reliable-stack','training-updates','model-snapshot'],edgeIds:['data-learning','compute-learning','network-gpu','stack-learning','learning-model'],initial:'gpu-compute',scope:'공식 자료의 역할을 직접 구성한 개념도입니다. GPU 개수에 비례해 모델 능력·속도가 늘어난다는 계산이나 실제 학습 실행 결과가 아닙니다.'},
+    {id:'service',label:'02 학습된 모델에서 응답 서비스로',title:'배운 모델은 유지하고, 새 질문과 필요한 자료를 입력하다',intro:'학습된 모델과 지금 주어진 문맥이 만나는 지점이 추론입니다. 선택적으로 검색을 이용하는 경로와 응답을 전달하는 경로를 나누어 봅니다.',nodeIds:['request-context','serving-model','inference-work','optional-tools','answer-stream','grok-product'],edgeIds:['context-inference','model-inference','inference-tools','tools-inference','inference-output','output-service'],initial:'inference-work',scope:'추론은 서비스에서 수행할 역할을 나타냅니다. Colossus와 같은 GPU에서 서비스가 실행된다는 배치 정보는 확인하지 않았습니다. 아래 예시는 실제 Grok 생성·검색·API 호출을 하지 않습니다.'},
+    {id:'connections',label:'03 기업·인물·플랫폼 연결',title:'머스크와 황의 연결은, xAI와 NVIDIA의 조직·기반 관계에서',intro:'인물의 조직 역할은 실선, 날짜가 있는 구축·학습 이용 발표는 점선으로 표시합니다. 인물의 사업 역할과 모델을 연구한 팀의 기여를 구분합니다.',nodeIds:['musk','xai','colossus','grok-family','nvidia-company','jensen'],edgeIds:['musk-xai','xai-colossus','colossus-grok','xai-grok','nvidia-colossus','jensen-nvidia'],initial:'colossus',scope:'기업 간 구축·하드웨어·플랫폼 관계를 개인 간 공동 연구·지도 관계로 해석하지 않습니다. 연결된 인물·상세 카드로 이동해도 기업·인프라 목록이 유지됩니다.'}
+  ];
+  const milestones=[{date:'2023.11.03',title:'Grok 초기 베타',text:'Grok-1과 자체 학습·추론 기반을 공개',sourceId:'grok'},{date:'2024.10.28',title:'Colossus 구축 발표',text:'100,000 Hopper GPU 기록 · 당시 200,000 확장은 진행 중',sourceId:'nvidia'},{date:'2025.07.09',title:'Grok 4 학습·서비스',text:'200,000 GPU 클러스터의 RL 이용과 API 제공을 발표',sourceId:'grok4'}];
+  const scenarios={
+    direct:{id:'direct',label:'질문만 전달',input:'“신경망에서 학습과 추론은 어떻게 달라?”',context:['현재 질문'],tool:'선택하지 않은 경로',output:'현재 질문과 학습된 모델을 이용해 응답을 생성할 자리'},
+    conversation:{id:'conversation',label:'이전 대화도 전달',input:'“그럼 방금 말한 둘의 차이를 한 문장으로 정리해 줘.”',context:['이전 질문: 학습과 추론의 차이','이전 응답: 사용자가 문맥에 넣은 대화 기록','현재 질문'],tool:'선택하지 않은 경로',output:'이전 대화와 현재 질문을 함께 참고해 응답을 생성할 자리'},
+    search:{id:'search',label:'검색 경로도 제공',input:'“이 발표의 원문 날짜와 출처를 확인해 줘.”',context:['현재 질문','도구가 돌려준 외부 자료가 들어올 자리'],tool:'검색 도구 → 외부 자료·출처 → 응답 문맥',output:'검색 자료를 참고해 응답을 생성할 자리 · 실제 검색 결과 아님'}
+  };
+  const byId=new Map(nodes.map(x=>[x.id,x])),edgeById=new Map(edges.map(x=>[x.id,x]));
+  for(const x of nodes)if(!x.sourceIds.length||x.sourceIds.some(id=>!sources[id]))throw new TypeError('Every role must have a source.');
+  for(const x of edges)if(!byId.has(x.from)||!byId.has(x.to)||x.from===x.to||!x.sourceIds.length||x.sourceIds.some(id=>!sources[id]))throw new TypeError('Connections need sourced, valid endpoints.');
+  for(const v of views)if(!v.nodeIds.includes(v.initial)||v.nodeIds.some(id=>!byId.has(id))||v.edgeIds.some(id=>!edgeById.has(id)||![edgeById.get(id).from,edgeById.get(id).to].every(n=>v.nodeIds.includes(n))))throw new TypeError('Views need visible connected roles.');
+  function getView(id){const v=views.find(v=>v.id===id);if(!v)throw new RangeError('Unknown Grok view.');return freeze({...v,nodes:v.nodeIds.map(id=>byId.get(id)),edges:v.edgeIds.map(id=>edgeById.get(id))});}
+  function select(viewId,nodeId){const v=getView(viewId),index=v.nodeIds.indexOf(nodeId);if(index<0)throw new RangeError('Choose a visible role.');return freeze({viewId,index,node:v.nodes[index],connections:v.edges.filter(e=>e.from===nodeId||e.to===nodeId),hasPrevious:index>0,hasNext:index<v.nodes.length-1});}
+  function step(viewId,nodeId,direction){if(direction!==1&&direction!==-1)throw new RangeError('Step one role at a time.');const s=select(viewId,nodeId),v=getView(viewId);return select(viewId,v.nodeIds[Math.max(0,Math.min(v.nodeIds.length-1,s.index+direction))]);}
+  function scenario(id){if(!Object.hasOwn(scenarios,id))throw new RangeError('Unknown request example.');return freeze({...scenarios[id],modelId:'이 예시에서 고정한 모델 스냅샷 M',weightsUpdated:false,executesApi:false,scope:'직접 구성한 요청 구조 예시입니다. 입력·문맥·도구 경로만 달라지고, 모델 스냅샷은 유지합니다. 실제 생성 답변·검색 결과·GPU 실행이 아닙니다.'});}
+  window.AtlasGrokComputeService=freeze({sources,nodes,edges,views,milestones,getView,select,step,scenario});
+})();
