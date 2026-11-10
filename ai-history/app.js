@@ -298,6 +298,10 @@
     const e=byId.get(w.eventId)||{...w,subtitle:w.type,detail:'',related:[],question:''};openRecord(e);
     try{history.replaceState(null,'','#person='+encodeURIComponent(personId)+'&work='+encodeURIComponent(workId)+(state.mode==='people'&&state.filter==='industry'?'&filter=industry':''));}catch{}
   }
+  function industryContext(personId,requested){
+    const person=window.AtlasPeople.profiles.find(p=>p.id===personId);
+    return !!person?.tags.includes('industry')&&(requested==='industry'||state.mode==='people'&&state.filter==='industry');
+  }
   function openPersonRoute(params,personId){
     const person=window.AtlasPeople.profiles.find(p=>p.id===personId);
     setMode('people');state.filter=params.get('filter')==='industry'&&person?.tags.includes('industry')?'industry':'all';state.query='';
@@ -311,7 +315,7 @@
     art(e,!article,$('detail-art'));
     $('detail-year').textContent=e.dateLabel;$('detail-title').textContent=e.title;$('detail-subtitle').textContent=e.subtitle;$('detail-people').textContent=e.authorNote||e.people.join(' · ');
     $('detail-person-links').replaceChildren();
-    for(const name of e.people){const p=window.AtlasPeople.findProfile(name);if(!p)continue;const b=node('button','',name+'의 기록 ↗');b.type='button';b.addEventListener('click',()=>{$('detail-dialog').close();setMode('people');state.filter='all';state.query='';updateFilter();window.AtlasPeople.select(p.id);});$('detail-person-links').append(b);}
+    for(const name of e.people){const p=window.AtlasPeople.findProfile(name);if(!p)continue;const b=node('button','',name+'의 기록 ↗');b.type='button';b.addEventListener('click',()=>{const industry=industryContext(p.id);$('detail-dialog').close();setMode('people');state.filter=industry?'industry':'all';state.query='';updateFilter({includeAllPeople:industry});window.AtlasPeople.select(p.id);});$('detail-person-links').append(b);}
     $('detail-summary').textContent=e.summary;$('detail-summary').hidden=article;$('detail-body').textContent=e.detail||'';$('detail-body').hidden=article||!e.detail;
     $('detail-question').textContent=e.question||'';$('detail-question').parentElement.hidden=article||!e.question;$('detail-caveat').textContent=e.caveat||'';$('detail-caveat').hidden=article;
     document.querySelector('.detail-sources').hidden=article;
@@ -340,7 +344,7 @@
       if(r.kind==='work'&&r.eventId&&byId.has(r.eventId)){
         setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(r.eventId,true);openDetail(r.eventId);
       }else if(r.personId){
-        setMode('people');state.filter='all';state.query='';updateFilter();
+        const industry=industryContext(r.personId,r.filter);setMode('people');state.filter=industry?'industry':'all';state.query='';updateFilter({includeAllPeople:industry});
         if(r.kind==='work'){window.AtlasPeople.showWork(r.personId,r.workId||r.id);openWorkDetail(r.personId,r.workId||r.id);}
         else{window.AtlasPeople.select(r.personId);$('person-panel').scrollIntoView({block:'start',behavior:reducedMotion?'auto':'smooth'});}
       }
@@ -349,7 +353,7 @@
     $('graph-mode').addEventListener('click',()=>setMode('graph'));
     window.addEventListener('atlas:open-graph',ev=>{setMode('graph');window.AtlasPersonGraph?.focus(ev.detail?.personId||'');$('person-graph-shell').scrollIntoView({block:'start',behavior:reducedMotion?'auto':'smooth'});});
     window.addEventListener('atlas:open-event',ev=>{if(!byId.has(ev.detail.id))return;setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(ev.detail.id);openDetail(ev.detail.id);});
-    window.addEventListener('atlas:open-work',ev=>openWorkDetail(ev.detail.personId,ev.detail.workId));
+    window.addEventListener('atlas:open-work',ev=>{const {personId,workId,filter}=ev.detail||{};if(filter==='industry'){const p=window.AtlasPeople.profiles.find(p=>p.id===personId);if(!p?.tags.includes('industry')||!p.works.some(w=>w.id===workId))return;openPersonRoute(new URLSearchParams({filter:'industry',work:workId}),personId);}else openWorkDetail(personId,workId);});
     window.addEventListener('hashchange',()=>{
       const params=new URLSearchParams(location.hash.slice(1)),person=params.get('person'),event=params.get('event');
       if(params.has('graph')){if($('detail-dialog').open)$('detail-dialog').close();setMode('graph');window.AtlasPersonGraph?.focus(params.get('focus')||'');}

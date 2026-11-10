@@ -1,5 +1,5 @@
 {
-  "version": "0.41-public.1",
+  "version": "0.42-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,13 +772,14 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "peter-thiel",
-    "workId": "thiel-capital-infrastructure-2003",
-    "source": "Official institutional, company and public filing sources; each relationship retains its role, entity types and source date.",
-    "implementation": "A typed ecosystem visualization distinguishes people, companies, a fund, platforms and published company partnerships. Layout and line width do not encode money, ownership shares or influence strength.",
+    "personId": "palmer-luckey",
+    "workId": "luckey-anduril-2017",
+    "source": "Official Anduril/Lattice material, company partnership announcements and Palantir product documentation, with source dates and evidence boundaries in the article.",
+    "implementation": "Refines the existing2017 Anduril record; an original high-level visualization distinguishes field observations, system roles and the2024 company partnership. It is not a live operational system or an independently validated product trial.",
     "newRasterAssets": 0,
-    "portrait": "No new portrait is distributed; existing initials remain.",
-    "cofounderEvidence": "The existing Alex Karp to Peter Thiel cofounder relation is retained with reciprocal evidence, without claiming the two were the complete founding team."
+    "priorOculusRecordPreserved": true,
+    "existingIndustryCatalogPreserved": true,
+    "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
   },
   "priorPersonCardRevisions": [
     {
@@ -810,6 +811,15 @@
       "newRasterAssets": 0,
       "portrait": "No new portrait is distributed; existing initials remain.",
       "influenceEvidenceUrl": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3"
+    },
+    {
+      "personId": "peter-thiel",
+      "workId": "thiel-capital-infrastructure-2003",
+      "source": "Official institutional, company and public filing sources; each relationship retains its role, entity types and source date.",
+      "implementation": "A typed ecosystem visualization distinguishes people, companies, a fund, platforms and published company partnerships. Layout and line width do not encode money, ownership shares or influence strength.",
+      "newRasterAssets": 0,
+      "portrait": "No new portrait is distributed; existing initials remain.",
+      "cofounderEvidence": "The existing Alex Karp to Peter Thiel cofounder relation is retained with reciprocal evidence, without claiming the two were the complete founding team."
     }
   ],
   "homeNavigation": {
