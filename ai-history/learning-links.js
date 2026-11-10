@@ -12,7 +12,8 @@ const DATA={"version": 1, "note": "Reading connections, not claims of direct his
  function historyUrl(id){const u=new URL(location.protocol==='file:'?'../AI-Atlas-Prototype.html':'index.html',base());u.hash='event='+encodeURIComponent(id);return u.href;}
  function lessonUrl(row){const u=new URL((location.protocol==='file:'?'../../../ourfuture-studio-handoff/ourfuture-studio/learn/deep-learning/':'../learn/deep-learning/')+row.slug+'.html',base());if(row.anchor)u.hash=row.anchor;return u.href;}
  function labUrl(id,slug){const u=new URL('learning-lab.html',base());u.searchParams.set('event',id);if(slug)u.searchParams.set('lesson',slug);return u.href;}
- function forEvent(id){return DATA.lessons.filter(x=>x.events.includes(id));}
+ const publishedLessonSlugs=[];
+ function forEvent(id){return DATA.lessons.filter(x=>x.events.includes(id)&&publishedLessonSlugs.includes(x.slug));}
  function renderForEvent(id,host){
   const rows=forEvent(id);if(!rows.length)return;
   const box=document.createElement('aside');box.className='learning-bridge';box.setAttribute('aria-label','연결된 딥러닝 강의');

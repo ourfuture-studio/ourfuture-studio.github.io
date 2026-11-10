@@ -2,6 +2,13 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const all = [...(window.TIMELINE_DATA || [])].sort((a, b) => a.year - b.year);
+  // Keep room for the next research years; real records alone determine cards.
+  const timelineStartYear = Math.min(1943, ...all.map(event => event.year));
+  const latestRecordYear = Math.max(timelineStartYear, ...all.map(event => event.year));
+  const timelineEndYear = Math.max(2030, Math.ceil((latestRecordYear + 1) / 5) * 5);
+  const timelineYearSpan = timelineEndYear - timelineStartYear;
+  const flatYearGap = 64;
+  const timelinePercent = year => (year - timelineStartYear) / timelineYearSpan * 100;
   const tracks = {
     neural: { label: '연결주의 AI', english: 'CONNECTIONIST AI', color: '#8595ef', lane: -1 },
     symbolic: { label: '심볼릭 AI', english: 'SYMBOLIC AI', color: '#75beb5', lane: 0 },
@@ -80,7 +87,7 @@
     if (state.view === 'flat') centerFlat();
   }
   function yearAt(position) {
-    if (!state.events.length) return 1943;
+    if (!state.events.length) return timelineStartYear;
     const lo = Math.floor(clamp(position,0,state.events.length-1)); const hi = Math.min(lo+1,state.events.length-1);
     return state.events[lo].year + (state.events[hi].year-state.events[lo].year)*(position-lo);
   }
@@ -92,9 +99,14 @@
   }
   function buildMinimap() {
     const container=$('mini-marks'); container.replaceChildren();
+    const years=document.querySelector('.minimap-years');years.replaceChildren();
+    const labels=[timelineStartYear];
+    for(let year=Math.ceil((timelineStartYear+1)/20)*20;year<timelineEndYear;year+=20)labels.push(year);
+    labels.push(timelineEndYear);
+    for(const year of labels){const label=node('span','',String(year));label.style.left=timelinePercent(year)+'%';years.append(label);}
     for (const e of state.events) {
       const mark=node('button','mini-mark'); mark.type='button'; mark.dataset.event=e.id; mark.dataset.track=e.track;
-      mark.style.left=((e.year-1943)/82*100)+'%'; mark.style.setProperty('--moment',tracks[e.track].color);
+      mark.style.left=timelinePercent(e.year)+'%'; mark.style.setProperty('--moment',tracks[e.track].color);
       mark.setAttribute('aria-label',`${e.year} ${e.title}`); mark.title=`${e.year} · ${e.title}`;
       mark.addEventListener('click',()=>selectEvent(e.id)); container.append(mark);
     }
@@ -118,7 +130,7 @@
     else if(e.year<2017){era='배움의 규모를 넓히다';caption='데이터와 계산이 바꾼 가능성';}
     else {era='생각의 경계를 잇다';caption='학습과 추론을 함께 쓰는 연구';}
     $('era-word').textContent=era; $('era-year').textContent=e.year; $('era-caption').textContent=caption;
-    const percent=(yearAt(state.position)-1943)/82*100; $('mini-cursor').style.left=percent+'%'; $('time-range').value=yearAt(state.position);
+    const percent=timelinePercent(yearAt(state.position)); $('mini-cursor').style.left=percent+'%'; $('time-range').value=yearAt(state.position);
     $('time-range').setAttribute('aria-valuetext',`${e.year} ${e.title}`);
     for(const el of document.querySelectorAll('.mini-mark,.flat-event')) { const active=el.dataset.event===e.id; el.classList.toggle('active',active); el.classList.toggle('selected',active); el.setAttribute('aria-pressed',String(active)); }
     for(const [id,el] of elements) el.classList.toggle('selected',id===e.id);
@@ -205,18 +217,22 @@
   }
   function buildFlat() {
     const world=$('flat-world');world.replaceChildren();
-    const px=27*state.zoom,fullWidth=82*px+210;
+    const px=flatYearGap*state.zoom,fullWidth=timelineYearSpan*px+210;
     world.style.width=fullWidth+'px';
     const availableHeight=$('flat-shell').offsetHeight||height;
     const baseLaneH=Math.max(108,(availableHeight-65)/3);
     const rowEnds={neural:[],symbolic:[],hybrid:[]},placements=new Map();
-    for(const e of state.events){const x=(e.year-1943)*px+25;let row=rowEnds[e.track].findIndex(end=>end<=x);if(row<0)row=rowEnds[e.track].length;rowEnds[e.track][row]=x+108;placements.set(e.id,{x,row});}
+    for(const e of state.events){const x=(e.year-timelineStartYear)*px+25;let row=rowEnds[e.track].findIndex(end=>end<=x);if(row<0)row=rowEnds[e.track].length;rowEnds[e.track][row]=x+108;placements.set(e.id,{x,row});}
     const laneKeys=['neural','symbolic','hybrid'],laneHeights=laneKeys.map(key=>Math.max(baseLaneH,rowEnds[key].length*46+20));
     const offsets=laneKeys.map((_,i)=>laneHeights.slice(0,i).reduce((n,h)=>n+h,0));
     world.style.height=(50+laneHeights.reduce((n,h)=>n+h,0))+'px';
     const labels=document.querySelector('.flat-labels');labels.style.setProperty('--flat-scroll',String($('flat-scroll').scrollTop)+'px');
     [...labels.children].forEach((label,i)=>label.style.top=(46+offsets[i]+laneHeights[i]*.5)+'px');
-    for(let year=1945;year<=2025;year+=5){const line=node('div','flat-year',String(year));line.style.left=((year-1943)*px+25)+'px';world.append(line);}
+    for(let year=timelineStartYear;year<=timelineEndYear;year++){
+      if(year!==timelineStartYear&&year!==timelineEndYear&&year<2020&&year%5!==0)continue;
+      const line=node('div','flat-year'+(year>latestRecordYear?' future-year':''),String(year));
+      line.style.left=((year-timelineStartYear)*px+25)+'px';world.append(line);
+    }
     for(let lane=0;lane<3;lane++){const line=node('div','flat-lane-line');line.style.top=(46+offsets[lane]+laneHeights[lane]*.5)+'px';world.append(line);}
     const shortNames={'mcculloch-pitts':'인공 뉴런','logic-theorist':'Logic Theorist',perceptron:'퍼셉트론','advice-taker':'Advice Taker',resolution:'Resolution',strips:'STRIPS',prolog:'Prolog',frames:'프레임','expert-systems':'전문가시스템','knowledge-representation':'지식표현',backprop:'역전파',kbann:'KBANN',lstm:'LSTM',lenet:'LeNet-5',cilp:'C-IL²P',imagenet:'ImageNet',alexnet:'AlexNet',transformer:'Transformer',deepproblog:'DeepProbLog',nscl:'NS-CL',dreamcoder:'DreamCoder',ltn:'LTN',alphageometry:'AlphaGeometry',alphaproof:'AlphaProof'};
     for(const e of state.events){
@@ -234,7 +250,7 @@
   }
   function centerFlat(id=state.selected) {
     const e=byId.get(id);if(!e)return;
-    const scroll=$('flat-scroll'),x=(e.year-1943)*27*state.zoom+25;
+    const scroll=$('flat-scroll'),x=(e.year-timelineStartYear)*flatYearGap*state.zoom+25;
     const card=[...$('flat-world').querySelectorAll('[data-event]')].find(el=>el.dataset.event===id),y=card?parseFloat(card.style.top):0;
     scroll.scrollTo({left:Math.max(0,x-scroll.clientWidth*.45),top:Math.max(0,y-scroll.clientHeight*.4),behavior:reducedMotion?'instant':'smooth'});
   }
@@ -332,7 +348,7 @@
     $('next-event').addEventListener('click',()=>{const i=state.events.findIndex(e=>e.id===state.selected);move(i+1);if(state.view==='flat')centerFlat(state.events[Math.min(state.events.length-1,i+1)]?.id);});
     $('reset-view').addEventListener('click',()=>move(0));
     for(const id of ['selection-open','selection-title'])$(id).addEventListener('click',()=>openDetail(state.selected));
-    $('time-range').min=1943;$('time-range').max=2025;$('time-range').step=.01;
+    $('time-range').min=timelineStartYear;$('time-range').max=timelineEndYear;$('time-range').step=.01;
     $('time-range').addEventListener('input',e=>{move(positionAtYear(Number(e.target.value)),true);if(state.view==='flat')centerFlat();});
     $('time-range').addEventListener('keydown',e=>{
       if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','PageUp','PageDown'].includes(e.key))return;

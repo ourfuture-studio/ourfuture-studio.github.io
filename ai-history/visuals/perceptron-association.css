@@ -5,7 +5,41 @@
 .perceptron-comparison:not([data-focus=all]) .neuron-feature[data-emphasis=false]{opacity:.32}
 .perceptron-comparison .neuron-figure-meaning{padding-top:7px;padding-bottom:10px}
 .perceptron-comparison .perceptron-explanation{font-size:12px;line-height:1.95;word-break:keep-all;overflow-wrap:anywhere;margin:0;color:var(--text);min-height:47px}
+.perceptron-lesson{--perceptron-inhibit:#a66024}
+[data-theme=dark] .perceptron-lesson{--perceptron-inhibit:#e6ad70}
+.perceptron-threshold{padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.perceptron-lesson h4{font-size:18px;line-height:1.8;margin:0 0 12px;word-break:keep-all}
+.perceptron-threshold-intro,.perceptron-association-intro{font-size:14px;line-height:1.9;margin:0 0 20px;word-break:keep-all}
+.perceptron-threshold-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.perceptron-signal-figure{min-width:0;margin:0;border:1px solid var(--line);border-radius:10px;padding:14px}
+.perceptron-signal-figure figcaption{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:8px}
+.perceptron-signal-figure>p{font-size:13px;line-height:1.9;margin:12px 0 0;word-break:keep-all}
+.perceptron-biological,.perceptron-threshold-drawing{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.perceptron-biological svg,.perceptron-threshold-drawing svg{display:block;width:100%;min-width:360px;height:auto}
+.perceptron-biological .neuron-glow{opacity:0}
+.perceptron-biological[data-active=true] .neuron-axon .neuron-glow{opacity:1}
+.perceptron-signal-controls{margin-top:20px}
+.perceptron-input-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.perceptron-input{padding:12px;border:1px solid var(--line);border-radius:8px;min-width:0}
+.perceptron-input button,.perceptron-presets button{font:500 13px/1.65 var(--sans);border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:9px 12px;cursor:pointer;min-height:44px;max-width:100%;white-space:normal}
+.perceptron-input button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.perceptron-input[data-effect=inhibitory] button[aria-pressed=true]{border-color:var(--perceptron-inhibit);color:var(--perceptron-inhibit)}
+.perceptron-input p{font-size:12px;line-height:1.8;margin:8px 0 0;overflow-wrap:anywhere}
+.perceptron-threshold-field{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font-size:14px;margin:20px 0;min-width:0}
+.perceptron-threshold-field input{flex:1;min-width:100px;max-width:280px;accent-color:var(--accent)}
+.perceptron-threshold-field output{font-family:var(--mono);min-width:2em}
+.perceptron-sum{font-size:14px;line-height:1.9;overflow-wrap:anywhere;margin:0 0 10px}
+.perceptron-threshold-status{font-size:17px;line-height:1.8;font-weight:500;padding:16px;background:var(--soft);border-left:3px solid var(--ink);margin:0 0 16px;word-break:keep-all}
+.perceptron-threshold[data-output="1"] .perceptron-threshold-status{border-left-color:var(--accent);color:var(--accent)}
+.perceptron-presets{display:flex;flex-wrap:wrap;gap:8px}
+.perceptron-presets button:hover{border-color:var(--accent)}
+.perceptron-signal-scope{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;line-height:1.9}
+.perceptron-signal-scope summary{cursor:pointer;font-size:13px}
+.perceptron-signal-scope a{display:block;overflow-wrap:anywhere;margin-top:8px}
 @media(max-width:700px){
   .perceptron-comparison .neuron-figure-meaning{min-height:0}
   .perceptron-comparison .perceptron-explanation{font-size:11px;min-height:0}
+  .perceptron-threshold-grid,.perceptron-input-controls{grid-template-columns:1fr}
+  .perceptron-signal-figure{padding:10px}
+  .perceptron-threshold-status{font-size:15px;padding:12px}
 }

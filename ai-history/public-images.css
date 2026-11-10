@@ -21,3 +21,4 @@
 .public-paper-link:focus-visible { outline: 3px solid var(--accent, #7a1f2e); outline-offset: 4px; }
 .public-paper-link:hover strong { text-decoration: underline; }
 img[data-public-source] { display: none !important; }
+.learning-bridge:has(#lesson-links:empty) { display: none; }
