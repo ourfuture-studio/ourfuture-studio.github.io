@@ -1,5 +1,5 @@
 {
-  "version": "0.47-public.1",
+  "version": "0.48-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,17 +772,15 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "dario-amodei",
-    "workId": "amodei-anthropic-2021",
-    "source": "Original Constitutional AI paper and dated official Anthropic Claude, constitution and organization documentation; official partnership records where cited.",
-    "implementation": "Adds one company/platform record to the existing Dario Amodei profile and preserves GPT2, GPT3 and Constitutional AI research records. Original diagrams connect principles, AI critique/revision, AI preferences, learning and Claude service with explicit historical boundaries. No live model training or Claude API request is executed.",
+    "personId": "demis-hassabis",
+    "workId": "hassabis-gemini-2023",
+    "source": "Original AlphaGo and AlphaFold2 papers; dated official Google DeepMind, Gemini, team and product documentation.",
+    "implementation": "Adds one company/product record to the existing Demis Hassabis profile. Original diagrams compare learned search guidance, domain structure prediction, multimodal models, evaluation and product interfaces. Institutional and shared research connections are distinguished from directly documented technical inheritance. No actual Go network, protein predictor, Gemini training or API request is run.",
     "newRasterAssets": 0,
-    "priorGpt2RecordPreserved": true,
-    "priorGpt3RecordPreserved": true,
-    "priorConstitutionalAiRecordPreserved": true,
+    "priorAlphaGoRecordPreserved": true,
+    "priorAlphaFold2RecordPreserved": true,
     "existingIndustryTabExtended": true,
-    "researchTagPreserved": true,
-    "officialConstitutionalAiUrl": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback"
+    "researchTagsPreserved": true
   },
   "priorPersonCardRevisions": [
     {
@@ -875,6 +873,19 @@
       "priorSpacex2026RecordPreserved": true,
       "existingIndustryCatalogPreserved": true,
       "officialGrokEvidenceUrl": "https://x.ai/news/grok"
+    },
+    {
+      "personId": "dario-amodei",
+      "workId": "amodei-anthropic-2021",
+      "source": "Original Constitutional AI paper and dated official Anthropic Claude, constitution and organization documentation; official partnership records where cited.",
+      "implementation": "Adds one company/platform record to the existing Dario Amodei profile and preserves GPT2, GPT3 and Constitutional AI research records. Original diagrams connect principles, AI critique/revision, AI preferences, learning and Claude service with explicit historical boundaries. No live model training or Claude API request is executed.",
+      "newRasterAssets": 0,
+      "priorGpt2RecordPreserved": true,
+      "priorGpt3RecordPreserved": true,
+      "priorConstitutionalAiRecordPreserved": true,
+      "existingIndustryTabExtended": true,
+      "researchTagPreserved": true,
+      "officialConstitutionalAiUrl": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback"
     }
   ],
   "homeNavigation": {
