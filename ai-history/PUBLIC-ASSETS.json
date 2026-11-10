@@ -1,5 +1,5 @@
 {
-  "version": "0.35-public.1",
+  "version": "0.36-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -633,8 +633,8 @@
       "title": "나라와 수도의 관계가, 학습된 표현에서 나타나다"
     }
   },
-  "portraitPolicy": "40 file-specific verified Commons records. Turing and Rosenblatt have source-matched local fallbacks. The one remaining pending portrait uses initials. Each displayed photo retains author, collection and license links.",
-  "newPortraits": [
+  "portraitPolicy": "40 file-specific verified Commons records. The user-selected Alan_Turing_Aged_16.jpg is served from this site first, with an exact-original remote fallback. Its photographer attribution remains qualified as possible. The one remaining pending portrait uses initials. Earlier retained photo assets and every prior figure decision remain preserved.",
+  "priorPortraitRevisions": [
     {
       "personId": "alan-turing",
       "name": "Alan Turing",
@@ -738,5 +738,36 @@
       "localSha1": "750a8c2cc97e584d3d274b890ec6d8bc4e142169",
       "bytes": 228641
     }
-  ]
+  ],
+  "newPortraits": [
+    {
+      "personId": "alan-turing",
+      "fileTitle": "File:Alan_Turing_Aged_16.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
+      "localFile": "alan-turing-aged-16.jpg",
+      "width": 675,
+      "height": 919,
+      "bytes": 217374,
+      "mime": "image/jpeg",
+      "sha256": "f31e84277a693f53010dfee0a47dfee3e56cf4f2403049c5d5d138b756cb5412",
+      "author": "Possibly Arthur Reginald Chaffin (1893–1954); King's College, Cambridge · AMT/K/7/4; Commons adjustments by WikiPedant",
+      "license": {
+        "name": "Public domain · Commons 표기",
+        "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "basis": "The exact Commons file currently carries PD-old-70-expired, citing the author's death in 1954 and publication before January 1, 1931. This records the file page's stated status rather than independent legal adjudication."
+      },
+      "displayChanges": "The current Commons original was copied byte for byte. Existing Commons history records prior grayscale, levels, framing and blemish adjustments. No local pixel editing. UI object-fit grayscale and scale1.15 at50%20% only.",
+      "photoDateDisplay": "1928–1929 · 16세 때 사진"
+    }
+  ],
+  "relationshipGraph": {
+    "source": "Typed, cited person relationships already maintained with the biographies.",
+    "nodes": 64,
+    "relations": 46,
+    "defaultRelations": 36,
+    "nodesWithExistingCards": 41,
+    "rawEvidenceRecords": 50,
+    "direction": "Advisor to student; influence source to recipient. Collaboration and other optional categories are undirected."
+  }
 }

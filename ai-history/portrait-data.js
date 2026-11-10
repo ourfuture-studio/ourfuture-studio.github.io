@@ -1,4 +1,4 @@
-/* Commons attribution and source-matched local fallbacks for the public release. */
+/* File-specific attribution for the public release. The selected Turing photo loads from this site first. */
 window.ATLAS_PERSON_PORTRAITS=Object.freeze({
   "alan-turing": {
     "personId": "alan-turing",
@@ -7,44 +7,43 @@ window.ATLAS_PERSON_PORTRAITS=Object.freeze({
       "앨런 튜링",
       "엘런 튜링"
     ],
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/AlanTuring1952.jpg/500px-AlanTuring1952.jpg",
-    "originalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/AlanTuring1952.jpg",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:AlanTuring1952.jpg",
-    "author": "Wellcome Library, London (photographer unidentified); crop: Vysotsky",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
+    "originalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg",
+    "author": "Arthur Reginald Chaffin 추정 (1893–1954); King's College, Cambridge · AMT/K/7/4; Commons 보정: WikiPedant",
     "license": {
-      "name": "CC BY 4.0",
-      "url": "https://creativecommons.org/licenses/by/4.0/",
-      "urlKind": "license"
+      "name": "Public domain · Commons 표기",
+      "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "urlKind": "public-domain-status"
     },
-    "fileTitle": "File:AlanTuring1952.jpg",
+    "fileTitle": "File:Alan_Turing_Aged_16.jpg",
     "wikidataUrl": "https://www.wikidata.org/wiki/Q7251",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alan_Turing",
     "qid": "Q7251",
     "identityStatus": "verified",
-    "sourceMethod": "Commons file-specific crop + Wellcome GC/179/B.25 + published Ratio Club caption",
+    "sourceMethod": "User-selected Commons file + King's College Turing Digital Archive AMT/K/7/4",
     "metadataRetrievedAt": "2026-11-10",
     "identityEvidence": [
-      "Commons identifies the subject as Alan Turing and identifies this file as a crop of Wellcome L0030978.",
-      "The Commons file caption transcribes the Ratio Club group photograph caption: front row starts with A. Turing.",
-      "Husbands and Holland, The Ratio Club: A Hub of British Cybernetics, Fig.2 on PDF p.27 identifies A. Turing at front-left; the image is credited to Wellcome Library.",
-      "King's College Turing archive AMT/K/7/17 separately describes the group photograph with AMT sitting lower left."
+      "The user selected the Wikipedia file Alan_Turing_Aged_16.jpg explicitly.",
+      "Commons describes this exact file as a passport photograph of Alan Turing at age 16 and gives the date as between 1928 and 1929.",
+      "The source archive King's College AMT/K/7/4 describes the item as AMT aged 16, head and shoulders.",
+      "The photographer attribution remains uncertain: Commons says Possibly Arthur Reginald Chaffin (1893-1954)."
     ],
-    "photoDateDisplay": "1952 · Ratio Club",
-    "displayChanges": "Existing Commons crop from a group photograph; thumbnail; UI grayscale, fit and zoom may further change the displayed region. No local pixel edits.",
+    "photoDateDisplay": "1928–1929 · 16세 때 사진",
+    "displayChanges": "Exact current Commons JPEG; Commons file history records prior grayscale, level, framing and blemish adjustments by WikiPedant. UI grayscale, fit and zoom may further change the displayed region. No local pixel edits.",
     "publicationReview": "verified",
-    "publicationReviewReason": "Replaced the previously pending 1951 Elliott & Fry portrait with the distinct Wellcome Ratio Club photograph. Commons file and original Wellcome image EXIF explicitly record CC BY4.0 and permit adaptations.",
-    "position": "50% 23%",
-    "displayScale": 2.0,
-    "localFile": "alan-turing-ratio-club-1952-500.jpg",
+    "publicationReviewReason": "User explicitly selected this exact photograph. Commons currently marks it Public domain (PD-old-70-expired; author died 1954 and publication before 1931), and identifies Alan Turing with a King's College archival source. Photographer attribution is marked as possible, not certain.",
+    "position": "50% 20%",
+    "displayScale": 1.15,
+    "localFile": "alan-turing-aged-16.jpg",
     "originalSource": {
-      "archive": "https://wellcomecollection.org/works/shzbhwgj",
-      "reference": "GC/179/B.25; Wellcome image L0030978",
-      "originalCommonsFile": "https://commons.wikimedia.org/wiki/File:Bates,_John_AV_%26_the_Ratio_Club._Wellcome_L0030978.jpg",
-      "captionCorroboration": "https://users.sussex.ac.uk/~philh/pubs/Ratio2.pdf#page=27",
-      "turingArchive": "https://turingarchive.kings.cam.ac.uk/material-given-kings-college-cambridge-1960-amtk/amt-k-7-17"
+      "archive": "https://turingarchive.kings.cam.ac.uk/material-given-kings-college-cambridge-1960-amtk/amt-k-7-4",
+      "reference": "AMT/K/7/4 · AMT aged 16, head and shoulders",
+      "originalCommonsFile": "https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg",
+      "userSelectedFile": "https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC:Alan_Turing_Aged_16.jpg"
     },
-    "width": 500,
-    "height": 700,
+    "width": 675,
+    "height": 919,
     "mime": "image/jpeg"
   },
   "john-mccarthy": {

@@ -26,7 +26,7 @@
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = { mode:'research', filter: 'all', query: '', view: 'journey', events: all, position: 0, target: 0, selected: '', zoom: 1, frame: 0, drag: null, busy: false };
-  const modeState={research:{filter:'all',query:''},people:{filter:'all',query:''}};
+  const modeState={research:{filter:'all',query:''},people:{filter:'all',query:''},graph:{filter:'all',query:''}};
   const elements = new Map();
   let width = 1000, height = 500, announceTimer;
 
@@ -60,6 +60,7 @@
     return normalized(aliases[q] || q);
   }
   function updateFilter() {
+    if(state.mode==='graph')return;
     for (const button of document.querySelectorAll('[data-filter]')) { const active = button.dataset.filter === state.filter; button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active)); }
     if(state.mode==='people'){
       const count=window.AtlasPeople.setFilter(state.filter,state.query);
@@ -262,22 +263,26 @@
   }
   function setMode(mode){
     clearTimeout(announceTimer);
-    if(mode==='people'&&state.frame){cancelAnimationFrame(state.frame);state.frame=0;state.position=state.target;state.selected=state.events[Math.round(state.position)]?.id||state.selected;}
+    if(mode!=='research'&&state.frame){cancelAnimationFrame(state.frame);state.frame=0;state.position=state.target;state.selected=state.events[Math.round(state.position)]?.id||state.selected;}
     if(state.mode!==mode){modeState[state.mode]={filter:state.filter,query:state.query};Object.assign(state,modeState[mode]);}
     state.mode=mode;
-    const people=mode==='people';
+    const people=mode==='people',graph=mode==='graph',research=mode==='research';
+    $('explorer').dataset.mode=mode;
     $('people-shell').hidden=!people;
-    document.querySelector('.timeline-nav').hidden=people;document.querySelector('.selection-strip').hidden=people;
-    document.querySelector('.view-switch').hidden=people;
-    for(const [id,on] of [['research-mode',!people],['people-mode',people]]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
-    $('browse-mode-hint').textContent=people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
+    $('person-graph-shell').hidden=!graph;
+    document.querySelector('.timeline-nav').hidden=!research;document.querySelector('.selection-strip').hidden=!research;
+    document.querySelector('.view-switch').hidden=!research;
+    for(const [id,on] of [['research-mode',research],['people-mode',people],['graph-mode',graph]]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
+    $('browse-mode-hint').textContent=graph?'사람 사이의 연결과 그 근거를 따라갑니다':people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
     document.querySelector('.intro-period').textContent=people?Math.min(...peopleYears)+' — '+Math.max(...peopleYears):all[0].year+' — '+all.at(-1).year;
     updateFilter();
-    if(people){$('journey-shell').hidden=true;$('flat-shell').hidden=true;}
+    if(!research){$('journey-shell').hidden=true;$('flat-shell').hidden=true;}
     else setView(state.view);
+    if(graph)window.AtlasPersonGraph?.show();
     try{
-      if(people&&window.AtlasPeople.selected)history.replaceState(null,'','#person='+encodeURIComponent(window.AtlasPeople.selected));
-      else if(location.hash.startsWith('#person='))history.replaceState(null,'',location.pathname+location.search);
+      if(graph)window.AtlasPersonGraph?.updateRoute();
+      else if(people&&window.AtlasPeople.selected)history.replaceState(null,'','#person='+encodeURIComponent(window.AtlasPeople.selected));
+      else if(location.hash.startsWith('#person=')||location.hash.startsWith('#graph='))history.replaceState(null,'',location.pathname+location.search);
     }catch{}
   }
   function openDetail(id) {
@@ -331,11 +336,14 @@
       }
     });
     $('research-mode').addEventListener('click',()=>setMode('research'));$('people-mode').addEventListener('click',()=>setMode('people'));
+    $('graph-mode').addEventListener('click',()=>setMode('graph'));
+    window.addEventListener('atlas:open-graph',ev=>{setMode('graph');window.AtlasPersonGraph?.focus(ev.detail?.personId||'');$('person-graph-shell').scrollIntoView({block:'start',behavior:reducedMotion?'auto':'smooth'});});
     window.addEventListener('atlas:open-event',ev=>{if(!byId.has(ev.detail.id))return;setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(ev.detail.id);openDetail(ev.detail.id);});
     window.addEventListener('atlas:open-work',ev=>openWorkDetail(ev.detail.personId,ev.detail.workId));
     window.addEventListener('hashchange',()=>{
       const params=new URLSearchParams(location.hash.slice(1)),person=params.get('person'),event=params.get('event');
-      if(person&&window.AtlasPeople.profiles.some(p=>p.id===person)){
+      if(params.has('graph')){if($('detail-dialog').open)$('detail-dialog').close();setMode('graph');window.AtlasPersonGraph?.focus(params.get('focus')||'');}
+      else if(person&&window.AtlasPeople.profiles.some(p=>p.id===person)){
         if($('detail-dialog').open)$('detail-dialog').close();setMode('people');state.filter='all';state.query='';updateFilter();window.AtlasPeople.select(person);
         if(params.get('work'))openWorkDetail(person,params.get('work'));
       }else if(event&&byId.has(event)){
@@ -380,13 +388,14 @@
     if(!all.length){$('scene-empty').hidden=false;return;}
     $('all-count').textContent=all.length;
     const route=new URLSearchParams(location.hash.slice(1));
-    const requested=route.get('event')||(!route.get('person')&&document.documentElement.dataset.previewEntry);
+    const requested=route.get('event')||(!route.get('person')&&!route.has('graph')&&document.documentElement.dataset.previewEntry);
     state.selected=byId.has(requested)?requested:all[0].id;
     wire();addCredits();updateFilter();measure();
     document.fonts.ready.then(measure);
     if(byId.has(requested))openDetail(requested);
     const requestedPerson=new URLSearchParams(location.hash.slice(1)).get('person');
     if(requestedPerson&&window.AtlasPeople.profiles.some(p=>p.id===requestedPerson)){const work=new URLSearchParams(location.hash.slice(1)).get('work');setMode('people');window.AtlasPeople.select(requestedPerson,true,false);if(work)openWorkDetail(requestedPerson,work);}
+    if(route.has('graph')){setMode('graph');window.AtlasPersonGraph?.focus(route.get('focus')||'');}
   }
   init();
 })();

@@ -8,6 +8,7 @@
     'geoffrey-hinton':{personId:'geoffrey-hinton',name:'Geoffrey Hinton',imageUrl:'https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC_(cropped).jpg?width=480',sourceUrl:'https://commons.wikimedia.org/wiki/File:Geoffrey_Hinton_at_UBC_(cropped).jpg',author:'Eviatar Bach · crop: WikiPedant',license:{name:'CC BY-SA 3.0',url:'https://creativecommons.org/licenses/by-sa/3.0/'},localFile:'geoffrey-hinton.jpg'}
   };
   const additionalLocalSources=[
+    {sourceUrl:'https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg',localFile:'alan-turing-aged-16.jpg'},
     {sourceUrl:'https://commons.wikimedia.org/wiki/File:AlanTuring1952.jpg',localFile:'alan-turing-ratio-club-1952-500.jpg'},
     {sourceUrl:'https://commons.wikimedia.org/wiki/File:330-PSA-80-60_(USN_710739)_(20897323365).jpg',localFile:'frank-rosenblatt-usn-1960-960.jpg'}
   ];
@@ -58,6 +59,7 @@
     const custom=typeof options.fallback==='function'?options.fallback():null;
     if(custom)fallback.append(custom);else{const text=document.createElement('span');text.textContent=initials(name);text.setAttribute('aria-hidden','true');fallback.append(text);}
     const fallbackLabel=options.fallbackLabel||name+' 이름 약자';fallback.setAttribute('role','img');fallback.setAttribute('aria-label',fallbackLabel);container.append(fallback);
+    const firstLocal=record?.personId==='alan-turing'&&record.localFile==='alan-turing-aged-16.jpg'&&fileKey(record.sourceUrl)===fileKey('https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg')?localSource(record):'';
     let alive=true,attempt=0,activeImage=null,removeHandlers=()=>{};
     const dispose=()=>{if(!alive)return;alive=false;attempt++;removeHandlers();};mounts.set(container,dispose);
     function state(value,kind){if(!alive)return;container.dataset.portraitState=value;container.dataset.portraitSource=kind||'none';container.classList.toggle('has-photo',value==='loaded');container.setAttribute('aria-busy',String(value==='loading'));if(value==='loaded'||value==='loading')fallback.setAttribute('aria-hidden','true');else fallback.removeAttribute('aria-hidden');if(value==='error')fallback.setAttribute('aria-label',options.fallbackLabel||name+' 사진을 불러오지 못해 이름 약자 표시');}
@@ -69,11 +71,11 @@
       const finish=loaded=>{
         if(!alive||settled||current!==attempt||activeImage!==img)return;settled=true;removeHandlers();
         if(loaded){state('loaded',kind);return;}
-        img.remove();const local=kind==='remote'?localSource(record):'';if(local){load(local,'local');return;}state('error',kind);
+        img.remove();const next=firstLocal?(kind==='local'?record.imageUrl:''):(kind==='remote'?localSource(record):'');if(next){load(next,kind==='local'?'remote':'local');return;}state('error',kind);
       };
       const onLoad=()=>finish(true),onError=()=>finish(false);removeHandlers=()=>{img.removeEventListener('load',onLoad);img.removeEventListener('error',onError);};img.addEventListener('load',onLoad);img.addEventListener('error',onError);container.append(img);state('loading',kind);img.src=src;
     }
-    load(record.imageUrl,'remote');return dispose;
+    load(firstLocal||record.imageUrl,firstLocal?'local':'remote');return dispose;
   }
   function createAvatar(person,options={}){const box=document.createElement('div');box.className='person-avatar'+(options.className?' '+options.className:'');render(box,person,options);return box;}
   function credit(subject,options={}){
