@@ -1,5 +1,5 @@
 {
-  "version": "0.44-public.1",
+  "version": "0.45-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,14 +772,15 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "alexandr-wang",
-    "workId": "wang-scale-2016",
-    "source": "Official Scale data, feedback and evaluation documentation and dated company announcements; source dates and evidence boundaries appear in the article.",
-    "implementation": "Refines the existing 2016 Scale record with later product context. Original diagrams distinguish task definitions, human annotation or feedback, training inputs, held-out evaluation and company relationships. Authored examples are separate from executed customer workloads or measured model results.",
+    "personId": "jensen-huang",
+    "workId": "huang-cuda-2006",
+    "source": "Official NVIDIA CUDA, GPU computing and AI infrastructure documentation, dated company records and primary research sources; dates and evidence scope appear in the article.",
+    "implementation": "Refines the existing CUDA2006 record. Original diagrams distinguish logical parallel work, exact small matrix arithmetic, neural-network computation and system infrastructure. No actual CUDA execution, GPU benchmark or AI training is claimed.",
     "newRasterAssets": 0,
-    "priorMeta2025RecordPreserved": true,
+    "priorNvidia1993RecordPreserved": true,
+    "priorGtc2025RecordPreserved": true,
     "existingIndustryCatalogPreserved": true,
-    "companyAnnouncementEvidenceUrl": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution"
+    "officialCudaEvidenceUrl": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
   },
   "priorPersonCardRevisions": [
     {
@@ -840,6 +841,16 @@
       "priorAip2023RecordPreserved": true,
       "existingIndustryCatalogPreserved": true,
       "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
+    },
+    {
+      "personId": "alexandr-wang",
+      "workId": "wang-scale-2016",
+      "source": "Official Scale data, feedback and evaluation documentation and dated company announcements; source dates and evidence boundaries appear in the article.",
+      "implementation": "Refines the existing 2016 Scale record with later product context. Original diagrams distinguish task definitions, human annotation or feedback, training inputs, held-out evaluation and company relationships. Authored examples are separate from executed customer workloads or measured model results.",
+      "newRasterAssets": 0,
+      "priorMeta2025RecordPreserved": true,
+      "existingIndustryCatalogPreserved": true,
+      "companyAnnouncementEvidenceUrl": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution"
     }
   ],
   "homeNavigation": {
