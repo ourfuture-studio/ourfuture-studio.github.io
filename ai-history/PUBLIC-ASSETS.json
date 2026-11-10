@@ -1,5 +1,5 @@
 {
-  "version": "0.42-public.1",
+  "version": "0.43-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,12 +772,12 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "palmer-luckey",
-    "workId": "luckey-anduril-2017",
-    "source": "Official Anduril/Lattice material, company partnership announcements and Palantir product documentation, with source dates and evidence boundaries in the article.",
-    "implementation": "Refines the existing2017 Anduril record; an original high-level visualization distinguishes field observations, system roles and the2024 company partnership. It is not a live operational system or an independently validated product trial.",
+    "personId": "alex-karp",
+    "workId": "karp-palantir-2003",
+    "source": "Official Palantir Ontology and AIP documentation, cofounder records and the 2024 Anduril partnership announcement; source dates and evidence boundaries appear in the article.",
+    "implementation": "Refines the existing 2003 Palantir record with later product context. Original diagrams distinguish data and business objects, AI-assisted proposed work, authorized actions and announced company cooperation. No live AI model or business-system operation runs here.",
     "newRasterAssets": 0,
-    "priorOculusRecordPreserved": true,
+    "priorAip2023RecordPreserved": true,
     "existingIndustryCatalogPreserved": true,
     "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
   },
@@ -820,6 +820,16 @@
       "newRasterAssets": 0,
       "portrait": "No new portrait is distributed; existing initials remain.",
       "cofounderEvidence": "The existing Alex Karp to Peter Thiel cofounder relation is retained with reciprocal evidence, without claiming the two were the complete founding team."
+    },
+    {
+      "personId": "palmer-luckey",
+      "workId": "luckey-anduril-2017",
+      "source": "Official Anduril/Lattice material, company partnership announcements and Palantir product documentation, with source dates and evidence boundaries in the article.",
+      "implementation": "Refines the existing2017 Anduril record; an original high-level visualization distinguishes field observations, system roles and the2024 company partnership. It is not a live operational system or an independently validated product trial.",
+      "newRasterAssets": 0,
+      "priorOculusRecordPreserved": true,
+      "existingIndustryCatalogPreserved": true,
+      "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
     }
   ],
   "homeNavigation": {
