@@ -288,6 +288,108 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "alonzo-church",
+    "origin": {
+      "label": "출생",
+      "text": "워싱턴 D.C., 미국",
+      "sourceIds": [
+        "church-princeton-findingaid"
+      ]
+    },
+    "education": [
+      {
+        "name": "프린스턴대학교",
+        "detail": "수학 학사 · A.B.",
+        "period": "1924",
+        "sourceIds": [
+          "church-princeton-findingaid",
+          "church-oral-history"
+        ]
+      },
+      {
+        "name": "프린스턴대학교",
+        "detail": "수학 박사 · Oswald Veblen의 지도",
+        "period": "1927",
+        "sourceIds": [
+          "church-princeton-findingaid"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "princeton-university",
+        "name": "프린스턴대학교",
+        "place": "프린스턴, 미국",
+        "period": "1929–1967",
+        "note": "수학·논리 연구와 대학원생 지도에 참여했다.",
+        "sourceIds": [
+          "church-princeton-findingaid",
+          "church-princeton-memorial"
+        ]
+      },
+      {
+        "institutionId": "ucla",
+        "name": "캘리포니아대학교 로스앤젤레스 · UCLA",
+        "place": "로스앤젤레스, 미국",
+        "period": "1967–1990 · 재직·강의",
+        "note": "철학과 수학을 가르치며 연구를 계속했다. 1990년은 강의에서 은퇴한 해다.",
+        "sourceIds": [
+          "church-princeton-findingaid"
+        ]
+      }
+    ],
+    "background": "미국 워싱턴 D.C.에서 태어나 프린스턴에서 수학 학사와 박사 학위를 받았다. 프린스턴과 UCLA에서 수학·논리를 연구하고 가르쳤으며, 프린스턴에서는 튜링의 박사 연구를 지도했다.",
+    "backgroundSourceIds": [
+      "church-princeton-findingaid",
+      "church-turing-princeton"
+    ],
+    "connections": [
+      {
+        "personId": "alan-turing",
+        "name": "Alan Turing",
+        "nameKo": "앨런 튜링",
+        "kind": "advisor",
+        "relation": "advised",
+        "label": "박사과정 지도",
+        "description": "프린스턴에서 튜링의 박사 연구를 지도했다. 튜링은 1938년 박사 학위를 받았고, 학위논문은 서수에 기반한 논리 체계를 다뤘다.",
+        "period": "1936–1938",
+        "sourceIds": [
+          "church-turing-princeton"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "church-princeton-findingaid",
+        "title": "Princeton University Library · Alonzo Church Papers, C0948",
+        "url": "https://findingaids.library.upenn.edu/records/PRIN_MUDD_C0948",
+        "scope": "프린스턴 도서관이 작성한 finding aid의 Philadelphia Area Archives 제공본. Biography/History의 출생·1924년 A.B.·1927년 Veblen 지도 박사·Princeton 1929–1967·UCLA 강의 은퇴 1990년을 확인했다. 이 기록의 계산가능성·논제 관련 요약은 카드의 수학적 근거로 사용하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "church-oral-history",
+        "title": "Alonzo Church · Princeton 수학 공동체 구술사, 1984",
+        "url": "https://homepage.villanova.edu/robert.jantzen/princeton_math/pmc05.htm",
+        "scope": "Princeton University의 1985년 전사본을 제공하는 Villanova 보관본. 학부 졸업 1924년·박사 1927년이라는 본인 진술을 확인했다. 뒤의 튜링 회고는 초기 계산가능성 연구와 프린스턴 서수논리 박사 연구를 구분한다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "church-princeton-memorial",
+        "title": "Princeton Alumni Weekly · Alonzo Church ’24 *27",
+        "url": "https://paw.princeton.edu/memorial/alonzo-church-24-27",
+        "scope": "1929년 Princeton 교원 합류와 1967년 UCLA 철학과 합류를 확인했다. 이 추모문의 다른 수상·회원 연도는 이번 배경에 사용하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "church-turing-princeton",
+        "title": "Princeton University Library · Alan Turing and Princeton",
+        "url": "https://manuscripts.blogs.princeton.edu/2015/01/29/alan-m-turing-and-princeton/",
+        "scope": "Don Skemer가 작성한 도서관 자료 소개 첫 두 문단. 1936–1938년 Church 지도 아래의 대학원 연구, 1938년 박사 학위, 서수논리 학위논문의 1939년 수정 출판을 확인했다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
     "personId": "andrew-ng",
     "origin": null,
     "education": [

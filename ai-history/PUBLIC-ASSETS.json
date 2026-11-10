@@ -1,5 +1,5 @@
 {
-  "version": "0.36-public.1",
+  "version": "0.37-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -766,8 +766,19 @@
     "nodes": 64,
     "relations": 46,
     "defaultRelations": 36,
-    "nodesWithExistingCards": 41,
-    "rawEvidenceRecords": 50,
-    "direction": "Advisor to student; influence source to recipient. Collaboration and other optional categories are undirected."
+    "nodesWithExistingCards": 42,
+    "rawEvidenceRecords": 51,
+    "direction": "Advisor to student; influence source to recipient. Collaboration and other optional categories are undirected.",
+    "nodesWithoutCards": 22
+  },
+  "personCardRevision": {
+    "personId": "alonzo-church",
+    "workId": "church-calculability-1936",
+    "source": "Church (1936), An Unsolvable Problem of Elementary Number Theory; exact page/section pointers are in the article.",
+    "primarySourceUrl": "https://www.cis.upenn.edu/~cis5110/Church-UnsolvableProblemElementary-1936.pdf",
+    "implementation": "Original HTML/CSS/JavaScript visualizations using a bounded, capture-avoiding lambda-term reducer. Modern notation and constructed examples are distinguished from the 1936 paper.",
+    "newRasterAssets": 0,
+    "portrait": "No new portrait is distributed. Existing initials remain.",
+    "advisingEvidenceUrl": "https://manuscripts.blogs.princeton.edu/2015/01/29/alan-m-turing-and-princeton/"
   }
 }
