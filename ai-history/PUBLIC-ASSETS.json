@@ -1,5 +1,5 @@
 {
-  "version": "0.46-public.1",
+  "version": "0.47-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,15 +772,17 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "elon-musk",
-    "workId": "musk-grok-2023",
-    "source": "Official xAI Grok and Colossus records, NVIDIA infrastructure documentation and xAI developer documentation; dates and evidence scope appear in the article.",
-    "implementation": "Refines the existing Grok2023 record. Original diagrams connect GPU infrastructure, model learning, model checkpoints and answer service while distinguishing company reports, conceptual explanation and actual browser interactions. No actual GPU cluster, model training, live inference or hardware benchmark is executed.",
+    "personId": "dario-amodei",
+    "workId": "amodei-anthropic-2021",
+    "source": "Original Constitutional AI paper and dated official Anthropic Claude, constitution and organization documentation; official partnership records where cited.",
+    "implementation": "Adds one company/platform record to the existing Dario Amodei profile and preserves GPT2, GPT3 and Constitutional AI research records. Original diagrams connect principles, AI critique/revision, AI preferences, learning and Claude service with explicit historical boundaries. No live model training or Claude API request is executed.",
     "newRasterAssets": 0,
-    "priorOpenai2015RecordPreserved": true,
-    "priorSpacex2026RecordPreserved": true,
-    "existingIndustryCatalogPreserved": true,
-    "officialGrokEvidenceUrl": "https://x.ai/news/grok"
+    "priorGpt2RecordPreserved": true,
+    "priorGpt3RecordPreserved": true,
+    "priorConstitutionalAiRecordPreserved": true,
+    "existingIndustryTabExtended": true,
+    "researchTagPreserved": true,
+    "officialConstitutionalAiUrl": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback"
   },
   "priorPersonCardRevisions": [
     {
@@ -862,6 +864,17 @@
       "priorGtc2025RecordPreserved": true,
       "existingIndustryCatalogPreserved": true,
       "officialCudaEvidenceUrl": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+    },
+    {
+      "personId": "elon-musk",
+      "workId": "musk-grok-2023",
+      "source": "Official xAI Grok and Colossus records, NVIDIA infrastructure documentation and xAI developer documentation; dates and evidence scope appear in the article.",
+      "implementation": "Refines the existing Grok2023 record. Original diagrams connect GPU infrastructure, model learning, model checkpoints and answer service while distinguishing company reports, conceptual explanation and actual browser interactions. No actual GPU cluster, model training, live inference or hardware benchmark is executed.",
+      "newRasterAssets": 0,
+      "priorOpenai2015RecordPreserved": true,
+      "priorSpacex2026RecordPreserved": true,
+      "existingIndustryCatalogPreserved": true,
+      "officialGrokEvidenceUrl": "https://x.ai/news/grok"
     }
   ],
   "homeNavigation": {
