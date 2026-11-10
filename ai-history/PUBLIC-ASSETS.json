@@ -1,5 +1,5 @@
 {
-  "version": "0.39-public.1",
+  "version": "0.40-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -766,19 +766,19 @@
     "nodes": 64,
     "relations": 46,
     "defaultRelations": 36,
-    "nodesWithExistingCards": 44,
-    "rawEvidenceRecords": 53,
+    "nodesWithExistingCards": 45,
+    "rawEvidenceRecords": 54,
     "direction": "Advisor to student; influence source to recipient. Collaboration and other optional categories are undirected.",
-    "nodesWithoutCards": 20
+    "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "donald-hebb",
-    "workId": "hebb-organization-1949",
-    "source": "Hebb (1949), The Organization of Behavior; exact page pointers and the distinction between the original hypothesis and modern constructed calculations are in the article.",
-    "implementation": "Original visualizations of connection change and cell-assembly ideas. The bounded mathematical model is explicitly constructed and is not presented as an equation or experiment from the 1949 book.",
+    "personId": "peter-thiel",
+    "workId": "thiel-capital-infrastructure-2003",
+    "source": "Official institutional, company and public filing sources; each relationship retains its role, entity types and source date.",
+    "implementation": "A typed ecosystem visualization distinguishes people, companies, a fund, platforms and published company partnerships. Layout and line width do not encode money, ownership shares or influence strength.",
     "newRasterAssets": 0,
     "portrait": "No new portrait is distributed; existing initials remain.",
-    "influenceEvidenceUrl": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3"
+    "cofounderEvidence": "The existing Alex Karp to Peter Thiel cofounder relation is retained with reciprocal evidence, without claiming the two were the complete founding team."
   },
   "priorPersonCardRevisions": [
     {
@@ -801,6 +801,15 @@
       "portrait": "No new portrait is distributed; existing initials remain.",
       "lectureEvidenceUrl": "https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54",
       "machineSourceUrl": "https://people.csail.mit.edu/brooks/idocs/Turing_Paper_1936.pdf#page=4"
+    },
+    {
+      "personId": "donald-hebb",
+      "workId": "hebb-organization-1949",
+      "source": "Hebb (1949), The Organization of Behavior; exact page pointers and the distinction between the original hypothesis and modern constructed calculations are in the article.",
+      "implementation": "Original visualizations of connection change and cell-assembly ideas. The bounded mathematical model is explicitly constructed and is not presented as an equation or experiment from the 1949 book.",
+      "newRasterAssets": 0,
+      "portrait": "No new portrait is distributed; existing initials remain.",
+      "influenceEvidenceUrl": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3"
     }
   ],
   "homeNavigation": {

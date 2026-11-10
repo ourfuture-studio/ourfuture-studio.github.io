@@ -2537,6 +2537,95 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "peter-thiel",
+    "education": [
+      {
+        "name": "스탠퍼드대학교",
+        "detail": "철학 학사 · B.A.",
+        "sourceIds": [
+          "thiel-sec-2023"
+        ]
+      },
+      {
+        "name": "스탠퍼드 로스쿨",
+        "detail": "법학 전문학위 · J.D.",
+        "period": "1992년",
+        "sourceIds": [
+          "thiel-sec-2023",
+          "thiel-stanford-interview"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "palantir",
+        "name": "Palantir Technologies",
+        "place": "미국",
+        "period": "2003년 공동창업",
+        "note": "공동창업과 이사회 활동으로 데이터·운영 소프트웨어 기업에 참여했다. 2023년 공시는 공동창업자이며 2003년부터 이사회 의장이라고 설명한다.",
+        "sourceIds": [
+          "thiel-sec-2023",
+          "thiel-founders-fund"
+        ]
+      },
+      {
+        "institutionId": "founders-fund",
+        "name": "Founders Fund",
+        "place": "실리콘밸리, 미국",
+        "period": "2005년부터 파트너 · 2023년 공시 기준",
+        "note": "기술 기업에 투자하는 벤처캐피털의 파트너로 참여했다. 투자회사의 투자와 틸 개인의 투자·기술 개발 역할을 각각 확인한다.",
+        "sourceIds": [
+          "thiel-sec-2023",
+          "thiel-founders-fund"
+        ]
+      }
+    ],
+    "background": "스탠퍼드에서 철학과 법학을 공부하고 기업가·투자자로 활동했다. Palantir에서는 알렉스 카프 등과의 공동창업 및 이사회 역할을, Founders Fund에서는 벤처캐피털 파트너로서의 역할을 살펴본다. 기업의 설립·투자 관계와 그 기업이 개발한 AI 플랫폼의 기술적 구성을 구분해 연결한다.",
+    "backgroundSourceIds": [
+      "thiel-sec-2023",
+      "thiel-founders-fund",
+      "thiel-stanford-interview"
+    ],
+    "connections": [
+      {
+        "personId": "alex-karp",
+        "name": "Alexander Karp",
+        "nameKo": "알렉스 카프",
+        "kind": "cofounder",
+        "relation": "cofounded-with",
+        "label": "Palantir 공동창업",
+        "description": "Palantir의 2023년 SEC 위임장 공시는 카프와 틸을 각각 공동창업자로 명시한다. 이 연결은 공동창업 관계이며, 두 사람이 AIP를 공동 발명했다는 뜻이 아니다.",
+        "period": "2003년 설립 · 2023년 공시에서 확인",
+        "sourceIds": [
+          "thiel-sec-2023"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "thiel-sec-2023",
+        "title": "Palantir · 2023 SEC 위임장 공시 · 인쇄 p.8",
+        "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165523000033/pltr-20230425.htm",
+        "scope": "이사 후보 소개와 표에서 Karp·Thiel의 공동창업자 표기, Thiel의 2003년부터 이사회 의장·2005년부터 Founders Fund 파트너 이력, Stanford 철학 B.A.·법학 J.D.를 확인했다. 공시 당시 직책과 현재 직책을 구분하며, 이 자료만으로 Founders Fund의 설립일이나 Thiel 개인의 개별 투자를 추정하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "thiel-founders-fund",
+        "title": "Founders Fund · Peter Thiel 공식 소개",
+        "url": "https://foundersfund.com/team/peter-thiel/",
+        "scope": "기업가·투자자, Palantir 공동창업자·의장, Founders Fund 파트너라는 역할을 확인했다. 펀드가 지원한 기업과 개인이 투자한 기업을 구분한다. 출생지·학위 연도는 이 소개에 제시되어 있지 않다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "thiel-stanford-interview",
+        "title": "Stanford Law School · Peter Thiel·Mark Lemley 대담 · 2011-05-31",
+        "url": "https://law.stanford.edu/stanford-lawyer/articles/q-a-legal-matters-with-peter-thiel-92-ba-89-bs-89-and-mark-a-lemley-ba-88/",
+        "scope": "Thiel 자신의 답변에서 Stanford 학부에서 로스쿨로 이어진 학업과 1992년 법학 졸업을 확인했다. 같은 페이지의 Mark Lemley 약력·법률 실무 경력을 Thiel의 경력으로 가져오지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
     "personId": "tomas-mikolov",
     "origin": null,
     "education": [
