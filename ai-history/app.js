@@ -316,7 +316,7 @@
   function addCredits() {
     const c=$('asset-credits');
     for(const portrait of window.AtlasPortraits?.records||[])window.AtlasPortraits.appendCredit(c,portrait);
-    c.append(node('p','','도식: ourfuture studio 자체 제작. 인물 사진은 원격 파일을 사용하며, 불러오지 못하면 이름 약자나 자체 도식을 표시합니다. 기존 두 사진은 같은 파일의 보관본을 대체 자료로 쓸 수 있습니다.'));
+    c.append(node('p','','도식: ourfuture studio 자체 제작. 인물 사진은 출처별 이용 조건과 함께 표시합니다. 일부 사진은 같은 파일의 보관본도 사용하며, 사진을 불러오지 못하면 이름 약자나 자체 도식을 표시합니다.'));
   }
   function wire() {
     window.addEventListener('atlas:search-result',ev=>{

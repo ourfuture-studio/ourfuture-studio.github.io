@@ -1,0 +1,36 @@
+.person-background{margin:24px 0 22px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.person-background h3{font-size:15px;font-weight:600;line-height:1.8;margin:0 0 12px}
+.person-background-intro{font-size:13px;line-height:1.95;word-break:keep-all;margin:0 0 22px;color:var(--text)}
+.person-background-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px}
+.person-background-grid.person-background-grid-wide{grid-template-columns:1fr}
+.person-education+ .person-education{margin-top:10px}
+.person-background-facts{margin:0;min-width:0}
+.person-background-facts>div{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;margin:0 0 13px}
+.person-background-facts dt{font-size:11px;color:var(--muted);line-height:1.9}
+.person-background-facts dd{font-size:12px;line-height:1.9;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.person-research-places h4,.person-connections h4{font-size:12px;line-height:1.9;font-weight:500;margin:0 0 10px;color:var(--muted)}
+.person-research-places ul,.person-connections ul{list-style:none;margin:0;padding:0;min-width:0}
+.person-research-places li{position:relative;border-left:1px solid var(--line);padding:0 0 13px 14px;font-size:12px;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
+.person-research-places li::before{content:'';width:5px;height:5px;position:absolute;left:-3px;top:7px;border-radius:50%;background:var(--accent)}
+.person-research-places strong{font-weight:500}
+.person-place-period{display:block;font:10px/1.8 var(--mono);color:var(--muted);margin:2px 0}
+.person-research-places p{margin:4px 0;font-size:11px;color:var(--text)}
+.person-place-location{font-size:10px;color:var(--muted)}
+.person-background-citations{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:5px;font:10px/1.8 var(--mono);vertical-align:baseline}
+.person-background-citations a{color:var(--accent);text-decoration:none;text-underline-offset:3px}
+.person-background-citations a:hover{text-decoration:underline}
+.person-connections{margin-top:18px}
+.person-connections ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px}
+.person-connections li{border-top:1px solid var(--line);padding-top:11px;min-width:0}
+.person-connection-heading{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.person-connection-name{font-size:13px;font-weight:500;line-height:1.8;text-underline-offset:4px;color:var(--ink)}
+a.person-connection-name{color:var(--accent)}
+.person-relation-kind{font-size:10px;line-height:1.7;color:var(--muted)}
+.person-connections li>p{font-size:11px;line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;margin:7px 0 0;color:var(--text)}
+.person-background-sources{font-size:10px;line-height:1.9;color:var(--muted);margin-top:20px}
+.person-background-sources summary{font-size:11px;cursor:pointer;padding:5px 0}
+.person-background-sources ol{padding-left:20px}
+.person-background-sources li{margin-bottom:10px;overflow-wrap:anywhere}
+.person-background-sources li>span{display:block;margin-top:3px}
+.person-background-sources a{text-underline-offset:3px}
+@media(max-width:700px){.person-background{margin:20px 0;padding:18px 0}.person-background-grid{grid-template-columns:1fr;gap:15px}.person-background-intro{font-size:12px;margin-bottom:18px}.person-connections ul{grid-template-columns:1fr}.person-background-facts dd{font-size:12px}.person-background-citations{gap:6px}.person-background-citations a{padding:3px 2px}.person-background-sources summary{min-height:34px}}

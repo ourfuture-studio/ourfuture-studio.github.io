@@ -7,6 +7,10 @@
     'john-mccarthy':{personId:'john-mccarthy',name:'John McCarthy',imageUrl:'https://commons.wikimedia.org/wiki/Special:FilePath/John_McCarthy_2006.jpg?width=480',sourceUrl:'https://commons.wikimedia.org/wiki/File:John_McCarthy_2006.jpg',author:'Tom Varco',license:{name:'CC BY-SA 3.0',url:'https://creativecommons.org/licenses/by-sa/3.0/'},localFile:'john-mccarthy.jpg'},
     'geoffrey-hinton':{personId:'geoffrey-hinton',name:'Geoffrey Hinton',imageUrl:'https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC_(cropped).jpg?width=480',sourceUrl:'https://commons.wikimedia.org/wiki/File:Geoffrey_Hinton_at_UBC_(cropped).jpg',author:'Eviatar Bach · crop: WikiPedant',license:{name:'CC BY-SA 3.0',url:'https://creativecommons.org/licenses/by-sa/3.0/'},localFile:'geoffrey-hinton.jpg'}
   };
+  const additionalLocalSources=[
+    {sourceUrl:'https://commons.wikimedia.org/wiki/File:AlanTuring1952.jpg',localFile:'alan-turing-ratio-club-1952-500.jpg'},
+    {sourceUrl:'https://commons.wikimedia.org/wiki/File:330-PSA-80-60_(USN_710739)_(20897323365).jpg',localFile:'frank-rosenblatt-usn-1960-960.jpg'}
+  ];
   function https(value){
     if(!hasText(value)||/[\u0000-\u0020<>"`\\]/.test(value))return null;
     try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password&&(!url.port||url.port==='443')?url:null;}catch{return null;}
@@ -22,10 +26,12 @@
     const image=imageUrl(raw.imageUrl),source=https(raw.sourceUrl),license=raw.license,licenseUrl=license&&https(license.url);
     if(!image||!source||!fileKey(raw.sourceUrl)||!license||!hasText(license.name)||!licenseUrl)return fail('image-source-or-license-url');
     if(raw.aliases!==undefined&&(!Array.isArray(raw.aliases)||!Array.from(raw.aliases).every(hasText)))return fail('aliases');
-    let localFile='';const sameLegacy=Object.values(legacy).find(p=>fileKey(p.sourceUrl)===fileKey(raw.sourceUrl));
-    if(raw.localFile!==undefined){if(!sameLegacy||raw.localFile!==sameLegacy.localFile)return fail('local-file-must-match-source');localFile=raw.localFile;}
-    else if(sameLegacy)localFile=sameLegacy.localFile;
-    return Object.freeze({personId:id,name:raw.name,aliases:Object.freeze([...new Set(raw.aliases||[])]),imageUrl:image,sourceUrl:source.href,author:raw.author,license:Object.freeze({name:license.name,url:licenseUrl.href}),localFile,position:position(raw.position)});
+    let localFile='';const sameLocal=[...Object.values(legacy),...additionalLocalSources].find(p=>fileKey(p.sourceUrl)===fileKey(raw.sourceUrl));
+    if(raw.localFile!==undefined){if(!sameLocal||raw.localFile!==sameLocal.localFile)return fail('local-file-must-match-source');localFile=raw.localFile;}
+    else if(sameLocal)localFile=sameLocal.localFile;
+    const displayScale=Number.isFinite(raw.displayScale)&&raw.displayScale>=1&&raw.displayScale<=3?raw.displayScale:1;
+    const collectionUrl=https(raw.originalSource?.archive||raw.originalSource?.officialPhoto||'')?.href||'';
+    return Object.freeze({personId:id,name:raw.name,aliases:Object.freeze([...new Set(raw.aliases||[])]),imageUrl:image,sourceUrl:source.href,author:raw.author,license:Object.freeze({name:license.name,url:licenseUrl.href}),localFile,position:position(raw.position),displayScale,collectionUrl,photoDateDisplay:hasText(raw.photoDateDisplay)?raw.photoDateDisplay:''});
   }
   const raw=window.ATLAS_PERSON_PORTRAITS;
   if(raw&&typeof raw==='object'&&!Array.isArray(raw))for(const [id,value] of Object.entries(raw)){const record=normalizeRecord(id,value);if(record)byId.set(id,record);}
@@ -59,7 +65,7 @@
     const caption=options.caption?document.createElement('span'):null;if(caption){caption.className='atlas-portrait-caption';caption.textContent=options.caption===true?record.name:String(options.caption);container.append(caption);}
     function load(src,kind){
       const current=++attempt,img=document.createElement('img');let settled=false;activeImage=img;
-      img.className='atlas-portrait-image';img.alt=record.name+' 인물 사진';img.loading=options.loading==='eager'?'eager':'lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.draggable=false;img.style.objectPosition=record.position;
+      img.className='atlas-portrait-image';img.alt=record.name+' 인물 사진';img.loading=options.loading==='eager'?'eager':'lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.draggable=false;img.style.objectPosition=record.position;img.style.transformOrigin=record.position;img.style.transform='scale('+record.displayScale+')';
       const finish=loaded=>{
         if(!alive||settled||current!==attempt||activeImage!==img)return;settled=true;removeHandlers();
         if(loaded){state('loaded',kind);return;}
@@ -73,8 +79,8 @@
   function credit(subject,options={}){
     const record=resolve(subject);if(!record)return null;const p=document.createElement('p');p.className='atlas-portrait-credit'+(options.className?' '+options.className:'');
     p.append(document.createTextNode((options.prefix||'인물 사진: ')+record.name+' · '+record.author+' · '));
-    for(const [label,url] of [['원본 파일',record.sourceUrl],[record.license.name,record.license.url]]){const a=document.createElement('a');a.textContent=label;a.href=url;a.target='_blank';a.rel='noopener noreferrer';p.append(a,document.createTextNode(' · '));}
-    p.append(document.createTextNode('화면에서 흑백·영역 맞춤 적용. 촬영 시점은 연구 연도와 별개입니다.'));return p;
+    for(const [label,url] of [['원본 파일',record.sourceUrl],[record.license.name,record.license.url],...(record.collectionUrl?[['소장기관 기록',record.collectionUrl]]:[])]){const a=document.createElement('a');a.textContent=label;a.href=url;a.target='_blank';a.rel='noopener noreferrer';p.append(a,document.createTextNode(' · '));}
+    p.append(document.createTextNode((record.photoDateDisplay?record.photoDateDisplay+' · ':'')+'화면에서 흑백·영역 맞춤 적용. 촬영 시점은 연구 연도와 별개입니다.'));return p;
   }
   function appendCredit(parent,subject,options){const p=credit(subject,options);if(p)parent.append(p);return p;}
   window.AtlasPortraits=Object.freeze({resolve,pick,normalizeName,initials,createAvatar,render,clear,credit,appendCredit,records,invalidEntries:Object.freeze(invalidEntries.slice())});

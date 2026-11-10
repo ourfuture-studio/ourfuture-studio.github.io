@@ -1,0 +1,2752 @@
+/* Generated from people-background/*.json. Work dates and typed relationships are separate. */
+window.ATLAS_PERSON_BACKGROUNDS=[
+  {
+    "personId": "alan-turing",
+    "origin": {
+      "label": "출생",
+      "text": "런던, 영국",
+      "sourceIds": [
+        "kings"
+      ]
+    },
+    "education": [
+      {
+        "name": "케임브리지대학교 킹스칼리지",
+        "detail": "수학 학부",
+        "period": "1931–1934",
+        "sourceIds": [
+          "kings"
+        ]
+      },
+      {
+        "name": "프린스턴대학교",
+        "detail": "알론조 처치의 지도로 박사 과정",
+        "period": "1936–1938",
+        "sourceIds": [
+          "manchester"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "bletchley-park",
+        "name": "GC&CS · 블레츨리파크",
+        "place": "영국",
+        "period": "제2차 세계대전 중",
+        "note": "정부 암호해독 조직에서 연구했다.",
+        "sourceIds": [
+          "kings"
+        ]
+      },
+      {
+        "institutionId": "national-physical-laboratory",
+        "name": "국립물리연구소 · NPL",
+        "place": "테딩턴, 영국",
+        "period": "전후–1948",
+        "note": "ACE 범용 전자계산기 설계를 다뤘다.",
+        "sourceIds": [
+          "kings"
+        ]
+      },
+      {
+        "institutionId": "university-of-manchester",
+        "name": "맨체스터대학교",
+        "place": "맨체스터, 영국",
+        "period": "1948년부터",
+        "note": "계산기 연구와 프로그래밍에 참여했다.",
+        "sourceIds": [
+          "kings",
+          "manchester"
+        ]
+      }
+    ],
+    "background": "영국 런던에서 태어나 케임브리지와 프린스턴에서 수학을 공부했다. 전쟁 중의 암호해독 연구를 거쳐, 전후에는 NPL과 맨체스터에서 실제 계산기와 프로그래밍을 다뤘다.",
+    "backgroundSourceIds": [
+      "kings",
+      "manchester"
+    ],
+    "connections": [
+      {
+        "personId": "alonzo-church",
+        "name": "Alonzo Church",
+        "nameKo": "알론조 처치",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "프린스턴에서 튜링의 박사 연구를 지도했다.",
+        "period": "1936–1938",
+        "sourceIds": [
+          "manchester",
+          "kings"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "max-newman",
+        "name": "Max Newman",
+        "nameKo": "맥스 뉴먼",
+        "kind": "influence",
+        "label": "연구에 영향",
+        "description": "1935년 강의와 연구 지도로 튜링의 결정문제 연구에 영향을 주었고, 이후 맨체스터에서 다시 함께 일했다.",
+        "period": "1935–1936 · 1948년 이후",
+        "sourceIds": [
+          "kings",
+          "manchester"
+        ],
+        "relation": "influenced-by"
+      }
+    ],
+    "sources": [
+      {
+        "id": "kings",
+        "title": "King’s College Cambridge · Alan Mathison Turing",
+        "url": "https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54",
+        "scope": "Childhood, The Entscheidungsproblem, Princeton and Bletchley Park, After the War and Artificial Intelligence. 출생·학업·뉴먼의 지도·주요 연구기관.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "manchester",
+        "title": "University of Manchester · Digital 60: Alan Turing",
+        "url": "https://curation.cs.manchester.ac.uk/digital60/www.digital60.org/about/biographies/alanturing/index.html",
+        "scope": "Turing at Princeton(1936–38), At Manchester(1948–51). 처치의 박사 지도·1938년 귀국·1948년 맨체스터 합류.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "alex-karp",
+    "origin": {
+      "label": "출생",
+      "text": "뉴욕, 미국",
+      "sourceIds": [
+        "karp-basf"
+      ]
+    },
+    "education": [
+      {
+        "name": "스탠퍼드 로스쿨",
+        "detail": "법학 전문학위(J.D.)",
+        "period": "1992년",
+        "sourceIds": [
+          "karp-basf",
+          "karp-sec"
+        ]
+      },
+      {
+        "name": "괴테대학교 프랑크푸르트",
+        "detail": "철학 박사",
+        "period": "2002년",
+        "sourceIds": [
+          "karp-basf"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "palantir",
+        "name": "Palantir Technologies",
+        "place": "미국",
+        "period": "2003년 공동창업",
+        "note": "데이터 분석·의사결정 소프트웨어 기업의 설립·경영에 참여했다.",
+        "sourceIds": [
+          "karp-basf",
+          "karp-sec"
+        ]
+      }
+    ],
+    "background": "뉴욕에서 태어났고, Haverford에서 사회학·인류학을 공부한 뒤 법학과 철학으로 학업을 이어 갔다. 2003년 Palantir를 공동 설립한 경력은 데이터 분석 소프트웨어 기업의 조직·경영이라는 맥락에서 읽는다.",
+    "backgroundSourceIds": [
+      "karp-basf",
+      "karp-sec"
+    ],
+    "connections": [
+      {
+        "personId": "peter-thiel",
+        "name": "Peter Thiel",
+        "kind": "cofounder",
+        "label": "Palantir 공동창업",
+        "description": "Palantir의 공식 SEC 공시는 두 사람을 공동창업자로 명시한다.",
+        "period": "2003년 설립",
+        "sourceIds": [
+          "karp-sec"
+        ],
+        "relation": "cofounded-with"
+      },
+      {
+        "personId": "stephen-cohen-palantir",
+        "name": "Stephen Cohen",
+        "kind": "cofounder",
+        "label": "Palantir 공동창업",
+        "description": "Palantir 공동창업자 Stephen Cohen이다. 동명의 다른 학자와 구분한다.",
+        "period": "Palantir 설립",
+        "sourceIds": [
+          "karp-sec"
+        ],
+        "relation": "cofounded-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "karp-basf",
+        "title": "BASF · 2019 감독이사회 후보 공식 약력, p.9",
+        "url": "https://www.basf.com/dam/jcr%3Aba6c9e4c-ddfb-3602-87a9-1514a7c3a2cd/basf/www/global/documents/en/investor-relations/calendar-and-publications/annual-shareholders-meeting/2019/AM-2019_Candidates-Supervisory-Board.pdf",
+        "scope": "뉴욕 출생, Haverford 1989·Stanford J.D.1992·Goethe 철학박사2002, Palantir 2003년 공동창업. 개인 주거지·가족 정보는 수록하지 않았다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "karp-sec",
+        "title": "Palantir · 2023 SEC 위임장 공시",
+        "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165523000033/pltr-20230425.htm",
+        "scope": "Karp 학위 및 Karp·Peter Thiel·Stephen Cohen의 공동창업자 표기. 현재 직책은 이 공시 시점과 구분한다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "alexandr-wang",
+    "origin": {
+      "label": "성장",
+      "text": "로스앨러모스, 뉴멕시코, 미국",
+      "sourceIds": [
+        "wang-interview"
+      ]
+    },
+    "education": [
+      {
+        "name": "매사추세츠공과대학교(MIT)",
+        "detail": "재학 중 기계학습 연구",
+        "period": "Scale 창업 이전",
+        "sourceIds": [
+          "wang-interview"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "quora",
+        "name": "Quora",
+        "place": "미국",
+        "period": "Scale 창업 이전",
+        "note": "기술 개발 업무를 경험했다.",
+        "sourceIds": [
+          "wang-interview"
+        ]
+      },
+      {
+        "institutionId": "scale-ai",
+        "name": "Scale AI",
+        "place": "샌프란시스코, 미국",
+        "period": "2016년 설립",
+        "note": "AI 개발에 필요한 데이터·작업 인프라를 제공하는 회사를 창업했다.",
+        "sourceIds": [
+          "wang-yc",
+          "wang-interview"
+        ]
+      }
+    ],
+    "background": "로스앨러모스에서 자랐고 Quora 등에서 일한 뒤, MIT에서 기계학습을 연구한 경험을 창업으로 이어 갔다. 2016년 설립한 Scale AI에서는 개발자가 AI에 쓸 데이터를 확보하는 문제를 서비스로 다뤘다.",
+    "backgroundSourceIds": [
+      "wang-interview",
+      "wang-yc"
+    ],
+    "connections": [
+      {
+        "personId": "lucy-guo",
+        "name": "Lucy Guo",
+        "kind": "cofounder",
+        "label": "Scale AI 공동창업",
+        "description": "2016년 Scale AI를 함께 설립했다.",
+        "period": "2016년",
+        "sourceIds": [
+          "wang-yc",
+          "wang-guo-yc"
+        ],
+        "relation": "cofounded-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "wang-interview",
+        "title": "SaaStr Podcast 227 · Alexandr Wang 본인 인터뷰와 녹취",
+        "url": "https://www.saastr.com/saastr-podcast-227-alexandr-wang-founder-ceo-scale-on-why-tam-in-the-traditional-sense-barely-matters/",
+        "scope": "본인이 설명한 Los Alamos 성장, Quora·Addepar 업무, MIT에서의 기계학습 연구와 데이터 확보 문제. MIT 졸업 학위로 표시하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "wang-yc",
+        "title": "Y Combinator · Scale AI 회사 기록",
+        "url": "https://www.ycombinator.com/companies/scale-ai",
+        "scope": "2016년 설립·S16 기수, San Francisco 위치, 데이터 인프라 사업과 Alexandr Wang 창업자 표기.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "wang-guo-yc",
+        "title": "Y Combinator · Lucy Guo 창업자 기록",
+        "url": "https://www.ycombinator.com/founders/lucy-guo",
+        "scope": "Lucy Guo의 Scale AI 창업자 표기와 관련 창업자 Alexandr Wang. 두 사람의 이후 재직 상태를 현재까지 이어진 것으로 표시하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "andrew-ng",
+    "origin": null,
+    "education": [
+      {
+        "name": "카네기멜런대학교·MIT",
+        "detail": "이학 학사·이학 석사",
+        "period": "학사·석사 과정",
+        "sourceIds": [
+          "ng-official-bio"
+        ]
+      },
+      {
+        "name": "캘리포니아대학교 버클리",
+        "detail": "컴퓨터과학 박사 · 지도교수 Michael I. Jordan",
+        "period": "박사 과정",
+        "sourceIds": [
+          "ng-official-bio",
+          "ng-berkeley-alumni"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "stanford",
+        "name": "스탠퍼드대학교",
+        "place": "스탠퍼드, 미국",
+        "period": "AI연구실 소장 재직",
+        "note": "머신러닝 연구·교육과 Stanford AI Lab 운영",
+        "sourceIds": [
+          "ng-official-bio"
+        ]
+      },
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "미국",
+        "period": "초기 연구팀",
+        "note": "설립 연구팀을 이끌었다",
+        "sourceIds": [
+          "ng-official-bio"
+        ]
+      },
+      {
+        "institutionId": "baidu",
+        "name": "Baidu",
+        "place": "중국",
+        "period": "수석과학자 재직",
+        "note": "기업 AI팀의 기술과 연구 전략을 담당했다",
+        "sourceIds": [
+          "ng-official-bio"
+        ]
+      }
+    ],
+    "background": "카네기멜런·MIT·UC 버클리에서 공부했고, 스탠퍼드의 연구·교육과 Google Brain·Baidu의 기업 연구를 거쳤다. Coursera와 DeepLearning.AI 설립을 통해 대학 강의와 AI 학습 자료를 더 넓은 학습자에게 연결하는 일도 해 왔다.",
+    "backgroundSourceIds": [
+      "ng-official-bio"
+    ],
+    "connections": [
+      {
+        "personId": "michael-i-jordan",
+        "name": "Michael I. Jordan",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "UC 버클리 박사과정에서 Ng를 지도했다.",
+        "period": "박사 과정",
+        "sourceIds": [
+          "ng-berkeley-alumni"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "ian-goodfellow",
+        "name": "Ian Goodfellow",
+        "kind": "institution",
+        "label": "Stanford 학업 인연",
+        "description": "Goodfellow의 본인 약력은 Stanford에서 Ng·Gary Bradski와 공부했다고 기록한다. 특정 학위의 단독 지도 관계로 확대하지 않는다.",
+        "period": "Stanford 연구 시기",
+        "sourceIds": [
+          "ng-goodfellow-bio"
+        ],
+        "relation": "shared-institution-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "ng-official-bio",
+        "title": "Andrew Ng · 공식 개인 약력",
+        "url": "https://www.andrewng.org/",
+        "scope": "CMU·MIT·UC Berkeley 학위, Stanford AI Lab 과거소장·Google Brain 설립책임자·Baidu 과거수석과학자·교육기관 설립",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "ng-berkeley-alumni",
+        "title": "Berkeley EECS · Andrew Ng 동문 소개, 2017",
+        "url": "https://eecs.berkeley.edu/news/andrew-ng-one-7-leaders-shaping-ai-revolution/",
+        "scope": "Michael Jordan 지도교수 관계. 공식동문 페이지들 사이 학위 연도2002/2003 차이가 있어 연도는 표시하지 않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "ng-goodfellow-bio",
+        "title": "Ian Goodfellow · 본인 약력",
+        "url": "https://www.iangoodfellow.com/bio",
+        "scope": "Goodfellow가 Stanford에서 Andrew Ng·Gary Bradski와 공부했다는 관계. 특정학위 단독지도나 공동저자 관계로 확대하지 않음",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "artur-garcez",
+    "origin": null,
+    "education": [
+      {
+        "name": "리우데자네이루 교황청립가톨릭대학교(PUC-Rio)",
+        "detail": "컴퓨터공학 학위",
+        "period": "1993년",
+        "sourceIds": [
+          "garcez-city"
+        ]
+      },
+      {
+        "name": "임피리얼 칼리지 런던",
+        "detail": "컴퓨팅 박사",
+        "period": "2000년",
+        "sourceIds": [
+          "garcez-city"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "ufrj",
+        "name": "리우데자네이루 연방대학교(UFRJ)",
+        "place": "리우데자네이루, 브라질",
+        "period": "1996년 석사",
+        "note": "시스템공학·컴퓨팅 석사 과정에서 연구했다.",
+        "sourceIds": [
+          "garcez-city"
+        ]
+      },
+      {
+        "institutionId": "imperial-college-london",
+        "name": "임피리얼 칼리지 런던",
+        "place": "런던, 영국",
+        "period": "2000년 박사",
+        "note": "신경망과 논리의 결합을 연구했다.",
+        "sourceIds": [
+          "garcez-city"
+        ]
+      },
+      {
+        "institutionId": "city-university-london",
+        "name": "City, University of London",
+        "place": "런던, 영국",
+        "period": "2015년 교수",
+        "note": "기계학습·신경기호 계산 연구와 교육을 이끌었다.",
+        "sourceIds": [
+          "garcez-city"
+        ]
+      }
+    ],
+    "background": "브라질 리우데자네이루의 PUC-Rio와 UFRJ에서 공학을 공부한 뒤, 런던의 Imperial에서 컴퓨팅 박사학위를 받았다. City에서는 신경망·논리·학습을 잇는 연구와 데이터과학 교육을 함께 전개했다.",
+    "backgroundSourceIds": [
+      "garcez-city"
+    ],
+    "connections": [
+      {
+        "personId": "dov-gabbay",
+        "name": "Dov M. Gabbay",
+        "kind": "collaboration",
+        "label": "신경기호 연구 공동저술",
+        "description": "2002년 Neural-Symbolic Learning Systems와 2009년 Neural-Symbolic Cognitive Reasoning을 함께 집필했다.",
+        "period": "2002·2009년",
+        "sourceIds": [
+          "garcez-city"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "luis-c-lamb",
+        "name": "Luís C. Lamb",
+        "kind": "collaboration",
+        "label": "신경기호 연구 공동저술",
+        "description": "Garcez·Lamb·Gabbay는 2009년 Neural-Symbolic Cognitive Reasoning의 공동저자다.",
+        "period": "2009년",
+        "sourceIds": [
+          "garcez-city"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "garcez-city",
+        "title": "City St George's · Artur d'Avila Garcez 공식 소개",
+        "url": "https://www.citystgeorges.ac.uk/about/people/academics/artur-davila-garcez",
+        "scope": "1993년 PUC-Rio·1996년 UFRJ·2000년 Imperial 학위, 2015년 City 교수 경력, 연구 분야 및 Gabbay·Lamb 공동저술. Rio에서 공부한 일을 출생지로 취급하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "ashish-vaswani",
+    "origin": {
+      "label": "출생",
+      "text": "인도",
+      "sourceIds": [
+        "vaswani-usc"
+      ]
+    },
+    "education": [
+      {
+        "name": "서던캘리포니아대학교(USC)",
+        "detail": "컴퓨터과학 박사",
+        "period": "2014년",
+        "sourceIds": [
+          "vaswani-usc"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "usc-isi",
+        "name": "USC 정보과학연구소(ISI)",
+        "place": "미국 캘리포니아",
+        "period": "박사 과정",
+        "note": "자연어 처리 연구그룹에서 번역·신경 언어모형을 연구했다.",
+        "sourceIds": [
+          "vaswani-usc"
+        ]
+      },
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "미국",
+        "period": "2016년 합류",
+        "note": "2017년 Transformer 공동연구로 이어졌다.",
+        "sourceIds": [
+          "vaswani-usc"
+        ]
+      }
+    ],
+    "background": "인도에서 태어나 인도와 중동에서 성장했고, USC에서 자연어 처리를 연구하며 박사학위를 받았다. USC에서 만난 니키 파르마르와 Google Brain에서도 함께 연구해 Transformer 논문을 공동 집필했다.",
+    "backgroundSourceIds": [
+      "vaswani-usc"
+    ],
+    "connections": [
+      {
+        "personId": "david-chiang",
+        "name": "David Chiang",
+        "kind": "advisor",
+        "label": "박사 지도",
+        "description": "USC 박사 과정에서 Liang Huang과 함께 바스와니를 지도했다.",
+        "period": "2014년 박사",
+        "sourceIds": [
+          "vaswani-usc"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "niki-parmar",
+        "name": "Niki Parmar",
+        "kind": "collaboration",
+        "label": "Transformer 공동연구",
+        "description": "USC에서 만난 뒤 Google Brain에서 2017년 Attention Is All You Need를 공동 집필했다.",
+        "period": "2017년",
+        "sourceIds": [
+          "vaswani-usc"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "vaswani-usc",
+        "title": "USC Viterbi · USC Alumni Paved Path for ChatGPT",
+        "url": "https://viterbischool.usc.edu/news/2023/03/attention-is-all-you-need-usc-alumni-paved-path-for-chatgpt/",
+        "scope": "출생·성장 배경, 2014년 박사, Chiang·Huang의 지도, ISI 연구, 2016년 Google Brain 합류와 Parmar 공동연구에 관한 대학의 인터뷰·관계자 증언.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "chelsea-finn",
+    "origin": null,
+    "education": [
+      {
+        "name": "매사추세츠공과대학교(MIT)",
+        "detail": "전기전자·컴퓨터과학 학사",
+        "period": "2014년",
+        "sourceIds": [
+          "finn-cv"
+        ]
+      },
+      {
+        "name": "UC 버클리",
+        "detail": "컴퓨터과학 박사",
+        "period": "2018년",
+        "sourceIds": [
+          "finn-cv"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "berkeley-bair",
+        "name": "UC 버클리",
+        "place": "버클리, 미국",
+        "period": "2014–2018년",
+        "note": "로봇 학습과 메타학습을 연구한 박사 과정.",
+        "sourceIds": [
+          "finn-cv",
+          "finn-maml"
+        ]
+      },
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain·Google DeepMind",
+        "place": "미국",
+        "period": "2018–2024년",
+        "note": "연구 과학자로 일했다.",
+        "sourceIds": [
+          "finn-cv"
+        ]
+      },
+      {
+        "institutionId": "stanford",
+        "name": "스탠퍼드대학교",
+        "place": "스탠퍼드, 미국",
+        "period": "2019년 합류",
+        "note": "컴퓨터과학·전기공학 분야에서 로봇의 학습과 상호작용을 연구했다.",
+        "sourceIds": [
+          "finn-cv",
+          "finn-stanford"
+        ]
+      }
+    ],
+    "background": "MIT에서 전기전자·컴퓨터과학을 공부하고 UC 버클리에서 로봇 학습으로 박사 과정을 마쳤다. Google의 연구팀과 스탠퍼드에서 로봇이 경험을 모으고 새로운 과제에 적응하는 문제를 이어 연구했다.",
+    "backgroundSourceIds": [
+      "finn-cv",
+      "finn-stanford"
+    ],
+    "connections": [
+      {
+        "personId": "pieter-abbeel",
+        "name": "Pieter Abbeel",
+        "kind": "collaboration",
+        "label": "MAML 공동연구",
+        "description": "Finn·Abbeel·Levine은 2017년 MAML 논문의 공동저자다.",
+        "period": "2017년",
+        "sourceIds": [
+          "finn-maml"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "sergey-levine",
+        "name": "Sergey Levine",
+        "kind": "collaboration",
+        "label": "MAML 공동연구",
+        "description": "새 과제에 빠르게 적응하는 메타학습 연구를 함께 발표했다.",
+        "period": "2017년",
+        "sourceIds": [
+          "finn-maml"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "finn-cv",
+        "title": "Chelsea Finn · 공식 CV",
+        "url": "https://ai.stanford.edu/~cbfinn/_files/cv.pdf",
+        "scope": "2014년 MIT 학사·2018년 Berkeley 박사, Google 2018–2024년, Stanford 2019년 합류. CV의 종료하지 않은 직책을 영구 재직으로 해석하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "finn-stanford",
+        "title": "Stanford Profiles · Chelsea Finn",
+        "url": "https://profiles.stanford.edu/chelsea-finn?tab=bio",
+        "scope": "학업 배경과 로봇·메타학습 연구 분야.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "finn-maml",
+        "title": "Finn·Abbeel·Levine · Model-Agnostic Meta-Learning",
+        "url": "https://arxiv.org/abs/1703.03400",
+        "scope": "2017년 논문 공동저자 명단. 이 관계는 논문 공동연구이며 여기서 박사 지도 관계로 재분류하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "dario-amodei",
+    "origin": null,
+    "education": [
+      {
+        "name": "스탠퍼드대학교",
+        "detail": "학부 과정",
+        "period": "",
+        "sourceIds": [
+          "amodei-hertz"
+        ]
+      },
+      {
+        "name": "프린스턴대학교",
+        "detail": "물리학 박사·신경회로의 집단적 작동 연구",
+        "period": "",
+        "sourceIds": [
+          "amodei-hertz"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "미국",
+        "period": "OpenAI 합류 이전",
+        "note": "신경망의 능력을 확장하는 딥러닝 연구에 참여했다.",
+        "sourceIds": [
+          "amodei-hertz"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "GPT-2·GPT-3 연구 시기",
+        "note": "연구를 이끌고 대규모 언어모형과 장기적 AI 안전을 다뤘다.",
+        "sourceIds": [
+          "amodei-hertz",
+          "amodei-gpt2"
+        ]
+      },
+      {
+        "institutionId": "anthropic",
+        "name": "Anthropic",
+        "place": "미국",
+        "period": "공동창업",
+        "note": "신뢰성·해석 가능성·조절 가능한 AI를 연구하는 회사를 공동 설립했다.",
+        "sourceIds": [
+          "amodei-hertz"
+        ]
+      }
+    ],
+    "background": "물리학 박사 과정에서는 신경회로의 집단적 작동과 이를 측정하는 장치를 연구했다. 이후 Google Brain과 OpenAI를 거쳐 Anthropic을 공동 설립하며 딥러닝과 AI 안전 연구로 경력을 이어 갔다.",
+    "backgroundSourceIds": [
+      "amodei-hertz"
+    ],
+    "connections": [
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "kind": "collaboration",
+        "label": "GPT-2 공동연구",
+        "description": "2019년 GPT-2 기술 보고서에 함께 저자로 참여했다.",
+        "period": "2019년",
+        "sourceIds": [
+          "amodei-gpt2"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "jared-kaplan",
+        "name": "Jared Kaplan",
+        "kind": "cofounder",
+        "label": "Anthropic 공동창업",
+        "description": "Anthropic을 함께 설립하고 AI 연구와 개발을 이어 갔다.",
+        "period": "Anthropic 설립",
+        "sourceIds": [
+          "amodei-hertz"
+        ],
+        "relation": "cofounded-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "amodei-hertz",
+        "title": "Hertz Foundation · Dario Amodei",
+        "url": "https://www.hertzfoundation.org/people/dario-amodei/",
+        "scope": "Stanford 학부·Princeton 물리 박사, 신경회로 연구, Google Brain·OpenAI 경력, Anthropic 및 Jared Kaplan 공동창업. 학위 연도는 이 자료에서 특정하지 않아 생략했다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "amodei-gpt2",
+        "title": "OpenAI · Language Models are Unsupervised Multitask Learners",
+        "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+        "scope": "2019년 GPT-2 보고서 첫 쪽의 Dario Amodei·Ilya Sutskever 공동저자 명단.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "demis-hassabis",
+    "origin": {
+      "label": "출생",
+      "text": "런던, 영국",
+      "sourceIds": [
+        "hassabis-nobel-facts"
+      ]
+    },
+    "education": [
+      {
+        "name": "케임브리지대학교",
+        "detail": "컴퓨터과학",
+        "period": "학부 과정",
+        "sourceIds": [
+          "hassabis-royal-society"
+        ]
+      },
+      {
+        "name": "유니버시티칼리지런던(UCL)",
+        "detail": "인지신경과학 박사 · 지도교수 Eleanor Maguire",
+        "period": "박사 과정",
+        "sourceIds": [
+          "hassabis-ucl-bio",
+          "hassabis-royal-society"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "ucl",
+        "name": "UCL",
+        "place": "런던, 영국",
+        "period": "박사과정·박사후연구",
+        "note": "기억·상상 연구와 Gatsby 계산신경과학 연구",
+        "sourceIds": [
+          "hassabis-ucl-bio"
+        ]
+      },
+      {
+        "institutionId": "deepmind",
+        "name": "DeepMind",
+        "place": "런던, 영국",
+        "period": "2010년 공동 설립",
+        "note": "신경과학·게임 개발 경험을 AI 연구와 연결",
+        "sourceIds": [
+          "hassabis-academia-cv",
+          "hassabis-ucl-bio"
+        ]
+      }
+    ],
+    "background": "런던에서 성장하며 체스와 게임 개발을 경험했고, 케임브리지의 컴퓨터과학과 UCL의 인지신경과학을 거쳤다. 기억과 상상을 연구한 뒤 런던에 DeepMind를 공동 설립했다.",
+    "backgroundSourceIds": [
+      "hassabis-ucl-bio",
+      "hassabis-royal-society",
+      "hassabis-academia-cv"
+    ],
+    "connections": [
+      {
+        "personId": "eleanor-maguire",
+        "name": "Eleanor Maguire",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "UCL에서 기억과 상상의 신경 기반을 연구할 때 Hassabis를 지도했다.",
+        "period": "UCL 박사과정",
+        "sourceIds": [
+          "hassabis-ucl-bio"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "john-jumper",
+        "name": "John Jumper",
+        "kind": "collaboration",
+        "label": "AlphaFold 공동 연구",
+        "description": "DeepMind에서 AlphaFold 개발을 함께 이끌었다.",
+        "period": "AlphaFold 연구",
+        "sourceIds": [
+          "hassabis-ucl-bio"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "hassabis-nobel-facts",
+        "title": "Nobel Prize · Demis Hassabis Facts, 2024",
+        "url": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/facts/",
+        "scope": "영국 런던 출생",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hassabis-ucl-bio",
+        "title": "UCL · Demis Hassabis, AI and neuroscience trailblazer",
+        "url": "https://www.ucl.ac.uk/about/search-faces-ucl/smart-tech-smarter-minds-demis-hassabis-ai-and-neuroscience-trailblazer",
+        "scope": "런던성장·Maguire지도·Gatsby박사후연구·런던DeepMind설립·Jumper와AlphaFold공동연구",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hassabis-royal-society",
+        "title": "Royal Society · Sir Demis Hassabis",
+        "url": "https://royalsociety.org/people/demis-hassabis-13817/",
+        "scope": "Cambridge컴퓨터과학·게임개발·UCL인지신경과학박사",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hassabis-academia-cv",
+        "title": "Academia Europaea · Demis Hassabis 경력",
+        "url": "https://www.ae-info.org/ae/Member/Hassabis_Demis",
+        "scope": "2010년 DeepMind공동설립, 과거박사·박사후연구기간. 현재직함으로사용하지않음",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "elon-musk",
+    "origin": {
+      "label": "성장",
+      "text": "남아프리카공화국",
+      "sourceIds": [
+        "musk-aps"
+      ]
+    },
+    "education": [
+      {
+        "name": "퀸스대학교",
+        "detail": "캐나다에서 재학한 뒤 Penn으로 편입",
+        "period": "",
+        "sourceIds": [
+          "musk-wharton"
+        ]
+      },
+      {
+        "name": "펜실베이니아대학교",
+        "detail": "물리학·경제학 학부 학위",
+        "period": "1997년 학위",
+        "sourceIds": [
+          "musk-wharton",
+          "musk-aps"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "spacex",
+        "name": "SpaceX",
+        "place": "미국",
+        "period": "창업·설계 경력",
+        "note": "우주 발사체 기업을 설립했다.",
+        "sourceIds": [
+          "musk-wharton",
+          "musk-aps"
+        ]
+      },
+      {
+        "institutionId": "tesla",
+        "name": "Tesla",
+        "place": "미국",
+        "period": "2009년 기록",
+        "note": "전기자동차 기업의 경영·설계를 맡은 경력을 소개했다.",
+        "sourceIds": [
+          "musk-wharton"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "2015년 설립 발표",
+        "note": "초기 조직의 공동의장·후원자로 발표됐다.",
+        "sourceIds": [
+          "musk-openai"
+        ]
+      }
+    ],
+    "background": "남아프리카공화국에서 성장한 뒤 캐나다로 옮겼고, Penn에서 물리학과 경제학을 공부했다. 여기서는 SpaceX·Tesla의 창업·설계·경영과 OpenAI 초기 조직 참여라는 산업적 경로를 함께 읽는다.",
+    "backgroundSourceIds": [
+      "musk-aps",
+      "musk-wharton",
+      "musk-openai"
+    ],
+    "connections": [
+      {
+        "personId": "sam-altman",
+        "name": "Sam Altman",
+        "kind": "institution",
+        "label": "OpenAI 초기 공동의장",
+        "description": "2015년 공식 설립 발표는 Musk와 Altman을 공동의장으로 명시한다. 논문 공동저자 관계를 뜻하지 않는다.",
+        "period": "2015년",
+        "sourceIds": [
+          "musk-openai"
+        ],
+        "relation": "shared-institution-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "musk-aps",
+        "title": "American Physical Society · Profiles in Versatility",
+        "url": "https://www.aps.org/apsnews/2013/10/profiles-in-versatility",
+        "scope": "2013년 본인 인터뷰의 남아공 성장 배경과 물리학·경제학 학업. 출생 도시를 이 인터뷰에서 확인하지 않아 성장 국가로 적었다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "musk-wharton",
+        "title": "Knowledge at Wharton · Musk의 Penn 강연과 학업 경로",
+        "url": "https://knowledge.wharton.upenn.edu/article/harnessing-the-sun-and-outer-space-elon-musks-sky-high-vision/",
+        "scope": "Queen's→Penn, 물리학·학부 경영학 학위, 1995년 학교를 떠난 때와 1997년 학위 수여 구분, 2009년 당시 SpaceX·Tesla 경력.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "musk-openai",
+        "title": "OpenAI · Introducing OpenAI (2015)",
+        "url": "https://openai.com/index/introducing-openai/",
+        "scope": "Musk·Altman의 초기 공동의장과 후원자 역할. 현재 직책이나 기술 논문 공동연구로 확대하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "fei-fei-li",
+    "origin": {
+      "label": "출생",
+      "text": "베이징, 중국 · 청두에서 성장",
+      "sourceIds": [
+        "li-personal-bio"
+      ]
+    },
+    "education": [
+      {
+        "name": "프린스턴대학교",
+        "detail": "물리학 학사",
+        "period": "1999",
+        "sourceIds": [
+          "li-stanford-profile"
+        ]
+      },
+      {
+        "name": "캘리포니아공과대학교(Caltech)",
+        "detail": "전기공학 박사",
+        "period": "2005",
+        "sourceIds": [
+          "li-stanford-profile"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "california-institute-of-technology",
+        "name": "Caltech",
+        "place": "패서디나, 미국",
+        "period": "박사과정",
+        "note": "Pietro Perona·Christof Koch의 지도로 컴퓨터비전·신경과학을 연구",
+        "sourceIds": [
+          "li-personal-bio",
+          "li-stanford-memoir"
+        ]
+      },
+      {
+        "institutionId": "stanford",
+        "name": "스탠퍼드대학교",
+        "place": "스탠퍼드, 미국",
+        "period": "2013–2018",
+        "note": "Stanford AI Lab 소장을 맡았다",
+        "sourceIds": [
+          "li-stanford-profile"
+        ]
+      },
+      {
+        "institutionId": "google-cloud",
+        "name": "Google Cloud",
+        "place": "기업 연구",
+        "period": "2017–2018",
+        "note": "AI·머신러닝 수석과학자로 일했다",
+        "sourceIds": [
+          "li-stanford-profile"
+        ]
+      }
+    ],
+    "background": "중국 베이징에서 태어나 청두에서 성장한 뒤 가족과 미국으로 이주했다. 프린스턴에서 물리학을 공부하고 Caltech 박사과정에서 컴퓨터비전·신경과학으로 관심을 넓혔다.",
+    "backgroundSourceIds": [
+      "li-personal-bio",
+      "li-stanford-memoir"
+    ],
+    "connections": [
+      {
+        "personId": "pietro-perona",
+        "name": "Pietro Perona",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "Caltech에서 Christof Koch와 함께 Li의 박사과정을 지도했다.",
+        "period": "2005년 박사학위",
+        "sourceIds": [
+          "li-personal-bio"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "jia-deng",
+        "name": "Jia Deng",
+        "kind": "collaboration",
+        "label": "ImageNet 공동저자",
+        "description": "2009년 ImageNet 논문의 공동저자다.",
+        "period": "2009",
+        "sourceIds": [
+          "li-stanford-profile"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "li-personal-bio",
+        "title": "Fei-Fei Li · Stanford 보관 개인 전기",
+        "url": "https://cs.stanford.edu/people/feifeili/Bio.htm",
+        "scope": "베이징 출생·청두 성장·미국이주·Princeton물리학·Caltech2005·지도교수Perona와Koch. 오래된현재직함은사용하지않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "li-stanford-profile",
+        "title": "Stanford Profiles · Fei-Fei Li",
+        "url": "https://profiles.stanford.edu/fei-fei-li",
+        "scope": "Princeton1999·Caltech전기공학박사2005·SAIL소장2013–2018·GoogleCloud2017–2018·ImageNet2009공동저자목록",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "li-stanford-memoir",
+        "title": "Stanford HAI · Fei-Fei Li의 회고록 인터뷰",
+        "url": "https://hai.stanford.edu/news/fei-fei-li-candid-look-young-immigrants-rise-ai-trailblazer",
+        "scope": "물리학에서 Caltech 컴퓨터비전·신경과학으로 관심이 이어진 배경",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "frank-rosenblatt",
+    "origin": {
+      "label": "성장",
+      "text": "뉴로셸, 뉴욕주, 미국",
+      "sourceIds": [
+        "cornell"
+      ]
+    },
+    "education": [
+      {
+        "name": "코넬대학교",
+        "detail": "사회심리학을 전공하고 심리학 박사 과정을 마쳤다.",
+        "period": "1950년 학사 · 1956년 박사",
+        "sourceIds": [
+          "cornell"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "cornell-aeronautical-laboratory",
+        "name": "코넬항공연구소 · CAL",
+        "place": "버펄로, 뉴욕주, 미국",
+        "period": "1958년 논문 당시",
+        "note": "연구심리학자이자 프로젝트 엔지니어로 퍼셉트론을 연구했다.",
+        "sourceIds": [
+          "cornell",
+          "paper"
+        ]
+      },
+      {
+        "institutionId": "cornell-university",
+        "name": "코넬대학교 인지시스템 연구 프로그램",
+        "place": "이타카, 뉴욕주, 미국",
+        "period": "1959년부터",
+        "note": "프로그램 책임자와 심리학 강사로 연구를 이어갔다.",
+        "sourceIds": [
+          "cornell"
+        ]
+      }
+    ],
+    "background": "뉴욕주 뉴로셸에서 자랐고 코넬에서 심리학을 공부했다. 버펄로의 코넬항공연구소에서 퍼셉트론을 연구한 뒤, 1959년 이타카 캠퍼스로 옮겨 인지시스템 연구와 학생 지도를 이어갔다.",
+    "backgroundSourceIds": [
+      "cornell",
+      "paper"
+    ],
+    "connections": [
+      {
+        "personId": "donald-hebb",
+        "name": "Donald O. Hebb",
+        "nameKo": "도널드 헵",
+        "kind": "influence",
+        "label": "이론적 배경",
+        "description": "1958년 논문은 헵의 세포집합 관점을 다루며, 헵과 하이에크의 연구가 이 이론의 발상에 도움을 주었다고 설명한다.",
+        "period": "1958년 논문의 논의",
+        "sourceIds": [
+          "paper"
+        ],
+        "relation": "influenced-by"
+      },
+      {
+        "personId": "marvin-minsky",
+        "name": "Marvin Minsky",
+        "nameKo": "마빈 민스키",
+        "kind": "debate",
+        "label": "연구상 논쟁",
+        "description": "퍼셉트론의 가능성을 두고 학술회의에서 공개 토론했다.",
+        "period": "퍼셉트론 연구를 둘러싼 토론",
+        "sourceIds": [
+          "cornell"
+        ],
+        "relation": "debated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "cornell",
+        "title": "Cornell University · Professor’s perceptron paved the way for AI",
+        "url": "https://as.cornell.edu/news/professors-perceptron-paved-way-ai-60-years-too-soon",
+        "scope": "출생·성장과 코넬 학위, CAL·1959년 이타카 합류, Minsky vs. Rosenblatt 절의 공개 토론 증언. 기사 전체의 AI 역사 해석을 그대로 옮기지는 않았다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "paper",
+        "title": "Rosenblatt(1958) · The Perceptron",
+        "url": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3",
+        "scope": "p.386 소속·연구 지원, pp.386–388 기억·연합의 관점과 Hebb·Hayek에 관한 직접 논의.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "geoffrey-hinton",
+    "origin": {
+      "label": "출생",
+      "text": "런던, 영국",
+      "sourceIds": [
+        "hinton-nobel-facts"
+      ]
+    },
+    "education": [
+      {
+        "name": "케임브리지대학교",
+        "detail": "실험심리학 학사",
+        "period": "1970",
+        "sourceIds": [
+          "hinton-personal-bio"
+        ]
+      },
+      {
+        "name": "에든버러대학교",
+        "detail": "인공지능 박사",
+        "period": "1978",
+        "sourceIds": [
+          "hinton-personal-bio"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-toronto",
+        "name": "토론토대학교",
+        "place": "토론토, 캐나다",
+        "period": "1987년 합류",
+        "note": "CIFAR와 연결된 신경망 연구·대학원 교육",
+        "sourceIds": [
+          "hinton-ucl-bio"
+        ]
+      },
+      {
+        "institutionId": "ucl-gatsby",
+        "name": "UCL Gatsby Computational Neuroscience Unit",
+        "place": "런던, 영국",
+        "period": "1998–2001",
+        "note": "계산신경과학 연구 조직을 설립했다",
+        "sourceIds": [
+          "hinton-personal-bio"
+        ]
+      },
+      {
+        "institutionId": "google",
+        "name": "Google",
+        "place": "기업 연구",
+        "period": "2013–2023",
+        "note": "토론토대 연구와 병행한 반일제 기업 연구 경력",
+        "sourceIds": [
+          "hinton-personal-bio"
+        ]
+      }
+    ],
+    "background": "런던에서 태어나 케임브리지에서는 실험심리학을, 에든버러에서는 인공지능을 공부했다. 영국·미국의 연구기관을 거쳐 토론토로 옮겼고, UCL에서는 계산신경과학 연구 조직을 세웠다.",
+    "backgroundSourceIds": [
+      "hinton-nobel-facts",
+      "hinton-personal-bio",
+      "hinton-ucl-bio"
+    ],
+    "connections": [
+      {
+        "personId": "david-rumelhart",
+        "name": "David E. Rumelhart",
+        "kind": "collaboration",
+        "label": "공동 논문",
+        "description": "Ronald J. Williams와 함께 1986년 역전파 논문을 썼다.",
+        "period": "1986",
+        "sourceIds": [
+          "hinton-backprop-list"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "kind": "advisor",
+        "label": "지도한 연구자",
+        "description": "토론토대학교에서 Sutskever의 박사과정을 지도했다.",
+        "period": "박사과정",
+        "sourceIds": [
+          "hinton-sutskever-utoronto"
+        ],
+        "relation": "advised"
+      }
+    ],
+    "sources": [
+      {
+        "id": "hinton-nobel-facts",
+        "title": "Nobel Prize · Geoffrey Hinton Facts, 2024",
+        "url": "https://www.nobelprize.org/prizes/physics/2024/hinton/facts/",
+        "scope": "영국 런던 출생과 수상 당시 토론토대 소속",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hinton-personal-bio",
+        "title": "Geoffrey Hinton · 토론토대학교 개인 약력",
+        "url": "https://www.cs.toronto.edu/~hinton/index.html",
+        "scope": "학위·영미권 박사후연구·CMU 경력·UCL1998–2001·Google2013–2023 반일제 경력",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hinton-ucl-bio",
+        "title": "UCL · Intelligent futures: Geoffrey Hinton",
+        "url": "https://www.ucl.ac.uk/about/search-faces-ucl/intelligent-futures-geoffrey-hinton-godfather-turned-critic-ai",
+        "scope": "1987년 토론토대 이동과 UCL Gatsby 설립 책임자 경력",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hinton-backprop-list",
+        "title": "Hinton · Backpropagation Learning 논문 목록",
+        "url": "https://www.cs.toronto.edu/~hinton/backprop.html",
+        "scope": "1986년 Nature 논문의 Rumelhart·Hinton·Williams 공동저자 서지",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hinton-sutskever-utoronto",
+        "title": "University of Toronto · Ilya Sutskever 명예학위 소개",
+        "url": "https://www.utoronto.ca/news/ilya-sutskever-leader-ai-and-its-responsible-development-receives-u-t-honorary-degree",
+        "scope": "Hinton이 Sutskever의 박사 지도교수였다는 관계",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "ian-goodfellow",
+    "origin": null,
+    "education": [
+      {
+        "name": "스탠퍼드대학교",
+        "detail": "Andrew Ng·Gary Bradski와 연구",
+        "period": "몬트리올 진학 전",
+        "sourceIds": [
+          "goodfellow-personal-bio"
+        ]
+      },
+      {
+        "name": "몬트리올대학교",
+        "detail": "표현학습·컴퓨터비전 박사학위 논문심사",
+        "period": "2014년 9월",
+        "sourceIds": [
+          "goodfellow-defense"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "universite-de-montreal",
+        "name": "몬트리올대학교",
+        "place": "몬트리올, 캐나다",
+        "period": "박사과정",
+        "note": "Yoshua Bengio·Aaron Courville의 지도 아래 표현학습 연구",
+        "sourceIds": [
+          "goodfellow-defense",
+          "goodfellow-personal-bio"
+        ]
+      },
+      {
+        "institutionId": "google",
+        "name": "Google 연구팀",
+        "place": "기업 연구",
+        "period": "박사과정 이후",
+        "note": "대학의 2015년 동문 기록은 Google 연구팀 합류와 Street View 연구를 소개한다",
+        "sourceIds": [
+          "goodfellow-udem-alumni"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "과거 재직",
+        "note": "본인 약력에 명시된 기업 연구 경력",
+        "sourceIds": [
+          "goodfellow-personal-bio"
+        ]
+      }
+    ],
+    "background": "스탠퍼드에서 연구한 뒤 몬트리올대학교에서 Bengio·Courville의 지도로 박사과정을 밟았다. 대학과 Google·OpenAI 같은 기업 연구실을 거치며 신경망의 표현학습과 모델 보안을 연구했다.",
+    "backgroundSourceIds": [
+      "goodfellow-personal-bio",
+      "goodfellow-defense",
+      "goodfellow-udem-alumni"
+    ],
+    "connections": [
+      {
+        "personId": "yoshua-bengio",
+        "name": "Yoshua Bengio",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "2014년 박사학위 논문심사 공고에 연구 지도교수로 명시돼 있다.",
+        "period": "2014년 학위심사 기록",
+        "sourceIds": [
+          "goodfellow-defense"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "aaron-courville",
+        "name": "Aaron Courville",
+        "kind": "advisor",
+        "label": "박사 공동 지도교수",
+        "description": "2014년 박사학위 논문심사 공고에 공동 지도교수로 명시돼 있다.",
+        "period": "2014년 학위심사 기록",
+        "sourceIds": [
+          "goodfellow-defense"
+        ],
+        "relation": "student-of"
+      }
+    ],
+    "sources": [
+      {
+        "id": "goodfellow-personal-bio",
+        "title": "Ian Goodfellow · 본인 약력",
+        "url": "https://www.iangoodfellow.com/bio",
+        "scope": "Stanford의Ng·Bradski, Montreal의Bengio·Courville와공부한관계·OpenAI과거재직·신경망보안연구",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "goodfellow-defense",
+        "title": "Université de Montréal · Ian Goodfellow 박사학위 논문심사",
+        "url": "https://diro.umontreal.ca/en/departement/activites/activite/news/eventDetail/Event/deep-learning-of-representations-and-its-application-to-computer-vision/",
+        "scope": "2014-09-02 심사·논문제목·지도교수Bengio·공동지도Courville. 학위수여연도로확대하지않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "goodfellow-udem-alumni",
+        "title": "Université de Montréal · Rector's Report 2015",
+        "url": "https://secretariatgeneral.umontreal.ca/public/secretariatgeneral/documents/doc_officiels/documents-institutionnels/rapport-annuel/Rapport-du-Recteur-2015-An.pdf",
+        "scope": "Goodfellow를2014년동문으로소개하고 Google연구팀채용·StreetView연구를기록. 특정입사연도는표시하지않음",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "ilya-sutskever",
+    "origin": {
+      "label": "출생",
+      "text": "니즈니노브고로드, 러시아 · 예루살렘에서 성장",
+      "sourceIds": [
+        "sutskever-utoronto-magazine"
+      ]
+    },
+    "education": [
+      {
+        "name": "토론토대학교",
+        "detail": "수학 학사",
+        "period": "2005",
+        "sourceIds": [
+          "sutskever-utoronto-magazine",
+          "sutskever-utoronto-degree"
+        ]
+      },
+      {
+        "name": "토론토대학교",
+        "detail": "컴퓨터과학 석사·박사 · 지도교수 Geoffrey Hinton",
+        "period": "2007·2012",
+        "sourceIds": [
+          "sutskever-utoronto-magazine",
+          "sutskever-utoronto-degree"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-toronto",
+        "name": "토론토대학교",
+        "place": "토론토, 캐나다",
+        "period": "대학원 연구",
+        "note": "Hinton 연구팀에서 신경망·언어·영상 인식을 연구",
+        "sourceIds": [
+          "sutskever-utoronto-degree"
+        ]
+      },
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "기업 연구",
+        "period": "OpenAI 설립 전",
+        "note": "DNNResearch 인수 후 연구원으로 합류해 Seq2Seq 등에 참여",
+        "sourceIds": [
+          "sutskever-utoronto-degree"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "2015년 공동 설립",
+        "note": "연구책임자·수석과학자로 일했다",
+        "sourceIds": [
+          "sutskever-utoronto-degree"
+        ]
+      }
+    ],
+    "background": "러시아에서 태어나 주로 예루살렘에서 자랐고, 가족과 캐나다로 이주한 뒤 토론토대학교에서 수학과 컴퓨터과학을 공부했다. Hinton 연구팀에서 시작한 연구 경력은 Google Brain과 OpenAI 설립으로 이어졌다.",
+    "backgroundSourceIds": [
+      "sutskever-utoronto-magazine",
+      "sutskever-utoronto-degree"
+    ],
+    "connections": [
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey Hinton",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "토론토대학교에서 Sutskever의 박사과정을 지도했다.",
+        "period": "박사과정",
+        "sourceIds": [
+          "sutskever-utoronto-degree"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "oriol-vinyals",
+        "name": "Oriol Vinyals",
+        "kind": "collaboration",
+        "label": "Seq2Seq 공동저자",
+        "description": "Quoc V. Le와 함께 2014년 Sequence to Sequence Learning with Neural Networks를 썼다.",
+        "period": "2014",
+        "sourceIds": [
+          "sutskever-seq2seq-paper"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "sutskever-utoronto-magazine",
+        "title": "University of Toronto Magazine · Heard It Through the AI",
+        "url": "https://magazine.utoronto.ca/people/alumni-donors/heard-it-through-the-ai-openai-ilya-sutskever/",
+        "scope": "니즈니노브고로드출생·예루살렘성장·캐나다이주·학위BSc2005 MSc2007 PhD2012",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "sutskever-utoronto-degree",
+        "title": "University of Toronto · Ilya Sutskever 명예학위 소개",
+        "url": "https://www.utoronto.ca/news/ilya-sutskever-leader-ai-and-its-responsible-development-receives-u-t-honorary-degree",
+        "scope": "Hinton 지도·Toronto연구·DNNResearch와GoogleBrain·2015 OpenAI공동설립과역할. 현재직함으로사용하지않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "sutskever-seq2seq-paper",
+        "title": "Sutskever·Vinyals·Le · Sequence to Sequence Learning with Neural Networks",
+        "url": "https://arxiv.org/abs/1409.3215",
+        "scope": "2014년 세 공동저자 서지",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "jensen-huang",
+    "origin": {
+      "label": "출생",
+      "text": "대만",
+      "sourceIds": [
+        "huang-hkust"
+      ]
+    },
+    "education": [
+      {
+        "name": "오리건주립대학교",
+        "detail": "전기공학 학사",
+        "period": "",
+        "sourceIds": [
+          "huang-nvidia"
+        ]
+      },
+      {
+        "name": "스탠퍼드대학교",
+        "detail": "전기공학 석사",
+        "period": "",
+        "sourceIds": [
+          "huang-nvidia"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "amd",
+        "name": "Advanced Micro Devices(AMD)",
+        "place": "미국",
+        "period": "NVIDIA 창업 이전",
+        "note": "반도체 설계 분야에서 일했다.",
+        "sourceIds": [
+          "huang-nvidia"
+        ]
+      },
+      {
+        "institutionId": "lsi-logic",
+        "name": "LSI Logic",
+        "place": "미국",
+        "period": "NVIDIA 창업 이전",
+        "note": "반도체 기업에서 경력을 쌓았다.",
+        "sourceIds": [
+          "huang-nvidia"
+        ]
+      },
+      {
+        "institutionId": "nvidia",
+        "name": "NVIDIA",
+        "place": "미국",
+        "period": "1993년 공동창업",
+        "note": "GPU·가속 컴퓨팅 기업을 공동 설립하고 이끌었다.",
+        "sourceIds": [
+          "huang-nvidia",
+          "huang-history"
+        ]
+      }
+    ],
+    "background": "대만에서 태어나 어린 시절 태국과 미국을 거쳐 오리건에서 학교를 다녔다. 전기공학을 공부하고 AMD·LSI Logic에서 일한 뒤, 1993년 NVIDIA를 공동 설립했다.",
+    "backgroundSourceIds": [
+      "huang-hkust",
+      "huang-nvidia",
+      "huang-history"
+    ],
+    "connections": [
+      {
+        "personId": "chris-malachowsky",
+        "name": "Chris Malachowsky",
+        "kind": "cofounder",
+        "label": "NVIDIA 공동창업",
+        "description": "Huang·Malachowsky·Priem은 1993년 NVIDIA를 함께 설립했다.",
+        "period": "1993년",
+        "sourceIds": [
+          "huang-history"
+        ],
+        "relation": "cofounded-with"
+      },
+      {
+        "personId": "curtis-priem",
+        "name": "Curtis Priem",
+        "kind": "cofounder",
+        "label": "NVIDIA 공동창업",
+        "description": "NVIDIA의 공식 회사 연표가 세 사람의 공동창업을 기록한다.",
+        "period": "1993년",
+        "sourceIds": [
+          "huang-history"
+        ],
+        "relation": "cofounded-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "huang-nvidia",
+        "title": "NVIDIA Newsroom · Jensen Huang",
+        "url": "https://nvidianews.nvidia.com/bios/jensen-huang",
+        "scope": "Oregon State·Stanford 전기공학 학위, 창업 전 AMD·LSI Logic 경력과 1993년 NVIDIA 창업. 기업 경영·계산 인프라 기여를 개별 AI 논문 저자 역할과 구분한다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "huang-hkust",
+        "title": "HKUST · Jensen Huang 명예학위 공적서",
+        "url": "https://geco.ust.hk/download/Booklet/Dr_Jensen_HUANG_EN.pdf",
+        "scope": "어린 시절 대만·태국·미국과 오리건 학업 경로. 여기서는 출생 도시를 표시하지 않고 대만으로 범위를 한정했다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "huang-history",
+        "title": "NVIDIA · 공식 회사 연표 1993",
+        "url": "https://www.nvidia.com/content/timeline/time_93.html",
+        "scope": "Jensen Huang·Chris Malachowsky·Curtis Priem 공동창업. 월 표기는 다른 공식 공시와 달라 연도만 사용한다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "john-mccarthy",
+    "origin": {
+      "label": "출생",
+      "text": "보스턴, 미국",
+      "sourceIds": [
+        "mccarthy-stanford-bio"
+      ]
+    },
+    "education": [
+      {
+        "name": "캘리포니아공과대학교(Caltech)",
+        "detail": "수학 학사",
+        "period": "1948",
+        "sourceIds": [
+          "mccarthy-stanford-bio"
+        ]
+      },
+      {
+        "name": "프린스턴대학교",
+        "detail": "수학 박사 · 지도교수 Donald C. Spencer",
+        "period": "1951",
+        "sourceIds": [
+          "mccarthy-princeton-degree"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "dartmouth-college",
+        "name": "다트머스대학교",
+        "place": "하노버, 미국",
+        "period": "1955–1958",
+        "note": "AI 여름 연구 모임을 제안한 시기의 소속",
+        "sourceIds": [
+          "mccarthy-stanford-memorial",
+          "mccarthy-dartmouth-proposal"
+        ]
+      },
+      {
+        "institutionId": "mit",
+        "name": "MIT",
+        "place": "케임브리지, 미국",
+        "period": "1958년 합류",
+        "note": "Marvin Minsky와 MIT Artificial Intelligence Project 공동 설립",
+        "sourceIds": [
+          "mccarthy-stanford-bio",
+          "mccarthy-stanford-memorial"
+        ]
+      },
+      {
+        "institutionId": "stanford",
+        "name": "스탠퍼드대학교",
+        "place": "스탠퍼드, 미국",
+        "period": "1962년 복귀",
+        "note": "이후 Stanford Artificial Intelligence Laboratory를 설립·이끌었다",
+        "sourceIds": [
+          "mccarthy-stanford-memorial"
+        ]
+      }
+    ],
+    "background": "미국 보스턴에서 태어나 로스앤젤레스에서 성장했고, Caltech와 프린스턴에서 수학을 공부했다. 다트머스·MIT·스탠퍼드를 옮겨 가며 연구했고, 동료들과 AI 연구 조직을 만드는 일에도 참여했다.",
+    "backgroundSourceIds": [
+      "mccarthy-stanford-bio",
+      "mccarthy-stanford-memorial"
+    ],
+    "connections": [
+      {
+        "personId": "marvin-minsky",
+        "name": "Marvin Minsky",
+        "kind": "cofounder",
+        "label": "연구 프로젝트 공동 설립",
+        "description": "MIT Artificial Intelligence Project를 함께 설립했다.",
+        "period": "MIT 재직 시기",
+        "sourceIds": [
+          "mccarthy-stanford-memorial"
+        ],
+        "relation": "cofounded-with"
+      },
+      {
+        "personId": "patrick-hayes",
+        "name": "Patrick J. Hayes",
+        "kind": "collaboration",
+        "label": "공동 논문",
+        "description": "행동·지식·전략의 형식화를 다룬 1969년 논문의 공동저자다.",
+        "period": "1969",
+        "sourceIds": [
+          "mccarthy-hayes-paper"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "mccarthy-stanford-bio",
+        "title": "Stanford Engineering · John McCarthy 추모 전기",
+        "url": "https://engineering.stanford.edu/news/stanfords-john-mccarthy-seminal-figure-artificial-intelligence-dead-84",
+        "scope": "보스턴 출생, Caltech1948·Princeton1951, Dartmouth·MIT·Stanford 경력",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mccarthy-princeton-degree",
+        "title": "Princeton Graduate School · John McCarthy",
+        "url": "https://gradschool.princeton.edu/deans-initiatives-awards-events/dean%E2%80%99s-initiatives/viget-honor-roll/john-mccarthy",
+        "scope": "1951년 수학박사, 지도교수 Donald C. Spencer",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mccarthy-stanford-memorial",
+        "title": "Stanford Computer Science · Professor John McCarthy",
+        "url": "https://legacy.cs.stanford.edu/memoriam/professor-john-mccarthy",
+        "scope": "로스앤젤레스 성장, 1953–1955 Stanford·1955–1958 Dartmouth, Minsky와 MIT프로젝트 공동설립, 1962 Stanford복귀",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mccarthy-dartmouth-proposal",
+        "title": "McCarthy 외 · Dartmouth Summer Research Project 제안서",
+        "url": "https://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html",
+        "scope": "1955년 제안서의 저자·소속과 1956년 하노버 연구 계획",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mccarthy-hayes-paper",
+        "title": "McCarthy·Hayes · Some Philosophical Problems from the Standpoint of Artificial Intelligence",
+        "url": "https://www-formal.stanford.edu/jmc/mcchay69/mcchay69.html",
+        "scope": "1969년 공동저자·논문 제목; 내용은 기존 카드의 검토 범위를 따른다",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "joshua-tenenbaum",
+    "origin": null,
+    "education": [
+      {
+        "name": "예일대학교",
+        "detail": "물리학 학부 과정",
+        "period": "",
+        "sourceIds": [
+          "tenenbaum-mit-2003"
+        ]
+      },
+      {
+        "name": "매사추세츠공과대학교(MIT)",
+        "detail": "박사",
+        "period": "1999년",
+        "sourceIds": [
+          "tenenbaum-mit"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "stanford",
+        "name": "스탠퍼드대학교",
+        "place": "스탠퍼드, 미국",
+        "period": "1999–2002년",
+        "note": "조교수로 연구·교육을 맡았다.",
+        "sourceIds": [
+          "tenenbaum-mit"
+        ]
+      },
+      {
+        "institutionId": "mit",
+        "name": "MIT · 뇌·인지과학과",
+        "place": "케임브리지, 미국",
+        "period": "2002년 복귀",
+        "note": "인간과 기계의 지각·학습·상식 추론을 연구했다.",
+        "sourceIds": [
+          "tenenbaum-mit"
+        ]
+      }
+    ],
+    "background": "예일에서 물리학을 공부하다 인지과학 연구를 접했고, MIT에서 박사학위를 받았다. 스탠퍼드에서 1999–2002년 교수로 일한 뒤 MIT로 돌아와 인간의 학습을 계산 모형과 연결하는 연구를 이어 갔다.",
+    "backgroundSourceIds": [
+      "tenenbaum-mit-2003",
+      "tenenbaum-mit"
+    ],
+    "connections": [
+      {
+        "personId": "jiayuan-mao",
+        "name": "Jiayuan Mao",
+        "kind": "collaboration",
+        "label": "NS-CL 공동연구",
+        "description": "장면·언어·기호 프로그램을 잇는 2019년 NS-CL 논문을 함께 발표했다.",
+        "period": "2019년",
+        "sourceIds": [
+          "tenenbaum-nscl"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "jiajun-wu",
+        "name": "Jiajun Wu",
+        "kind": "collaboration",
+        "label": "NS-CL 공동연구",
+        "description": "Tenenbaum과 함께 2019년 NS-CL의 다섯 공동저자에 포함된다.",
+        "period": "2019년",
+        "sourceIds": [
+          "tenenbaum-nscl"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "tenenbaum-mit",
+        "title": "MIT Brain and Cognitive Sciences · Joshua B. Tenenbaum",
+        "url": "https://bcs.mit.edu/directory/joshua-b-tenenbaum",
+        "scope": "1999년 MIT 박사, Stanford 1999–2002년, 2002년 MIT 복귀 및 지각·학습·추론 연구 분야.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "tenenbaum-mit-2003",
+        "title": "MIT BCS Newsletter · Spring 2003, Joshua Tenenbaum 소개",
+        "url": "https://bcs.mit.edu/sites/default/files/newsletters/bcsnewsletter_spring_2003.pdf",
+        "scope": "인쇄 p.3 Yale 물리학 학부와 Roger Shepard 연구를 접한 경로. 자료의 native Californian 표현만으로 출생 도시·생년을 추가하지 않았다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "tenenbaum-nscl",
+        "title": "Mao 외 · The Neuro-Symbolic Concept Learner (2019)",
+        "url": "https://arxiv.org/abs/1904.12584",
+        "scope": "Jiayuan Mao·Chuang Gan·Pushmeet Kohli·Joshua B. Tenenbaum·Jiajun Wu의 원논문 공동저자 명단. 학생·지도 관계를 이 저자 명단만으로 추정하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "jurgen-schmidhuber",
+    "origin": {
+      "label": "출생",
+      "text": "뮌헨, 독일",
+      "sourceIds": [
+        "schmidhuber-cv"
+      ]
+    },
+    "education": [
+      {
+        "name": "뮌헨공과대학교(TUM)",
+        "detail": "컴퓨터과학·수학 Diplom",
+        "period": "1983–1987",
+        "sourceIds": [
+          "schmidhuber-cv"
+        ]
+      },
+      {
+        "name": "뮌헨공과대학교(TUM)",
+        "detail": "동적 신경망과 신용 할당 문제에 관한 컴퓨터과학 박사",
+        "period": "1991",
+        "sourceIds": [
+          "schmidhuber-cv"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-colorado-boulder",
+        "name": "콜로라도대학교 볼더",
+        "place": "볼더, 미국",
+        "period": "1991–1992",
+        "note": "박사후연구",
+        "sourceIds": [
+          "schmidhuber-life-cv"
+        ]
+      },
+      {
+        "institutionId": "idsia",
+        "name": "IDSIA",
+        "place": "루가노, 스위스",
+        "period": "1995년 합류",
+        "note": "신경망·학습 연구팀을 이끌었다",
+        "sourceIds": [
+          "schmidhuber-life-cv"
+        ]
+      },
+      {
+        "institutionId": "technical-university-of-munich",
+        "name": "뮌헨공과대학교(TUM)",
+        "place": "뮌헨, 독일",
+        "period": "2004–2009",
+        "note": "인지로봇 연구실을 이끌었다",
+        "sourceIds": [
+          "schmidhuber-life-cv"
+        ]
+      }
+    ],
+    "background": "독일 뮌헨에서 태어나 TUM에서 컴퓨터과학과 수학을 공부했다. 미국의 박사후연구를 거쳐 스위스 IDSIA와 독일 TUM에서 연구팀을 이끌며, 순환 신경망과 학습하는 시스템을 연구했다.",
+    "backgroundSourceIds": [
+      "schmidhuber-cv",
+      "schmidhuber-life-cv"
+    ],
+    "connections": [
+      {
+        "personId": "sepp-hochreiter",
+        "name": "Sepp Hochreiter",
+        "kind": "collaboration",
+        "label": "LSTM 공동저자",
+        "description": "1997년 Long Short-Term Memory 논문의 공동저자다.",
+        "period": "1997",
+        "sourceIds": [
+          "schmidhuber-lstm-paper"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "alex-graves",
+        "name": "Alex Graves",
+        "kind": "collaboration",
+        "label": "CTC 공동저자",
+        "description": "2006년 CTC 논문에서 함께 순서 자료의 라벨 학습을 연구했다.",
+        "period": "2006",
+        "sourceIds": [
+          "schmidhuber-ctc-paper"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "schmidhuber-cv",
+        "title": "Jürgen Schmidhuber · Curriculum Vitae",
+        "url": "https://people.idsia.ch/~juergen/cv.html",
+        "scope": "개인 이력의 뮌헨 출생·TUM Diplom1987·박사1991. 연구 우선권에 관한 개인 주장은 배경 소개에 사용하지 않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "schmidhuber-life-cv",
+        "title": "Jürgen Schmidhuber · 상세 경력 기록",
+        "url": "https://people.idsia.ch/~juergen/life/",
+        "scope": "Colorado1991–1992, IDSIA1995 합류, TUM 인지로봇 연구실2004–2009의 과거 경력",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "schmidhuber-lstm-paper",
+        "title": "Hochreiter·Schmidhuber · Long Short-Term Memory, 1997",
+        "url": "https://web.stanford.edu/class/psych209/Readings/HochreiterSchmidthuber97LSTM.pdf",
+        "scope": "첫 쪽의 두 공동저자와 TUM·IDSIA 소속",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "schmidhuber-ctc-paper",
+        "title": "Graves 외 · Connectionist Temporal Classification, 2006",
+        "url": "https://www.cs.toronto.edu/~graves/icml_2006.pdf",
+        "scope": "첫 쪽 공동저자 Graves·Fernández·Gomez·Schmidhuber 및 IDSIA·TUM 소속",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "marvin-minsky",
+    "origin": {
+      "label": "출생",
+      "text": "뉴욕, 미국",
+      "sourceIds": [
+        "minsky-chm-bio"
+      ]
+    },
+    "education": [
+      {
+        "name": "하버드대학교",
+        "detail": "수학 학사",
+        "period": "1949",
+        "sourceIds": [
+          "minsky-chm-bio"
+        ]
+      },
+      {
+        "name": "프린스턴대학교",
+        "detail": "수학 박사",
+        "period": "1954",
+        "sourceIds": [
+          "minsky-chm-bio"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "mit",
+        "name": "MIT AI 연구실",
+        "place": "케임브리지, 미국",
+        "period": "1959년 공동 설립",
+        "note": "John McCarthy와 AI 연구 조직을 세웠다",
+        "sourceIds": [
+          "minsky-chm-bio"
+        ]
+      },
+      {
+        "institutionId": "mit-media-lab",
+        "name": "MIT Media Lab",
+        "place": "케임브리지, 미국",
+        "period": "공동 설립·교수 재직",
+        "note": "인지·로봇·인간과 기계의 사고를 연구했다",
+        "sourceIds": [
+          "minsky-mitpress-book",
+          "minsky-mit-profile"
+        ]
+      }
+    ],
+    "background": "뉴욕에서 태어나 하버드와 프린스턴에서 수학을 공부했다. MIT에서 연구 조직을 만들고, 컴퓨터과학과 심리학을 연결하며 인간과 기계의 사고를 함께 연구했다.",
+    "backgroundSourceIds": [
+      "minsky-chm-bio",
+      "minsky-mitpress-book"
+    ],
+    "connections": [
+      {
+        "personId": "john-mccarthy",
+        "name": "John McCarthy",
+        "kind": "cofounder",
+        "label": "AI 연구실 공동 설립",
+        "description": "MIT AI 연구실을 함께 설립했다.",
+        "period": "1959",
+        "sourceIds": [
+          "minsky-chm-bio"
+        ],
+        "relation": "cofounded-with"
+      },
+      {
+        "personId": "seymour-papert",
+        "name": "Seymour A. Papert",
+        "kind": "collaboration",
+        "label": "공동 저술",
+        "description": "『Perceptrons』의 공동저자다. 연결한 출처는 1987년 확장판이다.",
+        "period": "1987 확장판",
+        "sourceIds": [
+          "minsky-mitpress-book"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "minsky-chm-bio",
+        "title": "Computer History Museum · Marvin Minsky, 2006 Fellow",
+        "url": "https://computerhistory.org/profile/marvin-minsky/",
+        "scope": "뉴욕 출생·Harvard1949·Princeton1954·McCarthy와 MIT AI연구실1959 공동설립·심리학과컴퓨터과학 연구",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "minsky-mit-profile",
+        "title": "MIT Media Lab · Marvin L. Minsky",
+        "url": "https://www.media.mit.edu/people/minsky/overview/",
+        "scope": "MIT Media Lab의 과거 교수 프로필",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "minsky-mitpress-book",
+        "title": "MIT Press · Perceptrons, expanded edition",
+        "url": "https://mitpress.mit.edu/9780262631112/perceptrons/",
+        "scope": "Minsky·Papert 공동저술, 1987 확장판 서지와 Minsky의 MIT Media Lab 공동설립 경력",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "palmer-luckey",
+    "origin": null,
+    "education": [],
+    "researchPlaces": [
+      {
+        "institutionId": "usc-ict-mxr",
+        "name": "USC ICT · Mixed Reality Lab(MxR)",
+        "place": "로스앤젤레스, 미국",
+        "period": "2010–2012년",
+        "note": "연구실 기술 직원으로 저가형·넓은 시야각의 VR 시제품 제작에 참여했다.",
+        "sourceIds": [
+          "luckey-usc"
+        ]
+      },
+      {
+        "institutionId": "oculus",
+        "name": "Oculus VR",
+        "place": "미국",
+        "period": "2012년 창업",
+        "note": "Oculus Rift 헤드셋을 개발하고 사업화했다.",
+        "sourceIds": [
+          "luckey-usc",
+          "luckey-usaf"
+        ]
+      },
+      {
+        "institutionId": "anduril",
+        "name": "Anduril Industries",
+        "place": "미국",
+        "period": "2017년 창업",
+        "note": "방위 기술 기업을 설립했다.",
+        "sourceIds": [
+          "luckey-usaf"
+        ]
+      }
+    ],
+    "background": "Oculus 창업 전에는 USC의 혼합현실 연구실에서 저가형 VR 헤드셋 시제품을 만들었다. 2012년 Oculus Rift를 사업화한 뒤 2017년 Anduril을 설립해 하드웨어·소프트웨어 제품 개발의 경력을 이어 갔다.",
+    "backgroundSourceIds": [
+      "luckey-usc",
+      "luckey-usaf"
+    ],
+    "connections": [
+      {
+        "personId": "david-nelson-mxr",
+        "name": "David Nelson",
+        "kind": "collaboration",
+        "label": "MxR 연구소 협업",
+        "description": "USC MxR 연구실에서 Luckey의 기술 업무를 감독하며 VR 시제품 개발에 함께 참여했다.",
+        "period": "2010년 무렵",
+        "sourceIds": [
+          "luckey-usc"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "mark-bolas",
+        "name": "Mark Bolas",
+        "kind": "collaboration",
+        "label": "MxR 연구소 협업",
+        "description": "당시 MxR 소장 Bolas가 Luckey를 채용했고, 연구실의 저가형 VR 시제품 연구로 이어졌다.",
+        "period": "Oculus 창업 이전",
+        "sourceIds": [
+          "luckey-usc"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "luckey-usc",
+        "title": "USC ICT · David Nelson의 Palmer Luckey 연구실 회고",
+        "url": "https://ict.usc.edu/news/stories/memories-of-palmer-luckey-at-mxr-and-where-were-heading-next/",
+        "scope": "2010년 연구실 직원·상사 관계, Bolas의 채용, VR 시제품 협업, 2012년6월 MxR을 떠나 Oculus를 시작한 경로. 출생지·학위를 이 자료에서 확인하지 않아 생략했다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "luckey-usaf",
+        "title": "US Air Force · 2019 Air Force Contracting Summit 공식 약력",
+        "url": "https://ww3.safaq.hq.af.mil/Portals/63/Palmer_Luckey%20_Anduril%20Industries.pdf?ver=2019-03-20-141126-673",
+        "scope": "Oculus 2012년 및 Anduril 2017년 설립, USC ICT MxR에서의 하드웨어 개발 배경.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "tomas-mikolov",
+    "origin": null,
+    "education": [
+      {
+        "name": "브르노공과대학교(VUT)",
+        "detail": "신경망 기반 통계적 언어모형 박사 · 지도교수 Jan Černocký",
+        "period": "2012",
+        "sourceIds": [
+          "mikolov-vut-thesis"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "기업 연구",
+        "period": "2012년 이동",
+        "note": "신경 언어모형 연구를 이어 가며 word2vec 개발",
+        "sourceIds": [
+          "mikolov-cvut-interview",
+          "mikolov-charles-bio"
+        ]
+      },
+      {
+        "institutionId": "facebook-ai-research",
+        "name": "Facebook AI Research",
+        "place": "기업 연구",
+        "period": "2014–2020",
+        "note": "언어와 지능 알고리즘을 연구했다",
+        "sourceIds": [
+          "mikolov-ciirc-announcement"
+        ]
+      },
+      {
+        "institutionId": "ciirc-ctu",
+        "name": "CIIRC · 체코공과대학교",
+        "place": "프라하, 체코",
+        "period": "2020년 합류",
+        "note": "체코로 돌아와 기초 AI 연구팀을 꾸렸다",
+        "sourceIds": [
+          "mikolov-ciirc-announcement"
+        ]
+      }
+    ],
+    "background": "체코 브르노공과대학교에서 신경망 언어모형으로 박사학위를 받았다. Google Brain과 Facebook AI Research를 거쳐 2020년 체코로 돌아와 CIIRC에서 기초 AI 연구팀을 꾸렸다.",
+    "backgroundSourceIds": [
+      "mikolov-vut-thesis",
+      "mikolov-ciirc-announcement"
+    ],
+    "connections": [
+      {
+        "personId": "jan-cernocky",
+        "name": "Jan Černocký",
+        "kind": "advisor",
+        "label": "박사 지도교수",
+        "description": "브르노공과대학교 박사학위 논문을 지도했다.",
+        "period": "2012",
+        "sourceIds": [
+          "mikolov-vut-thesis"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "kind": "collaboration",
+        "label": "단어 표현 공동저자",
+        "description": "2013년 단어·구의 분산 표현 논문의 공동저자다.",
+        "period": "2013",
+        "sourceIds": [
+          "mikolov-word-phrase-paper"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "mikolov-vut-thesis",
+        "title": "Brno University of Technology · Mikolov 박사학위 기록",
+        "url": "https://www.fit.vut.cz/study/phd-thesis/283/.cs",
+        "scope": "학위논문제목·지도JanČernocký·2012-10-02심사통과",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mikolov-ciirc-announcement",
+        "title": "CIIRC CTU · Tomáš Mikolov 합류 발표, 2020",
+        "url": "https://www.ciirc.cvut.cz/cs/svetove-uznavany-expert-tomas-mikolov-prichazi-z-facebook-ai-do-ciirc-cvut-zameri-se-na-vyvoj-silne-umele-inteligence/",
+        "scope": "2014년부터FacebookAI연구·2020년4월CIIRC합류·기초AI연구팀 구성",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mikolov-cvut-interview",
+        "title": "CTU Prague · Mikolov 연구 경력 인터뷰",
+        "url": "https://aktualne.cvut.cz/zpravy-z-medii/20231120-tomas-mikolov-umela-inteligence-zatim-zustava-nepochopena",
+        "scope": "본인의2012년Google이동발언. 날짜가정아닌인터뷰발언으로확인",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mikolov-charles-bio",
+        "title": "Charles University ÚFAL · Understanding Language Modeling, 2021",
+        "url": "https://ufal.mff.cuni.cz/events/understanding-language-modeling",
+        "scope": "GoogleBrain·FacebookAIResearch 과거경력과 word2vec·fastText 개발",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "mikolov-word-phrase-paper",
+        "title": "Mikolov 외 · Distributed Representations of Words and Phrases and their Compositionality",
+        "url": "https://arxiv.org/abs/1310.4546",
+        "scope": "Mikolov·Sutskever·KaiChen·GregCorrado·JeffreyDean의2013공동저자서지",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "william-peebles",
+    "origin": null,
+    "education": [
+      {
+        "name": "매사추세츠공과대학교(MIT)",
+        "detail": "학부 과정·Antonio Torralba의 지도",
+        "period": "",
+        "sourceIds": [
+          "peebles-personal"
+        ]
+      },
+      {
+        "name": "UC 버클리",
+        "detail": "BAIR에서 Alexei Efros의 지도로 박사 과정 이수",
+        "period": "",
+        "sourceIds": [
+          "peebles-personal"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "mit",
+        "name": "MIT",
+        "place": "케임브리지, 미국",
+        "period": "학부 연구",
+        "note": "시각 표현·생성 연구의 초기 공동연구에 참여했다.",
+        "sourceIds": [
+          "peebles-personal"
+        ]
+      },
+      {
+        "institutionId": "berkeley-bair",
+        "name": "Berkeley AI Research(BAIR)",
+        "place": "버클리, 미국",
+        "period": "박사 연구",
+        "note": "시각적 생성모형과 표현을 연구했다.",
+        "sourceIds": [
+          "peebles-personal"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "2024년 Sora 보고서",
+        "note": "영상 생성 모델 연구에 참여했다.",
+        "sourceIds": [
+          "peebles-sora",
+          "peebles-personal"
+        ]
+      }
+    ],
+    "background": "MIT 학부에서는 Antonio Torralba, UC 버클리 박사 과정에서는 Alexei Efros의 지도를 받았다. 개인 연구 목록에는 시각 표현과 생성모형에서 DiT와 OpenAI의 Sora로 이어지는 연구가 함께 정리되어 있다.",
+    "backgroundSourceIds": [
+      "peebles-personal"
+    ],
+    "connections": [
+      {
+        "personId": "alexei-efros",
+        "name": "Alexei A. Efros",
+        "kind": "advisor",
+        "label": "박사 지도",
+        "description": "Berkeley AI Research에서 피블스의 박사 연구를 지도했다.",
+        "period": "UC 버클리 박사 과정",
+        "sourceIds": [
+          "peebles-personal"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "saining-xie",
+        "name": "Saining Xie",
+        "kind": "collaboration",
+        "label": "DiT 공동연구",
+        "description": "Scalable Diffusion Models with Transformers의 두 공동저자다.",
+        "period": "2023년",
+        "sourceIds": [
+          "peebles-personal"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "peebles-personal",
+        "title": "William Peebles · 연구자 개인 홈페이지",
+        "url": "https://www.wpeebles.com/",
+        "scope": "MIT·Berkeley 학업과 Torralba·Efros 지도, DiT 공동저자와 시각 생성 연구 목록. 출생지·학위 연도는 이 페이지에서 확인하지 못해 생략했다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "peebles-sora",
+        "title": "OpenAI · Video generation models as world simulators",
+        "url": "https://openai.com/index/video-generation-models-as-world-simulators/",
+        "scope": "2024-02-15 Sora 공식 보고서의 연구·기여자 기록. 최신 직책이나 재직 기간 전체를 뜻하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "yang-zhilin",
+    "origin": null,
+    "education": [
+      {
+        "name": "칭화대학교",
+        "detail": "학사·Jie Tang의 지도",
+        "period": "2015년",
+        "sourceIds": [
+          "yang-personal"
+        ]
+      },
+      {
+        "name": "카네기멜런대학교(CMU)",
+        "detail": "컴퓨터과학 박사",
+        "period": "2019년",
+        "sourceIds": [
+          "yang-personal"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "cmu",
+        "name": "카네기멜런대학교",
+        "place": "피츠버그, 미국",
+        "period": "박사 연구·2019년 학위",
+        "note": "Ruslan Salakhutdinov와 William W. Cohen의 지도를 받았다.",
+        "sourceIds": [
+          "yang-personal"
+        ]
+      },
+      {
+        "institutionId": "meta-ai",
+        "name": "Meta AI",
+        "place": "",
+        "period": "",
+        "note": "Jason Weston과 함께 일한 경력을 공개했다.",
+        "sourceIds": [
+          "yang-personal"
+        ]
+      },
+      {
+        "institutionId": "google-brain",
+        "name": "Google Brain",
+        "place": "",
+        "period": "",
+        "note": "Quoc V. Le와 함께 일한 경력을 공개했다.",
+        "sourceIds": [
+          "yang-personal"
+        ]
+      }
+    ],
+    "background": "칭화대학교에서 학사학위를 받은 뒤 미국 CMU에서 박사 과정을 마쳤다. 개인 경력 소개에는 Meta AI의 Jason Weston, Google Brain의 Quoc V. Le와 함께 일한 경험도 기록되어 있다.",
+    "backgroundSourceIds": [
+      "yang-personal"
+    ],
+    "connections": [
+      {
+        "personId": "ruslan-salakhutdinov",
+        "name": "Ruslan Salakhutdinov",
+        "kind": "advisor",
+        "label": "박사 공동지도",
+        "description": "CMU에서 William W. Cohen과 함께 양즈린의 박사 연구를 지도했다.",
+        "period": "2019년 박사",
+        "sourceIds": [
+          "yang-personal"
+        ],
+        "relation": "student-of"
+      },
+      {
+        "personId": "william-w-cohen",
+        "name": "William W. Cohen",
+        "kind": "advisor",
+        "label": "박사 공동지도",
+        "description": "양즈린은 자신의 학업 소개에 Cohen을 공동지도교수로 명시한다.",
+        "period": "2019년 박사",
+        "sourceIds": [
+          "yang-personal"
+        ],
+        "relation": "student-of"
+      }
+    ],
+    "sources": [
+      {
+        "id": "yang-personal",
+        "title": "Zhilin Yang · 연구자 개인 홈페이지",
+        "url": "https://kimiyoung.github.io/",
+        "scope": "2015년 Tsinghua 학사·2019년 CMU 박사·지도교수와 Meta AI·Google Brain 공동업무. 오래된 개인 경력 소개의 기관을 현재 소속이라고 표시하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "yann-lecun",
+    "origin": null,
+    "education": [
+      {
+        "name": "ESIEE Paris",
+        "detail": "전자공학 공학학위",
+        "period": "학부 과정",
+        "sourceIds": [
+          "lecun-meta-bio"
+        ]
+      },
+      {
+        "name": "피에르 마리 퀴리대학교",
+        "detail": "컴퓨터과학 박사",
+        "period": "1987",
+        "sourceIds": [
+          "lecun-meta-bio"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-toronto",
+        "name": "토론토대학교",
+        "place": "토론토, 캐나다",
+        "period": "박사후연구",
+        "note": "박사학위 후 Bell Labs로 옮기기 전의 연구 경력",
+        "sourceIds": [
+          "lecun-meta-bio"
+        ]
+      },
+      {
+        "institutionId": "bell-labs",
+        "name": "AT&T Bell Laboratories·AT&T Labs",
+        "place": "홈델, 미국",
+        "period": "1988년 합류",
+        "note": "영상 처리·신경망 연구, 1996년 영상처리 연구부서 책임자",
+        "sourceIds": [
+          "lecun-meta-bio"
+        ]
+      },
+      {
+        "institutionId": "new-york-university",
+        "name": "뉴욕대학교(NYU)",
+        "place": "뉴욕, 미국",
+        "period": "2003년 합류",
+        "note": "교수로 합류하고 이후 데이터과학 연구 조직 설립에 참여",
+        "sourceIds": [
+          "lecun-meta-bio"
+        ]
+      }
+    ],
+    "background": "프랑스에서 공학과 컴퓨터과학을 공부한 뒤 캐나다 토론토에서 박사후연구를 했다. Bell Labs·AT&T Labs에서 영상처리 연구를 하고 2003년 NYU 교수로 옮겼다.",
+    "backgroundSourceIds": [
+      "lecun-meta-bio",
+      "lecun-lenet-paper"
+    ],
+    "connections": [
+      {
+        "personId": "yoshua-bengio",
+        "name": "Yoshua Bengio",
+        "kind": "collaboration",
+        "label": "문서 인식 공동저자",
+        "description": "1998년 Gradient Based Learning Applied to Document Recognition 논문을 함께 썼다.",
+        "period": "1998",
+        "sourceIds": [
+          "lecun-lenet-paper"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "leon-bottou",
+        "name": "Léon Bottou",
+        "kind": "collaboration",
+        "label": "문서 인식 공동저자",
+        "description": "LeCun·Bengio·Patrick Haffner와 1998년 문서 인식 논문을 함께 썼다.",
+        "period": "1998",
+        "sourceIds": [
+          "lecun-lenet-paper"
+        ],
+        "relation": "collaborated-with"
+      }
+    ],
+    "sources": [
+      {
+        "id": "lecun-meta-bio",
+        "title": "Meta AI · Yann LeCun 약력",
+        "url": "https://ai.meta.com/people/396469589677838/yann-lecun/",
+        "scope": "ESIEE·UPMC박사1987, Toronto 박사후연구, Bell Labs1988·부서책임자1996·NYU2003. 현재 직함은 배경에 사용하지 않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "lecun-college-bio",
+        "title": "Collège de France · Yann LeCun Biography",
+        "url": "https://www.college-de-france.fr/en/chair/yann-lecun-computer-sciences-and-digital-technologies-annual-chair/biography",
+        "scope": "프랑스 교육기관 졸업과 Bell Labs·AT&T의 과거 연구 경력 교차 확인",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "lecun-lenet-paper",
+        "title": "Léon Bottou · 1998 문서 인식 논문 저자 서지",
+        "url": "https://leon.bottou.org/papers/lecun-98h",
+        "scope": "LeCun·Bottou·Bengio·Haffner의 네 공동저자와 1998 출판 서지",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "yoshua-bengio",
+    "origin": null,
+    "education": [
+      {
+        "name": "맥길대학교",
+        "detail": "공학 학사·컴퓨터과학 석사",
+        "period": "1986·1988",
+        "sourceIds": [
+          "bengio-mcgill-alumni"
+        ]
+      },
+      {
+        "name": "맥길대학교",
+        "detail": "컴퓨터과학 박사",
+        "period": "1991",
+        "sourceIds": [
+          "bengio-caiac-bio",
+          "bengio-mcgill-alumni"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "mit",
+        "name": "MIT",
+        "place": "케임브리지, 미국",
+        "period": "박사후연구",
+        "note": "통계적 학습과 순서 자료 연구",
+        "sourceIds": [
+          "bengio-caiac-bio"
+        ]
+      },
+      {
+        "institutionId": "bell-labs",
+        "name": "AT&T Bell Laboratories",
+        "place": "홈델, 미국",
+        "period": "1993년까지의 박사후연구",
+        "note": "학습·시각 알고리즘 연구",
+        "sourceIds": [
+          "bengio-caiac-bio"
+        ]
+      },
+      {
+        "institutionId": "universite-de-montreal",
+        "name": "몬트리올대학교",
+        "place": "몬트리올, 캐나다",
+        "period": "1993년 합류",
+        "note": "교수로 합류하고 몬트리올의 학습 연구 공동체를 구축",
+        "sourceIds": [
+          "bengio-caiac-bio"
+        ]
+      }
+    ],
+    "background": "몬트리올의 맥길대학교에서 학사·석사·박사 과정을 밟았다. 미국 MIT와 Bell Labs의 박사후연구를 거쳐 1993년 몬트리올대학교 교수로 합류했다.",
+    "backgroundSourceIds": [
+      "bengio-mcgill-alumni",
+      "bengio-caiac-bio"
+    ],
+    "connections": [
+      {
+        "personId": "yann-lecun",
+        "name": "Yann LeCun",
+        "kind": "collaboration",
+        "label": "문서 인식 공동저자",
+        "description": "1998년 문서 인식 종합 논문의 공동저자다.",
+        "period": "1998",
+        "sourceIds": [
+          "bengio-lenet-paper"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "ian-goodfellow",
+        "name": "Ian Goodfellow",
+        "kind": "advisor",
+        "label": "지도한 연구자",
+        "description": "Goodfellow의 박사학위 논문 연구를 Aaron Courville과 함께 지도했다.",
+        "period": "2014년 학위심사 기록",
+        "sourceIds": [
+          "bengio-goodfellow-defense"
+        ],
+        "relation": "advised"
+      }
+    ],
+    "sources": [
+      {
+        "id": "bengio-mcgill-alumni",
+        "title": "McGill University · Notable alumni",
+        "url": "https://www.mcgill.ca/about/alumni",
+        "scope": "BEng1986·MSc1988·PhD1991 학위 기록",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "bengio-caiac-bio",
+        "title": "Canadian AI Association · Dr. Yoshua Bengio",
+        "url": "https://www.caiac.ca/en/yoshua-bengio",
+        "scope": "McGill박사1991·MIT와BellLabs박사후연구·1993 UdeM합류의 역사적경력. 페이지의 현재직함은 사용하지 않음",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "bengio-lenet-paper",
+        "title": "Léon Bottou · 1998 문서 인식 논문 저자 서지",
+        "url": "https://leon.bottou.org/papers/lecun-98h",
+        "scope": "Bengio·LeCun·Bottou·Haffner 공동저자",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "bengio-goodfellow-defense",
+        "title": "Université de Montréal · Ian Goodfellow 학위심사 공고",
+        "url": "https://diro.umontreal.ca/en/departement/activites/activite/news/eventDetail/Event/deep-learning-of-representations-and-its-application-to-computer-vision/",
+        "scope": "2014-09-02 심사, 지도 Bengio·공동지도 Courville",
+        "accessed": "2026-11-10"
+      }
+    ]
+  }
+];

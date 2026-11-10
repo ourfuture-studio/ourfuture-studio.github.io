@@ -1,5 +1,52 @@
-/* Commons source and attribution metadata for the public release. */
+/* Commons attribution and source-matched local fallbacks for the public release. */
 window.ATLAS_PERSON_PORTRAITS=Object.freeze({
+  "alan-turing": {
+    "personId": "alan-turing",
+    "name": "Alan Turing",
+    "aliases": [
+      "앨런 튜링",
+      "엘런 튜링"
+    ],
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/AlanTuring1952.jpg/500px-AlanTuring1952.jpg",
+    "originalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/AlanTuring1952.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:AlanTuring1952.jpg",
+    "author": "Wellcome Library, London (photographer unidentified); crop: Vysotsky",
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "urlKind": "license"
+    },
+    "fileTitle": "File:AlanTuring1952.jpg",
+    "wikidataUrl": "https://www.wikidata.org/wiki/Q7251",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alan_Turing",
+    "qid": "Q7251",
+    "identityStatus": "verified",
+    "sourceMethod": "Commons file-specific crop + Wellcome GC/179/B.25 + published Ratio Club caption",
+    "metadataRetrievedAt": "2026-11-10",
+    "identityEvidence": [
+      "Commons identifies the subject as Alan Turing and identifies this file as a crop of Wellcome L0030978.",
+      "The Commons file caption transcribes the Ratio Club group photograph caption: front row starts with A. Turing.",
+      "Husbands and Holland, The Ratio Club: A Hub of British Cybernetics, Fig.2 on PDF p.27 identifies A. Turing at front-left; the image is credited to Wellcome Library.",
+      "King's College Turing archive AMT/K/7/17 separately describes the group photograph with AMT sitting lower left."
+    ],
+    "photoDateDisplay": "1952 · Ratio Club",
+    "displayChanges": "Existing Commons crop from a group photograph; thumbnail; UI grayscale, fit and zoom may further change the displayed region. No local pixel edits.",
+    "publicationReview": "verified",
+    "publicationReviewReason": "Replaced the previously pending 1951 Elliott & Fry portrait with the distinct Wellcome Ratio Club photograph. Commons file and original Wellcome image EXIF explicitly record CC BY4.0 and permit adaptations.",
+    "position": "50% 23%",
+    "displayScale": 2.0,
+    "localFile": "alan-turing-ratio-club-1952-500.jpg",
+    "originalSource": {
+      "archive": "https://wellcomecollection.org/works/shzbhwgj",
+      "reference": "GC/179/B.25; Wellcome image L0030978",
+      "originalCommonsFile": "https://commons.wikimedia.org/wiki/File:Bates,_John_AV_%26_the_Ratio_Club._Wellcome_L0030978.jpg",
+      "captionCorroboration": "https://users.sussex.ac.uk/~philh/pubs/Ratio2.pdf#page=27",
+      "turingArchive": "https://turingarchive.kings.cam.ac.uk/material-given-kings-college-cambridge-1960-amtk/amt-k-7-17"
+    },
+    "width": 500,
+    "height": 700,
+    "mime": "image/jpeg"
+  },
   "john-mccarthy": {
     "personId": "john-mccarthy",
     "name": "John McCarthy",
@@ -37,6 +84,54 @@ window.ATLAS_PERSON_PORTRAITS=Object.freeze({
     "restrictions": "",
     "displayChanges": "Remote Commons thumbnail; the UI may apply CSS fit/crop. Photo date is not the research record date.",
     "publicationReview": "metadata-confirmed"
+  },
+  "frank-rosenblatt": {
+    "personId": "frank-rosenblatt",
+    "name": "Frank Rosenblatt",
+    "aliases": [
+      "프랭크 로젠블랫",
+      "프랑크 로젠블랫",
+      "로젠블럿"
+    ],
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/330-PSA-80-60_%28USN_710739%29_%2820897323365%29.jpg/960px-330-PSA-80-60_%28USN_710739%29_%2820897323365%29.jpg",
+    "originalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/330-PSA-80-60_%28USN_710739%29_%2820897323365%29.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:330-PSA-80-60_(USN_710739)_(20897323365).jpg",
+    "author": "U.S. Navy / National Museum of the U.S. Navy; 330-PSA-80-60 (USN 710739)",
+    "license": {
+      "name": "Public domain · U.S. Navy",
+      "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "urlKind": "file-statement"
+    },
+    "fileTitle": "File:330-PSA-80-60 (USN 710739) (20897323365).jpg",
+    "wikidataUrl": "https://www.wikidata.org/wiki/Q93018",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Frank_Rosenblatt",
+    "qid": "Q93018",
+    "identityStatus": "verified",
+    "sourceMethod": "Official U.S. Navy Museum Flickr caption + Commons PD-USNavy review + published photo caption",
+    "metadataRetrievedAt": "2026-11-10",
+    "identityEvidence": [
+      "Original uploader is National Museum of the U.S. Navy, Flickr photograph 20897323365; source caption identifies the Mark I programme and Dr. Frank Rosenblatt.",
+      "The official uploader marks the photograph Public domain; Commons records a Flickr licensing review and PD-USNavy government-work status.",
+      "Cossette and Salter, Performing AI, TDR68(1),2024, Fig.4 on printed p.76/PDF7 shows the same scene and identifies Frank Rosenblatt with his Perceptron; caption states Office of Naval Research release24June1960 and public domain.",
+      "Visually inspected the960px photograph: one researcher beside the Mark I image sensor, large C at left; face is near50% horizontal,25% vertical."
+    ],
+    "photoDateDisplay": "1960-06-24 공개 사진",
+    "displayChanges": "Official archival photograph via Commons thumbnail. UI grayscale, fit and zoom may crop the visible region; no local pixel edits.",
+    "publicationReview": "verified",
+    "publicationReviewReason": "Replaced the pending anonymous1950student photograph with a Navy photograph whose official museum source directly displays Public domain; original-source attribution and release date retained.",
+    "position": "50% 25%",
+    "displayScale": 2.2,
+    "localFile": "frank-rosenblatt-usn-1960-960.jpg",
+    "originalSource": {
+      "officialPhoto": "https://www.flickr.com/photos/127906254@N06/20897323365/",
+      "officialAccount": "https://www.flickr.com/people/national_museum_of_the_us_navy/",
+      "reference": "330-PSA-80-60 (USN710739)",
+      "identityCorroboration": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3D73888ACE0F68254A32E154552243B2/S1054204323000588a.pdf/performing_ai.pdf#page=7",
+      "navyPhotoPolicy": "https://www.history.navy.mil/our-collections/photography.html"
+    },
+    "width": 960,
+    "height": 751,
+    "mime": "image/jpeg"
   },
   "marvin-minsky": {
     "personId": "marvin-minsky",

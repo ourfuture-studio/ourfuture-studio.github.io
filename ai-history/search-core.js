@@ -41,7 +41,7 @@
     'yann lecun': ['얀 르쿤', '르쿤', '르캉'],
     'artur davila garcez': ['아르투르 다빌라 가르세즈', '가르세즈', '가르세스'],
     'joshua tenenbaum': ['조슈아 테넨바움', '테넨바움'],
-    'frank rosenblatt': ['프랭크 로젠블랫', '로젠블랫', '로젠블라트'],
+    'frank rosenblatt': ['프랭크 로젠블랫', '로젠블랫', '로젠블라트', '로젠블럿', '프랭크 로젠블럿'],
     'warren mcculloch': ['워런 매컬럭', '매컬럭', '맥컬럭'],
     'walter pitts': ['월터 피츠', '피츠'],
     'allen newell': ['앨런 뉴얼', '뉴얼', '뉴웰'],
@@ -241,6 +241,7 @@
         summary: plain(p.tagline || p.intro), years,
         tags: [...(p.tags || [])], _enhanced: !!p.enhanced,
         _identity: makeDoc([identity.text], [p.id]), _works: documents,
+        _background: makeDoc([identity.text,root.AtlasPersonBackground?.text(p.id) || ''], [p.id]),
         _label: compact([p.nameKo, p.name, identity.text].filter(Boolean).join(' '))
       });
     }
@@ -319,7 +320,7 @@
     if (!parsed.invalidYearRange) for (const record of index) {
       if (record.kind === 'person' && scope !== 'work') {
         if (namedPeople.length && !namedPeople.includes(record.personId)) continue;
-        const direct = !parsed.hasYearFilter && matches(record._identity, terms);
+        const direct = !parsed.hasYearFilter && (matches(record._identity, terms) || matches(record._background, terms));
         if (direct || record._works.some(w => matchesYear(w.year, parsed) && matches(w, terms))) people.push(record);
       } else if (record.kind === 'work' && scope !== 'person') {
         if (matchesYear(record.year, parsed) && matches(record._doc, terms)) works.push(record);

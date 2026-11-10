@@ -76,6 +76,7 @@
     if(portraitFor(p))window.AtlasPortraits.appendCredit(panel,p,{className:'person-photo-credit'});
     const jumps=node('nav','person-year-nav');jumps.setAttribute('aria-label',(p.nameKo||p.name)+'의 연도별 기록 바로가기');
     p.works.forEach((w,index)=>{const b=node('button','',String(w.year));b.type='button';b.style.setProperty('--tag-color',colors[w.track]||colors.foundations);b.setAttribute('aria-label',w.year+'년 '+w.title+' 기록으로 이동');b.addEventListener('click',()=>{const target=panel.querySelectorAll('.person-work')[index];const heading=target.querySelector('h4');heading.tabIndex=-1;heading.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});jumps.append(b);});
+    window.AtlasPersonBackground?.render(panel,p.id,id=>byId.get(id));
     panel.append(jumps,node('p','person-intro',p.intro));
     const heading=node('div','person-timeline-heading');heading.append(node('h3','','연도로 읽는 연구 기록'),node('span','mono','SELECTED WORKS'));panel.append(heading);
     const timeline=node('ol','person-timeline');
@@ -97,7 +98,7 @@
       if(w.eventId){const b=node('button','work-event-link','연구 흐름에서 보기 ↗');b.type='button';b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('atlas:open-event',{detail:{id:w.eventId}})));body.append(b);}
       item.append(year,body);timeline.append(item);
     }
-    panel.append(timeline,node('p','person-scope-note','표시한 연도는 논문·보고서·발표 등 해당 기록의 연도입니다. 이 목록은 전체 저작 목록이 아니며, 연구 사이의 선은 연도순 읽기를 뜻합니다. 직접적인 영향이나 인과관계를 표시한 것은 아닙니다.'));
+    panel.append(timeline,node('p','person-scope-note','표시한 연도는 논문·보고서·발표 등 해당 기록의 연도입니다. 대표 연구를 골라 수록했으며, 연구 기록의 세로선은 연도순 읽기를 뜻합니다.'+(window.AtlasPersonBackground?.get(p.id)?' 인물 관계는 위에서 지도·공동연구·영향 등의 유형과 근거를 따로 표시합니다.':'')));
     $('live-status').textContent=(p.nameKo||p.name)+', '+p.works.length+'개의 연구 기록';
   }
   function select(id, updateRoute=true, focus=true){
@@ -111,9 +112,9 @@
   }
   function setFilter(f,q){
     filter=f;query=clean(q.trim());
-    const aliases={'튜링':'turing','앨런 튜링':'alan turing','엘런 튜링':'alan turing','힌턴':'hinton','매카시':'mccarthy','민스키':'minsky','르쿤':'lecun','가르세즈':'garcez','테넨바움':'tenenbaum'};
+    const aliases={'튜링':'turing','앨런 튜링':'alan turing','엘런 튜링':'alan turing','로젠블럿':'rosenblatt','힌턴':'hinton','매카시':'mccarthy','민스키':'minsky','르쿤':'lecun','가르세즈':'garcez','테넨바움':'tenenbaum'};
     const term=clean(aliases[q.trim()]||q.trim());
-    filtered=profiles.filter(p=>(scope==='all'||p.focus)&&(filter==='all'||p.tags.includes(filter))&&(!term||clean([p.name,p.nameKo,p.tagline,p.intro,...p.works.flatMap(w=>[w.year,w.title,w.summary])].join(' ')).includes(term)));
+    filtered=profiles.filter(p=>(scope==='all'||p.focus)&&(filter==='all'||p.tags.includes(filter))&&(!term||clean([p.name,p.nameKo,p.tagline,p.intro,window.AtlasPersonBackground?.text(p.id),...p.works.flatMap(w=>[w.year,w.title,w.summary])].filter(Boolean).join(' ')).includes(term)));
     const previous=selected;
     if(!filtered.some(p=>p.id===selected))selected=filtered[0]?.id||'';
     renderCatalog();renderPerson();
