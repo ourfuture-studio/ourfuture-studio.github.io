@@ -1,5 +1,5 @@
 {
-  "version": "0.43-public.1",
+  "version": "0.44-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -772,14 +772,14 @@
     "nodesWithoutCards": 19
   },
   "personCardRevision": {
-    "personId": "alex-karp",
-    "workId": "karp-palantir-2003",
-    "source": "Official Palantir Ontology and AIP documentation, cofounder records and the 2024 Anduril partnership announcement; source dates and evidence boundaries appear in the article.",
-    "implementation": "Refines the existing 2003 Palantir record with later product context. Original diagrams distinguish data and business objects, AI-assisted proposed work, authorized actions and announced company cooperation. No live AI model or business-system operation runs here.",
+    "personId": "alexandr-wang",
+    "workId": "wang-scale-2016",
+    "source": "Official Scale data, feedback and evaluation documentation and dated company announcements; source dates and evidence boundaries appear in the article.",
+    "implementation": "Refines the existing 2016 Scale record with later product context. Original diagrams distinguish task definitions, human annotation or feedback, training inputs, held-out evaluation and company relationships. Authored examples are separate from executed customer workloads or measured model results.",
     "newRasterAssets": 0,
-    "priorAip2023RecordPreserved": true,
+    "priorMeta2025RecordPreserved": true,
     "existingIndustryCatalogPreserved": true,
-    "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
+    "companyAnnouncementEvidenceUrl": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution"
   },
   "priorPersonCardRevisions": [
     {
@@ -828,6 +828,16 @@
       "implementation": "Refines the existing2017 Anduril record; an original high-level visualization distinguishes field observations, system roles and the2024 company partnership. It is not a live operational system or an independently validated product trial.",
       "newRasterAssets": 0,
       "priorOculusRecordPreserved": true,
+      "existingIndustryCatalogPreserved": true,
+      "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
+    },
+    {
+      "personId": "alex-karp",
+      "workId": "karp-palantir-2003",
+      "source": "Official Palantir Ontology and AIP documentation, cofounder records and the 2024 Anduril partnership announcement; source dates and evidence boundaries appear in the article.",
+      "implementation": "Refines the existing 2003 Palantir record with later product context. Original diagrams distinguish data and business objects, AI-assisted proposed work, authorized actions and announced company cooperation. No live AI model or business-system operation runs here.",
+      "newRasterAssets": 0,
+      "priorAip2023RecordPreserved": true,
       "existingIndustryCatalogPreserved": true,
       "companyPartnershipEvidenceUrl": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security"
     }
