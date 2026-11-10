@@ -2234,6 +2234,112 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "max-newman",
+    "origin": {
+      "label": "출생",
+      "text": "첼시, 런던, 영국",
+      "sourceIds": [
+        "newman-lms-obituary"
+      ]
+    },
+    "education": [
+      {
+        "name": "케임브리지대학교 세인트존스칼리지",
+        "detail": "수학 과정 · 1915년 입학, 전시 복무 뒤 1919년 복귀, 1921년 Mathematical Tripos",
+        "period": "1915–1921 · 재학 중단 포함",
+        "sourceIds": [
+          "newman-lms-obituary"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-cambridge",
+        "name": "케임브리지대학교",
+        "place": "케임브리지, 영국",
+        "period": "1927–1945 · 대학 강의·연구",
+        "note": "수학을 강의했으며, 1935년 수학기초 강의는 튜링의 결정문제 연구에 영향을 주었다.",
+        "sourceIds": [
+          "newman-lms-obituary",
+          "newman-kings-turing"
+        ]
+      },
+      {
+        "institutionId": "bletchley-park",
+        "name": "Government Code and Cypher School · 블레츨리파크",
+        "place": "영국",
+        "period": "1942–1945",
+        "note": "로렌츠 암호의 기계적 해독을 다룬 조직과 연구를 이끌었다.",
+        "sourceIds": [
+          "newman-manchester"
+        ]
+      },
+      {
+        "institutionId": "university-of-manchester",
+        "name": "맨체스터대학교",
+        "place": "맨체스터, 영국",
+        "period": "1945–1964 · Fielden Professor",
+        "note": "수학 연구와 계산기의 활용을 위한 연구 환경을 구축했고, 1948년 튜링을 수학과에 영입했다.",
+        "sourceIds": [
+          "newman-lms-obituary",
+          "newman-manchester"
+        ]
+      }
+    ],
+    "background": "영국 런던에서 태어나 케임브리지에서 수학을 공부하고 강의했다. 전쟁 중에는 기계적 암호해독 연구를 이끌었고, 전후 맨체스터에서는 수학과 계산기 연구의 환경을 조성하며 튜링을 영입했다.",
+    "backgroundSourceIds": [
+      "newman-lms-obituary",
+      "newman-manchester"
+    ],
+    "connections": [
+      {
+        "personId": "alan-turing",
+        "name": "Alan Turing",
+        "nameKo": "앨런 튜링",
+        "kind": "influence",
+        "relation": "influenced",
+        "label": "강의·연구에 영향",
+        "description": "1935년 수학기초 강의에서 기계적 절차로 수학적 문장의 증명 가능성을 판정하는 문제를 제시해 튜링의 연구에 영향을 주었다. 이후 맨체스터에서 다시 함께 일했다. 튜링의 박사 지도교수인 처치와는 다른 관계다.",
+        "period": "1935–1936 · 1948년 이후",
+        "sourceIds": [
+          "newman-kings-turing",
+          "newman-manchester",
+          "newman-manchester-turing"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "newman-lms-obituary",
+        "title": "Peter Hilton (1986) · Obituary: M. H. A. Newman",
+        "url": "https://mathshistory.st-andrews.ac.uk/LMS/newman_lms_obit.pdf",
+        "scope": "Bulletin of the London Mathematical Society 18, 67–72, DOI 10.1112/blms/18.1.67. 인쇄 p.67(PDF2)의 출생·수학 과정·1927년 강사·1945–1964년 맨체스터 재직·1948년 튜링 영입을 대조했다. 작성자는 뉴먼과 함께 일한 Peter Hilton이다. 전쟁 중 기계의 상세 기여는 이 회고의 요약만으로 개인에게 귀속하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "newman-kings-turing",
+        "title": "King’s College Cambridge · Alan Mathison Turing · The Entscheidungsproblem",
+        "url": "https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54",
+        "scope": "The Entscheidungsproblem 절의 1935년 봄 뉴먼의 Part III 강의와 1935–1936년 연구 지도에 대한 아카이브 전시 설명을 확인했다. 강의 당시의 녹취나 원고를 직접 확인한 것으로 표시하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "newman-manchester",
+        "title": "University of Manchester · Digital 60: Max Newman",
+        "url": "https://curation.cs.manchester.ac.uk/digital60/www.digital60.org/about/biographies/maxnewman/index.html",
+        "scope": "첫 문단의 강의·튜링 원고, 전쟁 중 로렌츠 암호해독, 전후 맨체스터 연구 환경과 1948/49년 튜링 임용 재원 설명을 확인했다. 같은 자료의 Baby 하드웨어 설계 기여 범위와, 뉴먼·튜링의 블레츨리파크 활동을 같은 프로젝트로 합치지 말라는 주의도 보존한다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "newman-manchester-turing",
+        "title": "University of Manchester · Digital 60: Alan Turing",
+        "url": "https://curation.cs.manchester.ac.uk/digital60/www.digital60.org/about/biographies/alanturing/index.html",
+        "scope": "Turing Machine 절의 뉴먼 강의·초고, NPL and ACE 절의 뉴먼 제안과 1948년 맨체스터 합류, At Manchester 절의 수학적 계산 공동 작업을 확인했다. 뉴먼을 튜링의 프린스턴 박사 지도교수로 표시하지 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
     "personId": "palmer-luckey",
     "origin": null,
     "education": [],

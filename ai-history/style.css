@@ -25,3 +25,7 @@ dialog{color:var(--ink);background:var(--bg);border:1px solid var(--line);paddin
 .minimap-years{display:block}.minimap-years>span{position:absolute;transform:translateX(-50%)}.minimap-years>span:first-child{transform:none}.minimap-years>span:last-child{transform:translateX(-100%)}
 .flat-year{font-size:10px}.flat-year.future-year{border-left-style:dashed;color:#94a3bd}
 @media(max-width:400px){.minimap-years>span:nth-last-child(2){display:none}}
+
+/* The AI explorer returns to the main studio home. */
+.header-home-link{display:inline-flex;align-items:center;min-height:36px;white-space:nowrap;font-size:11px;text-decoration:none;color:var(--muted)}.header-home-link:hover{color:var(--accent)}
+@media(max-width:700px){.header-home-link{font-size:10px}.masthead .header-title{display:none}.header-actions{gap:6px}}

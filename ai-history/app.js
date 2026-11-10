@@ -368,7 +368,7 @@
     for(const id of ['about-open','sources-open'])$(id).addEventListener('click',openAbout);
     document.querySelectorAll('.dialog-close').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
     document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();}));
-    $('detail-dialog').addEventListener('close',()=>window.AtlasArticle?.dispose());
+    $('detail-dialog').addEventListener('close',()=>{if(!$('detail-dialog').open)window.AtlasArticle?.dispose();});
     $('zoom-out').addEventListener('click',()=>{state.zoom=clamp(state.zoom-.25,1,3);buildFlat();updateSelection();centerFlat();});
     $('zoom-in').addEventListener('click',()=>{state.zoom=clamp(state.zoom+.25,1,3);buildFlat();updateSelection();centerFlat();});
     $('theme-toggle').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';$('theme-toggle').setAttribute('aria-label',dark?'밝은 테마로 전환':'어두운 테마로 전환');try{localStorage.setItem('ourfuture-atlas-theme',dark?'dark':'light');}catch{}});
