@@ -32,6 +32,7 @@
   profiles.sort((a,b)=>(focusOrder.get(a.id)??999)-(focusOrder.get(b.id)??999)||Number(b.enhanced)-Number(a.enhanced)||a.name.localeCompare(b.name));
   const byId=new Map(profiles.map(p=>[p.id,p]));
   let selected='alan-turing',filtered=profiles,filter='all',query='',scope='all';
+  const personRoute=id=>'#person='+encodeURIComponent(id)+(filter==='industry'?'&filter=industry':'');
 
   function avatar(p,className){
     if(window.AtlasPortraits)return window.AtlasPortraits.createAvatar(p,{className,loading:className==='large'?'eager':'lazy'});
@@ -109,9 +110,11 @@
     selected=id;renderCatalog();renderPerson();
     if(focus&&fromCatalog){$('people-list').querySelector('[data-person="'+id+'"]').focus({preventScroll:true});}
     else if(focus){const heading=$('person-panel').querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}
-    if(updateRoute){try{history.replaceState(null,'','#person='+encodeURIComponent(id));}catch{}}
+    if(updateRoute){try{history.replaceState(null,'',personRoute(id));}catch{}}
   }
-  function setFilter(f,q){
+  function setFilter(f,q,options={}){
+    const previousFilter=filter;
+    if(options.includeAllPeople&&scope!=='all'){scope='all';document.querySelectorAll('[data-people-scope]').forEach(b=>{const on=b.dataset.peopleScope==='all';b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});}
     filter=f;query=clean(q.trim());
     const aliases={'튜링':'turing','앨런 튜링':'alan turing','엘런 튜링':'alan turing','로젠블럿':'rosenblatt','힌턴':'hinton','매카시':'mccarthy','민스키':'minsky','르쿤':'lecun','가르세즈':'garcez','테넨바움':'tenenbaum'};
     const term=clean(aliases[q.trim()]||q.trim());
@@ -119,7 +122,7 @@
     const previous=selected;
     if(!filtered.some(p=>p.id===selected))selected=filtered[0]?.id||'';
     renderCatalog();renderPerson();
-    if(previous!==selected&&selected&&!$('people-shell').hidden){try{history.replaceState(null,'','#person='+encodeURIComponent(selected));}catch{}}
+    if((previous!==selected||filter==='industry'||previousFilter==='industry')&&selected&&!$('people-shell').hidden){try{history.replaceState(null,'',personRoute(selected));}catch{}}
     return filtered.length;
   }
   window.AtlasPeople={

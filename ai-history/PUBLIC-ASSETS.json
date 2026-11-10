@@ -1,5 +1,5 @@
 {
-  "version": "0.40-public.1",
+  "version": "0.41-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -817,5 +817,15 @@
     "wordmarkAndVisibleHomeLink": true,
     "mainHomepageMenuHref": "ai-history/",
     "mainHomepageStagedSeparately": true
+  },
+  "navigationRevision": {
+    "version": "0.41-public.1",
+    "view": "existing people catalog",
+    "filter": "industry",
+    "label": "기업·인프라",
+    "existingPeople": 6,
+    "existingWorks": 13,
+    "route": "#person=peter-thiel&filter=industry",
+    "scope": "Expose existing people and their existing company/platform records through an additional catalog filter; no new person, company, work, graph node or source asset is added."
   }
 }

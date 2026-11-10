@@ -59,15 +59,18 @@
     const aliases = { '힌턴': 'hinton', '매카시': 'mccarthy', '맥카시': 'mccarthy', '로젠블랫': 'rosenblatt', '르쿤': 'lecun', '호크라이터': 'hochreiter', '슈미트후버': 'schmidhuber', '가르세즈': 'garcez', '테넨바움': 'tenenbaum', '민스키': 'minsky', '튜링': 'turing' };
     return normalized(aliases[q] || q);
   }
-  function updateFilter() {
+  function updateFilter(options={}) {
     if(state.mode==='graph')return;
     for (const button of document.querySelectorAll('[data-filter]')) { const active = button.dataset.filter === state.filter; button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active)); }
     if(state.mode==='people'){
-      const count=window.AtlasPeople.setFilter(state.filter,state.query);
+      const count=window.AtlasPeople.setFilter(state.filter,state.query,options);
       $('all-count').textContent=window.AtlasPeople.total;$('all-filter-label').textContent='전체 인물';
+      document.querySelector('.track-filters').setAttribute('aria-label','인물 분야 선택');
+      $('browse-mode-hint').textContent=state.filter==='industry'?'기존 인물의 기업·투자·인프라 활동을 함께 읽습니다':'한 인물의 연구·기업 활동을 연도순으로 읽습니다';
       return;
     }
     $('all-count').textContent=all.length;$('all-filter-label').textContent='전체 흐름';
+    document.querySelector('.track-filters').setAttribute('aria-label','연구 흐름 필터');
     const previous = byId.get(state.selected);
     const q = queryText(state.query.trim());
     state.events = all.filter(e => (state.filter === 'all' || state.filter === e.track) && (!q || normalized([e.title,e.subtitle,e.people.join(' '),e.summary,e.detail,e.year,tracks[e.track].label].join(' ')).includes(q)));
@@ -267,6 +270,7 @@
     if(state.mode!==mode){modeState[state.mode]={filter:state.filter,query:state.query};Object.assign(state,modeState[mode]);}
     state.mode=mode;
     const people=mode==='people',graph=mode==='graph',research=mode==='research';
+    $('industry-filter').hidden=!people;
     $('explorer').dataset.mode=mode;
     $('people-shell').hidden=!people;
     $('person-graph-shell').hidden=!graph;
@@ -281,7 +285,7 @@
     if(graph)window.AtlasPersonGraph?.show();
     try{
       if(graph)window.AtlasPersonGraph?.updateRoute();
-      else if(people&&window.AtlasPeople.selected)history.replaceState(null,'','#person='+encodeURIComponent(window.AtlasPeople.selected));
+      else if(people&&window.AtlasPeople.selected)history.replaceState(null,'','#person='+encodeURIComponent(window.AtlasPeople.selected)+(state.filter==='industry'?'&filter=industry':''));
       else if(location.hash.startsWith('#person=')||location.hash.startsWith('#graph='))history.replaceState(null,'',location.pathname+location.search);
     }catch{}
   }
@@ -292,7 +296,13 @@
   function openWorkDetail(personId,workId){
     const p=window.AtlasPeople.profiles.find(p=>p.id===personId),w=p?.works.find(w=>w.id===workId);if(!w)return;
     const e=byId.get(w.eventId)||{...w,subtitle:w.type,detail:'',related:[],question:''};openRecord(e);
-    try{history.replaceState(null,'','#person='+encodeURIComponent(personId)+'&work='+encodeURIComponent(workId));}catch{}
+    try{history.replaceState(null,'','#person='+encodeURIComponent(personId)+'&work='+encodeURIComponent(workId)+(state.mode==='people'&&state.filter==='industry'?'&filter=industry':''));}catch{}
+  }
+  function openPersonRoute(params,personId){
+    const person=window.AtlasPeople.profiles.find(p=>p.id===personId);
+    setMode('people');state.filter=params.get('filter')==='industry'&&person?.tags.includes('industry')?'industry':'all';state.query='';
+    updateFilter({includeAllPeople:state.filter==='industry'});window.AtlasPeople.select(personId,true,false);
+    if(params.get('work'))openWorkDetail(personId,params.get('work'));
   }
   function openRecord(e) {
     const t=tracks[e.track]||tracks.foundations;
@@ -344,13 +354,12 @@
       const params=new URLSearchParams(location.hash.slice(1)),person=params.get('person'),event=params.get('event');
       if(params.has('graph')){if($('detail-dialog').open)$('detail-dialog').close();setMode('graph');window.AtlasPersonGraph?.focus(params.get('focus')||'');}
       else if(person&&window.AtlasPeople.profiles.some(p=>p.id===person)){
-        if($('detail-dialog').open)$('detail-dialog').close();setMode('people');state.filter='all';state.query='';updateFilter();window.AtlasPeople.select(person);
-        if(params.get('work'))openWorkDetail(person,params.get('work'));
+        if($('detail-dialog').open)$('detail-dialog').close();openPersonRoute(params,person);
       }else if(event&&byId.has(event)){
         setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(event);openDetail(event);
       }
     });
-    document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.filter;updateFilter();}));
+    document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.filter;updateFilter({includeAllPeople:state.filter==='industry'});}));
     $('journey-view').addEventListener('click',()=>setView('journey'));$('timeline-view').addEventListener('click',()=>setView('flat'));
     $('prev-event').addEventListener('click',()=>{const i=state.events.findIndex(e=>e.id===state.selected);move(i-1);if(state.view==='flat')centerFlat(state.events[Math.max(0,i-1)]?.id);});
     $('next-event').addEventListener('click',()=>{const i=state.events.findIndex(e=>e.id===state.selected);move(i+1);if(state.view==='flat')centerFlat(state.events[Math.min(state.events.length-1,i+1)]?.id);});
@@ -393,8 +402,8 @@
     wire();addCredits();updateFilter();measure();
     document.fonts.ready.then(measure);
     if(byId.has(requested))openDetail(requested);
-    const requestedPerson=new URLSearchParams(location.hash.slice(1)).get('person');
-    if(requestedPerson&&window.AtlasPeople.profiles.some(p=>p.id===requestedPerson)){const work=new URLSearchParams(location.hash.slice(1)).get('work');setMode('people');window.AtlasPeople.select(requestedPerson,true,false);if(work)openWorkDetail(requestedPerson,work);}
+    const requestedPerson=route.get('person');
+    if(requestedPerson&&window.AtlasPeople.profiles.some(p=>p.id===requestedPerson))openPersonRoute(route,requestedPerson);
     if(route.has('graph')){setMode('graph');window.AtlasPersonGraph?.focus(route.get('focus')||'');}
   }
   init();
