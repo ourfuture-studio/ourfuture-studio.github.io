@@ -997,6 +997,118 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "donald-hebb",
+    "origin": {
+      "label": "출생",
+      "text": "체스터, 노바스코샤, 캐나다",
+      "sourceIds": [
+        "mcgill-department"
+      ]
+    },
+    "education": [
+      {
+        "name": "댈하우지대학교",
+        "detail": "학사 · B.A.",
+        "period": "1925",
+        "sourceIds": [
+          "mcgill-department"
+        ]
+      },
+      {
+        "name": "맥길대학교",
+        "detail": "석사 · M.A.",
+        "period": "1932",
+        "sourceIds": [
+          "mcgill-department"
+        ]
+      },
+      {
+        "name": "하버드대학교",
+        "detail": "박사 · Karl Lashley의 지도로 연구",
+        "period": "1936",
+        "sourceIds": [
+          "mcgill-department"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "montreal-neurological-institute",
+        "name": "몬트리올 신경학연구소 · MNI",
+        "place": "몬트리올, 캐나다",
+        "period": "1937–1939",
+        "note": "Wilder Penfield와 함께 뇌 손상이 지능과 행동에 미치는 영향을 연구했다.",
+        "sourceIds": [
+          "mcgill-department"
+        ]
+      },
+      {
+        "institutionId": "yerkes-laboratories-primate-biology",
+        "name": "Yerkes Laboratories of Primate Biology",
+        "place": "미국",
+        "period": "1942–1947",
+        "note": "Lashley의 초청으로 영장류 연구실에서 연구했다.",
+        "sourceIds": [
+          "mcgill-department"
+        ]
+      },
+      {
+        "institutionId": "mcgill-university",
+        "name": "맥길대학교 심리학과",
+        "place": "몬트리올, 캐나다",
+        "period": "1947년부터 · 교수",
+        "note": "신경계의 활동과 행동을 연결하는 연구·교육을 이어갔다. 1949년 저서의 표제에도 맥길 소속이 표시돼 있다.",
+        "sourceIds": [
+          "mcgill-department",
+          "hebb-book"
+        ]
+      }
+    ],
+    "background": "캐나다 노바스코샤의 체스터에서 태어나 댈하우지·맥길·하버드에서 공부했다. 뇌 손상과 영장류 행동을 연구한 뒤 맥길에서 연구·교육을 이어가며, 1949년 저서에 신경세포의 변화로 학습과 기억을 설명하려는 가설을 정리했다.",
+    "backgroundSourceIds": [
+      "mcgill-department",
+      "hebb-book"
+    ],
+    "connections": [
+      {
+        "personId": "frank-rosenblatt",
+        "name": "Frank Rosenblatt",
+        "nameKo": "프랭크 로젠블랫",
+        "kind": "influence",
+        "relation": "influenced",
+        "label": "이론적 배경에 영향",
+        "description": "로젠블랫은 1958년 논문에서 헵과 하이에크의 연구를 퍼셉트론 이론에 시사적인 배경으로 평가하고 신경계의 가소성에 관한 가정을 논의했다. 두 사람의 지도 관계나 같은 학습 알고리즘을 뜻하지 않는다.",
+        "period": "1958년 논문의 논의",
+        "sourceIds": [
+          "rosenblatt-1958"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "mcgill-department",
+        "title": "McGill University Department of Psychology · About D.O. Hebb",
+        "url": "https://www.mcgill.ca/psychology/events-colloquia/hebb-lecture-series/about-do-hebb",
+        "scope": "Chudasama·Milner의 학과 전기. Chester 출생·성장, Dalhousie B.A.1925·McGill M.A.1932·Harvard Ph.D.1936, Lashley 지도, MNI1937–1939·Yerkes1942–1947·McGill 교수1947년 합류를 확인했다. 전기의 영향력에 대한 평가를 객관적 순위로 사용하지 않는다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "hebb-book",
+        "title": "Hebb (1949) · The Organization of Behavior · MPI 보관 원본",
+        "url": "https://pure.mpg.de/rest/items/item_2346268_3/component/file_2346267/content",
+        "scope": "1949년 John Wiley 원판 스캔. PDF1 표제·소속·연도, 인쇄 pp.61–63(PDF79–81) 활동 흔적·구조 변화와 가설의 지위, pp.72–74(PDF90–92) 세포집합, pp.99–100(PDF118–119) 단계적 활동과 부분 단서를 대조했다. 스캔 파일과 도판의 공개 재배포 허가는 확인하지 않았다.",
+        "accessed": "2026-11-10"
+      },
+      {
+        "id": "rosenblatt-1958",
+        "title": "Rosenblatt (1958) · The Perceptron",
+        "url": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3",
+        "scope": "인쇄 p.388(PDF3)의 Hebb·Hayek에 대한 직접 평가와 가소성 가정을 확인했다. 기존 이론의 형식적 정확성과 분석의 엄밀성에 대한 비판도 함께 읽는다. 영향의 인정이 헵의 가설·퍼셉트론 학습법의 동일성이나 지도 관계를 입증하지는 않는다.",
+        "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
     "personId": "elon-musk",
     "origin": {
       "label": "성장",

@@ -1,5 +1,5 @@
 {
-  "version": "0.38-public.1",
+  "version": "0.39-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -766,21 +766,19 @@
     "nodes": 64,
     "relations": 46,
     "defaultRelations": 36,
-    "nodesWithExistingCards": 43,
-    "rawEvidenceRecords": 52,
+    "nodesWithExistingCards": 44,
+    "rawEvidenceRecords": 53,
     "direction": "Advisor to student; influence source to recipient. Collaboration and other optional categories are undirected.",
-    "nodesWithoutCards": 21
+    "nodesWithoutCards": 20
   },
   "personCardRevision": {
-    "personId": "max-newman",
-    "workId": "newman-decision-1935",
-    "source": "The 1935 lecture context is documented by institutional historical records; Newman's 1955 memoir and Turing's original paper supply separate original-source evidence.",
-    "primarySourceUrl": "https://turingarchive.kings.cam.ac.uk/biographical-and-personal-documents-amta/amt-a-36",
-    "implementation": "Original interactive two-element relation models, plus a finite execution of the four rules in Turing §3 Example I. Neither is a general decision procedure.",
+    "personId": "donald-hebb",
+    "workId": "hebb-organization-1949",
+    "source": "Hebb (1949), The Organization of Behavior; exact page pointers and the distinction between the original hypothesis and modern constructed calculations are in the article.",
+    "implementation": "Original visualizations of connection change and cell-assembly ideas. The bounded mathematical model is explicitly constructed and is not presented as an equation or experiment from the 1949 book.",
     "newRasterAssets": 0,
     "portrait": "No new portrait is distributed; existing initials remain.",
-    "lectureEvidenceUrl": "https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54",
-    "machineSourceUrl": "https://people.csail.mit.edu/brooks/idocs/Turing_Paper_1936.pdf#page=4"
+    "influenceEvidenceUrl": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3"
   },
   "priorPersonCardRevisions": [
     {
@@ -792,6 +790,17 @@
       "newRasterAssets": 0,
       "portrait": "No new portrait is distributed. Existing initials remain.",
       "advisingEvidenceUrl": "https://manuscripts.blogs.princeton.edu/2015/01/29/alan-m-turing-and-princeton/"
+    },
+    {
+      "personId": "max-newman",
+      "workId": "newman-decision-1935",
+      "source": "The 1935 lecture context is documented by institutional historical records; Newman's 1955 memoir and Turing's original paper supply separate original-source evidence.",
+      "primarySourceUrl": "https://turingarchive.kings.cam.ac.uk/biographical-and-personal-documents-amta/amt-a-36",
+      "implementation": "Original interactive two-element relation models, plus a finite execution of the four rules in Turing §3 Example I. Neither is a general decision procedure.",
+      "newRasterAssets": 0,
+      "portrait": "No new portrait is distributed; existing initials remain.",
+      "lectureEvidenceUrl": "https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54",
+      "machineSourceUrl": "https://people.csail.mit.edu/brooks/idocs/Turing_Paper_1936.pdf#page=4"
     }
   ],
   "homeNavigation": {
