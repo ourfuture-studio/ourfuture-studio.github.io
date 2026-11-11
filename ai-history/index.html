@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.54-public.1">
+<html lang="ko" data-theme="light" data-release="0.55-public.1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="visuals/advice-taker.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/logic-theorist.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/backprop-representation.css?v=0.48-public.1">
+  <link rel="stylesheet" href="visuals/paper-architecture.css?v=0.55-public.1">
   <link rel="stylesheet" href="visuals/lenet-features.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/vision-system.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/lstm-memory.css?v=0.48-public.1">
@@ -126,7 +127,7 @@
   <script src="entries/advice-taker.js?v=0.48-public.1" defer></script>
   <script src="entries/logic-theorist.js?v=0.48-public.1" defer></script>
   <script src="entries/backprop.js?v=0.48-public.1" defer></script>
-  <script src="entries/lenet.js?v=0.48-public.1" defer></script>
+  <script src="entries/lenet.js?v=0.55-public.1" defer></script>
   <script src="entries/lstm.js?v=0.48-public.1" defer></script>
   <script src="entries/imagenet.js?v=0.48-public.1" defer></script>
   <script src="entries/alexnet.js?v=0.48-public.1" defer></script>
@@ -201,7 +202,7 @@
   <script src="hinton-deep-belief-2006-detail-data.js?v=0.54-public.1" defer></script>
   <script src="hinton-deep-learning-review-2015-detail-data.js?v=0.54-public.1" defer></script>
   <script src="schmidhuber-overview-2015-detail-data.js?v=0.54-public.1" defer></script>
-  <script src="lecun-handwritten-1989-detail-data.js?v=0.54-public.1" defer></script>
+  <script src="lecun-handwritten-1989-detail-data.js?v=0.55-public.1" defer></script>
   <script src="andrew-ng-lda-2003-detail-data.js?v=0.54-public.1" defer></script>
   <script src="huang-nvidia-1993-detail-data.js?v=0.54-public.1" defer></script>
   <script src="huang-gtc-2025-detail-data.js?v=0.54-public.1" defer></script>
@@ -220,7 +221,8 @@
   <script src="visuals/backprop-representation.js?v=0.48-public.1" defer></script>
   <script src="visuals/vision-system-art.js?v=0.48-public.1" defer></script>
   <script src="visuals/vision-system.js?v=0.48-public.1" defer></script>
-  <script src="visuals/lenet-features.js?v=0.48-public.1" defer></script>
+  <script src="visuals/paper-architecture.js?v=0.55-public.1" defer></script>
+  <script src="visuals/lenet-features.js?v=0.55-public.1" defer></script>
   <script src="visuals/lstm-memory.js?v=0.48-public.1" defer></script>
   <script src="visuals/imagenet-experience.js?v=0.48-public.1" defer></script>
   <script src="visuals/alexnet-vision.js?v=0.48-public.1" defer></script>
@@ -324,7 +326,7 @@
   <script src="visuals/schmidhuber-overview-2015-detail-core.js?v=0.54-public.1" defer></script>
   <script src="visuals/schmidhuber-overview-2015-detail.js?v=0.54-public.1" defer></script>
   <script src="visuals/lecun-handwritten-1989-detail-core.js?v=0.54-public.1" defer></script>
-  <script src="visuals/lecun-handwritten-1989-detail.js?v=0.54-public.1" defer></script>
+  <script src="visuals/lecun-handwritten-1989-detail.js?v=0.55-public.1" defer></script>
   <script src="visuals/andrew-ng-lda-2003-detail-core.js?v=0.54-public.1" defer></script>
   <script src="visuals/andrew-ng-lda-2003-detail.js?v=0.54-public.1" defer></script>
   <script src="visuals/huang-nvidia-1993-detail-core.js?v=0.54-public.1" defer></script>
@@ -362,7 +364,7 @@
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.54</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.55</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>

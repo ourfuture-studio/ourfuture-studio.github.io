@@ -233,6 +233,7 @@
       if(config.visionSystem){
         if(typeof window.AtlasVisionSystem?.mount!=='function')throw new Error('AtlasVisionSystem must be loaded before mounting the LeNet vision view.');
         composite=node('div','lenet-visual-composite');
+        window.AtlasPaperArchitecture.mount(composite,'lenet-5-1998');
         const visionHost=node('div','lenet-vision-host');composite.append(visionHost);
         root.dataset.layerLinks=String(Boolean(config.visionSystem.layerConnections));
         disposeVision=window.AtlasVisionSystem.mount(visionHost,config.visionSystem,{onLayerSelect:selectArchitectureLayer});

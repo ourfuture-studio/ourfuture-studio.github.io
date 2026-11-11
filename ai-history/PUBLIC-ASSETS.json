@@ -1,5 +1,5 @@
 {
-  "version": "0.54-public.1",
+  "version": "0.55-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1077,5 +1077,16 @@
       }
     ],
     "scope": "The19 existing records receive primary-source-based articles and authored interactive figures. Research and industry sources, original examples and authored calculations are explicitly distinguished. Other records, historical metadata, portraits, graph, home and app cache stay exact."
+  },
+  "originalArchitectureRevision": {
+    "cards": [
+      "lenet",
+      "lecun-handwritten-1989"
+    ],
+    "sourceFigures": [
+      "NIPS1989 Fig4 PDF6",
+      "LeNet5 author manuscript1998 Fig2 PDF7"
+    ],
+    "scope": "Exact original figure excerpts precede existing interactive explanations. Existing labels, examples and equations are preserved."
   }
 }

@@ -6,7 +6,7 @@ window.AtlasEntries.register({
     title:'시각 피질의 아이디어를, 글자를 읽는 망으로',
     summary:'생물 시각계의 국소 수용장과 특징 반응의 계층에서 영감을 얻어 망을 구성하고, 글자 정답의 오차로 특징을 찾는 연결값까지 학습했다.',
     detail:'',question:'',
-    caveat:'1998년 LeCun·Bottou·Bengio·Haffner의 종합 논문을 다룬다. 화면은 구조와 일부 계산 원리를 재구성하며, 원래 학습된 LeNet-5의 인식 결과나 성능을 재현하지 않는다.'
+    caveat:'1998년 LeCun·Bottou·Bengio·Haffner의 종합 논문을 다룬다. 원논문의 전체 구조 도판과 직접 만든 설명·계산을 함께 다룬다. 직접 만든 계산은 원래 학습된 LeNet-5의 인식 결과나 성능을 재현하지 않는다.'
   },
   content:{
     article:{
@@ -19,7 +19,7 @@ window.AtlasEntries.register({
       visual:{
         id:'shared-features',navLabel:'시각에서 신경망으로',
         title:'시각 피질의 관찰이, 망의 구조가 되기까지',
-        caption:'먼저 시각 자극을 바꿔 뉴런의 반응을 비교한 실험과, 눈에서 시각 피질로 이어지는 경로를 살펴보세요. 그 뒤에 이 관찰이 LeNet의 구조에 어떻게 이어지는지 연결합니다.',
+        caption:'먼저 원논문 Fig.2에서 LeNet-5의 전체 층과 연결을 확인하세요. 이어서 시각 피질의 실험과 경로를 살펴보고, 이 관찰이 각 층의 설계에 어떻게 이어지는지 연결합니다.',
         visionSystem:{
           experiment:{
             eyebrow:'01 · 고양이 시각 피질의 실험',
