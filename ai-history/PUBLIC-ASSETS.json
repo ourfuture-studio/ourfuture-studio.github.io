@@ -1,5 +1,5 @@
 {
-  "version": "0.53-public.1",
+  "version": "0.54-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -977,5 +977,105 @@
     "workId": "turing-ace-proposal",
     "scope": "The existing1945 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
     "evidenceBoundary": "The ACE report design, command/data storage, delay-line memory and transfer/control proposals are distinguished from authored examples and the later Pilot ACE implementation; the visual is not an ACE hardware emulator or performance reproduction."
+  },
+  "remaining19Revision": {
+    "cards": [
+      {
+        "personId": "alan-turing",
+        "workId": "turing-morphogenesis",
+        "visualId": "detail-turing-morphogenesis"
+      },
+      {
+        "personId": "john-mccarthy",
+        "workId": "mccarthy-lisp-1960",
+        "visualId": "detail-mccarthy-lisp-1960"
+      },
+      {
+        "personId": "john-mccarthy",
+        "workId": "mccarthy-hayes-1969",
+        "visualId": "detail-mccarthy-hayes-1969"
+      },
+      {
+        "personId": "frank-rosenblatt",
+        "workId": "rosenblatt-report-1957",
+        "visualId": "detail-rosenblatt-report-1957"
+      },
+      {
+        "personId": "marvin-minsky",
+        "workId": "minsky-steps-1961",
+        "visualId": "detail-minsky-steps-1961"
+      },
+      {
+        "personId": "marvin-minsky",
+        "workId": "minsky-symbolic-connectionist-1990",
+        "visualId": "detail-minsky-symbolic-connectionist-1990"
+      },
+      {
+        "personId": "geoffrey-hinton",
+        "workId": "hinton-deep-belief-2006",
+        "visualId": "detail-hinton-deep-belief-2006"
+      },
+      {
+        "personId": "geoffrey-hinton",
+        "workId": "hinton-deep-learning-review-2015",
+        "visualId": "detail-hinton-deep-learning-review-2015"
+      },
+      {
+        "personId": "jurgen-schmidhuber",
+        "workId": "schmidhuber-overview-2015",
+        "visualId": "detail-schmidhuber-overview-2015"
+      },
+      {
+        "personId": "yann-lecun",
+        "workId": "lecun-handwritten-1989",
+        "visualId": "detail-lecun-handwritten-1989"
+      },
+      {
+        "personId": "andrew-ng",
+        "workId": "andrew-ng-lda-2003",
+        "visualId": "detail-andrew-ng-lda-2003"
+      },
+      {
+        "personId": "jensen-huang",
+        "workId": "huang-nvidia-1993",
+        "visualId": "detail-huang-nvidia-1993"
+      },
+      {
+        "personId": "jensen-huang",
+        "workId": "huang-gtc-2025",
+        "visualId": "detail-huang-gtc-2025"
+      },
+      {
+        "personId": "elon-musk",
+        "workId": "musk-openai-2015",
+        "visualId": "detail-musk-openai-2015"
+      },
+      {
+        "personId": "elon-musk",
+        "workId": "musk-xai-spacex-2026",
+        "visualId": "detail-musk-xai-spacex-2026"
+      },
+      {
+        "personId": "alex-karp",
+        "workId": "karp-aip-2023",
+        "visualId": "detail-karp-aip-2023"
+      },
+      {
+        "personId": "palmer-luckey",
+        "workId": "luckey-oculus-2012",
+        "visualId": "detail-luckey-oculus-2012"
+      },
+      {
+        "personId": "alexandr-wang",
+        "workId": "wang-meta-2025",
+        "visualId": "detail-wang-meta-2025"
+      },
+      {
+        "personId": "artur-garcez",
+        "workId": "garcez-cognitive-reasoning-2008",
+        "visualId": "detail-garcez-cognitive-reasoning-2008"
+      }
+    ],
+    "scope": "The19 existing records receive primary-source-based articles and authored interactive figures. Research and industry sources, original examples and authored calculations are explicitly distinguished. Other records, historical metadata, portraits, graph, home and app cache stay exact."
   }
 }
