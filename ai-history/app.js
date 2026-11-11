@@ -337,6 +337,82 @@
     for(const portrait of window.AtlasPortraits?.records||[])window.AtlasPortraits.appendCredit(c,portrait);
     c.append(node('p','','도식: ourfuture studio 자체 제작. 인물 사진은 출처별 이용 조건과 함께 표시합니다. 일부 사진은 같은 파일의 보관본도 사용하며, 사진을 불러오지 못하면 이름 약자나 자체 도식을 표시합니다.'));
   }
+  // Theme preference storage is asynchronous and never gates the interface.
+  const themePreference = { database:null, opening:false, revision:0, pending:null, writing:false };
+  function applyTheme(theme) {
+    const value=theme==='dark'?'dark':'light';
+    document.documentElement.dataset.theme=value;
+    $('theme-toggle').setAttribute('aria-label',value==='dark'?'밝은 테마로 전환':'어두운 테마로 전환');
+    return value;
+  }
+  function readThemePreference(database) {
+    if(themePreference.revision!==0)return;
+    const revision=themePreference.revision;
+    try{
+      const transaction=database.transaction('preferences','readonly');
+      const request=transaction.objectStore('preferences').get('theme');
+      request.onsuccess=()=>{
+        const value=request.result;
+        if(themePreference.revision===revision&&(value==='dark'||value==='light'))applyTheme(value);
+      };
+      request.onerror=()=>{};
+    }catch{}
+  }
+  function writeThemePreference() {
+    if(!themePreference.database||themePreference.writing||themePreference.pending===null)return;
+    const value=themePreference.pending;
+    themePreference.pending=null;themePreference.writing=true;
+    let transaction,settled=false;
+    const finish=success=>{
+      if(settled)return;settled=true;themePreference.writing=false;
+      const newer=themePreference.pending!==null;
+      if(!success&&!newer)themePreference.pending=value;
+      if(success||newer)writeThemePreference();
+    };
+    try{
+      transaction=themePreference.database.transaction('preferences','readwrite');
+      transaction.oncomplete=()=>finish(true);
+      transaction.onabort=()=>finish(false);
+      transaction.onerror=()=>{};
+      transaction.objectStore('preferences').put(value,'theme');
+    }catch{
+      try{transaction?.abort();}catch{}
+      finish(false);
+    }
+  }
+  function openThemePreference() {
+    if(themePreference.database||themePreference.opening)return;
+    let request;
+    try{
+      const factory=window.indexedDB;
+      if(!factory)return;
+      themePreference.opening=true;
+      request=factory.open('ourfuture-atlas-preferences',1);
+    }catch{themePreference.opening=false;return;}
+    request.onupgradeneeded=()=>{
+      try{
+        const database=request.result;
+        if(!database.objectStoreNames.contains('preferences'))database.createObjectStore('preferences');
+      }catch{try{request.transaction?.abort();}catch{}}
+    };
+    request.onsuccess=()=>{
+      const database=request.result;
+      themePreference.database=database;themePreference.opening=false;
+      const forget=()=>{if(themePreference.database===database)themePreference.database=null;};
+      database.onversionchange=()=>{forget();database.close();};
+      database.onclose=forget;
+      readThemePreference(database);writeThemePreference();
+    };
+    request.onerror=()=>{themePreference.opening=false;};
+    // A blocked or pending connection must leave startup and theme clicks usable.
+    request.onblocked=()=>{};
+  }
+  function chooseTheme(theme) {
+    themePreference.revision++;
+    themePreference.pending=applyTheme(theme);
+    openThemePreference();writeThemePreference();
+  }
+  // End theme preference storage.
   function wire() {
     window.addEventListener('atlas:search-result',ev=>{
       const r=ev.detail;
@@ -384,8 +460,9 @@
     $('detail-dialog').addEventListener('close',()=>{if(!$('detail-dialog').open)window.AtlasArticle?.dispose();});
     $('zoom-out').addEventListener('click',()=>{state.zoom=clamp(state.zoom-.25,1,3);buildFlat();updateSelection();centerFlat();});
     $('zoom-in').addEventListener('click',()=>{state.zoom=clamp(state.zoom+.25,1,3);buildFlat();updateSelection();centerFlat();});
-    $('theme-toggle').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';$('theme-toggle').setAttribute('aria-label',dark?'밝은 테마로 전환':'어두운 테마로 전환');try{localStorage.setItem('ourfuture-atlas-theme',dark?'dark':'light');}catch{}});
-    try{if(localStorage.getItem('ourfuture-atlas-theme')==='dark'){$('theme-toggle').click();}}catch{}
+    applyTheme(document.documentElement.dataset.theme);
+    $('theme-toggle').addEventListener('click',()=>chooseTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+    openThemePreference();
     const scene=$('scene');
     scene.addEventListener('wheel',e=>{if(!state.events.length||$('detail-dialog').open||$('about-dialog').open)return;e.preventDefault();const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;const factor=e.deltaMode===1?16:e.deltaMode===2?height:1;move(state.target+clamp(delta*factor*.0035,-1.3,1.3));},{passive:false});
     scene.addEventListener('pointerdown',e=>{if(e.target.closest('.scene-bottomline'))return;state.drag={x:e.clientX,y:e.clientY,start:state.target,moved:false,pointer:e.pointerId};});

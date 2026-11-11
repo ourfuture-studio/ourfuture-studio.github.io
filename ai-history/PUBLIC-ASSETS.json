@@ -1,5 +1,5 @@
 {
-  "version": "0.48-public.1",
+  "version": "0.48.1-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -903,5 +903,12 @@
     "existingWorks": 13,
     "route": "#person=peter-thiel&filter=industry",
     "scope": "Expose existing people and their existing company/platform records through an additional catalog filter; no new person, company, work, graph node or source asset is added."
+  },
+  "runtimeHotfixRevision": {
+    "version": "0.48.1",
+    "scope": "Only the theme preference persistence and displayed/cache versions change.",
+    "implementation": "The interface applies a theme immediately. Preference handling must not gate application initialization. The version-bound source and independent theme report describe the reviewed implementation.",
+    "articleAndVisualizationFilesPreserved": true,
+    "causeBoundary": "A synchronous Web Storage call blocked return in the observed in-app-browser fixture. The underlying browser storage implementation cause is not established."
   }
 }
