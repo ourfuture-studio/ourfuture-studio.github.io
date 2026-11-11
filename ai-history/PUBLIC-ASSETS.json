@@ -1,5 +1,5 @@
 {
-  "version": "0.50-public.1",
+  "version": "0.51-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -956,5 +956,12 @@
     "workId": "turing-computable-numbers",
     "scope": "The existing1936 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
     "evidenceBoundary": "Original-paper facts and authored finite procedures are distinguished; the visual does not establish unrestricted machine behavior or reproduce every proof."
+  },
+  "turing1950Revision": {
+    "version": "0.51",
+    "personId": "alan-turing",
+    "workId": "turing-computing-machinery-intelligence",
+    "scope": "The existing1950 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
+    "evidenceBoundary": "Original-paper arguments, attributed objections and authored conversation/evaluation cases are distinguished; the visual does not establish intelligence, consciousness or empirical model performance."
   }
 }
