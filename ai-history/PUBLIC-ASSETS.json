@@ -1,5 +1,5 @@
 {
-  "version": "0.56-public.1",
+  "version": "0.56-public.2",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1094,5 +1094,20 @@
     "originalImages": 78,
     "readingNotes": 11,
     "scope": "Original-source diagrams, equations and official figures precede existing interactive explanations. Figureless cases use attributed source-reading notes; they are not counted as diagrams. Existing article bodies and calculations are preserved."
+  },
+  "reusedSourceImageFix": {
+    "added": [
+      "assets/bengio-2003-architecture.png",
+      "assets/finn-2017-maml-initialization.png",
+      "assets/goodfellow-2014-distribution-game.png",
+      "assets/gpt1-2018-architecture-tasks.png",
+      "assets/gpt2-2019-task-transfer.png",
+      "assets/gpt3-2020-learning-settings.png",
+      "assets/instructgpt-2022-three-stages.png",
+      "assets/ngiam-2011-competition.png",
+      "assets/transformer-2017-architecture.png"
+    ],
+    "requiredSourceImageCount": 78,
+    "scope": "Includes every image referenced by the original-source panels, including source assets reused from earlier versions."
   }
 }
