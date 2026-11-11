@@ -79,6 +79,8 @@ body.shorts .figs{grid-template-columns:1fr}
 body.shorts .figs figure + figure{border-left:0;border-top:1px solid var(--rule)}
 body.shorts .insight{padding:10px 14px;margin:8px 0 0}
 body.shorts .result{font-size:19px;margin:0;line-height:1.5}
+
+[data-viz-recording-control]{display:none!important}
 </style>
 <style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
 </head>
@@ -98,7 +100,7 @@ body.shorts .result{font-size:19px;margin:0;line-height:1.5}
         <button id="fitBtn">로그손실 최소로</button>
         <button id="resetBtn">처음 값</button>
       </span></div>
-    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+    <div class="ctl-view" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면">
         <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
       </span></div>
   </div>

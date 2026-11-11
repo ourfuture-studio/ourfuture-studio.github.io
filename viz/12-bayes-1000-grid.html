@@ -65,6 +65,8 @@ body.shorts .params{display:block;margin:6px 0 12px;font-size:14px}
 body.shorts .result{font-size:24px}
 body.shorts h1{font-size:26px}
 body.shorts .insight{padding:14px 16px;margin:16px 0}
+
+[data-viz-recording-control]{display:none!important}
 </style>
 <style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
 </head>
@@ -80,7 +82,7 @@ body.shorts .insight{padding:14px 16px;margin:16px 0}
     <div class="sl"><label class="mono" for="prev">유병률</label><input type="range" id="prev" min="0" max="16" step="1" value="5" aria-label="유병률"><output id="prevOut"></output></div>
     <div class="sl"><label class="mono" for="sens">민감도</label><input type="range" id="sens" min="500" max="999" step="1" value="900" aria-label="민감도"><output id="sensOut"></output></div>
     <div class="sl"><label class="mono" for="spec">특이도</label><input type="range" id="spec" min="500" max="999" step="1" value="910" aria-label="특이도"><output id="specOut"></output></div>
-    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+    <div class="ctl-view" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면">
         <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
       </span></div>
   </div>

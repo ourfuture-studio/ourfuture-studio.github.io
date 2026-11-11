@@ -64,6 +64,8 @@ body.shorts .insight{padding:12px 16px;margin:12px 0 0}
 body.shorts .insight .short-only{font-size:15px;color:var(--ink2);margin-top:4px}
 body.shorts .stagebar{display:block;margin:0 0 8px}
 .stagebar{display:none}
+
+[data-viz-recording-control]{display:none!important}
 </style>
 <style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
 </head>
@@ -89,7 +91,7 @@ body.shorts .stagebar{display:block;margin:0 0 8px}
       <button data-pos="1">1</button><button data-pos="2">2</button><button data-pos="3">3</button><button data-pos="4">4</button>
     </span></div>
     <div class="ctl" id="edgeCtl"><span class="seg" role="group" aria-label="경계 반례"><button id="edgeBtn" aria-pressed="false">묶음 경계를 넘으면?</button></span></div>
-    <div class="ctl"><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
+    <div class="ctl" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
   </div>
 
   <p class="mono stagebar" id="stagebar"></p>

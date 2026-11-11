@@ -71,6 +71,8 @@ body.shorts .pen{margin-left:6px}
 body.shorts .result{font-size:20px;margin:0}
 body.shorts h1{font-size:26px}
 body.shorts .insight{padding:12px 16px;margin:10px 0 0}
+
+[data-viz-recording-control]{display:none!important}
 </style>
 <style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
 </head>
@@ -89,7 +91,7 @@ body.shorts .insight{padding:12px 16px;margin:10px 0 0}
     <div class="ctl-dist"><span class="mono ctl-label">자신감 분포</span><span class="seg" role="group" aria-label="자신감 분포">
         <button data-d="uniform" aria-pressed="true">고르게</button><button data-d="high" aria-pressed="false">자신 있는 쪽</button><button data-d="low" aria-pressed="false">자신 없는 쪽</button>
       </span></div>
-    <div class="ctl-view"><span class="seg" role="group" aria-label="화면">
+    <div class="ctl-view" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면">
         <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
       </span></div>
   </div>

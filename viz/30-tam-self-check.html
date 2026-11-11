@@ -72,6 +72,8 @@ body.shorts .val{font-size:18px}
 body.shorts .result{font-size:20px;margin:0}
 body.shorts .insight{padding:12px 16px;margin:10px 0 0}
 body.shorts .insight .short-only{font-size:15px;color:var(--ink2);margin-top:4px}
+
+[data-viz-recording-control]{display:none!important}
 </style>
 <style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
 </head>
@@ -98,7 +100,7 @@ body.shorts .insight .short-only{font-size:15px;color:var(--ink2);margin-top:4px
     <div><span class="mono ctl-label">예시 불러오기</span><span class="seg" role="group" aria-label="예시 불러오기">
         <button data-p="A" aria-pressed="false">A 매일 씀</button><button data-p="B" aria-pressed="false">B 써 보고 그만둠</button>
       </span></div>
-    <div><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
+    <div hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면"><button id="shortsBtn" aria-pressed="false">쇼츠 화면</button></span></div>
   </div>
 
   <figure>
