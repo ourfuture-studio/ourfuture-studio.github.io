@@ -113,6 +113,129 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "alex-graves",
+    "origin": null,
+    "education": [
+      {
+        "name": "뮌헨공과대학교 · TUM",
+        "detail": "Supervised Sequence Labelling with Recurrent Neural Networks · Dr.rer.nat. 박사학위 논문",
+        "period": "2008 · TUM의 학위 서지",
+        "sourceIds": [
+          "tum-alumnus",
+          "graves-thesis"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "idsia",
+        "name": "IDSIA",
+        "place": "Manno-Lugano, 스위스",
+        "period": "2006 CTC 논문 소속",
+        "note": "CTC 논문은 Graves·Fernández·Gomez를 IDSIA 소속으로 표시한다.",
+        "sourceIds": [
+          "ctc-original"
+        ]
+      },
+      {
+        "institutionId": "technical-university-munich",
+        "name": "뮌헨공과대학교 · TUM",
+        "place": "Garching, 독일",
+        "period": "2008 학위 · 과거 연구원 기록",
+        "note": "연구실의 alumni 페이지는 Former Research Associate와2008년 박사학위 논문을 기록한다.",
+        "sourceIds": [
+          "tum-alumnus",
+          "graves-thesis"
+        ]
+      },
+      {
+        "institutionId": "university-of-toronto",
+        "name": "토론토대학교 컴퓨터과학과",
+        "place": "토론토, 캐나다",
+        "period": "과거 개인 소개 · 2013년 공동논문 수록",
+        "note": "개인 페이지의 CIFAR Junior Fellow·Hinton 감독 소개는 당시 연구 환경으로 읽으며 현재 직책으로 표시하지 않는다.",
+        "sourceIds": [
+          "graves-home",
+          "speech-2013"
+        ]
+      }
+    ],
+    "background": "2006년 IDSIA의 공동저자로 CTC를 발표했고, TUM의 2008년 박사학위 논문에서는 순환 신경망을 이용한 시퀀스 라벨링을 다뤘다. 토론토 시기의 개인 소개와2013년 힌턴·모하메드와의 공동논문을 통해 음성·필기 인식에서 시간의 표현과 정답을 잇는 연구를 살펴볼 수 있다.",
+    "backgroundSourceIds": [
+      "ctc-original",
+      "tum-alumnus",
+      "graves-thesis",
+      "graves-home",
+      "speech-2013"
+    ],
+    "connections": [
+      {
+        "personId": "jurgen-schmidhuber",
+        "name": "Jürgen Schmidhuber",
+        "nameKo": "위르겐 슈미트후버",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "CTC 공동저자",
+        "description": "2006년 CTC 논문의 네 공동저자 중 두 명이다. 이 연결은 논문이 확인하는 공동연구이며 지도 관계와 구분한다.",
+        "period": "2006",
+        "sourceIds": [
+          "ctc-original"
+        ]
+      },
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey E. Hinton",
+        "nameKo": "제프리 힌턴",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "음성 인식 공동연구",
+        "description": "2013년 Speech Recognition with Deep Recurrent Neural Networks를 Abdel-rahman Mohamed와 함께 공동저술했다. 힌턴을 박사 지도교수로 표시하는 관계가 아니다.",
+        "period": "2013",
+        "sourceIds": [
+          "speech-2013",
+          "graves-home"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ctc-original",
+        "title": "Graves 외 · Connectionist Temporal Classification (2006)",
+        "url": "https://www.cs.toronto.edu/~graves/icml_2006.pdf",
+        "scope": "첫 쪽의 네 공동저자·IDSIA/TUM 소속과 PDF2–6의 방법·도판·학습·실험 조건을 확인했다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "tum-alumnus",
+        "title": "TUM Robotics and Embedded Systems · Dr.Alex Graves (Alumnus)",
+        "url": "https://vmknoll82.in.tum.de/Main/Graves.html",
+        "scope": "Former Research Associate, 연구 주제·기관주소, 출판물[13]의 Alexander Graves 2008 Dissertation·TUM을 확인. 과거 연구실 페이지이며 현재 소속·직책으로 사용하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "graves-thesis",
+        "title": "Alex Graves · Supervised Sequence Labelling with Recurrent Neural Networks · 학위논문",
+        "url": "https://www.cs.toronto.edu/~graves/phd.pdf",
+        "scope": "PDF 표제의 TUM·Fakultät für Informatik·Dr.rer.nat. 승인 박사논문과 다음 쪽 초록을 직접 확인. 2008 연도는 TUM의 별도 학위 서지와 대조하며 논문 전체 내용 검토를 주장하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "graves-home",
+        "title": "Alex Graves · 토론토대학교 개인 페이지",
+        "url": "https://www.cs.toronto.edu/~graves/",
+        "scope": "CIFAR Junior Fellow·Hinton 감독의 과거 소개와2013년까지의 논문 목록을 확인. 이후 경력을 추측하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "speech-2013",
+        "title": "Graves·Mohamed·Hinton · Speech Recognition with Deep Recurrent Neural Networks",
+        "url": "https://arxiv.org/abs/1303.5778",
+        "scope": "2013년 논문의 세 공동저자와 초록·제출 서지로 공동연구를 확인. CTC2006의 네 공동저자와 구분한다.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
     "personId": "alex-karp",
     "origin": {
       "label": "출생",
@@ -883,6 +1006,132 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "david-rumelhart",
+    "origin": {
+      "label": "출생",
+      "text": "Wessington Springs, South Dakota, 미국",
+      "sourceIds": [
+        "stanford-obituary"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of South Dakota",
+        "period": "1963",
+        "detail": "심리학·수학 학사",
+        "sourceIds": [
+          "macarthur-profile",
+          "cognitive-society"
+        ]
+      },
+      {
+        "name": "Stanford University",
+        "period": "1967",
+        "detail": "수리심리학 박사",
+        "sourceIds": [
+          "macarthur-profile",
+          "cognitive-society"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "uc-san-diego",
+        "name": "University of California, San Diego",
+        "period": "1967–1987",
+        "place": "La Jolla, California, 미국",
+        "note": "심리학과에서 연구했고 Institute of Cognitive Science의 공동 설립에 참여했다. 역전파 원논문의 저자 소속에도 이 연구소가 적혀 있다.",
+        "sourceIds": [
+          "macarthur-profile",
+          "nature-1986"
+        ]
+      },
+      {
+        "institutionId": "stanford-university",
+        "name": "Stanford University",
+        "period": "1987–1998",
+        "place": "Stanford, California, 미국",
+        "note": "심리학·인지 연구를 이어갔다. 기관 기록의 재직 시기와 연구 분야를 구분해 적었다.",
+        "sourceIds": [
+          "macarthur-profile",
+          "stanford-obituary"
+        ]
+      }
+    ],
+    "background": "미국 사우스다코타의 Wessington Springs에서 태어나 심리학과 수학을 공부했다. 수리심리학 박사학위 뒤 UC San Diego에서 인간 인지의 계산 모형을 연구했고, 1987년 Stanford로 옮겼다. 규칙으로 미리 정한 기호만을 조작하는 설명에서, 신경 활동과 학습되는 연결의 상호작용으로 인지의 내부 표현을 설명하는 방향을 탐구했다.",
+    "backgroundSourceIds": [
+      "stanford-obituary",
+      "macarthur-profile",
+      "cognitive-society"
+    ],
+    "connections": [
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey E. Hinton",
+        "nameKo": "제프리 힌턴",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "역전파 공동 논문",
+        "description": "Ronald J. Williams와 함께 1986년 Nature 논문 Learning representations by back-propagating errors를 발표했다. 세 공동저자의 연구이며 루멜하트나 힌턴의 단독 발명으로 설명하지 않는다.",
+        "period": "1986",
+        "sourceIds": [
+          "nature-1986",
+          "hinton-publications"
+        ]
+      },
+      {
+        "personId": "ronald-williams",
+        "name": "Ronald J. Williams",
+        "nameKo": "로널드 윌리엄스",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "역전파 공동 논문",
+        "description": "Hinton과 함께 역전파의 미분·가중치 갱신과 내부 표현 학습을 설명한 1986년 논문의 공동저자다. 논문 표제의 소속은 Rumelhart·Williams가 UC San Diego, Hinton이 Carnegie Mellon이다.",
+        "period": "1986",
+        "sourceIds": [
+          "nature-1986"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "stanford-obituary",
+        "title": "Stanford Report · David Rumelhart, pioneer in cognitive neuroscience, dies at68",
+        "url": "https://news.stanford.edu/stories/2011/03/david-rumelhart-pioneer-cognitive-neuroscience-dies-68",
+        "scope": "대학의2011년 추모 기사. 출생지·심리학과 수학 공부·1967년 박사·UCSD 진출·1987년 Stanford 이동과 McClelland의 공동연구 회고를 확인했다. 과거 경력과 기사의 인지 연구에 대한 설명을 구분해 읽는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "macarthur-profile",
+        "title": "MacArthur Foundation · David Rumelhart",
+        "url": "https://www.macfound.org/fellows/class-of-1987/david-rumelhart",
+        "scope": "공식 수상자 전기의 학력 B.A.1963·Ph.D.1967, UCSD1967–1987·Stanford1987–1998, Institute of Cognitive Science 공동 설립을 확인했다. 과거 전기이며 현재 재직으로 표시하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "cognitive-society",
+        "title": "Cognitive Science Society · Rumelhart Prize",
+        "url": "https://cognitivesciencesociety.org/rumelhart-prize/",
+        "scope": "학회의 공식 소개에서 심리학·수학 학사와 수리심리학 박사, 인지의 여러 계산 모형을 연구한 배경을 확인했다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "nature-1986",
+        "title": "Rumelhart·Hinton·Williams · Learning representations by back-propagating errors",
+        "url": "https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf",
+        "scope": "원논문4면을 지면으로 대조했다. p.533 세 저자와 UCSD·Carnegie Mellon 소속, p.534 Fig.1 초기 범위·누적 갱신·1425회와 대칭 과제, pp.534–535 식(3)–(9), p.536 첫 문단의 생물학적 구분. 첫쪽 앞 논문과 마지막쪽 뒤 논문은 연구 내용에서 제외한다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "hinton-publications",
+        "title": "Hinton · Backpropagation Learning 논문 목록",
+        "url": "https://www.cs.toronto.edu/~hinton/backprop.html",
+        "scope": "1986년 Nature 논문과 별도 PDP 장의 세 공동저자·서지를 확인했다. 두 저작을 같은 출판물로 합치지 않는다.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
     "personId": "demis-hassabis",
     "origin": {
       "label": "출생",
@@ -1105,6 +1354,79 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://web.stanford.edu/class/psych209a/ReadingsByDate/01_30/Rosenblatt58Perceptron.pdf#page=3",
         "scope": "인쇄 p.388(PDF3)의 Hebb·Hayek에 대한 직접 평가와 가소성 가정을 확인했다. 기존 이론의 형식적 정확성과 분석의 엄밀성에 대한 비판도 함께 읽는다. 영향의 인정이 헵의 가설·퍼셉트론 학습법의 동일성이나 지도 관계를 입증하지는 않는다.",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "dov-gabbay",
+    "origin": null,
+    "education": [],
+    "researchPlaces": [
+      {
+        "institutionId": "kings-college-london",
+        "name": "King’s College London · Department of Informatics",
+        "place": "런던, 영국",
+        "period": "공식 소개 확인: 2026-11-11",
+        "note": "컴퓨터과학 명예교수. 논리 체계·양상 논리·시간 논리·AI 연구.",
+        "sourceIds": [
+          "gabbay-kcl",
+          "gabbay-research"
+        ]
+      }
+    ],
+    "background": "King’s College London의 논리와 계산 분야에서 연구했으며 공식 소개는 양상·시간 논리와 AI를 주요 관심으로 제시한다. 신경 기호 공동저서에서는 서로 다른 논리의 구조와 학습 모형을 연결했다.",
+    "backgroundSourceIds": [
+      "gabbay-kcl",
+      "gabbay-research",
+      "cognitive-publisher"
+    ],
+    "connections": [
+      {
+        "personId": "artur-garcez",
+        "name": "Artur d’Avila Garcez",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "신경 기호 연구 공동저자",
+        "description": "Garcez·Lamb·Gabbay의 Neural-Symbolic Cognitive Reasoning을 공동 집필했다.",
+        "period": "2008년 발행 · ©2009",
+        "sourceIds": [
+          "cognitive-publisher"
+        ]
+      },
+      {
+        "personId": "luis-c-lamb",
+        "name": "Luís C. Lamb",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "신경 기호 연구 공동저자",
+        "description": "논리적 추론과 신경 모형의 결합을 다룬 공동저서의 저자다.",
+        "period": "2008년 발행 · ©2009",
+        "sourceIds": [
+          "cognitive-publisher"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "gabbay-kcl",
+        "title": "King’s College London · Dov Gabbay 공식 소개",
+        "url": "https://www.kcl.ac.uk/people/dov-gabbay",
+        "scope": "명예교수·소속 및 논리 체계·양상/시간 논리·AI 연구 관심.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "gabbay-research",
+        "title": "King’s College London · 연구자 프로필",
+        "url": "https://kclpure.kcl.ac.uk/portal/en/persons/dov-gabbay/",
+        "scope": "Logic and computation 연구그룹과 연구 관심. 열람하지 않은 학력이나 출생 정보를 추정하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "cognitive-publisher",
+        "title": "Springer · Neural-Symbolic Cognitive Reasoning",
+        "url": "https://link.springer.com/book/10.1007/978-3-540-73246-4",
+        "scope": "세 공동저자와 소속·전자책/양장 발행일·저작권 연도 구분.",
+        "accessed": "2026-11-11"
       }
     ]
   },
@@ -2241,6 +2563,106 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "luis-c-lamb",
+    "origin": null,
+    "education": [
+      {
+        "name": "Federal University of Rio Grande do Sul",
+        "detail": "컴퓨터과학 학사·석사",
+        "period": "1992·1995년",
+        "sourceIds": [
+          "lamb-unesco"
+        ]
+      },
+      {
+        "name": "Imperial College London",
+        "detail": "Computing Science 박사",
+        "period": "2000년",
+        "sourceIds": [
+          "lamb-unesco"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "federal-university-rio-grande-do-sul",
+        "name": "Federal University of Rio Grande do Sul (UFRGS)",
+        "place": "포르투알레그리, 브라질",
+        "period": "공식 행사 소개의 연구 경력",
+        "note": "컴퓨터과학 기초·AI 교수. 신경 기호 AI·설명 가능한 AI 등을 연구했다. 과거 행사 자료의 행정 직책을 현재 직책으로 표시하지 않는다.",
+        "sourceIds": [
+          "lamb-cern",
+          "lamb-unesco"
+        ]
+      },
+      {
+        "institutionId": "imperial-college-london",
+        "name": "Imperial College London",
+        "place": "런던, 영국",
+        "period": "2000년 박사",
+        "note": "컴퓨터과학 박사과정에서 연구했다.",
+        "sourceIds": [
+          "lamb-unesco"
+        ]
+      }
+    ],
+    "background": "UFRGS에서 컴퓨터과학을 공부한 뒤 Imperial에서 박사학위를 받았다. 가르세즈·개베이와 학습과 추론을 연결하는 공동저서를 집필했다. 이 카드에서는 신경망 안에 논리의 구조를 어떻게 표현할지에 관한 연구를 중심으로 읽는다.",
+    "backgroundSourceIds": [
+      "lamb-cern",
+      "lamb-unesco",
+      "cognitive-publisher"
+    ],
+    "connections": [
+      {
+        "personId": "artur-garcez",
+        "name": "Artur d’Avila Garcez",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "신경 기호 연구 공동저자",
+        "description": "Neural-Symbolic Cognitive Reasoning을 공동 집필했다.",
+        "period": "2008년 발행 · ©2009",
+        "sourceIds": [
+          "cognitive-publisher"
+        ]
+      },
+      {
+        "personId": "dov-gabbay",
+        "name": "Dov M. Gabbay",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "신경 기호 연구 공동저자",
+        "description": "Garcez·Lamb·Gabbay의 공동저서에서 학습과 여러 논리의 추론을 함께 다뤘다.",
+        "period": "2008년 발행 · ©2009",
+        "sourceIds": [
+          "cognitive-publisher"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "lamb-cern",
+        "title": "CERN Sparks · Luís Lamb 행사 소개",
+        "url": "https://sparks.cern/node/561",
+        "scope": "UFRGS의 연구 분야·경력, Imperial 박사와 UFRGS 학위, Garcez·Gabbay 공동저술. 행사 당시의 정부 직함을 현재 직함으로 단정하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "lamb-unesco",
+        "title": "UNESCO 지역 AI 포럼 · 공식 연사 소개",
+        "url": "https://unesco-regional-forum-ai.cetic.br/artificial-intelligence/pdf/speakers-en.pdf#page=12",
+        "scope": "PDF p.12 Luis Lamb 항목. UFRGS 학사1992·석사1995, Imperial Computing Science PhD2000을 확인. 과거 연사자료이며 현재 보직의 증거로 사용하지 않음.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "cognitive-publisher",
+        "title": "Springer · Neural-Symbolic Cognitive Reasoning",
+        "url": "https://link.springer.com/book/10.1007/978-3-540-73246-4",
+        "scope": "Garcez·Lamb·Gabbay 세 공동저자 및 소속. 전자책2008-10-15·양장2008-10-22·©2009 구분.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
     "personId": "marvin-minsky",
     "origin": {
       "label": "출생",
@@ -2537,6 +2959,102 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "patrick-hayes",
+    "origin": null,
+    "education": [
+      {
+        "name": "University of Cambridge",
+        "detail": "수학 학사",
+        "period": "공식 소개의 학력",
+        "sourceIds": [
+          "hayes-ihmc"
+        ]
+      },
+      {
+        "name": "University of Edinburgh",
+        "detail": "인공지능 박사",
+        "period": "공식 소개의 학력",
+        "sourceIds": [
+          "hayes-ihmc"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-essex",
+        "name": "University of Essex",
+        "place": "영국",
+        "period": "과거 교수 경력",
+        "note": "컴퓨터과학을 가르치고 연구했다.",
+        "sourceIds": [
+          "hayes-ihmc"
+        ]
+      },
+      {
+        "institutionId": "university-of-rochester",
+        "name": "University of Rochester",
+        "place": "미국",
+        "period": "과거 Luce Professor 경력",
+        "note": "인지과학 분야 교수로 연구했다.",
+        "sourceIds": [
+          "hayes-ihmc"
+        ]
+      },
+      {
+        "institutionId": "ihmc",
+        "name": "Institute for Human & Machine Cognition",
+        "place": "미국",
+        "period": "공식 소개 확인: 2026-11-11",
+        "note": "Senior Research Scientist Emeritus. 지식 표현·자동 추론·공간과 시간·시맨틱 웹 연구.",
+        "sourceIds": [
+          "hayes-ihmc"
+        ]
+      }
+    ],
+    "background": "수학과 인공지능을 공부한 뒤 컴퓨터과학·철학·인지과학 분야에서 연구했다. 불완전한 세계 지식을 논리로 표현하는 문제와, 웹의 지식 표현에 형식적 의미를 부여하는 문제를 이어서 다뤘다.",
+    "backgroundSourceIds": [
+      "hayes-ihmc",
+      "hayes-rdf"
+    ],
+    "connections": [
+      {
+        "personId": "john-mccarthy",
+        "name": "John McCarthy",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "지식·행동 표현 공동연구",
+        "description": "1969년 Some Philosophical Problems from the Standpoint of Artificial Intelligence의 공동저자다.",
+        "period": "1969년",
+        "sourceIds": [
+          "hayes-mccarthy"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "hayes-ihmc",
+        "title": "IHMC · Pat Hayes 공식 소개",
+        "url": "https://www.ihmc.us/groups/phayes/",
+        "scope": "학력, Essex·Rochester·IHMC 및 기타 연구 경력과 지식 표현·시맨틱 웹 관심. 학위 연도와 출생지를 추정하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "hayes-mccarthy",
+        "title": "McCarthy·Hayes · 1969년 공동논문 원문",
+        "url": "https://www-formal.stanford.edu/jmc/mcchay69.pdf",
+        "scope": "표제·두 공동저자, 지식 표현·상황·행동·프레임 문제. 연구 본문은 기존 매카시 1969년 카드의 확인 범위를 그대로 공유.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "hayes-rdf",
+        "title": "W3C · RDF Semantics · 2004 Recommendation",
+        "url": "https://www.w3.org/TR/2004/REC-rdf-mt-20040210/",
+        "scope": "표제의 편집자 Patrick Hayes와 §0.1의 형식 의미론·타당한 추론 범위. 1999년 RDF 모델·문법 표준과 2004년 의미론을 구분.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
     "personId": "peter-thiel",
     "education": [
       {
@@ -2622,6 +3140,287 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://law.stanford.edu/stanford-lawyer/articles/q-a-legal-matters-with-peter-thiel-92-ba-89-bs-89-and-mark-a-lemley-ba-88/",
         "scope": "Thiel 자신의 답변에서 Stanford 학부에서 로스쿨로 이어진 학업과 1992년 법학 졸업을 확인했다. 같은 페이지의 Mark Lemley 약력·법률 실무 경력을 Thiel의 경력으로 가져오지 않는다.",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "sam-altman",
+    "origin": {
+      "label": "성장",
+      "text": "세인트루이스, 미국 · Stanford 강연의 소개 기록",
+      "sourceIds": [
+        "stanford-talk"
+      ]
+    },
+    "education": [
+      {
+        "name": "스탠퍼드대학교",
+        "detail": "컴퓨터과학 재학 뒤 Loopt 창업 경로로 이동 · 학위 취득으로 표시하지 않음",
+        "period": "2년 재학 · 기관 강연 소개의 기록",
+        "sourceIds": [
+          "stanford-talk"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "y-combinator",
+        "name": "Y Combinator",
+        "place": "미국",
+        "period": "2014–2019 · president",
+        "note": "Stanford의 공식 강연 소개가 기록한 창업 지원 조직 경력이다. AI 논문의 연구 소속으로 표시하지 않는다.",
+        "sourceIds": [
+          "stanford-talk"
+        ]
+      },
+      {
+        "institutionId": "openai",
+        "name": "OpenAI",
+        "place": "미국",
+        "period": "2015 공동의장 · 2019 CEO 표기 · 2025 인프라 발표",
+        "note": "날짜가 다른 공식 자료로 연구 조직·경영·제품·계산 기반의 역할을 읽는다. 연구·알고리즘의 단독 발명과 구분한다.",
+        "sourceIds": [
+          "openai-2015",
+          "openai-lp",
+          "stargate-2025"
+        ]
+      }
+    ],
+    "background": "세인트루이스에서 성장해 스탠퍼드에서 컴퓨터과학을 공부한 뒤 창업과 창업 지원 조직의 경로를 거쳤다. OpenAI에서는2015년 공동의장으로 소개됐고, 이후 공식 자료는 경영과 모형·제품·계산 기반을 연결하는 역할을 기록한다.",
+    "backgroundSourceIds": [
+      "stanford-talk",
+      "openai-2015",
+      "openai-lp",
+      "stargate-2025"
+    ],
+    "connections": [
+      {
+        "personId": "elon-musk",
+        "name": "Elon Musk",
+        "nameKo": "일론 머스크",
+        "kind": "institution",
+        "relation": "shared-institution-with",
+        "label": "OpenAI 초기 공동의장",
+        "description": "2015년 OpenAI 공식 설립 발표는 Altman과 Musk를 공동의장으로 명시한다. 같은 조직의 초기 역할이며 논문 공동저술 관계가 아니다.",
+        "period": "2015",
+        "sourceIds": [
+          "openai-2015"
+        ]
+      },
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "nameKo": "일리야 수츠케버",
+        "kind": "institution",
+        "relation": "shared-institution-with",
+        "label": "초기 조직의 경영·연구 역할",
+        "description": "2015년 같은 공식 발표에서 Altman은 공동의장, Sutskever는 연구책임자로 구분돼 있다. 이 기록은 개인 간 공동 논문이나 지도 관계를 뜻하지 않는다.",
+        "period": "2015",
+        "sourceIds": [
+          "openai-2015"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "stanford-talk",
+        "title": "Stanford eCorner · The Possibilities of AI · Sam Altman",
+        "url": "https://stvp.stanford.edu/av/possibilities-ai-entire-talk",
+        "scope": "2024-05-01 공식 강연 페이지와 Read Transcript의 공식 전사 https://stvp.stanford.edu/node/10731/printable/print 에서00:00:20–00:02:47의 기관 소개를 직접 확인했다. St.Louis 성장·Stanford 컴퓨터과학2년 재학·Loopt·YC2014–2019가 명시된다. 전체 영상 재생·전사 전체 검토는 수행하지 않았다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "openai-2015",
+        "title": "OpenAI · Introducing OpenAI",
+        "url": "https://openai.com/index/introducing-openai/",
+        "scope": "2015-12-11. 공동의장Altman·Musk, 연구책임자Sutskever, 조직·후원자 문단을 확인. 현재직책이나 공동논문 관계로 확대하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "openai-lp",
+        "title": "OpenAI · OpenAI LP",
+        "url": "https://openai.com/index/openai-lp/",
+        "scope": "2019-03-11. 계산·인력·슈퍼컴퓨터의 자본 필요성과 당시CEO SamAltman표기,명단의시점각주를 확인.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "stargate-2025",
+        "title": "OpenAI·SoftBank · Announcing The Stargate Project",
+        "url": "https://openai.com/index/announcing-the-stargate-project/",
+        "scope": "2025-01-21. 초기투자참여자·재무/운영책임·기술파트너·기존Microsoft/Azure연결. 투자의향을집행액이나실제가동용량으로바꾸지 않는다.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
+    "personId": "sepp-hochreiter",
+    "origin": {
+      "label": "출생",
+      "text": "바이에른, 독일 · 기관 소개가 확인하는 지역 단위",
+      "sourceIds": [
+        "jku-lstm-profile"
+      ]
+    },
+    "education": [
+      {
+        "name": "뮌헨공과대학교 · TUM",
+        "detail": "Untersuchungen zu dynamischen neuronalen Netzen 디플롬 논문",
+        "period": "1991",
+        "sourceIds": [
+          "jku-publications"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "technical-university-munich",
+        "name": "뮌헨공과대학교 · TUM",
+        "place": "뮌헨, 독일",
+        "period": "1991 디플롬 논문 · 1997 LSTM 논문의 소속",
+        "note": "순환망의 학습 신호 문제와 LSTM 공동연구를 연결해 읽는다.",
+        "sourceIds": [
+          "jku-publications",
+          "lstm-original"
+        ]
+      },
+      {
+        "institutionId": "johannes-kepler-university-linz",
+        "name": "요하네스 케플러 대학교 린츠 · JKU",
+        "place": "린츠, 오스트리아",
+        "period": "2006년 합류 · 2016년 기관 소개의 기록",
+        "note": "기관 소개는 이전 TUM·Colorado·TU Berlin 경력과 JKU 생물정보학 연구소 활동을 기록한다. 당시 직책을 현재 직책으로 옮기지 않는다.",
+        "sourceIds": [
+          "jku-lstm-profile"
+        ]
+      }
+    ],
+    "background": "독일 바이에른 출생으로 소개되며 TUM에서 1991년 순환 신경망에 관한 디플롬 논문을 썼다. 슈미트후버와의 1997년 LSTM 연구 뒤에도 여러 기관에서 학습 시스템을 연구했고, JKU에는 2006년에 합류한 것으로 기관 소개에 기록돼 있다.",
+    "backgroundSourceIds": [
+      "jku-lstm-profile",
+      "jku-publications",
+      "lstm-original"
+    ],
+    "connections": [
+      {
+        "personId": "jurgen-schmidhuber",
+        "name": "Jürgen Schmidhuber",
+        "nameKo": "위르겐 슈미트후버",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "LSTM 공동저자",
+        "description": "1997년 Long Short-Term Memory의 두 공동저자다. 박사 지도와 공동저술은 같은 관계가 아니므로 여기서는 원논문이 직접 확인하는 공동연구로 연결한다.",
+        "period": "1997",
+        "sourceIds": [
+          "lstm-original"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "jku-lstm-profile",
+        "title": "JKU Linz Institute of Technology · Sepp Hochreiter",
+        "url": "https://www.jku.at/en/linz-institute-of-technology/research/lit-calls/hochreiter/",
+        "scope": "2016 LIT 프로젝트 소개의 전기 단락: 바이에른 출생·JKU2006 합류·TUM/Colorado/TU Berlin 경력·1991 학위논문·1997 첫 LSTM 출판. 기관의 우선권·성공 평가를 독립 검증된 순위로 확대하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "jku-publications",
+        "title": "JKU Institut für Machine Learning · 과거 출판물 목록",
+        "url": "https://www.jku.at/institut-fuer-machine-learning/forschung/publikationen/older/",
+        "scope": "Untersuchungen zu dynamischen neuronalen Netzen을1991 Diploma thesis, Institut für Informatik·Lehrstuhl Prof.Brauer·TUM으로 명시하는 서지를 확인. 논문 전체를 이번 인물 소개에서 검토했다고 주장하지 않는다.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "lstm-original",
+        "title": "Hochreiter·Schmidhuber · Long Short-Term Memory (1997)",
+        "url": "https://web.stanford.edu/class/psych209/Readings/HochreiterSchmidthuber97LSTM.pdf",
+        "scope": "기존 LSTM 상세 카드의 원논문. 저자·TUM/IDSIA 소속·기억과 학습 신호의 문제를 연결한다. 현행 forget-gate LSTM을 1997년 전체 구조와 같게 표시하지 않는다.",
+        "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
+    "personId": "seymour-papert",
+    "origin": {
+      "label": "출생",
+      "text": "남아프리카 프리토리아 · 1928년",
+      "sourceIds": [
+        "papert-mit"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of the Witwatersrand",
+        "detail": "철학 학사·수학 박사",
+        "period": "1949·1952년",
+        "sourceIds": [
+          "papert-mit"
+        ]
+      },
+      {
+        "name": "University of Cambridge",
+        "detail": "수학 연구·두 번째 박사학위",
+        "period": "1950년대",
+        "sourceIds": [
+          "papert-mit"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-geneva",
+        "name": "제네바대학교",
+        "place": "제네바, 스위스",
+        "period": "MIT 합류 이전",
+        "note": "Jean Piaget와 인간의 지식 형성을 연구했다.",
+        "sourceIds": [
+          "papert-mit"
+        ]
+      },
+      {
+        "institutionId": "massachusetts-institute-of-technology",
+        "name": "MIT AI Lab·Media Lab",
+        "place": "케임브리지, 미국",
+        "period": "1963년 합류 · 1967년 교수 · 1985년 Media Lab 창립 교수진",
+        "note": "Minsky와 Perceptrons를 공동 집필했고 이후 Epistemology and Learning 연구를 이끌었다.",
+        "sourceIds": [
+          "papert-mit"
+        ]
+      }
+    ],
+    "background": "남아프리카에서 철학과 수학을 공부하고 Cambridge에서 수학 연구를 이어갔다. Geneva에서 Piaget와 연구한 뒤 1963년 MIT에 합류했다. 인간이 지식을 구성하는 과정과, 계산 장치가 표현할 수 있는 판단의 범위를 함께 탐구했다.",
+    "backgroundSourceIds": [
+      "papert-mit"
+    ],
+    "connections": [
+      {
+        "personId": "marvin-minsky",
+        "name": "Marvin Minsky",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Perceptrons 공동저자",
+        "description": "1969년 Perceptrons를 공동 집필했다. 서로 다른 지능 구현 방식의 우열을 인물 개인의 대립으로 단순화하지 않는다.",
+        "period": "1969년",
+        "sourceIds": [
+          "papert-mit",
+          "papert-publisher"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "papert-mit",
+        "title": "MIT Media Lab · In memory: Seymour Papert",
+        "url": "https://www.media.mit.edu/posts/in-memory-seymour-papert/",
+        "scope": "2017년 게재된 기관 추모·경력 자료. 출생·학업·Piaget와의 연구·MIT 합류·Minsky 공동저술. Cambridge의 두 번째 박사학위는 정확한 수여연도를 별도로 확정하지 않고 1950년대로 표기.",
+        "accessed": "2026-11-11"
+      },
+      {
+        "id": "papert-publisher",
+        "title": "MIT Press · Perceptrons 판본·저자",
+        "url": "https://mitpress.mit.edu/9780262534772/perceptrons/",
+        "scope": "1969년 초판 공동저자와 1988년 확장판의 2017년 재판을 구분.",
+        "accessed": "2026-11-11"
       }
     ]
   },

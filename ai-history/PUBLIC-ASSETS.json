@@ -1,5 +1,5 @@
 {
-  "version": "0.56-public.2",
+  "version": "0.57-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1109,5 +1109,21 @@
     ],
     "requiredSourceImageCount": 78,
     "scope": "Includes every image referenced by the original-source panels, including source assets reused from earlier versions."
+  },
+  "stage2Revision": {
+    "personIds": [
+      "david-rumelhart",
+      "sepp-hochreiter",
+      "alex-graves",
+      "seymour-papert",
+      "patrick-hayes",
+      "luis-c-lamb",
+      "dov-gabbay",
+      "sam-altman"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "scope": "Eight sourced person profiles, actual authored backprop learning, and three additional original-source-linked records. Original diagrams and authored calculations remain distinct. All referenced original images are included."
   }
 }

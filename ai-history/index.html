@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.56-public.2">
+<html lang="ko" data-theme="light" data-release="0.57-public.1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="visuals/perceptron-association.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/advice-taker.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/logic-theorist.css?v=0.48-public.1">
-  <link rel="stylesheet" href="visuals/backprop-representation.css?v=0.48-public.1">
+  <link rel="stylesheet" href="visuals/backprop-representation.css?v=0.57-public.1">
   <link rel="stylesheet" href="visuals/paper-architecture.css?v=0.55-public.1">
   <link rel="stylesheet" href="visuals/lenet-features.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/vision-system.css?v=0.48-public.1">
@@ -107,6 +107,9 @@
   <link rel="stylesheet" href="visuals/sora-research-product.css?v=0.49-public.1">
   <link rel="stylesheet" href="visuals/kimi-model-service.css?v=0.49-public.1">
   <link rel="stylesheet" href="visuals/worldlabs-spatial-platform.css?v=0.49-public.1">
+  <link rel="stylesheet" href="visuals/papert-perceptrons.css?v=0.57-public.1">
+  <link rel="stylesheet" href="visuals/graves-ctc.css?v=0.57-public.1">
+  <link rel="stylesheet" href="visuals/altman-openai.css?v=0.57-public.1">
   <link rel="stylesheet" href="public-images.css?v=0.48-public.1"><script src="public-images.js?v=0.48-public.1" defer></script><script src="timeline-data.js?v=0.48-public.1" defer></script>
   <script src="people-data.js?v=0.48-public.1" defer></script>
   <script src="turing-data.js?v=0.48-public.1" defer></script>
@@ -126,7 +129,7 @@
   <script src="entries/perceptron.js?v=0.48-public.1" defer></script>
   <script src="entries/advice-taker.js?v=0.48-public.1" defer></script>
   <script src="entries/logic-theorist.js?v=0.48-public.1" defer></script>
-  <script src="entries/backprop.js?v=0.48-public.1" defer></script>
+  <script src="entries/backprop.js?v=0.57-public.1" defer></script>
   <script src="entries/lenet.js?v=0.55-public.1" defer></script>
   <script src="entries/lstm.js?v=0.48-public.1" defer></script>
   <script src="entries/imagenet.js?v=0.48-public.1" defer></script>
@@ -212,13 +215,20 @@
   <script src="luckey-oculus-2012-detail-data.js?v=0.54-public.1" defer></script>
   <script src="wang-meta-2025-detail-data.js?v=0.54-public.1" defer></script>
   <script src="garcez-cognitive-reasoning-2008-detail-data.js?v=0.54-public.1" defer></script>
+  <script src="entries/papert-perceptrons-1969.js?v=0.57-public.1" defer></script>
+  <script src="entries/graves-ctc-2006.js?v=0.57-public.1" defer></script>
+  <script src="entries/altman-openai-infrastructure.js?v=0.57-public.1" defer></script>
+  <script src="profiles-stage2/rumelhart.js?v=0.57-public.1" defer></script>
+  <script src="profiles-stage2/symbolic.js?v=0.57-public.1" defer></script>
+  <script src="profiles-stage2/sequence-industry.js?v=0.57-public.1" defer></script>
   <script src="art.js?v=0.48-public.1" defer></script>
   <script src="visuals/biological-neuron.js?v=0.48-public.1" defer></script>
   <script src="visuals/neuron-to-logic.js?v=0.48-public.1" defer></script>
   <script src="visuals/perceptron-association.js?v=0.48-public.1" defer></script>
   <script src="visuals/advice-taker.js?v=0.48-public.1" defer></script>
   <script src="visuals/logic-theorist.js?v=0.48-public.1" defer></script>
-  <script src="visuals/backprop-representation.js?v=0.48-public.1" defer></script>
+  <script src="visuals/backprop-learning-core.js?v=0.57-public.1" defer></script>
+  <script src="visuals/backprop-representation.js?v=0.57-public.1" defer></script>
   <script src="visuals/vision-system-art.js?v=0.48-public.1" defer></script>
   <script src="visuals/vision-system.js?v=0.48-public.1" defer></script>
   <script src="visuals/paper-architecture.js?v=0.56-public.1" defer></script>
@@ -226,6 +236,8 @@
   <script src="source-figures/neural.js?v=0.56-public.1" defer></script>
   <script src="source-figures/hybrid-industry.js?v=0.56-public.1" defer></script>
   <script src="source-figures/root.js?v=0.56-public.1" defer></script>
+  <script src="source-figures/stage2-symbolic.js?v=0.57-public.1" defer></script>
+  <script src="source-figures/stage2-sequence-industry.js?v=0.57-public.1" defer></script>
   <script src="visuals/lenet-features.js?v=0.56-public.1" defer></script>
   <script src="visuals/lstm-memory.js?v=0.48-public.1" defer></script>
   <script src="visuals/imagenet-experience.js?v=0.48-public.1" defer></script>
@@ -311,6 +323,11 @@
   <script src="visuals/kimi-model-service.js?v=0.49-public.1" defer></script>
   <script src="visuals/worldlabs-spatial-platform-core.js?v=0.49-public.1" defer></script>
   <script src="visuals/worldlabs-spatial-platform.js?v=0.49-public.1" defer></script>
+  <script src="visuals/papert-perceptrons-core.js?v=0.57-public.1" defer></script>
+  <script src="visuals/papert-perceptrons.js?v=0.57-public.1" defer></script>
+  <script src="visuals/graves-ctc-core.js?v=0.57-public.1" defer></script>
+  <script src="visuals/graves-ctc.js?v=0.57-public.1" defer></script>
+  <script src="visuals/altman-openai.js?v=0.57-public.1" defer></script>
   <script src="visuals/turing-morphogenesis-detail-core.js?v=0.54-public.1" defer></script>
   <script src="visuals/turing-morphogenesis-detail.js?v=0.54-public.1" defer></script>
   <script src="visuals/mccarthy-lisp-1960-detail-core.js?v=0.54-public.1" defer></script>
@@ -353,8 +370,9 @@
   <script src="article-view.js?v=0.56-public.1" defer></script>
   <script src="study.js?v=0.48-public.1" defer></script>
   <script src="portrait-data.js?v=0.48-public.1" defer></script>
+  <script src="portrait-stage2-data.js?v=0.57-public.1" defer></script>
   <script src="portraits.js?v=0.48-public.1" defer></script>
-  <script src="person-background-data.js?v=0.48-public.1" defer></script>
+  <script src="person-background-data.js?v=0.57-public.1" defer></script>
   <script src="person-background.js?v=0.48-public.1" defer></script>
   <script src="people.js?v=0.48-public.1" defer></script>
   <script src="person-graph-core.js?v=0.48-public.1" defer></script>
@@ -368,7 +386,7 @@
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.56</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.57</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>

@@ -1,0 +1,5 @@
+/* Commons file-specific credits verified 2026-11-11. Existing records stay intact. */
+window.ATLAS_PERSON_PORTRAITS=Object.freeze({...window.ATLAS_PERSON_PORTRAITS,
+  'seymour-papert':{personId:'seymour-papert',name:'Seymour Papert',aliases:['시모어 페퍼트','Seymour A. Papert'],imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Seymour_Papert.jpg/500px-Seymour_Papert.jpg',sourceUrl:'https://commons.wikimedia.org/wiki/File:Seymour_Papert.jpg',author:'Matematicamente.it',license:{name:'CC BY-SA 3.0',url:'https://creativecommons.org/licenses/by-sa/3.0/'},position:'50% 25%'},
+  'sam-altman':{personId:'sam-altman',name:'Sam Altman',aliases:['샘 올트먼','Samuel Altman'],imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Sam_Altman_speaking_at_TED_%28cropped%29.jpg/500px-Sam_Altman_speaking_at_TED_%28cropped%29.jpg',sourceUrl:'https://commons.wikimedia.org/wiki/File:Sam_Altman_speaking_at_TED_(cropped).jpg',author:'Steve Jurvetson · crop: DenisMironov1',license:{name:'CC BY 2.0',url:'https://creativecommons.org/licenses/by/2.0/'},position:'50% 25%',photoDateDisplay:'2025-04-11 촬영'}
+});
