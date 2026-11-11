@@ -6,6 +6,7 @@
   'use strict';
 
   const FAMILIES = [
+    ['ssi',['ssi','safe superintelligence','safe superintelligence inc','세이프 슈퍼인텔리전스']],
     ['dit',['dit','diffusion transformer','diffusion transformers','디퓨전 트랜스포머']],
     ['gan',['gan','generative adversarial nets','generative adversarial networks','생성적 적대 신경망','생성적 적대망']],
     ['maml',['maml','model agnostic meta learning','모델 불가지론적 메타학습']],

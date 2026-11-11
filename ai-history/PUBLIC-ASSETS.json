@@ -1,5 +1,5 @@
 {
-  "version": "0.48.1-public.1",
+  "version": "0.49-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -910,5 +910,44 @@
     "implementation": "The interface applies a theme immediately. Preference handling must not gate application initialization. The version-bound source and independent theme report describe the reviewed implementation.",
     "articleAndVisualizationFilesPreserved": true,
     "causeBoundary": "A synchronous Web Storage call blocked return in the observed in-app-browser fixture. The underlying browser storage implementation cause is not established."
+  },
+  "personCardsBatchRevision": {
+    "version": "0.49",
+    "people": [
+      "ilya-sutskever",
+      "chelsea-finn",
+      "william-peebles",
+      "yang-zhilin",
+      "fei-fei-li"
+    ],
+    "newWorks": [
+      {
+        "id": "sutskever-ssi-2024",
+        "year": 2024,
+        "track": "industry"
+      },
+      {
+        "id": "finn-physical-intelligence-2024",
+        "year": 2024,
+        "track": "industry"
+      },
+      {
+        "id": "peebles-sora-development-2024",
+        "year": 2024,
+        "track": "industry"
+      },
+      {
+        "id": "yang-kimi-platform-2025",
+        "year": 2025,
+        "track": "industry"
+      },
+      {
+        "id": "fei-worldlabs-2024",
+        "year": 2024,
+        "track": "industry"
+      }
+    ],
+    "scope": "Five existing people gain separate industry/development records. Their prior research, all other people, the timeline, portraits, typed person graph and asynchronous theme runtime remain unchanged.",
+    "evidenceBoundary": "Original research methods, dated company announcements, service status, future plans and authored arithmetic are distinguished in each card. Private evidence captures are not copied into this public tree."
   }
 }
