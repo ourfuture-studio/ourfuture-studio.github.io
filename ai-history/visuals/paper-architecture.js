@@ -23,18 +23,48 @@
       distinction:'S2·S4는 원문의 서브샘플링이며, 마지막 출력은 RBF 기준과의 거리입니다. 아래에서 시각계의 발상과 각 층의 설계를 연결해 읽을 수 있습니다.'
     }
   };
+  const recordFigures=new Map([['lecun-handwritten-1989','lecun-1989'],['lenet','lenet-5-1998']]);
+  function register(entries){
+    for(const entry of entries){
+      const {workId,key,paper,note}=entry;
+      if(!workId||!/^[a-z0-9-]+$/.test(key))throw new Error('Invalid original-source figure key');
+      if(paper&&note)throw new Error('Choose a source figure or reading note: '+key);
+      if(paper){
+        if(papers[key])throw new Error('Duplicate original-source figure: '+key);
+        if(!paper.image?.startsWith('assets/')||!paper.url?.startsWith('https://')||!(paper.width>0&&paper.height>0))throw new Error('Incomplete original-source figure: '+key);
+        papers[key]=Object.freeze(paper);
+      }
+      if(note){
+        if(papers[key]||!note.title||!note.body||!note.source||!note.url?.startsWith('https://'))throw new Error('Incomplete original-source reading note: '+key);
+        papers[key]=Object.freeze({...note,kind:'note'});
+      }
+      if(!papers[key])throw new Error('Unregistered original-source image: '+key);
+      if(recordFigures.has(workId)&&recordFigures.get(workId)!==key)throw new Error('Duplicate figure for record: '+workId);
+      recordFigures.set(workId,key);
+    }
+  }
+  function keyForRecord(record){return recordFigures.get(record.eventId||record.id);}
+  function kindForRecord(record){const key=keyForRecord(record);return key?(papers[key].kind||'figure'):null;}
+  function mountForRecord(host,record){const key=keyForRecord(record);return key?mount(host,key):null;}
   function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;}
   function mount(host,key){
     const p=papers[key];if(!p)throw new Error('Unknown paper architecture: '+key);
     const section=node('section','paper-architecture');section.dataset.paperArchitecture=key;
-    section.append(node('span','paper-architecture-label','원논문 도판'),node('h4','paper-architecture-title',p.title));
+    section.dataset.sourceKind=p.kind||'figure';
+    if(p.kind==='note'){
+      section.append(node('span','paper-architecture-label','원자료 읽기'),node('h4','paper-architecture-title',p.title),node('p','paper-architecture-caption',p.body));
+      const credit=node('div','paper-architecture-credit'),link=node('a','',p.source+' ↗');link.href=p.url;link.target='_blank';link.rel='noopener noreferrer';credit.append(link);if(p.credit)credit.append(node('p','',p.credit));section.append(credit);host.append(section);return section;
+    }
+    section.append(node('span','paper-architecture-label',p.label||'원논문 도판'),node('h4','paper-architecture-title',p.title));
     const toolbar=node('div','paper-architecture-toolbar'),button=node('button','paper-architecture-zoom','그림 크게 보기');
     const viewer=node('div','paper-architecture-viewer');viewer.id='paper-architecture-'+key;viewer.tabIndex=0;viewer.setAttribute('role','region');viewer.setAttribute('aria-label',p.title+' · 확대한 뒤 가로로 이동할 수 있습니다.');
     button.type='button';button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',viewer.id);button.dataset.paperZoom=key;
-    toolbar.append(node('span','','원본의 층 이름과 연결을 직접 확인하세요.'),button);section.append(toolbar);
-    const figure=node('figure'),img=node('img');img.src=window.ATLAS_EMBEDDED_IMAGES?.[p.image.slice(7)]||p.image;img.alt=p.alt;img.width=p.width;img.height=p.height;img.decoding='async';img.dataset.paperImage=key;viewer.append(img);figure.append(viewer,node('figcaption','paper-architecture-caption',p.caption));section.append(figure);
+    toolbar.append(node('span','',p.prompt||'원자료에 실린 구조와 표현을 직접 확인하세요.'),button);section.append(toolbar);
+    const figure=node('figure'),img=node('img');img.src=window.ATLAS_EMBEDDED_IMAGES?.[p.image.slice(7)]||p.image;img.alt=p.alt;img.width=p.width;img.height=p.height;img.decoding='async';img.dataset.paperImage=key;
+    if(p.background){if(!/^#[a-f0-9]{6}$/i.test(p.background))throw new Error('Invalid source image backdrop');viewer.style.backgroundColor=p.background;img.style.backgroundColor=p.background;}
+    viewer.append(img);figure.append(viewer,node('figcaption','paper-architecture-caption',p.caption));section.append(figure);
     button.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(expanded));button.textContent=expanded?'전체 그림으로 보기':'그림 크게 보기';viewer.classList.toggle('is-expanded',expanded);viewer.scrollLeft=0;});
     const credit=node('div','paper-architecture-credit'),a=node('a','',p.source+' ↗');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';credit.append(a,node('p','',p.credit));section.append(credit,node('p','paper-architecture-distinction',p.distinction));host.append(section);return section;
   }
-  window.AtlasPaperArchitecture=Object.freeze({mount});
+  window.AtlasPaperArchitecture=Object.freeze({mount,mountForRecord,register,keyForRecord,kindForRecord});
 })();

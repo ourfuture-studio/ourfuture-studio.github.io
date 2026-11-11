@@ -11,7 +11,7 @@
     const contents=node('article','idea-article');host.append(contents);
     function section(label,key){const s=node('section','article-section');s.dataset.section=key;const b=node('button','',label);b.type='button';b.addEventListener('click',()=>{s.tabIndex=-1;s.focus({preventScroll:true});s.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});nav.append(b);contents.append(s);return s;}
     const intro=section('출발한 질문','question');intro.append(node('p','article-question',a.question));for(const p of a.opening)intro.append(node('p','article-prose',p));
-    if(a.visual){const visual=window.AtlasVisuals.get(a.visual.id);if(!visual)throw new Error('Unregistered visual: '+a.visual.id);const s=section(a.visual.navLabel||'뇌와 모델','visual');s.append(node('h3','',a.visual.title),node('p','article-visual-intro',a.visual.caption));disposeVisual=visual.mount(s,a.visual);}
+    if(a.visual){const visual=window.AtlasVisuals.get(a.visual.id);if(!visual)throw new Error('Unregistered visual: '+a.visual.id);const s=section(a.visual.navLabel||'뇌와 모델','visual');s.append(node('h3','',a.visual.title));window.AtlasPaperArchitecture?.mountForRecord(s,record);s.append(node('p','article-visual-intro',a.visual.caption));const visualHost=node('div','article-reconstruction');visualHost.style.minWidth='0';s.append(visualHost);disposeVisual=visual.mount(visualHost,a.visual);}
     const ideas=section('아이디어의 의미','meaning');
     for(const idea of c.keyIdeas){ideas.append(node('h3','',idea.title),node('p','article-prose',idea.text));}
     if(a.takeaway){const box=node('aside','article-takeaway');box.append(node('h3','',a.takeaway.title),node('p','',a.takeaway.text));ideas.append(box);}

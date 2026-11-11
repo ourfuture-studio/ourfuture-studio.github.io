@@ -1,5 +1,5 @@
 {
-  "version": "0.55-public.1",
+  "version": "0.56-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1088,5 +1088,11 @@
       "LeNet5 author manuscript1998 Fig2 PDF7"
     ],
     "scope": "Exact original figure excerpts precede existing interactive explanations. Existing labels, examples and equations are preserved."
+  },
+  "originalSourceRevision": {
+    "cards": 89,
+    "originalImages": 78,
+    "readingNotes": 11,
+    "scope": "Original-source diagrams, equations and official figures precede existing interactive explanations. Figureless cases use attributed source-reading notes; they are not counted as diagrams. Existing article bodies and calculations are preserved."
   }
 }
