@@ -1,5 +1,5 @@
 {
-  "version": "0.51-public.1",
+  "version": "0.52-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -963,5 +963,12 @@
     "workId": "turing-computing-machinery-intelligence",
     "scope": "The existing1950 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
     "evidenceBoundary": "Original-paper arguments, attributed objections and authored conversation/evaluation cases are distinguished; the visual does not establish intelligence, consciousness or empirical model performance."
+  },
+  "turing1948Revision": {
+    "version": "0.52",
+    "personId": "alan-turing",
+    "workId": "turing-intelligent-machinery",
+    "scope": "The existing1948 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
+    "evidenceBoundary": "Original-report circuit transitions, connection-change proposals and authored circuit examples are distinguished; the visual does not establish a trained brain, modern gradient learning or empirical model performance."
   }
 }
