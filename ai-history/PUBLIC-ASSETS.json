@@ -1,5 +1,5 @@
 {
-  "version": "0.49-public.1",
+  "version": "0.50-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -949,5 +949,12 @@
     ],
     "scope": "Five existing people gain separate industry/development records. Their prior research, all other people, the timeline, portraits, typed person graph and asynchronous theme runtime remain unchanged.",
     "evidenceBoundary": "Original research methods, dated company announcements, service status, future plans and authored arithmetic are distinguished in each card. Private evidence captures are not copied into this public tree."
+  },
+  "turing1936Revision": {
+    "version": "0.50",
+    "personId": "alan-turing",
+    "workId": "turing-computable-numbers",
+    "scope": "The existing1936 work receives a detailed article and authored interactive figure. Existing source records, dates, authors, portraits, timeline, graph and other works are preserved.",
+    "evidenceBoundary": "Original-paper facts and authored finite procedures are distinguished; the visual does not establish unrestricted machine behavior or reproduce every proof."
   }
 }
