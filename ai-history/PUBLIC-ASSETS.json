@@ -1,5 +1,5 @@
 {
-  "version": "0.57-public.1",
+  "version": "0.58-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1125,5 +1125,15 @@
     "sourceImages": 80,
     "sourceReadingNotes": 12,
     "scope": "Eight sourced person profiles, actual authored backprop learning, and three additional original-source-linked records. Original diagrams and authored calculations remain distinct. All referenced original images are included."
+  },
+  "williamsLstmRevision": {
+    "personIds": [
+      "ronald-williams"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 2,
+    "scope": "One sourced Williams profile, linked 1986 coauthorship and actual authored learning in a small 1997-source-based LSTM. Original diagrams and authored calculations remain distinct. Every referenced original image is included."
   }
 }

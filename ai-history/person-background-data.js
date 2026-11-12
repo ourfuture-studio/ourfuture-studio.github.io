@@ -3144,6 +3144,91 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "ronald-williams",
+    "education": [],
+    "researchPlaces": [
+      {
+        "institutionId": "uc-san-diego",
+        "name": "University of California, San Diego · Institute for Cognitive Science",
+        "period": "1986년 공동논문에 표기된 소속",
+        "place": "La Jolla, California, 미국",
+        "note": "Nature 논문 첫쪽에서 Rumelhart와 Williams의 이름에 같은 별표가 붙고, 이 연구소 소속으로 연결된다. Hinton의 소속은 Carnegie Mellon으로 따로 적혀 있다.",
+        "sourceIds": [
+          "nature-1986"
+        ]
+      },
+      {
+        "institutionId": "northeastern-university",
+        "name": "Northeastern University · Khoury College of Computer Sciences",
+        "period": "1986 합류 · 대학 추모 기사의 22년 재직 기록",
+        "place": "Boston, Massachusetts, 미국",
+        "note": "컴퓨터과학 교수로 합류해 신경망·순환망·강화학습 연구를 이어갔다. 대학의 2024년 추모 기사는 22년의 재직과 명예교수 경력을 소개한다.",
+        "sourceIds": [
+          "khoury-tribute",
+          "author-publications"
+        ]
+      }
+    ],
+    "background": "대학 추모 기사는 윌리엄스를 미국 남부캘리포니아 출신으로 소개한다. 1986년 역전파 논문에는 UC San Diego의 인지과학 연구소 소속으로 이름을 올렸고, 같은 해 Northeastern의 컴퓨터과학 교수로 합류했다. 최종 오차로 중간 표현을 학습하는 공동연구에서 나아가, 시간에 따라 상태가 달라지는 순환망과 강화학습도 연구했다. 추모 기사는 학부·박사과정 때 기타와 키보드를 연주하며 지역 밴드에서 활동했던 모습도 전한다.",
+    "backgroundSourceIds": [
+      "khoury-tribute",
+      "nature-1986",
+      "author-publications"
+    ],
+    "connections": [
+      {
+        "personId": "david-rumelhart",
+        "name": "David E. Rumelhart",
+        "nameKo": "데이비드 루멜하트",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "역전파 공동 논문",
+        "description": "Hinton과 함께 1986년 Nature 논문 Learning representations by back-propagating errors를 발표했다. 최종 정답과 출력의 차이로 연결을 바꾸면서, 중간층의 표현도 학습하는 절차를 설명했다.",
+        "period": "1986",
+        "sourceIds": [
+          "nature-1986",
+          "khoury-tribute"
+        ]
+      },
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey E. Hinton",
+        "nameKo": "제프리 힌턴",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "역전파 공동 논문",
+        "description": "Rumelhart와 함께 출력의 오차에서 각 연결의 기울기를 구하고, 중간 표현을 학습하는 1986년 논문의 공동저자다. Williams·Rumelhart는 UC San Diego, Hinton은 Carnegie Mellon 소속으로 표기되어 있다.",
+        "period": "1986",
+        "sourceIds": [
+          "nature-1986"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "nature-1986",
+        "title": "Rumelhart·Hinton·Williams · Learning representations by back-propagating errors (Nature, 1986)",
+        "url": "https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf",
+        "scope": "원논문 인쇄 p.533의 표제·세 공동저자·UC San Diego와 Carnegie Mellon 소속을 지면으로 직접 대조했다. 같은 쪽의 초록·도입은 출력 오차에 따른 연결 갱신과 숨은 단위의 표현 학습을 설명한다. 첫쪽 상단의 앞 논문은 이 연구 내용에서 제외한다. 수식·도판의 상세 검토는 연결된 역전파 연구 카드의 출처에 기록한다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "khoury-tribute",
+        "title": "Khoury College · A tribute to Ron Williams, Khoury professor and machine learning pioneer",
+        "url": "https://www.khoury.northeastern.edu/a-tribute-to-ron-williams-khoury-professor-and-machine-learning-pioneer/",
+        "scope": "대학의 2024-03-05 추모 기사 전체를 확인했다. 남부캘리포니아 출신이라는 지역 단위 소개, 1986년 Northeastern 합류, 22년 재직, 명예교수, 역전파 세 공동저자, 순환망·강화학습 연구와 학업 중 음악 활동을 확인한다. 기사의 영향력 평가·인용 수·우선권 표현을 독립 검증된 결과로 옮기지 않는다. 구체적 출생 도시·학위 연도·지도교수는 이 기사로 확정하지 않는다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "author-publications",
+        "title": "Ronald J. Williams · Publications available for downloading",
+        "url": "https://www.khoury.northeastern.edu/home/rjw/pubs.html",
+        "scope": "대학 도메인에 보관된 저자 논문 목록에서 Williams·Zipser (1989)의 순환망 학습, Williams·Peng (1990)의 온라인 순환망 학습, Williams (1992)의 강화학습 논문 서지와 요약을 확인했다. 이 인물 소개가 해당 논문들의 전체 실험을 재검토했다는 뜻은 아니다. 세 연구를 1986년 Nature 논문이나 LSTM과 같은 알고리즘으로 합치지 않는다.",
+        "accessed": "2026-11-12"
+      }
+    ]
+  },
+  {
     "personId": "sam-altman",
     "origin": {
       "label": "성장",
