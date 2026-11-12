@@ -3625,6 +3625,211 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "walter-pitts",
+    "origin": {
+      "label": "성장",
+      "text": "디트로이트, 미국",
+      "sourceIds": [
+        "lettvin-autobiography"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of Chicago · 시카고대학교",
+        "detail": "비등록 상태의 강의 참여 · 논리와 수리생물학 공부",
+        "period": "1930년대 후반–1940년대 초 · 회고 자료 기준",
+        "sourceIds": [
+          "lettvin-autobiography"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-chicago",
+        "name": "University of Chicago · 수리생물학 연구 모임",
+        "period": "1943년 논문 이전의 연구 배경",
+        "place": "시카고, 일리노이, 미국",
+        "note": "Lettvin은 피츠가 정식 등록 학생이 아닌 상태로 강의에 참여하고 Rashevsky의 연구 모임에서 공부했다고 회고한다. 이를 정규 학위 취득으로 바꾸어 표시하지 않는다.",
+        "sourceIds": [
+          "lettvin-autobiography",
+          "paper-1943"
+        ]
+      },
+      {
+        "institutionId": "university-of-illinois-neuropsychiatric-institute",
+        "name": "Illinois Neuropsychiatric Institute · 매컬럭과의 공동연구",
+        "period": "1940년대 초 · 1943년 공동논문",
+        "place": "시카고, 일리노이, 미국",
+        "note": "Lettvin의 직접 회고는 피츠와 매컬럭을 만나게 한 경위와 함께 논문을 구상한 연구 환경을 전한다. 이 사실로 피츠의 교수 직함이나 정규 고용 신분을 추정하지 않는다.",
+        "sourceIds": [
+          "lettvin-autobiography",
+          "paper-1943"
+        ]
+      },
+      {
+        "institutionId": "mit-rle",
+        "name": "MIT · Research Laboratory of Electronics",
+        "period": "1959년 공식 연구 연표의 기록",
+        "place": "케임브리지, 매사추세츠, 미국",
+        "note": "RLE의 공식 연표는 Lettvin과 Pitts의 1959년 개구리 시각 신경 연구 논문을 기록한다. 1943년의 형식적 신경 모형과 후속 생리학 연구를 같은 실험으로 합치지 않는다.",
+        "sourceIds": [
+          "mit-rle-history"
+        ]
+      }
+    ],
+    "background": "Lettvin의 회고는 피츠를 디트로이트에서 와 논리와 수학을 독학하고, 시카고대학교의 강의와 수리생물학 연구 모임에 참여한 인물로 전한다. 매컬럭과 1943년 논문을 함께 쓴 뒤 MIT RLE에서도 신경계 연구를 이어갔다.",
+    "backgroundSourceIds": [
+      "lettvin-autobiography",
+      "paper-1943",
+      "mit-rle-history"
+    ],
+    "connections": [
+      {
+        "personId": "warren-mcculloch",
+        "name": "Warren McCulloch",
+        "nameKo": "워런 매컬럭",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "1943년 신경 모형 공동연구",
+        "description": "신경 활동의 사건과 연결 관계를 명제논리로 표현한 1943년 논문의 공동저자다. 두 사람의 신경계·논리에 대한 관심을 결합한 연구이며, 모형을 한 사람이 단독 발명했거나 다른 한 사람이 단순 보조했다는 역할 분담을 가정하지 않는다.",
+        "period": "1943",
+        "sourceIds": [
+          "paper-1943",
+          "lettvin-autobiography"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "paper-1943",
+        "title": "McCulloch·Pitts (1943) · A Logical Calculus of the Ideas Immanent in Nervous Activity",
+        "url": "https://home.csulb.edu/~cwallis/382/readings/482/mccolloch.logical.calculus.ideas.1943.pdf",
+        "scope": "원논문 인쇄 p.115 / PDF 1쪽의 두 공동저자와 소속 기관 묶음, 신경 사건을 명제논리로 표현하려는 초록을 지면으로 대조했다. 기관의 공동 표기만으로 각자의 고용 신분·학생 등록·학위를 추정하지 않는다. 모형의 억제와 지연 가정은 연결된 연구 카드에서 따로 확인한다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "lettvin-autobiography",
+        "title": "Jerome Lettvin · The History of Neuroscience in Autobiography, Vol.2 · Society for Neuroscience",
+        "url": "https://www.brainfacts.org/-/media/SfN/Documents/TheHistoryofNeuroscience/Volume-2/c8.pdf#page=5",
+        "scope": "공동연구자 Lettvin의 자서전 인쇄 pp.225–227 / PDF 5–7쪽에서 Detroit 출신 배경, 시카고대학교 강의에 비등록으로 참여한 기록, Rashevsky 연구 모임, 피츠를 매컬럭에게 소개한 경위와 공동 연구 환경을 지면으로 대조했다. 이 자료는 직접 회고이며, 정확한 나이·등록 연도·학위·주거 일화 전체를 독립 검증한 전기로 확대하지 않는다. 확인하지 않은 박사 지도 관계나 학위를 추가하지 않았다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "mit-rle-history",
+        "title": "MIT Research Laboratory of Electronics · Timeline: 1946–1959",
+        "url": "https://www.rle.mit.edu/about/history/timeline-1946-1959/",
+        "scope": "RLE의 공식 연구 연표에서 1959년 항목을 확인했다. 이 항목은 Lettvin과 Pitts가 What the Frog’s Eye Tells the Frog’s Brain을 발표했다고 기록한다. 피츠의 1959년 RLE 연구 맥락을 확인하는 근거이며 최초 합류일, 학위 취득, 해당 생리학 논문의 모든 결과를 이 연표만으로 검증한 것은 아니다.",
+        "accessed": "2026-11-12"
+      }
+    ]
+  },
+  {
+    "personId": "warren-mcculloch",
+    "origin": {
+      "label": "출생",
+      "text": "오렌지, 뉴저지, 미국",
+      "sourceIds": [
+        "aps-finding-aid"
+      ]
+    },
+    "education": [
+      {
+        "name": "Yale University · 예일대학교",
+        "detail": "철학·심리학 학사",
+        "period": "1921",
+        "sourceIds": [
+          "aps-finding-aid"
+        ]
+      },
+      {
+        "name": "College of Physicians and Surgeons · New York",
+        "detail": "의학 학위 · M.D.",
+        "period": "1927",
+        "sourceIds": [
+          "aps-finding-aid"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "yale-university",
+        "name": "Yale University · Laboratory of Neurophysiology",
+        "period": "1930년대–1941",
+        "place": "뉴헤이븐, 코네티컷, 미국",
+        "note": "영장류 대뇌피질 영역 사이의 기능적 연결을 연구했다. 이후 공동연구자 Lettvin의 기고가 이 연구 배경을 설명한다.",
+        "sourceIds": [
+          "lettvin-encyclopedia"
+        ]
+      },
+      {
+        "institutionId": "university-of-illinois-neuropsychiatric-institute",
+        "name": "University of Illinois · Illinois Neuropsychiatric Institute",
+        "period": "1941년 합류 · 1943년 공동논문",
+        "place": "시카고, 일리노이, 미국",
+        "note": "정신의학과에서 신경생리학 연구를 이어갔다. 1943년 공동논문 표제에는 이 기관과 University of Chicago가 함께 적혀 있다.",
+        "sourceIds": [
+          "lettvin-encyclopedia",
+          "paper-1943"
+        ]
+      },
+      {
+        "institutionId": "mit-rle",
+        "name": "MIT · Research Laboratory of Electronics",
+        "period": "1950년대의 연구",
+        "place": "케임브리지, 매사추세츠, 미국",
+        "note": "Pitts·Lettvin·Wall 등과 신경계와 정보 처리에 관한 연구를 이어갔다. 이 카드에서는 자료마다 다르게 적힌 정확한 이적 연도를 확정하지 않는다.",
+        "sourceIds": [
+          "lettvin-encyclopedia"
+        ]
+      }
+    ],
+    "background": "뉴저지 오렌지에서 태어나 철학·심리학과 의학을 공부했다. 예일에서 피질의 연결을 연구하고, 시카고의 Illinois Neuropsychiatric Institute에서 피츠와 1943년 공동논문을 썼다. 이후 MIT RLE에서도 신경계와 정보 처리 연구를 이어갔다. 신경생리학적 연구와 생각을 논리로 표현하려는 질문을 함께 다룬 연구자였다.",
+    "backgroundSourceIds": [
+      "aps-finding-aid",
+      "lettvin-encyclopedia",
+      "paper-1943"
+    ],
+    "connections": [
+      {
+        "personId": "walter-pitts",
+        "name": "Walter Pitts",
+        "nameKo": "월터 피츠",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "1943년 신경 모형 공동연구",
+        "description": "A Logical Calculus of the Ideas Immanent in Nervous Activity의 공동저자다. 신경 활동이 일어나는 사건과 연결 관계를 명제논리로 표현하고, 논리적 조건에 대응하는 신경망을 연구했다. 이 연결은 공동저술 관계를 나타낸다.",
+        "period": "1943",
+        "sourceIds": [
+          "paper-1943",
+          "lettvin-encyclopedia"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "paper-1943",
+        "title": "McCulloch·Pitts (1943) · A Logical Calculus of the Ideas Immanent in Nervous Activity",
+        "url": "https://home.csulb.edu/~cwallis/382/readings/482/mccolloch.logical.calculus.ideas.1943.pdf",
+        "scope": "원논문 인쇄 p.115 / PDF 1쪽을 지면으로 대조했다. 두 저자, University of Illinois의 College of Medicine·Illinois Neuropsychiatric Institute와 University of Chicago의 공동 표기, 신경 사건을 명제논리로 다루려는 초록의 발상을 확인한다. 공동 소속 표기만으로 두 사람 각각의 고용 신분이나 학위를 추정하지 않는다. 수식·모형 가정은 연결된 1943년 연구 카드의 출처에서 별도로 다룬다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "lettvin-encyclopedia",
+        "title": "Jerome Lettvin · McCulloch, Warren S. · The MIT Encyclopedia of the Cognitive Sciences",
+        "url": "https://web.mit.edu/morrishalle/pubworks/papers/1999_Halle_MIT_Encyclopedia_Cognitive_Sciences-paper.pdf#page=645",
+        "scope": "MIT가 보관한 1999년 백과사전의 공동연구자 Lettvin 기고를 읽었다. 인쇄 pp.512–513 / PDF 645–646쪽에서 예일의 신경생리학 연구, 1941년 Illinois 합류, 피츠와의 공동논문, 이후 MIT RLE 연구를 지면으로 대조했다. 당사자 회고의 성격을 유지하고 개인 성격·우선권 평가나 위너와의 갈등 설명을 확정 사실로 옮기지 않았다. 첫머리의 사망 연도 표기는 이 카드에서 사용하지 않는다. MIT 합류 연도도 별도로 확정하지 않았다.",
+        "accessed": "2026-11-12"
+      },
+      {
+        "id": "aps-finding-aid",
+        "title": "American Philosophical Society · Warren S. McCulloch Papers · Biographical/Historical note",
+        "url": "https://as.amphilsoc.org/repositories/2/resources/1649",
+        "scope": "공식 소장목록의 검색 추출문에서 Orange, New Jersey 출생, Yale의 철학·심리학 학사 1921년, 의학 학위 1927년을 확인했다. 원문에는 College of Physicians and Surgeons 진학과 의학 학위를 설명한다. 현재 본문 재요청은 403 응답이어서 전체 소장목록이나 문서별 원본을 직접 검토한 것으로 표시하지 않는다. 이 자료의 Illinois 재직 기간과 MIT 이적 연도는 본문에 옮기지 않았다.",
+        "accessed": "2026-11-12"
+      }
+    ]
+  },
+  {
     "personId": "william-peebles",
     "origin": null,
     "education": [

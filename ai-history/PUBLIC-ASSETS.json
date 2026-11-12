@@ -1,5 +1,5 @@
 {
-  "version": "0.58-public.1",
+  "version": "0.59-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1135,5 +1135,16 @@
     "sourceReadingNotes": 12,
     "supplementaryOriginalFigures": 2,
     "scope": "One sourced Williams profile, linked 1986 coauthorship and actual authored learning in a small 1997-source-based LSTM. Original diagrams and authored calculations remain distinct. Every referenced original image is included."
+  },
+  "mccullochPittsRevision": {
+    "personIds": [
+      "warren-mcculloch",
+      "walter-pitts"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 3,
+    "scope": "Two sourced McCulloch and Pitts profiles, linked 1943 coauthorship and actual fixed-network firing calculations with time and inhibitory veto. Original diagrams and authored calculations remain distinct. Every referenced original image is included."
   }
 }
