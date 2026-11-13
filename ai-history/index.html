@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.59-public.1">
+<html lang="ko" data-theme="light" data-release="0.60-public.1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="visuals/perceptron-association.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/advice-taker.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/logic-theorist.css?v=0.48-public.1">
+  <link rel="stylesheet" href="visuals/logic-theorist-search.css?v=0.60-public.1">
   <link rel="stylesheet" href="visuals/backprop-representation.css?v=0.57-public.1">
   <link rel="stylesheet" href="visuals/paper-architecture.css?v=0.55-public.1">
   <link rel="stylesheet" href="visuals/lenet-features.css?v=0.48-public.1">
@@ -130,7 +131,7 @@
   <script src="entries/mcculloch-pitts.js?v=0.59-public.1" defer></script>
   <script src="entries/perceptron.js?v=0.48-public.1" defer></script>
   <script src="entries/advice-taker.js?v=0.48-public.1" defer></script>
-  <script src="entries/logic-theorist.js?v=0.48-public.1" defer></script>
+  <script src="entries/logic-theorist.js?v=0.60-public.1" defer></script>
   <script src="entries/backprop.js?v=0.57-public.1" defer></script>
   <script src="entries/lenet.js?v=0.55-public.1" defer></script>
   <script src="entries/lstm.js?v=0.58-public.1" defer></script>
@@ -225,6 +226,7 @@
   <script src="profiles-stage2/sequence-industry.js?v=0.57-public.1" defer></script>
   <script src="profiles-stage3/williams.js?v=0.58-public.1" defer></script>
   <script src="profiles-stage3/mcculloch-pitts.js?v=0.59-public.1" defer></script>
+  <script src="profiles-stage3/newell-simon.js?v=0.60-public.1" defer></script>
   <script src="art.js?v=0.48-public.1" defer></script>
   <script src="visuals/biological-neuron.js?v=0.48-public.1" defer></script>
   <script src="visuals/neuron-to-logic.js?v=0.48-public.1" defer></script>
@@ -233,6 +235,8 @@
   <script src="visuals/perceptron-association.js?v=0.48-public.1" defer></script>
   <script src="visuals/advice-taker.js?v=0.48-public.1" defer></script>
   <script src="visuals/logic-theorist.js?v=0.48-public.1" defer></script>
+  <script src="visuals/logic-theorist-search-core.js?v=0.60-public.1" defer></script>
+  <script src="visuals/logic-theorist-search.js?v=0.60-public.1" defer></script>
   <script src="visuals/backprop-learning-core.js?v=0.57-public.1" defer></script>
   <script src="visuals/backprop-representation.js?v=0.57-public.1" defer></script>
   <script src="visuals/vision-system-art.js?v=0.48-public.1" defer></script>
@@ -380,7 +384,7 @@
   <script src="portrait-data.js?v=0.48-public.1" defer></script>
   <script src="portrait-stage2-data.js?v=0.57-public.1" defer></script>
   <script src="portraits.js?v=0.48-public.1" defer></script>
-  <script src="person-background-data.js?v=0.59-public.1" defer></script>
+  <script src="person-background-data.js?v=0.60-public.1" defer></script>
   <script src="person-background.js?v=0.48-public.1" defer></script>
   <script src="people.js?v=0.48-public.1" defer></script>
   <script src="person-graph-core.js?v=0.48-public.1" defer></script>
@@ -394,7 +398,7 @@
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.59</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.60</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>

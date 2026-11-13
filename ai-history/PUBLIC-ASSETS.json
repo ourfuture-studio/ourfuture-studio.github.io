@@ -1,5 +1,5 @@
 {
-  "version": "0.59-public.1",
+  "version": "0.60-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1146,5 +1146,16 @@
     "sourceReadingNotes": 12,
     "supplementaryOriginalFigures": 3,
     "scope": "Two sourced McCulloch and Pitts profiles, linked 1943 coauthorship and actual fixed-network firing calculations with time and inhibitory veto. Original diagrams and authored calculations remain distinct. Every referenced original image is included."
+  },
+  "logicTheoristRevision": {
+    "personIds": [
+      "allen-newell",
+      "herbert-simon"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 3,
+    "scope": "Two sourced Newell and Simon profiles, their coauthor links and the 1956 theorem-search specification with original 2.08 chaining and preserved 2.01 substitution comparison. Search controls are authored; proof validity is checked separately. Every referenced original image remains included."
   }
 }

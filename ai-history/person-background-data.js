@@ -411,6 +411,111 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "allen-newell",
+    "origin": {
+      "label": "출생",
+      "text": "샌프란시스코, 미국",
+      "sourceIds": [
+        "cmu-newell-archives"
+      ]
+    },
+    "education": [
+      {
+        "name": "Stanford University · 스탠퍼드대학교",
+        "detail": "물리학 학사 · B.S.",
+        "period": "1949",
+        "sourceIds": [
+          "cmu-newell-archives"
+        ]
+      },
+      {
+        "name": "Princeton University · 프린스턴대학교",
+        "detail": "수학 대학원 과정",
+        "period": "1949–1950년 무렵",
+        "sourceIds": [
+          "cmu-newell-archives"
+        ]
+      },
+      {
+        "name": "Carnegie Institute of Technology · 현재 Carnegie Mellon University",
+        "detail": "산업경영학 박사 · Industrial Administration",
+        "period": "1957",
+        "sourceIds": [
+          "cmu-newell-archives"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "rand-corporation",
+        "name": "RAND Corporation · RAND 연구소",
+        "period": "1950–1961",
+        "place": "샌타모니카·피츠버그, 미국",
+        "note": "연구원으로 일하며 사이먼·J. C. Shaw와 기호 처리와 문제 해결을 연구했다. 피츠버그에서 박사과정 연구를 진행할 때도 1961년까지 RAND 소속을 유지했다.",
+        "sourceIds": [
+          "cmu-newell-archives",
+          "lt-1957"
+        ]
+      },
+      {
+        "institutionId": "carnegie-mellon-university",
+        "name": "Carnegie Institute of Technology → Carnegie Mellon University",
+        "period": "1957년 박사 · 1961년 교수 임용 이후",
+        "place": "피츠버그, 펜실베이니아, 미국",
+        "note": "사이먼과 문제 해결 연구를 이어갔다. Logic Theorist 이후의 General Problem Solver(GPS), Human Problem Solving과 이후 Soar 연구도 CMU 소장목록의 연구 배경에 설명되어 있다.",
+        "sourceIds": [
+          "cmu-newell-archives"
+        ]
+      }
+    ],
+    "background": "샌프란시스코에서 태어나 물리학을 공부한 뒤 수학 대학원과 RAND의 연구를 거쳤다. 계산기를 기호를 다루는 장치로 보고, 사람이 답을 모르면서도 유망한 길을 골라 문제를 푸는 과정을 프로그램으로 표현하려 했다. 사이먼·Shaw와의 Logic Theorist 연구는 이후 GPS 등의 문제 해결 연구로 이어졌다.",
+    "backgroundSourceIds": [
+      "cmu-newell-archives",
+      "lt-1956",
+      "lt-1957"
+    ],
+    "connections": [
+      {
+        "personId": "herbert-simon",
+        "name": "Herbert A. Simon",
+        "nameKo": "허버트 사이먼",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "기호 처리·문제 해결 공동연구",
+        "description": "1956년 Logic Theory Machine 명세의 공동저자다. J. C. Shaw는 원문 각주에서 여러 측면의 공동 작업자이자 컴퓨터 실현을 맡은 동료로 명시되며, 1957년 실행 보고에는 세 사람이 공동저자로 표기된다. 이후 GPS와 Human Problem Solving으로 이어지는 협력을 공동연구 관계로 연결한다.",
+        "period": "1956–1972년의 공동 연구·저술",
+        "sourceIds": [
+          "lt-1956",
+          "lt-1957",
+          "cmu-newell-archives"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "cmu-newell-archives",
+        "title": "Carnegie Mellon University Archives · Allen Newell Papers · Biographical Notes",
+        "url": "https://findingaids.library.cmu.edu/repositories/2/resources/202",
+        "scope": "공식 소장목록의 Biographical Notes 본문을 읽었다. 출생지, 1949년 Stanford 물리학 학사, 이후 Princeton 수학 대학원 수학, RAND 연구원 1950–1961년, 1957년 CIT 산업경영학 박사와 1961년 교수 임용, Simon·Shaw와의 공동연구 및 GPS·Human Problem Solving·Soar로 이어진 연구 배경을 확인했다. 소장목록의 전기를 확인한 범위이며 개별 박사학위 원문·재직 기록 전체를 검토한 것은 아니다. Princeton의 학위 취득이나 Simon과의 지도 관계는 표시하지 않는다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "lt-1956",
+        "title": "Newell·Simon (1956) · The Logic Theory Machine · RAND P-868",
+        "url": "https://iiif.library.cmu.edu/file/Simon_box00006_fld00406_bdl0001_doc0001/Simon_box00006_fld00406_bdl0001_doc0001.pdf#page=2",
+        "scope": "CMU 보관 스캔의 인쇄 p.1 / PDF 2쪽에서 Newell·Simon의 저자 표기, RAND·Carnegie Institute of Technology 소속, 휴리스틱을 이용한 증명 탐색이라는 연구 목적을 지면으로 대조했다. 같은 쪽 각주는 J. C. Shaw를 여러 측면의 파트너이자 컴퓨터 실현을 맡은 동료로 명시한다. 인쇄 pp.7·25·30·45의 추출 본문으로 기호 기억, 공리와 추론 규칙, 유사한 후보 선택과 매칭, 중간 문제와 정리 저장을 읽었다. 이 자료는 시스템 명세이며 컴퓨터 실행 보고와 구분한다. 개별 알고리즘의 단독 발명자나 더 세밀한 역할 분담을 추정하지 않는다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "lt-1957",
+        "title": "Newell·Shaw·Simon (1957) · Empirical Explorations of the Logic Theory Machine",
+        "url": "https://iiif.library.cmu.edu/file/Newell_box00028_fld01976_doc0005/Newell_box00028_fld01976_doc0005.pdf#page=2",
+        "scope": "CMU 보관 부분본의 표지와 인쇄 p.218 / PDF 2쪽을 지면으로 대조했다. 세 공동저자, Newell·Shaw의 RAND와 Simon의 Carnegie Institute of Technology 소속, JOHNNIAC 실행 자료와 휴리스틱 문제 해결 과정을 연구한다는 설명을 확인했다. 전체 논문이나 세 사람의 모든 연구를 검토한 것으로 확대하지 않는다.",
+        "accessed": "2026-11-13"
+      }
+    ]
+  },
+  {
     "personId": "alonzo-church",
     "origin": {
       "label": "출생",
@@ -1868,6 +1973,139 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.utoronto.ca/news/ilya-sutskever-leader-ai-and-its-responsible-development-receives-u-t-honorary-degree",
         "scope": "Hinton이 Sutskever의 박사 지도교수였다는 관계",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "herbert-simon",
+    "origin": {
+      "label": "출생",
+      "text": "밀워키, 위스콘신, 미국",
+      "sourceIds": [
+        "cmu-simon-cv"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of Chicago · 시카고대학교",
+        "detail": "정치학 학사 · A.B.",
+        "period": "1936",
+        "sourceIds": [
+          "cmu-simon-cv"
+        ]
+      },
+      {
+        "name": "University of Chicago · 시카고대학교",
+        "detail": "정치학 박사 · Ph.D.",
+        "period": "1943",
+        "sourceIds": [
+          "cmu-simon-cv"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-california-berkeley",
+        "name": "University of California, Berkeley · Bureau of Public Administration",
+        "period": "1939–1942",
+        "place": "버클리, 캘리포니아, 미국",
+        "note": "Administrative Measurement Studies를 이끌며 행정에 관한 연구를 수행했다. 이후의 의사결정·문제 해결 연구에 앞선 연구 경력이다.",
+        "sourceIds": [
+          "cmu-simon-cv"
+        ]
+      },
+      {
+        "institutionId": "illinois-institute-of-technology",
+        "name": "Illinois Institute of Technology · 일리노이 공과대학교",
+        "period": "1942–1949",
+        "place": "시카고, 일리노이, 미국",
+        "note": "정치학 교수로 재직하며 1946–1949년에는 Department of Political and Social Science의 학과장을 맡았다.",
+        "sourceIds": [
+          "cmu-simon-cv"
+        ]
+      },
+      {
+        "institutionId": "carnegie-mellon-university",
+        "name": "Carnegie Institute of Technology → Carnegie Mellon University",
+        "period": "1949–2001",
+        "place": "피츠버그, 펜실베이니아, 미국",
+        "note": "Graduate School of Industrial Administration 설립에 참여했다. 인간의 의사결정과 문제 해결을 연구하며 뉴얼과 기호 처리 연구를 이어갔다.",
+        "sourceIds": [
+          "cmu-simon-cv",
+          "cmu-tepper-simon",
+          "lt-1957"
+        ]
+      },
+      {
+        "institutionId": "rand-corporation",
+        "name": "RAND Corporation · RAND 연구소",
+        "period": "1952–1976 · 자문",
+        "place": "샌타모니카, 캘리포니아, 미국",
+        "note": "Carnegie 재직 중 RAND의 자문으로도 활동했다. RAND 연구원이던 뉴얼·Shaw와 문제 해결 연구를 함께 수행했다.",
+        "sourceIds": [
+          "cmu-simon-cv"
+        ]
+      }
+    ],
+    "background": "밀워키에서 태어나 시카고대학교에서 정치학을 공부했다. 행정·경제·심리학과 컴퓨터과학을 오가며 인간이 어떻게 결정하고 문제를 푸는지 연구했다. Carnegie에서의 연구와 RAND 자문을 통해 뉴얼·Shaw와 협력했고, 문제 해결 과정을 구체적인 프로그램으로 적어 그 행동을 조사하는 연구로 이어갔다.",
+    "backgroundSourceIds": [
+      "cmu-simon-cv",
+      "cmu-tepper-simon",
+      "lt-1956",
+      "lt-1957"
+    ],
+    "connections": [
+      {
+        "personId": "allen-newell",
+        "name": "Allen Newell",
+        "nameKo": "앨런 뉴얼",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "기호 처리·문제 해결 공동연구",
+        "description": "1956년 Logic Theory Machine 명세를 함께 저술했다. 원문은 J. C. Shaw의 공동 작업과 컴퓨터 실현 공헌도 명시하며, 1957년 보고는 세 사람이 함께 JOHNNIAC 실행 자료를 연구한 기록이다. 이후 GPS와 Human Problem Solving으로 이어진 협력을 공동연구 관계로 표시한다.",
+        "period": "1956–1972년의 공동 연구·저술",
+        "sourceIds": [
+          "lt-1956",
+          "lt-1957",
+          "cmu-newell-archives"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "cmu-simon-cv",
+        "title": "Carnegie Mellon University Archives · Herbert A. Simon · 이력서와 연구 소개",
+        "url": "https://iiif.library.cmu.edu/file/Simon_box00087_fld07004_bdl0001_doc0001/Simon_box00087_fld07004_bdl0001_doc0001.pdf",
+        "scope": "CMU 보관 16쪽 자료의 PDF 1쪽 Education·출생지, 3쪽 Professional Career·RAND 자문, 16쪽 연구 소개를 본문과 지면으로 대조했다. 정치학 학사 1936년·박사 1943년, Berkeley 1939–1942년·IIT 1942–1949년·Carnegie 1949년 합류, RAND Consultant 1952–1976년을 확인했다. 명예학위는 정규 학력으로 추가하지 않았으며, 이력서 작성 당시의 present를 현재 직책으로 옮기지 않았다. 자료 전체의 논문 목록을 검토한 것으로 표시하지 않는다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "cmu-tepper-simon",
+        "title": "Carnegie Mellon · Tepper School of Business · Nobel Laureates · Herbert Simon",
+        "url": "https://www.cmu.edu/tepper/about/nobel-laureates",
+        "scope": "CMU Tepper의 Herbert Simon 절 본문을 읽었다. 1949년 GSIA 설립 참여와 2001년까지의 Carnegie 재직, 인간 의사결정에 대한 연구, 정보 수집과 계산의 제약을 다루는 관점, 뉴얼과 컴퓨터 프로그램으로 문제 해결을 연구하려 했다는 회고를 확인했다. 이 설명은 CMU 공식 전기를 확인한 범위이며 개별 수상 자료나 전체 연구 업적의 검토로 확대하지 않는다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "cmu-newell-archives",
+        "title": "Carnegie Mellon University Archives · Allen Newell Papers · Biographical Notes",
+        "url": "https://findingaids.library.cmu.edu/repositories/2/resources/202",
+        "scope": "공식 소장목록 Biographical Notes 본문에서 Newell·Simon·Shaw의 Logic Theorist 및 GPS 연구, Newell·Simon의 Human Problem Solving 공동저술 1972년을 확인했다. 소장목록의 전기를 읽은 범위이며 개별 공동연구 자료 전체의 검토로 확대하지 않는다. 공동연구를 지도 관계로 바꾸지 않았다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "lt-1956",
+        "title": "Newell·Simon (1956) · The Logic Theory Machine · RAND P-868",
+        "url": "https://iiif.library.cmu.edu/file/Simon_box00006_fld00406_bdl0001_doc0001/Simon_box00006_fld00406_bdl0001_doc0001.pdf#page=2",
+        "scope": "인쇄 p.1 / PDF 2쪽의 저자·공동 소속, 휴리스틱 증명 탐색을 명세하는 연구 목적과 J. C. Shaw의 공동 작업·컴퓨터 실현을 명시한 각주를 지면으로 대조했다. 인쇄 pp.7·25·30·45의 추출 본문으로 기호 기억, 공리와 추론 규칙, 유사한 후보 선택과 매칭, 중간 문제와 정리 저장을 읽었다. 1956년 명세와 후속 컴퓨터 실행 보고를 구분하며, 알고리즘별 개인의 단독 공헌을 추정하지 않는다.",
+        "accessed": "2026-11-13"
+      },
+      {
+        "id": "lt-1957",
+        "title": "Newell·Shaw·Simon (1957) · Empirical Explorations of the Logic Theory Machine",
+        "url": "https://iiif.library.cmu.edu/file/Newell_box00028_fld01976_doc0005/Newell_box00028_fld01976_doc0005.pdf#page=2",
+        "scope": "CMU 보관 부분본의 표지와 인쇄 p.218 / PDF 2쪽에서 세 공동저자, Newell·Shaw의 RAND 및 Simon의 Carnegie Institute of Technology 소속, JOHNNIAC에서 얻은 실행 자료로 문제 해결 과정을 조사한 연구 목적을 본문과 지면으로 대조했다. 부분본을 전체 논문 검토로 표시하지 않는다.",
+        "accessed": "2026-11-13"
       }
     ]
   },
