@@ -1,6 +1,160 @@
 /* Generated from people-background/*.json. Work dates and typed relationships are separate. */
 window.ATLAS_PERSON_BACKGROUNDS=[
   {
+    "personId": "alan-robinson",
+    "origin": {
+      "label": "출생",
+      "text": "핼리팩스, 요크셔, 잉글랜드",
+      "sourceIds": [
+        "upm-biography"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of Cambridge · 케임브리지대학교",
+        "detail": "고전학 학사 · Classics",
+        "period": "1952",
+        "sourceIds": [
+          "princeton-memorial",
+          "aar-interview-2010"
+        ]
+      },
+      {
+        "name": "University of Oregon · 오리건대학교",
+        "detail": "철학 석사",
+        "period": "1953",
+        "sourceIds": [
+          "princeton-memorial",
+          "aar-interview-2010"
+        ]
+      },
+      {
+        "name": "Princeton University · 프린스턴대학교",
+        "detail": "철학 박사 · 흄의 인과론에 관한 연구",
+        "period": "1956",
+        "sourceIds": [
+          "princeton-memorial",
+          "robinson-retrospective-1992"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "dupont",
+        "name": "DuPont · 듀폰",
+        "period": "1956–1960",
+        "place": "미국",
+        "note": "산업계에서 수치 계산과 프로그래밍의 실무를 익혔다. 본인의 회고는 이 기간의 Univac 1·IBM 704, 어셈블리와 Fortran 작업을 설명한다.",
+        "sourceIds": [
+          "aar-interview-2010"
+        ]
+      },
+      {
+        "institutionId": "university-of-pittsburgh",
+        "name": "University of Pittsburgh · 피츠버그대학교",
+        "period": "1960–1961 학년도",
+        "place": "피츠버그, 펜실베이니아, 미국",
+        "note": "철학 분야 박사후 연구원으로 재직했다. 이 시기에 Davis·Putnam의 증명 절차를 읽고, Argonne 방문 전부터 그 절차를 구현할 프로그램을 작성했다고 회고한다.",
+        "sourceIds": [
+          "aar-interview-2010"
+        ]
+      },
+      {
+        "institutionId": "argonne-national-laboratory",
+        "name": "Argonne National Laboratory · Applied Mathematics Division",
+        "period": "1961–1964년 여름 · 방문 연구",
+        "place": "아르곤, 일리노이, 미국",
+        "note": "Davis–Putnam 절차의 IBM 704 구현을 계기로 기계적 증명을 연구했다. 1963년에 Resolution 논문을 작성했으며, 출판은 1965년이었다. 1965년 원논문 표제에도 Argonne이 표기되어 있다.",
+        "sourceIds": [
+          "aar-interview-2010",
+          "robinson-retrospective-1992",
+          "resolution-1965"
+        ]
+      },
+      {
+        "institutionId": "rice-university",
+        "name": "Rice University · 라이스대학교",
+        "period": "1961년 합류 · 1965년 논문 소속",
+        "place": "휴스턴, 텍사스, 미국",
+        "note": "논리와 과학철학을 가르치는 전임 직책으로 합류했다. Resolution 원논문은 Argonne과 Rice를 함께 표기하며, 각주에는 당시 주소를 Rice University로 적었다.",
+        "sourceIds": [
+          "aar-interview-2010",
+          "resolution-1965"
+        ]
+      },
+      {
+        "institutionId": "syracuse-university",
+        "name": "Syracuse University · 시러큐스대학교",
+        "period": "1967년 합류 · 1993년 명예교수",
+        "place": "시러큐스, 뉴욕, 미국",
+        "note": "논리·컴퓨터과학 연구를 이어간 주요 소속 기관이다. UPM의 공식 전기는 1967년 합류와 1993년 명예교수 전환을 설명한다.",
+        "sourceIds": [
+          "upm-biography",
+          "princeton-memorial"
+        ]
+      }
+    ],
+    "background": "잉글랜드 요크셔에서 태어나 고전학과 철학을 공부했다. 듀폰의 프로그래밍 실무를 거쳐 피츠버그와 Argonne에서 기계적 증명을 연구했고, Rice와 Syracuse에서 논리·컴퓨터과학 연구를 이어갔다. 기계가 처리할 추론의 형태를 설계해, 기호로 표현한 지식에서 증명을 찾는 과정을 만들려 했다.",
+    "backgroundSourceIds": [
+      "upm-biography",
+      "princeton-memorial",
+      "aar-interview-2010",
+      "resolution-1965"
+    ],
+    "connections": [
+      {
+        "personId": "john-mccarthy",
+        "name": "John McCarthy",
+        "nameKo": "존 매카시",
+        "kind": "influence",
+        "relation": "influenced",
+        "label": "Resolution의 Lisp 증명 구현",
+        "description": "로빈슨은 1965년 Stanford에서 매카시를 처음 만났을 때, 매카시가 자신의 Resolution 논문을 읽고 Lisp 증명 프로그램을 작성·시험했다는 사실을 알게 되었다고 회고한다. 이 연결은 논문의 추론 방법이 매카시의 구현에 사용된 기술적 영향을 나타낸다.",
+        "period": "1965년의 만남 · 1992년 회고",
+        "sourceIds": [
+          "robinson-retrospective-1992"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "princeton-memorial",
+        "title": "Princeton Alumni Weekly · John A. Robinson *56 · 2017년 추모문",
+        "url": "https://paw.princeton.edu/memorial/john-robinson-56",
+        "scope": "Princeton의 동문지 추모문 본문을 읽었다. Cambridge 고전학 학사 1952년, Oregon 철학 석사 1953년, Princeton 철학 박사 1956년과 1967년 Syracuse 합류를 확인했다. 개별 학위 원본이나 전체 인사 기록을 검토한 것으로 확대하지 않는다. 자동 증명 연구를 시작한 정확한 시점은 본인의 회고로 별도 확인했다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "upm-biography",
+        "title": "Universidad Politécnica de Madrid · John Alan Robinson · 공식 전기",
+        "url": "https://www.upm.es/sfs/Gabinete%20del%20Rector/Honoris%20Causa/curriculum/john.pdf",
+        "scope": "대학 공식 전기의 PDF 1쪽을 본문과 지면으로 대조했다. Halifax·Yorkshire 출생, Cambridge·Oregon·Princeton 학업, 1967년 Syracuse 합류와 1993년 명예교수 전환을 확인했다. Resolution의 논문 출판 연도와 세부 연구 경력은 이 전기의 요약을 그대로 옮기지 않고 1965년 원논문과 본인 회고로 대조했다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "aar-interview-2010",
+        "title": "Association for Automated Reasoning · Maarten van Emden의 Alan Robinson 인터뷰 · 2010",
+        "url": "https://aarinc.org/Newsletters/089-2010-10.html",
+        "scope": "Interview with Alan Robinson about the Beginnings of Automatic Deduction 절의 문답 전체를 읽었다. 본인의 설명에서 Cambridge 고전학과 Oregon 철학 공부, DuPont 1956–1960년, Pittsburgh 1960/61 학년도 박사후 연구, 1961년 Rice 직책과 Argonne 여름 방문 및 1962–1964년 재방문을 확인했다. 개인 회고라는 자료의 성격을 유지하며, 이를 학위·인사 문서 원본의 검토로 확대하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "robinson-retrospective-1992",
+        "title": "J. A. Robinson · Logic and Logic Programming · Communications of the ACM 35(3), 1992",
+        "url": "https://www.cs.tufts.edu/comp/150FP/archive/john-robinson/logic-and-logic-programming.pdf#page=6",
+        "scope": "인쇄 pp.44–45 / PDF 5–6쪽을 본문과 지면으로 대조했다. Princeton의 1953–1956년 철학 박사 연구, Argonne 여름 방문과 1963년 원고·1965년 출판의 구분, 통일화와 추론을 결합한 발상을 확인했다. p.45 가운데 열의 아래쪽 단락은 1965년 Stanford에서의 첫 만남과 매카시의 논문 독해·Lisp 증명 프로그램 작성·시험을 설명한다. 이 직접적인 구현 회고를 기술적 영향으로 연결하며 공동저술이나 지도 관계로 바꾸지 않는다. 전체 논문의 모든 역사적 평가를 검증한 것으로 표시하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "resolution-1965",
+        "title": "J. A. Robinson · A Machine-Oriented Logic Based on the Resolution Principle · 1965",
+        "url": "https://web.stanford.edu/class/linguist289/robinson65.pdf",
+        "scope": "인쇄 pp.23–24 / PDF 1–2쪽의 저자·Argonne와 Rice 소속·당시 주소 각주, 초록과 도입을 본문과 지면으로 대조했다. 기계가 처리할 추론 원리를 설계하려는 목적, 변수 치환과 논리 처리를 결합한 Resolution, 반박과 충족 불가능성을 다루는 형식을 확인했다. 완전성에서 바로 얻는 단순 절차도 비효율적일 수 있다는 원문의 한계를 유지한다. 세부 수식·증명과 화면의 계산 범위는 연결된 연구 카드의 별도 원문 검토를 따른다.",
+        "accessed": "2026-11-14"
+      }
+    ]
+  },
+  {
     "personId": "alan-turing",
     "origin": {
       "label": "출생",

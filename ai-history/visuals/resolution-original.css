@@ -1,0 +1,73 @@
+/* Responsive original-paper calculation; legacy component remains intact. */
+.resolution-original{width:100%;min-width:0;color:var(--text)}
+.resolution-original *{box-sizing:border-box}
+.resolution-original [hidden]{display:none!important}
+.resolution-original p,.resolution-original label,.resolution-original summary{font:12px/1.95 var(--sans);word-break:keep-all;overflow-wrap:anywhere}
+.resolution-original code{font:15px/1.9 var(--mono);white-space:normal;overflow-wrap:anywhere;word-break:break-word;color:var(--ink)}
+.resolution-original h4{font:500 18px/1.75 var(--serif);color:var(--ink);margin:0 0 12px;word-break:keep-all}
+.resolution-original h5{font:500 14px/1.8 var(--sans);color:var(--ink);margin:0 0 10px;word-break:keep-all}
+.resolution-original button{font:12px/1.7 var(--sans);min-height:40px;max-width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);cursor:pointer;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.resolution-original button:hover,.resolution-original button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.resolution-original button:disabled{opacity:.4;cursor:default}
+.resolution-original :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rr-modes{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px 0 12px;background:var(--bg)}
+.rr-modes button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.rr-intro,.rr-panel,.rr-scope{border:1px solid var(--line);border-radius:8px;padding:18px;margin-bottom:16px;min-width:0}
+.rr-intro{background:var(--soft)}
+.rr-intro p{margin:8px 0 0}
+.rr-kicker,.rr-label{display:block;font:12px/1.8 var(--sans);color:var(--muted);margin-bottom:5px}
+.rr-controls{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0;min-width:0}
+.rr-step-label{font:12px/1.8 var(--mono);color:var(--accent)}
+.rr-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:14px 0}
+.rr-timeline button{padding:9px 6px}
+.rr-status{padding:13px 15px;background:var(--soft);border-left:2px solid var(--accent);margin:14px 0}
+.rr-parent-grid,.rr-input-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.rr-card{min-width:0;border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--bg)}
+.rr-card[data-unused=true]{border-style:dashed}
+.rr-card code{display:block;margin-top:6px}
+.rr-card strong{font:500 12px/1.8 var(--sans);color:var(--ink)}
+.rr-selection{min-width:0;border:1px solid var(--line);border-radius:6px;padding:13px;margin:0}
+.rr-selection legend{padding:0 6px;font:500 12px/1.8 var(--sans);color:var(--ink)}
+.rr-check{display:flex;align-items:flex-start;gap:8px;min-width:0;padding:8px 0;border-top:1px solid var(--line);cursor:pointer}
+.rr-check:first-of-type{border-top:0}
+.rr-check input{width:16px;height:16px;margin:7px 0 0;flex:0 0 16px;accent-color:var(--accent)}
+.rr-check code{flex:1;min-width:0}
+.rr-calculation{display:grid;gap:12px;min-width:0;margin:18px 0}
+.rr-calculation>section{border:1px solid var(--line);border-radius:6px;padding:15px;min-width:0}
+.rr-calculation .rr-result{border-left:3px solid var(--accent);background:var(--soft)}
+.rr-calculation p{margin:8px 0}
+.rr-formula-list{display:grid;gap:8px;margin:10px 0;min-width:0}
+.rr-formula-list code{display:block;padding:9px 11px;background:var(--soft);border-radius:4px}
+.rr-substitution{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;min-width:0}
+.rr-substitution code{display:block;border:1px solid var(--line);border-radius:4px;padding:6px 10px;max-width:100%}
+.rr-renaming{display:grid;gap:8px;margin:10px 0}
+.rr-renaming code{display:block;min-width:0}
+.rr-checkpoint{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0;margin:14px 0}
+.rr-checkpoint li{font:12px/1.85 var(--sans);color:var(--muted)}
+.rr-checkpoint li[data-passed=true]{color:var(--accent)}
+.rr-proof-list{list-style:none;display:grid;gap:10px;margin:18px 0;padding:0}
+.rr-proof-list li{border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
+.rr-proof-list span{font:12px/1.8 var(--sans);color:var(--muted);display:block}
+.rr-proof-list code{display:block;margin-top:5px}
+.rr-expanded-view{max-width:100%;min-width:0;overflow:hidden}
+.rr-expanded-view[data-expanded=true]{overflow:auto;max-height:580px;overscroll-behavior:contain;scrollbar-width:thin}
+.rr-expanded-view[data-expanded=true]>.rr-calculation{min-width:900px;margin:0}
+.rr-source{font:12px/1.9 var(--sans);color:var(--muted);text-underline-offset:3px;overflow-wrap:anywhere}
+.rr-scope summary{cursor:pointer;color:var(--ink)}
+.rr-legacy .rsn-stage-controls{display:none!important}
+.resolution-original[data-rr-view=paper] .rr-legacy .rsn-stage-text,.resolution-original[data-rr-view=paper] .rr-legacy .rsn-panel{display:none!important}
+.rr-legacy .resolution-refutation button,.rr-legacy .resolution-refutation select,.rr-legacy .resolution-refutation .rsn-note,.rr-legacy .resolution-refutation .rsn-label,.rr-legacy .resolution-refutation .rsn-field,.rr-legacy .resolution-refutation .rsn-progress-label,.rr-legacy .resolution-refutation .rsn-legend p,.rr-legacy .resolution-refutation .rsn-connectives p,.rr-legacy .resolution-refutation .rsn-trace li,.rr-legacy .resolution-refutation .rsn-trace span,.rr-legacy .resolution-refutation .rsn-source,.rr-legacy .resolution-refutation figcaption,.rr-legacy .resolution-refutation th,.rr-legacy .resolution-refutation td,.rr-legacy .resolution-refutation .rsn-parent h5{font-size:12px}
+.rr-legacy .resolution-refutation .rsn-clause,.rr-legacy .resolution-refutation .rsn-parent .rsn-clause,.rr-legacy .resolution-refutation .rsn-trace code,.rr-legacy .resolution-refutation .rsn-code{font-size:15px}
+.rr-legacy .resolution-refutation .rsn-literal{white-space:normal;overflow-wrap:anywhere}
+.rr-legacy .resolution-refutation .rsn-svg-viewport svg{width:800px;min-width:800px;max-width:none}
+.rr-legacy .resolution-refutation .rsn-node-id{font-size:12px}
+.rr-legacy .resolution-refutation .rsn-node-formula{font-size:15px}
+@media(max-width:700px){
+ .rr-modes{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rr-intro,.rr-panel,.rr-scope{padding:14px 12px}
+ .resolution-original h4{font-size:16px}
+ .rr-parent-grid,.rr-input-grid{grid-template-columns:minmax(0,1fr)}
+ .rr-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rr-calculation>section,.rr-card{padding:12px}
+ .rr-status{padding:12px}
+}

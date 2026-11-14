@@ -1,5 +1,5 @@
 {
-  "version": "0.60-public.1",
+  "version": "0.61-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1157,5 +1157,15 @@
     "sourceReadingNotes": 12,
     "supplementaryOriginalFigures": 3,
     "scope": "Two sourced Newell and Simon profiles, their coauthor links and the 1956 theorem-search specification with original 2.08 chaining and preserved 2.01 substitution comparison. Search controls are authored; proof validity is checked separately. Every referenced original image remains included."
+  },
+  "robinsonResolutionRevision": {
+    "personIds": [
+      "alan-robinson"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 3,
+    "scope": "Sourced Robinson profile and documented technical influence on McCarthy. Original 1965 Example2 subset resolution is calculated and checked along the published path. Prior authored examples and image-versus-paper-link decisions remain preserved."
   }
 }
