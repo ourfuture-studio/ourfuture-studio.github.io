@@ -1,5 +1,5 @@
 {
-  "version": "0.61-public.1",
+  "version": "0.62-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1167,5 +1167,16 @@
     "sourceReadingNotes": 12,
     "supplementaryOriginalFigures": 3,
     "scope": "Sourced Robinson profile and documented technical influence on McCarthy. Original 1965 Example2 subset resolution is calculated and checked along the published path. Prior authored examples and image-versus-paper-link decisions remain preserved."
+  },
+  "prologRevision": {
+    "personIds": [
+      "robert-kowalski",
+      "alain-colmerauer"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 3,
+    "scope": "Sourced Kowalski and Colmerauer profiles, their documented collaboration, and an actual Member execution based on Kowalski1974 Fig2. Prior city examples and existing public image versus paper-link decisions are preserved."
   }
 }

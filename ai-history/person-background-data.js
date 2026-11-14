@@ -1,6 +1,138 @@
 /* Generated from people-background/*.json. Work dates and typed relationships are separate. */
 window.ATLAS_PERSON_BACKGROUNDS=[
   {
+    "personId": "alain-colmerauer",
+    "origin": {
+      "label": "출생",
+      "text": "카르카손, 프랑스",
+      "sourceIds": [
+        "oclc-authority"
+      ]
+    },
+    "education": [
+      {
+        "name": "ENSIMAG · Grenoble",
+        "detail": "ENSIMAG 첫 졸업 기수",
+        "period": "1963",
+        "sourceIds": [
+          "gdria-memorial"
+        ]
+      },
+      {
+        "name": "Université de Grenoble · 그르노블대학교",
+        "detail": "박사 · 구문 분석 방법 연구",
+        "period": "1967",
+        "sourceIds": [
+          "gdria-memorial",
+          "cohen-tribute"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-grenoble",
+        "name": "Université de Grenoble · Laboratoire de Calcul",
+        "period": "1963–1967년의 연구",
+        "place": "그르노블, 프랑스",
+        "note": "구문 분석과 컴파일러 연구를 수행했다. 박사 연구에서는 프로그램의 구문을 규칙으로 분석하는 방법을 다뤘다.",
+        "sourceIds": [
+          "gdria-memorial",
+          "cohen-tribute"
+        ]
+      },
+      {
+        "institutionId": "university-of-montreal",
+        "name": "Université de Montréal · TAUM 프로젝트",
+        "period": "1967–1970년 무렵",
+        "place": "몬트리올, 캐나다",
+        "note": "자동 번역과 자연어 처리를 연구하고 Q-systems를 발전시켰다. 나무 구조를 규칙으로 바꾸는 이 형식은 초기 Prolog의 연구 배경으로 이어졌다.",
+        "sourceIds": [
+          "cohen-tribute",
+          "birth-prolog-archive"
+        ]
+      },
+      {
+        "institutionId": "aix-marseille-university",
+        "name": "Université Aix-Marseille II · Luminy 연구팀",
+        "period": "1970년 귀국 이후 · 1972년 초기 Prolog",
+        "place": "마르세유, 프랑스",
+        "note": "자연어로 컴퓨터와 소통하려는 프로젝트를 시작했다. Roussel·Pasero·Kanoui 등과 언어와 응용을 발전시켰고, Kowalski와의 교류는 정리증명과 프로그램 실행을 연결하는 연구를 뒷받침했다.",
+        "sourceIds": [
+          "gdria-memorial",
+          "birth-prolog-archive",
+          "iuf-profile"
+        ]
+      }
+    ],
+    "background": "카르카손에서 태어나 그르노블에서 구문 분석을 연구했다. 몬트리올의 자동 번역 연구를 거쳐 마르세유에서 자연어 소통과 논리적 추론을 한 체계에서 다루려 했다. 문장의 구조를 분석하고, 그 뜻을 논리로 나타내고, 질문의 답을 추론하는 작업이 Prolog의 설계·구현으로 이어졌다.",
+    "backgroundSourceIds": [
+      "oclc-authority",
+      "gdria-memorial",
+      "cohen-tribute",
+      "birth-prolog-archive"
+    ],
+    "connections": [
+      {
+        "personId": "robert-kowalski",
+        "name": "Robert Kowalski",
+        "nameKo": "로버트 코왈스키",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Prolog 형성기의 마르세유·에든버러 공동연구",
+        "description": "1971–1972년에 Kowalski를 초청해 자연어의 의미와 문법을 논리로 표현하고, 증명 절차를 실행에 사용하는 방법을 함께 연구했다. Colmerauer·Roussel 등이 이끈 마르세유의 언어·응용 개발과 에든버러의 논리 프로그래밍 연구를 잇는 협력이다.",
+        "period": "1971–1972",
+        "sourceIds": [
+          "kowalski-life-2025",
+          "birth-prolog-archive"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "oclc-authority",
+        "title": "OCLC WorldCat Entities · Alain Colmerauer 인물 전거",
+        "url": "https://entities.oclc.org/worldcat/entity/E39PBJhCFB7MB6vh9bqKqgVXBP.html",
+        "scope": "공식 인물 전거의 이름·출생지와 날짜를 읽고, 페이지에 포함된 구조화 데이터의 placeOfBirth=Carcassonne와 dateOfBirth를 대조했다. 도서관 인물 전거를 확인한 범위이며 출생 기록 원본을 검토한 것으로 표시하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "gdria-memorial",
+        "title": "GDR IA · Grenoble LIG 소장의 Alain Colmerauer 추모문 · 2017",
+        "url": "https://www.gdria.fr/bull-ia-fwd-sif-forum-deces-alain-colmerauer/",
+        "scope": "Grenoble LIG 소장 Eric Gaussier의 기관 공지를 재수록한 본문을 읽었다. ENSIMAG 첫 기수의 1963년 졸업, Grenoble Laboratoire de Calcul의 연구와 1967년 구문 분석 박사논문, 1970년 귀국 후 Marseille·Luminy 연구를 확인했다. 이 공지의 사망일·Montreal 체류 기간 요약은 사용하지 않고 다른 원자료와 구분했다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "cohen-tribute",
+        "title": "Jacques Cohen · A Tribute to Alain Colmerauer · 2001년 원고",
+        "url": "https://arxiv.org/pdf/cs/0402058",
+        "scope": "동료 연구자의 회고 PDF 1–4쪽을 읽었다. 1963년 Grenoble의 만남과 학업, 1967년 무렵 박사 후 약 3년간의 Montreal 연구, Q-systems와 Marseille의 자연어·정리증명 연구를 확인했다. 1·4쪽을 지면으로 대조했다. 저자가 명시한 개인적 회고의 성격을 유지하고, 동기·개성에 대한 추측이나 모든 우선권 평가를 사실로 옮기지 않았다. 표지는 2001년 원고이며 arXiv 보관은 2004년이다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "birth-prolog-archive",
+        "title": "Computer History Museum · Colmerauer·Roussel, The Birth of Prolog 보존 기록",
+        "url": "https://softwarepreservation.computerhistory.org/prolog/#ColmerauerAndRoussel1996",
+        "scope": "CHM의 서지·보존 기록과 연결된 저자 보관 원고를 확인했다. 직접 읽은 26쪽 PDF 표지는 November 1992이며, PDF 2쪽의 자연어 소통 프로젝트와 TAUM 배경, 5–6쪽의 Kowalski 방문·SL-resolution·언어와 응용의 개발을 본문과 지면으로 대조했다. Roussel이 초기 인터프리터를 구현한 공헌과 Pasero·Kanoui 등의 응용 기여를 유지한다. 1992년 초고를 CHM에 별도로 기록된 1996년 출판본 전체 검토로 표시하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "kowalski-life-2025",
+        "title": "Robert Kowalski · A Short Story of My Life and Work · 2025년 개정본",
+        "url": "https://www.doc.ic.ac.uk/~rak/history.pdf",
+        "scope": "PDF 4–5쪽의 본문과 지면에서 Colmerauer의 초청, 1971년 첫 방문과 1972년의 두 달간 재방문, 두 사람이 함께 문법과 증명기를 연구한 일을 대조했다. Kowalski 자신의 회고이며, 이를 독립적인 역할·우선권 판정이나 1974년 논문 공동저술의 증거로 사용하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "iuf-profile",
+        "title": "Institut Universitaire de France · Alain Colmerauer 회원 기록",
+        "url": "https://www.iufrance.fr/les-membres-de-liuf/membre/34.html",
+        "scope": "공식 회원 기록 본문에서 교수 직위, Université de la Méditerranée–Aix-Marseille 2 소속과 Informatique·Résolution de contraintes 분야를 확인했다. 현재 재직 여부나 초기 Prolog의 구체적 역할은 이 기록만으로 추정하지 않는다.",
+        "accessed": "2026-11-14"
+      }
+    ]
+  },
+  {
     "personId": "alan-robinson",
     "origin": {
       "label": "출생",
@@ -3532,6 +3664,130 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://law.stanford.edu/stanford-lawyer/articles/q-a-legal-matters-with-peter-thiel-92-ba-89-bs-89-and-mark-a-lemley-ba-88/",
         "scope": "Thiel 자신의 답변에서 Stanford 학부에서 로스쿨로 이어진 학업과 1992년 법학 졸업을 확인했다. 같은 페이지의 Mark Lemley 약력·법률 실무 경력을 Thiel의 경력으로 가져오지 않는다.",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "robert-kowalski",
+    "origin": {
+      "label": "출생",
+      "text": "브리지포트, 코네티컷, 미국",
+      "sourceIds": [
+        "kowalski-life-2025"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of Bridgeport · 브리지포트대학교",
+        "detail": "수학 학사 · B.A.",
+        "period": "1963",
+        "sourceIds": [
+          "kowalski-cv-2025"
+        ]
+      },
+      {
+        "name": "Stanford University · 스탠퍼드대학교",
+        "detail": "수학 석사 · M.Sc.",
+        "period": "1966",
+        "sourceIds": [
+          "kowalski-cv-2025"
+        ]
+      },
+      {
+        "name": "University of Edinburgh · 에든버러대학교",
+        "detail": "컴퓨터과학 박사 · Ph.D.",
+        "period": "1970",
+        "sourceIds": [
+          "kowalski-cv-2025"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-edinburgh",
+        "name": "University of Edinburgh · 에든버러대학교",
+        "period": "1967–1975 · 박사과정·연구원",
+        "place": "에든버러, 스코틀랜드, 영국",
+        "note": "박사과정에서 자동 정리증명을 연구했고, 1970년부터 계산논리 분야 연구원으로 재직했다. 이 시기에 목표를 하위 목표로 바꾸는 증명을 프로그램 실행으로 읽는 관점을 발전시켰다.",
+        "sourceIds": [
+          "kowalski-cv-2025",
+          "kowalski-life-2025",
+          "kowalski-1974"
+        ]
+      },
+      {
+        "institutionId": "aix-marseille-university",
+        "name": "Marseille · Luminy 연구팀 방문",
+        "period": "1971–1972년의 교류",
+        "place": "마르세유, 프랑스",
+        "note": "Colmerauer의 초청으로 방문해 문법을 논리로 표현하고 정리증명기를 구문 분석기로 사용하는 방법을 함께 연구했다. 두 사람의 회고는 1971년 첫 방문과 1972년의 두 달간 방문을 구분한다.",
+        "sourceIds": [
+          "kowalski-life-2025",
+          "birth-prolog-archive"
+        ]
+      },
+      {
+        "institutionId": "imperial-college-london",
+        "name": "Imperial College London · 임페리얼 칼리지 런던",
+        "period": "1975년 합류 · 이후 계산논리 연구",
+        "place": "런던, 잉글랜드, 영국",
+        "note": "계산논리와 논리 프로그래밍 연구를 이어갔다. 이력서는 1975년 Reader 임용과 이후 교수·명예교수 경력을 구분한다.",
+        "sourceIds": [
+          "kowalski-cv-2025"
+        ]
+      }
+    ],
+    "background": "미국 브리지포트에서 태어나 수학과 수리논리를 공부한 뒤 에든버러에서 자동 정리증명을 연구했다. 결론을 증명하는 과정을 목표를 나누어 해결하는 계산으로 읽으려 했다. Colmerauer와의 마르세유 교류를 거쳐 논리 프로그래밍의 관점을 구체화했고, 이후 Imperial에서 계산논리 연구를 이어갔다.",
+    "backgroundSourceIds": [
+      "kowalski-cv-2025",
+      "kowalski-life-2025",
+      "kowalski-1974",
+      "birth-prolog-archive"
+    ],
+    "connections": [
+      {
+        "personId": "alain-colmerauer",
+        "name": "Alain Colmerauer",
+        "nameKo": "알랭 콜메로에",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Prolog 형성기의 마르세유·에든버러 공동연구",
+        "description": "1971–1972년의 방문과 토론에서 논리로 문법을 표현하고 정리증명기를 계산 절차로 읽는 방법을 함께 연구했다. 이 교류는 마르세유 팀의 Prolog 설계·구현과 Kowalski의 논리 프로그래밍 연구를 연결한다.",
+        "period": "1971–1972",
+        "sourceIds": [
+          "kowalski-life-2025",
+          "birth-prolog-archive"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "kowalski-cv-2025",
+        "title": "Robert Anthony Kowalski · Imperial 보관 이력서 · 2025-09-18",
+        "url": "https://www.doc.ic.ac.uk/~rak/CV.pdf",
+        "scope": "PDF 1–2쪽의 Education·Employment를 본문과 지면으로 대조했다. Bridgeport 수학 학사, Stanford 수학 석사, Edinburgh 컴퓨터과학 박사와 각각의 학업 기간, Edinburgh 연구원 1970–1975년, Imperial 합류 1975년을 확인했다. Chicago·Warsaw의 수학 기록을 추가 학위로 바꾸지 않았고, 전체 논문 목록이나 모든 인사 문서의 검토로 확대하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "kowalski-life-2025",
+        "title": "Robert Kowalski · A Short Story of My Life and Work · 2025년 개정본",
+        "url": "https://www.doc.ic.ac.uk/~rak/history.pdf",
+        "scope": "본인의 회고 PDF 1–5쪽에서 출생지·학업 배경·Edinburgh 연구와 Marseille 방문을 읽었고, 4–5쪽은 지면으로 대조했다. 1971년 Colmerauer의 초청, 함께 문법과 증명기를 연구한 작업, 1972년의 두 달간 재방문과 논리 프로그래밍에 관한 설명을 확인했다. 저자의 회고와 역할에 대한 자기평가를 역사적 우선권의 독립적인 판정으로 확대하지 않는다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "kowalski-1974",
+        "title": "Robert Kowalski · Predicate Logic as Programming Language · 1974",
+        "url": "https://www.doc.ic.ac.uk/~rak/papers/IFIP%2074.pdf",
+        "scope": "인쇄 p.569 / PDF 1쪽의 단독 저자·Edinburgh 소속·초록·도입을 지면으로 대조했다. 함의를 절차 선언으로, 조건을 절차 호출로, 증명을 계산으로 해석하는 관점을 확인했다. 이 논문을 Colmerauer·Roussel과의 공동 논문으로 표시하지 않는다. 세부 실행과 원문 그림의 검토는 연결된 연구 카드의 별도 출처 범위를 따른다.",
+        "accessed": "2026-11-14"
+      },
+      {
+        "id": "birth-prolog-archive",
+        "title": "Computer History Museum · Colmerauer·Roussel, The Birth of Prolog 보존 기록",
+        "url": "https://softwarepreservation.computerhistory.org/prolog/#ColmerauerAndRoussel1996",
+        "scope": "CHM의 서지·보존 기록과 연결된 저자 보관 원고를 확인했다. 직접 읽은 26쪽 PDF 표지는 November 1992이며, PDF 2쪽의 자연어 소통 목표와 참여자, 5–6쪽의 1971·1972년 Kowalski 방문, SL-resolution 논의, Roussel의 1972년 Algol-W 구현을 본문과 지면으로 대조했다. 이 초고와 CHM이 구분해 수록한 1996년 HOPL-II 출판본을 같은 판본으로 표시하지 않는다. 교류의 정확한 월·계절이나 초록의 연도 표기를 전기 연표의 근거로 사용하지 않는다.",
+        "accessed": "2026-11-14"
       }
     ]
   },

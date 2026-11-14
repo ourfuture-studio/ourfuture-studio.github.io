@@ -1,0 +1,62 @@
+/* Original Member computation, with the earlier city demo retained. */
+.prolog-original{min-width:0;width:100%;color:var(--text)}
+.prolog-original *{box-sizing:border-box}
+.prolog-original [hidden]{display:none!important}
+.prolog-original p,.prolog-original label,.prolog-original summary{font:12px/1.95 var(--sans);word-break:keep-all;overflow-wrap:anywhere}
+.prolog-original code{font:15px/1.9 var(--mono);color:var(--ink);white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+.prolog-original h4{font:500 18px/1.8 var(--serif);color:var(--ink);word-break:keep-all;margin:0 0 12px}
+.prolog-original h5{font:500 14px/1.8 var(--sans);color:var(--ink);word-break:keep-all;margin:0 0 10px}
+.prolog-original button,.prolog-original select{font:12px/1.8 var(--sans);padding:8px 11px;min-height:40px;max-width:100%;min-width:0;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);white-space:normal;overflow-wrap:anywhere}
+.prolog-original button{cursor:pointer}
+.prolog-original button:hover,.prolog-original button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.prolog-original button:disabled{opacity:.4;cursor:default}
+.prolog-original :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.po-nav{position:sticky;top:55px;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px 0 12px;background:var(--bg)}
+.po-nav button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.po-intro,.po-panel,.po-scope{border:1px solid var(--line);border-radius:8px;padding:18px;min-width:0;margin-bottom:15px}
+.po-intro{background:var(--soft)}
+.po-label{display:block;font:12px/1.85 var(--sans);color:var(--muted);margin:5px 0}
+.po-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0;min-width:0}
+.po-card{min-width:0;border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--bg)}
+.po-card code{display:block;margin:7px 0}
+.po-settings{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin:14px 0}
+.po-settings label{display:flex;flex-direction:column;gap:6px;color:var(--muted);min-width:0}
+.po-controls,.po-answers{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0;min-width:0}
+.po-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.po-metrics>div{border:1px solid var(--line);border-radius:5px;padding:11px;min-width:0}
+.po-metrics span{display:block;font:12px/1.8 var(--sans);color:var(--muted)}
+.po-metrics strong{display:block;font:16px/1.8 var(--mono);font-weight:500;color:var(--accent);overflow-wrap:anywhere}
+.po-status{background:var(--soft);border-left:2px solid var(--accent);padding:12px 14px;margin:14px 0}
+.po-lines{display:grid;gap:7px;margin:10px 0;min-width:0}
+.po-lines code{display:block;padding:8px 10px;background:var(--soft);border-radius:4px}
+.po-event{border:1px solid var(--accent);border-radius:6px;padding:15px;margin:14px 0;min-width:0}
+.po-choice-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.po-choice-list li{border-bottom:1px solid var(--line);padding:8px 0;min-width:0}
+.po-choice-list span{display:block;font:12px/1.9 var(--sans);color:var(--muted)}
+.po-choice-list code{display:block}
+.po-path{list-style:none;padding:14px;margin:0;display:grid;gap:12px;min-width:0}
+.po-node{position:relative;border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--bg);margin-left:calc(var(--po-depth)*14px);min-width:0}
+.po-node[data-current=true]{border-color:var(--accent);box-shadow:inset 2px 0 var(--accent)}
+.po-node[data-status=answer]{border-color:var(--accent);background:var(--soft)}
+.po-node>span{display:block;font:12px/1.8 var(--sans);color:var(--muted)}
+.po-node code{display:block;margin-top:6px}
+.po-node[data-parent]:not([data-parent=''])::before{content:'↳';position:absolute;left:-15px;top:-15px;font:16px/1.4 var(--mono);color:var(--accent)}
+.po-path-view{max-width:100%;min-width:0;background:var(--soft);border-radius:6px;overflow:hidden}
+.po-path-view[data-expanded=true]{overflow:auto;max-height:550px;overscroll-behavior:contain;scrollbar-width:thin}
+.po-path-view[data-expanded=true]>.po-path{min-width:880px}
+.po-history{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0}
+.po-history button{padding:5px 8px;min-height:32px}
+.po-source{font:12px/1.9 var(--sans);color:var(--muted);text-underline-offset:3px;overflow-wrap:anywhere}
+.po-scope summary{cursor:pointer;color:var(--ink)}
+.po-legacy .plg-nav{display:none!important}
+.prolog-original[data-po-view=paper] .po-legacy .prolog-relations>.plg-prose,.prolog-original[data-po-view=paper] .po-legacy .plg-controls,.prolog-original[data-po-view=paper] .po-legacy .plg-panel{display:none!important}
+.po-legacy .prolog-relations pre,.po-legacy .prolog-relations .plg-fact{font-size:15px}
+.po-legacy .prolog-relations .plg-tree-title,.po-legacy .prolog-relations .plg-tree-small{font-size:12px}
+@media(max-width:700px){
+ .po-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .po-intro,.po-panel,.po-scope{padding:14px 12px}
+ .prolog-original h4{font-size:16px}
+ .po-grid,.po-settings,.po-metrics{grid-template-columns:minmax(0,1fr)}
+ .po-card,.po-event{padding:12px}
+ .po-metrics>div{display:flex;justify-content:space-between;align-items:center;gap:8px}
+}
