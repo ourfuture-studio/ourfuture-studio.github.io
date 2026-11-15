@@ -4289,6 +4289,92 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "thomas-gruber",
+    "origin": null,
+    "education": [
+      {
+        "name": "Loyola University New Orleans · 로욜라대학교 뉴올리언스",
+        "detail": "심리학·컴퓨터과학 복수전공 학사 · B.S.",
+        "period": "1981년 5월",
+        "sourceIds": [
+          "stanford-cv-archived",
+          "loyola-program-2025"
+        ]
+      },
+      {
+        "name": "University of Massachusetts Amherst · 매사추세츠대학교 애머스트",
+        "detail": "Computer and Information Science 석사·박사 · 박사논문 The Acquisition of Strategic Knowledge",
+        "period": "석사 1984년 2월 · 박사 1988년 9월",
+        "sourceIds": [
+          "stanford-cv-archived",
+          "loyola-program-2025"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-massachusetts-amherst",
+        "name": "University of Massachusetts Amherst · Experimental Knowledge Systems Laboratory",
+        "period": "1986–1988 · Research Assistant",
+        "place": "애머스트, 매사추세츠, 미국",
+        "note": "전문가가 다음 행동을 선택하는 전략 지식을 컴퓨터가 획득하도록 연구했다. 1988년 보고서는 전문가의 판단 근거와 피드백을 받아 전략 규칙을 만드는 대화형 보조 도구를 설명한다.",
+        "sourceIds": [
+          "stanford-cv-archived",
+          "umass-method-1988"
+        ]
+      },
+      {
+        "institutionId": "stanford-university",
+        "name": "Stanford University · Knowledge Systems Laboratory",
+        "period": "1988–1994 · Research Associate",
+        "place": "스탠퍼드, 캘리포니아, 미국",
+        "note": "지식 표현·모형 구성·설명 생성과 지식 공유를 연구했다. Ontolingua를 개발해, 함께 쓸 개념 명세를 서로 다른 지식 표현 체계에 옮기려 했다. 1993년 논문도 Stanford KSL 소속을 명시한다.",
+        "sourceIds": [
+          "stanford-cv-archived",
+          "ontology-1993"
+        ]
+      }
+    ],
+    "background": "로욜라에서 심리학과 컴퓨터과학을 함께 공부하고, UMass에서 전문가의 판단을 프로그램의 전략 지식으로 옮기는 연구로 박사학위를 받았다. Stanford KSL에서는 지식의 획득과 함께, 서로 다른 AI 시스템이 지식을 공유·재사용할 수 있는 표현을 연구했다.",
+    "backgroundSourceIds": [
+      "stanford-cv-archived",
+      "loyola-program-2025",
+      "umass-method-1988",
+      "ontology-1993"
+    ],
+    "connections": [],
+    "sources": [
+      {
+        "id": "stanford-cv-archived",
+        "title": "Stanford KSL · Thomas Robert Gruber · 당시 이력서 보존본",
+        "url": "https://web.archive.org/web/20080622024833id_/http://www-ksl.stanford.edu/people/gruber/gruber-cv.html",
+        "scope": "Stanford KSL에서 공개한 이력서의 Education·Professional Experience 항목을 보존본으로 읽었다. 1981년 5월 Loyola 학사, 1984년 2월 UMass 석사와 1988년 9월 박사, 학위논문 제목, UMass EKSL 1986–1988년과 Stanford KSL 1988–1994년의 직책을 확인했다. 박사논문 전체나 학위증 원본을 검토한 범위로 확대하지 않는다. 이력서의 과거 present 표기는 현재 직책으로 옮기지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "loyola-program-2025",
+        "title": "Loyola University New Orleans · 2025 졸업식 공식 프로그램 · Tom Gruber ’81",
+        "url": "https://commencement.loyno.edu/sites/default/files/2025-05/LOYNO_Commencement-Program-Book_GradUndergrad_Class-of-2025-DIGITAL.pdf",
+        "scope": "40쪽 공식 프로그램의 PDF 8쪽·인쇄 6쪽 Tom Gruber 소개를 본문과 지면으로 대조했다. Loyola 심리학·컴퓨터과학 복수전공 B.S., UMass의 Computer and Information Science M.S.·Ph.D.를 확인했다. 학위별 월·연도는 당시 Stanford 이력서로 대조했다. 2025년 명예학위와 정규 학력을 구분하며 이 프로그램의 현재 기업 직책은 원고에 추가하지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "umass-method-1988",
+        "title": "UMass Amherst · Gruber (1988) · A Method for Acquiring Strategic Knowledge · COINS 88-53",
+        "url": "https://web.cs.umass.edu/publication/docs/1988/UM-CS-1988-053.pdf",
+        "scope": "대학이 공개한 보고서의 표제·소속·초록을 읽었다. 1988년 5월 Thomas R. Gruber의 UMass EKSL 연구, 전문가와의 대화·판단 근거·피드백으로 전략 지식을 획득하려는 목적을 확인했다. 이 보고서를 학위논문 본문으로 표시하지 않으며, 감사의 글의 협력·지도 표현만으로 개인의 박사 지도 관계를 추가하지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "ontology-1993",
+        "title": "Gruber (1993) · A Translation Approach to Portable Ontology Specifications · 저자 공개본",
+        "url": "https://tomgruber.org/writing/ontolingua-kaj-1993.pdf",
+        "scope": "27쪽 저자 공개본의 PDF 1쪽 표지, 2–3쪽 정의·공유 문제, 6–8쪽 Ontolingua·KIF·번역 범위를 읽었다. 표지의 1992년 9월 보고서·1993년 4월 개정과 1993년 학술지 출판을 구분했다. 공동 개념 명세를 여러 지식 표현 체계에서 재사용하려는 목적을 확인했으며, 1993년 도구가 후대 웹 표준을 구현했다고 서술하지 않는다.",
+        "accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
     "personId": "tomas-mikolov",
     "origin": null,
     "education": [

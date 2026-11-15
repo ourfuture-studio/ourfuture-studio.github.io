@@ -1,5 +1,5 @@
 {
-  "version": "0.63-public.1",
+  "version": "0.64-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1188,5 +1188,15 @@
     "sourceReadingNotes": 12,
     "supplementaryOriginalFigures": 3,
     "scope": "Sourced Feigenbaum profile and documented Simon doctoral-advisor relation. Original1977 RULE85 conditions are inspected through a bounded goal-directed execution, while published coefficients and separate explanation dialogue retain their original scope. Existing printer views and public image-versus-paper-link policy are preserved."
+  },
+  "ontologyRevision": {
+    "personIds": [
+      "thomas-gruber"
+    ],
+    "sourcePanels": 92,
+    "sourceImages": 80,
+    "sourceReadingNotes": 12,
+    "supplementaryOriginalFigures": 3,
+    "scope": "Sourced Gruber biography, original1993 AUTHOR commitments and bounded translation comparisons, with explicit research-card links to Semantic Web. Existing student/author examples and image-versus-paper-link policy are preserved. No personal relationship is inferred from the research-card connection."
   }
 }
