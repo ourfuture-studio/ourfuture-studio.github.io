@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.65-public.1">
+<html lang="ko" data-theme="light" data-release="0.66-public.1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,6 +47,10 @@
   <link rel="stylesheet" href="visuals/rdf-knowledge-graph.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/semantic-web-composition.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/semantic-original.css?v=0.65-public.1">
+  <link rel="stylesheet" href="visuals/bengio-scientist-2026.css?v=0.66-public.1">
+  <link rel="stylesheet" href="visuals/lecun-world-models-2026.css?v=0.66-public.1">
+  <link rel="stylesheet" href="visuals/fei-atlas-2026.css?v=0.66-public.1">
+  <link rel="stylesheet" href="visuals/finn-pi07-2026.css?v=0.66-public.1">
   <link rel="stylesheet" href="visuals/owl-logical-definitions.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/sparql-pattern-query.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/resolution-refutation.css?v=0.48-public.1">
@@ -237,6 +241,10 @@
   <script src="profiles-stage3/feigenbaum.js?v=0.63-public.1" defer></script>
   <script src="profiles-stage3/gruber.js?v=0.64-public.1" defer></script>
   <script src="profiles-stage3/berners-lee.js?v=0.65-public.1" defer></script>
+  <script src="recent-profiles/bengio-2026.js?v=0.66-public.1" defer></script>
+  <script src="recent-profiles/lecun-2026.js?v=0.66-public.1" defer></script>
+  <script src="recent-profiles/fei-2026.js?v=0.66-public.1" defer></script>
+  <script src="recent-profiles/finn-2026.js?v=0.66-public.1" defer></script>
   <script src="art.js?v=0.48-public.1" defer></script>
   <script src="visuals/biological-neuron.js?v=0.48-public.1" defer></script>
   <script src="visuals/neuron-to-logic.js?v=0.48-public.1" defer></script>
@@ -258,6 +266,7 @@
   <script src="source-figures/root.js?v=0.56-public.1" defer></script>
   <script src="source-figures/stage2-symbolic.js?v=0.57-public.1" defer></script>
   <script src="source-figures/stage2-sequence-industry.js?v=0.57-public.1" defer></script>
+  <script src="source-figures/recent-2026.js?v=0.66-public.1" defer></script>
   <script src="visuals/lenet-features.js?v=0.56-public.1" defer></script>
   <script src="visuals/lstm-memory.js?v=0.48-public.1" defer></script>
   <script src="visuals/lstm-learning-core.js?v=0.58-public.1" defer></script>
@@ -283,6 +292,14 @@
   <script src="visuals/semantic-web-composition.js?v=0.48-public.1" defer></script>
   <script src="visuals/semantic-original-core.js?v=0.65-public.1" defer></script>
   <script src="visuals/semantic-original.js?v=0.65-public.1" defer></script>
+  <script src="visuals/bengio-scientist-2026-core.js?v=0.66-public.1" defer></script>
+  <script src="visuals/bengio-scientist-2026.js?v=0.66-public.1" defer></script>
+  <script src="visuals/lecun-world-models-2026-core.js?v=0.66-public.1" defer></script>
+  <script src="visuals/lecun-world-models-2026.js?v=0.66-public.1" defer></script>
+  <script src="visuals/fei-atlas-2026-core.js?v=0.66-public.1" defer></script>
+  <script src="visuals/fei-atlas-2026.js?v=0.66-public.1" defer></script>
+  <script src="visuals/finn-pi07-2026-core.js?v=0.66-public.1" defer></script>
+  <script src="visuals/finn-pi07-2026.js?v=0.66-public.1" defer></script>
   <script src="visuals/owl-logical-definitions.js?v=0.48-public.1" defer></script>
   <script src="visuals/sparql-pattern-query.js?v=0.48-public.1" defer></script>
   <script src="visuals/resolution-refutation.js?v=0.48-public.1" defer></script>
@@ -404,7 +421,7 @@
   <script src="portrait-data.js?v=0.48-public.1" defer></script>
   <script src="portrait-stage2-data.js?v=0.57-public.1" defer></script>
   <script src="portraits.js?v=0.48-public.1" defer></script>
-  <script src="person-background-data.js?v=0.65-public.1" defer></script>
+  <script src="person-background-data.js?v=0.66-public.1" defer></script>
   <script src="person-background.js?v=0.48-public.1" defer></script>
   <script src="people.js?v=0.48-public.1" defer></script>
   <script src="person-graph-core.js?v=0.48-public.1" defer></script>
@@ -418,7 +435,7 @@
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.65</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.66</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>

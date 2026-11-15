@@ -1238,12 +1238,24 @@ window.ATLAS_PERSON_BACKGROUNDS=[
           "finn-cv",
           "finn-stanford"
         ]
+      },
+      {
+        "institutionId": "physical-intelligence",
+        "name": "Physical Intelligence · 2026년 공동연구",
+        "period": "2026년 MEM·π0.7 공개",
+        "note": "과거 관측의 기억과 목표 장면·수행 메타데이터를 로봇 행동의 조건으로 연결하는 공동연구의 저자에 포함된다. 논문 공동저자 기록으로 확인한 범위다.",
+        "sourceIds": [
+          "finn-pi07-2026",
+          "finn-mem-2026"
+        ]
       }
     ],
-    "background": "MIT에서 전기전자·컴퓨터과학을 공부하고 UC 버클리에서 로봇 학습으로 박사 과정을 마쳤다. Google의 연구팀과 스탠퍼드에서 로봇이 경험을 모으고 새로운 과제에 적응하는 문제를 이어 연구했다.",
+    "background": "MIT에서 전기전자·컴퓨터과학을 공부하고 UC 버클리에서 로봇 학습으로 박사 과정을 마쳤다. Google의 연구팀과 스탠퍼드에서 로봇이 경험을 모으고 새로운 과제에 적응하는 문제를 이어 연구했다. 2026년에는 Physical Intelligence의 MEM·π0.7 공동연구를 통해 과거 관측의 기억과 다양한 행동 조건을 이어 다뤘다.",
     "backgroundSourceIds": [
       "finn-cv",
-      "finn-stanford"
+      "finn-stanford",
+      "finn-pi07-2026",
+      "finn-mem-2026"
     ],
     "connections": [
       {
@@ -1292,6 +1304,27 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://arxiv.org/abs/1703.03400",
         "scope": "2017년 논문 공동저자 명단. 이 관계는 논문 공동연구이며 여기서 박사 지도 관계로 재분류하지 않는다.",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "finn-pi07-2026",
+        "title": "Physical Intelligence · π0.7 원논문과 공개 글",
+        "url": "https://www.pi.website/blog/pi07",
+        "scope": "2026-04-16 공개. 첼시 핀은 저자 명단에 포함. PDF p.1 저자·Fig.1, p.4 Fig.2의 조건부 VLA·세계모델·고수준 정책 구조.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "finn-mem-2026",
+        "title": "Physical Intelligence · VLAs with Long and Short-Term Memory",
+        "url": "https://www.pi.website/research/memory",
+        "scope": "2026-03-03 공식 공개. 단기·장기 기억과 첼시 핀·세르게이 레빈 공동저자 기록.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "finn-api-2026",
+        "title": "Physical Intelligence · Pi API beta",
+        "url": "https://www.pi.website/blog/api-beta",
+        "scope": "2026-10-13 공개. 자료 업로드·미세조정·hosted inference·실패 기반 후속 수집의 회사 설명.",
+        "accessed": "2026-11-15"
       }
     ]
   },
@@ -2115,6 +2148,18 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "sourceIds": [
           "li-stanford-profile"
         ]
+      },
+      {
+        "institutionId": "world-labs",
+        "name": "World Labs · 공간 지능 연구·제품",
+        "place": "기업 연구·공동설립팀",
+        "period": "2024–2026 · 공동설립과 Atlas 공개 기록",
+        "note": "공식 소개는 리와 Justin Johnson·Ben Mildenhall·Christoph Lassner를 공동설립팀으로 명시한다. 2026년 Atlas의 공간 문맥·새 시점 생성·도구 공개는 World Labs Team 명의로 발표됐다.",
+        "sourceIds": [
+          "li-worldlabs-about-2026",
+          "li-atlas-structure-2026",
+          "li-atlas-release-2026"
+        ]
       }
     ],
     "background": "중국 베이징에서 태어나 청두에서 성장한 뒤 가족과 미국으로 이주했다. 프린스턴에서 물리학을 공부하고 Caltech 박사과정에서 컴퓨터비전·신경과학으로 관심을 넓혔다.",
@@ -2169,6 +2214,27 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://hai.stanford.edu/news/fei-fei-li-candid-look-young-immigrants-rise-ai-trailblazer",
         "scope": "물리학에서 Caltech 컴퓨터비전·신경과학으로 관심이 이어진 배경",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "li-worldlabs-about-2026",
+        "title": "World Labs · About Us",
+        "url": "https://worldlabs.ai/about",
+        "scope": "네 명의 공동설립자와 공간 지능 연구·제품 방향. 현재 역할의 세부 직함이나 조건부 거래의 완료를 추정하지 않음.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "li-atlas-structure-2026",
+        "title": "World Labs Team · Atlas 구조 설명",
+        "url": "https://worldlabs.ai/blog/atlas",
+        "scope": "2026-09-01 기술 글 현재판. 공간 문맥·이미지·카메라·깊이·자기회귀 확산Transformer 구조 설명. 회사 팀의 발표로 귀속.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "li-atlas-release-2026",
+        "title": "World Labs · 연구·공개 기록과 Atlas",
+        "url": "https://worldlabs.ai/blog",
+        "scope": "2026-11-12 Atlas 공개 날짜와 제품·도구 페이지로 이어지는 항목. 11-05 Frameboy 연구 미리보기와 구분.",
+        "accessed": "2026-11-15"
       }
     ]
   },
@@ -5058,12 +5124,34 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "sourceIds": [
           "lecun-meta-bio"
         ]
+      },
+      {
+        "institutionId": "meta-fair",
+        "name": "FAIR at Meta · V-JEPA 2 공동연구",
+        "place": "공동연구 소속 표기",
+        "period": "2025 · 원논문 Core Team",
+        "note": "V-JEPA 2 원논문 첫쪽에서 르쿤을 FAIR at Meta 소속 Core Team 공동저자로 표기한다. 당시 논문의 소속이며2026년 현재 직함으로 사용하지 않는다.",
+        "sourceIds": [
+          "lecun-vjepa2-2025"
+        ]
+      },
+      {
+        "institutionId": "ami-labs",
+        "name": "AMI Labs · 공식 창립팀",
+        "place": "공식 연구거점: 파리·뉴욕·몬트리올·싱가포르",
+        "period": "2026 · 공식 창립팀 소개",
+        "note": "공식 페이지의 창립팀에 Yann LeCun이 포함되어 있다. 추상적 표현의 세계모델,기억,추론·계획을 연구 목표로 설명한다. 구체적인 현재 직함과 완성된 성능은 이 출처만으로 추가하지 않는다.",
+        "sourceIds": [
+          "lecun-ami-2026"
+        ]
       }
     ],
-    "background": "프랑스에서 공학과 컴퓨터과학을 공부한 뒤 캐나다 토론토에서 박사후연구를 했다. Bell Labs·AT&T Labs에서 영상처리 연구를 하고 2003년 NYU 교수로 옮겼다.",
+    "background": "프랑스에서 공학과 컴퓨터과학을 공부한 뒤 캐나다 토론토에서 박사후연구를 했다. Bell Labs·AT&T Labs에서 영상처리 연구를 하고 2003년 NYU 교수로 옮겼다. 이후에는 자기지도 표현 학습과 행동의 결과를 예측하는 세계모델로 연구 질문을 넓혔다. 2025년 V-JEPA 2에서는 Core Team 공동저자로 참여했고,2026년 AMI Labs 공식 창립팀에도 이름이 실렸다.",
     "backgroundSourceIds": [
       "lecun-meta-bio",
-      "lecun-lenet-paper"
+      "lecun-lenet-paper",
+      "lecun-vjepa2-2025",
+      "lecun-ami-2026"
     ],
     "connections": [
       {
@@ -5112,6 +5200,20 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://leon.bottou.org/papers/lecun-98h",
         "scope": "LeCun·Bottou·Bengio·Haffner의 네 공동저자와 1998 출판 서지",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "lecun-vjepa2-2025",
+        "title": "Assran 외 · V-JEPA 2 원논문",
+        "url": "https://arxiv.org/pdf/2506.09985",
+        "scope": "2025년 공동연구 원문 PDF1의 소속과 CoreTeam표기,PDF4다단계학습·PDF10–11계획. 르쿤 개인의 단독 발명으로 쓰지 않음.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "lecun-ami-2026",
+        "title": "AMI Labs · 공식 창립팀과 연구 방향",
+        "url": "https://amilabs.xyz/",
+        "scope": "2026-11-15확인. 창립팀의 Yann LeCun과 표현 공간 세계모델·기억·추론·계획의 연구 목표. 공개되지 않은 구현 성능이나 확인하지 않은 직함은 포함하지 않음.",
+        "accessed": "2026-11-15"
       }
     ]
   },
@@ -5166,6 +5268,18 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "note": "교수로 합류하고 몬트리올의 학습 연구 공동체를 구축",
         "sourceIds": [
           "bengio-caiac-bio"
+        ]
+      },
+      {
+        "institutionId": "lawzero",
+        "name": "LawZero",
+        "place": "몬트리올, 캐나다",
+        "period": "2025년 설립 · 2026년 공식 소개 확인",
+        "note": "공식 소개의 Co-President & Scientific Director. Scientist AI에서 확률 예측의 지능과 목표 추구를 구분하는 설계·안전 논증을 공동 연구한다. 제안된 안전성이 완성됐다는 뜻은 아니다.",
+        "sourceIds": [
+          "bengio-lawzero-bio-2026",
+          "bengio-scientist-research-2026",
+          "bengio-lawzero-launch-2025"
         ]
       }
     ],
@@ -5228,6 +5342,27 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://diro.umontreal.ca/en/departement/activites/activite/news/eventDetail/Event/deep-learning-of-representations-and-its-application-to-computer-vision/",
         "scope": "2014-09-02 심사, 지도 Bengio·공동지도 Courville",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "bengio-lawzero-bio-2026",
+        "title": "LawZero · Yoshua Bengio 공식 소개",
+        "url": "https://lawzero.org/en/team/yoshua-bengio",
+        "scope": "Co-President & Scientific Director,2025년 설립,2023년 이후 안전 연구 방향. 기존 학위·연구 경력·인물 관계와 구분한 최근 기록.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "bengio-scientist-research-2026",
+        "title": "LawZero · Scientist AI 연구 목록",
+        "url": "https://lawzero.org/en/research",
+        "scope": "2026년 설계·안전 논증의 공동저자·공개 날짜·원문 링크. 목표를 추구하지 않는 예측과 배포 검사라는 제안.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "bengio-lawzero-launch-2025",
+        "title": "LawZero · Yoshua Bengio Launches LawZero",
+        "url": "https://lawzero.org/en/news/yoshua-bengio-launches-lawzero-new-nonprofit-advancing-safe-design-ai",
+        "scope": "공식2025-06-03 설립 발표. Montréal·비영리조직·2023년 이후 연구 방향의 근거. 당시직함과2026년공식소개직함을구분.",
+        "accessed": "2026-11-15"
       }
     ]
   }

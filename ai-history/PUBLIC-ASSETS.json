@@ -1,5 +1,5 @@
 {
-  "version": "0.65-public.1",
+  "version": "0.66-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1207,5 +1207,23 @@
     "sourceImages": 80,
     "sourceReadingNotes": 12,
     "scope": "Sourced Tim Berners-Lee biography and the2001 article coauthor links; bounded original-inspired cross-source plan trace, and preserved seminar views. Research-card navigation links Gruber ontology without inventing personal relations. Existing image-versus-paper-link policy is preserved."
+  },
+  "fourRecentRevision": {
+    "personIds": [
+      "yoshua-bengio",
+      "yann-lecun",
+      "fei-fei-li",
+      "chelsea-finn"
+    ],
+    "newWorks": [
+      "bengio-scientist-ai-2026",
+      "lecun-world-models-2026",
+      "fei-atlas-world-model-2026",
+      "finn-pi07-2026"
+    ],
+    "sourcePanels": 96,
+    "sourceImages": 84,
+    "sourceReadingNotes": 12,
+    "scope": "Four dated2026 follow-ups for existing Bengio, LeCun, Fei-Fei Li and Chelsea Finn profiles. Original sources and bounded authored models are distinguished. All prior92works, original-image/public-source-link decisions and personal graph relationships are preserved."
   }
 }
