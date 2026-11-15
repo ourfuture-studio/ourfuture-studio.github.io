@@ -4375,6 +4375,125 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "tim-berners-lee",
+    "origin": {
+      "label": "출생",
+      "text": "런던, 잉글랜드 · 1955년 6월 8일",
+      "sourceIds": [
+        "w3c-longer-biography"
+      ]
+    },
+    "education": [
+      {
+        "name": "University of Oxford · The Queen’s College",
+        "detail": "물리학 학사 · BA Hons (I) Physics",
+        "period": "1973–1976 · 1976년 졸업",
+        "sourceIds": [
+          "w3c-longer-biography"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "cern",
+        "name": "CERN · 유럽입자물리연구소",
+        "period": "1980년 6–12월 · 1984년 연구원으로 재합류",
+        "place": "제네바 인근, 스위스",
+        "note": "1980년 ENQUIRE로 관련 정보를 연결해 기록했다. 1989년 웹을 제안하고 1990년 첫 웹 서버와 브라우저·편집기를 구현했다. 서로 다른 컴퓨터와 기관의 과학자들이 정보를 공유하도록 하려는 문제에서 출발했다.",
+        "sourceIds": [
+          "w3c-longer-biography",
+          "web-proposal-1989",
+          "cern-web-history"
+        ]
+      },
+      {
+        "institutionId": "massachusetts-institute-of-technology",
+        "name": "MIT · Laboratory for Computer Science / World Wide Web Consortium",
+        "period": "1994년 W3C 설립 · 2001년 글의 저자 소개",
+        "place": "케임브리지, 매사추세츠, 미국",
+        "note": "1994년 MIT의 LCS에 W3C를 설립했다. 2001년 글은 버너스리를 웹의 발명자이자 W3C 소장으로 소개하며, Hendler·Lassila와 함께 프로그램이 개념·관계를 따라 웹의 정보를 활용하는 구상을 설명한다.",
+        "sourceIds": [
+          "w3c-longer-biography",
+          "semantic-web-2001"
+        ]
+      }
+    ],
+    "background": "런던에서 태어나 Oxford에서 물리학을 공부했다. CERN에서 사람·소프트웨어·문서에 관한 정보를 연결하는 ENQUIRE를 만들고, 1989년에는 분산된 정보를 연결하는 웹을 제안했다. 1994년 W3C를 설립한 뒤, 문서 연결에서 데이터의 개념과 관계를 공유하는 시맨틱 웹의 구상으로 이어갔다.",
+    "backgroundSourceIds": [
+      "w3c-longer-biography",
+      "web-proposal-1989",
+      "cern-web-history",
+      "semantic-web-2001"
+    ],
+    "connections": [
+      {
+        "personId": "james-hendler",
+        "name": "James Hendler",
+        "nameKo": "제임스 헨들러",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "시맨틱 웹 비전 공동저술",
+        "description": "Hendler는 버너스리·Lassila와 2001년 The Semantic Web을 함께 썼다. 여러 출처의 데이터에 개념과 관계를 명시하고, 프로그램이 사용자의 목표에 맞게 정보를 조합하는 비전을 설명한 공동저술 관계로 연결한다. 개별 아이디어의 단독 기여나 지도 관계는 추정하지 않는다.",
+        "period": "2001년 5월 · The Semantic Web",
+        "sourceIds": [
+          "semantic-web-2001",
+          "semantic-web-author-page"
+        ]
+      },
+      {
+        "personId": "ora-lassila",
+        "name": "Ora Lassila",
+        "nameKo": "오라 라실라",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "시맨틱 웹 비전 공동저술",
+        "description": "Lassila는 버너스리·Hendler와 2001년 The Semantic Web을 함께 썼고, 자신의 웹사이트에 저자 공개본과 서지를 제공한다. 이 공동저술을 관계의 근거로 삼으며, 세 사람의 역할 분담이나 글의 사례가 실제로 실행됐다는 결론으로 넓히지 않는다.",
+        "period": "2001년 5월 · The Semantic Web",
+        "sourceIds": [
+          "semantic-web-2001",
+          "semantic-web-author-page"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "w3c-longer-biography",
+        "title": "W3C · Tim Berners-Lee · Longer Biography",
+        "url": "https://www.w3.org/People/Berners-Lee/Longer.html",
+        "scope": "Background·Education 본문을 읽었다. 런던 출생과 생년월일, Queen’s College의 1973–1976년 물리학 BA Hons (I), 1980년 6–12월 CERN 자문·ENQUIRE, 1984년 연구원 재합류, 1989년 제안·1990년 구현, 1994년 MIT LCS의 W3C 설립을 확인했다. 과거·현재 직책이 섞인 전기이므로 재직 종료 시점이나 현재 직함으로 확장하지 않았다. 명예학위는 정규 학력에 추가하지 않았다. 이 페이지의 2001년 글 쪽수 표기는 사용하지 않고 저자 공개본의 실제 판면과 서지 페이지를 따른다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "web-proposal-1989",
+        "title": "Berners-Lee · Information Management: A Proposal · 1989/1990 원문 HTML 보존본",
+        "url": "https://www.w3.org/History/1989/proposal.html",
+        "scope": "문서 머리말과 Losing Information at CERN·Linked information systems·Personal Experience with Hypertext 절을 읽었다. 1989년 3월 원문에 1990년 5월 날짜를 더한 HTML 전사본이라는 설명, 인력 이동으로 정보가 잃어버려지는 문제, 사람·소프트웨어·문서·개념과 연결 유형을 기록하려는 제안, 1980년 ENQUIRE의 용도를 확인했다. 2001년 시맨틱 웹의 완료된 구현으로 표시하지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "cern-web-history",
+        "title": "CERN · A short history of the Web",
+        "url": "https://home.cern/science/computing/the-birth-of-the-web/short-history-web",
+        "scope": "공식 역사 본문을 읽었다. 1989년 CERN에서의 웹 제안과 과학자들의 자동 정보 공유라는 배경, 1990년 말 첫 서버·브라우저 구현을 확인했다. CERN의 현재 웹사이트 경로를 사용하며, 네트워크 공개의 여러 시점을 특정 하루로 합치지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "semantic-web-2001",
+        "title": "Berners-Lee·Hendler·Lassila (2001) · The Semantic Web · 저자 공개 PDF",
+        "url": "https://lassila.org/publications/2001/SciAm.pdf",
+        "scope": "PDF 2쪽의 제목·공동저자, 7쪽 저자 소개, 3–4쪽 가상 예약 사례와 비전, 7–8쪽 개념·관계·어휘 대응의 논지를 확인했다. PDF 1–10쪽은 인쇄 34–43쪽에 대응한다. 세 사람의 공동저술을 공동연구 연결의 근거로 사용하며, 가상 사례를 실제 실행 결과나 평가 수치로 바꾸지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "semantic-web-author-page",
+        "title": "Ora Lassila · The Semantic Web · 저자 공개본과 서지",
+        "url": "https://lassila.org/publications/2001/SciAm.html",
+        "scope": "저자 공개 페이지의 세 공동저자 순서와 Scientific American 284(5):34–43, May 2001 서지를 확인했다. 공저 사실만으로 지도·고용·단독 발명 관계를 추가하지 않았다.",
+        "accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
     "personId": "tomas-mikolov",
     "origin": null,
     "education": [
