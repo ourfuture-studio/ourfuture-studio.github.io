@@ -1822,6 +1822,137 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "edward-feigenbaum",
+    "origin": {
+      "label": "출생",
+      "text": "위호큰, 뉴저지, 미국",
+      "sourceIds": [
+        "stanford-cv",
+        "chm-biography"
+      ]
+    },
+    "education": [
+      {
+        "name": "Carnegie Institute of Technology · 현재 Carnegie Mellon University",
+        "detail": "전기공학 학사 · B.S.",
+        "period": "1956",
+        "sourceIds": [
+          "stanford-cv"
+        ]
+      },
+      {
+        "name": "Carnegie Institute of Technology · Graduate School of Industrial Administration",
+        "detail": "박사 · 인간의 언어 학습을 프로그램으로 설명한 EPAM 연구",
+        "period": "1960년 9월 학위 · 1959년 8월 논문 원고",
+        "sourceIds": [
+          "stanford-cv",
+          "thesis-1959",
+          "chm-biography"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "carnegie-mellon-university",
+        "name": "Carnegie Institute of Technology · GSIA",
+        "period": "1959년 학위논문 · 1960년 박사학위",
+        "place": "피츠버그, 펜실베이니아, 미국",
+        "note": "사이먼의 지도로 인간의 학습을 정보 처리 과정으로 설명하는 EPAM을 연구했다. 학위논문 서문은 뉴얼과 사이먼의 초기 발상과 모형의 구성·구현에 대한 도움을 함께 밝힌다.",
+        "sourceIds": [
+          "stanford-cv",
+          "chm-biography",
+          "cmu-honorary-2025",
+          "thesis-1959"
+        ]
+      },
+      {
+        "institutionId": "university-of-california-berkeley",
+        "name": "University of California, Berkeley · 캘리포니아대학교 버클리",
+        "period": "1960–1965",
+        "place": "버클리, 캘리포니아, 미국",
+        "note": "School of Business Administration에서 재직했다. 1961–1964년에는 Center for Human Learning의 연구 경력도 이력서에 기록되어 있다.",
+        "sourceIds": [
+          "stanford-cv"
+        ]
+      },
+      {
+        "institutionId": "stanford-university",
+        "name": "Stanford University · Heuristic Programming Project / Knowledge Systems Laboratory",
+        "period": "1965년 합류 · 1977년 논문 소속",
+        "place": "스탠퍼드, 캘리포니아, 미국",
+        "note": "1965년 컴퓨터과학 교수진에 합류해 DENDRAL과 지식 기반 AI 연구를 시작했다. 1977년 IJCAI 회고에서는 HPP의 여러 사례로 전문 지식의 획득·표현·추론·설명을 논의했다.",
+        "sourceIds": [
+          "stanford-cv",
+          "chm-biography",
+          "expert-systems-1977"
+        ]
+      }
+    ],
+    "background": "뉴저지 위호큰에서 태어나 Carnegie에서 전기공학을 공부한 뒤, 사이먼의 지도 아래 인간의 학습을 프로그램으로 설명하는 박사 연구를 수행했다. 버클리를 거쳐 1965년 Stanford에 합류했고, 화학과 의학의 전문가들이 사용하는 지식을 컴퓨터가 다룰 수 있게 만드는 연구로 이어갔다.",
+    "backgroundSourceIds": [
+      "stanford-cv",
+      "chm-biography",
+      "cmu-honorary-2025",
+      "thesis-1959",
+      "expert-systems-1977"
+    ],
+    "connections": [
+      {
+        "personId": "herbert-simon",
+        "name": "Herbert A. Simon",
+        "nameKo": "허버트 사이먼",
+        "kind": "advisor",
+        "relation": "student-of",
+        "label": "EPAM 박사 연구 지도",
+        "description": "파이겐바움은 사이먼의 지도로 인간의 언어 학습을 정보 처리 프로그램으로 설명하는 박사 연구를 수행했다. 1959년 학위논문 서문에서는 뉴얼·사이먼이 EPAM의 초기 아이디어를 제안했으며, 두 사람이 모형의 구성과 구현을 도왔다고 밝혔다.",
+        "period": "1959년 논문 원고 · 1960년 박사학위",
+        "sourceIds": [
+          "chm-biography",
+          "cmu-honorary-2025",
+          "thesis-1959",
+          "stanford-cv"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "stanford-cv",
+        "title": "Stanford · Edward Feigenbaum · 이력서",
+        "url": "https://cs.stanford.edu/people/eaf/cv.html",
+        "scope": "Born·Education·Professional Experience·Books and Monographs 항목을 읽었다. Weehawken 출생, 1956년 전기공학 학사, 1960년 9월 GSIA 박사, Berkeley 1960–1965년 경력과 Stanford 1965년 합류를 확인했다. 학위의 전공명을 대학원 이름에서 추정하지 않았다. 작성 시점이 다른 present 표기는 현재 재직 기간으로 확장하지 않고 역사적 경력만 사용했다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "chm-biography",
+        "title": "Computer History Museum · Edward Feigenbaum · 2012 Fellow 전기",
+        "url": "https://computerhistory.org/profile/edward-feigenbaum/?alias=bio&person=edward-feigenbaum",
+        "scope": "인물 전기 본문을 읽었다. 박사논문을 Herb Simon이 지도했다는 직접 서술, 인간 학습의 컴퓨터 모형이라는 연구 대상, Stanford 1965년 합류와 같은 해 Lederberg와의 DENDRAL 시작을 확인했다. 전문가 지식의 역할에 관한 소개는 1977년 본문과 대조했으며, 우선권을 주장하는 수식어는 카드에 옮기지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "cmu-honorary-2025",
+        "title": "Carnegie Mellon · 2025 명예학위 수여자 소개 · Edward Feigenbaum 절",
+        "url": "https://news.pantheon.cmu.edu/stories/archives/2025/april/carnegie-mellon-university-announces-2025-honorary-degree-recipients",
+        "scope": "2025년 4월 2일 공식 기사 중 Edward Feigenbaum 절을 읽었다. 학사·박사 학력과 Simon의 지도로 EPAM을 학위논문에서 개발했다는 서술을 확인했다. 이 기사의 2025년 명예학위는 1960년 정규 박사학위와 구분하며, 학력 항목에 추가하지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "thesis-1959",
+        "title": "Feigenbaum · An Information Processing Theory of Verbal Learning · 1959 학위논문 제출본",
+        "url": "https://purl.stanford.edu/ng900rn4022",
+        "scope": "Stanford Digital Repository의 188쪽 보존본을 확인하고, PDF 2쪽 표제·3쪽 서문·5–8쪽 서론을 읽었다. 표제의 August 1959·GSIA 학위논문, 서문의 Newell·Simon 공헌, 학습·기억을 정보 처리 프로그램으로 연구하려는 목적을 확인했다. 표제·서문·서론의 지면도 대조했다. 1959년 원고 날짜와 CV의 1960년 9월 학위 취득을 구분하며, 전체 실험·프로그램을 재검증한 것으로 확대하지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "expert-systems-1977",
+        "title": "Feigenbaum (1977) · The Art of Artificial Intelligence · IJCAI 원문",
+        "url": "https://ijcai.org/proceedings/1977/0231.pdf",
+        "scope": "PDF 1–5쪽, 인쇄 1014–1018쪽의 초록·PUFF 도입·2절·2.1–2.2절·3절의 공통 주제를 읽었다. 지능적 프로그램이 전문 지식을 표현·활용하도록 하려는 질문, 지식 획득과 추론 과정의 설명, Stanford HPP 연구 환경을 확인했다. 1016쪽의 지면을 대조했다. 전문 지식의 역할은 이 회고가 제시한 연구 관점으로 설명하며 모든 AI에 대한 보편적 성능 법칙으로 일반화하지 않는다.",
+        "accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
     "personId": "elon-musk",
     "origin": {
       "label": "성장",

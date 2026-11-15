@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.62-public.1">
+<html lang="ko" data-theme="light" data-release="0.63-public.1">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,6 +62,7 @@
   <link rel="stylesheet" href="visuals/alphago-guided-search.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/segment-memory-attention.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/expert-knowledge.css?v=0.48-public.1">
+  <link rel="stylesheet" href="visuals/expert-original.css?v=0.63-public.1">
   <link rel="stylesheet" href="visuals/dreamcoder-library-cycle.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/protein-relational-reasoning.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/knowledge-competence.css?v=0.48-public.1">
@@ -168,7 +169,7 @@
   <script src="entries/maml.js?v=0.48-public.1" defer></script>
   <script src="entries/alphago.js?v=0.48-public.1" defer></script>
   <script src="entries/transformer-xl.js?v=0.48-public.1" defer></script>
-  <script src="entries/expert-systems.js?v=0.48-public.1" defer></script>
+  <script src="entries/expert-systems.js?v=0.63-public.1" defer></script>
   <script src="entries/dreamcoder.js?v=0.48-public.1" defer></script>
   <script src="entries/alphafold2.js?v=0.48-public.1" defer></script>
   <script src="entries/knowledge-representation.js?v=0.48-public.1" defer></script>
@@ -231,6 +232,7 @@
   <script src="profiles-stage3/newell-simon.js?v=0.60-public.1" defer></script>
   <script src="profiles-stage3/robinson.js?v=0.61-public.1" defer></script>
   <script src="profiles-stage3/prolog-authors.js?v=0.62-public.1" defer></script>
+  <script src="profiles-stage3/feigenbaum.js?v=0.63-public.1" defer></script>
   <script src="art.js?v=0.48-public.1" defer></script>
   <script src="visuals/biological-neuron.js?v=0.48-public.1" defer></script>
   <script src="visuals/neuron-to-logic.js?v=0.48-public.1" defer></script>
@@ -292,6 +294,8 @@
   <script src="visuals/alphago-guided-search.js?v=0.48-public.1" defer></script>
   <script src="visuals/segment-memory-attention.js?v=0.48-public.1" defer></script>
   <script src="visuals/expert-knowledge.js?v=0.48-public.1" defer></script>
+  <script src="visuals/expert-original-core.js?v=0.63-public.1" defer></script>
+  <script src="visuals/expert-original.js?v=0.63-public.1" defer></script>
   <script src="visuals/dreamcoder-library-cycle.js?v=0.48-public.1" defer></script>
   <script src="visuals/protein-relational-reasoning.js?v=0.48-public.1" defer></script>
   <script src="visuals/knowledge-competence.js?v=0.48-public.1" defer></script>
@@ -392,7 +396,7 @@
   <script src="portrait-data.js?v=0.48-public.1" defer></script>
   <script src="portrait-stage2-data.js?v=0.57-public.1" defer></script>
   <script src="portraits.js?v=0.48-public.1" defer></script>
-  <script src="person-background-data.js?v=0.62-public.1" defer></script>
+  <script src="person-background-data.js?v=0.63-public.1" defer></script>
   <script src="person-background.js?v=0.48-public.1" defer></script>
   <script src="people.js?v=0.48-public.1" defer></script>
   <script src="person-graph-core.js?v=0.48-public.1" defer></script>
@@ -406,7 +410,7 @@
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.62</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.63</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>
