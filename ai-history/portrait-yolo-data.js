@@ -1,0 +1,4 @@
+/* One file-specific Commons portrait; the earlier portrait registry is preserved. */
+window.ATLAS_PERSON_PORTRAITS=Object.freeze({...window.ATLAS_PERSON_PORTRAITS,
+  'ali-farhadi':{personId:'ali-farhadi',name:'Ali Farhadi',aliases:['알리 파르하디','알리 파하디'],imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/TechCrunch_Disrupt_2024_D3_Advantages_of_Open_AI-4_%2854104459972%29.jpg/500px-TechCrunch_Disrupt_2024_D3_Advantages_of_Open_AI-4_%2854104459972%29.jpg',sourceUrl:'https://commons.wikimedia.org/wiki/File:TechCrunch_Disrupt_2024_D3_Advantages_of_Open_AI-4_(54104459972).jpg',author:'Katelyn Tucker / Slava Blazer Photography · TechCrunch',license:{name:'CC BY 2.0',url:'https://creativecommons.org/licenses/by/2.0/'},position:'45% 25%',photoDateDisplay:'2024-10-30 촬영 · TechCrunch Disrupt'}
+});

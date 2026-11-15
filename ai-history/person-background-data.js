@@ -697,6 +697,128 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "ali-farhadi",
+    "education": [
+      {
+        "name": "University of Illinois Urbana-Champaign · Computer Science",
+        "detail": "박사 · 지도교수 David Forsyth",
+        "period": "2011년 박사학위",
+        "sourceIds": [
+          "uw-appointment",
+          "cmu-home"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "carnegie-mellon-university",
+        "name": "Carnegie Mellon University · Robotics Institute",
+        "period": "2012년 대학 발표에 표기된 박사후연구",
+        "place": "피츠버그, 펜실베이니아주, 미국",
+        "note": "UW의 2012년 영입 기사는 Carnegie Mellon의 박사후연구원이었다고 소개한다. 당시 대학 도메인에 둔 본인 홈페이지는 Martial Hebert·Alexei Efros와 컴퓨터 비전·기계학습을 연구하고, 물체의 속성·장면 이해·풍부한 이미지 설명을 다룬다고 적고 있다.",
+        "sourceIds": [
+          "uw-appointment",
+          "cmu-home"
+        ]
+      },
+      {
+        "institutionId": "university-of-washington",
+        "name": "University of Washington · 컴퓨터 비전 연구",
+        "period": "2012년 가을 교수진 합류 발표 · 초기 YOLO 시기",
+        "place": "시애틀, 워싱턴주, 미국",
+        "note": "UW는 2012년 5월에 그해 가을 합류를 발표했다. 초기 YOLO에서는 Redmon·Divvala·Girshick과 종류와 위치를 함께 예측하는 신경망을 연구했다. RAIVN의 졸업생 기록은 Redmon의 지도교수였음을 확인한다.",
+        "sourceIds": [
+          "uw-appointment",
+          "yolo-original",
+          "raivn-people"
+        ]
+      },
+      {
+        "institutionId": "allen-institute-for-ai",
+        "name": "Allen Institute for Artificial Intelligence · 원논문 소속",
+        "period": "2015년 사전 공개 · CVPR 2016",
+        "place": "시애틀, 워싱턴주, 미국",
+        "note": "초기 YOLO 첫쪽의 저자 소속 기호는 Farhadi를 UW와 Allen Institute for AI에 함께 연결한다. 논문 당시 소속을 기록하며 2026년 현재의 기관장 직함으로 사용하지 않는다.",
+        "sourceIds": [
+          "yolo-original"
+        ]
+      }
+    ],
+    "background": "2011년 Illinois에서 David Forsyth의 지도로 박사학위를 받았고, Carnegie Mellon의 Robotics Institute에서 박사후연구를 했다. 물체의 속성과 장면을 더 풍부하게 설명하는 연구에서 출발해, 2012년 UW 교수진 합류를 발표했다. UW에서 레드몬을 지도하며 초기 YOLO의 공동저자로 참여했다. 이 카드에서는 물체를 인식하는 문제를 위치·종류의 공동 예측으로 표현한 연구와, 그 연구를 수행한 대학·연구소의 배경을 연결한다.",
+    "backgroundSourceIds": [
+      "uw-appointment",
+      "cmu-home",
+      "raivn-people",
+      "yolo-original"
+    ],
+    "connections": [
+      {
+        "personId": "joseph-redmon",
+        "name": "Joseph Redmon",
+        "nameKo": "조셉 레드몬",
+        "kind": "advisor",
+        "relation": "advised",
+        "label": "워싱턴대학교 박사과정 지도",
+        "description": "UW RAIVN Lab의 졸업생 기록은 Redmon의 박사과정 기간을 2013–2021로 표시하고 Ali Farhadi를 지도교수로 명시한다. 인물 관계도에서는 Farhadi에서 Redmon으로 향하는 지도 관계로 연결한다.",
+        "period": "2013–2021 · UW 박사과정",
+        "sourceIds": [
+          "raivn-people"
+        ]
+      },
+      {
+        "personId": "joseph-redmon",
+        "name": "Joseph Redmon",
+        "nameKo": "조셉 레드몬",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "초기 YOLO 공동연구",
+        "description": "Farhadi·Redmon은 Santosh Divvala·Ross Girshick과 초기 YOLO 논문을 함께 썼다. 이미지 전체의 특징에서 경계 상자와 종류에 관한 출력을 함께 예측하는 접근을 설명한다. 지도와 공동저술은 서로 다른 관계 유형으로 보존한다.",
+        "period": "2015년 사전 공개 · CVPR 2016",
+        "sourceIds": [
+          "yolo-original",
+          "yolo-cvpr"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "uw-appointment",
+        "title": "University of Washington · Ali Farhadi joins UW CSE · 2012-05-30",
+        "url": "https://news.cs.washington.edu/2012/05/30/ali-farhadi-joins-uw-cse/",
+        "scope": "영입 기사 본문에서 2011년 Illinois 박사학위, 당시 Carnegie Mellon Robotics Institute 박사후연구, 2012년 가을 UW 교수진 합류 예정이라는 기록을 읽었다. 당시 발표를 현재의 직함이나 소속 종료 시점까지 확장하지 않는다. 구체적인 출생 도시와 학부 학력은 이 자료에서 확인하지 못했다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "cmu-home",
+        "title": "Ali Farhadi · Carnegie Mellon University 시기의 본인 홈페이지",
+        "url": "https://www.cs.cmu.edu/~afarhadi/",
+        "scope": "대학 도메인에 남은 과거 홈페이지 본문에서 UIUC 박사와 David Forsyth의 지도, Robotics Institute에서 Martial Hebert·Alexei Efros와의 연구, 속성 기반 물체 표현·장면 이해·풍부한 이미지 설명이라는 관심 분야를 직접 읽었다. 이 페이지의 박사후연구원 직함은 당시의 경력으로 사용하며 현재 직함으로 옮기지 않는다. 학위 연도는 별도의 UW 2012년 영입 기사와 대조했다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "raivn-people",
+        "title": "University of Washington · RAIVN Lab · People / Alumni",
+        "url": "https://raivn.cs.washington.edu/people/",
+        "scope": "공식 졸업생 목록의 Joseph (Joe) Redmon 행에서 Ph.D., 2013–2021과 Advisor: Ali Farhadi를 읽었다. Farhadi에서 Redmon으로 향하는 지도 관계의 직접 근거다. 같은 기관에 있었다는 사실만으로 다른 인물과의 관계를 만들지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "yolo-original",
+        "title": "Redmon·Divvala·Girshick·Farhadi · You Only Look Once 원논문",
+        "url": "https://pjreddie.com/static/papers/yolo_1.pdf",
+        "scope": "PDF p.1의 네 저자·소속 기호와 초록·도입, p.2 §2 Unified Detection을 읽었다. Farhadi·Divvala의 UW와 Allen Institute for AI 겸 소속, Redmon의 UW, Girshick의 Facebook AI Research를 구분한다. 개별 연구자의 단독 발명이나 역할 분담, 이후 모든 YOLO 버전의 개발 관계는 추정하지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "yolo-cvpr",
+        "title": "CVF · CVPR 2016 · You Only Look Once 공식 논문 기록",
+        "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+        "scope": "CVPR 2016의 제목·네 공동저자·공식 논문 기록을 저자 공개본과 대조한다. 학회 출판과 사전 공개를 나누어 표시한다.",
+        "accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
     "personId": "allen-newell",
     "origin": {
       "label": "출생",
@@ -3061,6 +3183,126 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www-formal.stanford.edu/jmc/mcchay69/mcchay69.html",
         "scope": "1969년 공동저자·논문 제목; 내용은 기존 카드의 검토 범위를 따른다",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "joseph-redmon",
+    "education": [
+      {
+        "name": "Middlebury College",
+        "detail": "컴퓨터과학 전공 · 수학 부전공",
+        "period": "2012년 졸업 · 본인 공개 이력서",
+        "sourceIds": [
+          "redmon-resume"
+        ]
+      },
+      {
+        "name": "University of Washington · Computer Science & Engineering",
+        "detail": "박사과정 · 지도교수 Ali Farhadi",
+        "period": "2013–2021 · 연구실 졸업생 기록",
+        "sourceIds": [
+          "raivn-people",
+          "redmon-home"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-washington",
+        "name": "University of Washington · 컴퓨터 비전 연구",
+        "period": "2013–2021 박사과정 · 2015/2016 초기 YOLO",
+        "place": "시애틀, 워싱턴주, 미국",
+        "note": "원논문 첫쪽에서 Redmon은 University of Washington 소속으로 표기된다. 연구실 졸업생 목록은 박사과정 기간과 지도교수 Farhadi를 확인한다. Darknet은 저자가 공개한 신경망 프레임워크다.",
+        "sourceIds": [
+          "yolo-original",
+          "raivn-people",
+          "redmon-home"
+        ]
+      },
+      {
+        "institutionId": "allen-institute-for-ai",
+        "name": "Ai2 · OlmoEarth 연구팀",
+        "period": "2026-11-15 조회한 본인 홈페이지",
+        "place": "시애틀, 워싱턴주, 미국",
+        "note": "홈페이지는 자신을 Ai2의 연구자로 소개하고 환경·인도주의 단체를 위한 OlmoEarth 연구를 연결한다. 초기 YOLO 이후의 활동을 소개하는 배경이며, 이 카드가 OlmoEarth 논문의 방법이나 성능을 검토했다는 뜻은 아니다.",
+        "sourceIds": [
+          "redmon-home"
+        ]
+      }
+    ],
+    "background": "Middlebury College에서 컴퓨터과학을 전공하고 수학을 부전공했다. 본인 이력서에는 졸업 뒤 알래스카 Unalaska에서 라디오 DJ와 웹 개발자로 일한 경력도 적혀 있다. 이후 워싱턴대학교에서 파르하디의 지도를 받으며 컴퓨터 비전을 연구했다. 초기 YOLO에서는 Divvala·Girshick·Farhadi와 함께, 장면을 여러 후보 영역으로 나누어 따로 처리하던 탐지를 하나의 신경망 예측 문제로 다시 표현했다. 저자 홈페이지는 Darknet과 YOLO 후속 공동연구, 2026년의 Ai2 환경 연구를 구분해 소개한다.",
+    "backgroundSourceIds": [
+      "redmon-resume",
+      "raivn-people",
+      "yolo-original",
+      "redmon-home"
+    ],
+    "connections": [
+      {
+        "personId": "ali-farhadi",
+        "name": "Ali Farhadi",
+        "nameKo": "알리 파르하디",
+        "kind": "advisor",
+        "relation": "student-of",
+        "label": "워싱턴대학교 박사과정 지도",
+        "description": "UW RAIVN Lab의 공식 졸업생 목록은 Joseph (Joe) Redmon의 박사과정 기간을 2013–2021로 적고 지도교수를 Ali Farhadi로 명시한다. Redmon의 본인 홈페이지도 Farhadi에게 지도를 받았다고 소개한다.",
+        "period": "2013–2021 · UW 박사과정",
+        "sourceIds": [
+          "raivn-people",
+          "redmon-home"
+        ]
+      },
+      {
+        "personId": "ali-farhadi",
+        "name": "Ali Farhadi",
+        "nameKo": "알리 파르하디",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "초기 YOLO 공동연구",
+        "description": "Redmon·Santosh Divvala·Ross Girshick·Farhadi는 You Only Look Once: Unified, Real-Time Object Detection의 네 공동저자다. 지도 관계와 별개로 논문 공동저술 관계를 표시한다. 두 사람의 이름만으로 원논문 전체의 단독 기여를 뜻하지 않는다.",
+        "period": "2015년 사전 공개 · CVPR 2016",
+        "sourceIds": [
+          "yolo-original",
+          "yolo-cvpr"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "redmon-resume",
+        "title": "Joseph Redmon · 본인 공개 이력서",
+        "url": "https://www.pjreddie.com/static/resume.pdf",
+        "scope": "한 쪽 PDF의 Education에서 Middlebury College ’12, Computer Science 전공, Mathematics 부전공을 확인했다. 본문의 졸업 후 Unalaska 라디오 DJ·프리랜서 웹 개발 경력도 읽었다. 대학원 진학 전 미래형 소개가 있는 과거 이력서이므로 현재 직업이나 워싱턴대학교 학위 취득을 이 파일만으로 단정하지 않는다. 개인 연락처·성적·농담은 옮기지 않았다. 출생 장소는 이 자료에서 확인하지 못했다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "raivn-people",
+        "title": "University of Washington · RAIVN Lab · People / Alumni",
+        "url": "https://raivn.cs.washington.edu/people/",
+        "scope": "Alumni의 Joseph (Joe) Redmon 행에서 Ph.D., 2013–2021과 Advisor: Ali Farhadi를 확인했다. 지도 관계의 직접 근거로 사용한다. 다른 졸업생과의 직접 공동연구나 그들의 현재 소속은 이 카드에 추가하지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "redmon-home",
+        "title": "Joseph Chet Redmon · 본인 홈페이지",
+        "url": "https://pjreddie.com/",
+        "scope": "Welcome 본문의 Farhadi 지도, Darknet 유지와 현재 Ai2 연구자 소개를 확인했다. OlmoEarth 절과 CVPR 2026 서지는 최근 배경의 확인 범위다. 홈페이지는 YOLOv3 뒤 AI 연구를 떠났던 시기의 발표와 현재 환경 연구를 함께 싣고 있으므로 영구적 연구 중단으로 해석하지 않는다. OlmoEarth 논문의 본문·성과는 이번 카드에서 검증하지 않았다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "yolo-original",
+        "title": "Redmon·Divvala·Girshick·Farhadi · You Only Look Once 원논문",
+        "url": "https://pjreddie.com/static/papers/yolo_1.pdf",
+        "scope": "PDF p.1의 네 저자·소속 기호와 초록·도입, p.2 §2 Unified Detection을 읽었다. Redmon은 UW, Divvala·Farhadi는 UW와 Allen Institute for AI, Girshick은 Facebook AI Research로 구분된다. 한 신경망이 전체 이미지에서 위치와 종류를 함께 예측하는 발상을 인물 소개와 연결한다. 개별 저자의 세부 역할 분담은 이 논문에서 확정하지 않는다.",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "yolo-cvpr",
+        "title": "CVF · CVPR 2016 · You Only Look Once 공식 논문 기록",
+        "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+        "scope": "공식 CVPR 2016 논문 기록과 저자 공개본의 네 저자·제목을 대조한다. 사전 공개 시점과 학회 출판 연도는 구분하며 연구 기록은 2016년 학회 논문으로 공유한다.",
+        "accessed": "2026-11-15"
       }
     ]
   },

@@ -1,5 +1,5 @@
 {
-  "version": "0.66-public.1",
+  "version": "0.67-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1225,5 +1225,18 @@
     "sourceImages": 84,
     "sourceReadingNotes": 12,
     "scope": "Four dated2026 follow-ups for existing Bengio, LeCun, Fei-Fei Li and Chelsea Finn profiles. Original sources and bounded authored models are distinguished. All prior92works, original-image/public-source-link decisions and personal graph relationships are preserved."
+  },
+  "yoloRevision": {
+    "personIds": [
+      "joseph-redmon",
+      "ali-farhadi"
+    ],
+    "newWorks": [
+      "yolo-v1"
+    ],
+    "sourcePanels": 97,
+    "sourceImages": 85,
+    "sourceReadingNotes": 12,
+    "scope": "Two sourced person cards and one shared early YOLO research record. Original architecture and bounded authored calculations are distinguished. All prior96works, original-image/public-source-link decisions and prior personal graph relationships are preserved."
   }
 }
