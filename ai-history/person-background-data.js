@@ -3405,6 +3405,80 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "junyang-lin",
+    "education": [],
+    "researchPlaces": [
+      {
+        "institutionId": "alibaba-qwen-team",
+        "name": "Alibaba Group · Qwen 연구팀",
+        "period": "2023년 공식 강연 소개 · 2025년 기술 보고서",
+        "place": "공식 자료에서 연구팀 소속을 확인",
+        "note": "HKUST의 2023년 12월 강연 소개는 Lin을 Alibaba의 staff engineer이자 Qwen 팀 리더로 기록하며, 자연어처리·멀티모달 표현·대규모 사전학습과 OFA·Chinese-CLIP·Qwen 계열 연구를 소개한다. Qwen3 보고서에는 팀의 공동저자로 실려 있다. 이 과거 역할을 2026년 현재의 재직이나 직함으로 표시하지 않는다.",
+        "sourceIds": [
+          "hkust-qwen-2023",
+          "qwen3-report-v1"
+        ]
+      }
+    ],
+    "background": "자연어처리와 멀티모달 표현 학습, 대규모 사전학습을 연구했다. 2023년 HKUST 공식 행사 소개는 당시 Alibaba의 staff engineer이자 Qwen 팀 리더로 소개하며 OFA·Chinese-CLIP과 언어·영상·음성 Qwen 계열을 연결한다. Qwen3에서는 큰 팀의 공동저자로서, 같은 모델에 긴 추론과 직접 응답을 함께 익히는 연구 기록으로 이어진다. 여기서는 확인한 2023–2025년 연구 맥락을 다루며 현재 직책이나 개인별 발명 기여를 추정하지 않는다.",
+    "backgroundSourceIds": [
+      "hkust-qwen-2023",
+      "qwen3-report-v1",
+      "qwen3-launch"
+    ],
+    "connections": [
+      {
+        "personId": "binyuan-hui",
+        "name": "Binyuan Hui",
+        "nameKo": "후이빈위안",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Qwen3 기술 보고서 공동연구",
+        "description": "Qwen3 기술 보고서 v1의 §6 Core Contributors에는 Binyuan Hui와 Junyang Lin이 함께 실려 있다. 보고서 공동저술을 관계의 근거로 삼으며 두 사람의 직급·지도 관계나 세부 역할 분담은 추정하지 않는다.",
+        "period": "2025년 · Qwen3 기술 보고서",
+        "sourceIds": [
+          "qwen3-report-v1"
+        ]
+      },
+      {
+        "personId": "jingren-zhou",
+        "name": "Jingren Zhou",
+        "nameKo": "저우징런",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Qwen3 기술 보고서 공동연구",
+        "description": "Qwen3 기술 보고서 v1의 §6 Core Contributors에는 Jingren Zhou와 Junyang Lin이 함께 실려 있다. 팀의 공동연구 관계로 연결하며, 공동저자라는 사실을 개인 사이의 지도나 창업 관계로 바꾸지 않는다.",
+        "period": "2025년 · Qwen3 기술 보고서",
+        "sourceIds": [
+          "qwen3-report-v1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "hkust-qwen-2023",
+        "title": "HKUST CSE · Qwen: Towards a Generalist Model · Junyang Lin",
+        "url": "https://cse.hkust.edu.hk/pg/seminars/F23/lin.html",
+        "scope": "2023-12-05 강연의 Speaker와 Biography 본문을 읽었다. 당시 Alibaba staff engineer·Qwen 팀 리더, 자연어처리·멀티모달 표현·대규모 사전학습, OFA·Chinese-CLIP과 Qwen·Qwen-VL·Qwen-Audio 연구 맥락을 확인했다. 2023년 자료를 현재 직함으로 쓰지 않았다. 이 자료에는 출생지나 정규 학력이 없어 추가하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "qwen3-report-v1",
+        "title": "Qwen Team · Qwen3 Technical Report · v1",
+        "url": "https://arxiv.org/pdf/2505.09388v1",
+        "scope": "35쪽 v1 PDF의 §6/PDF22 Core Contributors에서 Junyang Lin·Binyuan Hui·Jingren Zhou·An Yang을 확인했다. §2/PDF3의 모델 계열과 §4/Figure1/PDF9–12의 사후학습 경로를 읽었다. 표지 날짜2025-05-15와 arXiv 제출2025-05-14는 구분한다. 공동저자 기록을 단독 발명이나 지도 관계로 해석하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "qwen3-launch",
+        "title": "Qwen Team · Qwen3: Think Deeper, Act Faster",
+        "url": "https://qwenlm.github.io/blog/qwen3/",
+        "scope": "2025-04-29 공식 공개 글의 Qwen Team 표기와 모델 계열·사고/직답 통합·사후학습 설명을 확인했다. 보고서 공개일과 모델 공개일을 구분한다. 2025년 기록을 2026년 최신 제품이나 Lin의 현재 역할로 확장하지 않았다.",
+        "accessed": "2026-11-16"
+      }
+    ]
+  },
+  {
     "personId": "jurgen-schmidhuber",
     "origin": {
       "label": "출생",
@@ -3522,6 +3596,100 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.cs.toronto.edu/~graves/icml_2006.pdf",
         "scope": "첫 쪽 공동저자 Graves·Fernández·Gomez·Schmidhuber 및 IDSIA·TUM 소속",
         "accessed": "2026-11-10"
+      }
+    ]
+  },
+  {
+    "personId": "liang-wenfeng",
+    "education": [
+      {
+        "name": "Zhejiang University · 정보·전자공학 분야",
+        "detail": "학사·석사 · 대학원 전공은 정보·통신공학. 대학 공식 소개에서 학위와 기계시각 연구 배경을 확인했다.",
+        "period": "정확한 입학·졸업 연도는 이 자료에서 별도로 확인하지 못함",
+        "sourceIds": [
+          "zju-biography"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "zhejiang-university",
+        "name": "Zhejiang University · 정보·전자공학 분야",
+        "period": "학사·석사 과정",
+        "place": "중국",
+        "note": "공식 대학 소개는 석사 논문 감사의 글을 통해 지도교수 项志宇와 기계시각 연구를 소개한다. 이 배경을 현재 DeepSeek 팀 내부의 연구 지도 관계로 확대하지 않는다.",
+        "sourceIds": [
+          "zju-biography"
+        ]
+      },
+      {
+        "institutionId": "deepseek",
+        "name": "DeepSeek · 창업과 팀 연구",
+        "period": "2024년 V3 · 2025년 최초 R1 보고서",
+        "place": "DeepSeek-AI · 원논문 소속 표기",
+        "note": "대학 공식 소개는 창업자로, V3·R1 첫 보고서는 공동 기여자로 명시한다. 2026년의 직책·조직 규모·투자액을 별도로 확인한 기록은 아니다.",
+        "sourceIds": [
+          "zju-biography",
+          "v3-report",
+          "r1-report"
+        ]
+      }
+    ],
+    "background": "저장대학교에서 정보·전자공학 분야의 학사와 석사를 마쳤다. 대학 공식 소개는 정보·통신공학 대학원 과정과 기계시각 연구를 설명하며, 석사 논문 감사의 글에 지도교수 项志宇의 지도가 언급된다고 전한다. DeepSeek 창업 이후의 연결은 회사 설립 역할과 공동연구 기여를 나누어 표시한다. V3 첫 보고서 Appendix A의 Research & Engineering에는 Wenfeng Liang과 Damai Dai가, R1 첫 보고서에는 core contributors인 Daya Guo·Zhihong Shao와 contributor인 Wenfeng Liang이 기재된다. 지도·개별 발명·세부 역할 분담을 이 명단만으로 추정하지 않고, 확인 가능한 팀 공동연구 관계만 연결한다.",
+    "backgroundSourceIds": [
+      "zju-biography",
+      "v3-report",
+      "r1-report"
+    ],
+    "connections": [
+      {
+        "personId": "damai-dai",
+        "name": "Damai Dai",
+        "nameKo": "다마이 다이",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepSeek-V3 팀 공동연구",
+        "description": "2024년 첫 V3 기술 보고서 Appendix A의 Research & Engineering 기여 목록에 Damai Dai와 Wenfeng Liang이 함께 기재된다. 집단 연구 참여를 연결하며 각 구성요소의 발명자·일대일 지도·내부 역할 분담은 이 명단만으로 단정하지 않는다.",
+        "period": "2024-12 · V3 보고서 v1",
+        "sourceIds": [
+          "v3-report"
+        ]
+      },
+      {
+        "personId": "daya-guo",
+        "name": "Daya Guo",
+        "nameKo": "다야 궈",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepSeek-R1 팀 공동연구",
+        "description": "2025년 1월 최초 R1 보고서 Appendix A는 Daya Guo를 core contributor, Wenfeng Liang을 contributor로 구분한다. 같은 보고서에 대한 기여 관계이며 두 사람이 전체 R1을 단독으로 개발했다는 뜻은 아니다.",
+        "period": "2025-01 · R1 보고서 v1",
+        "sourceIds": [
+          "r1-report"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "zju-biography",
+        "title": "Zhejiang University · ‘杭州六小龙’：浙大基因密码是什么？",
+        "url": "https://zdpx.zju.edu.cn/news1.aspx?fl=301&id=52646",
+        "scope": "저장대학교 도메인의 공식 소개에서 DeepSeek 창업자, 정보·전자공학 분야 학사·석사, 정보·통신공학 대학원 전공과 기계시각 연구 배경을 확인했다. 페이지의 검색 색인 본문을 읽었으며 직접 페이지 재접속은 시간 초과였다. 정확한 학위 연도·출생지·현재 CEO 직책은 이 자료로 확정하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "v3-report",
+        "title": "DeepSeek-AI · DeepSeek-V3 Technical Report · v1",
+        "url": "https://arxiv.org/html/2412.19437v1",
+        "scope": "2024-12-27 첫 보고서의 §2와 Appendix A Research & Engineering을 읽었다. Damai Dai와 Wenfeng Liang의 공동 기여 명시를 인물 관계의 근거로 삼는다. 개별 구성요소를 누구 한 사람이 발명했다는 근거나 현재 조직의 보고 체계로 쓰지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "r1-report",
+        "title": "DeepSeek-AI · DeepSeek-R1 · 최초 보고서 v1",
+        "url": "https://arxiv.org/html/2501.12948v1",
+        "scope": "2025-01-22 첫 보고서 Appendix A에서 Daya Guo·Zhihong Shao의 core contributors 표기와 Wenfeng Liang의 contributors 표기를 확인했다. 후속 Nature 판의 교신저자 표기나 2026년 v2와 첫 판의 역할 표기를 섞지 않는다.",
+        "accessed": "2026-11-16"
       }
     ]
   },

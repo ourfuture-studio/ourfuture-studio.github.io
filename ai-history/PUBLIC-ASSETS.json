@@ -1,5 +1,5 @@
 {
-  "version": "0.68-public.1",
+  "version": "0.69-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1248,5 +1248,24 @@
       "assets/papers/yolo-v1-detection-examples-original.png"
     ],
     "scope": "Original early-YOLO reference images lead the card, with source-specific commentary and official paper links. Limited excerpts are identified without claiming blanket reuse permission. All prior research, portraits, biographies, graph relations and publication image policies remain unchanged."
+  },
+  "deepseekQwenRevision": {
+    "workIds": [
+      "deepseek-v3",
+      "deepseek-r1",
+      "qwen3"
+    ],
+    "personIds": [
+      "liang-wenfeng",
+      "junyang-lin"
+    ],
+    "sourcePanels": 100,
+    "mainSourceImages": 88,
+    "originalFigures": [
+      "assets/papers/deepseek-v3-original.png",
+      "assets/papers/deepseek-r1-original.png",
+      "assets/papers/qwen3-original.png"
+    ],
+    "scope": "Two sourced people and three historical model records with original-paper diagrams and selectable commentary. R1 references the explicitly dated 2024 DeepSeekMath predecessor figure. Prior image policy, including yoloReferenceRevision and 44 sourceLinks, is preserved; no blanket figure permission is inferred."
   }
 }
