@@ -1,5 +1,5 @@
 {
-  "version": "0.69-public.1",
+  "version": "0.70-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1267,5 +1267,32 @@
       "assets/papers/qwen3-original.png"
     ],
     "scope": "Two sourced people and three historical model records with original-paper diagrams and selectable commentary. R1 references the explicitly dated 2024 DeepSeekMath predecessor figure. Prior image policy, including yoloReferenceRevision and 44 sourceLinks, is preserved; no blanket figure permission is inferred."
+  },
+  "fivePeopleRevision": {
+    "workIds": [
+      "goodfellow-adversarial-2015"
+    ],
+    "personIds": [
+      "daya-guo",
+      "damai-dai",
+      "binyuan-hui",
+      "jurgen-schmidhuber",
+      "ian-goodfellow"
+    ],
+    "promotedPeopleIds": [
+      "daya-guo",
+      "damai-dai",
+      "binyuan-hui"
+    ],
+    "extendedPeopleIds": [
+      "jurgen-schmidhuber",
+      "ian-goodfellow"
+    ],
+    "sourcePanels": 101,
+    "mainSourceImages": 89,
+    "originalFigures": [
+      "assets/papers/goodfellow-adversarial-2015-original.png"
+    ],
+    "scope": "Three existing basic people receive sourced biographies; two detailed people gain CTC and adversarial-example research routes. The original FGSM figure and selectable commentary are added. Prior policies, deepseekQwenRevision, yoloReferenceRevision and all44sourceLinks are preserved. No blanket figure reuse permission or model execution is inferred."
   }
 }

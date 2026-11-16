@@ -1308,6 +1308,89 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "binyuan-hui",
+    "education": [],
+    "researchPlaces": [
+      {
+        "institutionId": "alibaba-qwen-team",
+        "name": "Alibaba Group · Qwen 연구팀",
+        "period": "2024–2025년 기술 보고서의 연구 참여",
+        "place": "공식 보고서의 팀·공동저자 표기",
+        "note": "Qwen2.5-Coder v1의 표제는 Qwen Team·Alibaba Group과 Hui를 포함한 공동저자를 표시한다. Qwen3 v1의 §6에도 Core Contributors로 실려 있다. 이 시점의 연구 참여를 기록하며 현재 소속·직함이나 근무 도시는 표시하지 않는다.",
+        "sourceIds": [
+          "qwen25-coder-v1",
+          "qwen3-report-v1"
+        ]
+      }
+    ],
+    "background": "코드 언어모델과 자연어로 소프트웨어를 다루는 연구를 해 왔다. 본인 홈페이지는 코드의 실행 피드백을 활용하는 추론과 자율 코딩을 연구 목표로 설명한다. 2024년 Qwen2.5-Coder 보고서의 동등 핵심 기여자 가운데 한 명이며, 2025년 Qwen3에서는 추론과 직접 응답을 함께 학습하는 팀의 공동저자로 이어진다. 개인의 연구 관심과 팀 전체가 발표한 방법을 구분해 읽는다.",
+    "backgroundSourceIds": [
+      "hui-homepage",
+      "qwen25-coder-v1",
+      "qwen3-report-v1"
+    ],
+    "connections": [
+      {
+        "personId": "junyang-lin",
+        "name": "Junyang Lin",
+        "nameKo": "린쥔양",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Qwen 코드·언어모델 공동연구",
+        "description": "Qwen2.5-Coder v1의 공동저자와 Qwen3 v1의 §6 Core Contributors에 두 이름이 함께 실려 있다. 같은 연구 보고서에 대한 공동 기여이며 지도 관계나 현재 조직 내 직급을 뜻하지 않는다.",
+        "period": "2024–2025년 기술 보고서",
+        "sourceIds": [
+          "qwen25-coder-v1",
+          "qwen3-report-v1"
+        ]
+      },
+      {
+        "personId": "jingren-zhou",
+        "name": "Jingren Zhou",
+        "nameKo": "저우징런",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "Qwen 기술 보고서 공동연구",
+        "description": "Qwen2.5-Coder v1의 공동저자와 Qwen3 v1의 Core Contributors에 Hui와 Zhou가 함께 기재된다. 공동저술 근거로 연결하며 개별 구성요소의 담당자나 사적인 관계를 추정하지 않는다.",
+        "period": "2024–2025년 기술 보고서",
+        "sourceIds": [
+          "qwen25-coder-v1",
+          "qwen3-report-v1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "hui-homepage",
+        "title": "Binyuan Hui · 본인 연구 소개와 논문 목록",
+        "url": "https://huybery.github.io/",
+        "scope": "연구 소개의 자율 코딩 목표·실행 피드백·기초모델/추론모델/코딩 에이전트 관심과 Selected Publications의 Qwen2.5-Coder를 읽었다. 일반지능에 관한 문장은 본인의 연구 관점으로 한정한다. 페이지의 staff research scientist 표기는 하단 Updated on May, 2024 및 본인 GitHub의 Formerly @ Qwen 표기와 시점이 맞지 않을 수 있어 현재 소속·직함의 근거로 사용하지 않는다. 학력·출생지는 확인하지 못해 기입하지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "hui-github",
+        "title": "Binyuan Hui · 본인 GitHub 프로필",
+        "url": "https://github.com/huybery",
+        "scope": "Binyuan Hui·huybery의 연결, 개인 홈페이지 링크와 Formerly @ Qwen 표기를 확인했다. 같은 화면 소개 문구에는 Qwen Team도 남아 있어 현직·이직 시점·새 근무처를 확정하지 않았다. 프로필의 위치나 계정 활동을 출생지·학력·연구 성과로 바꾸지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "qwen25-coder-v1",
+        "title": "Hui 외 · Qwen2.5-Coder Technical Report · 2024 v1",
+        "url": "https://arxiv.org/html/2409.12186v1",
+        "scope": "2024-09-18 v1의 표제·저자와 Equal core contribution 각주, Qwen Team·Alibaba Group 표기를 읽었다. Hui·Jian Yang·Zeyu Cui·Jiaxi Yang 네 명의 별표를 확인했다. §3.2·Figures 2–4의 파일/저장소 사전학습과 다음 토큰/FIM 목표를 확인했다. §4.1의 코드 검증 설명도 읽었으나 전체 실험·성능 우위를 재검증한 것으로 표시하지 않는다. 11월 v3의 추가 모델을 9월 v1 설정과 합치지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "qwen3-report-v1",
+        "title": "Qwen Team · Qwen3 Technical Report · 2025 v1",
+        "url": "https://arxiv.org/html/2505.09388v1",
+        "scope": "§6 Core Contributors에서 Binyuan Hui·Junyang Lin·Jingren Zhou·An Yang을 직접 확인했다. Figure 1·§4의 사후학습 경로와 사고/직답 통합은 기존 Qwen3 상세 연구 카드의 원문 설명을 공유한다. 공동저자 명단으로 세부 역할·단독 발명·지도 관계를 추정하지 않는다. arXiv 첫 제출은 2025-05-14이며 모델 공개일과 구분한다.",
+        "accessed": "2026-11-16"
+      }
+    ]
+  },
+  {
     "personId": "chelsea-finn",
     "origin": null,
     "education": [
@@ -1447,6 +1530,118 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.pi.website/blog/api-beta",
         "scope": "2026-10-13 공개. 자료 업로드·미세조정·hosted inference·실패 기반 후속 수집의 회사 설명.",
         "accessed": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "personId": "damai-dai",
+    "education": [
+      {
+        "name": "Peking University · 컴퓨터과학 박사과정 재학 기록",
+        "period": "2022년 학과 공식 공지",
+        "detail": "2021–2022학년도 장학금 예비심사 공지의 박사과정 명단에서 이름을 확인했다. 해당 공지를 학위 취득·최종 장학금 수상 확인으로 사용하지 않는다.",
+        "sourceIds": [
+          "pku-doctoral-record"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "peking-university",
+        "name": "Peking University · 멀티미디어 정보처리 국가중점연구실",
+        "period": "2024년 DeepSeekMoE 논문 소속",
+        "place": "중국 · 논문 소속 표기",
+        "note": "DeepSeekMoE의 첫 쪽은 Damai Dai에게 베이징대학교와 DeepSeek-AI의 두 소속을 함께 표시한다. LIKE Lab 팀 페이지에도 동문으로 기재된다.",
+        "sourceIds": [
+          "moe-paper-v1",
+          "pku-lab-alumni"
+        ]
+      },
+      {
+        "institutionId": "deepseek",
+        "name": "DeepSeek-AI · MoE와 대규모 언어모델 공동연구",
+        "period": "2024년 MoE·V3 · 2025년 최초 R1 보고서",
+        "place": "공식 논문에 기록된 연구 참여",
+        "note": "DeepSeekMoE 첫 쪽은 별표 저자의 기여를 DeepSeek-AI 인턴 기간의 기여로 설명한다. 이후 V3와 R1의 팀 기여 명단도 연결한다. 현재 조직 내 직급·보고 체계는 이 자료에서 추정하지 않는다.",
+        "sourceIds": [
+          "moe-paper-v1",
+          "v3-report-v1",
+          "r1-report-v1"
+        ]
+      }
+    ],
+    "background": "베이징대학교에서 컴퓨터과학을 연구했으며, 2024년 DeepSeekMoE 원논문은 베이징대학교 연구실과 DeepSeek-AI의 두 소속을 표시한다. 이 공동연구에서는 전문가를 잘게 나누어 조합하는 방법과 공통으로 쓰는 전문가를 구분했다. V3에서는 이 발상이 문맥 저장·학습 목표·계산 기반과 함께 더 큰 언어모델로 이어진다. V3 첫 보고서의 연구·엔지니어링 명단과 R1 첫 보고서의 기여자 명단에서도 이름을 확인할 수 있다.",
+    "backgroundSourceIds": [
+      "pku-doctoral-record",
+      "moe-paper-v1",
+      "v3-report-v1",
+      "r1-report-v1"
+    ],
+    "connections": [
+      {
+        "personId": "liang-wenfeng",
+        "name": "Liang Wenfeng",
+        "nameKo": "량원펑",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepSeekMoE·V3 공동연구",
+        "description": "2024년 DeepSeekMoE의 저자 명단과 V3 첫 보고서의 Research & Engineering에 Damai Dai와 Wenfeng Liang이 함께 기재된다. 논문 공동연구 관계이며 개인 간 지도 관계를 뜻하지 않는다.",
+        "period": "2024년 · DeepSeekMoE·V3",
+        "sourceIds": [
+          "moe-paper-v1",
+          "v3-report-v1"
+        ]
+      },
+      {
+        "personId": "daya-guo",
+        "name": "Daya Guo",
+        "nameKo": "다야 궈",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "V3·R1 팀 공동연구",
+        "description": "V3에서는 두 사람이 연구·엔지니어링 명단에 함께 실린다. 2025년 1월 R1 첫 판은 Daya Guo를 핵심 기여자, Damai Dai를 기여자로 구분한다. 두 방법의 단독 발명이나 같은 조직 내 직급을 이 명단에서 추정하지 않는다.",
+        "period": "2024–2025 · 첫 기술 보고서",
+        "sourceIds": [
+          "v3-report-v1",
+          "r1-report-v1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "pku-doctoral-record",
+        "title": "Peking University 컴퓨터학과 · 2021–2022학년도 장학금 예비심사 공지",
+        "url": "https://cs.pku.edu.cn/info/1035/1331.htm",
+        "scope": "2022-09-26 학과 공식 공지에서 代达劢를 박사과정 대상 명단에서 확인했다. 예비심사 추천 결과이며 최종 수상이나 박사학위 취득 연도·지도교수를 확정하는 자료로 쓰지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "pku-lab-alumni",
+        "title": "LIKE Lab · Peking University · 팀 동문 목록",
+        "url": "https://likelabpku.github.io/zh/people.html",
+        "scope": "베이징대학교 언어지능·지식공학 연구실 팀 페이지의 部分校友에서 代达劢와 DeepSeek 표기를 확인했다. 논문에 있는 소속과 함께 연구실 배경을 연결하되 이 명단으로 학위 종류·취득 연도·현재 직함을 단정하지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "moe-paper-v1",
+        "title": "Dai 외 · DeepSeekMoE · 2024 v1",
+        "url": "https://arxiv.org/pdf/2401.06066v1#page=1",
+        "scope": "2024-01-11 v1 PDF1쪽의 저자·두 소속·인턴 기여 각주와 PDF2–3쪽 도입의 세분화된 전문가·공유 전문가 아이디어를 읽었다. 논문은 팀의 공동 제안이며 개별 저자의 방법 발명 분담을 밝힌 명세가 아니다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "v3-report-v1",
+        "title": "DeepSeek-AI · DeepSeek-V3 Technical Report · 2024 v1",
+        "url": "https://arxiv.org/pdf/2412.19437v1#page=45",
+        "scope": "2024-12-27 v1 PDF45쪽 Appendix A Research & Engineering에서 Damai Dai·Daya Guo·Wenfeng Liang을 확인했다. §2의 원도판·방법은 기존 V3 연구 카드와 공유한다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "r1-report-v1",
+        "title": "DeepSeek-AI · DeepSeek-R1 · 2025년 1월 v1",
+        "url": "https://arxiv.org/pdf/2501.12948v1#page=20",
+        "scope": "2025-01-22 v1 PDF20쪽에서 Damai Dai를 Contributors, Daya Guo를 Core Contributors로 확인했다. 인물 연대기에서 연구 참여를 연결하며 세부 RL 방법을 Damai 개인의 단독 발명으로 돌리지 않는다.",
+        "accessed": "2026-11-16"
       }
     ]
   },
@@ -1674,6 +1869,132 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.cs.toronto.edu/~hinton/backprop.html",
         "scope": "1986년 Nature 논문과 별도 PDP 장의 세 공동저자·서지를 확인했다. 두 저작을 같은 출판물로 합치지 않는다.",
         "accessed": "2026-11-11"
+      }
+    ]
+  },
+  {
+    "personId": "daya-guo",
+    "education": [
+      {
+        "name": "Sun Yat-sen University · 컴퓨터과학·기술 학사",
+        "period": "2014–2018",
+        "detail": "본인 홈페이지의 학사 학력 기록.",
+        "sourceIds": [
+          "personal-homepage"
+        ]
+      },
+      {
+        "name": "Sun Yat-sen University · 컴퓨터과학·기술 박사",
+        "period": "2018–2023",
+        "detail": "Microsoft Research Asia와의 공동 박사과정. 본인 소개는 Jian Yin·Ming Zhou의 지도를 명시한다.",
+        "sourceIds": [
+          "personal-homepage"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "sun-yat-sen-university",
+        "name": "Sun Yat-sen University",
+        "period": "2014–2023 · 학사·박사 과정",
+        "place": "중국",
+        "note": "자연어처리와 코드 지능을 연구했다. 출생지나 성장 지역을 학위기관 소재지에서 추정하지 않는다.",
+        "sourceIds": [
+          "personal-homepage"
+        ]
+      },
+      {
+        "institutionId": "microsoft-research-asia",
+        "name": "Microsoft Research Asia · Natural Language Computing Group",
+        "period": "2017–2023 · 연구 인턴·공동 박사과정",
+        "place": "본인 홈페이지의 연구 경력",
+        "note": "인턴 기간에는 Duyu Tang과 Nan Duan의 멘토링을 받았다고 기록한다. 박사 지도와 인턴 멘토링은 별개의 관계다.",
+        "sourceIds": [
+          "personal-homepage"
+        ]
+      },
+      {
+        "institutionId": "deepseek",
+        "name": "DeepSeek · 코드 지능과 언어모델 추론",
+        "period": "2023-07–2026-04 · 본인 경력 기록",
+        "place": "2024–2025년 기술 보고서의 팀 연구",
+        "note": "본인 홈페이지가 명시한 근무 기간이다. V3는 Research & Engineering, R1 첫 판은 Core Contributors로 기여 범위를 나누어 표기한다. 이 이력을 현재의 재직·직함으로 바꾸지 않는다.",
+        "sourceIds": [
+          "personal-homepage",
+          "v3-report-v1",
+          "r1-report-v1"
+        ]
+      }
+    ],
+    "background": "중산대학교에서 컴퓨터과학·기술 학사와 박사과정을 마쳤고, 박사과정은 Microsoft Research Asia와 공동으로 진행했다. 자연어와 프로그래밍 언어를 이해·생성하는 모델이 연구의 출발점이다. 본인 홈페이지는 DeepSeek에서 2023년 7월부터 2026년 4월까지 코드 지능과 언어모델 추론을 연구했다고 기록한다. V3의 연구·엔지니어링 기여와 R1 첫 판의 핵심 기여를 연결하되, 학습 체계 전체를 개인의 단독 성과로 표시하지 않는다.",
+    "backgroundSourceIds": [
+      "personal-homepage",
+      "v3-report-v1",
+      "r1-report-v1"
+    ],
+    "connections": [
+      {
+        "personId": "liang-wenfeng",
+        "name": "Liang Wenfeng",
+        "nameKo": "량원펑",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepSeek-R1 팀 공동연구",
+        "description": "R1의 2025년 1월 첫 보고서는 Daya Guo를 Core Contributors, Wenfeng Liang을 Contributors에 기재한다. 같은 보고서의 팀 기여 관계를 연결한다.",
+        "period": "2025-01 · R1 v1",
+        "sourceIds": [
+          "r1-report-v1"
+        ]
+      },
+      {
+        "personId": "damai-dai",
+        "name": "Damai Dai",
+        "nameKo": "다마이 다이",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "V3·R1 팀 공동연구",
+        "description": "V3의 Research & Engineering에는 두 사람이 함께 실려 있다. R1 첫 판에서는 Daya Guo가 핵심 기여자, Damai Dai가 기여자로 나뉜다. 공동연구 명단에서 개인별 방법의 발명 분담을 추정하지 않는다.",
+        "period": "2024–2025 · 첫 기술 보고서",
+        "sourceIds": [
+          "v3-report-v1",
+          "r1-report-v1"
+        ]
+      },
+      {
+        "personId": "zhihong-shao",
+        "name": "Zhihong Shao",
+        "nameKo": "사오즈훙",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "R1 핵심 기여자 공동연구",
+        "description": "R1 첫 보고서 Appendix A의 Core Contributors에 Daya Guo와 Zhihong Shao가 함께 기재된다. 두 사람 사이의 지도·관리 관계를 뜻하지 않는다.",
+        "period": "2025-01 · R1 v1",
+        "sourceIds": [
+          "r1-report-v1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "personal-homepage",
+        "title": "Daya Guo · 본인 연구·학력·경력 소개",
+        "url": "https://guoday.github.io/",
+        "scope": "Introduction, Educations, Experiences를 직접 읽었다. SYSU 학사2014-08–2018-06·박사2018-08–2023-06, MSRA 공동과정과 Jian Yin·Ming Zhou 지도, 연구 인턴의 멘토링, DeepSeek 근무2023-07–2026-04 및 코드 지능·언어모델 추론 관심을 확인했다. 2026년 이후의 새 소속이나 출생지는 확인하지 않아 추가하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "v3-report-v1",
+        "title": "DeepSeek-AI · DeepSeek-V3 Technical Report · 2024 v1",
+        "url": "https://arxiv.org/pdf/2412.19437v1#page=45",
+        "scope": "2024-12-27 v1 PDF45쪽 Appendix A Research & Engineering에서 Daya Guo·Damai Dai·Wenfeng Liang을 확인했다. §2의 방법 설명은 기존 V3 상세 카드와 공유하며 기여 목록을 세부 발명 귀속으로 해석하지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "r1-report-v1",
+        "title": "DeepSeek-AI · DeepSeek-R1 · 2025년 1월 v1",
+        "url": "https://arxiv.org/pdf/2501.12948v1#page=20",
+        "scope": "2025-01-22 v1 PDF20쪽 Appendix A에서 Daya Guo·Zhihong Shao의 Core Contributors와 Damai Dai의 Contributors, PDF21쪽의 Wenfeng Liang을 확인했다. §2.2–2.4의 Zero·최종R1·증류 구분은 기존 연구 카드와 공유한다. 후속 Nature·2026년 v2의 표기와 섞지 않는다.",
+        "accessed": "2026-11-16"
       }
     ]
   },
@@ -2768,11 +3089,12 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         ]
       }
     ],
-    "background": "스탠퍼드에서 연구한 뒤 몬트리올대학교에서 Bengio·Courville의 지도로 박사과정을 밟았다. 대학과 Google·OpenAI 같은 기업 연구실을 거치며 신경망의 표현학습과 모델 보안을 연구했다.",
+    "background": "스탠퍼드에서 연구한 뒤 몬트리올대학교에서 Bengio·Courville의 지도로 박사과정을 밟았다. 대학과 Google·OpenAI 같은 기업 연구실을 거치며 신경망의 표현학습과 모델 보안을 연구했다. 2014년 GAN 공동연구에 이어 Shlens·Szegedy와는 작은 입력 변화가 신경망의 판단을 바꾸는 적대적 예제를 연구했다. 후자의 원고는 2014년 말에 공개됐고 ICLR 2015 논문으로 이어졌다.",
     "backgroundSourceIds": [
       "goodfellow-personal-bio",
       "goodfellow-defense",
-      "goodfellow-udem-alumni"
+      "goodfellow-udem-alumni",
+      "goodfellow-adversarial-2015"
     ],
     "connections": [
       {
@@ -2821,6 +3143,13 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://secretariatgeneral.umontreal.ca/public/secretariatgeneral/documents/doc_officiels/documents-institutionnels/rapport-annuel/Rapport-du-Recteur-2015-An.pdf",
         "scope": "Goodfellow를2014년동문으로소개하고 Google연구팀채용·StreetView연구를기록. 특정입사연도는표시하지않음",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "goodfellow-adversarial-2015",
+        "title": "Goodfellow·Shlens·Szegedy · Explaining and Harnessing Adversarial Examples",
+        "url": "https://arxiv.org/pdf/1412.6572v3",
+        "scope": "2015년 v3 PDF 첫쪽의 세 공동저자·ICLR2015 표제와 §4·Figure1의 입력 기울기·적대적 예제. arXiv 제출 기록의2014-12-20 최초공개를 논문발표연도와 구분한다. 원실험을 이 사이트가 재실행했다는 의미가 아니다.",
+        "accessed": "2026-11-16"
       }
     ]
   },
