@@ -4023,6 +4023,102 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "luc-de-raedt",
+    "education": [
+      {
+        "name": "KU Leuven",
+        "detail": "컴퓨터과학 박사",
+        "period": "1991년 학위 취득",
+        "sourceIds": [
+          "luc-official-biography"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "ku-leuven",
+        "name": "KU Leuven · 학습과 추론 연구",
+        "period": "1991–1999 연구 경력 · 2015–2019 DTAI 연구실장",
+        "place": "루벤, 벨기에",
+        "note": "대학 공식 약력은 FWO 박사후연구원 기간을 1991–1999년, KU Leuven의 시간제 조교수·부교수 기간을 1993–1999년으로 적는다. 이후 DTAI 연구실장을 맡았던 기간은 2015–2019년이다. 2018년 DeepProbLog 원논문에도 KU Leuven 소속으로 기재된다.",
+        "sourceIds": [
+          "luc-official-biography",
+          "deepproblog-2018"
+        ]
+      },
+      {
+        "institutionId": "university-of-freiburg",
+        "name": "Albert-Ludwigs-Universität Freiburg · Machine Learning and Natural Language Processing Lab",
+        "period": "1999–2006",
+        "place": "프라이부르크, 독일",
+        "note": "정교수이자 기계학습·자연어처리 연구실 책임자로 일했다. 공식 약력이 명시한 기간을 사용했다.",
+        "sourceIds": [
+          "luc-official-biography"
+        ]
+      },
+      {
+        "institutionId": "ku-leuven",
+        "name": "KU Leuven · Leuven.AI",
+        "period": "2026-11-16 조회 · 공식 페이지 2026-02-09 갱신",
+        "place": "루벤, 벨기에",
+        "note": "학과 공식 페이지는 컴퓨터과학 정교수와 Leuven.AI 소장으로 소개한다. 현재 연구 항목은 확률·논리·신경 표현을 결합하는 학습과 추론을 다룬다. 직책의 시작 연도는 이 페이지로 확정하지 않았다.",
+        "sourceIds": [
+          "luc-official-home"
+        ]
+      }
+    ],
+    "background": "De Raedt는 논리로 적은 지식과 데이터에서 배우는 모델을 함께 사용하는 방법을 연구해 왔다. 공식 약력은 통계적 관계 AI, 확률·귀납 프로그래밍을 연구 분야로 설명한다. DeepProbLog에서는 기존 ProbLog의 규칙과 확률 추론을 유지하면서 신경망의 인식 확률을 프로그램 안으로 가져왔다. 2018년 원논문은 Robin Manhaeve·Sebastijan Dumančić·Angelika Kimmig·Thomas Demeester·Luc De Raedt 순으로 다섯 공동저자를 적는다. De Raedt와 Demeester는 공동 마지막 저자다. 인물 관계는 이 논문으로 확인되는 Manhaeve와의 공동연구를 연결한다.",
+    "backgroundSourceIds": [
+      "luc-official-biography",
+      "deepproblog-2018"
+    ],
+    "connections": [
+      {
+        "personId": "robin-manhaeve",
+        "name": "Robin Manhaeve",
+        "nameKo": "",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepProbLog 공동연구",
+        "description": "2018년 DeepProbLog: Neural Probabilistic Logic Programming의 공동저자다. 두 사람은 원논문에서 모두 KU Leuven 소속으로 표기된다. 논문은 신경 술어가 제공하는 인식 확률을 확률 논리 추론에 쓰고, 질의의 손실을 신경망 학습으로 전달하는 방법을 제시한다. 다섯 저자 중 두 사람을 잇는 공동저술 관계다.",
+        "period": "2018 · NeurIPS",
+        "sourceIds": [
+          "deepproblog-2018"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "luc-official-biography",
+        "title": "KU Leuven · Luc De Raedt · 공식 약력",
+        "url": "https://wms.cs.kuleuven.be/people/lucderaedt/biography",
+        "scope": "학과 공식 약력의 박사학위(1991), FWO 박사후연구원(1991–1999), KU Leuven 시간제 교수(1993–1999), 프라이부르크 정교수·연구실 책임자(1999–2006), DTAI 연구실장(2015–2019)과 연구 분야를 확인했다. 이 약력은 2024-04-02 갱신 표시가 있어 현재 직책은 별도 2026년 공식 페이지로 대조했다. 출생지는 확인하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "luc-official-home",
+        "title": "KU Leuven · Luc De Raedt · 공식 연구자 페이지",
+        "url": "https://wms.cs.kuleuven.be/people/lucderaedt/",
+        "scope": "2026-02-09 갱신 표시가 있는 페이지를 2026-11-16 조회했다. 상단의 KU Leuven 컴퓨터과학 정교수·Leuven.AI 소장과 Current Research Projects의 학습·추론 결합 항목을 확인했다. 직책의 최초 취임 연도나 각 프로젝트의 성과를 이 페이지에서 추정하지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "deepproblog-2018",
+        "title": "Manhaeve 외 · DeepProbLog: Neural Probabilistic Logic Programming · 2018 원논문 v2",
+        "url": "https://arxiv.org/pdf/1805.10872v2",
+        "scope": "14쪽 arXiv v2의 p.1에서 저자 다섯 명·소속과 Demeester·De Raedt의 공동 마지막 저자 표시를 확인했다. pp.1–2 도입의 연구 목적, pp.3–6 신경 술어·추론·학습, p.6 §6의 합으로 학습하는 T1, p.12 Appendix A Listing 1을 대조했다. p.5 Fig.2는 기존 DeepProbLog 상세 카드에서 공유한다. 2018 연구의 공동 기여이며 개별 저자의 세부 역할을 원문 이상으로 나누지 않는다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "deepproblog-record",
+        "title": "arXiv · DeepProbLog · 판본·투고 이력",
+        "url": "https://arxiv.org/abs/1805.10872",
+        "scope": "최초 제출 2018-05-28, v2 수정 2018-12-12와 NeurIPS 2018 spotlight 채택 기록을 확인했다. 이 카드의 2018년 연구를 2019년 확장 원고나 2021년 저널판과 구분한다.",
+        "accessed": "2026-11-16"
+      }
+    ]
+  },
+  {
     "personId": "luis-c-lamb",
     "origin": null,
     "education": [
@@ -4724,6 +4820,119 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://softwarepreservation.computerhistory.org/prolog/#ColmerauerAndRoussel1996",
         "scope": "CHM의 서지·보존 기록과 연결된 저자 보관 원고를 확인했다. 직접 읽은 26쪽 PDF 표지는 November 1992이며, PDF 2쪽의 자연어 소통 목표와 참여자, 5–6쪽의 1971·1972년 Kowalski 방문, SL-resolution 논의, Roussel의 1972년 Algol-W 구현을 본문과 지면으로 대조했다. 이 초고와 CHM이 구분해 수록한 1996년 HOPL-II 출판본을 같은 판본으로 표시하지 않는다. 교류의 정확한 월·계절이나 초록의 연도 표기를 전기 연표의 근거로 사용하지 않는다.",
         "accessed": "2026-11-14"
+      }
+    ]
+  },
+  {
+    "personId": "robin-manhaeve",
+    "education": [
+      {
+        "name": "KU Leuven · Bachelor in Engineering Science",
+        "detail": "컴퓨터과학 주전공 · 전기공학 부전공",
+        "period": "2012–2015 · 본인 CV",
+        "sourceIds": [
+          "robin-cv"
+        ]
+      },
+      {
+        "name": "KU Leuven · Master in Engineering Science: Computer Science",
+        "detail": "석사논문: Realtime Road User Detection and Classification with Single Pass Deep Learning",
+        "period": "2015–2017 · 본인 CV",
+        "sourceIds": [
+          "robin-cv"
+        ]
+      },
+      {
+        "name": "KU Leuven · PhD in Engineering Science: Computer Science",
+        "detail": "박사논문: Neural Probabilistic Logic Programming",
+        "period": "2017–2021 · 2021-12-23 심사",
+        "sourceIds": [
+          "robin-cv",
+          "robin-doctoral-record"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "ku-leuven",
+        "name": "KU Leuven · DTAI 박사 연구",
+        "period": "2017–2021",
+        "place": "루벤, 벨기에",
+        "note": "본인 CV는 신경 확률 논리 프로그래밍을 박사 연구 주제로, DTAI를 연구 그룹으로 적는다. 2018년 DeepProbLog 원논문 첫쪽도 KU Leuven 소속을 확인한다. 대학 연구 포털의 박사 심사일은 2021-12-23이다.",
+        "sourceIds": [
+          "robin-cv",
+          "robin-doctoral-record",
+          "deepproblog-2018"
+        ]
+      },
+      {
+        "institutionId": "ku-leuven",
+        "name": "KU Leuven · DTAI 박사후연구",
+        "period": "2022–현재 · 2026-11-16 본인 CV 조회",
+        "place": "루벤, 벨기에",
+        "note": "본인 홈페이지·CV는 DTAI 박사후연구원으로 소개한다. 홈페이지는 DeepProbLog 개발과, 여러 신경기호 접근이 같은 구성요소를 사용할 수 있도록 하는 DeepLog 소프트웨어의 주 개발 역할을 설명한다. 최근 활동을 소개하는 배경이며 DeepLog의 방법·성능을 검토한 별도 연구 카드는 아니다.",
+        "sourceIds": [
+          "robin-home",
+          "robin-cv"
+        ]
+      }
+    ],
+    "background": "Manhaeve는 KU Leuven에서 컴퓨터과학과 전기공학을 공부하고, 석사과정에서 도로 이용자를 신경망으로 탐지·분류하는 주제를 다뤘다. 박사과정에서는 신경망의 학습과 논리·확률 추론을 결합하는 방향으로 연구를 이어갔다. 본인 홈페이지는 그 시기에 DeepProbLog를 개발했다고 소개한다. 2018년 공동논문의 핵심은 인식 후보들의 확률을 논리 프로그램에 전달하고, 최종 질의에서 계산한 손실을 인식기의 학습으로 되돌려주는 데 있다. 숫자 덧셈 과제는 이 연결을 합의 정답만으로 개별 숫자 인식기를 학습하는 사례로 보여준다.",
+    "backgroundSourceIds": [
+      "robin-cv",
+      "robin-home",
+      "deepproblog-2018"
+    ],
+    "connections": [
+      {
+        "personId": "luc-de-raedt",
+        "name": "Luc De Raedt",
+        "nameKo": "",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "DeepProbLog 공동연구",
+        "description": "Manhaeve는 2018년 DeepProbLog 원논문의 첫 저자이며, De Raedt는 Thomas Demeester와 함께 공동 마지막 저자로 표시된다. Sebastijan Dumančić·Angelika Kimmig를 포함한 다섯 명이 공동저술한 연구다. 신경망의 인식과 확률 논리 추론을 연결한 이 논문을 두 인물 카드에서 함께 읽을 수 있다.",
+        "period": "2018 · NeurIPS",
+        "sourceIds": [
+          "deepproblog-2018"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "robin-cv",
+        "title": "Robin Manhaeve · KU Leuven에 공개한 본인 CV",
+        "url": "https://people.cs.kuleuven.be/~robin.manhaeve/cv/",
+        "scope": "전체 CV에서 Positions·Degrees를 확인했다. KU Leuven 학사 2012–2015, 석사 2015–2017, 박사 2017–2021과 학위·논문명을 사용한다. 박사후연구는 2022–현재로 표기되어 있으며 2026-11-16 조회 시점의 소개다. DeepLog 주 개발 역할은 Projects 절에서 확인했다. 출생지는 확인하지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "robin-home",
+        "title": "Robin Manhaeve · KU Leuven 연구자 홈페이지",
+        "url": "https://people.cs.kuleuven.be/~robin.manhaeve/",
+        "scope": "2026-11-16 조회한 본문에서 DTAI 박사후연구원 소개, 신경망 학습과 논리·확률 추론의 결합이라는 연구 방향, 박사과정 중 DeepProbLog 개발, 현재 DeepLog 소프트웨어의 주 개발 역할을 확인했다. Selected publications는 2018 NeurIPS와 2021 저널 논문을 별도로 나열한다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "robin-doctoral-record",
+        "title": "KU Leuven Research Portal · Manhaeve 박사 연구·심사 기록",
+        "url": "https://research.kuleuven.be/portal/en/project/3E170513",
+        "scope": "PhD researcher에 Manhaeve Robin, Defence date에 2021-12-23이 명시된다. 박사 연구 배경과 심사일 확인에 사용했다. 포털의 프로젝트 표제 Synthesising Inductive Data Models를 박사논문의 제목으로 옮기지 않고, 학위논문 제목은 본인 CV를 따른다. 포털의 후속 방법·성과는 2018 카드에 합치지 않았다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "deepproblog-2018",
+        "title": "Manhaeve 외 · DeepProbLog: Neural Probabilistic Logic Programming · 2018 원논문 v2",
+        "url": "https://arxiv.org/pdf/1805.10872v2",
+        "scope": "14쪽 arXiv v2 p.1의 저자 순서·소속·공동 마지막 저자 표기, pp.1–2 연구 목적, pp.3–6 신경 술어·추론·학습과 T1의 합 단위 감독을 읽었다. 기존 상세 카드의 p.5 Fig.2와 p.12 Appendix A Listing 1을 공유한다. 개인 홈페이지의 개발 경력과 논문 다섯 저자의 공동 기여를 함께 표시한다.",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "deepproblog-record",
+        "title": "arXiv · DeepProbLog · 판본·투고 이력",
+        "url": "https://arxiv.org/abs/1805.10872",
+        "scope": "최초 제출 2018-05-28, v2 수정 2018-12-12, NeurIPS 2018 spotlight 채택 기록과 다섯 저자를 확인했다. 2019년 확장 원고·2021년 저널판의 후속 내용을 이 2018년 연구에 섞지 않는다.",
+        "accessed": "2026-11-16"
       }
     ]
   },

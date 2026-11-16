@@ -1,5 +1,5 @@
 {
-  "version": "0.71-public.1",
+  "version": "0.72-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1308,5 +1308,18 @@
       "assets/papers/williams-reinforce-1992-original.png"
     ],
     "scope": "Williams 1992 original equation and a directly specified two-action reward-learning calculation. Its one-step example, exact expectation and comparisons do not reproduce the original experiments or DeepSeek-R1 training. All prior image policies and sourceLinks are retained."
+  },
+  "deepProbLogPeopleRevision": {
+    "workIds": [
+      "deepproblog"
+    ],
+    "personIds": [
+      "luc-de-raedt",
+      "robin-manhaeve"
+    ],
+    "sourcePanels": 102,
+    "mainSourceImages": 90,
+    "originalFigures": [],
+    "scope": "Two sourced author profiles reuse the existing 2018 DeepProbLog article and original-paper visualization. A mutual coauthorship record adds one normalized collaboration relation. All prior articles, original images, image policies and sourceLinks are retained."
   }
 }
