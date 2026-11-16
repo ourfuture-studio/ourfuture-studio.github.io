@@ -1,5 +1,5 @@
 {
-  "version": "0.67-public.1",
+  "version": "0.68-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1238,5 +1238,15 @@
     "sourceImages": 85,
     "sourceReadingNotes": 12,
     "scope": "Two sourced person cards and one shared early YOLO research record. Original architecture and bounded authored calculations are distinguished. All prior96works, original-image/public-source-link decisions and prior personal graph relationships are preserved."
+  },
+  "yoloReferenceRevision": {
+    "workId": "yolo-v1",
+    "sourcePanels": 97,
+    "mainSourceImages": 85,
+    "referenceImages": [
+      "assets/papers/yolo-v1-joint-output-original.png",
+      "assets/papers/yolo-v1-detection-examples-original.png"
+    ],
+    "scope": "Original early-YOLO reference images lead the card, with source-specific commentary and official paper links. Limited excerpts are identified without claiming blanket reuse permission. All prior research, portraits, biographies, graph relations and publication image policies remain unchanged."
   }
 }

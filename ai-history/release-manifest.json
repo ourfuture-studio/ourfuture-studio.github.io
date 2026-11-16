@@ -1,6 +1,6 @@
 {
-  "version": "0.67-public.1",
-  "sourceVersion": "0.67",
+  "version": "0.68-public.1",
+  "sourceVersion": "0.68",
   "events": 51,
   "tracks": {
     "neural": 28,
@@ -136,6 +136,8 @@
     "assets/papers/word2vec-original.png": "07448566a16e514d04bbddbf1d14bbe21ccd0a37de6257ef2b3d089729f8d84e",
     "assets/papers/yang-kimi-platform-2025-original.png": "a59a719326e4f3b64b956db632690ba0814693fa1da1f9fd9d69734a432638c0",
     "assets/papers/yolo-v1-architecture-original.png": "bc22f486fc6d9c0bac8bec6a216af2915a937bef289d6e672701e14de4d59214",
+    "assets/papers/yolo-v1-detection-examples-original.png": "4f821ff502191dc8bc5ff5153f5fd5d0ab6a901e2cc9e230e2477c7bf661b6af",
+    "assets/papers/yolo-v1-joint-output-original.png": "6721cd9ab8790c5b896c7b6a1a4d7eb31c351e7e7ae30daaa9e6ae9ade83af68",
     "assets/rdf-1999-identified-creator.gif": "7ce861ed4bb4f2b4f06fa7ed51185bbdc8973d7af37bd7baaf7d3452152191eb",
     "assets/rdf-1999-simple-statement.gif": "074620442407b1e7f2ec2f39cd961f4e71e24e443fd6bfcb9d0164aa1fc9a2b3",
     "assets/transformer-2017-architecture.png": "3fb71323444ee080fc255d9b04956afac632d7dea77b78674e43f00ec9c9370a",
@@ -214,7 +216,7 @@
     "huang-gtc-2025-detail-data.js": "5f29d27cbc02c67eb115f79fdce6a272d71c69b71ebef96ffb8c8d8ae77b5b4e",
     "huang-nvidia-1993-detail-data.js": "01a3055f032103ab4f90cbd9c9db14613ae5ea73d796fac158fd1a9f59e58510",
     "icon.svg": "308792f9b1a100adae20a63ac10fb0f464a7687b976c597b2c7a6e113b4ccbd7",
-    "index.html": "16b1bfc99f8867368aac64c4172d701e3efc89cb608d5237b84cd710bc00290e",
+    "index.html": "a606ad3746509a9626a7f42f66a437c056f25f87410de8c693e78658d1e866ce",
     "industry-profiles.js": "1432cc1875c0bc95e547634d37da459a01407759e931d46ffa5be6ba2d18ef2c",
     "instructgpt-data.js": "d96522a8c7960567b020f4fb77b19cab52ed9086a0a418e5e8a50a26921de684",
     "karp-aip-2023-detail-data.js": "9e63446555a6fb8d430dd26a7612ec9af20cf5498e5a13a9d78db92d63fb2c16",
@@ -262,10 +264,10 @@
     "profiles-stage3/redmon-farhadi.js": "5c4a19a9e5fd75829e792a8ffeeae59ef6c0e9fae801c67d0a965c36abdbc23f",
     "profiles-stage3/robinson.js": "607086430708e46e8fc3e58eab9e3dc2a8e8852af4e26ebecaa2ed4625fc0ad1",
     "profiles-stage3/williams.js": "522eefc692c5da0d7496f2340db2c5ddf3b6ac9a5dc2cf1194b18f4bc8dbca44",
-    "PUBLIC-ASSETS.json": "5ffb38b4d57c1024dba1275a7689b295abc53787b728158075679bc1681c8887",
+    "PUBLIC-ASSETS.json": "b2685581249b0d2b1dcc8fd1122d1aba420188a9f0c1c9d95c75002ed1c6d2ea",
     "public-images.css": "03ffc97d8fa67855edc0649002ab4de06431b203eece9366c9e85db82df61a32",
     "public-images.js": "e513bc082083a03ca20ae3931cd9bc2a3b66375ec365ee0660699bac950811ea",
-    "README.md": "be18eb686b1ab15366cb5a54e2c2c59f68c51369826a13264464c1a34ecc72c8",
+    "README.md": "e898d487ab2222ce108e385abe5b995bf187d91e856d9d3d0b6316aaa1b014f9",
     "recent-profiles/bengio-2026.js": "2b32cfd49a55730578fdf769dc631cc20bbbf6101b9c2e27b4af06ea7b24d328",
     "recent-profiles/fei-2026.js": "be7a972423d67d7a972f9b5a9d4c963fef6013313b99d8e27ddb3438891e07f0",
     "recent-profiles/finn-2026.js": "80a325381a85d12778081ef418034e057cc507f589965c330caffee302e97137",
@@ -562,12 +564,13 @@
     "visuals/worldlabs-spatial-platform.css": "f51477fc8268c2d18ee59ed2fa38692fb9fc610e40d8da698a06a73f7425e471",
     "visuals/worldlabs-spatial-platform.js": "66fcaa80005f3ee6e90051375fac86a12909a63359af0c428da92aacd736ba25",
     "visuals/yolo-unified-core.js": "efad2fe3760f3eddd4a4139740fd4db8ea8c08b9d1ed12bfc424e17358591fcb",
-    "visuals/yolo-unified.css": "20513c9e248b005b52542663172e09c150825bbb92767a05a1fefef8f64419fc",
-    "visuals/yolo-unified.js": "1777ab2128b9bdac88b029d7b4825ca2d04ccde27d5c885f6593bbaf802a305f",
+    "visuals/yolo-unified.css": "0e774c60b89a0902473c4f10de1dadac505feb02a645e823781e69f2e2ed5e30",
+    "visuals/yolo-unified.js": "4d67d12d03ac175ce400c85fa6181d1cce8f670868df50974e16a363ebef0bf8",
     "wang-data.js": "db6926f7ce6887311b1eaef064e6c585f0c0bdf6f3c5a94c2c5c4d85ad9c934a",
     "wang-meta-2025-detail-data.js": "5beb641423160207e746f6c3c28b5f13235cb490ba16cb3eb0f777950f504697",
     "WORDNET-LICENSE.txt": "5ca4b588e9c831d4d81bc83058caaddb74a68d329063d2af2512b734bfdb9641",
-    "yang-data.js": "921dcfa8627802b29d90a2fe451e64147a93922698b17e76b8d7047c61b9af9a"
+    "yang-data.js": "921dcfa8627802b29d90a2fe451e64147a93922698b17e76b8d7047c61b9af9a",
+    "yolo-reference-data.js": "080a42146d1f30a150d5076c2b1e43c9cd1ea18c0edf27f4cb15f355dfef88d7"
   },
   "industryPeople": 13,
   "industryVisibleWorks": 40,
@@ -575,5 +578,5 @@
   "sourcePanels": 97,
   "originalSourceImagePanels": 85,
   "sourceReadingNotes": 12,
-  "supplementaryOriginalFigures": 3
+  "supplementaryOriginalFigures": 5
 }
