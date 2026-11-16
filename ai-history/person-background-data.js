@@ -4753,11 +4753,12 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         ]
       }
     ],
-    "background": "대학 추모 기사는 윌리엄스를 미국 남부캘리포니아 출신으로 소개한다. 1986년 역전파 논문에는 UC San Diego의 인지과학 연구소 소속으로 이름을 올렸고, 같은 해 Northeastern의 컴퓨터과학 교수로 합류했다. 최종 오차로 중간 표현을 학습하는 공동연구에서 나아가, 시간에 따라 상태가 달라지는 순환망과 강화학습도 연구했다. 추모 기사는 학부·박사과정 때 기타와 키보드를 연주하며 지역 밴드에서 활동했던 모습도 전한다.",
+    "background": "대학 추모 기사는 윌리엄스를 미국 남부캘리포니아 출신으로 소개한다. 1986년 역전파 논문에는 UC San Diego의 인지과학 연구소 소속으로 이름을 올렸고, 같은 해 Northeastern의 컴퓨터과학 교수로 합류했다. 최종 오차로 중간 표현을 학습하는 공동연구에서 나아가, 시간에 따라 상태가 달라지는 순환망과 강화학습도 연구했다. 추모 기사는 학부·박사과정 때 기타와 키보드를 연주하며 지역 밴드에서 활동했던 모습도 전한다. 1992년 단독저자 논문 REINFORCE에서는 확률적으로 나온 출력과 보상 신호를 연결해 기대 보상을 학습하는 방법을 다뤘다.",
     "backgroundSourceIds": [
       "khoury-tribute",
       "nature-1986",
-      "author-publications"
+      "author-publications",
+      "reinforce-1992"
     ],
     "connections": [
       {
@@ -4809,6 +4810,13 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.khoury.northeastern.edu/home/rjw/pubs.html",
         "scope": "대학 도메인에 보관된 저자 논문 목록에서 Williams·Zipser (1989)의 순환망 학습, Williams·Peng (1990)의 온라인 순환망 학습, Williams (1992)의 강화학습 논문 서지와 요약을 확인했다. 이 인물 소개가 해당 논문들의 전체 실험을 재검토했다는 뜻은 아니다. 세 연구를 1986년 Nature 논문이나 LSTM과 같은 알고리즘으로 합치지 않는다.",
         "accessed": "2026-11-12"
+      },
+      {
+        "id": "reinforce-1992",
+        "title": "Ronald J. Williams · Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning (1992)",
+        "url": "https://people.cs.umass.edu/~barto/courses/cs687/williams92simple.pdf",
+        "scope": "대학 보관 저자 형식 PDF의 5쪽 §§3–4 일반 갱신·기대 보상·기준선 조건·Theorem 1, 7쪽 식(7)–(10)의 Bernoulli-logistic 단위와 기준선 예를 본문·지면으로 확인했다. 보관본 자체 쪽수1–27을 학술지pp.229–256으로 직접 치환하지 않는다. 현재 소속·원논문 실험의 재현·후속 DeepSeek 연구자와의 인적 관계를 뜻하지 않는다.",
+        "accessed": "2026-11-16"
       }
     ]
   },

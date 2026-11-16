@@ -1,5 +1,5 @@
 {
-  "version": "0.70-public.1",
+  "version": "0.71-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1294,5 +1294,19 @@
       "assets/papers/goodfellow-adversarial-2015-original.png"
     ],
     "scope": "Three existing basic people receive sourced biographies; two detailed people gain CTC and adversarial-example research routes. The original FGSM figure and selectable commentary are added. Prior policies, deepseekQwenRevision, yoloReferenceRevision and all44sourceLinks are preserved. No blanket figure reuse permission or model execution is inferred."
+  },
+  "reinforceRevision": {
+    "workIds": [
+      "williams-reinforce-1992"
+    ],
+    "personIds": [
+      "ronald-williams"
+    ],
+    "sourcePanels": 102,
+    "mainSourceImages": 90,
+    "originalFigures": [
+      "assets/papers/williams-reinforce-1992-original.png"
+    ],
+    "scope": "Williams 1992 original equation and a directly specified two-action reward-learning calculation. Its one-step example, exact expectation and comparisons do not reproduce the original experiments or DeepSeek-R1 training. All prior image policies and sourceLinks are retained."
   }
 }
