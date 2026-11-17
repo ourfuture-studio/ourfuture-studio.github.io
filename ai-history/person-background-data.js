@@ -611,6 +611,100 @@ window.ATLAS_PERSON_BACKGROUNDS=[
     ]
   },
   {
+    "personId": "alex-krizhevsky",
+    "education": [
+      {
+        "name": "토론토대학교 · 석사논문 기록",
+        "detail": "Learning Multiple Layers of Features from Tiny Images",
+        "period": "2009 · 저자 홈페이지의 MSc thesis 항목",
+        "sourceIds": [
+          "krizhevsky-home"
+        ]
+      }
+    ],
+    "researchPlaces": [
+      {
+        "institutionId": "university-of-toronto",
+        "name": "University of Toronto",
+        "place": "토론토, 캐나다",
+        "period": "2009 석사논문 · 2012 공동논문",
+        "note": "작은 컬러 영상의 특징 학습과 CIFAR 자료, GPU 합성곱 구현에서 ImageNet의 자연사진 인식으로 연구를 이어갔다. 2012년 AlexNet 논문에는 Krizhevsky·Sutskever·Hinton 세 사람 모두 토론토대학교 소속으로 표기된다.",
+        "sourceIds": [
+          "krizhevsky-home",
+          "cifar-official",
+          "alexnet-2012"
+        ]
+      },
+      {
+        "institutionId": "google",
+        "name": "Google",
+        "place": "Mountain View, California, 미국",
+        "period": "2013.03–2017.09 · 본인 홈페이지 기록",
+        "note": "대학 도메인의 본인 홈페이지가 이 기간의 Google 근무를 기록한다.",
+        "sourceIds": [
+          "krizhevsky-home"
+        ]
+      }
+    ],
+    "background": "Krizhevsky의 연구 배경에는 작은 사진에서 표현을 배우는 문제와, 그 학습을 실제로 계산할 GPU 구현이 함께 있다. 저자 홈페이지는 2009년 석사논문, 자연영상의 확률 모형·자동부호화기 연구와 CUDA 신경망 코드를 나열한다. CIFAR 공식 페이지는 Krizhevsky·Vinod Nair·Hinton이 CIFAR-10과 CIFAR-100을 만들었다고 명시한다. 2012년 AlexNet에서는 Sutskever·Hinton과 함께 여러 층의 시각 특징을 사물 라벨에서 학습했다. 개별 특징을 사람이 모두 지정하는 대신, 국소 연결과 가중치 공유라는 구조 안에서 유용한 필터와 특징 조합을 배우려 한 연구다.",
+    "backgroundSourceIds": [
+      "krizhevsky-home",
+      "cifar-official",
+      "alexnet-2012"
+    ],
+    "connections": [
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey E. Hinton",
+        "nameKo": "제프리 힌턴",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "AlexNet 공동연구",
+        "description": "Ilya Sutskever와 함께 2012년 ImageNet Classification with Deep Convolutional Neural Networks를 썼다. 논문은 Krizhevsky·Sutskever·Hinton 순으로 세 공동저자를 적으며 모두 토론토대학교 소속으로 표기한다. 시각 특징의 학습과 이를 큰 영상 자료에 적용할 구조·계산·학습 방법을 함께 다룬 공동연구다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ]
+      },
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "nameKo": "일리야 수츠케버",
+        "kind": "collaboration",
+        "relation": "collaborated-with",
+        "label": "AlexNet 공동연구",
+        "description": "Geoffrey E. Hinton과 함께 2012년 AlexNet 논문의 세 공동저자로 이름을 올렸다. 작은 시각적 단서를 여러 층에서 결합하고, 최종 분류의 오차로 필터와 분류 연결을 함께 학습하는 연구다. 원논문이 설명하는 공동연구를 연결하며, 개별 저자의 역할을 저자 순서만으로 나누지 않는다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "krizhevsky-home",
+        "title": "Alex Krizhevsky · 토론토대학교 도메인의 저자 홈페이지",
+        "url": "https://cave.cs.toronto.edu/kriz/",
+        "scope": "2026-11-17에 전체 홈페이지를 직접 읽었다. MSc thesis 항목의 2009년 논문 제목, CUDA/C++ 신경망·합성곱 구현 설명, 2010–2012 논문 목록, 2013.03–2017.09 Google 근무 기록을 확인했다. 석사논문 PDF는 이번 조회에서 시간 초과로 열지 못해 논문 본문·학위 수여일을 확인했다고 쓰지 않는다. Google 기록을 현재 직장이나 연구팀명으로 바꾸지 않으며, 출생지·박사학위·세부 기여 역할은 추정하지 않는다.",
+        "accessed": "2026-11-17"
+      },
+      {
+        "id": "cifar-official",
+        "title": "CIFAR-10 and CIFAR-100 · 공식 자료 페이지",
+        "url": "https://cave.cs.toronto.edu/kriz/cifar.html",
+        "scope": "서두의 제작자 Alex Krizhevsky·Vinod Nair·Geoffrey Hinton과 자료의 성격을 직접 확인했다. 이 소개는 자료 제작 배경만 사용한다. 32×32 CIFAR 자료를 AlexNet의 고해상도 ILSVRC 학습 자료와 합치지 않으며, CIFAR 실험의 결과를 ImageNet 결과로 옮기지 않는다.",
+        "accessed": "2026-11-17"
+      },
+      {
+        "id": "alexnet-2012",
+        "title": "Krizhevsky·Sutskever·Hinton · ImageNet Classification with Deep Convolutional Neural Networks · NIPS 2012",
+        "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+        "scope": "공식 9쪽 PDF와 보관 원문을 대조했다. p.1에서 세 저자·순서·Toronto 소속을, pp.1–2에서 영상의 변화·국소성·학습 규모의 문제를, pp.3–6 §§3–5에서 ReLU·GPU 분할·구조·증강·dropout·학습을 확인했다. Fig.2(p.5), Fig.3(p.6), Fig.4(p.8)는 기존 상세 카드의 원도판·학습 결과 시각화와 공유한다. 이 인물 소개는 학습·평가를 새로 실행한 결과가 아니며, 공동저술을 별도 지도 관계로 바꾸지 않는다.",
+        "accessed": "2026-11-17"
+      }
+    ]
+  },
+  {
     "personId": "alexandr-wang",
     "origin": {
       "label": "성장",
@@ -2862,6 +2956,30 @@ window.ATLAS_PERSON_BACKGROUNDS=[
           "hinton-sutskever-utoronto"
         ],
         "relation": "advised"
+      },
+      {
+        "personId": "alex-krizhevsky",
+        "name": "Alex Krizhevsky",
+        "kind": "collaboration",
+        "label": "AlexNet 공동연구",
+        "description": "Ilya Sutskever와 함께 2012년 ImageNet Classification with Deep Convolutional Neural Networks를 썼다. 원논문은 Krizhevsky·Sutskever·Hinton을 세 공동저자로, 모두 토론토대학교 소속으로 표기한다. 여러 층의 시각 특징을 사물 라벨에서 학습한 공동연구다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "kind": "collaboration",
+        "label": "AlexNet 공동연구",
+        "description": "Alex Krizhevsky와 함께 2012년 AlexNet 원논문의 세 공동저자로 이름을 올렸다. 이 선은 논문의 공동저술을 나타내며, 토론토대학교의 박사 지도 관계는 별도 유형으로 유지한다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ],
+        "relation": "collaborated-with"
       }
     ],
     "sources": [
@@ -2899,6 +3017,13 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://www.utoronto.ca/news/ilya-sutskever-leader-ai-and-its-responsible-development-receives-u-t-honorary-degree",
         "scope": "Hinton이 Sutskever의 박사 지도교수였다는 관계",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "alexnet-2012",
+        "title": "Krizhevsky·Sutskever·Hinton · ImageNet Classification with Deep Convolutional Neural Networks · NIPS 2012",
+        "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+        "scope": "2012년 공식 9쪽 원논문의 p.1에서 Alex Krizhevsky·Ilya Sutskever·Geoffrey E. Hinton 순서의 세 공동저자와 Toronto 소속을 직접 대조했다. §§1–5는 특징 학습과 구조·GPU·학습 방법의 결합을 설명한다. 이 출처는 AlexNet 공동저술 관계에 사용하며, 기존의 별도 지도 관계를 대체하거나 새 지도 관계를 추정하지 않는다.",
+        "accessed": "2026-11-17"
       }
     ]
   },
@@ -3243,6 +3368,30 @@ window.ATLAS_PERSON_BACKGROUNDS=[
           "sutskever-seq2seq-paper"
         ],
         "relation": "collaborated-with"
+      },
+      {
+        "personId": "alex-krizhevsky",
+        "name": "Alex Krizhevsky",
+        "kind": "collaboration",
+        "label": "AlexNet 공동연구",
+        "description": "Geoffrey E. Hinton과 함께 2012년 ImageNet Classification with Deep Convolutional Neural Networks를 썼다. 원논문은 Krizhevsky·Sutskever·Hinton을 세 공동저자로, 모두 토론토대학교 소속으로 표기한다. 여러 층의 시각 특징을 사물 라벨에서 학습한 공동연구다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ],
+        "relation": "collaborated-with"
+      },
+      {
+        "personId": "geoffrey-hinton",
+        "name": "Geoffrey E. Hinton",
+        "kind": "collaboration",
+        "label": "AlexNet 공동연구",
+        "description": "Alex Krizhevsky와 함께 2012년 AlexNet 원논문의 세 공동저자로 이름을 올렸다. 이 선은 논문의 공동저술을 나타내며, 토론토대학교의 박사 지도 관계는 별도 유형으로 유지한다.",
+        "period": "2012 · NIPS",
+        "sourceIds": [
+          "alexnet-2012"
+        ],
+        "relation": "collaborated-with"
       }
     ],
     "sources": [
@@ -3266,6 +3415,13 @@ window.ATLAS_PERSON_BACKGROUNDS=[
         "url": "https://arxiv.org/abs/1409.3215",
         "scope": "2014년 세 공동저자 서지",
         "accessed": "2026-11-10"
+      },
+      {
+        "id": "alexnet-2012",
+        "title": "Krizhevsky·Sutskever·Hinton · ImageNet Classification with Deep Convolutional Neural Networks · NIPS 2012",
+        "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+        "scope": "2012년 공식 9쪽 원논문의 p.1에서 Alex Krizhevsky·Ilya Sutskever·Geoffrey E. Hinton 순서의 세 공동저자와 Toronto 소속을 직접 대조했다. §§1–5는 특징 학습과 구조·GPU·학습 방법의 결합을 설명한다. 이 출처는 AlexNet 공동저술 관계에 사용하며, 기존의 별도 지도 관계를 대체하거나 새 지도 관계를 추정하지 않는다.",
+        "accessed": "2026-11-17"
       }
     ]
   },

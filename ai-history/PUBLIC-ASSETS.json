@@ -1,5 +1,5 @@
 {
-  "version": "0.73-public.1",
+  "version": "0.74-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1329,5 +1329,22 @@
     "mainSourceImages": 90,
     "originalFigures": [],
     "scope": "A network view sizes nodes by distinct relationship partners and widths by the distinct recorded relationship kinds within each pair. Existing person, biography, article, graph-evidence, original-image and source-link records remain unchanged. Core metrics and actual graph UI are reviewed independently."
+  },
+  "krizhevskyPeopleRevision": {
+    "workIds": [
+      "alexnet"
+    ],
+    "personIds": [
+      "alex-krizhevsky"
+    ],
+    "coauthorIds": [
+      "alex-krizhevsky",
+      "geoffrey-hinton",
+      "ilya-sutskever"
+    ],
+    "sourcePanels": 102,
+    "mainSourceImages": 90,
+    "originalFigures": [],
+    "scope": "One sourced researcher profile reuses the existing 2012 AlexNet article and original-paper visualization. Three coauthorship relations connect the paper authors while the existing Hinton–Sutskever advisor relation remains distinct. All prior SNA implementation, articles, figures and image policies are preserved."
   }
 }
