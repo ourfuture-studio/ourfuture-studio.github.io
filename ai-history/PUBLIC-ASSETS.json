@@ -1,5 +1,5 @@
 {
-  "version": "0.72-public.1",
+  "version": "0.73-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1321,5 +1321,13 @@
     "mainSourceImages": 90,
     "originalFigures": [],
     "scope": "Two sourced author profiles reuse the existing 2018 DeepProbLog article and original-paper visualization. A mutual coauthorship record adds one normalized collaboration relation. All prior articles, original images, image policies and sourceLinks are retained."
+  },
+  "snaGraphRevision": {
+    "workIds": [],
+    "personIds": [],
+    "sourcePanels": 102,
+    "mainSourceImages": 90,
+    "originalFigures": [],
+    "scope": "A network view sizes nodes by distinct relationship partners and widths by the distinct recorded relationship kinds within each pair. Existing person, biography, article, graph-evidence, original-image and source-link records remain unchanged. Core metrics and actual graph UI are reviewed independently."
   }
 }
