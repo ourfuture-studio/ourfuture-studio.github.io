@@ -1,0 +1,385 @@
+{
+  "id": "openai",
+  "name": "OpenAI",
+  "nameKo": "오픈AI",
+  "aliases": [
+    "OpenAI",
+    "GPT",
+    "ChatGPT",
+    "Stargate",
+    "오픈에이아이"
+  ],
+  "kind": "company",
+  "sector": "언어모델·사람 피드백·대화·계산 기반",
+  "accent": "#347e75",
+  "summary": "다음 토큰 예측으로 배운 표현을 과제 수행에 쓰고, 사람의 피드백을 학습해 대화 서비스로 연결한 흐름입니다.",
+  "question": "텍스트의 예측을 배우는 모델을 사람의 의도를 따르는 대화 도구로 어떻게 만들까?",
+  "overview": [
+    "연구 조직의 출발, 모델의 학습 방식, 대화 제품의 공개, 계산 기반의 계획을 구분합니다. 현재 조직 상태를 2015년 소개 문서에 거꾸로 적용하지 않습니다.",
+    "사전학습은 표현과 예측 능력을 만들고, 지시 학습과 선호 피드백은 응답 행동을 조정합니다. 제품 인터페이스와 데이터센터는 이 연구를 사용 가능한 서비스로 잇는 다른 층입니다."
+  ],
+  "people": [
+    {
+      "id": "sam-altman",
+      "name": "Sam Altman",
+      "role": "2015년 공동의장·기업 운영",
+      "note": "창업·조직·계산 기반 역할을 개별 논문의 저자 기여와 구분합니다."
+    },
+    {
+      "id": "ilya-sutskever",
+      "name": "Ilya Sutskever",
+      "role": "2015년 연구 책임자·언어모델 공동저자",
+      "note": "2015년 공식 소개와 각 논문의 당시 기록으로 연결합니다."
+    },
+    {
+      "id": "alec-radford",
+      "name": "Alec Radford",
+      "role": "GPT 사전학습 연구 공동저자",
+      "note": "GPT-1·GPT-2 등 기존 연구 카드로 연결합니다."
+    },
+    {
+      "id": "long-ouyang",
+      "name": "Long Ouyang",
+      "role": "InstructGPT 공동저자",
+      "note": "사람의 시범·선호 데이터와 RLHF 연구."
+    },
+    {
+      "id": "dario-amodei",
+      "name": "Dario Amodei",
+      "role": "GPT-3 당시 공동저자",
+      "note": "이후 Anthropic의 역할을 2020년 OpenAI 논문에 덧씌우지 않습니다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "nvidia",
+      "type": "infrastructure",
+      "label": "Stargate 초기 기술 파트너",
+      "date": "2025-01-21",
+      "note": "프로젝트 발표가 기술 파트너로 NVIDIA를 명시."
+    },
+    {
+      "companyId": "anthropic",
+      "type": "people",
+      "label": "연구자 경력과 후속 조직",
+      "date": "2021",
+      "note": "GPT-3 공동저자 Dario Amodei의 이후 조직을 연결하며 두 회사의 공동개발을 뜻하지 않습니다."
+    }
+  ],
+  "events": [
+    {
+      "id": "openai-introduction-2015",
+      "date": "2015-12-11",
+      "year": 2015,
+      "dateLabel": "2015-12-11",
+      "precision": "day",
+      "type": "organization",
+      "title": "OpenAI의 연구 조직 소개",
+      "question": "학습하는 AI의 능력과 사회적 영향을 어떤 연구 조직에서 함께 다룰까?",
+      "idea": "공식 소개는 폭넓은 AI 연구를 수행할 조직, 연구 공개와 기관 간 협력을 제안합니다. Ilya Sutskever를 연구 책임자, Sam Altman·Elon Musk를 공동의장으로 설명합니다.",
+      "change": "이후 언어모델·지시 학습·대화 제품을 읽을 조직적 출발점입니다. 설립 소개와 모델 공개는 별도 사건입니다.",
+      "flow": [
+        {
+          "label": "연구 목표",
+          "note": "AI 능력과 영향"
+        },
+        {
+          "label": "조직 구성",
+          "note": "연구 책임자·엔지니어·자문"
+        },
+        {
+          "label": "연구 공개",
+          "note": "논문·코드·협력 지향"
+        },
+        {
+          "label": "후속 개발",
+          "note": "언어모델과 서비스"
+        }
+      ],
+      "peopleIds": [
+        "sam-altman",
+        "ilya-sutskever",
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "OpenAI 창립 구성원"
+      ],
+      "workIds": [
+        "musk-openai-2015"
+      ],
+      "sources": [
+        {
+          "title": "Introducing OpenAI · 공식 소개",
+          "url": "https://openai.com/index/introducing-openai/",
+          "note": "2015-12-11의 조직 소개와 당시 역할."
+        }
+      ],
+      "caveat": "이 자료는 2015년의 조직·역할 설명입니다. 현재의 재직·법적 구조를 확인한 기록으로 사용하지 않습니다."
+    },
+    {
+      "id": "openai-gpt-pretraining-2018",
+      "date": "2018-06-11",
+      "year": 2018,
+      "dateLabel": "2018-06-11",
+      "precision": "day",
+      "type": "research",
+      "title": "GPT: 예측으로 배운 표현을 과제에 옮기다",
+      "question": "정답이 달린 과제 자료가 적을 때 많은 일반 문장에서 무엇을 미리 배울 수 있을까?",
+      "idea": "Transformer 언어모델이 다음 토큰을 예측하도록 먼저 학습합니다. 이 과정에서 얻은 표현과 연결값을 과제별 정답 데이터로 미세조정해 문장 분류·추론 등으로 옮깁니다.",
+      "change": "과제마다 처음부터 모델을 만드는 대신, 하나의 사전학습 표현을 여러 과제에 재사용하는 접근을 보여줍니다.",
+      "flow": [
+        {
+          "label": "일반 텍스트",
+          "note": "과제 정답 없이 문장 관측"
+        },
+        {
+          "label": "다음 토큰 예측",
+          "note": "Transformer 사전학습"
+        },
+        {
+          "label": "과제별 미세조정",
+          "note": "정답 데이터로 연결값 조정"
+        },
+        {
+          "label": "언어 과제",
+          "note": "분류·추론·유사도"
+        }
+      ],
+      "peopleIds": [
+        "alec-radford",
+        "ilya-sutskever"
+      ],
+      "peopleNames": [
+        "Alec Radford",
+        "Karthik Narasimhan",
+        "Tim Salimans",
+        "Ilya Sutskever"
+      ],
+      "workIds": [
+        "gpt1"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · 2018년 공식 연구 발표",
+          "url": "https://openai.com/index/language-unsupervised/"
+        },
+        {
+          "title": "Improving Language Understanding · 원문",
+          "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+        }
+      ],
+      "caveat": "2018년 접근은 과제별 미세조정을 포함합니다. 이후 GPT-3의 가중치 갱신 없는 문맥 학습과 구분합니다."
+    },
+    {
+      "id": "openai-gpt3-incontext-2020",
+      "date": "2020-05-28",
+      "year": 2020,
+      "dateLabel": "2020-05-28 · 최초 원고",
+      "precision": "day",
+      "type": "research",
+      "title": "GPT-3: 가중치를 바꾸지 않고 예시로 과제를 알리다",
+      "question": "학습을 마친 모델에게 문맥 속 몇 개의 예시만으로 새 과제를 수행하게 할 수 있을까?",
+      "idea": "다음 토큰 예측으로 학습한 언어모델에 지시·입출력 예시·새 질문을 한 문맥으로 넣습니다. 추론 중 연결값을 다시 학습하지 않고 이어질 텍스트를 생성하게 합니다.",
+      "change": "사전학습의 능력을 프롬프트로 끌어내는 few-shot 평가를 체계적으로 다뤘습니다. 내부 표현을 새로 학습하는 미세조정과 다릅니다.",
+      "flow": [
+        {
+          "label": "사전학습 모델",
+          "note": "이미 학습된 연결값"
+        },
+        {
+          "label": "지시·몇 개 예시",
+          "note": "과제를 문맥으로 표현"
+        },
+        {
+          "label": "새 입력",
+          "note": "가중치 갱신 없이 추론"
+        },
+        {
+          "label": "출력 생성",
+          "note": "과제에 맞는 다음 텍스트"
+        }
+      ],
+      "peopleIds": [
+        "ilya-sutskever",
+        "alec-radford",
+        "dario-amodei",
+        "jared-kaplan"
+      ],
+      "peopleNames": [
+        "Tom B. Brown 외 공동저자"
+      ],
+      "workIds": [
+        "gpt3"
+      ],
+      "sources": [
+        {
+          "title": "Language Models are Few-Shot Learners · 원고 이력",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "note": "최초 제출 2020-05-28, 수정·출판 판본의 시점과 구분."
+        }
+      ],
+      "caveat": "문맥의 예시가 가중치에 영구 저장되는 학습을 뜻하지 않습니다. 모든 과제에서 우수하다는 결론으로 확대하지 않습니다."
+    },
+    {
+      "id": "openai-instructgpt-2022",
+      "date": "2022-01-27",
+      "year": 2022,
+      "dateLabel": "2022-01-27",
+      "precision": "day",
+      "type": "research",
+      "title": "InstructGPT: 사람이 바라는 응답을 학습하다",
+      "question": "그럴듯한 문장의 예측과 사용자가 원하는 답 사이의 차이를 어떻게 줄일까?",
+      "idea": "사람이 작성한 응답 시범으로 미세조정하고, 여러 응답의 선호 순위로 보상모델을 학습합니다. 그 보상을 신호로 언어모델을 조정하는 RLHF를 사용합니다.",
+      "change": "다음 토큰 예측이라는 사전학습 목표에 더해 지시 수행·선호라는 행동 기준을 학습에 넣었습니다.",
+      "flow": [
+        {
+          "label": "사람의 시범",
+          "note": "바라는 답변 예시"
+        },
+        {
+          "label": "지도 미세조정",
+          "note": "시범을 따라 응답"
+        },
+        {
+          "label": "선호 순위",
+          "note": "응답을 비교해 보상 학습"
+        },
+        {
+          "label": "강화학습",
+          "note": "보상에 맞게 응답 정책 조정"
+        }
+      ],
+      "peopleIds": [
+        "long-ouyang"
+      ],
+      "peopleNames": [
+        "Long Ouyang 외 공동저자·사람 평가자"
+      ],
+      "workIds": [
+        "instructgpt"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · 지시 수행 학습 공식 발표",
+          "url": "https://openai.com/index/instruction-following/",
+          "note": "2022-01-27 발표. 후속 arXiv 논문 날짜와 구분."
+        }
+      ],
+      "caveat": "사람 평가자의 선호는 모든 사람의 가치와 동일하지 않습니다. 학습 후에도 오류와 편향이 남습니다."
+    },
+    {
+      "id": "openai-chatgpt-2022",
+      "date": "2022-11-30",
+      "year": 2022,
+      "dateLabel": "2022-11-30",
+      "precision": "day",
+      "type": "product",
+      "title": "ChatGPT: 사람 피드백을 대화 경험으로",
+      "question": "한 번의 지시를 넘어 앞선 질문과 답을 이어가며 도울 수 있을까?",
+      "idea": "대화의 양쪽 역할을 사람이 작성한 자료로 모델을 조정하고, 후보 응답 비교를 보상모델과 강화학습으로 연결합니다. 대화 기록을 문맥에 넣는 제품 화면으로 연구를 제공합니다.",
+      "change": "연구용 언어모델과 사용자 사이에 지속적인 대화·수정·피드백의 경로가 생겼습니다. 2022년 공개는 research preview로 소개됐습니다.",
+      "flow": [
+        {
+          "label": "대화 시범",
+          "note": "사용자·보조자의 양쪽 응답"
+        },
+        {
+          "label": "사람의 비교",
+          "note": "후보 응답 순위"
+        },
+        {
+          "label": "RLHF",
+          "note": "대화 응답을 조정"
+        },
+        {
+          "label": "대화 화면",
+          "note": "후속 질문과 피드백"
+        }
+      ],
+      "peopleIds": [],
+      "peopleNames": [
+        "OpenAI 연구·제품팀",
+        "사람 AI 트레이너"
+      ],
+      "workIds": [
+        "chatgpt",
+        "instructgpt"
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT · 공식 발표",
+          "url": "https://openai.com/index/chatgpt/",
+          "note": "2022-11-30, Methods·Limitations. 현재 제품 기능과 구분."
+        }
+      ],
+      "caveat": "대화가 자연스럽다는 사실이 답변의 정확성을 보장하지 않습니다. 2022년 모델을 현재 ChatGPT 전체와 같은 제품 상태로 설명하지 않습니다."
+    },
+    {
+      "id": "openai-stargate-2025",
+      "date": "2025-01-21",
+      "year": 2025,
+      "dateLabel": "2025-01-21",
+      "precision": "day",
+      "type": "infrastructure",
+      "title": "Stargate: 모델과 서비스를 위한 계산 기반 계획",
+      "question": "학습과 서비스에 필요한 대규모 계산 자원을 어떤 조직·시설로 확보할까?",
+      "idea": "공식 발표는 자금·운영·기술 파트너를 나눠 AI 인프라를 구축할 계획을 설명합니다. 모델 연구를 데이터센터·전력·시스템 운영의 문제와 연결하는 사건입니다.",
+      "change": "연구·제품 연표에 계산 기반의 구축 계획이 추가됩니다. 초기 기술 파트너로 NVIDIA 등이 명시됩니다.",
+      "flow": [
+        {
+          "label": "자금·운영 역할",
+          "note": "파트너별 책임"
+        },
+        {
+          "label": "시설·계산 시스템",
+          "note": "데이터센터 구축 계획"
+        },
+        {
+          "label": "모델 학습",
+          "note": "학습 자원의 기반"
+        },
+        {
+          "label": "응답 서비스",
+          "note": "운영·추론 자원의 기반"
+        }
+      ],
+      "peopleIds": [
+        "sam-altman",
+        "jensen-huang"
+      ],
+      "peopleNames": [
+        "OpenAI·SoftBank·Oracle·MGX·초기 기술 파트너"
+      ],
+      "workIds": [
+        "altman-openai-infrastructure-2025"
+      ],
+      "sources": [
+        {
+          "title": "Announcing The Stargate Project · 공식 발표",
+          "url": "https://openai.com/index/announcing-the-stargate-project/",
+          "note": "2025-01-21. 미래 투자 계획과 초기 파트너."
+        }
+      ],
+      "caveat": "투자 예정액을 집행액이나 완공된 시설 규모로 표시하지 않습니다. 계획 발표 자체가 모델 성능을 검증한 결과는 아닙니다."
+    }
+  ],
+  "orgAliases": [
+    "OpenAI",
+    "오픈에이아이",
+    "오픈AI"
+  ],
+  "logo": {
+    "src": "assets/company-logos/openai.png",
+    "label": "OpenAI",
+    "width": 512,
+    "height": 229,
+    "background": "#ffffff",
+    "sourcePage": "https://openai.com/brand/",
+    "assetUrl": "https://cdn.openai.com/brand/openai-logos.zip",
+    "sha256": "c0337c34d27964b5fca6c773b68ed94f269e6c6658df9aeedb7e3b21bea2c1bb",
+    "rightsNote": "공식 지침의 직접 관련 맥락, 원형 사용, 권리 귀속·여백·비율, 제휴·보증 오인 금지를 보존한다. 워드마크를 우선하며 Blossom을 주 브랜드처럼 쓰지 않는다. 일반 자유 라이선스라고 표시하지 않는다.",
+    "variantNote": "공식 로고 팩 OpenAI-logos/PNGs/OAI_OpenAI_Wordmark_Black.png. 검정 워드마크 원본의 clear space를 자르지 않고 비율을 보존했다.",
+    "checkedAt": "2026-11-17",
+    "usageUrl": "https://openai.com/brand/#usage-terms"
+  }
+}

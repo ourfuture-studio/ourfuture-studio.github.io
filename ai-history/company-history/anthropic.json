@@ -1,0 +1,327 @@
+{
+  "id": "anthropic",
+  "name": "Anthropic",
+  "nameKo": "앤트로픽",
+  "aliases": [
+    "Anthropic",
+    "Claude",
+    "Constitutional AI",
+    "클로드",
+    "앤트로픽"
+  ],
+  "kind": "company",
+  "sector": "원칙·피드백 학습·대화 모델",
+  "accent": "#b07e64",
+  "summary": "원칙을 답변의 비평·수정과 선호 자료로 바꾸는 연구에서 Claude 제품과 학습 인프라로 이어지는 흐름입니다.",
+  "question": "사람이 정한 원칙과 판단의 이유를 모델의 응답 학습에 어떻게 넣을까?",
+  "overview": [
+    "회사의 연구 목표, Constitutional AI의 실제 학습 절차, Claude 제품, 클라우드 협력을 시점별로 구분합니다.",
+    "원칙 문서가 있다는 것과 모델의 모든 출력이 그 원칙을 지킨다는 것은 다릅니다. 회사가 밝힌 의도·방법·제공 범위를 각각 표시합니다."
+  ],
+  "people": [
+    {
+      "id": "dario-amodei",
+      "name": "Dario Amodei",
+      "role": "CEO·Constitutional AI 공동저자 · 2023년 Claude 공개 자료 기준",
+      "note": "기업 운영과 논문 공동저자 역할을 따로 연결합니다."
+    },
+    {
+      "name": "Daniela Amodei",
+      "role": "2021년 소개 당시 President",
+      "note": "공식 초기 발표의 기업 운영 역할. 별도 인물 카드 연결 전입니다."
+    },
+    {
+      "id": "jared-kaplan",
+      "name": "Jared Kaplan",
+      "role": "Constitutional AI 공동저자",
+      "note": "2022년 원논문의 공동저자로 연결합니다."
+    },
+    {
+      "id": "yuntao-bai",
+      "name": "Yuntao Bai",
+      "role": "Constitutional AI 공동저자",
+      "note": "비평·수정과 AI 선호 피드백 연구의 원논문으로 연결합니다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "openai",
+      "type": "people",
+      "label": "이전 연구 경력과 조직의 분기",
+      "date": "2021",
+      "note": "일부 연구진의 GPT-3 등 이전 연구와 연결하며 회사 공동개발을 뜻하지 않습니다."
+    },
+    {
+      "companyId": "amazon",
+      "type": "partnership",
+      "label": "AWS·Trainium 협력 확대",
+      "date": "2024-11-22",
+      "note": "클라우드·학습 하드웨어·소프트웨어와 모델 제공의 협력 발표."
+    }
+  ],
+  "events": [
+    {
+      "id": "anthropic-research-funding-2021",
+      "date": "2021-05-28",
+      "year": 2021,
+      "dateLabel": "2021-05-28",
+      "precision": "day",
+      "type": "organization",
+      "title": "초기 연구 계획과 자금 조달 공개",
+      "question": "큰 모델을 더 잘 이해하고 원하는 방향으로 조정하려면 어떤 연구가 필요할까?",
+      "idea": "초기 공식 발표는 해석 가능성·신뢰성·사람의 피드백을 주요 연구 방향으로 제시합니다. 연구를 수행할 조직·인력·계산 자원을 마련하는 사건입니다.",
+      "change": "GPT-3 등에 참여한 연구자의 이전 경력과 Anthropic에서의 새 연구 계획을 구분해 읽을 수 있습니다.",
+      "flow": [
+        {
+          "label": "연구 문제",
+          "note": "조종 가능성·해석 가능성·신뢰성"
+        },
+        {
+          "label": "조직·자금",
+          "note": "연구와 시제품 개발 지원"
+        },
+        {
+          "label": "계산 자원",
+          "note": "대규모 모델 연구"
+        },
+        {
+          "label": "후속 연구",
+          "note": "원칙과 피드백 학습"
+        }
+      ],
+      "peopleIds": [
+        "dario-amodei"
+      ],
+      "peopleNames": [
+        "Dario Amodei",
+        "Daniela Amodei",
+        "Anthropic 연구팀"
+      ],
+      "workIds": [
+        "amodei-anthropic-2021"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic · 초기 Series A와 연구 계획",
+          "url": "https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems",
+          "note": "2021-05-28 공개 자료. 당시 CEO·President와 연구 방향."
+        }
+      ],
+      "caveat": "이 날짜는 자금 조달과 연구 계획의 공개일입니다. 정확한 법인 설립일로 대체하지 않습니다."
+    },
+    {
+      "id": "anthropic-constitutional-ai-2022",
+      "date": "2022-12-15",
+      "year": 2022,
+      "dateLabel": "2022-12-15",
+      "precision": "day",
+      "type": "research",
+      "title": "Constitutional AI: 원칙을 비평과 선호 신호로",
+      "question": "유해한 응답마다 사람이 정답을 달지 않고도 원칙을 학습 신호로 바꿀 수 있을까?",
+      "idea": "먼저 모델이 원칙에 따라 답변을 비평·수정하고, 수정한 답변으로 지도학습합니다. 다음에는 AI가 비교한 응답 선호로 보상모델을 만들고 RLAIF로 응답 정책을 조정합니다.",
+      "change": "사람은 원칙을 정하고 AI는 그 원칙을 적용한 학습 자료를 만드는 역할을 맡습니다. 지도학습과 강화학습의 두 단계를 구분합니다.",
+      "flow": [
+        {
+          "label": "사람이 정한 원칙",
+          "note": "바라는 행동의 기준"
+        },
+        {
+          "label": "비평·수정",
+          "note": "수정 응답으로 지도학습"
+        },
+        {
+          "label": "AI 선호 비교",
+          "note": "보상모델 학습"
+        },
+        {
+          "label": "RLAIF",
+          "note": "보상으로 응답 정책 조정"
+        }
+      ],
+      "peopleIds": [
+        "yuntao-bai",
+        "jared-kaplan",
+        "dario-amodei"
+      ],
+      "peopleNames": [
+        "Yuntao Bai 외 공동저자"
+      ],
+      "workIds": [
+        "constitutional-ai"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic · Constitutional AI 연구 소개",
+          "url": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback",
+          "note": "2022-12-15. 지도학습·강화학습의 두 단계."
+        },
+        {
+          "title": "Constitutional AI · 최초 원고",
+          "url": "https://arxiv.org/pdf/2212.08073v1"
+        }
+      ],
+      "caveat": "유해성의 특정 학습 신호를 AI로 만들었다는 뜻이며 인간의 관여가 완전히 사라진 것은 아닙니다. 원칙 선택과 평가 조건이 남습니다."
+    },
+    {
+      "id": "anthropic-claude-2023",
+      "date": "2023-03-14",
+      "year": 2023,
+      "dateLabel": "2023-03-14",
+      "precision": "day",
+      "type": "product",
+      "title": "Claude: 학습 연구를 대화와 API로 제공하다",
+      "question": "학습한 응답 행동을 사람들이 쓰는 대화 도구로 어떻게 이어갈까?",
+      "idea": "공식 소개는 도움·정직·무해성에 관한 연구를 바탕으로 한 보조자를 대화 화면과 개발자 API로 제공한다고 설명합니다. Claude와 Claude Instant를 서로 다른 제공 선택지로 소개했습니다.",
+      "change": "비공개 파트너 시험에서 더 넓은 제공으로 확장되는 제품 사건입니다. 연구 방법의 발표와 실제 사용자 접근 시기를 분리합니다.",
+      "flow": [
+        {
+          "label": "응답 행동 연구",
+          "note": "도움·정직·무해성"
+        },
+        {
+          "label": "파트너 시험",
+          "note": "닫힌 alpha의 피드백"
+        },
+        {
+          "label": "Claude·Instant",
+          "note": "다른 제공 선택지"
+        },
+        {
+          "label": "대화·API",
+          "note": "사용자·개발자 접근"
+        }
+      ],
+      "peopleIds": [
+        "dario-amodei"
+      ],
+      "peopleNames": [
+        "Anthropic 연구·제품팀"
+      ],
+      "workIds": [
+        "amodei-anthropic-2021",
+        "constitutional-ai"
+      ],
+      "sources": [
+        {
+          "title": "Introducing Claude · 공식 발표",
+          "url": "https://www.anthropic.com/news/introducing-claude",
+          "note": "2023-03-14. 초기 버전·대화·API 제공."
+        }
+      ],
+      "caveat": "초기 고객의 평가는 회사 발표 속 보고입니다. 독립적인 비교 실험이나 모든 사용 조건의 효과로 확대하지 않습니다."
+    },
+    {
+      "id": "anthropic-aws-trainium-2024",
+      "date": "2024-11-22",
+      "year": 2024,
+      "dateLabel": "2024-11-22",
+      "precision": "day",
+      "type": "partnership",
+      "title": "AWS·Trainium: 모델 연구와 계산 기반의 공동 개발",
+      "question": "모델 학습의 계산 수요와 실제 서비스 제공을 어떤 기반으로 이어갈까?",
+      "idea": "공식 발표는 AWS를 주요 클라우드·학습 파트너로 정하고, Trainium 하드웨어와 Neuron 소프트웨어의 최적화에 협력한다고 설명합니다. Claude의 Bedrock 제공도 같은 관계의 서비스 경로입니다.",
+      "change": "모델 회사의 연구 연표에 칩·컴파일러·클라우드 운영의 의존 관계를 표시할 수 있습니다.",
+      "flow": [
+        {
+          "label": "Anthropic 모델",
+          "note": "학습·서비스 수요"
+        },
+        {
+          "label": "Trainium·Neuron",
+          "note": "하드웨어·소프트웨어 협업"
+        },
+        {
+          "label": "AWS 계산 기반",
+          "note": "학습과 운영"
+        },
+        {
+          "label": "Bedrock 제공",
+          "note": "기업이 모델을 사용하는 경로"
+        }
+      ],
+      "peopleIds": [
+        "dario-amodei"
+      ],
+      "peopleNames": [
+        "Anthropic 엔지니어",
+        "AWS Annapurna Labs"
+      ],
+      "workIds": [
+        "amodei-anthropic-2021"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic · AWS 협력 확대",
+          "url": "https://www.anthropic.com/news/anthropic-amazon-trainium",
+          "note": "2024-11-22. 학습 파트너·Trainium·Neuron·Bedrock의 역할."
+        }
+      ],
+      "caveat": "발표에 포함된 미래 최적화 계획과 이미 검증된 성능을 구분합니다. 투자액은 기술 효과의 크기를 뜻하지 않습니다."
+    },
+    {
+      "id": "anthropic-constitution-2026",
+      "date": "2026-01-22",
+      "year": 2026,
+      "dateLabel": "2026-01-22",
+      "precision": "day",
+      "type": "research",
+      "title": "새 Constitution: 규칙의 이유까지 설명하다",
+      "question": "처음 보는 상황에서도 원칙을 적용하려면 무엇을 해야 하는지와 왜 해야 하는지를 함께 알려야 할까?",
+      "idea": "Anthropic은 바라는 가치와 행동의 맥락·이유를 설명하는 새 원칙 문서를 공개했습니다. 회사는 문서를 합성 대화·응답·순위 등 학습 자료 생성에 사용한다고 설명합니다.",
+      "change": "2022년 원칙 목록 중심 연구에서 2026년의 상세한 학습·행동 지침 문서로 이어진 변화를 읽습니다. 공개된 의도와 실제 출력은 구분합니다.",
+      "flow": [
+        {
+          "label": "가치·이유 설명",
+          "note": "새 원칙 문서"
+        },
+        {
+          "label": "합성 학습 자료",
+          "note": "대화·응답·순위의 생성"
+        },
+        {
+          "label": "후속 학습",
+          "note": "원칙을 적용하도록 조정"
+        },
+        {
+          "label": "실제 행동 평가",
+          "note": "의도와 출력의 차이 확인"
+        }
+      ],
+      "peopleIds": [
+        "dario-amodei"
+      ],
+      "peopleNames": [
+        "Anthropic 학습·정책 연구팀"
+      ],
+      "workIds": [
+        "amodei-anthropic-2021",
+        "constitutional-ai"
+      ],
+      "sources": [
+        {
+          "title": "Claude’s new constitution · 공식 발표",
+          "url": "https://www.anthropic.com/news/claude-new-constitution",
+          "note": "2026-01-22. 문서의 목적·학습 사용·의도와 출력의 차이."
+        }
+      ],
+      "caveat": "문서 공개는 모든 응답의 준수를 입증한 실험이 아닙니다. 2022년 논문 절차와 2026년 문서의 모든 구현을 동일하다고 가정하지 않습니다."
+    }
+  ],
+  "orgAliases": [
+    "Anthropic",
+    "앤트로픽"
+  ],
+  "logo": {
+    "src": "assets/company-logos/anthropic.png",
+    "label": "Anthropic",
+    "width": 512,
+    "height": 61,
+    "background": "#ffffff",
+    "sourcePage": "https://www.anthropic.com/press-kit",
+    "assetUrl": "https://assets.claude.com/ae59ca4ca194dac9c9dc3bc78c5829468cb0e8af.zip",
+    "sha256": "839c4e2e3416badb4c5191d5912e07215d37b87590ad6f47d15671d9ed589f3e",
+    "rightsNote": "공식 뉴스룸이 연결한 press kit 원본이며 색·형상·비율을 보존했다. 별도 오픈 라이선스를 확인하지 않았으므로 다운로드 가능성을 무조건적인 상업 이용 허가로 표시하지 않는다.",
+    "variantNote": "공식 press kit의 Anthropic logos/Anthropic logos/1 Anthropic logo/PNG/Anthropic logo - Slate.png. Claude 제품 로고와 구분한 Anthropic 회사 워드마크다.",
+    "checkedAt": "2026-11-17"
+  }
+}

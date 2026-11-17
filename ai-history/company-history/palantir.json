@@ -1,0 +1,226 @@
+{
+  "id": "palantir",
+  "name": "Palantir",
+  "nameKo": "팔란티어",
+  "aliases": [
+    "팔란티어",
+    "Ontology",
+    "온톨로지",
+    "AIP",
+    "Foundry"
+  ],
+  "kind": "company",
+  "sector": "지식·업무·AI 실행",
+  "accent": "#5a7d82",
+  "summary": "데이터를 업무의 대상과 관계로 표현하고, AI를 권한·도구·행동에 연결하다.",
+  "question": "AI의 답변을 실제 조직의 데이터와 허용된 업무에 연결하려면?",
+  "overview": [
+    "회사 설립, 후속 플랫폼의 기능, 제품 공개, 다른 회사와의 협력을 시점을 나누어 읽는다. 현재의 Ontology·AIP 문서 전체를 2003년의 기술로 옮기지 않는다.",
+    "Ontology는 데이터·모델을 현실의 객체·관계·동작에 연결하는 제품의 운영 계층이다. RDF·OWL 표준이나 특정 신경기호 학습 알고리즘과 동일한 대상으로 취급하지 않는다."
+  ],
+  "people": [
+    {
+      "id": "alex-karp",
+      "name": "Alex Karp",
+      "role": "공동창업자·CEO · 2023년 AIPCon 공지 기준",
+      "note": "AIPCon 공지의 도입 발표자와 제품 연구자의 역할을 구분한다."
+    },
+    {
+      "id": "peter-thiel",
+      "name": "Peter Thiel",
+      "role": "공동창업·이사회 역할",
+      "note": "기업·자본의 연결이며 제품 알고리즘의 단독 발명자로 표시하지 않는다."
+    },
+    {
+      "name": "Shyam Sankar",
+      "role": "2023 AIPCon 공지 당시 CTO",
+      "note": "공지에서 제품 상세 설명 역할을 맡는다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "anduril",
+      "type": "partnership",
+      "label": "현장 데이터와 AI 개발·배포의 연결",
+      "date": "2024-12-06",
+      "note": "Anduril·Palantir 공식 협력 발표. 공동연구 논문의 저자 관계와 구분한다."
+    }
+  ],
+  "events": [
+    {
+      "peopleIds": [
+        "alex-karp",
+        "peter-thiel"
+      ],
+      "peopleNames": [
+        "Alex Karp",
+        "Peter Thiel"
+      ],
+      "workIds": [
+        "karp-palantir-2003",
+        "thiel-capital-infrastructure-2003"
+      ],
+      "id": "palantir-incorporation-2003",
+      "date": "2003-05-06",
+      "year": 2003,
+      "dateLabel": "2003.05.06 · 법인 설립",
+      "precision": "day",
+      "type": "organization",
+      "title": "데이터 소프트웨어를 개발할 회사를 세우다",
+      "question": "조직이 여러 출처의 정보를 다루는 소프트웨어를 어떻게 지속적으로 개발할까?",
+      "idea": "회사 설립은 연구·개발과 제품 제공을 이어 갈 조직의 출발점이다. 창업자와 이사회의 역할, 이후의 플랫폼과 기술을 시점을 나누어 연결하면 자본·조직과 알고리즘을 구분해 볼 수 있다.",
+      "change": "Palantir의 공시는 Delaware 법인 설립일을 2003-05-06로 기록한다. 이후 Ontology·AIP로 이어지는 회사 연표의 기준점이며 그 제품들이 설립 당시 완성되어 있었다는 뜻은 아니다.",
+      "flow": [
+        {
+          "label": "법인 설립",
+          "note": "회사의 법적 출발 시점을 기록한다."
+        },
+        {
+          "label": "창업·조직",
+          "note": "인물의 공동창업·이사회 역할을 연결한다."
+        },
+        {
+          "label": "후속 플랫폼",
+          "note": "별도의 연도 기록에서 제품·기술을 살펴본다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Palantir · 2026 Q1 Form 10-Q, Note 1",
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/pltr-20260331.htm",
+          "note": "Organization 항목의 2003-05-06 법인 설립."
+        },
+        {
+          "title": "Palantir · 2023 위임장 공시",
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165523000033/pltr-20230425.htm",
+          "note": "Nominees for Director의 Karp·Thiel 공동창업 역할."
+        }
+      ],
+      "caveat": "설립 기록은 기술 성과의 발표일이 아니다. 현재의 Ontology·AIP 구조를 2003년 당시의 제품으로 설명하지 않는다."
+    },
+    {
+      "peopleIds": [
+        "alex-karp"
+      ],
+      "peopleNames": [
+        "Alex Karp",
+        "Shyam Sankar"
+      ],
+      "workIds": [
+        "karp-aip-2023",
+        "karp-palantir-2003"
+      ],
+      "id": "palantir-aipcon-2023",
+      "date": "2023-05-26",
+      "year": 2023,
+      "dateLabel": "2023.05.26 공지 · 06.01 행사 예정",
+      "precision": "day",
+      "type": "product",
+      "title": "AIP: LLM을 사내 데이터·도구·통제에 연결하다",
+      "question": "문장을 생성하는 모델이 조직의 실제 데이터를 활용하려면?",
+      "idea": "사설 네트워크의 데이터와 AI를 연결하고, 필요한 문맥·도구·통제 조건을 업무 흐름으로 구성한다. 현재의 공식 Ontology 설명에서는 객체·관계와 행동을 공통으로 정의해 조회와 변경이 같은 업무 대상을 가리키게 한다.",
+      "change": "첫 AIPCon 공지는 고객 사례와 AIP·Foundry의 AI 기능 설명을 예고했다. Karp의 도입 발표와 CTO Sankar의 상세 설명을 나누며, 후속 제품 문서로 데이터에서 검토·실행으로 이어지는 구조를 읽는다.",
+      "flow": [
+        {
+          "label": "업무 데이터",
+          "note": "필요한 데이터와 모델을 연결한다."
+        },
+        {
+          "label": "객체·관계",
+          "note": "조직의 대상을 같은 의미로 표현한다."
+        },
+        {
+          "label": "AI와 도구",
+          "note": "질의·제안에 필요한 문맥과 기능을 제공한다."
+        },
+        {
+          "label": "통제된 업무",
+          "note": "권한·검토·동작의 조건에 따라 사용한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Palantir · 첫 AIPCon 공식 공지",
+          "url": "https://www.prnewswire.com/news-releases/palantir-announces-live-stream-of-its-first-aipcon-with-ai-demos--announcements-from-25-customers-301835283.html",
+          "note": "2023-05-26 발표, 6월 1일 행사 예정. 사설 네트워크·통제와 제한적 체험 접근."
+        },
+        {
+          "title": "Palantir · Ontology overview",
+          "url": "https://www.palantir.com/docs/foundry/ontology/overview",
+          "note": "후속 공식 문서의 객체·관계·동작 설명. 2023년 전체 구현의 복원이 아니라 개념을 읽는 자료다."
+        }
+      ],
+      "caveat": "5월 26일은 공지일, 6월 1일은 예고된 행사일이다. 어느 쪽도 이 자료만으로 AIP 최초 출시일·일반 제공일로 확정하지 않는다. 문맥과 권한 설정은 모든 출력의 정확성·안전성을 보장하지 않는다."
+    },
+    {
+      "peopleIds": [
+        "alex-karp",
+        "palmer-luckey"
+      ],
+      "peopleNames": [
+        "Palantir 팀",
+        "Anduril 팀"
+      ],
+      "workIds": [
+        "karp-palantir-2003",
+        "luckey-anduril-2017"
+      ],
+      "id": "palantir-anduril-partnership-2024",
+      "sharedEventId": "palantir-anduril-2024",
+      "date": "2024-12-06",
+      "year": 2024,
+      "dateLabel": "2024.12.06 · 회사 간 협력 발표",
+      "precision": "day",
+      "type": "partnership",
+      "title": "Anduril의 현장 데이터와 AIP의 개발 기반을 잇다",
+      "question": "현장에서 생기는 데이터가 AI의 학습·배포로 이어지려면?",
+      "idea": "현장 관측을 보존·전달하는 기반과 데이터를 준비해 모델을 개발·배포하는 기반을 연결하려는 협력이다. 발표는 Anduril의 Lattice·Menace와 Palantir AIP에 서로 다른 역할을 부여한다.",
+      "change": "두 회사는 현장 데이터의 준비와 기업 규모의 AI 개발·배포를 잇는 방향을 발표했다. 기존의 인물 관계에서 회사의 데이터·인프라 역할 관계로 탐색을 넓힐 수 있다.",
+      "flow": [
+        {
+          "label": "현장 관측",
+          "note": "센서·차량·로봇 등에서 데이터가 생성된다."
+        },
+        {
+          "label": "Lattice·Menace",
+          "note": "현장 데이터를 보존하고 전달하는 역할을 맡는다."
+        },
+        {
+          "label": "AIP 기반",
+          "note": "데이터 정리·학습 준비와 AI 개발을 연결한다."
+        },
+        {
+          "label": "배포·갱신",
+          "note": "모델을 현장 시스템에 전달하는 기반을 구성한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anduril·Palantir · 2024년 협력 발표",
+          "url": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security",
+          "note": "원문은 research-assets/luckey-review/anduril-palantir-2024.article.txt와 HTML·SSG JSON 보존본의 날짜·단락 3~7을 직접 대조했다. 현재 웹 본문은 JavaScript 접근 제한. 협력 목표와 독립적인 성능 검증은 구분한다."
+        }
+      ],
+      "caveat": "발표의 목표와 역할 분담을 기록한다. 모든 현장에서 완성된 자동 학습 순환이나 독립적으로 검증된 성능 향상을 주장하지 않는다. 인물들의 공동발명·논문 공동저자 관계도 아니다."
+    }
+  ],
+  "orgAliases": [
+    "Palantir",
+    "팔란티어",
+    "팔렌티어"
+  ],
+  "logo": {
+    "src": "assets/company-logos/palantir.png",
+    "label": "Palantir",
+    "width": 512,
+    "height": 683,
+    "background": "#ffffff",
+    "sourcePage": "https://github.com/palantir/conjure/blob/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg",
+    "assetUrl": "https://raw.githubusercontent.com/palantir/conjure/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg",
+    "sha256": "2f109c301d1cb3d29ac8b287d1d91405932b1bec4378ef48a4d6c5c18c1d21e7",
+    "rightsNote": "공식 Palantir GitHub 저장소의 고정 커밋에 있는 로고 심볼 원본이다. 코드 저장소의 공개 여부를 로고·상표 사용권으로 간주하지 않는다. 별도 상표 또는 로고 재사용 허가는 확인하지 못했다.",
+    "variantNote": "검정 원형·받침 심볼만 있는 공식 SVG다. resvg로 원본 300×400 viewBox와 여백·비율·색상·투명도를 보존해 PNG로 변환했다.",
+    "checkedAt": "2026-11-17T08:08:10.815603+00:00",
+    "usageUrl": "https://github.com/palantir/conjure/blob/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg"
+  }
+}

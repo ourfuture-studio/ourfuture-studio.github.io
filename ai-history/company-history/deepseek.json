@@ -1,0 +1,187 @@
+{
+  "id": "deepseek",
+  "name": "DeepSeek",
+  "nameKo": "딥시크",
+  "aliases": [
+    "DeepSeek-AI",
+    "딥시크",
+    "량원펑"
+  ],
+  "kind": "company",
+  "sector": "언어모델·추론 학습",
+  "accent": "#547be7",
+  "summary": "많은 지식을 담는 모형과, 그 지식으로 문제를 푸는 사후학습을 함께 설계한다.",
+  "question": "모든 연결을 매번 계산하지 않으면서 지식을 넓히고, 답의 보상으로 문제 해결 과정을 학습할 수 있을까?",
+  "overview": [
+    "DeepSeek-V3는 계산을 선택적으로 사용하는 MoE와 주의 메모리를 압축하는 MLA를 결합했다. DeepSeek-R1은 이미 학습한 언어모델 위에서 보상과 여러 단계의 사후학습을 비교했다.",
+    "이 연표는 모델 공개와 기술 보고서를 구분한다. 여기에 표시한 날짜는 확인한 최초 보고서의 제출일이며, 회사 설립일이나 서비스 제공일을 대신하지 않는다."
+  ],
+  "people": [
+    {
+      "id": "liang-wenfeng",
+      "name": "Liang Wenfeng",
+      "role": "회사·연구 기여",
+      "note": "V3와 R1 기여 목록에 Wenfeng Liang으로 명시된다. 팀 전체의 성과를 개인의 단독 발명으로 표시하지 않는다."
+    },
+    {
+      "id": "damai-dai",
+      "name": "Damai Dai",
+      "role": "V3 연구·엔지니어링 기여",
+      "note": "DeepSeek-V3 최초 보고서 Appendix A의 Research & Engineering 목록과 연결한다."
+    },
+    {
+      "id": "daya-guo",
+      "name": "Daya Guo",
+      "role": "R1 핵심 기여",
+      "note": "R1 최초 보고서 Appendix A의 Core Contributors에 포함된다."
+    },
+    {
+      "id": "zhihong-shao",
+      "name": "Zhihong Shao",
+      "role": "R1·GRPO 연구 연결",
+      "note": "R1 핵심 기여 목록과 GRPO의 선행 DeepSeekMath 연구를 함께 읽는다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "qwen",
+      "type": "model-base",
+      "label": "증류 모델의 기반",
+      "date": "2025-01",
+      "note": "R1 공개 증류 모델 일부는 Qwen2.5 계열에서 출발한다. Qwen3 공동개발이나 두 회사의 조직 통합을 뜻하지 않는다."
+    },
+    {
+      "companyId": "meta",
+      "type": "model-base",
+      "label": "Llama 기반 증류 모델",
+      "date": "2025-01",
+      "note": "R1의 공개 증류 모델 목록에는 Llama 기반 모델도 있다. 기반 모델 활용과 회사 간 공식 제휴를 구분한다."
+    }
+  ],
+  "events": [
+    {
+      "id": "deepseek-v3-report-2024",
+      "date": "2024-12-27",
+      "year": 2024,
+      "dateLabel": "2024.12.27 · 최초 보고서",
+      "precision": "day",
+      "type": "research",
+      "title": "DeepSeek-V3: 선택적 계산과 압축된 주의 메모리",
+      "question": "모델의 지식 용량을 늘리면서 토큰 하나를 처리할 때 드는 계산과 메모리를 줄일 수 있을까?",
+      "idea": "MoE는 토큰마다 사용할 전문가 연결을 선택하고, MLA는 이후 토큰이 참고할 키·값 정보를 잠재 벡터로 압축한다. V3는 이를 부하 균형 전략과 여러 후속 토큰을 예측하는 학습 목표로 묶었다. 학습 내용의 규모와 매번 실제로 사용하는 계산량을 따로 설계한 것이다.",
+      "change": "모델 구조만 따로 제안하지 않고 저정밀도 계산과 GPU 통신을 포함한 학습 시스템까지 함께 설명했다. 기존 V3 카드에서 MLA·MoE·MTP의 원논문 도식과 각 구성의 역할을 이어 볼 수 있다.",
+      "flow": [
+        {
+          "label": "입력 토큰",
+          "note": "문맥을 모형의 표현으로 바꾼다."
+        },
+        {
+          "label": "MLA",
+          "note": "이후 문맥에서 재사용할 주의 정보를 압축한다."
+        },
+        {
+          "label": "전문가 선택",
+          "note": "토큰에 따라 일부 전문가를 활성화한다."
+        },
+        {
+          "label": "토큰 예측 학습",
+          "note": "다음 토큰과 추가 후속 토큰의 예측 목표를 사용한다."
+        }
+      ],
+      "peopleIds": [
+        "liang-wenfeng",
+        "damai-dai"
+      ],
+      "peopleNames": [
+        "DeepSeek-AI 연구·엔지니어링 팀"
+      ],
+      "workIds": [
+        "deepseek-v3"
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek-V3 Technical Report · v1",
+          "url": "https://arxiv.org/html/2412.19437v1",
+          "note": "2024-12-27. §2 구조, §3 시스템, Appendix A 기여 목록."
+        },
+        {
+          "title": "DeepSeek-V3 공식 저장소",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+          "note": "공개 모델·자료의 접점. 현재 저장소와 2024년 원고를 구분한다."
+        }
+      ],
+      "caveat": "첫 보고서의 방법 설명이다. 보고된 계산 비용을 회사 전체 개발비로 일반화하지 않으며, 이 화면에서 학습이나 벤치마크를 재현하지 않았다."
+    },
+    {
+      "id": "deepseek-r1-report-2025",
+      "date": "2025-01-22",
+      "year": 2025,
+      "dateLabel": "2025.01.22 · 최초 보고서",
+      "precision": "day",
+      "type": "research",
+      "title": "DeepSeek-R1: 답의 보상으로 문제 해결을 학습하다",
+      "question": "풀이를 모두 시범으로 적어 주지 않아도, 정답에 대한 보상으로 문제를 푸는 행동을 바꿀 수 있을까?",
+      "idea": "R1-Zero는 사전학습된 모형에 대규모 강화학습을 적용해 나타나는 추론 행동을 살폈다. 최종 R1은 가독성·언어 혼합 문제를 다루기 위해 초기 시범, 추론 강화학습, 선별한 자료의 지도학습, 추가 강화학습을 결합했다. GRPO는 같은 문제에서 나온 여러 답의 보상을 상대적으로 비교한다.",
+      "change": "연구는 보상으로 답변 행동을 바꾸는 경로와, 생성한 풀이를 작은 모델에 지도학습으로 옮기는 증류를 나누어 제시했다. Qwen·Llama 기반 공개 증류 모델은 모델 계보를 회사 관계와 구분해 읽을 사례다.",
+      "flow": [
+        {
+          "label": "기반 모델",
+          "note": "언어 사전학습의 가중치에서 출발한다."
+        },
+        {
+          "label": "답 여러 개 생성",
+          "note": "같은 문제에서 여러 응답을 만든다."
+        },
+        {
+          "label": "보상 비교",
+          "note": "검증 가능한 답과 형식 등의 보상을 평가한다."
+        },
+        {
+          "label": "정책 갱신·증류",
+          "note": "응답 확률을 학습하고 선별한 자료를 작은 모델에 전달한다."
+        }
+      ],
+      "peopleIds": [
+        "daya-guo",
+        "zhihong-shao",
+        "liang-wenfeng"
+      ],
+      "peopleNames": [
+        "DeepSeek-AI 공동 기여 팀"
+      ],
+      "workIds": [
+        "deepseek-r1"
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek-R1 · v1 원문",
+          "url": "https://arxiv.org/html/2501.12948v1",
+          "note": "2025-01-22. §2.2–2.4, Appendix A."
+        },
+        {
+          "title": "DeepSeek-R1 공식 저장소",
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+          "note": "R1-Zero·R1·증류 모델과 기반 모델 이름을 구분한다."
+        }
+      ],
+      "caveat": "R1-Zero와 최종 R1의 학습 절차는 다르다. 풀이 텍스트를 사람의 생각과 동일시하지 않으며, 모델 공개일과 이 보고서 제출일도 구분한다."
+    }
+  ],
+  "orgAliases": [
+    "딥시크",
+    "DeepSeek"
+  ],
+  "logo": {
+    "src": "assets/company-logos/deepseek.png",
+    "label": "DeepSeek",
+    "width": 460,
+    "height": 460,
+    "background": "#ffffff",
+    "sourcePage": "https://github.com/deepseek-ai",
+    "assetUrl": "https://avatars.githubusercontent.com/u/148330874?v=4&s=512",
+    "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+    "rightsNote": "DeepSeek 공식 GitHub 조직 프로필의 실제 로고 PNG. 조직 API의 avatar_url과 대조했다. 로고에 적용되는 별도 상표·재배포 허용 조건은 확인하지 못했으며 코드·모델 라이선스를 로고의 이용허락으로 해석하지 않았다.",
+    "variantNote": "공식 프로필에서 제공되는 파란 고래 로고와 원래 흰 배경을 그대로 보존. 다운로드 PNG를 재인코딩하지 않고 복사했다.",
+    "checkedAt": "2026-11-17"
+  }
+}

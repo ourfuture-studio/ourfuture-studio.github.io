@@ -5,6 +5,7 @@
   const index=core.createIndex(window.TIMELINE_DATA,window.AtlasPeople.profiles);
   const state={query:'',scope:'all',limit:8,results:null};
   const node=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+  const companyScope=node('button','','회사·연구조직');companyScope.type='button';companyScope.dataset.searchScope='company';companyScope.setAttribute('aria-pressed','false');document.querySelector('.search-scope').insertBefore(companyScope,document.querySelector('.search-scope>span'));
 
   function choose(record){
     $('search-results').hidden=true;
@@ -13,12 +14,12 @@
   }
   function resultButton(record){
     const b=node('button','global-search-result');b.type='button';b.dataset.resultId=record.id;b.dataset.resultKind=record.kind;
-    const marker=node('span','search-result-marker mono',record.kind==='person'?'인물':String(record.year));
+    const marker=node('span','search-result-marker mono',record.kind==='person'?'인물':record.year?String(record.year):'회사');
     const copy=node('span','search-result-copy');copy.append(node('strong','',record.title));
     if(record.subtitle&&record.subtitle!==record.title)copy.append(node('span','search-result-subtitle',record.subtitle));
-    if(record.kind==='work'&&record.summary)copy.append(node('span','search-result-description',record.summary));
+    if(record.kind!=='person'&&record.summary)copy.append(node('span','search-result-description',record.summary));
     b.append(marker,copy,node('span','search-result-arrow','↗'));
-    b.setAttribute('aria-label',(record.kind==='person'?'인물 ':'연구 '+record.year+'년 ')+record.title+' 열기');
+    b.setAttribute('aria-label',(record.kind==='person'?'인물 ':record.kind==='company'?'회사 기록 ':'연구 '+record.year+'년 ')+record.title+' 열기');
     b.addEventListener('click',()=>choose(record));return b;
   }
   function group(kind,records,title){
@@ -32,19 +33,23 @@
     $('search-count').hidden=!q;
     if(!q){state.results=null;$('search-results').hidden=true;$('search-count').textContent='';$('search-examples').hidden=false;$('search-result-groups').replaceChildren();$('search-more').hidden=true;return;}
     $('search-examples').hidden=true;
-    const results=core.search(index,q,state.scope);state.results=results;
-    const people=results.people||[],works=results.works||[];
+    const results=core.search(index,q,state.scope);
+    const people=state.scope==='company'?[]:results.people||[],works=state.scope==='company'?[]:results.works||[];
+    const companies=['all','company'].includes(state.scope)?window.AtlasCompanies?.search(q)||[]:[];
+    const total=people.length+works.length+companies.length;state.results={...results,people,works,companies,total};
     $('search-results').hidden=false;
-    $('search-count').textContent=String(results.total)+'개 결과';
-    $('search-results-summary').textContent='인물 '+people.length+'명 · 연구 기록 '+works.length+'개';
+    $('search-count').textContent=String(total)+'개 결과';
+    $('search-results-summary').textContent='인물 '+people.length+'명 · 연구 기록 '+works.length+'개 · 회사 기록 '+companies.length+'개';
     const groups=$('search-result-groups');groups.replaceChildren();
     const firstWorks=/\d{4}/.test(q);
     const addPeople=()=>{if(people.length&&state.scope!=='work')groups.append(group('person',people,'인물'));};
     const addWorks=()=>{if(works.length&&state.scope!=='person')groups.append(group('work',works,'연구 기록'));};
     if(firstWorks){addWorks();addPeople();}else{addPeople();addWorks();}
+    if(companies.length)groups.append(group('company',companies,'회사·연구조직'));
     groups.classList.toggle('two-groups',groups.childElementCount===2);
-    $('search-empty').hidden=results.total>0;
-    $('search-more').hidden=!(works.length>state.limit||people.length>(state.scope==='all'&&state.limit===8?4:state.limit));
+    groups.classList.toggle('three-groups',groups.childElementCount===3);
+    $('search-empty').hidden=total>0;
+    $('search-more').hidden=!(companies.length>state.limit||works.length>state.limit||people.length>(state.scope==='all'&&state.limit===8?4:state.limit));
     for(const b of document.querySelectorAll('[data-search-scope]')){const active=b.dataset.searchScope===state.scope;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));}
   }
   function search(query){state.query=query;state.limit=8;$('search-input').value=query;render();}
@@ -56,7 +61,7 @@
     else if(!state.query.trim())return;
     else if(e.key==='ArrowDown'){render();const first=$('search-result-groups').querySelector('button');if(first){e.preventDefault();first.focus();}}
     else if(e.key==='Enter'){
-      e.preventDefault();render();if(state.results?.total===1)choose([...(state.results.people||[]),...(state.results.works||[])][0]);
+      e.preventDefault();render();if(state.results?.total===1)choose([...(state.results.people||[]),...(state.results.works||[]),...(state.results.companies||[])][0]);
     }
   });
   $('search-close').addEventListener('click',()=>reset(true));
@@ -66,6 +71,7 @@
   document.querySelectorAll('[data-search-example]').forEach(b=>b.addEventListener('click',()=>{state.scope='all';search(b.dataset.searchExample);const heading=$('search-results').querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}));
   document.querySelectorAll('[data-search-scope]').forEach(b=>b.addEventListener('click',()=>{state.scope=b.dataset.searchScope;state.limit=8;render();}));
   $('search-more').addEventListener('click',()=>{const before=new Set([...$('search-result-groups').querySelectorAll('button')].map(b=>b.dataset.resultId));state.limit+=12;render();const target=[...$('search-result-groups').querySelectorAll('button')].find(b=>!before.has(b.dataset.resultId))||$('search-more');if(!target.hidden)target.focus({preventScroll:true});});
+  window.addEventListener('atlas:companies-ready',()=>{if(state.query.trim())render();});
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!document.querySelector('dialog[open]')&&!e.target.closest('input,textarea,[contenteditable="true"]')){e.preventDefault();$('search-input').focus();}});
   window.AtlasSearch={search,reset,hide:()=>{$('search-results').hidden=true;},get index(){return index;}};
   render();

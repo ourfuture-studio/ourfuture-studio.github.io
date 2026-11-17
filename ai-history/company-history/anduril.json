@@ -1,0 +1,207 @@
+{
+  "id": "anduril",
+  "name": "Anduril",
+  "nameKo": "안두릴",
+  "aliases": [
+    "안두릴",
+    "앤듀릴",
+    "Lattice",
+    "래티스",
+    "Menace",
+    "팔머 러키"
+  ],
+  "kind": "company",
+  "sector": "현장 시스템·AI 기반",
+  "accent": "#6b8271",
+  "summary": "센서의 관측을 공통 상황으로 묶고, 사람과 여러 현장 시스템의 작업을 연결하다.",
+  "question": "AI가 알아본 상황을 다른 장비와 사람이 함께 쓰려면?",
+  "overview": [
+    "현장 AI에는 인식 모델뿐 아니라 관측·대상·작업·상태를 전달하는 소프트웨어가 필요하다. Lattice의 플랫폼 설명과 후속 협력을 따라 이 연결의 위치를 살펴본다.",
+    "창업자는 기업 역할로 연결한다. 공개 자료가 설명하는 통합·감독 구조를 비공개 모델의 아키텍처나 독립적인 성능 평가로 바꾸어 쓰지 않는다."
+  ],
+  "people": [
+    {
+      "id": "palmer-luckey",
+      "name": "Palmer Luckey",
+      "role": "공동설립자",
+      "note": "회사 설립과 제품 플랫폼의 기술 역할을 구분한다."
+    },
+    {
+      "name": "Matt Grimm",
+      "role": "공동설립·운영 역할",
+      "note": "2021년 공식 회고 글의 Chief Operating Officer."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "palantir",
+      "type": "partnership",
+      "label": "현장 데이터에서 기업 AI 기반으로",
+      "date": "2024-12-06",
+      "note": "Lattice·Menace와 AIP를 연결하려는 공식 협력 발표."
+    }
+  ],
+  "events": [
+    {
+      "peopleIds": [
+        "palmer-luckey"
+      ],
+      "peopleNames": [
+        "Palmer Luckey",
+        "Matt Grimm"
+      ],
+      "workIds": [
+        "luckey-anduril-2017"
+      ],
+      "id": "anduril-founding-2017",
+      "date": "2017",
+      "year": 2017,
+      "dateLabel": "2017년 · 설립",
+      "precision": "year",
+      "type": "organization",
+      "title": "소프트웨어와 현장 시스템을 함께 개발할 조직을 세우다",
+      "question": "AI 소프트웨어를 실제 장비와 함께 개발하려면 어떤 조직이 필요할까?",
+      "idea": "소프트웨어와 하드웨어를 함께 개발할 회사를 설립한다. 현장 장비의 동작, 실험, 소프트웨어 통합을 연결해야 한다는 관점에서 창업과 후속 플랫폼의 기록을 읽을 수 있다.",
+      "change": "2021년 공식 회고는 2017년 설립을 기록하고 하드웨어·비행 시험·소프트웨어 개발 팀의 협업을 설명한다. 2017년을 조직의 출발점으로 두고 Lattice의 구체적 후속 발표는 별도 연도에 배치한다.",
+      "flow": [
+        {
+          "label": "창업 팀",
+          "note": "현장 기술을 개발할 회사를 만든다."
+        },
+        {
+          "label": "개발의 결합",
+          "note": "하드웨어·소프트웨어·시험 역할을 연결한다."
+        },
+        {
+          "label": "후속 플랫폼",
+          "note": "이후 연도에서 Lattice의 기능과 공개 자료를 읽는다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anduril · Scaling Up 공식 회고",
+          "url": "https://blog.anduril.com/scaling-up-anduril-expands-to-new-orange-county-headquarters-707956957fb6",
+          "note": "2021-02-03 Matt Grimm의 회고. 2017년 설립과 하드웨어·소프트웨어·시험 팀 협업."
+        }
+      ],
+      "caveat": "설립을 후속 Lattice 기능의 최초 출시로 보지 않는다. 2021년 회고의 조직 설명 전체가 2017년부터 완성되어 있었다는 뜻은 아니다."
+    },
+    {
+      "peopleIds": [
+        "palmer-luckey"
+      ],
+      "peopleNames": [
+        "Anduril 팀"
+      ],
+      "workIds": [
+        "luckey-anduril-2017"
+      ],
+      "id": "anduril-mission-autonomy-2023",
+      "date": "2023-05-03",
+      "year": 2023,
+      "dateLabel": "2023.05.03 · 공식 발표",
+      "precision": "day",
+      "type": "product",
+      "title": "Mission Autonomy: 사람의 감독 아래 여러 시스템을 조율하다",
+      "question": "각 장비를 따로 조작하는 대신 여러 시스템이 함께 일하게 할 수 있을까?",
+      "idea": "사람이 목표를 다루고 다양한 로봇 시스템이 함께 동작하도록 공통 소프트웨어 계층을 둔다. 한 장비의 자율 이동을 넘어 계획·작업·상태와 후속 검토를 연결하는 운영의 흐름을 표현하려 한다.",
+      "change": "공식 발표는 하드웨어에 종속되지 않는 플랫폼과 사람의 감독 아래 여러 시스템을 운용하는 방향을 제시했다. 모델의 출력이 공유된 상황과 작업으로 이어지는 구조를 읽는 사례다.",
+      "flow": [
+        {
+          "label": "사람의 목표",
+          "note": "운영자가 목적과 조건을 다룬다."
+        },
+        {
+          "label": "공통 플랫폼",
+          "note": "서로 다른 시스템의 작업과 정보를 연결한다."
+        },
+        {
+          "label": "여러 현장 시스템",
+          "note": "각 시스템이 맡은 작업을 수행한다."
+        },
+        {
+          "label": "상태·검토",
+          "note": "결과를 공유하고 다음 계획에 반영한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anduril · Lattice for Mission Autonomy",
+          "url": "https://blog.anduril.com/anduril-unveils-lattice-for-mission-autonomy-8e0c5fa0e94b",
+          "note": "2023-05-03. 사람의 감독, 하드웨어 독립성, mission cycle과 공개 구조."
+        }
+      ],
+      "caveat": "회사의 구조·목표 설명이다. 공개되지 않은 센서 융합 알고리즘이나 신경망 구조를 복원한 시각화가 아니며, 모든 기능에 동일한 수동 승인 절차가 있다는 뜻도 아니다."
+    },
+    {
+      "peopleIds": [
+        "palmer-luckey",
+        "alex-karp"
+      ],
+      "peopleNames": [
+        "Anduril 팀",
+        "Palantir 팀"
+      ],
+      "workIds": [
+        "luckey-anduril-2017",
+        "karp-palantir-2003"
+      ],
+      "id": "anduril-palantir-partnership-2024",
+      "sharedEventId": "palantir-anduril-2024",
+      "date": "2024-12-06",
+      "year": 2024,
+      "dateLabel": "2024.12.06 · 회사 간 협력 발표",
+      "precision": "day",
+      "type": "partnership",
+      "title": "현장의 데이터가 학습·배포 기반에 도달하게 하다",
+      "question": "현장에서 한 번 쓰인 데이터를 후속 AI 개발에도 활용하려면?",
+      "idea": "현장 데이터를 보존하고 전달하는 역할과, 이를 AI 학습에 맞게 준비하고 배포하는 역할을 두 회사의 기반으로 연결하려 했다. 데이터 생성 위치부터 모델을 쓰는 위치까지의 경로를 함께 다룬다.",
+      "change": "발표는 Lattice·Menace의 현장 역할과 AIP의 데이터 정리·개발·배포 역할을 나누어 설명했다. 회사 간 선을 따라 AI의 인식 결과와 인프라가 만나는 지점을 비교할 수 있다.",
+      "flow": [
+        {
+          "label": "현장 시스템",
+          "note": "관측과 상태 데이터가 생성된다."
+        },
+        {
+          "label": "Lattice·Menace",
+          "note": "데이터를 보존하고 안전하게 전달하는 역할을 맡는다."
+        },
+        {
+          "label": "Palantir AIP",
+          "note": "학습을 위한 데이터 준비와 개발 기반을 연결한다."
+        },
+        {
+          "label": "다시 현장으로",
+          "note": "모델 배포와 후속 갱신의 경로를 구성한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anduril·Palantir · 2024년 협력 발표",
+          "url": "https://www.anduril.com/news/anduril-and-palantir-to-accelerate-ai-capabilities-for-national-security",
+          "note": "원문은 research-assets/luckey-review/anduril-palantir-2024.article.txt와 HTML·SSG JSON 보존본의 날짜·단락 3~7을 직접 대조했다. 현재 웹 본문은 JavaScript 접근 제한. 협력 목표와 독립적인 성능 검증은 구분한다."
+        }
+      ],
+      "caveat": "회사 간 협력 발표의 역할 분담이다. 실제 실행한 시스템이나 검증된 성능 향상, 인물들의 공동발명 관계로 해석하지 않는다."
+    }
+  ],
+  "orgAliases": [
+    "Anduril",
+    "안두릴",
+    "앤듀릴"
+  ],
+  "logo": {
+    "src": "assets/company-logos/anduril.png",
+    "label": "Anduril",
+    "width": 512,
+    "height": 163,
+    "background": "#ffffff",
+    "sourcePage": "https://www.anduril.com/press",
+    "assetUrl": "https://cdn.sanity.io/images/61nocsj5/production/dea8101fbf828eb24250f132bfdacd7927a1c8e6-4631x1472.png",
+    "sha256": "9a4b23dd4cd07dcd46d909bad1e81e6f03f0a022b35cace77c994f765878df5f",
+    "rightsNote": "Anduril 공식 Press Kit의 Anduril Logo Black 항목에 포함된 공개 PNG를 사용했다. HTML에 포함된 SSG 원본 메타데이터에서 자산 ID와 크기를 확인했다. 별도의 재사용 라이선스 또는 상표 사용 승인을 확보했다고 주장하지 않는다.",
+    "variantNote": "공식 검정 심볼과 ANDURIL 워드마크의 조합. 공식 4631×1472 투명 PNG를 비율 유지 축소했다.",
+    "checkedAt": "2026-11-17T08:08:10.814804+00:00",
+    "usageUrl": "https://www.anduril.com/press"
+  }
+}

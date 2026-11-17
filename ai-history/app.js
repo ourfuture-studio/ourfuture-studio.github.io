@@ -26,7 +26,7 @@
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = { mode:'research', filter: 'all', query: '', view: 'journey', events: all, position: 0, target: 0, selected: '', zoom: 1, frame: 0, drag: null, busy: false };
-  const modeState={research:{filter:'all',query:''},people:{filter:'all',query:''},graph:{filter:'all',query:''}};
+  const modeState={research:{filter:'all',query:''},people:{filter:'all',query:''},graph:{filter:'all',query:''},companies:{filter:'all',query:''}};
   const elements = new Map();
   let width = 1000, height = 500, announceTimer;
 
@@ -60,7 +60,7 @@
     return normalized(aliases[q] || q);
   }
   function updateFilter(options={}) {
-    if(state.mode==='graph')return;
+    if(state.mode==='graph'||state.mode==='companies')return;
     for (const button of document.querySelectorAll('[data-filter]')) { const active = button.dataset.filter === state.filter; button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active)); }
     if(state.mode==='people'){
       const count=window.AtlasPeople.setFilter(state.filter,state.query,options);
@@ -269,24 +269,27 @@
     if(mode!=='research'&&state.frame){cancelAnimationFrame(state.frame);state.frame=0;state.position=state.target;state.selected=state.events[Math.round(state.position)]?.id||state.selected;}
     if(state.mode!==mode){modeState[state.mode]={filter:state.filter,query:state.query};Object.assign(state,modeState[mode]);}
     state.mode=mode;
-    const people=mode==='people',graph=mode==='graph',research=mode==='research';
+    const people=mode==='people',graph=mode==='graph',research=mode==='research',companies=mode==='companies';
     $('industry-filter').hidden=!people;
     $('explorer').dataset.mode=mode;
     $('people-shell').hidden=!people;
     $('person-graph-shell').hidden=!graph;
+    $('companies-shell').hidden=!companies;
     document.querySelector('.timeline-nav').hidden=!research;document.querySelector('.selection-strip').hidden=!research;
     document.querySelector('.view-switch').hidden=!research;
-    for(const [id,on] of [['research-mode',research],['people-mode',people],['graph-mode',graph]]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
-    $('browse-mode-hint').textContent=graph?'사람 사이의 연결과 그 근거를 따라갑니다':people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
-    document.querySelector('.intro-period').textContent=people?Math.min(...peopleYears)+' — '+Math.max(...peopleYears):all[0].year+' — '+all.at(-1).year;
+    for(const [id,on] of [['research-mode',research],['people-mode',people],['graph-mode',graph],['companies-mode',companies]]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
+    $('browse-mode-hint').textContent=companies?'사람·연구·제품·계산 기반이 이어진 시간을 읽습니다':graph?'사람 사이의 연결과 그 근거를 따라갑니다':people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
+    const shownYears=companies&&window.AtlasCompanies?.ready?window.AtlasCompanies.companies.flatMap(c=>c.events.map(e=>e.year)):people?peopleYears:all.map(e=>e.year);
+    document.querySelector('.intro-period').textContent=Math.min(...shownYears)+' — '+Math.max(...shownYears);
     updateFilter();
     if(!research){$('journey-shell').hidden=true;$('flat-shell').hidden=true;}
     else setView(state.view);
     if(graph)window.AtlasPersonGraph?.show();
+    if(companies)window.AtlasCompanies?.show();
     try{
       if(graph)window.AtlasPersonGraph?.updateRoute();
       else if(people&&window.AtlasPeople.selected)history.replaceState(null,'','#person='+encodeURIComponent(window.AtlasPeople.selected)+(state.filter==='industry'?'&filter=industry':''));
-      else if(location.hash.startsWith('#person=')||location.hash.startsWith('#graph='))history.replaceState(null,'',location.pathname+location.search);
+      else if(!companies&&(location.hash.startsWith('#person=')||location.hash.startsWith('#graph=')||location.hash.startsWith('#company=')))history.replaceState(null,'',location.pathname+location.search);
     }catch{}
   }
   function openDetail(id) {
@@ -417,6 +420,7 @@
     window.addEventListener('atlas:search-result',ev=>{
       const r=ev.detail;
       if($('detail-dialog').open)$('detail-dialog').close();
+      if(r.kind==='company'){window.AtlasCompanies?.open(r.companyId,r.recordId);return;}
       if(r.kind==='work'&&r.eventId&&byId.has(r.eventId)){
         setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(r.eventId,true);openDetail(r.eventId);
       }else if(r.personId){
@@ -427,12 +431,15 @@
     });
     $('research-mode').addEventListener('click',()=>setMode('research'));$('people-mode').addEventListener('click',()=>setMode('people'));
     $('graph-mode').addEventListener('click',()=>setMode('graph'));
+    $('companies-mode').addEventListener('click',()=>setMode('companies'));
+    window.addEventListener('atlas:open-companies',()=>{if($('detail-dialog').open)$('detail-dialog').close();setMode('companies');});
     window.addEventListener('atlas:open-graph',ev=>{setMode('graph');window.AtlasPersonGraph?.focus(ev.detail?.personId||'');$('person-graph-shell').scrollIntoView({block:'start',behavior:reducedMotion?'auto':'smooth'});});
     window.addEventListener('atlas:open-event',ev=>{if(!byId.has(ev.detail.id))return;setMode('research');state.filter='all';state.query='';updateFilter();selectEvent(ev.detail.id);openDetail(ev.detail.id);});
     window.addEventListener('atlas:open-work',ev=>{const {personId,workId,filter}=ev.detail||{};if(filter==='industry'){const p=window.AtlasPeople.profiles.find(p=>p.id===personId);if(!p?.tags.includes('industry')||!p.works.some(w=>w.id===workId))return;openPersonRoute(new URLSearchParams({filter:'industry',work:workId}),personId);}else openWorkDetail(personId,workId);});
     window.addEventListener('hashchange',()=>{
       const params=new URLSearchParams(location.hash.slice(1)),person=params.get('person'),event=params.get('event');
-      if(params.has('graph')){if($('detail-dialog').open)$('detail-dialog').close();setMode('graph');window.AtlasPersonGraph?.focus(params.get('focus')||'');}
+      if(params.has('company')){if($('detail-dialog').open)$('detail-dialog').close();window.AtlasCompanies?.openRoute(params);setMode('companies');}
+      else if(params.has('graph')){if($('detail-dialog').open)$('detail-dialog').close();setMode('graph');window.AtlasPersonGraph?.focus(params.get('focus')||'');}
       else if(person&&window.AtlasPeople.profiles.some(p=>p.id===person)){
         if($('detail-dialog').open)$('detail-dialog').close();openPersonRoute(params,person);
       }else if(event&&byId.has(event)){
@@ -478,7 +485,7 @@
     if(!all.length){$('scene-empty').hidden=false;return;}
     $('all-count').textContent=all.length;
     const route=new URLSearchParams(location.hash.slice(1));
-    const requested=route.get('event')||(!route.get('person')&&!route.has('graph')&&document.documentElement.dataset.previewEntry);
+    const requested=route.get('event')||(!route.get('person')&&!route.has('graph')&&!route.has('company')&&document.documentElement.dataset.previewEntry);
     state.selected=byId.has(requested)?requested:all[0].id;
     wire();addCredits();updateFilter();measure();
     document.fonts.ready.then(measure);
@@ -486,6 +493,7 @@
     const requestedPerson=route.get('person');
     if(requestedPerson&&window.AtlasPeople.profiles.some(p=>p.id===requestedPerson))openPersonRoute(route,requestedPerson);
     if(route.has('graph')){setMode('graph');window.AtlasPersonGraph?.focus(route.get('focus')||'');}
+    if(route.has('company'))setMode('companies');
   }
   init();
 })();

@@ -1,0 +1,165 @@
+{
+  "id": "qwen",
+  "name": "Alibaba · Qwen",
+  "nameKo": "알리바바 · Qwen 연구팀",
+  "aliases": [
+    "Qwen",
+    "通义千问",
+    "큐웬",
+    "알리바바",
+    "Alibaba"
+  ],
+  "kind": "team",
+  "sector": "공개 언어모델·추론",
+  "accent": "#7862d5",
+  "summary": "여러 크기와 목적의 공개 모델을 만들고, 빠른 응답과 긴 추론을 하나의 모델에서 다룬다.",
+  "question": "다양한 장치와 과제에 모델을 제공하면서, 문제의 난도에 맞게 추론에 쓸 계산을 조절할 수 있을까?",
+  "overview": [
+    "Qwen은 Alibaba 쪽 연구팀과 모델 계열의 이름이다. 회사·연구팀·공개 모델·Qwen Chat 서비스를 하나의 대상으로 합치지 않는다.",
+    "Qwen2.5의 크기·용도별 모델 제공에서 Qwen3의 사고·직답 통합으로 이어지는 연구와 배포 흐름을 읽는다. 논문의 저자 역할은 해당 판본에 한정한다."
+  ],
+  "people": [
+    {
+      "id": "junyang-lin",
+      "name": "Junyang Lin",
+      "role": "Qwen3 보고서 공동저자",
+      "note": "Qwen3의 공동저자 목록과 기존 인물 카드를 연결한다."
+    },
+    {
+      "id": "binyuan-hui",
+      "name": "Binyuan Hui",
+      "role": "Qwen3 보고서 공동저자",
+      "note": "논문 팀의 기여를 개인 한 명의 단독 설계로 표시하지 않는다."
+    },
+    {
+      "id": "jingren-zhou",
+      "name": "Jingren Zhou",
+      "role": "Qwen3 보고서 공동저자",
+      "note": "연구팀·회사·제품의 역할을 구분해 읽는다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "deepseek",
+      "type": "model-base",
+      "label": "R1 증류 모델의 기반",
+      "date": "2025-01",
+      "note": "DeepSeek-R1 증류 모델 일부는 Qwen2.5에서 출발한다. Qwen3가 R1 증류의 기반이었다고 바꾸어 쓰지 않는다."
+    }
+  ],
+  "events": [
+    {
+      "id": "qwen25-release-2024",
+      "date": "2024-09-19",
+      "year": 2024,
+      "dateLabel": "2024.09.19 · 공식 공개",
+      "precision": "day",
+      "type": "product",
+      "title": "Qwen2.5: 크기와 목적에 맞춰 모델을 제공하다",
+      "question": "모두가 가장 큰 모델을 실행할 수 없다면, 개발자는 어떤 모델을 골라 자신의 작업에 적용할 수 있을까?",
+      "idea": "Qwen2.5는 여러 크기의 조밀한 디코더 언어모델과 코드·수학 특화 계열을 함께 제시했다. 공통 언어모델 연구를 단일 서비스에만 넣지 않고 개발자가 실행·조정할 수 있는 가중치와 사용 경로로 제공하려는 방향이다.",
+      "change": "개발자는 모델 크기와 작업 목적을 나누어 선택할 수 있게 됐다. 이 기록은 모델 계열의 공개이며 각 크기의 성능, 실행 메모리, 라이선스가 모두 같다는 뜻은 아니다.",
+      "flow": [
+        {
+          "label": "공통 언어 학습",
+          "note": "텍스트의 다음 토큰을 예측하며 표현을 만든다."
+        },
+        {
+          "label": "크기·분야별 모델",
+          "note": "일반 언어·코드·수학 등 제공 계열을 구분한다."
+        },
+        {
+          "label": "가중치·도구 제공",
+          "note": "개발자가 실행과 적용 경로를 선택한다."
+        }
+      ],
+      "peopleIds": [],
+      "peopleNames": [
+        "Qwen Team"
+      ],
+      "workIds": [],
+      "sources": [
+        {
+          "title": "Qwen2.5: A Party of Foundation Models!",
+          "url": "https://qwenlm.github.io/blog/qwen2.5/",
+          "note": "2024-09-19 공개 글. 모델 계열과 크기별 제공을 확인했다."
+        }
+      ],
+      "caveat": "회사 공식 공개 설명이다. 현재 모델의 라이선스나 성능을 모든 2024년 판본에 거꾸로 적용하지 않는다. 별도 Qwen2.5 상세 연구 카드는 아직 연결하지 않았다."
+    },
+    {
+      "id": "qwen3-release-2025",
+      "date": "2025-04-29",
+      "year": 2025,
+      "dateLabel": "2025.04.29 · 모델 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "Qwen3: 오래 생각하기와 바로 답하기를 함께 학습하다",
+      "question": "어려운 질문에는 추론을 더 하고 쉬운 질문에는 빨리 답하도록 하나의 모델을 학습할 수 있을까?",
+      "idea": "Qwen3는 긴 풀이의 초기 학습과 추론 강화학습 뒤에, 사고 응답과 직답 자료를 섞는 단계를 둔다. 그다음 일반 과제 강화학습으로 지시·형식 등을 조정한다. 같은 모델이 서로 다른 응답 방식을 사용하도록 사후학습과 사용 제어를 함께 설계했다.",
+      "change": "모델의 크기 선택에 더해 응답 시 추론 방식을 선택하는 축이 생겼다. 기존 Qwen3 카드에서는 조밀한 모델·MoE와 사후학습 네 단계의 원논문 시각화를 함께 볼 수 있다.",
+      "flow": [
+        {
+          "label": "긴 풀이 초기 학습",
+          "note": "풀이 형식과 문제 해결 시범에서 출발한다."
+        },
+        {
+          "label": "추론 강화학습",
+          "note": "검증 가능한 보상으로 문제 해결을 조정한다."
+        },
+        {
+          "label": "사고·직답 통합",
+          "note": "두 응답 방식의 자료를 함께 학습한다."
+        },
+        {
+          "label": "일반 과제 조정",
+          "note": "지시·형식과 다양한 작업의 행동을 다듬는다."
+        }
+      ],
+      "peopleIds": [
+        "junyang-lin",
+        "binyuan-hui",
+        "jingren-zhou"
+      ],
+      "peopleNames": [
+        "Qwen Team 공동저자"
+      ],
+      "workIds": [
+        "qwen3"
+      ],
+      "sources": [
+        {
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "note": "2025-04-29. Hybrid Thinking Modes와 Post-training."
+        },
+        {
+          "title": "Qwen3 Technical Report · v1",
+          "url": "https://arxiv.org/abs/2505.09388v1",
+          "note": "최초 제출 2025-05-14. 모델 공개일과 보고서 날짜를 나누어 기록한다."
+        }
+      ],
+      "caveat": "Thinking이라는 이름을 인간의 사고와 동일시하지 않는다. 모델 공개일은 기술 보고서 제출일과 다르며, 연구 결과는 해당 모델과 평가 조건의 범위에서 읽는다."
+    }
+  ],
+  "orgAliases": [
+    "Qwen",
+    "Alibaba",
+    "알리바바",
+    "큐원",
+    "큐웬"
+  ],
+  "logo": {
+    "src": "assets/company-logos/qwen.png",
+    "label": "Qwen",
+    "width": 460,
+    "height": 460,
+    "background": "#ffffff",
+    "sourcePage": "https://github.com/QwenLM",
+    "assetUrl": "https://avatars.githubusercontent.com/u/141221163?v=4&s=512",
+    "sha256": "a5182eb825a8d6ba7cbcb1c1fd1be5c2064c1e6e2e507ed34bedbab91ceb4fee",
+    "rightsNote": "QwenLM 공식 GitHub 조직 프로필의 실제 팀·모델 로고 PNG. 조직 API의 avatar_url과 대조했다. 로고에 적용되는 별도 상표·재배포 허용 조건은 확인하지 못했으며 저장소·모델 라이선스를 로고의 이용허락으로 해석하지 않았다.",
+    "variantNote": "Alibaba 회사 전체의 로고가 아닌 Qwen 팀·모델 로고. 공식 프로필의 파란 심볼과 투명도·비율을 그대로 보존해 PNG 원본 복사.",
+    "checkedAt": "2026-11-17"
+  }
+}

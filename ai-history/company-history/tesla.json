@@ -1,0 +1,159 @@
+{
+  "id": "tesla",
+  "name": "Tesla",
+  "nameKo": "테슬라",
+  "aliases": [
+    "테슬라",
+    "Tesla Vision",
+    "Autopilot",
+    "FSD",
+    "카파시"
+  ],
+  "kind": "company",
+  "sector": "차량 시각·제어",
+  "accent": "#9f5b69",
+  "summary": "차량의 관측을 학습 데이터로 모으고, 신경망의 인식을 운전자 감독 아래 제어로 연결하다.",
+  "question": "도로에서 본 장면을 차량의 행동으로 어떻게 이어 갈 수 있을까?",
+  "overview": [
+    "실제 차량 데이터, 신경망 학습, 차량 내 배포가 만나는 흐름을 살펴본다. 회사의 출시 보고와 독립적인 안전성 검증은 다른 자료로 취급한다.",
+    "Karpathy의 Tesla 역할은 2017–2022년 이력에 따라 연결한다. 2023년 말 FSD v12 기록은 Tesla AI 팀의 후속 사건으로 다루며 개인의 기여를 추정하지 않는다."
+  ],
+  "people": [
+    {
+      "id": "elon-musk",
+      "name": "Elon Musk",
+      "role": "기업 리더",
+      "note": "기업 활동의 연결이며 개별 모델의 단독 개발자로 표시하지 않는다."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "role": "Tesla AI Director, 2017–2022",
+      "note": "개인 공식 이력에서 Autopilot 컴퓨터 비전 팀의 데이터·학습·배포 역할을 확인.",
+      "url": "https://karpathy.ai/"
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "xai",
+      "type": "shared-person",
+      "label": "머스크의 기업 활동으로 탐색",
+      "note": "인물의 활동을 통해 두 회사를 비교한다. Tesla와 xAI의 공동연구·투자·데이터 공유를 주장하는 선은 아니다."
+    }
+  ],
+  "events": [
+    {
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "Andrej Karpathy",
+        "Tesla Autopilot 팀"
+      ],
+      "workIds": [],
+      "id": "tesla-vision-2021",
+      "date": "2021",
+      "year": 2021,
+      "dateLabel": "2021년 2분기 · Tesla Vision 출시 보고",
+      "precision": "year",
+      "type": "product",
+      "title": "Tesla Vision: 차량의 장면을 학습 데이터와 연결하다",
+      "question": "도로의 다양한 상황을 신경망이 알아보게 하려면 어떤 경험이 필요할까?",
+      "idea": "차량에서 얻은 다양한 장면을 학습 데이터로 모으고, 학습한 인식 기능을 차량 안에서 실행한다. 데이터 수집·주석·신경망 학습·배포를 연결해야 도로에서 만나는 상황을 모델 개발의 입력으로 바꿀 수 있다.",
+      "change": "Tesla의 Q2 2021 자료는 Tesla Vision의 분기 내 출시와 대규모 차량 데이터의 역할을 보고했다. Karpathy의 공식 이력은 당시 팀이 데이터 라벨링, 학습, 자체 추론 칩 배포를 맡았다고 설명한다.",
+      "flow": [
+        {
+          "label": "차량의 관측",
+          "note": "도로에서 얻은 장면과 사례를 모은다."
+        },
+        {
+          "label": "데이터 준비",
+          "note": "주석과 학습 입력을 구성한다."
+        },
+        {
+          "label": "신경망 학습",
+          "note": "시각적 단서를 표현하는 가중치를 학습한다."
+        },
+        {
+          "label": "차량 내 배포",
+          "note": "제한된 계산 환경에서 인식 기능을 실행한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · Q2 2021 Update, p.3",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000156459021037953/tsla-ex991_89.htm",
+          "note": "회사 SEC 제출 자료의 Tesla Vision 출시와 차량 데이터 설명."
+        },
+        {
+          "title": "Andrej Karpathy · 공식 경력",
+          "url": "https://karpathy.ai/",
+          "note": "2017–2022 Tesla AI Director 항목의 컴퓨터 비전·라벨링·학습·배포 역할."
+        }
+      ],
+      "caveat": "공식 자료가 확인하는 사건 시점은 2021년 2분기다. 임의의 출시일을 넣지 않으며 차량 데이터가 많다는 사실만으로 모든 도로 상황의 안전성을 보장하지 않는다."
+    },
+    {
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "Tesla AI 팀"
+      ],
+      "workIds": [],
+      "id": "tesla-fsd-v12-2023",
+      "date": "2023-12",
+      "year": 2023,
+      "dateLabel": "2023년 12월 말 · 직원 대상 초기 배포",
+      "precision": "month",
+      "type": "product",
+      "title": "FSD v12: 주행 데이터로 차량 제어를 학습하다",
+      "question": "운전 행동을 상황마다 직접 코딩하는 대신 데이터로 배울 수 있을까?",
+      "idea": "주행 데이터와 종단간 학습을 사용해 신경망의 처리를 차량 제어까지 연결하려는 방향이다. 인식 결과를 만드는 것에서 더 나아가, 관측이 조향·페달 등 행동에 영향을 주는 연결을 학습 대상으로 삼는다.",
+      "change": "Q4 2023 보고서는 12월 말 일부 직원에게 v12 배포를 시작했고 이후 고객에게도 제공했다고 설명한다. 회사는 개별 운전 행동의 직접 코딩 대신 AI를 제어에 연결한다고 기술했다.",
+      "flow": [
+        {
+          "label": "실제 주행 경험",
+          "note": "차량에서 얻은 주행 데이터를 학습 입력으로 삼는다."
+        },
+        {
+          "label": "종단간 학습",
+          "note": "관측에서 행동으로 이어지는 연결을 학습한다."
+        },
+        {
+          "label": "차량 제어",
+          "note": "조향·페달 등 제어에 영향을 준다."
+        },
+        {
+          "label": "운전자 감독",
+          "note": "운전자가 적극적으로 감독하는 조건에서 사용한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · Q4 and FY 2023 Update, pp.3·10",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000095017024007073/tsla-ex99_1.htm",
+          "note": "12월 말 초기 배포, 직원·고객 배포의 순서와 end-to-end training. p.3 각주 6의 운전자 감독 조건."
+        }
+      ],
+      "caveat": "회사는 적극적인 운전자 감독이 필요하며 차량을 자율주행차로 만들지 않는다고 명시한다. Karpathy의 2017–2022년 재직과 v12 개발을 동일시하지 않으며 독립적인 안전성 결과로 일반화하지 않는다."
+    }
+  ],
+  "orgAliases": [
+    "Tesla",
+    "테슬라"
+  ],
+  "logo": {
+    "src": "assets/company-logos/tesla.png",
+    "label": "Tesla",
+    "width": 154,
+    "height": 154,
+    "background": "#ffffff",
+    "sourcePage": "https://github.com/teslamotors",
+    "assetUrl": "https://avatars.githubusercontent.com/u/3066035?v=4",
+    "sha256": "3572f48fc984f08385b9c4a65ddb1ea792aaf87ecba66babccac6380863a27c6",
+    "rightsNote": "GitHub가 www.tesla.com 도메인 소유를 검증한 Tesla, Inc. 공식 조직의 공개 프로필 이미지다. GitHub 조직 페이지의 Verified 설명과 공개 조직 API의 name·blog·avatar_url을 직접 대조했다. 별도의 로고 재사용·상표 허가는 확인하지 못했으며 공개 소프트웨어 라이선스를 로고에 적용하지 않는다. 현재 로컬 식별용 프로토타입 자산이다.",
+    "variantNote": "공식 GitHub 조직 프로필의 원본 PNG를 바이트 그대로 복사했다. 색상·형상·배경·크기·비율을 변경하지 않았다. 개별 역사 사건의 당시 로고라는 뜻이 아니다.",
+    "checkedAt": "2026-11-17T08:10:04.878471+00:00",
+    "usageUrl": "https://github.com/teslamotors"
+  }
+}

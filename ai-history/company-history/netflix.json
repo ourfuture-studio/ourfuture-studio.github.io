@@ -1,0 +1,172 @@
+{
+  "id": "netflix",
+  "name": "Netflix",
+  "nameKo": "넷플릭스",
+  "aliases": [
+    "넷플릭스 추천",
+    "recommendation",
+    "추천",
+    "개인화"
+  ],
+  "kind": "company",
+  "sector": "추천·개인화",
+  "accent": "#ae5965",
+  "summary": "시청·상호작용을 잠재 표현으로 배우고, 여러 추천 과제에 공유하다.",
+  "question": "사람이 좋아할 다음 콘텐츠를 과거의 행동에서 어떻게 표현할까?",
+  "overview": [
+    "추천은 이용자의 과거 행동에서 아직 보지 않은 항목의 선호를 추정하는 문제다. 표현 학습과 실제 서비스에서 여러 모델이 그 표현을 쓰는 방식을 함께 살펴본다.",
+    "논문 공동연구자의 당시 소속을 보존한다. Netflix Prize 전체를 딥러닝 성과로 분류하지 않으며, 논문 발표와 서비스 적용 범위는 별도로 확인한다."
+  ],
+  "people": [
+    {
+      "name": "Dawen Liang",
+      "role": "2018 VAE 추천 논문 공동저자",
+      "note": "원문 1쪽 당시 Netflix."
+    },
+    {
+      "name": "Tony Jebara",
+      "role": "2018 VAE 추천 논문 공동저자",
+      "note": "원문 1쪽 당시 Netflix."
+    },
+    {
+      "name": "Rahul G. Krishnan",
+      "role": "2018 VAE 추천 논문 공동저자",
+      "note": "원문 1쪽 당시 MIT."
+    },
+    {
+      "name": "Matthew D. Hoffman",
+      "role": "2018 VAE 추천 논문 공동저자",
+      "note": "원문 1쪽 당시 Google AI."
+    },
+    {
+      "name": "Ko-Jen Hsiao · Yesu Feng · Sudarshan Lamkhede",
+      "role": "2025 추천 기반 모델 기술 글 저자",
+      "note": "글의 저자이며 전체 시스템의 단독 발명자라는 뜻은 아니다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "google",
+      "type": "research",
+      "label": "2018 VAE 추천 논문 공동연구",
+      "date": "2018-02-16",
+      "note": "Netflix·MIT·Google AI 소속 저자의 공동 논문이다. 회사 간 사업 제휴로 해석하지 않는다."
+    }
+  ],
+  "events": [
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "Dawen Liang",
+        "Rahul G. Krishnan",
+        "Matthew D. Hoffman",
+        "Tony Jebara"
+      ],
+      "workIds": [],
+      "id": "netflix-vae-cf-2018",
+      "date": "2018-02-16",
+      "year": 2018,
+      "dateLabel": "2018.02.16 · 최초 원고 제출",
+      "precision": "day",
+      "type": "research",
+      "title": "VAE 추천: 행동에서 선호의 잠재 표현을 배우다",
+      "question": "소수의 상호작용만으로 아직 보지 않은 항목의 선호를 어떻게 추정할까?",
+      "idea": "이용자–항목 상호작용을 VAE의 잠재 변수로 표현하고, 그 표현에서 항목의 확률분포를 복원한다. 관찰한 행동을 잘 설명하도록 학습하면서 이용자마다 흩어진 희소한 정보를 비선형 표현으로 모은다.",
+      "change": "공동필터링에 신경망 기반 확률 잠재 모형을 적용한 연구다. 원논문은 다항 우도와 정규화의 선택을 실험으로 비교했으며, 회사 연표에서는 연구 발표와 실제 서비스 전체 적용을 분리한다.",
+      "flow": [
+        {
+          "label": "희소한 상호작용",
+          "note": "이용자가 상호작용한 항목을 입력 벡터로 만든다."
+        },
+        {
+          "label": "인코더",
+          "note": "잠재 표현의 분포를 추정한다."
+        },
+        {
+          "label": "디코더",
+          "note": "잠재 변수에서 항목의 확률분포를 복원한다."
+        },
+        {
+          "label": "추천 후보",
+          "note": "아직 상호작용하지 않은 항목의 선호를 비교한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Variational Autoencoders for Collaborative Filtering · v1",
+          "url": "https://arxiv.org/pdf/1802.05814v1",
+          "note": "첫 페이지의 저자·소속과 §2의 모델. Netflix: Liang·Jebara, MIT: Krishnan, Google AI: Hoffman."
+        },
+        {
+          "title": "arXiv · 제출 이력",
+          "url": "https://arxiv.org/abs/1802.05814",
+          "note": "최초 제출일 2018-02-16."
+        }
+      ],
+      "caveat": "회사 공동연구의 기록이며 모든 저자가 Netflix 직원인 것은 아니다. 논문의 실험 결과를 Netflix 서비스 전체에 적용된 효과로 일반화하지 않는다."
+    },
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "Ko-Jen Hsiao",
+        "Yesu Feng",
+        "Sudarshan Lamkhede"
+      ],
+      "workIds": [],
+      "id": "netflix-recommendation-foundation-2025",
+      "date": "2025-03-21",
+      "year": 2025,
+      "dateLabel": "2025.03.21 · 공식 기술 글",
+      "precision": "day",
+      "type": "research",
+      "title": "추천 기반 모델: 공통의 선호 학습을 여러 과제에 전달하다",
+      "question": "추천 모델마다 이용자의 취향을 처음부터 따로 배워야 할까?",
+      "idea": "시간순 상호작용을 토큰의 연속으로 만들고 다음 상호작용 예측으로 공통 표현을 학습한다. 학습한 가중치와 임베딩을 여러 추천 모델에 전달해, 각각 독립적으로 학습하던 선호 정보를 공유하려는 발상이다.",
+      "change": "Netflix의 기술 글은 행동 토큰화, 긴 이력과 지연 시간의 절충, 후속 모델로의 가중치·임베딩 전달을 설명한다. 언어모델의 학습 방식을 추천의 목적과 서비스 제약에 맞춰 바꾸는 과정을 볼 수 있다.",
+      "flow": [
+        {
+          "label": "상호작용 이력",
+          "note": "연속된 행동을 의미 있는 사건 토큰으로 묶는다."
+        },
+        {
+          "label": "다음 사건 예측",
+          "note": "시점과 콘텐츠 정보를 함께 보며 선호 표현을 학습한다."
+        },
+        {
+          "label": "공통 표현",
+          "note": "가중치·이용자 및 항목 임베딩을 만든다."
+        },
+        {
+          "label": "여러 추천 과제",
+          "note": "공유된 표현을 후속 추천 모델에 전달한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Netflix TechBlog · Foundation Model for Personalized Recommendation",
+          "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
+          "note": "2025-03-21. Motivation, Data, Model Objective, Downstream Applications."
+        }
+      ],
+      "caveat": "공식 기술 설명의 범위를 기록한다. 글 저자를 시스템 전체의 단독 발명자로 표현하거나 모델의 최신 판본·모든 서비스 적용 범위를 추정하지 않는다."
+    }
+  ],
+  "orgAliases": [
+    "Netflix",
+    "넷플릭스"
+  ],
+  "logo": {
+    "src": "assets/company-logos/netflix.png",
+    "label": "Netflix",
+    "width": 512,
+    "height": 215,
+    "background": "#ffffff",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Netflix_Logomark.png",
+    "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Netflix_Logomark.png",
+    "sha256": "e85e74b3f75574db1eebdb0445ff83d1a102a096dca839a90f695fdc8591fa7e",
+    "rightsNote": "Commons 파일 설명은 공식 Netflix 브랜드 사이트에서 가져온 워드마크라고 기록하고 PD-textlogo 및 상표권 주석을 제공한다. 공식 브랜드 사이트는 JavaScript 화면으로 전체 약관을 확인하지 못했다. 별도 다운로드 동의·허가 신청은 수행하지 않았으며 일반 상업 사용 허가를 뜻하지 않는다.",
+    "variantNote": "빨간 NETFLIX 워드마크 PNG를 Pillow LANCZOS로 비율 유지 축소했다. N 심볼이나 임의 재색상판이 아니다.",
+    "checkedAt": "2026-11-17T08:08:10.812989+00:00",
+    "usageUrl": "https://brand.netflix.com/en/assets/logos/"
+  }
+}

@@ -74,6 +74,7 @@
     if(p.roles?.length){const roles=node('div','person-roles');for(const role of p.roles)roles.append(node('span','',role));info.append(roles);}
     const period=node('div','person-period');period.append(node('span','mono',p.works[0].year+' — '+p.works.at(-1).year),node('span','',p.works.length+'개의 대표 기록'));info.append(period);
     hero.append(visual,info);panel.append(hero);
+    window.AtlasCompanies?.appendPersonLinks(panel,p.id);
     if(window.AtlasPersonGraph?.has(p.id)){const b=node('button','person-graph-link','이 인물의 관계도 보기 ↗');b.type='button';b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('atlas:open-graph',{detail:{personId:p.id}})));panel.append(b);}
     if(portraitFor(p))window.AtlasPortraits.appendCredit(panel,p,{className:'person-photo-credit'});
     const jumps=node('nav','person-year-nav');jumps.setAttribute('aria-label',(p.nameKo||p.name)+'의 연도별 기록 바로가기');

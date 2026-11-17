@@ -1,0 +1,283 @@
+{
+  "id": "nvidia",
+  "name": "NVIDIA",
+  "nameKo": "엔비디아",
+  "aliases": [
+    "Nvidia",
+    "CUDA",
+    "GPU",
+    "엔비디아"
+  ],
+  "kind": "company",
+  "sector": "GPU·병렬 계산·AI 인프라",
+  "accent": "#668d4c",
+  "summary": "그래픽스 계산의 병렬성을 범용 프로그램에 열고, 신경망 학습과 기업 AI의 계산 기반으로 넓힌 흐름입니다.",
+  "question": "수많은 신경망 연산을 어떤 하드웨어와 소프트웨어로 감당할까?",
+  "overview": [
+    "GPU는 많은 수의 비슷한 산술을 동시에 처리하는 계산 장치입니다. CUDA는 그 병렬성을 개발자가 프로그램으로 사용할 수 있게 한 플랫폼입니다.",
+    "회사와 칩의 기록, 외부 연구진의 논문, 기업 협력은 서로 다른 기여입니다. AlexNet의 연구 저자와 NVIDIA의 계산 기반 역할을 구분합니다."
+  ],
+  "people": [
+    {
+      "id": "jensen-huang",
+      "name": "Jensen Huang",
+      "role": "공동창업·기업 운영",
+      "note": "공식 연혁의 공동창업자입니다. CUDA 전체나 모든 신경망 이론의 단독 발명자로 표시하지 않습니다."
+    },
+    {
+      "id": "alex-krizhevsky",
+      "name": "Alex Krizhevsky",
+      "role": "GPU를 사용한 외부 연구 연결",
+      "note": "2012년 Toronto의 AlexNet 공동저자."
+    },
+    {
+      "id": "alex-karp",
+      "name": "Alex Karp",
+      "role": "Palantir 협력 회사 연결",
+      "note": "2025년 협력은 회사 간 제품·운영 기반 관계입니다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "google",
+      "type": "infrastructure",
+      "label": "Toronto AlexNet의 GPU 사용",
+      "date": "2012",
+      "note": "DNNresearch 이전의 외부 학술 연구로 연결합니다."
+    },
+    {
+      "companyId": "palantir",
+      "type": "partnership",
+      "label": "운영 AI 기술 결합 발표",
+      "date": "2025-10-28",
+      "note": "NVIDIA 계산·모델과 Palantir Ontology의 협력 발표."
+    },
+    {
+      "companyId": "openai",
+      "type": "infrastructure",
+      "label": "Stargate 초기 기술 파트너",
+      "date": "2025-01-21",
+      "note": "OpenAI의 프로젝트 발표에서 초기 기술 파트너로 명시."
+    }
+  ],
+  "events": [
+    {
+      "id": "nvidia-foundation-1993",
+      "date": "1993-04-05",
+      "year": 1993,
+      "dateLabel": "1993-04-05",
+      "precision": "day",
+      "type": "organization",
+      "title": "3D 그래픽스를 위한 NVIDIA 설립",
+      "question": "많은 그래픽스 계산을 전용 장치로 처리할 수 있을까?",
+      "idea": "Jensen Huang·Chris Malachowsky·Curtis Priem은 게임과 멀티미디어의 3D 그래픽스를 목표로 NVIDIA를 설립했습니다. 같은 산술을 많은 데이터에 적용하는 계산 기반의 출발점으로 읽습니다.",
+      "change": "후일 AI 학습에 사용될 GPU 플랫폼의 조직적 출발입니다. 1993년 설립 자체를 당시의 딥러닝 제품 출시로 설명하지 않습니다.",
+      "flow": [
+        {
+          "label": "3D 장면",
+          "note": "여러 점·픽셀의 계산"
+        },
+        {
+          "label": "그래픽스 시장",
+          "note": "게임·멀티미디어 수요"
+        },
+        {
+          "label": "공동창업",
+          "note": "세 창업자의 회사 설립"
+        },
+        {
+          "label": "계산 플랫폼",
+          "note": "이후 GPU·CUDA의 기반"
+        }
+      ],
+      "peopleIds": [
+        "jensen-huang"
+      ],
+      "peopleNames": [
+        "Jensen Huang",
+        "Chris Malachowsky",
+        "Curtis Priem"
+      ],
+      "workIds": [
+        "huang-nvidia-1993"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · 공식 연혁",
+          "url": "https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/",
+          "note": "1993년 항목의 설립일과 창업자."
+        }
+      ],
+      "caveat": "출발 당시 시장은 3D 그래픽스입니다. 이후 AI 용도를 설립 시점에 거꾸로 적용하지 않습니다."
+    },
+    {
+      "id": "nvidia-cuda-2006",
+      "date": "2006",
+      "year": 2006,
+      "dateLabel": "2006 · CUDA 아키텍처 공개",
+      "precision": "year",
+      "type": "tools",
+      "title": "CUDA: GPU를 범용 병렬 계산에 열다",
+      "question": "그래픽스용 장치에서 신경망의 수많은 곱셈·덧셈도 실행할 수 있을까?",
+      "idea": "CUDA의 프로그래밍 모델은 일을 여러 스레드와 블록으로 나누어 GPU에 맡깁니다. 학습에서 반복하는 행렬곱과 기울기 계산을 병렬로 배치할 수 있는 소프트웨어 경로를 제공합니다.",
+      "change": "개발자는 GPU를 그리는 장치에 더해 과학·연구의 계산 장치로 사용할 수 있게 됩니다. 이후 연산·통신 라이브러리는 더 큰 학습을 지원합니다.",
+      "flow": [
+        {
+          "label": "계산 문제",
+          "note": "반복 산술을 분해"
+        },
+        {
+          "label": "CUDA 커널",
+          "note": "각 스레드가 할 일"
+        },
+        {
+          "label": "GPU 병렬 실행",
+          "note": "많은 입력을 나누어 계산"
+        },
+        {
+          "label": "학습 반복",
+          "note": "순전파·기울기·갱신"
+        }
+      ],
+      "peopleIds": [
+        "jensen-huang"
+      ],
+      "peopleNames": [
+        "NVIDIA 개발·연구팀"
+      ],
+      "workIds": [
+        "huang-cuda-2006"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · 2006 CUDA 아키텍처 공개",
+          "url": "https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/"
+        },
+        {
+          "title": "CUDA Programming Guide · 프로그래밍 모델",
+          "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+          "note": "현재 문서는 개념을 설명하며 2006년 문서의 모든 기능을 뜻하지 않음."
+        }
+      ],
+      "caveat": "2006년 아키텍처 공개와 2007년 초기 SDK·가이드를 구분합니다. 도식은 GPU 성능을 측정한 결과가 아닙니다."
+    },
+    {
+      "id": "nvidia-alexnet-compute-2012",
+      "date": "2012",
+      "year": 2012,
+      "dateLabel": "2012",
+      "precision": "year",
+      "type": "infrastructure",
+      "title": "AlexNet: 시각 학습을 감당한 GPU 계산",
+      "question": "많은 이미지로 깊은 신경망을 반복 학습하려면 계산을 어떻게 나눌까?",
+      "idea": "AlexNet 원논문은 두 GPU에 모델의 일부 계산을 나누고 필요한 층에서 통신하는 구성을 설명합니다. GPU는 표현 학습의 오차 계산과 연결값 갱신을 반복할 계산 기반으로 작동했습니다.",
+      "change": "시각 표현의 연구 아이디어와 병렬 계산의 실현 조건을 함께 볼 수 있는 사례입니다. 외부 연구 성과와 기반 공급의 역할을 나눠 연결합니다.",
+      "flow": [
+        {
+          "label": "ImageNet 사례",
+          "note": "큰 이미지 데이터"
+        },
+        {
+          "label": "합성곱망",
+          "note": "학습할 내부 표현"
+        },
+        {
+          "label": "두 GPU",
+          "note": "계산·메모리를 분담"
+        },
+        {
+          "label": "학습 결과",
+          "note": "연구 논문의 조건에서 평가"
+        }
+      ],
+      "peopleIds": [
+        "alex-krizhevsky",
+        "ilya-sutskever",
+        "geoffrey-hinton"
+      ],
+      "peopleNames": [
+        "Alex Krizhevsky",
+        "Ilya Sutskever",
+        "Geoffrey Hinton"
+      ],
+      "workIds": [
+        "alexnet"
+      ],
+      "sources": [
+        {
+          "title": "AlexNet · 2012 원문",
+          "url": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+          "note": "§3.2 및 Fig.2의 두 GPU 분담."
+        }
+      ],
+      "caveat": "GPU 사용이 모든 신경망의 성능 향상을 자동 보장하는 것은 아닙니다. AlexNet 논문 저자는 NVIDIA가 아니라 당시 Toronto 소속 연구자입니다."
+    },
+    {
+      "id": "nvidia-palantir-2025",
+      "date": "2025-10-28",
+      "year": 2025,
+      "dateLabel": "2025-10-28",
+      "precision": "day",
+      "type": "partnership",
+      "title": "Palantir와 운영 AI 기술 결합 발표",
+      "question": "학습·추론 계산이 기업의 실제 객체와 의사결정에 어떻게 연결될까?",
+      "idea": "공식 발표는 NVIDIA의 가속 계산·CUDA-X 라이브러리·Nemotron 모델을 Palantir의 Ontology와 결합한다고 설명합니다. 계산과 모델을 업무의 객체·관계·동작에 연결하려는 회사 간 협력입니다.",
+      "change": "칩이나 모델의 공개에서 기업 데이터와 운영 흐름을 함께 다루는 관계로 확장됩니다.",
+      "flow": [
+        {
+          "label": "NVIDIA 기반",
+          "note": "가속 계산·라이브러리·모델"
+        },
+        {
+          "label": "Palantir Ontology",
+          "note": "업무 객체·관계"
+        },
+        {
+          "label": "AI 작업 흐름",
+          "note": "모델과 업무 맥락의 결합"
+        },
+        {
+          "label": "운영 판단",
+          "note": "권한·업무 조건 속 사용"
+        }
+      ],
+      "peopleIds": [
+        "jensen-huang",
+        "alex-karp"
+      ],
+      "peopleNames": [
+        "NVIDIA·Palantir 제품 개발팀"
+      ],
+      "workIds": [
+        "huang-cuda-2006",
+        "karp-aip-2023"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · Palantir 협력 공식 발표",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-palantir-ai-enterprise-data-intelligence",
+          "note": "2025-10-28. 회사가 발표한 결합 범위."
+        }
+      ],
+      "caveat": "협력 발표와 독립적인 현장 성능 검증을 구분합니다. 특정 고객의 조건을 모든 기업의 효과로 일반화하지 않습니다."
+    }
+  ],
+  "orgAliases": [
+    "엔비디아",
+    "NVIDIA"
+  ],
+  "logo": {
+    "src": "assets/company-logos/nvidia.png",
+    "label": "NVIDIA",
+    "width": 512,
+    "height": 429,
+    "background": "#ffffff",
+    "sourcePage": "https://nvidianews.nvidia.com/file/nvidia-logo-vert-blk?action=",
+    "assetUrl": "https://nvidianews.nvidia.com/_gallery/get_file/?file_id=692f50553d6332b453bbc5c2",
+    "sha256": "e99e872bce85bbcd7a7d31f10b03044ffbbb97859b05e2cacc2ea105785e677c",
+    "rightsNote": "공식 지침은 서면 승인, 최소 크기·여백·색·대비, 제휴 오인 방지 등을 설명한다. 일반 자유 라이선스라고 표시하지 않는다. 뉴스룸 공식 원본을 보존했으며 공개 사용 범위는 해당 지침을 따로 대조해야 한다.",
+    "variantNote": "NVIDIA Newsroom의 녹색·검정 세로 결합 로고. 심벌과 워드마크를 분리하지 않고 공식 원본의 여백·비율을 유지했다.",
+    "checkedAt": "2026-11-17",
+    "usageUrl": "https://www.nvidia.com/en-us/about-nvidia/legal-info/logo-brand-usage/"
+  }
+}

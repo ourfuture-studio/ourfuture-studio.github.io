@@ -1,0 +1,235 @@
+{
+  "id": "xai",
+  "name": "xAI",
+  "nameKo": "xAI · Grok",
+  "aliases": [
+    "Grok",
+    "그록",
+    "일론 머스크",
+    "Colossus",
+    "콜로서스"
+  ],
+  "kind": "company",
+  "sector": "언어모델·GPU 인프라",
+  "accent": "#566578",
+  "summary": "Grok의 모델 학습과 대규모 GPU 계산 기반, 응답 서비스를 연결한다.",
+  "question": "GPU가 함께 계산해 만든 가중치는 어떻게 사용자의 질문에 답하는 서비스로 이어질까?",
+  "overview": [
+    "대규모 사전학습은 모델의 연결값을 바꾸는 단계이고, 서비스는 학습한 가중치와 도구를 사용해 요청마다 답을 생성하는 단계다. Colossus의 GPU·네트워크와 Grok의 응답을 이 두 단계로 나누어 읽는다.",
+    "2026년에는 SpaceX가 xAI를 인수했다는 공식 공지가 나왔다. 과거 xAI의 모델 공개와 이후 조직 변화는 다른 사건으로 기록한다."
+  ],
+  "people": [
+    {
+      "id": "elon-musk",
+      "name": "Elon Musk",
+      "role": "기업·계산 기반 연결",
+      "note": "기업 리더의 역할과 모델을 연구·개발한 xAI 팀의 기여를 구분한다."
+    }
+  ],
+  "connections": [
+    {
+      "companyId": "nvidia",
+      "type": "infrastructure",
+      "label": "GPU·네트워크 기반",
+      "date": "2024-10-28",
+      "note": "NVIDIA의 Colossus 발표는 Hopper GPU와 Spectrum-X 네트워크 사용을 설명한다. 공급·계산 기반과 논문 공동저자 관계는 다르다."
+    }
+  ],
+  "events": [
+    {
+      "id": "xai-grok-announcement-2023",
+      "date": "2023-11-03",
+      "year": 2023,
+      "dateLabel": "2023.11.03 · 공식 소개 글",
+      "precision": "day",
+      "type": "product",
+      "title": "Grok: 학습한 언어모델을 대화 서비스로 연결하다",
+      "question": "텍스트를 예측하며 학습한 모델을 어떻게 사용자와 상호작용하는 도구로 만들 수 있을까?",
+      "idea": "초기 Grok 소개는 Grok-1 언어모델과 사용자 피드백을 받는 대화형 베타를 함께 설명했다. 학습된 지식과 X를 통한 최신 정보 접근은 서로 다른 경로다. 모델이 이미 가진 가중치와 서비스가 추가로 참고하는 정보를 나누어 볼 필요가 있다.",
+      "change": "언어모델 개발이 사용자의 질문·피드백을 받는 제품으로 이어졌다. 초기 베타를 현재 Grok의 모든 도구·성능과 같은 것으로 취급하지 않는다.",
+      "flow": [
+        {
+          "label": "모델 학습",
+          "note": "대규모 텍스트 경험으로 가중치를 만든다."
+        },
+        {
+          "label": "사용자 질문",
+          "note": "서비스가 대화 문맥을 구성한다."
+        },
+        {
+          "label": "응답·피드백",
+          "note": "모델의 출력과 이용자 반응을 제품 개선으로 연결한다."
+        }
+      ],
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "xAI Team"
+      ],
+      "workIds": [
+        "musk-grok-2023"
+      ],
+      "sources": [
+        {
+          "title": "xAI · Announcing Grok",
+          "url": "https://x.ai/news/grok",
+          "note": "현재 공식 페이지의 표기일 2023-11-03. 초기 베타와 Grok-1 개발 설명."
+        }
+      ],
+      "caveat": "공식 페이지에 표시된 날짜를 사용했다. 최신 정보 접근이 항상 정확한 답을 보장하지 않으며, 초기 소개의 수치를 현재 서비스 전체의 성능으로 쓰지 않는다."
+    },
+    {
+      "id": "xai-colossus-network-2024",
+      "date": "2024-10-28",
+      "year": 2024,
+      "dateLabel": "2024.10.28 · NVIDIA 발표",
+      "precision": "day",
+      "type": "infrastructure",
+      "title": "Colossus: 많은 GPU를 하나의 학습 작업으로 묶다",
+      "question": "모델이 여러 GPU에 나뉘어 있을 때 계산 결과를 충분히 빠르게 주고받을 수 있을까?",
+      "idea": "큰 모델의 학습은 행렬 계산뿐 아니라 GPU 사이에서 표현·기울기 등을 옮기는 통신도 필요하다. NVIDIA의 공식 발표는 xAI Colossus에 Hopper GPU와 Spectrum-X Ethernet이 사용됐다고 설명한다. 계산 장치와 네트워크를 함께 설계하는 이유를 보여 주는 사례다.",
+      "change": "인프라 기록이 Grok 모델 학습과 직접 연결된다. 많은 GPU가 존재한다는 사실과 그 GPU에서 어떤 모델을 어떤 예산으로 학습했는지는 따로 기록해야 한다.",
+      "flow": [
+        {
+          "label": "학습 작업 분할",
+          "note": "모델·자료의 계산을 여러 장치에 나눈다."
+        },
+        {
+          "label": "GPU 병렬 계산",
+          "note": "각 장치가 맡은 행렬 연산을 수행한다."
+        },
+        {
+          "label": "네트워크 통신",
+          "note": "분산된 계산에 필요한 정보를 주고받는다."
+        },
+        {
+          "label": "가중치 갱신",
+          "note": "반복 학습으로 모델의 매개변수를 바꾼다."
+        }
+      ],
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "xAI·NVIDIA 엔지니어링 팀"
+      ],
+      "workIds": [
+        "musk-grok-2023"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · xAI Colossus와 Spectrum-X",
+          "url": "https://nvidianews.nvidia.com/news/spectrum-x-ethernet-networking-xai-colossus/",
+          "note": "2024-10-28 발표. GPU·통신 기반과 Grok 학습 용도를 확인했다."
+        }
+      ],
+      "caveat": "공급사가 발표한 인프라 설명이다. 홍보성 최고·최대 표현을 독립적인 비교 결론으로 사용하지 않으며, 발표일을 전체 시설의 최초 가동일로 대신하지 않는다."
+    },
+    {
+      "id": "xai-grok3-beta-2025",
+      "date": "2025-02-19",
+      "year": 2025,
+      "dateLabel": "2025.02.19 · 공식 Beta 소개",
+      "precision": "day",
+      "type": "research",
+      "title": "Grok 3: 학습 계산과 응답 시 추론을 구분하다",
+      "question": "사전학습의 지식 위에, 답을 내기 전 문제 해결에 더 많은 계산을 쓰도록 학습할 수 있을까?",
+      "idea": "Grok 3 공식 글은 Colossus에서의 학습과 강화학습을 통한 추론 행동을 설명한다. 학습 때 가중치를 바꾸는 계산과, 요청마다 여러 단계를 생성하며 답을 찾는 계산을 별도 축으로 다룬다.",
+      "change": "Grok 3와 mini의 추론 Beta가 소개됐다. 계산 기반의 확대가 제품의 응답 방식으로 어떻게 이어지는지 기존 머스크 카드에서 학습·서비스 두 단계로 볼 수 있다.",
+      "flow": [
+        {
+          "label": "사전학습 지식",
+          "note": "이미 학습한 언어·문제 경험을 사용한다."
+        },
+        {
+          "label": "추론 사후학습",
+          "note": "보상으로 문제 해결 행동을 조정한다."
+        },
+        {
+          "label": "응답 시 계산",
+          "note": "요청마다 풀이를 생성하고 대안을 살핀다."
+        },
+        {
+          "label": "최종 응답",
+          "note": "사용자에게 답을 전달한다."
+        }
+      ],
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "xAI 연구팀"
+      ],
+      "workIds": [
+        "musk-grok-2023"
+      ],
+      "sources": [
+        {
+          "title": "xAI · Grok 3 Beta",
+          "url": "https://x.ai/news/grok-3",
+          "note": "공식 글 표기일 2025-02-19. Colossus 학습과 Test-time Compute 설명."
+        }
+      ],
+      "caveat": "회사가 공개한 Beta 설명이다. 제한된 벤치마크를 모든 실제 과제의 우수성으로 일반화하지 않으며, 풀이 생성과 사실 검증은 같은 과정이 아니다."
+    },
+    {
+      "id": "xai-spacex-acquisition-2026",
+      "date": "2026-02-02",
+      "year": 2026,
+      "dateLabel": "2026.02.02 · 조직 변화 공지",
+      "precision": "day",
+      "type": "organization",
+      "title": "xAI의 SpaceX 합류: 모델 역사와 조직 역사를 나누다",
+      "question": "모델을 개발한 조직의 소유 관계가 바뀌면 과거 연구와 앞으로의 계산 기반을 어떻게 구분해 읽어야 할까?",
+      "idea": "공식 공지는 SpaceX가 xAI를 인수했다고 밝혔다. 모델의 원리나 성능을 새로 제안한 논문과 달리, 연구·제품을 운영하는 기업 관계가 달라진 사건이다.",
+      "change": "xAI의 과거 모델·인프라 기록 뒤에 조직 변화의 시점을 추가했다. 인수 공지만으로 통합 이후의 모든 계획이나 성능 향상이 실행됐다고 표시하지 않는다.",
+      "flow": [
+        {
+          "label": "기존 xAI 기록",
+          "note": "Grok과 Colossus의 당시 사건을 보존한다."
+        },
+        {
+          "label": "인수 공지",
+          "note": "2026년의 소유·조직 변화를 기록한다."
+        },
+        {
+          "label": "후속 기록 분리",
+          "note": "계획·발표·실제 제공을 각 출처로 구분한다."
+        }
+      ],
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [],
+      "workIds": [
+        "musk-xai-spacex-2026"
+      ],
+      "sources": [
+        {
+          "title": "xAI joins SpaceX",
+          "url": "https://x.ai/news/xai-joins-spacex",
+          "note": "2026-02-02. 인수 사실을 밝힌 공식 짧은 공지."
+        }
+      ],
+      "caveat": "조직 변화 기록이며 새로운 학습 알고리즘의 성과가 아니다. SpaceX는 이번 회사 탐색 목록에 별도 카드가 없어 인물의 기존 상세 기록으로 연결한다."
+    }
+  ],
+  "orgAliases": [
+    "xAI",
+    "엑스에이아이"
+  ],
+  "logo": {
+    "src": "assets/company-logos/xai.png",
+    "label": "xAI",
+    "width": 512,
+    "height": 512,
+    "background": "#ffffff",
+    "sourcePage": "https://x.ai/",
+    "assetUrl": "https://data.x.ai/logos/xAI_Grok_Assets.zip",
+    "sha256": "8d50194137aafc721131c52c4b5fb6ef8c810fc037436130328b8b6afaf9cf8a",
+    "rightsNote": "xAI의 공식 data.x.ai 배포 ZIP에서 추출한 xAI_Logomark_Dark.svg. ZIP에 별도 라이선스나 로고 사용조건 문서는 포함되어 있지 않았다. 공식 자산 제공이 모든 상업적 재배포 허용을 뜻한다고 해석하지 않았다.",
+    "variantNote": "역사 연표의 xAI 명칭에 대응하는 공식 xAI 심볼. 현재 xai-org 프로필의 SpaceX형 심볼과 구분해 공식 배포 패키지의 원형을 선택했다. @resvg/resvg-js 2.6.2로 512px PNG 변환; 색상·경로·비율·투명도와 원본 SVG를 수정하지 않았다.",
+    "checkedAt": "2026-11-17"
+  }
+}

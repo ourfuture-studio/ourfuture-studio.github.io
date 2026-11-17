@@ -1,0 +1,207 @@
+{
+  "id": "meta",
+  "name": "Meta",
+  "nameKo": "메타",
+  "aliases": [
+    "Facebook",
+    "페이스북",
+    "FAIR",
+    "LLaMA",
+    "라마"
+  ],
+  "kind": "company",
+  "sector": "기초연구·언어모델",
+  "accent": "#5479c8",
+  "summary": "FAIR의 기초연구에서 언어모델 공개, 데이터와 연구 조직의 연결까지.",
+  "question": "회사는 장기적인 AI 연구와 모델 개발의 기반을 어떻게 만들었을까?",
+  "overview": [
+    "2013년 당시 Facebook은 FAIR를 출범시켰다. 기초연구 조직, 개별 논문, 공개 모델, 데이터·인력의 조직 변화를 각각의 기록으로 읽는다.",
+    "회사 브랜드는 2021년 Meta로 바뀌었다. 과거 Facebook의 사건과 후속 Meta의 사건을 연결하되, 현재 소속과 모델 판본을 과거 기록에 덧씌우지 않는다."
+  ],
+  "people": [
+    {
+      "id": "yann-lecun",
+      "name": "Yann LeCun",
+      "role": "FAIR 출범 당시 연구 책임자",
+      "note": "FAIR의 조직 역할과 개별 LLaMA 논문의 저자 역할을 구분한다."
+    },
+    {
+      "id": "alexandr-wang",
+      "name": "Alexandr Wang",
+      "role": "2025년 Meta 합류 발표",
+      "note": "Scale의 2025-06-12 발표에 따른 역할이다."
+    },
+    {
+      "name": "Hugo Touvron",
+      "role": "LLaMA 공동저자",
+      "note": "2023년 원논문 당시 Meta AI 소속."
+    },
+    {
+      "name": "Guillaume Lample",
+      "role": "LLaMA 공동저자",
+      "note": "2023년 원논문 당시 Meta AI 소속."
+    }
+  ],
+  "connections": [],
+  "events": [
+    {
+      "peopleIds": [
+        "yann-lecun"
+      ],
+      "peopleNames": [
+        "Yann LeCun",
+        "Mark Zuckerberg"
+      ],
+      "workIds": [],
+      "id": "meta-fair-2013",
+      "date": "2013",
+      "year": 2013,
+      "dateLabel": "2013년 말 · 당시 Facebook",
+      "precision": "year",
+      "type": "organization",
+      "title": "FAIR: 회사 안에 AI 기초연구 조직을 두다",
+      "question": "당장의 제품 과제를 넘어 AI의 기본 문제를 계속 연구할 수 있을까?",
+      "idea": "Facebook은 장기적인 AI 기초연구를 수행할 조직을 만들었다. 연구자가 논문과 공개 연구를 축적하는 기반을 마련한 사건이며, 특정 신경망 하나의 발명과는 다른 조직의 변화다.",
+      "change": "FAIR의 10주년 공식 회고는 2013년 말 출범과 LeCun의 연구 책임자 역할을 설명한다. 이후 연구 결과를 제품과 연결할 수 있는 연구 조직의 출발점으로 읽는다.",
+      "flow": [
+        {
+          "label": "연구 질문",
+          "note": "AI의 기본 원리와 학습 문제를 연구한다."
+        },
+        {
+          "label": "FAIR 조직",
+          "note": "연구자와 장기 연구를 수행할 기반을 모은다."
+        },
+        {
+          "label": "논문·공개 연구",
+          "note": "후속 연구자가 비교하고 이어 갈 결과를 축적한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Meta · FAIR 10주년 공식 회고",
+          "url": "https://ai.meta.com/blog/fair-10-year-anniversary-open-science-meta/",
+          "note": "2023-11-30 회고의 The past decade. 출범 시기는 2013년 말로 기술한다."
+        },
+        {
+          "title": "Meta · 2021년 회사 브랜드 변경 발표",
+          "url": "https://about.fb.com/news/2021/10/facebook-company-is-now-meta/",
+          "note": "개요의 이름 변경 근거. 발표일 2021-10-28과 후속 갱신일을 구분한다. 2013년 조직 이름은 Facebook이다."
+        }
+      ],
+      "caveat": "2013년의 회사 이름은 Facebook이다. 연구 조직의 출범을 특정 모델의 성능 향상이나 모든 후속 연구의 단독 기원으로 해석하지 않는다."
+    },
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "Hugo Touvron",
+        "Guillaume Lample"
+      ],
+      "workIds": [],
+      "id": "meta-llama-2023",
+      "date": "2023-02-24",
+      "year": 2023,
+      "dateLabel": "2023.02.24 공식 발표 · 02.27 원고 제출",
+      "precision": "day",
+      "type": "research",
+      "title": "LLaMA: 더 작은 모델을 더 많은 토큰으로 학습하다",
+      "question": "연구자가 다룰 수 있는 계산 규모에서도 언어모델을 연구할 수 있을까?",
+      "idea": "매개변수 수를 늘리는 것과 함께 학습 토큰 수와 추론 비용을 고려한다. 다음 토큰을 예측하는 사전학습으로 언어 표현을 배우고, 여러 크기의 모델을 제공해 연구자가 후속 학습과 평가를 수행하게 하려 했다.",
+      "change": "공식 발표는 7B부터 65B까지의 모델과 모델 카드를 소개했다. 모델을 사용해 볼 수 있는 접근 경로를 연구 공동체에 제공한 변화이며, 당시에는 연구 목적 비상업 라이선스와 신청 절차가 있었다.",
+      "flow": [
+        {
+          "label": "학습 텍스트",
+          "note": "여러 언어의 텍스트를 토큰으로 바꾼다."
+        },
+        {
+          "label": "다음 토큰 예측",
+          "note": "토큰 사이의 문맥을 표현하도록 가중치를 학습한다."
+        },
+        {
+          "label": "크기가 다른 모델",
+          "note": "매개변수 수와 학습량·추론 비용을 함께 비교한다."
+        },
+        {
+          "label": "후속 연구",
+          "note": "공개 조건에 따라 평가·미세조정·한계 연구로 이어 간다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Meta · Introducing LLaMA",
+          "url": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
+          "note": "2023-02-24 발표. 모델 크기, 다음 단어 예측, 연구 목적 비상업 접근 조건."
+        },
+        {
+          "title": "LLaMA · 최초 원논문",
+          "url": "https://arxiv.org/pdf/2302.13971",
+          "note": "원논문 첫 페이지의 공동저자와 Meta AI 소속. arXiv 제출은 2023-02-27."
+        }
+      ],
+      "caveat": "첫 LLaMA의 사용 조건을 이후 Llama 판본과 섞지 않는다. 모델 공개만으로 모든 연구자의 자유로운 상업 이용이나 독립적인 현장 효과가 입증된 것은 아니다."
+    },
+    {
+      "peopleIds": [
+        "alexandr-wang"
+      ],
+      "peopleNames": [
+        "Alexandr Wang"
+      ],
+      "workIds": [
+        "wang-meta-2025"
+      ],
+      "id": "meta-wang-2025",
+      "date": "2025-06-12",
+      "year": 2025,
+      "dateLabel": "2025.06.12 · Scale의 공식 발표",
+      "precision": "day",
+      "type": "organization",
+      "title": "데이터 공급 관계와 연구자의 이동을 연결하다",
+      "question": "모델을 개발하는 조직과 학습 데이터를 준비하는 조직은 어떻게 이어질까?",
+      "idea": "모델 구조만으로 AI 개발이 끝나지는 않는다. 데이터 준비·평가를 맡는 회사와 연구 조직의 협력, 이를 이끄는 사람의 이동을 별도 관계로 표현하면 기술과 개발 기반을 함께 볼 수 있다.",
+      "change": "Scale은 Meta의 소수지분 투자와 상업 관계 확대, 설립자 Alexandr Wang의 Meta 합류를 발표했다. 회사의 독립성, 이사회 역할, 인물의 합류를 서로 다른 조직 사실로 나누어 기록한다.",
+      "flow": [
+        {
+          "label": "데이터 준비",
+          "note": "Scale의 데이터 솔루션을 연구·개발에 연결한다."
+        },
+        {
+          "label": "회사 간 관계",
+          "note": "투자와 상업 관계 확대를 구분한다."
+        },
+        {
+          "label": "인물 이동",
+          "note": "Wang의 Meta 합류 발표를 시점과 함께 기록한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scale · Next Phase of Company Evolution",
+          "url": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution",
+          "note": "2025-06-12 본문. 소수지분 투자, 상업 관계 확대, Wang 합류와 Scale 이사회 잔류."
+        }
+      ],
+      "caveat": "투자·합류 발표는 조직 기록이다. 이 사건만으로 특정 Meta 모델의 개발 기여나 성능 향상을 Wang 개인에게 귀속하지 않는다."
+    }
+  ],
+  "orgAliases": [
+    "Meta",
+    "메타",
+    "Facebook",
+    "페이스북"
+  ],
+  "logo": {
+    "src": "assets/company-logos/meta.png",
+    "label": "Meta",
+    "width": 512,
+    "height": 103,
+    "background": "#ffffff",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg",
+    "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
+    "sha256": "306be28fce665b979eac0c4c486ba336be82cc091e819c0276d67ac2beeae994",
+    "rightsNote": "Commons는 단순 로고를 PD-textlogo로 분류하며 상표권은 별도라고 표시한다. Meta 공식 가이드(2026년 6월 갱신)는 모든 로고 사용에 승인을 요구한다. 별도 승인·패키지 약관 동의는 수행하지 않았다. 로컬 식별용 시안이며 무료 상업 재배포 허가를 확인한 것이 아니다.",
+    "variantNote": "파란 심볼과 검은 Meta 워드마크의 원본 조합. 2013년 Facebook 당시 로고라는 뜻이 아니다. SVG를 resvg로 PNG 변환했고 원본 형상·색상·가로세로비·투명도를 보존했다. 원본 가이드는 심볼 높이 최소 12px와 주변 clear space를 규정한다.",
+    "checkedAt": "2026-11-17T08:08:10.812014+00:00",
+    "usageUrl": "https://www.meta.com/brand/resources/meta/company-brand/"
+  }
+}

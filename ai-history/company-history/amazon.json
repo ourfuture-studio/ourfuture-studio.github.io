@@ -1,0 +1,203 @@
+{
+  "id": "amazon",
+  "name": "Amazon / AWS",
+  "nameKo": "아마존 / AWS",
+  "aliases": [
+    "아마존",
+    "AWS",
+    "SageMaker",
+    "DeepAR",
+    "DSSTNE",
+    "클라우드"
+  ],
+  "kind": "company",
+  "sector": "추천·예측·클라우드",
+  "accent": "#a97b44",
+  "summary": "희소한 추천 데이터를 GPU로 학습하고, 확률 예측 연구를 관리형 서비스로 제공하다.",
+  "question": "대규모 데이터의 학습과 예측을 다른 조직도 쓸 수 있는 기반으로 만들려면?",
+  "overview": [
+    "Amazon의 추천 연구와 AWS의 서비스 제공을 회사·조직·제품의 다른 층위로 나누어 읽는다. 학습 알고리즘, 데이터 처리, GPU 실행, 서비스 제공이 만나는 위치를 따라간다.",
+    "기술 글 게시일, 최초 논문 제출일, 서비스 제공 시작은 서로 다른 날짜다. 같은 DeepAR도 원고 판본과 제품 기록의 저자·기능·조건을 보존한다."
+  ],
+  "people": [
+    {
+      "name": "Kiuk Chung",
+      "role": "2016 DSSTNE·Spark 기술 글 저자",
+      "note": "당시 Amazon Personalization Software Development Engineer."
+    },
+    {
+      "name": "Valentin Flunkert",
+      "role": "DeepAR 최초 원고 공동저자",
+      "note": "2017 v1에서 Salinas와 동등 기여. Amazon Development Center Germany."
+    },
+    {
+      "name": "David Salinas",
+      "role": "DeepAR 최초 원고 공동저자",
+      "note": "2017 v1에서 Flunkert와 동등 기여. Amazon Development Center Germany."
+    },
+    {
+      "name": "Jan Gasthaus",
+      "role": "DeepAR 최초 원고 공동저자",
+      "note": "2017 v1의 Amazon Development Center Germany 소속."
+    }
+  ],
+  "connections": [],
+  "events": [
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "Kiuk Chung"
+      ],
+      "workIds": [],
+      "id": "amazon-dsstne-spark-2016",
+      "date": "2016-07-09",
+      "year": 2016,
+      "dateLabel": "2016.07.09 · 공식 구현 해설",
+      "precision": "day",
+      "type": "tools",
+      "title": "DSSTNE: 희소한 추천 데이터를 GPU 학습에 연결하다",
+      "question": "상품과 이용자는 많은데 관찰한 행동은 드문 데이터를 어떻게 학습할까?",
+      "idea": "희소한 이용자–상품 데이터와 큰 신경망을 여러 GPU에 분산해 추천을 학습한다. Spark의 CPU 데이터 처리와 별도 GPU 실행을 큰 학습·예측 작업 단위로 연결해, 한 도구에서 전체 작업을 조직하려 했다.",
+      "change": "공식 글은 Spark·EMR의 처리와 ECS의 GPU 작업 실행을 분리한 구성을 소개한다. 모델의 식뿐 아니라 데이터 준비와 실행 기반이 실제 추천 학습을 가능하게 하는 역할을 보여 준다.",
+      "flow": [
+        {
+          "label": "희소 데이터",
+          "note": "상품·이용자의 상호작용을 준비한다."
+        },
+        {
+          "label": "Spark 전처리",
+          "note": "CPU에서 학습·예측 입력을 생성한다."
+        },
+        {
+          "label": "GPU 작업",
+          "note": "별도 GPU 클러스터에서 신경망을 학습하고 예측한다."
+        },
+        {
+          "label": "추천 생성",
+          "note": "결과를 이용자별 추천에 연결한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS · Generating Recommendations with Spark and DSSTNE",
+          "url": "https://aws.amazon.com/blogs/big-data/generating-recommendations-at-amazon-scale-with-apache-spark-and-amazon-dsstne/",
+          "note": "2016-07-09 글. 작성자 역할, Architecture overview와 CPU/GPU 분리 구성."
+        }
+      ],
+      "caveat": "이 날짜는 기술 글의 게시일이며 DSSTNE 최초 공개일로 확정하지 않는다. 글 작성자를 전체 엔진의 단독 개발자로 표시하지 않는다."
+    },
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "Valentin Flunkert",
+        "David Salinas",
+        "Jan Gasthaus"
+      ],
+      "workIds": [],
+      "id": "amazon-deepar-2017",
+      "date": "2017-04-13",
+      "year": 2017,
+      "dateLabel": "2017.04.13 · 최초 원고 제출",
+      "precision": "day",
+      "type": "research",
+      "title": "DeepAR: 여러 시계열이 공통 패턴을 배우게 하다",
+      "question": "자료가 적은 상품의 미래 수요를 다른 상품의 이력과 함께 예측할 수 있을까?",
+      "idea": "관련된 여러 시계열로 하나의 자기회귀 RNN을 학습한다. 각 시계열의 과거와 관련 정보를 바탕으로 다음 값의 확률분포를 예측하고, 그 분포를 반복해 미래 경로의 불확실성까지 표현하려 했다.",
+      "change": "개별 시계열마다 별도의 모델을 맞추는 방식에서, 여러 시계열이 학습한 패턴을 공유하는 방식으로 범위를 넓힌다. 점 예측과 미래 분포의 차이도 함께 읽을 수 있다.",
+      "flow": [
+        {
+          "label": "관련 시계열",
+          "note": "상품·서버·가구 등 여러 대상의 이력을 모은다."
+        },
+        {
+          "label": "공유 RNN",
+          "note": "시계열 사이의 공통 패턴과 각 대상의 문맥을 학습한다."
+        },
+        {
+          "label": "확률분포",
+          "note": "다음 시점 값의 분포를 예측한다."
+        },
+        {
+          "label": "미래 경로",
+          "note": "예측을 이어 가며 여러 가능한 미래를 나타낸다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepAR · 최초 원고 v1",
+          "url": "https://arxiv.org/pdf/1704.04110v1",
+          "note": "첫 페이지 저자·당시 소속, §1–2의 여러 시계열 공동학습과 확률 예측."
+        },
+        {
+          "title": "arXiv · DeepAR 제출 이력",
+          "url": "https://arxiv.org/abs/1704.04110",
+          "note": "2017-04-13 최초 제출. 이후 원고 수정과 구분."
+        }
+      ],
+      "caveat": "2017년 최초 원고의 저자목록을 사용한다. Tim Januschowski가 포함된 2020년 저널판과 섞지 않으며 모든 예측 환경에서 같은 개선을 보장하지 않는다."
+    },
+    {
+      "peopleIds": [],
+      "peopleNames": [
+        "DeepAR 연구팀"
+      ],
+      "workIds": [],
+      "id": "amazon-sagemaker-deepar-2018",
+      "date": "2018-01-08",
+      "year": 2018,
+      "dateLabel": "2018.01.08 · SageMaker 제공 발표",
+      "precision": "day",
+      "type": "product",
+      "title": "DeepAR를 관리형 학습 서비스로 제공하다",
+      "question": "연구 알고리즘을 다른 개발자가 자기 데이터로 학습하게 하려면?",
+      "idea": "알고리즘 연구를 관리형 학습 환경의 기능으로 제공한다. 사용자는 관련 시계열 데이터를 준비하고, 서비스에 제공된 DeepAR 학습 기능을 통해 자기 문제의 예측 모델을 만들 수 있다.",
+      "change": "AWS는 2018-01-08 DeepAR의 SageMaker 제공을 발표했다. 논문 제출과 서비스 이용 가능성을 다른 사건으로 나누면 연구가 개발 도구로 이어지는 시점을 확인할 수 있다.",
+      "flow": [
+        {
+          "label": "자기 시계열",
+          "note": "사용자가 관련 이력을 준비한다."
+        },
+        {
+          "label": "SageMaker 학습",
+          "note": "제공된 DeepAR 알고리즘을 선택한다."
+        },
+        {
+          "label": "학습된 모델",
+          "note": "여러 시계열의 공통 정보를 반영한다."
+        },
+        {
+          "label": "예측 활용",
+          "note": "수요·트래픽·전력 등 문제에 결과를 적용한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS · DeepAR Algorithm Now Available in SageMaker",
+          "url": "https://aws.amazon.com/about-aws/whats-new/2018/01/deepar-algorithm-now-available-in-amazon-sagemaker/",
+          "note": "2018-01-08 제공 발표. 당시 제공 지역과 학습 기능을 명시한다."
+        }
+      ],
+      "caveat": "2018년의 제공 범위를 나타내는 기록이다. 현재의 모든 AWS 지역·제품 기능이나 고객별 효과를 뜻하지 않는다."
+    }
+  ],
+  "orgAliases": [
+    "Amazon",
+    "Amazon Web Services",
+    "AWS",
+    "아마존"
+  ],
+  "logo": {
+    "src": "assets/company-logos/amazon.png",
+    "label": "Amazon",
+    "width": 512,
+    "height": 172,
+    "background": "#ffffff",
+    "sourcePage": "https://press.aboutamazon.com/logos?p=4",
+    "assetUrl": "https://assets.aboutamazon.com/2e/d7/ac71f1f344c39f8949f48fc89e71/amazon-logo-squid-ink-smile-orange.png",
+    "sha256": "699e6668640b5e008019dce13c7cc4fc2d96a7bc23c6f4357f492c6938bd2d8d",
+    "rightsNote": "Amazon 공식 보도자료 로고 목록의 Amazon 항목에서 직접 확인한 회사 PNG다. 제공 페이지의 저작권 표기와 일반 재사용·상표 허가는 구분한다. 공개 재배포 권리를 확인한 자료가 아니며 현재 로컬 식별용 시안에 사용한다.",
+    "variantNote": "Squid Ink 워드마크와 주황색 smile 조합. AWS 서비스 로고가 아닌 Amazon 회사 로고. 원본 투명 PNG를 비율 유지 축소했다.",
+    "checkedAt": "2026-11-17T08:08:10.813903+00:00",
+    "usageUrl": "https://press.aboutamazon.com/images-videos/"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "version": "0.74-public.1",
+  "version": "0.75-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1346,5 +1346,156 @@
     "mainSourceImages": 90,
     "originalFigures": [],
     "scope": "One sourced researcher profile reuses the existing 2012 AlexNet article and original-paper visualization. Three coauthorship relations connect the paper authors while the existing Hinton–Sutskever advisor relation remains distinct. All prior SNA implementation, articles, figures and image policies are preserved."
+  },
+  "companyLogos": {
+    "count": 16,
+    "sourceManifest": "assets/company-logos/sources.json",
+    "scope": "Organization identification, preserving original colors and aspect ratio. Source provenance and trademark-use conditions are retained separately from permission; no blanket license is asserted.",
+    "files": [
+      {
+        "companyId": "google",
+        "src": "assets/company-logos/google.png",
+        "sha256": "f29c8c60f677b972cdb6f69599332e5f9f0b61211760414899c46b64b69fd962",
+        "width": 512,
+        "height": 173,
+        "sourcePage": "https://about.google/brand-resource-center/",
+        "rightsNote": "Google 공식 브랜드 지침은 로고·브랜드 요소 사용 조건을 안내한다. 다운로드 가능하다는 사실을 무조건적인 상업 이용 허가로 해석하지 않는다. 원형·비율·색을 보존하고 제휴·보증을 암시하지 않는다."
+      },
+      {
+        "companyId": "nvidia",
+        "src": "assets/company-logos/nvidia.png",
+        "sha256": "e99e872bce85bbcd7a7d31f10b03044ffbbb97859b05e2cacc2ea105785e677c",
+        "width": 512,
+        "height": 429,
+        "sourcePage": "https://nvidianews.nvidia.com/file/nvidia-logo-vert-blk?action=",
+        "rightsNote": "공식 지침은 서면 승인, 최소 크기·여백·색·대비, 제휴 오인 방지 등을 설명한다. 일반 자유 라이선스라고 표시하지 않는다. 뉴스룸 공식 원본을 보존했으며 공개 사용 범위는 해당 지침을 따로 대조해야 한다."
+      },
+      {
+        "companyId": "google-deepmind",
+        "src": "assets/company-logos/google-deepmind.png",
+        "sha256": "e3e66107eccd1e47fcfdd0ae490a3143faa38a13abcb48d404c7ac5d76b9189e",
+        "width": 512,
+        "height": 71,
+        "sourcePage": "https://deepmind.google/",
+        "rightsNote": "공식 홈페이지가 표시하는 조직 식별 로고를 그대로 보존했다. 별도 공개 저작물 라이선스를 확인한 것은 아니며 Google 브랜드·상표의 자유 이용을 주장하지 않는다."
+      },
+      {
+        "companyId": "openai",
+        "src": "assets/company-logos/openai.png",
+        "sha256": "c0337c34d27964b5fca6c773b68ed94f269e6c6658df9aeedb7e3b21bea2c1bb",
+        "width": 512,
+        "height": 229,
+        "sourcePage": "https://openai.com/brand/",
+        "rightsNote": "공식 지침의 직접 관련 맥락, 원형 사용, 권리 귀속·여백·비율, 제휴·보증 오인 금지를 보존한다. 워드마크를 우선하며 Blossom을 주 브랜드처럼 쓰지 않는다. 일반 자유 라이선스라고 표시하지 않는다."
+      },
+      {
+        "companyId": "anthropic",
+        "src": "assets/company-logos/anthropic.png",
+        "sha256": "839c4e2e3416badb4c5191d5912e07215d37b87590ad6f47d15671d9ed589f3e",
+        "width": 512,
+        "height": 61,
+        "sourcePage": "https://www.anthropic.com/press-kit",
+        "rightsNote": "공식 뉴스룸이 연결한 press kit 원본이며 색·형상·비율을 보존했다. 별도 오픈 라이선스를 확인하지 않았으므로 다운로드 가능성을 무조건적인 상업 이용 허가로 표시하지 않는다."
+      },
+      {
+        "companyId": "deepseek",
+        "src": "assets/company-logos/deepseek.png",
+        "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+        "width": 460,
+        "height": 460,
+        "sourcePage": "https://github.com/deepseek-ai",
+        "rightsNote": "DeepSeek 공식 GitHub 조직 프로필의 실제 로고 PNG. 조직 API의 avatar_url과 대조했다. 로고에 적용되는 별도 상표·재배포 허용 조건은 확인하지 못했으며 코드·모델 라이선스를 로고의 이용허락으로 해석하지 않았다."
+      },
+      {
+        "companyId": "qwen",
+        "src": "assets/company-logos/qwen.png",
+        "sha256": "a5182eb825a8d6ba7cbcb1c1fd1be5c2064c1e6e2e507ed34bedbab91ceb4fee",
+        "width": 460,
+        "height": 460,
+        "sourcePage": "https://github.com/QwenLM",
+        "rightsNote": "QwenLM 공식 GitHub 조직 프로필의 실제 팀·모델 로고 PNG. 조직 API의 avatar_url과 대조했다. 로고에 적용되는 별도 상표·재배포 허용 조건은 확인하지 못했으며 저장소·모델 라이선스를 로고의 이용허락으로 해석하지 않았다."
+      },
+      {
+        "companyId": "xai",
+        "src": "assets/company-logos/xai.png",
+        "sha256": "8d50194137aafc721131c52c4b5fb6ef8c810fc037436130328b8b6afaf9cf8a",
+        "width": 512,
+        "height": 512,
+        "sourcePage": "https://x.ai/",
+        "rightsNote": "xAI의 공식 data.x.ai 배포 ZIP에서 추출한 xAI_Logomark_Dark.svg. ZIP에 별도 라이선스나 로고 사용조건 문서는 포함되어 있지 않았다. 공식 자산 제공이 모든 상업적 재배포 허용을 뜻한다고 해석하지 않았다."
+      },
+      {
+        "companyId": "world-labs",
+        "src": "assets/company-logos/world-labs.png",
+        "sha256": "0cfa02832ba984e260cc576e76be605e670ce342a7836e2c9ad1f208c54d9fbe",
+        "width": 512,
+        "height": 452,
+        "sourcePage": "https://worldlabs.ai/",
+        "rightsNote": "World Labs 공식 홈페이지의 icon SVG. 공식 Terms of Service §3.4는 로고·상표 사용에 사전 서면 허락을 요구한다고 명시한다. 해당 허락은 확인하지 못했다. 로컬 시안 자산으로 확보했으며 공개 배포 전 사용 조건 검토 대상이다."
+      },
+      {
+        "companyId": "physical-intelligence",
+        "src": "assets/company-logos/physical-intelligence.png",
+        "sha256": "fe201e2717750293ddb2b12c991ef7167083199511cb2bfe8a1ee95e512322fc",
+        "width": 392,
+        "height": 392,
+        "sourcePage": "https://github.com/Physical-Intelligence",
+        "rightsNote": "Physical-Intelligence 공식 GitHub 조직 프로필의 실제 π 로고 PNG. 조직 API의 avatar_url과 대조했다. openpi 저장소의 Apache-2.0을 로고·상표의 별도 이용허락으로 해석하지 않았다. 개별 로고 재배포 조건은 확인하지 못했다."
+      },
+      {
+        "companyId": "meta",
+        "src": "assets/company-logos/meta.png",
+        "sha256": "306be28fce665b979eac0c4c486ba336be82cc091e819c0276d67ac2beeae994",
+        "width": 512,
+        "height": 103,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg",
+        "rightsNote": "Commons는 단순 로고를 PD-textlogo로 분류하며 상표권은 별도라고 표시한다. Meta 공식 가이드(2026년 6월 갱신)는 모든 로고 사용에 승인을 요구한다. 별도 승인·패키지 약관 동의는 수행하지 않았다. 로컬 식별용 시안이며 무료 상업 재배포 허가를 확인한 것이 아니다."
+      },
+      {
+        "companyId": "netflix",
+        "src": "assets/company-logos/netflix.png",
+        "sha256": "e85e74b3f75574db1eebdb0445ff83d1a102a096dca839a90f695fdc8591fa7e",
+        "width": 512,
+        "height": 215,
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Netflix_Logomark.png",
+        "rightsNote": "Commons 파일 설명은 공식 Netflix 브랜드 사이트에서 가져온 워드마크라고 기록하고 PD-textlogo 및 상표권 주석을 제공한다. 공식 브랜드 사이트는 JavaScript 화면으로 전체 약관을 확인하지 못했다. 별도 다운로드 동의·허가 신청은 수행하지 않았으며 일반 상업 사용 허가를 뜻하지 않는다."
+      },
+      {
+        "companyId": "amazon",
+        "src": "assets/company-logos/amazon.png",
+        "sha256": "699e6668640b5e008019dce13c7cc4fc2d96a7bc23c6f4357f492c6938bd2d8d",
+        "width": 512,
+        "height": 172,
+        "sourcePage": "https://press.aboutamazon.com/logos?p=4",
+        "rightsNote": "Amazon 공식 보도자료 로고 목록의 Amazon 항목에서 직접 확인한 회사 PNG다. 제공 페이지의 저작권 표기와 일반 재사용·상표 허가는 구분한다. 공개 재배포 권리를 확인한 자료가 아니며 현재 로컬 식별용 시안에 사용한다."
+      },
+      {
+        "companyId": "anduril",
+        "src": "assets/company-logos/anduril.png",
+        "sha256": "9a4b23dd4cd07dcd46d909bad1e81e6f03f0a022b35cace77c994f765878df5f",
+        "width": 512,
+        "height": 163,
+        "sourcePage": "https://www.anduril.com/press",
+        "rightsNote": "Anduril 공식 Press Kit의 Anduril Logo Black 항목에 포함된 공개 PNG를 사용했다. HTML에 포함된 SSG 원본 메타데이터에서 자산 ID와 크기를 확인했다. 별도의 재사용 라이선스 또는 상표 사용 승인을 확보했다고 주장하지 않는다."
+      },
+      {
+        "companyId": "palantir",
+        "src": "assets/company-logos/palantir.png",
+        "sha256": "2f109c301d1cb3d29ac8b287d1d91405932b1bec4378ef48a4d6c5c18c1d21e7",
+        "width": 512,
+        "height": 683,
+        "sourcePage": "https://github.com/palantir/conjure/blob/1b0d450dc52c4822b4c9d1da8c61ad7f78855fe5/docs/media/palantir-logo.svg",
+        "rightsNote": "공식 Palantir GitHub 저장소의 고정 커밋에 있는 로고 심볼 원본이다. 코드 저장소의 공개 여부를 로고·상표 사용권으로 간주하지 않는다. 별도 상표 또는 로고 재사용 허가는 확인하지 못했다."
+      },
+      {
+        "companyId": "tesla",
+        "src": "assets/company-logos/tesla.png",
+        "sha256": "3572f48fc984f08385b9c4a65ddb1ea792aaf87ecba66babccac6380863a27c6",
+        "width": 154,
+        "height": 154,
+        "sourcePage": "https://github.com/teslamotors",
+        "rightsNote": "GitHub가 www.tesla.com 도메인 소유를 검증한 Tesla, Inc. 공식 조직의 공개 프로필 이미지다. GitHub 조직 페이지의 Verified 설명과 공개 조직 API의 name·blog·avatar_url을 직접 대조했다. 별도의 로고 재사용·상표 허가는 확인하지 못했으며 공개 소프트웨어 라이선스를 로고에 적용하지 않는다. 현재 로컬 식별용 프로토타입 자산이다."
+      }
+    ]
   }
 }

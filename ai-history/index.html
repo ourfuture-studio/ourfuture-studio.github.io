@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ko" data-theme="light" data-release="0.74-public.1">
+<html lang="ko" data-release="0.75-public.1" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="연결주의 AI, 심볼릭 AI, 결합 연구를 연구 연도와 인물별 기록으로 탐색하는 ourfuture studio 인터랙티브 연표.">
+  <meta name="description" content="AI의 연구·인물·회사 연대기를 원논문과 공식 출처로 탐색합니다. 회사 16개와 57개 기록, 연구자 관계도, 인터랙티브 시각화를 연결합니다.">
   <meta name="theme-color" content="#121829">
   <title>AI 과거와 미래 — ourfuture studio</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="portraits.css?v=0.48-public.1">
   <link rel="stylesheet" href="person-background.css?v=0.48-public.1">
   <link rel="stylesheet" href="person-graph.css?v=0.73-public.1">
+  <link rel="stylesheet" href="companies.css?v=0.75-public.1">
   <link rel="stylesheet" href="article-view.css?v=0.48-public.1">
   <link rel="stylesheet" href="learning-bridge.css?v=0.48-public.1">
   <link rel="stylesheet" href="visuals/perceptron-association.css?v=0.48-public.1">
@@ -126,7 +127,9 @@
   <link rel="stylesheet" href="visuals/papert-perceptrons.css?v=0.57-public.1">
   <link rel="stylesheet" href="visuals/graves-ctc.css?v=0.57-public.1">
   <link rel="stylesheet" href="visuals/altman-openai.css?v=0.57-public.1">
-  <link rel="stylesheet" href="public-images.css?v=0.48-public.1"><script src="public-images.js?v=0.48-public.1" defer></script><script src="timeline-data.js?v=0.48-public.1" defer></script>
+  <link rel="stylesheet" href="public-images.css?v=0.48-public.1">
+<script src="public-images.js?v=0.48-public.1" defer></script>
+  <script src="timeline-data.js?v=0.48-public.1" defer></script>
   <script src="people-data.js?v=0.48-public.1" defer></script>
   <script src="turing-data.js?v=0.48-public.1" defer></script>
   <script src="modern-research.js?v=0.48-public.1" defer></script>
@@ -454,19 +457,21 @@
   <script src="portraits.js?v=0.48-public.1" defer></script>
   <script src="person-background-data.js?v=0.74-public.1" defer></script>
   <script src="person-background.js?v=0.48-public.1" defer></script>
-  <script src="people.js?v=0.48-public.1" defer></script>
+  <script src="people.js?v=0.75-public.1" defer></script>
   <script src="person-graph-core.js?v=0.73-public.1" defer></script>
   <script src="person-graph.js?v=0.73-public.1" defer></script>
   <script src="search-core.js?v=0.49-public.1" defer></script>
-  <script src="app.js?v=0481" defer></script>
-  <script src="search.js?v=0.48-public.1" defer></script>
+  <script src="company-core.js?v=0.75-public.1" defer></script>
+  <script src="app.js?v=0.75-public.1" defer></script>
+  <script src="search.js?v=0.75-public.1" defer></script>
+  <script src="companies.js?v=0.75-public.1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#explorer">타임라인으로 건너뛰기</a>
   <header class="masthead">
     <a class="wordmark" href="https://ourfuture-studio.github.io/" aria-label="ourfuture studio 메인 홈으로"><img src="assets/ourfuture-wordmark.png" alt="ourfuture studio"><i></i></a>
     <div class="header-title"><span class="header-line"></span><span class="mono">AI 과거와 미래</span></div>
-    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.74</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
+    <div class="header-actions"><a class="header-home-link" href="https://ourfuture-studio.github.io/" aria-label="메인 홈으로 이동">홈 ↗</a><span class="prototype"><span></span>VERSION 0.75</span><button class="icon-button theme-button" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 전환"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.3A8 8 0 0 1 8.7 4.5a8 8 0 1 0 10.8 10.8Z"/></svg></button><button class="icon-button" id="about-open" aria-label="이 타임라인에 관하여" title="이 타임라인에 관하여"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6m0-10v1"/></svg></button></div>
   </header>
 
   <main>
@@ -475,7 +480,7 @@
       <div class="intro-aside"><span class="intro-period mono">1943 <span>—</span> 2025</span><span class="intro-meta">인물과 연구로 읽는 인공지능의 역사</span></div>
     </section>
 
-    <div class="browse-mode" role="group" aria-label="탐색 기준"><button id="research-mode" class="active" aria-pressed="true"><span class="mono">01</span> 연구 흐름</button><button id="people-mode" aria-pressed="false"><span class="mono">02</span> 인물별 기록</button><button id="graph-mode" aria-pressed="false"><span class="mono">03</span> 인물 관계도</button><span class="browse-mode-hint" id="browse-mode-hint">연도 위에서 세 가지 접근을 비교합니다</span></div>
+    <div class="browse-mode" role="group" aria-label="탐색 기준"><button id="research-mode" class="active" aria-pressed="true"><span class="mono">01</span> 연구 흐름</button><button id="people-mode" aria-pressed="false"><span class="mono">02</span> 인물별 기록</button><button id="graph-mode" aria-pressed="false"><span class="mono">03</span> 인물 관계도</button><button id="companies-mode" aria-pressed="false"><span class="mono">04</span> 회사·연구조직</button><span class="browse-mode-hint" id="browse-mode-hint">연도 위에서 세 가지 접근을 비교합니다</span></div>
     <section id="explorer" class="explorer" aria-label="AI 역사 타임라인">
       <div class="toolbar">
         <div class="track-filters" role="group" aria-label="연구 흐름 필터">
@@ -511,6 +516,7 @@
       </div>
 
       <section id="person-graph-shell" class="person-graph-shell" aria-label="인물 관계도" hidden></section>
+      <section id="companies-shell" class="companies-shell" aria-label="회사·연구조직 연대기" hidden></section>
 
       <div class="timeline-nav">
         <div class="minimap-meta"><span class="mono">THE BIG PICTURE</span><span><b id="visible-count">24</b>개의 연구 · <span id="current-track">세 가지 흐름</span></span></div>
