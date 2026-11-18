@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   const sources = {
+"papers/amazon-deepar-2017-v1-figure2.png":{"url": "https://arxiv.org/pdf/1704.04110v1#page=3", "title": "2017 v1 · 원논문 Figure 2의 자기회귀 RNN"},"papers/distillation-2015-equation1.png":{"url": "https://arxiv.org/pdf/1503.02531v1#page=2", "title": "2015 원문 Eq.1 · 온도를 포함한 softmax"},"papers/distillation-2015-equation2.png":{"url": "https://arxiv.org/pdf/1503.02531v1", "title": "원자료의 추가 도판 · 원문에서 확인"},"papers/netflix-fm-2025-entity-embedding.png":{"url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39", "title": "2025 공식 글 Fig.2 · 새 작품도 표현하기 위한 두 경로"},"papers/netflix-fm-2025-tokenization.png":{"url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39", "title": "원자료의 추가 도판 · 원문에서 확인"},"papers/netflix-mf-2009-figure2-original.png":{"url": "https://chrisvolinsky.com/files/publications/ieeecomputer2009.pdf#page=3", "title": "2009 원문 Figure 2 · 이용자와 영화를 같은 잠재 공간에 놓다"},"papers/netflix-system-2015-figure8-original.png":{"url": "https://pzs.dstu.dp.ua/DataMining/recom/bibl/a13-gomez-uribe.pdf#page=13", "title": "2015 원문 Figure 8 · 오프라인 반복에서 A/B 검증으로"},"papers/netflix-vae-2018-figure2.png":{"url": "https://arxiv.org/pdf/1802.05814v1#page=5", "title": "2018 원논문 Fig.2 · AE·DAE·VAE의 구조 비교"},
   "alphago-2016-search-cycle.png": {
     "url": "https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf#page=3",
     "title": "원논문 Figure3 · 선택·확장·평가·되돌림 갱신"

@@ -1,5 +1,5 @@
 {
-  "version": "0.75-public.1",
+  "version": "0.77-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -631,6 +631,38 @@
     "word2vec-capitals-pca.png": {
       "url": "https://proceedings.neurips.cc/paper_files/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf#page=4",
       "title": "나라와 수도의 관계가, 학습된 표현에서 나타나다"
+    },
+    "papers/amazon-deepar-2017-v1-figure2.png": {
+      "url": "https://arxiv.org/pdf/1704.04110v1#page=3",
+      "title": "2017 v1 · 원논문 Figure 2의 자기회귀 RNN"
+    },
+    "papers/distillation-2015-equation1.png": {
+      "url": "https://arxiv.org/pdf/1503.02531v1#page=2",
+      "title": "2015 원문 Eq.1 · 온도를 포함한 softmax"
+    },
+    "papers/distillation-2015-equation2.png": {
+      "url": "https://arxiv.org/pdf/1503.02531v1",
+      "title": "원자료의 추가 도판 · 원문에서 확인"
+    },
+    "papers/netflix-fm-2025-entity-embedding.png": {
+      "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
+      "title": "2025 공식 글 Fig.2 · 새 작품도 표현하기 위한 두 경로"
+    },
+    "papers/netflix-fm-2025-tokenization.png": {
+      "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
+      "title": "원자료의 추가 도판 · 원문에서 확인"
+    },
+    "papers/netflix-mf-2009-figure2-original.png": {
+      "url": "https://chrisvolinsky.com/files/publications/ieeecomputer2009.pdf#page=3",
+      "title": "2009 원문 Figure 2 · 이용자와 영화를 같은 잠재 공간에 놓다"
+    },
+    "papers/netflix-system-2015-figure8-original.png": {
+      "url": "https://pzs.dstu.dp.ua/DataMining/recom/bibl/a13-gomez-uribe.pdf#page=13",
+      "title": "2015 원문 Figure 8 · 오프라인 반복에서 A/B 검증으로"
+    },
+    "papers/netflix-vae-2018-figure2.png": {
+      "url": "https://arxiv.org/pdf/1802.05814v1#page=5",
+      "title": "2018 원논문 Fig.2 · AE·DAE·VAE의 구조 비교"
     }
   },
   "portraitPolicy": "40 file-specific verified Commons records. The user-selected Alan_Turing_Aged_16.jpg is served from this site first, with an exact-original remote fallback. Its photographer attribution remains qualified as possible. The one remaining pending portrait uses initials. Earlier retained photo assets and every prior figure decision remain preserved.",
@@ -1497,5 +1529,111 @@
         "rightsNote": "GitHub가 www.tesla.com 도메인 소유를 검증한 Tesla, Inc. 공식 조직의 공개 프로필 이미지다. GitHub 조직 페이지의 Verified 설명과 공개 조직 API의 name·blog·avatar_url을 직접 대조했다. 별도의 로고 재사용·상표 허가는 확인하지 못했으며 공개 소프트웨어 라이선스를 로고에 적용하지 않는다. 현재 로컬 식별용 프로토타입 자산이다."
       }
     ]
+  },
+  "googleNetflixExpansion": {
+    "date": "2026-11-18",
+    "sourceVersion": "0.77",
+    "records": [
+      {
+        "file": "assets/papers/amazon-deepar-2017-v1-figure2.png",
+        "sha256": "5c34e241f9181cc666a8ffb32360ca45bea588540b840c45a1dc844d6b7767e7",
+        "bytes": 44106,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/1704.04110v1#page=3",
+        "title": "2017 v1 · 원논문 Figure 2의 자기회귀 RNN",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/distillation-2015-equation1.png",
+        "sha256": "57115206fda34189794b27611a157f9ffd200d94ce0006c182fa15d200fb9256",
+        "bytes": 12043,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/1503.02531v1#page=2",
+        "title": "2015 원문 Eq.1 · 온도를 포함한 softmax",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/distillation-2015-equation2.png",
+        "sha256": "ddb483695800579bed74b0fc2cdcecc73eddf92ab2a6cb628e7cee01449669f5",
+        "bytes": 10618,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/1503.02531v1",
+        "title": "원자료의 추가 도판 · 원문에서 확인",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/llama-2023-figure1-original.png",
+        "sha256": "cb56042bcaf92f0fbf8270ab9b9048f7655ff4584dd635992073314bc9eb81ae",
+        "bytes": 123899,
+        "status": "retain",
+        "url": "https://arxiv.org/pdf/2302.13971v1",
+        "title": "원자료의 추가 도판 · 원문에서 확인",
+        "basis": "Recorded CC BY 4.0 attribution; model-weight license is separate"
+      },
+      {
+        "file": "assets/papers/llama-2023-table2-original.png",
+        "sha256": "04e3d48132e2aca958694870feb5a9565de022b5ac49eca0dca8d309ab68098f",
+        "bytes": 65889,
+        "status": "retain",
+        "url": "https://arxiv.org/pdf/2302.13971v1#page=3",
+        "title": "LLaMA 2023 · 원논문의 모델 구성표",
+        "basis": "Recorded CC BY 4.0 attribution; model-weight license is separate"
+      },
+      {
+        "file": "assets/papers/netflix-fm-2025-entity-embedding.png",
+        "sha256": "41dfdf53c3e4ca0aa3c6379dfebcfaecde134f51b863b9ef763d48f3ae654f03",
+        "bytes": 98942,
+        "status": "source-link",
+        "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
+        "title": "2025 공식 글 Fig.2 · 새 작품도 표현하기 위한 두 경로",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/netflix-fm-2025-tokenization.png",
+        "sha256": "cc5b506f7036fdd6a9d18364640194e851b072f574f3357606cd63358e16fff5",
+        "bytes": 715827,
+        "status": "source-link",
+        "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
+        "title": "원자료의 추가 도판 · 원문에서 확인",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/netflix-mf-2009-figure2-original.png",
+        "sha256": "6326d1f0b1ae466bb818ccfe18f235c675e98d5a5d1d616f7d7686b2f5b7c7d1",
+        "bytes": 102991,
+        "status": "source-link",
+        "url": "https://chrisvolinsky.com/files/publications/ieeecomputer2009.pdf#page=3",
+        "title": "2009 원문 Figure 2 · 이용자와 영화를 같은 잠재 공간에 놓다",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/netflix-system-2015-figure8-original.png",
+        "sha256": "c68b7feb683b43b4012d72b7de5924ac9a49c933ebd25836bf61e62f93f924ef",
+        "bytes": 173142,
+        "status": "source-link",
+        "url": "https://pzs.dstu.dp.ua/DataMining/recom/bibl/a13-gomez-uribe.pdf#page=13",
+        "title": "2015 원문 Figure 8 · 오프라인 반복에서 A/B 검증으로",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/netflix-vae-2018-figure2.png",
+        "sha256": "5e2a51dacbbd08fd5ab72d0658069528a54446a3e865beb0c57e2fd90937587a",
+        "bytes": 36225,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/1802.05814v1#page=5",
+        "title": "2018 원논문 Fig.2 · AE·DAE·VAE의 구조 비교",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/vit-2020-official-figure1.png",
+        "sha256": "4614d5404f0feb77c6d1dfc6b9db00969acf08387f3ec886f9fd06bb81d51b26",
+        "bytes": 129676,
+        "status": "retain",
+        "url": "https://github.com/google-research/vision_transformer/blob/main/vit_figure.png",
+        "title": "ViT · 원논문 Figure 1과 같은 공식 아키텍처 그림",
+        "basis": "Official Google Research repository image with its Apache-2.0 LICENSE preserved; separate image-specific notice was not found; no blanket third-party clearance is asserted"
+      }
+    ],
+    "scope": "Prior public transformations and file-specific portrait exclusions preserved; original-source access and authored interactive diagrams remain separate."
   }
 }

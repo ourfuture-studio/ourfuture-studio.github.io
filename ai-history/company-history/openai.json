@@ -48,6 +48,12 @@
       "name": "Dario Amodei",
       "role": "GPT-3 당시 공동저자",
       "note": "이후 Anthropic의 역할을 2020년 OpenAI 논문에 덧씌우지 않습니다."
+    },
+    {
+      "id": "william-peebles",
+      "name": "William Peebles",
+      "role": "Sora 공동연구",
+      "note": "2024 공식 기술보고에는 Bill Peebles로 표기된다."
     }
   ],
   "connections": [
@@ -169,6 +175,65 @@
         }
       ],
       "caveat": "2018년 접근은 과제별 미세조정을 포함합니다. 이후 GPT-3의 가중치 갱신 없는 문맥 학습과 구분합니다."
+    },
+    {
+      "id": "openai-gpt2-2019",
+      "date": "2019-02-14",
+      "year": 2019,
+      "dateLabel": "2019-02-14 · 최초 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "GPT-2: 다음 말을 배우며 여러 언어 과제로",
+      "question": "다음 단어 예측을 충분히 다양하게 배우면, 과제별 학습 없이도 질문과 요약을 이어 쓸 수 있을까?",
+      "idea": "앞선 텍스트를 조건으로 다음 토큰을 예측하는 Transformer를 큰 웹 문서 자료로 학습했다. 과제의 입력과 출력 형식을 문맥에 놓고, 그 뒤를 이어 쓰는 방식으로 여러 언어 과제를 평가한다.",
+      "change": "GPT의 사전학습을 확대하고 과제별 미세조정 없이 수행하는 zero-shot 평가를 다룬다. 모든 과제에서 최고 성능을 얻었다는 주장이 아니라, 단일 학습 목표의 전이 가능성을 살핀 연구다.",
+      "flow": [
+        {
+          "label": "다양한 웹 텍스트",
+          "note": "여러 종류의 문서에서 이어지는 말의 패턴을 접한다."
+        },
+        {
+          "label": "다음 토큰 학습",
+          "note": "앞 문맥만으로 다음 토큰의 확률을 맞춘다."
+        },
+        {
+          "label": "과제 형식의 문맥",
+          "note": "질문·번역 등의 형식으로 입력을 구성한다."
+        },
+        {
+          "label": "이어 쓰기로 평가",
+          "note": "해당 과제용 가중치 갱신 없이 출력을 비교한다."
+        }
+      ],
+      "peopleIds": [
+        "alec-radford",
+        "dario-amodei",
+        "ilya-sutskever"
+      ],
+      "peopleNames": [
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Rewon Child",
+        "David Luan",
+        "Dario Amodei",
+        "Ilya Sutskever"
+      ],
+      "workIds": [
+        "gpt2"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · GPT-2 최초 발표",
+          "url": "https://openai.com/index/better-language-models/",
+          "note": "2019-02-14. Zero-shot 및 Release strategy. 최초 발표와 이후 전체 가중치 공개를 구분한다."
+        },
+        {
+          "title": "GPT-2 · 기술보고서",
+          "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+          "note": "§§2–3의 언어모델과 과제별 평가."
+        }
+      ],
+      "caveat": "당시 zero-shot 평가의 조건을 나타낸다. 사람의 지시를 따르는 후속 RLHF 모델과 같지 않으며 반복·오류·문맥 이탈도 공식 발표에 기록되어 있다."
     },
     {
       "id": "openai-gpt3-incontext-2020",
@@ -313,6 +378,57 @@
         }
       ],
       "caveat": "대화가 자연스럽다는 사실이 답변의 정확성을 보장하지 않습니다. 2022년 모델을 현재 ChatGPT 전체와 같은 제품 상태로 설명하지 않습니다."
+    },
+    {
+      "id": "openai-sora-research-2024",
+      "date": "2024-02-15",
+      "year": 2024,
+      "dateLabel": "2024-02-15 · 최초 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "Sora: 서로 다른 영상을 시공간 패치로 표현하다",
+      "question": "길이와 화면비가 다른 이미지·영상을 하나의 모델에서 어떻게 함께 학습할까?",
+      "idea": "영상을 시간·공간 방향으로 압축하고 잠재 표현을 시공간 패치로 나눈다. 이 패치를 Transformer 토큰처럼 다루며, 텍스트 조건과 잡음이 섞인 패치에서 깨끗한 패치를 예측하는 확산모델을 학습한다.",
+      "change": "언어의 토큰처럼 시각 자료를 통일된 단위로 다루려는 방향이다. 이미지와 여러 길이·비율의 영상을 한 표현으로 연결한다.",
+      "flow": [
+        {
+          "label": "영상 압축",
+          "note": "원본을 시간·공간이 압축된 잠재 표현으로 옮긴다."
+        },
+        {
+          "label": "시공간 패치",
+          "note": "서로 다른 크기의 자료를 토큰의 연속으로 다룬다."
+        },
+        {
+          "label": "확산 Transformer",
+          "note": "텍스트 조건에서 잡음이 섞인 패치를 복원한다."
+        },
+        {
+          "label": "영상으로 복호화",
+          "note": "생성한 잠재 표현을 화소의 영상으로 바꾼다."
+        }
+      ],
+      "peopleIds": [
+        "william-peebles",
+        "tim-brooks",
+        "aditya-ramesh"
+      ],
+      "peopleNames": [
+        "Tim Brooks",
+        "Bill Peebles",
+        "Sora 공동연구팀"
+      ],
+      "workIds": [
+        "sora"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · Sora 공식 기술보고",
+          "url": "https://openai.com/index/video-generation-models-as-world-simulators/",
+          "note": "2024-02-15. Turning visual data into patches, Video compression network, Scaling transformers, Limitations."
+        }
+      ],
+      "caveat": "2024년 기술보고의 연구 기록이다. 제품 출시일이나 후속 Sora 버전과 구분한다. 보고서는 전체 모델·구현 세부를 공개하지 않으며 물리 법칙의 완전한 학습을 입증하지 않는다."
     },
     {
       "id": "openai-stargate-2025",

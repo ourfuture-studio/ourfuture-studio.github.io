@@ -1,3 +1,7 @@
+## Google·Netflix 연구와 회사 연대기 · v0.77
+
+Google의 적대적 예제·지식 증류·Transformer-XL·ViT, Google DeepMind의 AlphaGeometry·AlphaProof, Netflix Prize·행렬분해·실서비스 추천 시스템을 인물·원문·상세 시각화와 연결합니다. 이전 로컬 v0.76의 LLaMA·VAE·추천 기반 모델·DeepAR도 포함합니다. 현재 회사 16개·기록 71개입니다.
+
 ## 회사·연구조직 연대기 · PNG 로고 · v0.75
 
 16개 탐색 단위의 57개 회사 기록을 인물·연구·제품·계산 기반과 연결합니다. 같은 Palantir–Anduril 협력의 양쪽 표시를 포함하며 서로 다른 사건은 56개입니다. 이름·기술·연도 검색, 기간·기록 종류 필터와 회사 관계 탐색을 제공합니다. PNG 로고 16개의 출처·형식 변환·권리 확인 범위는 [로고 출처](assets/company-logos/sources.json)에 보존했습니다.

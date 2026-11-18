@@ -23,32 +23,40 @@
     {
       "name": "Kiuk Chung",
       "role": "2016 DSSTNE·Spark 기술 글 저자",
-      "note": "당시 Amazon Personalization Software Development Engineer."
+      "note": "당시 Amazon Personalization Software Development Engineer.",
+      "id": "kiuk-chung"
     },
     {
       "name": "Valentin Flunkert",
       "role": "DeepAR 최초 원고 공동저자",
-      "note": "2017 v1에서 Salinas와 동등 기여. Amazon Development Center Germany."
+      "note": "2017 v1에서 Salinas와 동등 기여. Amazon Development Center Germany.",
+      "id": "valentin-flunkert"
     },
     {
       "name": "David Salinas",
       "role": "DeepAR 최초 원고 공동저자",
-      "note": "2017 v1에서 Flunkert와 동등 기여. Amazon Development Center Germany."
+      "note": "2017 v1에서 Flunkert와 동등 기여. Amazon Development Center Germany.",
+      "id": "david-salinas"
     },
     {
       "name": "Jan Gasthaus",
       "role": "DeepAR 최초 원고 공동저자",
-      "note": "2017 v1의 Amazon Development Center Germany 소속."
+      "note": "2017 v1의 Amazon Development Center Germany 소속.",
+      "id": "jan-gasthaus"
     }
   ],
   "connections": [],
   "events": [
     {
-      "peopleIds": [],
+      "peopleIds": [
+        "kiuk-chung"
+      ],
       "peopleNames": [
         "Kiuk Chung"
       ],
-      "workIds": [],
+      "workIds": [
+        "amazon-dsstne-spark-2016"
+      ],
       "id": "amazon-dsstne-spark-2016",
       "date": "2016-07-09",
       "year": 2016,
@@ -87,13 +95,19 @@
       "caveat": "이 날짜는 기술 글의 게시일이며 DSSTNE 최초 공개일로 확정하지 않는다. 글 작성자를 전체 엔진의 단독 개발자로 표시하지 않는다."
     },
     {
-      "peopleIds": [],
+      "peopleIds": [
+        "valentin-flunkert",
+        "david-salinas",
+        "jan-gasthaus"
+      ],
       "peopleNames": [
         "Valentin Flunkert",
         "David Salinas",
         "Jan Gasthaus"
       ],
-      "workIds": [],
+      "workIds": [
+        "amazon-deepar-2017"
+      ],
       "id": "amazon-deepar-2017",
       "date": "2017-04-13",
       "year": 2017,
@@ -103,7 +117,7 @@
       "title": "DeepAR: 여러 시계열이 공통 패턴을 배우게 하다",
       "question": "자료가 적은 상품의 미래 수요를 다른 상품의 이력과 함께 예측할 수 있을까?",
       "idea": "관련된 여러 시계열로 하나의 자기회귀 RNN을 학습한다. 각 시계열의 과거와 관련 정보를 바탕으로 다음 값의 확률분포를 예측하고, 그 분포를 반복해 미래 경로의 불확실성까지 표현하려 했다.",
-      "change": "개별 시계열마다 별도의 모델을 맞추는 방식에서, 여러 시계열이 학습한 패턴을 공유하는 방식으로 범위를 넓힌다. 점 예측과 미래 분포의 차이도 함께 읽을 수 있다.",
+      "change": "여러 시계열이 공유하는 연결값과 대상마다 달라지는 상태를 구분한다. 상세 카드에서 2017 v1 Figure 2 원도판, 분포의 모양, 관측값과 샘플 피드백, 여러 경로의 분위수를 연결해 볼 수 있다.",
       "flow": [
         {
           "label": "관련 시계열",
@@ -126,7 +140,7 @@
         {
           "title": "DeepAR · 최초 원고 v1",
           "url": "https://arxiv.org/pdf/1704.04110v1",
-          "note": "첫 페이지 저자·당시 소속, §1–2의 여러 시계열 공동학습과 확률 예측."
+          "note": "2017 v1 PDF 1쪽 세 저자·동등 기여·소속, PDF 3쪽 Figure 2·§3·식(1), 4쪽 §§3.1–3.4·식(2). 상세 카드에 Fig.2 원본 발췌와 별도 인터랙션 연결."
         },
         {
           "title": "arXiv · DeepAR 제출 이력",
@@ -137,11 +151,20 @@
       "caveat": "2017년 최초 원고의 저자목록을 사용한다. Tim Januschowski가 포함된 2020년 저널판과 섞지 않으며 모든 예측 환경에서 같은 개선을 보장하지 않는다."
     },
     {
-      "peopleIds": [],
-      "peopleNames": [
-        "DeepAR 연구팀"
+      "peopleIds": [
+        "valentin-flunkert",
+        "david-salinas",
+        "jan-gasthaus"
       ],
-      "workIds": [],
+      "peopleNames": [
+        "Valentin Flunkert",
+        "David Salinas",
+        "Jan Gasthaus",
+        "DeepAR 연구·제품 제공팀"
+      ],
+      "workIds": [
+        "amazon-deepar-2017"
+      ],
       "id": "amazon-sagemaker-deepar-2018",
       "date": "2018-01-08",
       "year": 2018,
@@ -175,6 +198,11 @@
           "title": "AWS · DeepAR Algorithm Now Available in SageMaker",
           "url": "https://aws.amazon.com/about-aws/whats-new/2018/01/deepar-algorithm-now-available-in-amazon-sagemaker/",
           "note": "2018-01-08 제공 발표. 당시 제공 지역과 학습 기능을 명시한다."
+        },
+        {
+          "title": "AWS · SageMaker DeepAR 출시 해설",
+          "url": "https://aws.amazon.com/blogs/machine-learning/now-available-in-amazon-sagemaker-deepar-algorithm-for-more-accurate-time-series-forecasting/",
+          "note": "2018-01-08. 공동저자 소개와 S3 데이터·관리형 학습·모델·endpoint의 서비스 흐름. 연구 원고의 저자 목록과 글의 7명 작성자를 구분."
         }
       ],
       "caveat": "2018년의 제공 범위를 나타내는 기록이다. 현재의 모든 AWS 지역·제품 기능이나 고객별 효과를 뜻하지 않는다."

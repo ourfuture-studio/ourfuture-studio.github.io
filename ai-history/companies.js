@@ -24,9 +24,9 @@
     if(state.q)p.set('cq',state.q);if(state.type!=='all')p.set('kind',state.type);if(state.from)p.set('from',state.from);if(state.to)p.set('to',state.to);
     const hash='#'+p;try{if(hash!==location.hash)history[push?'pushState':'replaceState'](null,'',hash);}catch{}
   }
-  function open(companyId,recordId='',view='timeline'){
+  function open(companyId,recordId='',view='timeline',filters=null){
     if(!companyById(companyId))return;
-    Object.assign(state,{selected:companyId,record:recordId,view,q:'',type:'all',from:'',to:''});syncControls();render();route(true);
+    Object.assign(state,{selected:companyId,record:recordId,view,q:'',type:'all',from:'',to:''},filters||{});syncControls();render();route(true);
     window.dispatchEvent(new CustomEvent('atlas:open-companies'));
     $('company-panel').scrollIntoView({block:'start',behavior:'instant'});
   }
@@ -37,14 +37,15 @@
     state.from=/^\d{4}$/.test(params.get('from')||'')?params.get('from'):'';state.to=/^\d{4}$/.test(params.get('to')||'')?params.get('to'):'';
     if(state.ready){syncControls();render();}
   }
-  function syncControls(){for(const [id,key] of [['company-query','q'],['company-kind','type'],['company-from','from'],['company-to','to']])$(id).value=state[key];}
+  function syncControls(){for(const [id,key] of [['company-query','q'],['company-kind','type'],['company-from','from'],['company-to','to']]){$(id).value=state[key];if(key==='from'||key==='to'){$(id).setCustomValidity('');$(id).removeAttribute('aria-invalid');}}}
   function personButton(id,text){const p=personById(id);return p?button(text||p.nameKo||p.name,()=>window.dispatchEvent(new CustomEvent('atlas:search-result',{detail:{kind:'person',personId:id}})),'co-pill co-person-link'):null;}
   function workButton(workId,companyId,recordId){
     const found=works.get(workId);if(!found)return null;
     const {person,work}=found;
     return button(work.title+' ↗',()=>{
+      const returnFilters={q:state.q,type:state.type,from:state.from,to:state.to},returnView=state.view;
       window.dispatchEvent(new CustomEvent('atlas:search-result',{detail:{kind:'work',personId:person?.id,workId:work.id,eventId:timeline.has(work.id)?work.id:work.eventId}}));
-      if($('detail-dialog').open){const back=button(label(companyById(companyId))+' 연표로 돌아가기',()=>{$('detail-dialog').close();open(companyId,recordId);},'co-return');$('detail-person-links').append(back);}
+      if($('detail-dialog').open){const back=button(label(companyById(companyId))+' 연표로 돌아가기',()=>{$('detail-dialog').close();open(companyId,recordId,returnView,returnFilters);},'co-return');$('detail-person-links').append(back);}
     },'co-work-link');
   }
   function appendPersonLinks(panel,personId){
@@ -66,7 +67,7 @@
     let count=0;
     for(const c of state.companies){
       const events=core.filterEvents(c,state);if(!events.length)continue;count++;
-      const b=button('',()=>{state.selected=c.id;state.record='';render();route(true);$('company-panel').scrollIntoView({block:'start',behavior:'instant'});},'co-index-item');b.dataset.company=c.id;
+      const b=button('',()=>{state.selected=c.id;state.record='';render();route(true);$('company-list').querySelector('[data-company="'+c.id+'"]')?.focus({preventScroll:true});$('company-panel').scrollIntoView({block:'start',behavior:'instant'});},'co-index-item');b.dataset.company=c.id;
       b.classList.toggle('active',state.selected===c.id);b.setAttribute('aria-pressed',String(state.selected===c.id));
       const copy=node('span','co-index-copy');copy.append(node('strong','',label(c)),node('span','',c.sector));b.append(mark(c),copy,node('span','mono',String(events.length).padStart(2,'0')));list.append(b);
     }
@@ -143,8 +144,10 @@
   function render(){
     renderCatalog();renderPanel();
     const total=state.companies.reduce((n,c)=>n+core.filterEvents(c,state).length,0);$('company-results-status').textContent=total+'개 회사 기록';
-    $('company-reset').hidden=!(state.q||state.type!=='all'||state.from||state.to);
-    $('company-range-error').hidden=!(state.from&&state.to&&Number(state.from)>Number(state.to));
+    const incomplete=['company-from','company-to'].some(id=>!$(id).validity.valid),reversed=state.from&&state.to&&Number(state.from)>Number(state.to);
+    $('company-reset').hidden=!(state.q||state.type!=='all'||state.from||state.to||incomplete);
+    $('company-range-error').hidden=!(incomplete||reversed);
+    $('company-range-error').textContent=incomplete?'1900~2100 범위의 네 자리 연도를 입력하세요. 완성되지 않은 연도는 기간 조건에 적용하지 않습니다.':'시작 연도는 끝 연도보다 작거나 같아야 합니다.';
   }
   function resetFilters(){Object.assign(state,{q:'',type:'all',from:'',to:'',record:''});syncControls();render();route();}
   function changeFilter(key,value){state[key]=value;state.record='';const matches=state.companies.filter(c=>core.filterEvents(c,state).length);if(matches.length&&!matches.some(c=>c.id===state.selected))state.selected=matches[0].id;render();route();}
@@ -153,7 +156,7 @@
     const head=node('div','co-section-heading');const copy=node('div');copy.append(node('span','mono','COMPANIES / IDEAS INTO THE WORLD'),node('h2','','연구는 어디에서 자랐을까'),node('p','','회사와 연구조직의 시간을 따라, 사람·아이디어·제품·계산 기반을 연결합니다.'));head.append(copy);shell.append(head);
     const controls=node('div','co-controls');const search=node('label','co-search');search.append(node('span','','회사·인물·기술·연도'));const input=node('input');input.id='company-query';input.type='search';input.placeholder='예: Meta, 추천, CUDA, 2023';input.addEventListener('input',e=>changeFilter('q',e.target.value));search.append(input);controls.append(search);
     const kinds=node('label','co-field');kinds.append(node('span','','기록 종류'));const select=node('select');select.id='company-kind';for(const [value,text] of [['all','전체 기록'],...Object.entries(core.types)]){const o=node('option','',text);o.value=value;select.append(o);}select.addEventListener('change',e=>changeFilter('type',e.target.value));kinds.append(select);controls.append(kinds);
-    const years=node('fieldset','co-years');years.append(node('legend','','기간'));for(const [key,txt] of [['from','시작 연도'],['to','끝 연도']]){const l=node('label');l.append(node('span','sr-only',txt));const inp=node('input');inp.type='number';inp.id='company-'+key;inp.min='1900';inp.max='2100';inp.placeholder=key==='from'?'시작':'끝';inp.addEventListener('input',e=>{const value=e.target.value;if(!value||/^\d{4}$/.test(value))changeFilter(key,value);});l.append(inp);years.append(l);if(key==='from')years.append(node('span','','—'));}controls.append(years);
+    const years=node('fieldset','co-years');years.append(node('legend','','기간'));for(const [key,txt] of [['from','시작 연도'],['to','끝 연도']]){const l=node('label');l.append(node('span','sr-only',txt));const inp=node('input');inp.type='number';inp.id='company-'+key;inp.min='1900';inp.max='2100';inp.placeholder=key==='from'?'시작':'끝';inp.setAttribute('aria-describedby','company-range-error');inp.addEventListener('input',e=>{const value=e.target.value,complete=/^\d{4}$/.test(value)&&Number(value)>=1900&&Number(value)<=2100,invalid=(!complete&&!!value)||e.target.validity.badInput;e.target.setCustomValidity(invalid?'1900~2100 범위의 네 자리 연도를 입력하세요.':'');e.target.setAttribute('aria-invalid',String(invalid));changeFilter(key,complete?value:'');});l.append(inp);years.append(l);if(key==='from')years.append(node('span','','—'));}controls.append(years);
     const reset=button('조건 초기화',resetFilters,'co-reset');reset.id='company-reset';reset.hidden=true;controls.append(reset);shell.append(controls);
     const status=node('div','co-status');const results=node('span','mono');results.id='company-results-status';results.setAttribute('aria-live','polite');const error=node('span','co-error','시작 연도는 끝 연도보다 작거나 같아야 합니다.');error.id='company-range-error';error.hidden=true;error.setAttribute('role','status');status.append(results,error);shell.append(status);
     const layout=node('div','co-layout'),catalog=node('aside','co-catalog');catalog.setAttribute('aria-label','회사·연구조직 목록');const heading=node('div','co-catalog-heading');heading.append(node('span','mono','ORGANIZATIONS'));const count=node('span','mono');count.id='company-count';heading.append(count);const list=node('div','co-list');list.id='company-list';catalog.append(heading,list);const panel=node('div','co-panel');panel.id='company-panel';layout.append(catalog,panel);shell.append(layout);

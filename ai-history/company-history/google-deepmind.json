@@ -12,9 +12,9 @@
     "제미나이"
   ],
   "kind": "organization",
-  "sector": "강화학습·과학·멀티모달 모델",
+  "sector": "강화학습·과학·멀티모달·증명",
   "accent": "#6366b1",
-  "summary": "게임의 행동 선택, 단백질의 구조 추론, 여러 종류의 정보를 다루는 Gemini를 연구 조직과 제품의 변화에 연결합니다.",
+  "summary": "게임의 행동 선택, 과학의 구조 추론, 기하·형식 증명과 Gemini를 당시 연구 조직의 기록으로 연결합니다.",
   "question": "학습으로 얻은 표현과 판단 능력을 게임에서 과학과 일상의 도구까지 넓힐 수 있을까?",
   "overview": [
     "DeepMind와 Google DeepMind는 시점에 따라 구분합니다. 2023년 통합 전의 논문에는 당시 DeepMind 소속을 유지합니다.",
@@ -50,6 +50,36 @@
       "name": "Jeffrey Dean",
       "role": "2023년 Google 연구 조직 연결",
       "note": "Brain 팀과 DeepMind 통합 발표의 협업 맥락."
+    },
+    {
+      "id": "trieu-trinh",
+      "name": "Trieu H. Trinh",
+      "role": "AlphaGeometry 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "quoc-le",
+      "name": "Quoc V. Le",
+      "role": "AlphaGeometry 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "thomas-hubert",
+      "name": "Thomas Hubert",
+      "role": "AlphaProof 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "rishi-mehta",
+      "name": "Rishi Mehta",
+      "role": "AlphaProof 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "laurent-sartran",
+      "name": "Laurent Sartran",
+      "role": "AlphaProof 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
     }
   ],
   "connections": [
@@ -312,6 +342,66 @@
       "caveat": "발표일에 모든 모델과 입력 기능이 모든 사용자에게 제공된 것은 아닙니다. 회사 평가와 독립 평가를 구분합니다."
     },
     {
+      "id": "deepmind-alphageometry-2024",
+      "date": "2024-01-17",
+      "year": 2024,
+      "dateLabel": "2024.01.17 · 논문·공식 발표",
+      "precision": "day",
+      "type": "research",
+      "title": "AlphaGeometry: 보조 구성을 제안하고 기호 규칙으로 증명하다",
+      "question": "이미 알려진 관계만으로 추론이 막히면, 어떤 점이나 선을 더 그려야 할까?",
+      "idea": "합성 증명에서 배운 언어모델이 보조 구성을 제안하고, 기호 추론 엔진이 그 구성에서 따라오는 관계를 계산한다. 제안과 추론을 번갈아 이어 증명 경로를 찾는다.",
+      "change": "학습한 제안을 곧바로 정답으로 믿지 않고, 그 제안이 만든 사실을 명시적인 기하 추론으로 이어 간다. 기존 결합 연구 상세 카드에서 원도판과 제한된 증명 사례를 볼 수 있다.",
+      "flow": [
+        {
+          "label": "기하 문제",
+          "note": "주어진 점과 관계·목표를 읽는다."
+        },
+        {
+          "label": "기호 추론",
+          "note": "현재 관계에서 가능한 결론을 늘린다."
+        },
+        {
+          "label": "새 보조 구성",
+          "note": "언어모델이 증명을 이어 갈 구성을 제안한다."
+        },
+        {
+          "label": "근거를 이어 증명",
+          "note": "추가된 관계를 엔진에 공급해 목표로 이어 간다."
+        }
+      ],
+      "peopleIds": [
+        "trieu-trinh",
+        "yuhuai-wu",
+        "quoc-le",
+        "he-he",
+        "thang-luong"
+      ],
+      "peopleNames": [
+        "Trieu H. Trinh",
+        "Yuhuai Wu",
+        "Quoc V. Le",
+        "He He",
+        "Thang Luong"
+      ],
+      "workIds": [
+        "alphageometry"
+      ],
+      "sources": [
+        {
+          "title": "AlphaGeometry · 원문·저자 소속",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10794143/",
+          "note": "Google DeepMind·NYU 공동연구. Trinh의 이중 소속과 He He의 NYU 소속을 구분한다."
+        },
+        {
+          "title": "Google DeepMind · 공식 발표",
+          "url": "https://deepmind.google/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/",
+          "note": "2024-01-17. 신경 제안과 기호 추론, 합성 자료 학습."
+        }
+      ],
+      "caveat": "전용 평면 기하 언어와 추론 엔진의 범위다. NYU 공동연구를 Google 단독 연구로 바꾸지 않는다. 인간 증명 시범 없이 학습했다는 설명은 규칙·언어·엔진을 사람이 설계하지 않았다는 뜻이 아니다."
+    },
+    {
       "id": "deepmind-gemini-app-2024",
       "date": "2024-02-08",
       "year": 2024,
@@ -358,6 +448,63 @@
         }
       ],
       "caveat": "지역·언어·기기와 구독 조건을 당시 발표대로 읽습니다. 제품 이름 변경이 새 모델의 독립적인 발명을 뜻하지 않습니다."
+    },
+    {
+      "id": "deepmind-alphaproof-paper-2025",
+      "date": "2025-11-12",
+      "year": 2025,
+      "dateLabel": "2025.11.12 · 방법 논문 온라인 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "AlphaProof: 증명하는 행동을 배우고 형식 규칙으로 확인하다",
+      "question": "증명의 다음 행동을 학습하면서, 완성된 논증의 정당성도 검사할 수 있을까?",
+      "idea": "Lean의 가정과 목표를 상태로 읽고 전술을 선택해 새 증명 상태를 만든다. 정책·가치로 탐색을 안내하고 검증 가능한 시도 경험을 학습에 사용하며, 최종 증명은 형식 환경에서 확인한다.",
+      "change": "그럴듯한 자연어 해설을 생성하는 문제에서, 실행·검사가 가능한 증명 행동의 탐색으로 대상을 옮긴다. 학습한 유망함의 추정과 형식적인 정당성 검사를 분리한다.",
+      "flow": [
+        {
+          "label": "가정·목표 상태",
+          "note": "Lean으로 표현한 문제를 읽는다."
+        },
+        {
+          "label": "전술 후보·탐색",
+          "note": "학습한 정책·가치로 다음 시도를 안내한다."
+        },
+        {
+          "label": "전술 실행·검사",
+          "note": "새 하위 목표와 완성 여부를 확인한다."
+        },
+        {
+          "label": "경험에서 학습",
+          "note": "검증 가능한 시도의 결과를 다음 학습에 연결한다."
+        }
+      ],
+      "peopleIds": [
+        "thomas-hubert",
+        "rishi-mehta",
+        "laurent-sartran"
+      ],
+      "peopleNames": [
+        "Thomas Hubert",
+        "Rishi Mehta",
+        "Laurent Sartran",
+        "전체 39명 공동저자"
+      ],
+      "workIds": [
+        "alphaproof"
+      ],
+      "sources": [
+        {
+          "title": "AlphaProof · 방법 논문",
+          "url": "https://www.nature.com/articles/s41586-025-09833-y",
+          "note": "2025-11-12 온라인 공개, 최종 권호 Nature651 (2026). 기존 상세 카드가 전체 저자·방법·도판을 보존한다."
+        },
+        {
+          "title": "Google DeepMind · 최초 성과 발표",
+          "url": "https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/",
+          "note": "2024-07-25의 최초 발표와 2025 방법 논문 공개는 다른 사건이다."
+        }
+      ],
+      "caveat": "2024 최초 발표·2025 온라인 논문·2026 권호 날짜를 구분한다. 형식화와 라이브러리·공리·커널의 전제를 넘는 모든 명제의 참을 보장하는 시스템으로 일반화하지 않는다."
     }
   ],
   "orgAliases": [

@@ -6,42 +6,98 @@
     "넷플릭스 추천",
     "recommendation",
     "추천",
-    "개인화"
+    "개인화",
+    "Netflix Prize",
+    "행렬분해",
+    "matrix factorization",
+    "RMSE",
+    "앙상블",
+    "머신러닝",
+    "PVR"
   ],
   "kind": "company",
-  "sector": "추천·개인화",
+  "sector": "추천·개인화·머신러닝",
   "accent": "#ae5965",
-  "summary": "시청·상호작용을 잠재 표현으로 배우고, 여러 추천 과제에 공유하다.",
+  "summary": "평점의 빈칸을 배우는 대회에서, 화면 전체와 실제 선택을 검증하는 추천 시스템으로 확장하다.",
   "question": "사람이 좋아할 다음 콘텐츠를 과거의 행동에서 어떻게 표현할까?",
   "overview": [
     "추천은 이용자의 과거 행동에서 아직 보지 않은 항목의 선호를 추정하는 문제다. 표현 학습과 실제 서비스에서 여러 모델이 그 표현을 쓰는 방식을 함께 살펴본다.",
-    "논문 공동연구자의 당시 소속을 보존한다. Netflix Prize 전체를 딥러닝 성과로 분류하지 않으며, 논문 발표와 서비스 적용 범위는 별도로 확인한다."
+    "논문 공동연구자의 당시 소속을 보존한다. Netflix Prize 전체를 딥러닝 성과로 분류하지 않으며, 논문 발표와 서비스 적용 범위는 별도로 확인한다.",
+    "각 회사 기록에서 원논문·공식 기술 글을 읽는 상세 연구 카드와 공동저자 프로필로 이동할 수 있다. 2018년의 잠재 분포와 2025년의 시간순 공통 표현은 서로 다른 문제 설정으로 비교한다.",
+    "2006–2009년 Netflix Prize의 행렬분해·앙상블은 신경망 자체와 구분되는 머신러닝 기록이다. 2015년 추천 시스템 논문은 여러 알고리즘·페이지 구성·A/B 검증으로 문제를 넓힌다. 기존 2018 VAE와 2025 공통 표현의 연구 기록도 함께 보존한다."
   ],
   "people": [
     {
+      "id": "dawen-liang",
       "name": "Dawen Liang",
       "role": "2018 VAE 추천 논문 공동저자",
-      "note": "원문 1쪽 당시 Netflix."
+      "note": "2018 논문 당시 Netflix. 2025 공식 글의 Acknowledgements에도 기여자로 기재된다."
     },
     {
+      "id": "tony-jebara",
       "name": "Tony Jebara",
       "role": "2018 VAE 추천 논문 공동저자",
       "note": "원문 1쪽 당시 Netflix."
     },
     {
+      "id": "rahul-g-krishnan",
       "name": "Rahul G. Krishnan",
       "role": "2018 VAE 추천 논문 공동저자",
       "note": "원문 1쪽 당시 MIT."
     },
     {
+      "id": "matthew-d-hoffman",
       "name": "Matthew D. Hoffman",
       "role": "2018 VAE 추천 논문 공동저자",
       "note": "원문 1쪽 당시 Google AI."
     },
     {
-      "name": "Ko-Jen Hsiao · Yesu Feng · Sudarshan Lamkhede",
-      "role": "2025 추천 기반 모델 기술 글 저자",
-      "note": "글의 저자이며 전체 시스템의 단독 발명자라는 뜻은 아니다."
+      "id": "ko-jen-hsiao",
+      "name": "Ko-Jen Hsiao",
+      "role": "2025 공식 기술 글 공동저자",
+      "note": "2025-03-21 공식 글의 By 저자 명단. 시스템 전체의 단독 발명자로 표시하지 않는다."
+    },
+    {
+      "id": "yesu-feng",
+      "name": "Yesu Feng",
+      "role": "2025 공식 기술 글 공동저자",
+      "note": "2025-03-21 공식 글의 By 저자 명단. 시스템 전체의 단독 발명자로 표시하지 않는다."
+    },
+    {
+      "id": "sudarshan-lamkhede",
+      "name": "Sudarshan Lamkhede",
+      "role": "2025 공식 기술 글 공동저자",
+      "note": "2025-03-21 공식 글의 By 저자 명단. 시스템 전체의 단독 발명자로 표시하지 않는다."
+    },
+    {
+      "id": "yehuda-koren",
+      "name": "Yehuda Koren",
+      "role": "2009 행렬분해 논문·Prize 공동연구",
+      "note": "논문 당시 Yahoo Research, Haifa. Netflix 직원이나 우승팀 전체로 표시하지 않는다."
+    },
+    {
+      "id": "robert-bell",
+      "name": "Robert Bell",
+      "role": "2009 행렬분해 논문·Prize 공동연구",
+      "note": "논문 당시 AT&T Labs—Research. 시상 발표의 Bob Bell 표기와 연결."
+    },
+    {
+      "id": "chris-volinsky",
+      "name": "Chris Volinsky",
+      "role": "2009 행렬분해 논문·Prize 공동연구",
+      "note": "논문 당시 AT&T Labs—Research. 세 논문 저자와 일곱 우승팀을 구분."
+    },
+    {
+      "id": "carlos-a-gomez-uribe",
+      "name": "Carlos A. Gomez-Uribe",
+      "role": "2015 추천 시스템 논문 공동저자",
+      "note": "논문 당시 Netflix, Inc. 공개 시스템의 역할과 검증을 설명."
+    },
+    {
+      "id": "neil-hunt",
+      "name": "Neil Hunt",
+      "role": "2015 추천 시스템 논문 공동저자",
+      "note": "2009 공식 시상 발표에는 Chief Product Officer로 기재. 우승팀 구성원이 아니다."
     }
   ],
   "connections": [
@@ -55,14 +111,194 @@
   ],
   "events": [
     {
+      "id": "netflix-prize-2006",
+      "date": "2006-10",
+      "year": 2006,
+      "dateLabel": "2006.10 · Netflix Prize 시작",
+      "precision": "month",
+      "type": "research",
+      "title": "Netflix Prize: 감춰 둔 평점을 예측하는 공개 대회",
+      "question": "관찰한 별점에서 아직 평가하지 않은 영화의 선호를 더 정확하게 추정할 수 있을까?",
+      "idea": "영화 평점 예측을 공통 데이터와 평가 규칙으로 비교하는 머신러닝 대회를 열었다. Cinematch 대비 RMSE를 10% 낮추는 목표는 추천 연구를 비교할 대리 과제였으며 실제 시청·만족·유지율의 동일한 개선을 의미하지 않는다.",
+      "change": "추천 문제를 공개 데이터와 감춰 둔 평점의 오차로 비교하게 했다. 참가자들의 행렬분해·앙상블 연구와 2009년 종료·시상 기록을 함께 읽을 수 있다.",
       "peopleIds": [],
+      "peopleNames": [
+        "Netflix Prize 참가 연구자"
+      ],
+      "workIds": [
+        "netflix-prize-mf-2009"
+      ],
+      "flow": [
+        {
+          "label": "관찰한 평점",
+          "note": "희소한 이용자–영화 평가를 학습에 사용한다."
+        },
+        {
+          "label": "미관찰 평가 예측",
+          "note": "감춰 둔 별점을 추정한다."
+        },
+        {
+          "label": "RMSE 비교",
+          "note": "예측 오차를 공통 기준에서 비교한다."
+        },
+        {
+          "label": "새로운 방법 탐색",
+          "note": "잠재 요인과 여러 예측의 조합을 발전시킨다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Netflix · 2009 공식 발표의 대회 시작 기록",
+          "url": "https://www.asc.ohio-state.edu/statistics/statgen/joul_aut2009/NetflixAwardsOneMillionPrize2009.pdf",
+          "note": "1쪽: launched in Oct. 2006. 일자는 이 자료로 확정하지 않아 월 단위로 기록."
+        },
+        {
+          "title": "Netflix TechBlog · Prize와 추천 문제",
+          "url": "https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429",
+          "note": "2012 공식 회고: 평점 RMSE는 전체 추천 문제의 대리 목표임을 설명."
+        }
+      ],
+      "caveat": "시작은 월 단위로 확인했다. 대회를 딥러닝만의 성과로 분류하거나 RMSE 개선을 온라인 서비스 효과로 바꾸지 않는다."
+    },
+    {
+      "id": "netflix-prize-2009",
+      "date": "2009-09-21",
+      "year": 2009,
+      "dateLabel": "2009.07 접수 종료 · 09.21 시상",
+      "precision": "day",
+      "type": "research",
+      "title": "행렬분해·앙상블: 서로 다른 예측을 결합해 대회 목표를 넘다",
+      "question": "빈칸이 많은 평점표의 패턴과 서로 다른 모형의 오류를 어떻게 활용할까?",
+      "idea": "이용자와 영화의 잠재 요인을 평점 오차에서 배우고 여러 예측 모형을 조합한다. 최종 우승 해법은 행렬분해 하나가 아닌 앙상블이며 BellKor’s Pragmatic Chaos 일곱 명의 협업이다.",
+      "change": "2009-07-26 접수 종료 뒤 검증을 거쳐 09-21 시상했다. 상세 카드에서 원논문 Figure 2, 잠재 벡터·편향의 계산, 한 번의 학습과 앙상블 RMSE를 직접 살펴본다.",
+      "peopleIds": [
+        "yehuda-koren",
+        "robert-bell",
+        "chris-volinsky",
+        "neil-hunt"
+      ],
+      "peopleNames": [
+        "Yehuda Koren",
+        "Robert Bell",
+        "Chris Volinsky",
+        "BellKor’s Pragmatic Chaos 전체 7명",
+        "Neil Hunt · 시상 당시 CPO"
+      ],
+      "workIds": [
+        "netflix-prize-mf-2009"
+      ],
+      "flow": [
+        {
+          "label": "희소 평점표",
+          "note": "관찰한 칸과 미관찰 칸을 구분한다."
+        },
+        {
+          "label": "잠재 요인",
+          "note": "이용자·영화 벡터와 편향을 학습한다."
+        },
+        {
+          "label": "여러 예측의 조합",
+          "note": "오류가 다른 모형을 검증 자료에서 결합한다."
+        },
+        {
+          "label": "감춰 둔 평점 평가",
+          "note": "최종 RMSE와 운영 적용 여부를 구분한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Netflix · 2009 공식 시상 발표 보존본",
+          "url": "https://www.asc.ohio-state.edu/statistics/statgen/joul_aut2009/NetflixAwardsOneMillionPrize2009.pdf",
+          "note": "1쪽: 7월26일 접수 종료, 9월21일 시상, 일곱 우승팀 구성원. Hunt는 CPO 역할이며 우승팀 명단과 구분."
+        },
+        {
+          "title": "Koren·Bell·Volinsky · Matrix Factorization (2009)",
+          "url": "https://chrisvolinsky.com/files/publications/ieeecomputer2009.pdf",
+          "note": "공동저자 공개 PDF3–4: Figure2, 식(1)–(5), SGD와 편향. 8월 논문을 9월 최종 해법 보고서와 구분."
+        },
+        {
+          "title": "Netflix · 대회 방법과 실제 운영의 차이",
+          "url": "https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429",
+          "note": "초기 MF/RBM의 운영 활용과 최종 전체 앙상블의 비용 판단을 구분하는 공식 회고."
+        }
+      ],
+      "caveat": "세 상세 인물은 일곱 우승팀의 일부다. Hunt는 시상·제품 책임자 기록이다. 가상 RMSE 계산은 대회 데이터나 온라인 성과를 재현하지 않는다."
+    },
+    {
+      "id": "netflix-service-system-2015",
+      "date": "2015-12-28",
+      "year": 2015,
+      "dateLabel": "2015.12.28 · ACM TMIS 논문",
+      "precision": "day",
+      "type": "research",
+      "title": "추천 시스템: 평점 예측을 넘어 페이지와 A/B 검증으로",
+      "question": "지금 볼 작품을 찾는 경험 전체를 어떻게 만들고 더 나은지 확인할까?",
+      "idea": "PVR·Top-N·추세·이어 보기·유사성 등 서로 다른 추천 과제를 개인화된 행과 페이지로 연결한다. 과거 자료의 오프라인 평가로 후보를 줄이고 실제 회원의 A/B 시험에서 참여와 유지 지표를 따로 확인한다.",
+      "change": "하나의 점수 예측이 아니라 모형·화면·개발·검증을 포함하는 시스템으로 추천을 설명한다. 상세 카드의 원문 Figure8과 자작 페이지 구성·가상 관측 사례에서 그 차이를 볼 수 있다.",
+      "peopleIds": [
+        "carlos-a-gomez-uribe",
+        "neil-hunt"
+      ],
+      "peopleNames": [
+        "Carlos A. Gomez-Uribe",
+        "Neil Hunt"
+      ],
+      "workIds": [
+        "netflix-service-system-2015"
+      ],
+      "flow": [
+        {
+          "label": "상황별 추천 과제",
+          "note": "새 선택·이어 보기·유사성 등 목적을 나눈다."
+        },
+        {
+          "label": "행·페이지 구성",
+          "note": "순위·중복·기기·탐색 조건을 함께 고려한다."
+        },
+        {
+          "label": "오프라인 탐색",
+          "note": "과거 이력에서 후보와 가설을 비교한다."
+        },
+        {
+          "label": "온라인 A/B 검증",
+          "note": "한 영역의 재생과 전체 참여·유지 효과를 구분한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gomez-Uribe·Hunt · Netflix Recommender System (2015)",
+          "url": "https://pzs.dstu.dp.ua/DataMining/recom/bibl/a13-gomez-uribe.pdf",
+          "note": "PDF1 저자·소속, §§2·4, PDF13 Figure8. 2015 시스템·검증 설명."
+        },
+        {
+          "title": "ACM · 공식 논문 서지",
+          "url": "https://doi.org/10.1145/2843948",
+          "note": "게시일2015-12-28, TMIS6(4), Article13, 19쪽."
+        },
+        {
+          "title": "Netflix · Learning a Personalized Homepage",
+          "url": "https://netflixtechblog.com/learning-a-personalized-homepage-aa8ec670359a",
+          "note": "2015-04-09 Alvino·Basilico의 보충 공식 글. TMIS 논문 저자2명과 구분."
+        }
+      ],
+      "caveat": "당시 공개 시스템의 설명이며 현재 내부 시스템 전체를 뜻하지 않는다. 가상 수치·페이지 규칙은 실제 A/B 성과나 출시 판정이 아니다."
+    },
+    {
+      "peopleIds": [
+        "dawen-liang",
+        "rahul-g-krishnan",
+        "matthew-d-hoffman",
+        "tony-jebara"
+      ],
       "peopleNames": [
         "Dawen Liang",
         "Rahul G. Krishnan",
         "Matthew D. Hoffman",
         "Tony Jebara"
       ],
-      "workIds": [],
+      "workIds": [
+        "netflix-vae-cf-2018"
+      ],
       "id": "netflix-vae-cf-2018",
       "date": "2018-02-16",
       "year": 2018,
@@ -106,13 +342,19 @@
       "caveat": "회사 공동연구의 기록이며 모든 저자가 Netflix 직원인 것은 아니다. 논문의 실험 결과를 Netflix 서비스 전체에 적용된 효과로 일반화하지 않는다."
     },
     {
-      "peopleIds": [],
+      "peopleIds": [
+        "ko-jen-hsiao",
+        "yesu-feng",
+        "sudarshan-lamkhede"
+      ],
       "peopleNames": [
         "Ko-Jen Hsiao",
         "Yesu Feng",
         "Sudarshan Lamkhede"
       ],
-      "workIds": [],
+      "workIds": [
+        "netflix-recommendation-foundation-2025"
+      ],
       "id": "netflix-recommendation-foundation-2025",
       "date": "2025-03-21",
       "year": 2025,

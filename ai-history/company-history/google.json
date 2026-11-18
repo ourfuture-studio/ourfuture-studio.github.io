@@ -1,7 +1,7 @@
 {
   "id": "google",
-  "name": "Google / DNNresearch",
-  "nameKo": "구글 · DNNresearch",
+  "name": "Google",
+  "nameKo": "구글",
   "aliases": [
     "Google Brain",
     "DNNresearch",
@@ -9,13 +9,13 @@
     "토론토"
   ],
   "kind": "company",
-  "sector": "표현 학습·언어·연구의 사업화",
+  "sector": "시각·언어·모델 학습·연구 기반",
   "accent": "#4285a8",
-  "summary": "토론토의 시각 표현 학습이 DNNresearch와 Google로 연결된 경로, 그리고 Google 연구진의 단어·문장 표현 연구를 함께 읽습니다.",
+  "summary": "시각과 언어의 표현 학습, 모델의 취약성과 지식 전달을 연구자·원논문·조직의 시간으로 연결합니다.",
   "question": "대학에서 학습한 표현은 어떻게 회사의 연구와 언어 기술로 이어졌을까?",
   "overview": [
     "이 탐색 단위는 인수 전의 DNNresearch와 인수 이후의 Google을 시간순으로 연결합니다. 두 조직을 처음부터 같은 회사로 취급하지 않습니다.",
-    "AlexNet은 2012년 University of Toronto 연구입니다. 이를 학술 출발점으로 두고 회사 설립·인수, Google에서 나온 Word2Vec·Seq2Seq를 별도 사건으로 구분합니다."
+    "Toronto의 AlexNet은 Google 이전의 학술 출발점이다. 이후 DNNresearch 인수와 Google의 언어·시각·학습 연구를 별도 사건으로 연결한다. CMU 등 외부 기관과의 공동연구에는 당시 소속을 함께 적는다."
   ],
   "people": [
     {
@@ -47,6 +47,78 @@
       "name": "Jeffrey Dean",
       "role": "Word2Vec 공동저자·연구 조직",
       "note": "개별 논문 기여와 2023년 조직 통합의 역할은 별도 기록입니다."
+    },
+    {
+      "id": "ashish-vaswani",
+      "name": "Ashish Vaswani",
+      "role": "Transformer 공동저자",
+      "note": "2017 최초 원고는 여덟 저자의 동등 기여를 명시한다."
+    },
+    {
+      "id": "jacob-devlin",
+      "name": "Jacob Devlin",
+      "role": "BERT 공동저자",
+      "note": "2018 최초 원고의 Google AI Language 소속으로 연결한다."
+    },
+    {
+      "id": "ian-goodfellow",
+      "name": "Ian J. Goodfellow",
+      "role": "2015 적대적 예제 공동연구",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "jonathon-shlens",
+      "name": "Jonathon Shlens",
+      "role": "2015 적대적 예제 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "christian-szegedy",
+      "name": "Christian Szegedy",
+      "role": "2015 적대적 예제 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "zihang-dai",
+      "name": "Zihang Dai",
+      "role": "Transformer-XL 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "yang-zhilin",
+      "name": "Zhilin Yang",
+      "role": "Transformer-XL 공동저자",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "quoc-le",
+      "name": "Quoc V. Le",
+      "role": "Transformer-XL·AlphaGeometry 공동연구",
+      "note": "해당 논문 당시의 소속·공동저자 관계로 연결하며 현재 직위나 단독 발명을 뜻하지 않는다."
+    },
+    {
+      "id": "alexey-dosovitskiy",
+      "name": "Alexey Dosovitskiy",
+      "role": "ViT 공동저자",
+      "note": "2020년 최초 원고 당시 Google Research, Brain Team. 전체 12명 공동연구이며 개인별 단독 발명으로 귀속하지 않는다."
+    },
+    {
+      "id": "lucas-beyer",
+      "name": "Lucas Beyer",
+      "role": "ViT 공동저자",
+      "note": "2020년 원고의 동등 기술 기여 표기와 당시 소속을 근거로 연결한다."
+    },
+    {
+      "id": "alexander-kolesnikov",
+      "name": "Alexander Kolesnikov",
+      "role": "ViT 공동저자",
+      "note": "2020년 원고 당시 Google Research, Brain Team. 현재 소속과 직함을 덧씌우지 않는다."
+    },
+    {
+      "id": "oriol-vinyals",
+      "name": "Oriol Vinyals",
+      "role": "2015 지식 증류 공동저자",
+      "note": "원문 당시 Google Inc. 소속과 공동논문 기여로 연결한다."
     }
   ],
   "connections": [
@@ -329,6 +401,339 @@
         }
       ],
       "caveat": "고정 길이 벡터의 원래 구조를 이후 attention·Transformer 구조와 섞지 않습니다. 논문의 번역 조건을 모든 언어 서비스에 일반화하지 않습니다."
+    },
+    {
+      "id": "google-adversarial-2015",
+      "date": "2015",
+      "year": 2015,
+      "dateLabel": "2015 · ICLR 논문 / 2014 첫 원고",
+      "precision": "year",
+      "type": "research",
+      "title": "적대적 예제: 모델이 놓친 판단의 빈틈을 찾다",
+      "question": "사람에게 비슷해 보이는 입력이 왜 모델의 판단을 크게 바꿀까?",
+      "idea": "입력에 대한 손실의 기울기를 이용해 작은 변화가 모형의 오차를 키우는 방향을 찾았다. 여러 성분의 작은 변화가 합쳐지는 고차원 선형 효과를 설명하고, 이렇게 만든 예제를 학습에 포함하는 방법도 다룬다.",
+      "change": "정확히 분류한 원본만 보는 데서, 의도적으로 바꾼 입력에서 판단이 유지되는지도 살피게 한다. 인간의 인식과 모델의 분류 경계가 같지 않을 수 있다는 문제를 드러낸다.",
+      "flow": [
+        {
+          "label": "기존 입력",
+          "note": "원본을 분류하고 정답에 대한 손실을 구한다."
+        },
+        {
+          "label": "입력 방향의 기울기",
+          "note": "손실을 크게 바꾸는 입력 성분의 방향을 찾는다."
+        },
+        {
+          "label": "제한한 입력 변화",
+          "note": "작은 범위에서 변화시킨 뒤 예측을 비교한다."
+        },
+        {
+          "label": "취약성·학습 비교",
+          "note": "적대적 예제를 만든 방법과 방어 학습의 범위를 구분한다."
+        }
+      ],
+      "peopleIds": [
+        "ian-goodfellow",
+        "jonathon-shlens",
+        "christian-szegedy"
+      ],
+      "peopleNames": [
+        "Ian J. Goodfellow",
+        "Jonathon Shlens",
+        "Christian Szegedy"
+      ],
+      "workIds": [
+        "goodfellow-adversarial-2015"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow·Shlens·Szegedy · ICLR2015 원문",
+          "url": "https://arxiv.org/pdf/1412.6572v3",
+          "note": "첫 페이지 Google Inc. 소속. §§3–4의 선형 설명·FGSM. 최초 원고는 2014년이며 기존 상세 카드는 ICLR2015 기준이다."
+        }
+      ],
+      "caveat": "GAN2014와 다른 논문이다. 적대적 학습의 비교가 모든 공격에 대한 강건성이나 사람과 같은 시각 지능을 보장하지 않는다."
+    },
+    {
+      "id": "google-distillation-2015",
+      "date": "2015-03-09",
+      "year": 2015,
+      "dateLabel": "2015-03-09 · arXiv 최초 원고",
+      "precision": "day",
+      "type": "research",
+      "title": "지식 증류: 교사의 판단 분포를 학생 모델로 옮기다",
+      "question": "여러 모델을 매번 함께 실행하지 않고도, 그 모델들이 배운 구분을 더 간단한 모델에 전달할 수 있을까?",
+      "idea": "배운 지식을 특정 연결값뿐 아니라 입력에 대한 출력 분포로 보았다. 온도를 높여 만든 교사의 soft target을 학생도 같은 온도에서 맞히게 하고, 정답이 있으면 정답 목표를 함께 사용해 학생의 연결을 학습한다.",
+      "change": "정답 범주의 이름만으로는 지워지는 오답 사이의 상대적 구분을 전달한다. 학습이 끝난 학생은 온도1로 사용하며, 교사의 전체 구조나 가중치를 그대로 복사해야 하는 방식은 아니다.",
+      "flow": [
+        {
+          "label": "큰 모델·앙상블",
+          "note": "먼저 자료에서 구분을 배우고 입력별 logits를 만든다."
+        },
+        {
+          "label": "부드러운 목표",
+          "note": "높은 온도에서 정답 이외 범주의 확률도 학습 신호로 전달한다."
+        },
+        {
+          "label": "학생의 연결 학습",
+          "note": "같은 온도의 분포와 정답 목표로 학생만 갱신한다."
+        },
+        {
+          "label": "별도 학생으로 사용",
+          "note": "학습한 학생은 온도1로 추론한다. 조건별 성능은 별도로 검증한다."
+        }
+      ],
+      "peopleIds": [
+        "geoffrey-hinton",
+        "oriol-vinyals",
+        "jeffrey-dean"
+      ],
+      "peopleNames": [
+        "Geoffrey Hinton",
+        "Oriol Vinyals",
+        "Jeff Dean"
+      ],
+      "workIds": [
+        "distillation-2015"
+      ],
+      "sources": [
+        {
+          "title": "Hinton·Vinyals·Dean · Distilling the Knowledge in a Neural Network · v1",
+          "url": "https://arxiv.org/pdf/1503.02531v1",
+          "note": "PDF1쪽 공동저자·Google Inc. 소속과 동등 기여, PDF2–3쪽 §2 Eq.1–4. Jeff Dean은 기존 Jeffrey Dean 인물 식별자로 연결한다."
+        },
+        {
+          "title": "arXiv · 최초 제출 이력",
+          "url": "https://arxiv.org/abs/1503.02531",
+          "note": "2015-03-09 첫 제출. Comments의 NIPS2014 Deep Learning Workshop 표기와 연도를 구분한다."
+        }
+      ],
+      "caveat": "Caruana 등의 앞선 모델 압축 연구를 확장한 공동 연구다. 모든 증류가 학생의 층 수를 줄이거나 성능을 보존한다고 주장하지 않는다. 상세 시각화의 특징값·logits·연결은 직접 정했으며 논문 실험 재현이 아니다."
+    },
+    {
+      "id": "google-transformer-2017",
+      "date": "2017-06-12",
+      "year": 2017,
+      "dateLabel": "2017-06-12 · 최초 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "Transformer: 단어들이 서로를 참고해 표현을 만들다",
+      "question": "문장을 한 단어씩 기억에 밀어 넣는 대신, 필요한 단어를 직접 참고하게 할 수 있을까?",
+      "idea": "각 위치의 표현이 다른 위치의 표현을 attention으로 모아 문맥을 반영하도록 했다. 순서 정보와 여러 attention head를 더하고, 입력을 읽는 인코더와 출력을 이어 쓰는 디코더를 함께 학습한다.",
+      "change": "문장 안의 먼 단어를 연결하는 경로와 학습 시 병렬 계산을 바꾼다. 원래 제안은 번역용 인코더–디코더이며, 이후 GPT의 디코더 전용 구성과 구분한다.",
+      "flow": [
+        {
+          "label": "토큰과 위치",
+          "note": "단어 조각의 표현에 순서 정보를 더한다."
+        },
+        {
+          "label": "서로를 참고",
+          "note": "여러 head가 필요한 위치의 정보를 모은다."
+        },
+        {
+          "label": "인코더·디코더",
+          "note": "입력 문맥을 읽고 앞서 쓴 출력에 조건을 건다."
+        },
+        {
+          "label": "다음 출력 예측",
+          "note": "번역 정답의 오차로 표현과 연결값을 함께 바꾼다."
+        }
+      ],
+      "peopleIds": [
+        "ashish-vaswani",
+        "noam-shazeer",
+        "niki-parmar",
+        "aidan-gomez"
+      ],
+      "peopleNames": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "workIds": [
+        "transformer"
+      ],
+      "sources": [
+        {
+          "title": "Attention Is All You Need · 최초 원고",
+          "url": "https://arxiv.org/pdf/1706.03762v1",
+          "note": "첫 페이지 소속·동등 기여, §§2–3 및 Fig.1–2. 최초 제출일은 arXiv 이력 2017-06-12."
+        }
+      ],
+      "caveat": "여덟 공동저자의 연구다. 원문은 동등 기여와 무작위 저자 순서를 명시한다. 모든 저자를 당시 Google 직원으로 묶지 않으며, 생성 시 미래 출력은 참고하지 않는다."
+    },
+    {
+      "id": "google-bert-2018",
+      "date": "2018-10-11",
+      "year": 2018,
+      "dateLabel": "2018-10-11 · 최초 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "BERT: 가려진 단어를 앞뒤 문맥으로 배우다",
+      "question": "같은 단어라도 주변 문장이 바뀌면 뜻이 달라지는 것을 어떻게 표현할까?",
+      "idea": "입력 일부를 가리고 원래 단어를 맞히게 해, 남아 있는 앞뒤 문맥이 각 위치의 표현에 함께 반영되도록 사전학습한다. 학습한 인코더를 질문응답·문장 분류 같은 과제의 데이터로 미세조정한다.",
+      "change": "언어 표현을 미리 배운 뒤 여러 과제에 옮기는 흐름을 양방향 문맥으로 확장한다. 원래 BERT의 학습에는 다음 문장 예측도 포함된다.",
+      "flow": [
+        {
+          "label": "문맥과 빈자리",
+          "note": "일부 토큰을 바꿔 원래 토큰을 예측할 입력을 만든다."
+        },
+        {
+          "label": "양방향 인코더",
+          "note": "남아 있는 앞뒤 단어를 함께 참고한다."
+        },
+        {
+          "label": "사전학습",
+          "note": "가려진 단어와 문장 쌍의 신호로 표현을 배운다."
+        },
+        {
+          "label": "과제별 미세조정",
+          "note": "출력층과 기존 가중치를 정답 데이터로 조정한다."
+        }
+      ],
+      "peopleIds": [
+        "jacob-devlin",
+        "ming-wei-chang",
+        "kenton-lee",
+        "kristina-toutanova"
+      ],
+      "peopleNames": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "workIds": [
+        "bert"
+      ],
+      "sources": [
+        {
+          "title": "BERT · 2018 최초 원고",
+          "url": "https://arxiv.org/pdf/1810.04805v1",
+          "note": "첫 페이지 Google AI Language, §3의 BERT와 사전학습·미세조정. 2018-10-11 제출과 2019 NAACL 출판을 구분한다."
+        }
+      ],
+      "caveat": "과제별 미세조정은 가중치를 바꾸는 학습이며 GPT-3의 문맥 내 예시와 구분한다. MLM에서 선택한 토큰을 모두 [MASK]로 바꾸지는 않는다. 원문은 80% 마스킹·10% 임의 토큰·10% 원형 유지 규칙을 사용한다."
+    },
+    {
+      "id": "google-transformer-xl-2019",
+      "date": "2019-01-09",
+      "year": 2019,
+      "dateLabel": "2019.01.09 · 최초 원고 / ACL2019",
+      "precision": "day",
+      "type": "research",
+      "title": "Transformer-XL: 구간을 넘어 앞 문맥의 상태를 이어 쓰다",
+      "question": "긴 글을 잘라 읽더라도 앞에서 읽은 내용과 다음 구간을 연결할 수 있을까?",
+      "idea": "앞 구간에서 만든 은닉 상태를 다음 구간의 문맥으로 재사용하고, 구간이 이동해도 위치 관계를 다룰 상대 위치 표현을 결합한다. 학습 중 재사용한 과거 상태에는 stop-gradient를 적용한다.",
+      "change": "매 구간을 독립적으로 시작할 때 생기는 문맥 단절을 다룬다. 토큰을 한 거대한 창에 모두 넣는 것과 구간 사이에 상태를 잇는 구조를 비교할 수 있다.",
+      "flow": [
+        {
+          "label": "현재 구간",
+          "note": "제한된 길이의 토큰을 읽는다."
+        },
+        {
+          "label": "이전 상태 재사용",
+          "note": "앞 구간의 은닉 상태를 메모리로 가져온다."
+        },
+        {
+          "label": "상대 위치와 attention",
+          "note": "현재 질의에서 이전·현재 위치의 정보를 결합한다."
+        },
+        {
+          "label": "다음 구간으로",
+          "note": "만든 상태를 다음 구간의 문맥에 연결한다."
+        }
+      ],
+      "peopleIds": [
+        "zihang-dai",
+        "yang-zhilin",
+        "quoc-le",
+        "ruslan-salakhutdinov"
+      ],
+      "peopleNames": [
+        "Zihang Dai",
+        "Zhilin Yang",
+        "Yiming Yang",
+        "Jaime Carbonell",
+        "Quoc V. Le",
+        "Ruslan Salakhutdinov"
+      ],
+      "workIds": [
+        "transformer-xl"
+      ],
+      "sources": [
+        {
+          "title": "Transformer-XL · ACL2019 원문",
+          "url": "https://aclanthology.org/P19-1285.pdf",
+          "note": "PDF1쪽 당시 Carnegie Mellon University·Google Brain 소속, pp.3–5 구간 재귀·상대 위치."
+        },
+        {
+          "title": "arXiv · 최초 제출 이력",
+          "url": "https://arxiv.org/abs/1901.02860",
+          "note": "최초 제출 2019-01-09와 이후 ACL 출판을 구분한다."
+        }
+      ],
+      "caveat": "CMU와 Google Brain 공동연구다. 모든 저자를 Google 직원으로 표시하지 않으며, 메모리 재사용을 무제한 기억이나 전체 과거의 역전파와 동일시하지 않는다."
+    },
+    {
+      "id": "google-vit-2020",
+      "date": "2020-10-22",
+      "year": 2020,
+      "dateLabel": "2020.10.22 최초 원고 · ICLR 2021",
+      "precision": "day",
+      "type": "research",
+      "peopleIds": [
+        "alexey-dosovitskiy",
+        "lucas-beyer",
+        "alexander-kolesnikov"
+      ],
+      "peopleNames": [
+        "Alexey Dosovitskiy",
+        "Lucas Beyer",
+        "Alexander Kolesnikov"
+      ],
+      "workIds": [
+        "vit-2020"
+      ],
+      "title": "ViT: 이미지 패치 사이의 관계에서 시각 표현을 배우다",
+      "question": "이미지 전용 연결 구조를 덜 두고도, 여러 조각의 관계에서 대상을 구별할 수 있을까?",
+      "idea": "이미지를 패치로 나눠 같은 선형 투영으로 벡터를 만들고, 위치와 별도 class token을 더한 Transformer encoder에 넣었다. 분류 오차가 패치 표현과 여러 위치의 관계 계산을 함께 학습시킨다.",
+      "change": "Google Research, Brain Team 공동연구는 패치 기반 encoder를 큰 자료로 사전학습하고 새 과제에 전체 미세조정하는 경로를 비교했다. 연결된 상세 연구에서 원Figure 1·자체 아키텍처·패치 계산·위치와 순서·미세조정을 살펴볼 수 있다.",
+      "flow": [
+        {
+          "label": "이미지 패치",
+          "note": "RGB 값을 펼쳐 같은 학습 가능한 투영을 적용한다."
+        },
+        {
+          "label": "내용과 위치",
+          "note": "위치 벡터와 별도의 class token을 더한다."
+        },
+        {
+          "label": "Transformer encoder",
+          "note": "여러 패치가 서로를 참고하며 표현을 바꾼다."
+        },
+        {
+          "label": "새 분류 과제",
+          "note": "head를 교체하고 전체 망을 미세조정한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Dosovitskiy 외 · ViT 최초 원고 v1",
+          "url": "https://arxiv.org/pdf/2010.11929v1",
+          "note": "2020-10-22. 1쪽 Google Research, Brain Team과 12명 공동저자·기여 표기, 3쪽 Figure 1·§3.1, 4쪽 §3.2, 13–14쪽 부록 B.1.1."
+        },
+        {
+          "title": "Google Research · 공식 설명",
+          "url": "https://research.google/blog/transformers-for-image-recognition-at-scale/",
+          "note": "2020-12-03. 발표 글의 날짜는 최초 원고 제출일과 구분한다. 패치·위치·사전학습 자료 조건을 설명한다."
+        }
+      ],
+      "caveat": "2020년 Brain Team 연구이며, 2023년 통합 이후의 Google DeepMind 소속을 소급하지 않는다. 세 연결 인물은 열두 공동저자의 일부다. 충분한 사전학습 자료에서의 결과를 모든 데이터 조건에서 CNN보다 낫다는 주장으로 바꾸지 않는다. 원그림의 재배포 허용과 논문 접근 가능 여부도 구분한다."
     }
   ],
   "orgAliases": [

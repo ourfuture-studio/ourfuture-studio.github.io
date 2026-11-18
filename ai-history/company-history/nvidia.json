@@ -213,6 +213,59 @@
       "caveat": "GPU 사용이 모든 신경망의 성능 향상을 자동 보장하는 것은 아닙니다. AlexNet 논문 저자는 NVIDIA가 아니라 당시 Toronto 소속 연구자입니다."
     },
     {
+      "id": "nvidia-gtc-dynamo-2025",
+      "date": "2025-03-18",
+      "year": 2025,
+      "dateLabel": "2025-03-18 · 최초 공개",
+      "precision": "day",
+      "type": "infrastructure",
+      "title": "GTC 2025: GPU에서 추론 요청이 흐르는 시스템으로",
+      "question": "학습된 모델을 많은 사람이 쓰려면 계산뿐 아니라 무엇을 함께 설계해야 할까?",
+      "idea": "Dynamo 발표는 입력 문맥을 처리하는 prefill과 다음 토큰을 이어 만드는 decode를 다른 GPU에 배치하고, 문맥 계산의 중간 상태인 KV cache 위치를 요청 경로에 반영하는 구성을 설명했다.",
+      "change": "칩의 연산량에서 여러 장치의 기억·통신·요청 배치까지 설계 단위가 넓어진다. 같은 날의 Blackwell Ultra 발표와 함께 하드웨어와 추론 소프트웨어가 만나는 위치를 읽을 수 있다.",
+      "flow": [
+        {
+          "label": "입력 요청",
+          "note": "사용자의 문맥과 생성 요청을 받는다."
+        },
+        {
+          "label": "문맥 계산과 기억",
+          "note": "prefill에서 만든 KV cache의 위치를 관리한다."
+        },
+        {
+          "label": "장치 배치·연결",
+          "note": "자원과 중간 상태를 고려해 계산을 나눈다."
+        },
+        {
+          "label": "토큰 생성·응답",
+          "note": "decode를 이어 수행하며 사용자에게 응답한다."
+        }
+      ],
+      "peopleIds": [
+        "jensen-huang"
+      ],
+      "peopleNames": [
+        "Jensen Huang",
+        "NVIDIA 개발·제품팀"
+      ],
+      "workIds": [
+        "huang-gtc-2025"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · Dynamo 공식 발표",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-dynamo-open-source-library-accelerates-and-scales-ai-reasoning-models",
+          "note": "2025-03-18. Disaggregated Serving, Inference Supercharged, GPU Planner·Smart Router."
+        },
+        {
+          "title": "NVIDIA · Blackwell Ultra 발표",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning",
+          "note": "동일 날짜의 rack-scale 설계 및 당시 Availability 계획."
+        }
+      ],
+      "caveat": "발표 당시의 기능·공급 계획이다. 회사 성능비를 독립 측정으로 인용하지 않는다. 상세 카드의 비용표도 직접 정한 사례이며 실제 Dynamo의 라우팅 정책이나 지연 시간을 재현하지 않는다."
+    },
+    {
       "id": "nvidia-palantir-2025",
       "date": "2025-10-28",
       "year": 2025,

@@ -1,0 +1,23 @@
+/* Authored tiny examples. No Netflix ratings, trained model, or member outcome data. */
+(function(){
+ 'use strict';
+ const items=[{id:'a',title:'오로라',q:[.9,.15],bias:.2},{id:'b',title:'늦은 산책',q:[-.7,.8],bias:.1},{id:'c',title:'초록 섬',q:[.2,-.9],bias:-.1},{id:'d',title:'밤의 지도',q:[-.8,-.4],bias:0},{id:'e',title:'다섯 번째 봄',q:[.5,.7],bias:.15}];
+ const users=[{id:'u1',label:'이용자 A',p:[.9,-.2],bias:0,ratings:[4.5,null,3.7,null,3.4]},{id:'u2',label:'이용자 B',p:[-.8,.7],bias:.15,ratings:[null,4.5,null,3.6,3.1]},{id:'u3',label:'이용자 C',p:[.2,.8],bias:-.1,ratings:[3.2,3.8,null,null,4]},{id:'u4',label:'이용자 D',p:[-.5,-.7],bias:.05,ratings:[null,null,3.8,4,null]}];
+ const dot=(p,q)=>p.reduce((sum,x,k)=>sum+x*q[k],0);
+ function predict(p,item,{bias=true,userBias=0,mean=3.2}={}){return dot(p,item.q)+(bias?mean+userBias+item.bias:0);}
+ function rmse(actual,predicted){if(!actual.length||actual.length!==predicted.length)throw new RangeError('Equal nonempty arrays required.');return Math.sqrt(actual.reduce((sum,y,i)=>sum+(y-predicted[i])**2,0)/actual.length);}
+ const blendData={actual:[5,1,4,2],a:[4,2,4.3,1.7],b:[4.8,1.2,3.3,2.7],similar:[4.1,1.9,4.25,1.75]};
+ function blend(weight,complementary=true){if(weight<0||weight>1)throw new RangeError('Weight must be in [0,1].');const b=complementary?blendData.b:blendData.similar,predictions=blendData.a.map((a,i)=>weight*a+(1-weight)*b[i]);return {predictions,aRMSE:rmse(blendData.actual,blendData.a),bRMSE:rmse(blendData.actual,b),rmse:rmse(blendData.actual,predictions),b};}
+ function initialPair(){return {p:[.9,-.2],q:[.9,.15],bu:0,bi:.2,mean:3.2,rating:4.5};}
+ function pairLoss(pair,lambda=.1){const prediction=pair.mean+pair.bu+pair.bi+dot(pair.p,pair.q),error=pair.rating-prediction,penalty=lambda*([...pair.p,...pair.q,pair.bu,pair.bi].reduce((a,b)=>a+b*b,0));return {prediction,error,loss:.5*(error*error+penalty)};}
+ function learnPair(pair,{lambda=.1,rate=.035}={}){if(lambda<0||rate<=0)throw new RangeError('Nonnegative regularization and positive step size required.');const before=pairLoss(pair,lambda),e=before.error;const next={...pair,p:pair.p.map((v,k)=>v+rate*(e*pair.q[k]-lambda*v)),q:pair.q.map((v,k)=>v+rate*(e*pair.p[k]-lambda*v)),bu:pair.bu+rate*(e-lambda*pair.bu),bi:pair.bi+rate*(e-lambda*pair.bi)};return {before,next,after:pairLoss(next,lambda)};}
+ const pageRows=[{id:'top',title:'지금 고를 만한 작품',algorithm:'Top-N',items:['a','b','c'],score:[.96,.8]},{id:'similar',title:'최근 본 작품과 이어 보기',algorithm:'Video-video similarity',items:['a','d','e'],score:[.93,.77]},{id:'genre',title:'취향에 맞는 장르',algorithm:'PVR',items:['a','c','h'],score:[.9,.95]},{id:'trending',title:'지금 화제가 되는 작품',algorithm:'Trending',items:['b','f','g'],score:[.87,.93]},{id:'continue',title:'이어서 보기',algorithm:'Continue Watching',items:['i','d'],score:[.76,.84]}];
+ const titles={a:'오로라',b:'늦은 산책',c:'초록 섬',d:'밤의 지도',e:'다섯 번째 봄',f:'모래시계',g:'작은 여행',h:'달의 방',i:'다음 장'};
+ function assemble({persona=0,diversity=0,deduplicate=true}={}){if(![0,1].includes(persona)||diversity<0)throw new RangeError('A known persona and nonnegative diversity penalty required.');const seen=new Set(),remaining=pageRows.slice(),rows=[];
+  while(rows.length<3&&remaining.length){const scored=remaining.map(row=>({...row,overlap:row.items.filter(id=>seen.has(id)).length,adjusted:row.score[persona]-diversity*.25*row.items.filter(id=>seen.has(id)).length})).sort((a,b)=>b.adjusted-a.adjusted);const best=scored[0];remaining.splice(remaining.findIndex(r=>r.id===best.id),1);const shown=deduplicate?best.items.filter(id=>!seen.has(id)):best.items.slice();if(shown.length)rows.push({...best,shown});shown.forEach(id=>seen.add(id));}
+  const all=rows.flatMap(r=>r.shown);return {rows,unique:new Set(all).size,duplicates:all.length-new Set(all).size};
+ }
+ const experiments=[{id:'offline',label:'오프라인 점수만 개선',local:null,total:null,retention:null,decision:'온라인 검증이 필요하다',reason:'과거 자료에서의 순위 개선만으로 다른 화면을 본 회원의 행동이나 유지율을 알 수 없다.'},{id:'local',label:'한 영역의 재생만 증가',local:'+10%',total:'변화 없음',retention:'차이 확인 못함',decision:'서비스 전체의 효과를 분리한다',reason:'한 영역의 재생이 다른 영역에서 옮겨 왔다면 전체 참여는 늘지 않을 수 있다. 차이를 검출하지 못했다는 결과도 동일함의 증명은 아니다.'},{id:'consistent',label:'여러 지표가 함께 증가',local:'+10%',total:'+3%',retention:'+0.2%p',decision:'일관된 관측을, 검증 조건과 함께 읽는다',reason:'여러 지표가 같은 방향이어도 표본 수·불확실성·관찰 기간·반복 여부를 확인해야 한다. 이 직접 정한 숫자들은 실제 A/B 결과나 출시 판정이 아니다.'}];
+ function freeze(o){if(o&&typeof o==='object'&&!Object.isFrozen(o)){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
+ window.AtlasNetflixMLCore=freeze({items,users,dot,predict,rmse,blendData,blend,initialPair,pairLoss,learnPair,pageRows,titles,assemble,experiments});
+})();
