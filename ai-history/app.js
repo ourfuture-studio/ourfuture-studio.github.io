@@ -278,7 +278,7 @@
     document.querySelector('.timeline-nav').hidden=!research;document.querySelector('.selection-strip').hidden=!research;
     document.querySelector('.view-switch').hidden=!research;
     for(const [id,on] of [['research-mode',research],['people-mode',people],['graph-mode',graph],['companies-mode',companies]]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
-    $('browse-mode-hint').textContent=companies?'사람·연구·제품·계산 기반이 이어진 시간을 읽습니다':graph?'사람 사이의 연결과 그 근거를 따라갑니다':people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
+    $('browse-mode-hint').textContent=companies?'사람·연구·제품·계산 기반이 이어진 시간을 읽습니다':graph?'인물과 회사의 연결을 출처와 함께 따라갑니다':people?'한 인물의 여러 연구를 연도순으로 읽습니다':'연도 위에서 세 가지 접근을 비교합니다';
     const shownYears=companies&&window.AtlasCompanies?.ready?window.AtlasCompanies.companies.flatMap(c=>c.events.map(e=>e.year)):people?peopleYears:all.map(e=>e.year);
     document.querySelector('.intro-period').textContent=Math.min(...shownYears)+' — '+Math.max(...shownYears);
     updateFilter();
@@ -298,7 +298,7 @@
   }
   function openWorkDetail(personId,workId){
     const p=window.AtlasPeople.profiles.find(p=>p.id===personId),w=p?.works.find(w=>w.id===workId);if(!w)return;
-    const e=byId.get(w.eventId)||{...w,subtitle:w.type,detail:'',related:[],question:''};openRecord(e);
+    const e=byId.get(w.eventId)||{...w,subtitle:w.subtitle||w.type,detail:w.detail||'',related:w.related||[],question:w.question||''};openRecord(e);
     try{history.replaceState(null,'','#person='+encodeURIComponent(personId)+'&work='+encodeURIComponent(workId)+(state.mode==='people'&&state.filter==='industry'?'&filter=industry':''));}catch{}
   }
   function industryContext(personId,requested){
@@ -327,11 +327,17 @@
     for(const s of e.sources){const a=node('a');a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.append(node('span','',s.title),node('span','','↗'));$('detail-sources').append(a);}
     const portrait=eventPortrait(e);if(portrait)window.AtlasPortraits.appendCredit($('detail-sources'),portrait);
     $('detail-related').replaceChildren();
-    $('detail-related').parentElement.hidden=!e.related?.length;
-    for(const related of e.related||[]){const r=byId.get(related);if(!r)continue;const b=node('button','',`${r.year} · ${r.title}`);b.type='button';b.addEventListener('click',()=>{
-      if(!state.events.some(item=>item.id===r.id)){state.filter='all';state.query='';state.selected=r.id;updateFilter();}
-      if(state.mode!=='research'){setMode('research');state.filter='all';state.query='';updateFilter();}selectEvent(r.id);openDetail(r.id);
-    });$('detail-related').append(b);}
+    for(const related of e.related||[]){
+      const timeline=byId.get(related);
+      const person=timeline?null:window.AtlasPeople.profiles.find(p=>p.works.some(w=>w.id===related));
+      const r=timeline||person?.works.find(w=>w.id===related);if(!r)continue;
+      const b=node('button','',`${r.year} · ${r.title}`);b.type='button';b.addEventListener('click',()=>{
+        if(!timeline){openWorkDetail(person.id,r.id);return;}
+        if(!state.events.some(item=>item.id===r.id)){state.filter='all';state.query='';state.selected=r.id;updateFilter();}
+        if(state.mode!=='research'){setMode('research');state.filter='all';state.query='';updateFilter();}selectEvent(r.id);openDetail(r.id);
+      });$('detail-related').append(b);
+    }
+    $('detail-related').parentElement.hidden=!$('detail-related').childElementCount;
     const dialog=$('detail-dialog');if(!dialog.open)dialog.showModal();dialog.scrollTop=0;
   }
   function openAbout() { $('about-dialog').showModal(); }

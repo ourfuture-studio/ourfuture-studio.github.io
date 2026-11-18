@@ -8,16 +8,28 @@
     "SageMaker",
     "DeepAR",
     "DSSTNE",
-    "클라우드"
+    "클라우드",
+    "Item-to-item",
+    "협업 필터링",
+    "상품 추천",
+    "Chronos",
+    "GluonTS",
+    "Kiva",
+    "DeepFleet",
+    "Sparrow",
+    "Sequoia",
+    "물류",
+    "로봇"
   ],
   "kind": "company",
-  "sector": "추천·예측·클라우드",
+  "sector": "추천·확률 예측·클라우드·물류 로봇",
   "accent": "#a97b44",
-  "summary": "희소한 추천 데이터를 GPU로 학습하고, 확률 예측 연구를 관리형 서비스로 제공하다.",
-  "question": "대규모 데이터의 학습과 예측을 다른 조직도 쓸 수 있는 기반으로 만들려면?",
+  "summary": "상품의 관계, 시간의 패턴, 창고의 움직임을 표현하고 학습·추론·서비스로 연결하다.",
+  "question": "무엇을 추천하고 얼마나 준비하며, 여러 로봇을 어떻게 함께 움직이게 할까?",
   "overview": [
-    "Amazon의 추천 연구와 AWS의 서비스 제공을 회사·조직·제품의 다른 층위로 나누어 읽는다. 학습 알고리즘, 데이터 처리, GPU 실행, 서비스 제공이 만나는 위치를 따라간다.",
-    "기술 글 게시일, 최초 논문 제출일, 서비스 제공 시작은 서로 다른 날짜다. 같은 DeepAR도 원고 판본과 제품 기록의 저자·기능·조건을 보존한다."
+    "추천은 상품 사이의 관계와 개인의 이력을 연결한다. 예측은 여러 시계열에서 패턴을 배우고 아직 모르는 미래를 확률로 표현한다. 물류는 주문·선반·로봇·통로를 함께 다루어 실제 이동과 작업으로 연결한다.",
+    "아이템 간 추천과 DSSTNE, DeepAR와 Chronos, Kiva와 DeepFleet를 짝지어 읽을 수 있다. 각 기록의 인물을 누르면 연구 배경과 관계도로, 연구 제목을 누르면 원자료와 조작 가능한 시각화로 이어진다.",
+    "Kiva의 2008년 연구와 2012년 Amazon 인수, 논문 제출과 AWS 서비스 공개, 운영 발표와 논문 실험은 각각 다른 사건이다. 읽기 링크가 연결되어 있다는 이유만으로 두 시스템의 공동 배포나 직접적인 계승을 뜻하지 않는다."
   ],
   "people": [
     {
@@ -43,10 +55,238 @@
       "role": "DeepAR 최초 원고 공동저자",
       "note": "2017 v1의 Amazon Development Center Germany 소속.",
       "id": "jan-gasthaus"
+    },
+    {
+      "id": "greg-linden",
+      "name": "Greg Linden",
+      "role": "2003 item-to-item 공동저술",
+      "note": "원고 약력은 Amazon Personalization의 이전 경력과 당시 Stanford Sloan 대학원 재학을 구분한다."
+    },
+    {
+      "id": "brent-smith",
+      "name": "Brent Smith",
+      "role": "2003 item-to-item 공동저술",
+      "note": "당시 약력의 Amazon Automated Merchandising 팀 역할. 현재 직책으로 사용하지 않는다."
+    },
+    {
+      "id": "jeremy-york",
+      "name": "Jeremy York",
+      "role": "2003 item-to-item 공동저술",
+      "note": "당시 Automated Content Selection and Delivery 팀 역할. 개인별 단독 발명으로 배정하지 않는다."
+    },
+    {
+      "id": "abdul-fatir-ansari",
+      "name": "Abdul Fatir Ansari",
+      "role": "Chronos2024 공동저자·Stella와 동등 기여",
+      "note": "2024 v1 당시 AWS.2025 Chronos2 공동저자에도 포함된다."
+    },
+    {
+      "id": "lorenzo-stella",
+      "name": "Lorenzo Stella",
+      "role": "GluonTS2019·Chronos2024 공동저자",
+      "note": "2019와2024 원고 당시 AWS.2024 Ansari와 동등 기여. Gasthaus 등과2019 공동저술."
+    },
+    {
+      "id": "caner-turkmen",
+      "name": "Caner Turkmen",
+      "role": "GluonTS2019·Chronos2024 공동저자",
+      "note": "2019 GluonTS는 Ali Caner Türkmen,2024 Chronos는 Caner Turkmen으로 표기.2025 Chronos2 공동저자로 표시하지 않는다."
+    },
+    {
+      "id": "peter-r-wurman",
+      "name": "Peter R. Wurman",
+      "role": "Kiva2008 논문 공동저자",
+      "note": "2008 당시 NCSU 부교수이자 Kiva 활동을 위해 휴직 중으로 원문에 소개된다. Amazon DeepFleet 저자로 이어 붙이지 않는다."
+    },
+    {
+      "id": "raffaello-dandrea",
+      "name": "Raffaello D’Andrea",
+      "role": "Kiva2008 논문 공동저자",
+      "note": "2008 당시 ETH Zurich 교수·Kiva engineering fellow로 원문에 소개된다."
+    },
+    {
+      "id": "mick-mountz",
+      "name": "Mick Mountz",
+      "role": "Kiva 설립자·2008 논문 공동저자",
+      "note": "2003년1월 설립과 goods-to-person의 운영 동기를2008 저자 소개에서 확인한다."
+    },
+    {
+      "id": "ameya-agaskar",
+      "name": "Ameya Agaskar",
+      "role": "DeepFleet v1 확장 실험·집필 리드",
+      "note": "2025 v1 PDF25에 Sriram Siva와 함께 역할이 명시된다. 전체20명 공동 기여자의 일부다."
+    },
+    {
+      "id": "sriram-siva",
+      "name": "Sriram Siva",
+      "role": "DeepFleet v1 확장 실험·집필 및 GF 설계·개발",
+      "note": "v1 PDF25의 역할 표기를 따른다. 네 모델 전체를 한 사람의 발명으로 쓰지 않는다."
+    },
+    {
+      "id": "joseph-w-durham",
+      "name": "Joseph W. Durham",
+      "role": "DeepFleet v1 PI·연구 프로그램 리드",
+      "note": "Federico Pecora와 함께 명시된 역할이다. Amazon Science 글은 Joey Durham 이름으로 발표했다."
     }
   ],
   "connections": [],
   "events": [
+    {
+      "id": "amazon-item-to-item-2003",
+      "date": "2003",
+      "year": 2003,
+      "dateLabel": "2003년 1–2월호 · 논문 발행",
+      "precision": "year",
+      "type": "research",
+      "peopleIds": [
+        "greg-linden",
+        "brent-smith",
+        "jeremy-york"
+      ],
+      "peopleNames": [
+        "Greg Linden",
+        "Brent Smith",
+        "Jeremy York"
+      ],
+      "workIds": [
+        "amazon-item-to-item-2003"
+      ],
+      "title": "Item-to-item: 상품 관계표에서 개인의 추천을 조합하다",
+      "question": "방문할 때마다 모든 이용자를 비교하지 않고 개인에게 맞는 상품을 찾을 수 있을까?",
+      "idea": "상품을 산 이용자들의 겹침에서 상품 간 관계를 미리 계산한다. 요청 때는 개인이 관찰한 상품의 이웃을 가져와 조합하고 이미 본 상품을 제외한다. 신경망이 아닌 고전적인 협업 필터링이다.",
+      "change": "비싼 상품 관계 계산과 현재 개인의 이력을 읽는 요청 계산을 나누었다. 인물·상세 연구에서 원문 알고리즘, 코사인·이웃 K·후보 점수와 미래 정답의 분리를 살펴볼 수 있다.",
+      "flow": [
+        {
+          "label": "과거 행동",
+          "note": "상품을 관찰한 사람들의 기록을 모은다."
+        },
+        {
+          "label": "상품 간 관계표",
+          "note": "상품 벡터의 유사 이웃을 준비한다."
+        },
+        {
+          "label": "현재 개인 이력",
+          "note": "그 사람이 관찰한 상품의 이웃을 가져온다."
+        },
+        {
+          "label": "후보 결합",
+          "note": "이미 본 상품을 제외하고 관련 후보를 정렬한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Linden·Smith·York · 2003 원논문",
+          "url": "https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf",
+          "note": "pp.76–79 비교 축·코사인·원문 알고리즘·오프라인/온라인 분리, p.80 저자 약력."
+        },
+        {
+          "title": "Amazon Science · 공식 역사 회고",
+          "url": "https://www.amazon.science/the-history-of-amazons-recommendation-algorithm",
+          "note": "2019-11-22 회고. 2003년 연구·세 저자·논문을 연결한다."
+        }
+      ],
+      "caveat": "고전적 협업 필터링이며 세 갈래 신경망·심볼릭·결합 연구 연표에는 강제로 넣지 않는다. 상세 내용은 인물 work와 회사 기록에서 연결한다. 화면의 작은 기록·합산·평가는 실제 Amazon 데이터와 운영 랭커가 아니다."
+    },
+    {
+      "id": "kiva-warehouse-coordination-2008",
+      "date": "2008-03-20",
+      "year": 2008,
+      "dateLabel": "2008.03.20 · Kiva 당시 논문",
+      "precision": "day",
+      "type": "research",
+      "title": "Kiva: 재고가 사람에게 오는 창고를 여러 로봇으로 조율하다",
+      "question": "어떤 로봇이 어떤 선반을 어느 작업대로 옮기고, 같은 통로를 어떻게 함께 쓸까?",
+      "idea": "이동식 선반을 들어 작업자에게 가져오는 goods-to-person 구조와 중앙 자원 배정·스테이션 작업 흐름·로봇별 임무·경로·운동 제어를 나눈다.",
+      "change": "알려진 공간의 경로 탐색과 효용 기반 자원 배정을 물류 업무에 연결한 Kiva 당시 연구다. Amazon 인수는2012 별도 사건이다.",
+      "peopleIds": [
+        "peter-r-wurman",
+        "raffaello-dandrea",
+        "mick-mountz"
+      ],
+      "peopleNames": [
+        "Peter R. Wurman",
+        "Raffaello D’Andrea",
+        "Mick Mountz"
+      ],
+      "workIds": [
+        "kiva-warehouse-coordination-2008"
+      ],
+      "flow": [
+        {
+          "label": "주문·재고",
+          "note": "작업대와 필요한 물품을 연결한다."
+        },
+        {
+          "label": "배정",
+          "note": "중앙 Job Manager가 자원을 선택한다."
+        },
+        {
+          "label": "경로·제어",
+          "note": "로봇이 선반을 들어 작업대로 옮긴다."
+        },
+        {
+          "label": "보관·다음 작업",
+          "note": "선반을 다시 놓고 다음 임무와 연결한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Magazine · Coordinating Hundreds of Cooperative, Autonomous Vehicles in Warehouses",
+          "url": "https://doi.org/10.1609/aimag.v29i1.2082",
+          "note": "2008-03-20, AI Magazine29(1). 본문 인쇄14–16쪽 역할·경로·배정,19쪽 저자 소개. publisher PDF는 접근 차단되어 보존된 전문과 서지를 대조했다."
+        },
+        {
+          "title": "앞선2007 AAAI/IAAI 학회판",
+          "url": "https://cdn.aaai.org/AAAI/2007/AAAI07-282.pdf",
+          "note": "확보한 원도판은2007 PDF6쪽 Figure4로 판본을 분명히 표시한다."
+        }
+      ],
+      "caveat": "이 사건은 인수 전 Kiva의 연구다. 시각화의 시간별 예약 격자는 자작 사례이며2008의 전체 할당·경로·제어 알고리즘이나 실제 안전·생산성을 재현하지 않는다."
+    },
+    {
+      "id": "amazon-kiva-acquisition-2012",
+      "date": "2012-05-01",
+      "year": 2012,
+      "dateLabel": "2012.05.01 · 인수 완료",
+      "precision": "day",
+      "type": "organization",
+      "title": "Amazon이 Kiva Systems 인수를 완료하다",
+      "question": "인수 전 Kiva의 로봇·물류 연구가 언제 Amazon 조직과 연결됐는가?",
+      "idea": "2012년3월19일 합의를 발표한 뒤5월1일 인수를 완료했다.2008 Kiva 논문과 Amazon의 이후 운영·연구를 역사적으로 구분하는 조직 사건이다.",
+      "change": "모바일 선반 로봇 시스템의 기업 이력이 Amazon과 이어진다. 이것만으로 Kiva 논문과 이후 모든 Amazon AI 모델 사이의 기술 계보를 단정하지 않는다.",
+      "peopleIds": [],
+      "peopleNames": [],
+      "workIds": [
+        "kiva-warehouse-coordination-2008"
+      ],
+      "flow": [
+        {
+          "label": "2008 Kiva 논문",
+          "note": "인수 전 연구와 소속."
+        },
+        {
+          "label": "2012.03.19",
+          "note": "인수 합의 발표."
+        },
+        {
+          "label": "2012.05.01",
+          "note": "인수 완료·SEC8-K 확인."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amazon · 인수 합의 발표",
+          "url": "https://press.aboutamazon.com/2012/3/amazon-com-to-acquire-kiva-systems-inc",
+          "note": "3월19일은 합의 발표일이며 완료일이 아니다."
+        },
+        {
+          "title": "Amazon SEC Form8-K · Item7.01",
+          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000119312512200668/d337422d8k.htm",
+          "note": "On May1,2012 인수 완료를 직접 명시한다."
+        }
+      ],
+      "caveat": "합의와 완료 날짜를 나눈다. 연결한 Kiva 상세 카드는2008 연구 설명이며2012의 새 논문으로 표시하지 않는다."
+    },
     {
       "peopleIds": [
         "kiuk-chung"
@@ -63,10 +303,10 @@
       "dateLabel": "2016.07.09 · 공식 구현 해설",
       "precision": "day",
       "type": "tools",
-      "title": "DSSTNE: 희소한 추천 데이터를 GPU 학습에 연결하다",
+      "title": "DSSTNE와 Spark: 희소 표현 학습과 CPU·GPU 실행을 연결하다",
       "question": "상품과 이용자는 많은데 관찰한 행동은 드문 데이터를 어떻게 학습할까?",
-      "idea": "희소한 이용자–상품 데이터와 큰 신경망을 여러 GPU에 분산해 추천을 학습한다. Spark의 CPU 데이터 처리와 별도 GPU 실행을 큰 학습·예측 작업 단위로 연결해, 한 도구에서 전체 작업을 조직하려 했다.",
-      "change": "공식 글은 Spark·EMR의 처리와 ECS의 GPU 작업 실행을 분리한 구성을 소개한다. 모델의 식뿐 아니라 데이터 준비와 실행 기반이 실제 추천 학습을 가능하게 하는 역할을 보여 준다.",
+      "idea": "상품 이력에서 여러 이용자가 공유하는 신경망 표현을 배우고, CPU의 Spark/EMR 자료 준비와 GPU의 DSSTNE 학습·예측을 큰 작업 단위로 연결한다. S3의 파티션·결과 전달, ECS의 작업 관리, ECR의 실행 이미지 보관을 구분한다.",
+      "change": "같은 기존 Kiuk Chung 기록에 공식 아키텍처·작은 sigmoid 망의 실제 경사하강·모델 병렬 학습/자료 병렬 예측을 보강했다. 2016년 공식 구성과 현재 AWS 사용 안내를 구분한다.",
       "flow": [
         {
           "label": "희소 데이터",
@@ -90,6 +330,16 @@
           "title": "AWS · Generating Recommendations with Spark and DSSTNE",
           "url": "https://aws.amazon.com/blogs/big-data/generating-recommendations-at-amazon-scale-with-apache-spark-and-amazon-dsstne/",
           "note": "2016-07-09 글. 작성자 역할, Architecture overview와 CPU/GPU 분리 구성."
+        },
+        {
+          "title": "Amazon DSSTNE · 공식 MovieLens 설정",
+          "url": "https://github.com/amazon-archives/amazon-dsstne/blob/master/samples/movielens/config.json",
+          "note": "희소 input/output·128 sigmoid hidden·denoising p=.2·손실 설정. 화면의 6→3→6 예시와 구분."
+        },
+        {
+          "title": "Amazon DSSTNE · 공식 예제 문서",
+          "url": "https://github.com/amazon-archives/amazon-dsstne/blob/master/docs/getting_started/examples.md",
+          "note": "NetCDF 변환·공유 sample 인덱스·model-parallel 학습·top-K와 관찰 feature 제외. 별도 heldout 성능 검증과 구분."
         }
       ],
       "caveat": "이 날짜는 기술 글의 게시일이며 DSSTNE 최초 공개일로 확정하지 않는다. 글 작성자를 전체 엔진의 단독 개발자로 표시하지 않는다."
@@ -206,6 +456,407 @@
         }
       ],
       "caveat": "2018년의 제공 범위를 나타내는 기록이다. 현재의 모든 AWS 지역·제품 기능이나 고객별 효과를 뜻하지 않는다."
+    },
+    {
+      "id": "aws-gluonts-2019",
+      "date": "2019-06-12",
+      "year": 2019,
+      "dateLabel": "2019.06.12 · 최초 원고",
+      "precision": "day",
+      "type": "tools",
+      "title": "GluonTS: 확률 시계열 연구의 자료·모형·평가를 잇다",
+      "question": "새 예측 모형마다 전처리와 학습·평가 도구를 반복해서 만들어야 할까?",
+      "idea": "분포·시계열 신경망·특징 처리·학습과 평가 도구를 함께 제공해 확률 예측 모형의 구성과 실험을 연결하려 했다.",
+      "change": "DeepAR 같은 공유 예측 연구를 재사용 가능한 도구의 흐름으로 연결한다. 도구의 최초 원고와2024 사전학습 Chronos 모형의 공개는 서로 다른 사건이다.",
+      "flow": [
+        {
+          "label": "시계열 자료",
+          "note": "데이터의 읽기와 변환을 다룬다."
+        },
+        {
+          "label": "모형 구성",
+          "note": "분포·신경망 등 재사용 가능한 구성요소를 조합한다."
+        },
+        {
+          "label": "학습·예측",
+          "note": "Estimator·Predictor의 역할을 나누어 실행을 연결한다."
+        },
+        {
+          "label": "실험·평가",
+          "note": "공통 절차에서 예측과 관찰값을 비교한다."
+        }
+      ],
+      "peopleIds": [
+        "valentin-flunkert",
+        "jan-gasthaus",
+        "david-salinas",
+        "lorenzo-stella",
+        "caner-turkmen"
+      ],
+      "peopleNames": [
+        "Alexander Alexandrov",
+        "Konstantinos Benidis",
+        "Michael Bohlke-Schneider",
+        "Valentin Flunkert",
+        "Jan Gasthaus",
+        "Tim Januschowski",
+        "Danielle C. Maddix",
+        "Syama Rangapuram",
+        "David Salinas",
+        "Jasper Schulz",
+        "Lorenzo Stella",
+        "Ali Caner Türkmen",
+        "Yuyang Wang"
+      ],
+      "workIds": [
+        "amazon-deepar-2017",
+        "aws-chronos-2024"
+      ],
+      "sources": [
+        {
+          "title": "GluonTS · 2019 v1 원문",
+          "url": "https://arxiv.org/pdf/1906.05264v1",
+          "note": "PDF1쪽13명·AWS 소속, 도입과 toolkit 구성·실험 설명. DeepAR·Chronos 링크는 비교 읽기 경로이며 별도 GluonTS 심층 카드를 구현한 것이 아니다."
+        },
+        {
+          "title": "GluonTS · 공식 저장소",
+          "url": "https://github.com/awslabs/gluonts",
+          "note": "현재 도구의 상태를2019 기능 전체로 소급하지 않는다."
+        }
+      ],
+      "caveat": "저자13명의 공동 toolkit 연구다. GluonTS를 특정 신경망 한 개나 Chronos와 같은 모델로 분류하지 않는다. Jan Gasthaus 등과 Stella·Turkmen의 연결은 이 논문의 공동저자 근거다."
+    },
+    {
+      "id": "amazon-sparrow-2022",
+      "date": "2022-11-10",
+      "year": 2022,
+      "dateLabel": "2022.11.10 · 공식 로봇 발표",
+      "precision": "day",
+      "type": "product",
+      "title": "Sparrow: 개별 상품을 인식하고 집어 옮기는 로봇",
+      "question": "형태와 재질이 다양한 개별 상품을 사람이 포장하기 전 단계에서 어떻게 다룰까?",
+      "idea": "공식 발표는 컴퓨터 비전과 AI로 개별 상품을 감지·선택·처리하는 로봇을 소개한다. 상자·포장물 이동과 개별 상품 조작은 다른 작업이다.",
+      "change": "창고의 이동 계획뿐 아니라 상품을 보고 집는 작업에도 AI가 사용되는 맥락을 보여 준다. 이 기록은 공식 제품 소개이며 특정 신경망 구조를 확인한 논문 카드가 아니다.",
+      "peopleIds": [],
+      "peopleNames": [],
+      "workIds": [],
+      "flow": [
+        {
+          "label": "개별 상품",
+          "note": "여러 모양의 물품이 입력이다."
+        },
+        {
+          "label": "시각 인식",
+          "note": "감지·선택할 대상을 찾는다."
+        },
+        {
+          "label": "로봇 조작",
+          "note": "물품을 집어 포장 전 작업으로 연결한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "About Amazon · Introducing Sparrow",
+          "url": "https://www.aboutamazon.com/news/operations/amazon-introduces-sparrow-a-state-of-the-art-robot-that-handles-millions-of-diverse-products",
+          "note": "2022-11-10. 개별 상품 처리·컴퓨터 비전/AI 설명. 저자를 개별 모델의 발명자로 배정하지 않는다."
+        }
+      ],
+      "caveat": "공식 글만으로 자세한 모델·데이터·실험을 검증하지 못했다. DeepFleet의 로봇군 예측이나 Kiva 경로 계획과 같은 알고리즘으로 설명하지 않는다."
+    },
+    {
+      "id": "amazon-sequoia-2023",
+      "date": "2023-10-18",
+      "year": 2023,
+      "dateLabel": "2023.10.18 · 공식 운영 시스템 발표",
+      "precision": "day",
+      "type": "product",
+      "title": "Sequoia: 이동 로봇·보관·작업대를 하나의 재고 흐름으로 연결하다",
+      "question": "입고 재고를 찾아 보관하고, 작업자에게 가져오는 여러 장치를 어떻게 이어 쓸까?",
+      "idea": "공식 소개는 모바일 로봇·갠트리·토트 용기·인체공학적 작업대를 결합하고, 일부 재고 통합 작업을 Sparrow와 연결한 흐름을 설명한다.",
+      "change": "하나의 모델 이름으로 창고 전체를 설명하는 대신, 인식·조작·이동·보관·사람의 작업이 만나는 운영 구조를 읽는다.",
+      "peopleIds": [],
+      "peopleNames": [],
+      "workIds": [],
+      "flow": [
+        {
+          "label": "입고·보관",
+          "note": "재고를 식별하고 토트 용기에 보관한다."
+        },
+        {
+          "label": "이동 로봇·갠트리",
+          "note": "필요한 용기를 작업 흐름으로 운반한다."
+        },
+        {
+          "label": "작업대",
+          "note": "작업자가 접근하기 쉬운 위치로 가져온다."
+        },
+        {
+          "label": "재고 통합",
+          "note": "공식 설명의 Sparrow 관련 작업과 연결한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "About Amazon · New robotics solutions",
+          "url": "https://www.aboutamazon.com/news/operations/amazon-introduces-new-robotics-solutions",
+          "note": "2023-10-18. Sequoia의 모바일 로봇·갠트리·토트·작업대와 재고 통합 설명."
+        },
+        {
+          "title": "About Amazon · Delivering the Future2023 announcements",
+          "url": "https://www.aboutamazon.com/news/operations/amazon-delivering-the-future-2023-announcements",
+          "note": "2023-10-18, Sequoia 소개 항목과 발표 맥락."
+        }
+      ],
+      "caveat": "운영 흐름은 공식 제품 자료로 확인했다. 공개 연구 논문에서 전체 학습 모델의 구조를 검증한 기록으로 취급하지 않는다."
+    },
+    {
+      "id": "aws-chronos-2024",
+      "date": "2024-03-12",
+      "year": 2024,
+      "dateLabel": "2024.03.12 원고 · 03.13 공식 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "Chronos: 시계열 값의 언어를 사전학습하다",
+      "question": "처음 보는 시계열 데이터셋에도 추가 학습 없이 예측을 적용할 수 있을까?",
+      "idea": "과거 이력의 규모를 맞추고 값을 구간 토큰으로 바꾸어 T5계열 구조를 시계열 자료로 사전학습한다. 새 문맥에서 다음 토큰 분포를 구해 여러 경로를 샘플링하고 원래 단위로 복원한다.",
+      "change": "관련 데이터셋의 공유 RNN·실수 분포에서, 여러 데이터셋의 사전학습·값 토큰·범주 분포로 비교할 수 있다. 기존 언어모델에 숫자를 문장으로 입력하는 접근과 구분한다.",
+      "flow": [
+        {
+          "label": "척도 조정",
+          "note": "관찰한 과거 문맥의 절대값 평균을 쓴다."
+        },
+        {
+          "label": "구간 토큰",
+          "note": "정규화한 실수를 유한한 구간 번호로 바꾼다."
+        },
+        {
+          "label": "사전학습·문맥",
+          "note": "여러 자료에서 배운 연결에 새 과거 토큰을 조건으로 준다."
+        },
+        {
+          "label": "샘플 경로",
+          "note": "미래 토큰을 뽑고 구간 중심과 척도로 되돌린다."
+        }
+      ],
+      "peopleIds": [
+        "abdul-fatir-ansari",
+        "lorenzo-stella",
+        "caner-turkmen"
+      ],
+      "peopleNames": [
+        "Abdul Fatir Ansari",
+        "Lorenzo Stella",
+        "Caner Turkmen",
+        "Xiyuan Zhang",
+        "Pedro Mercado",
+        "Huibin Shen",
+        "Oleksandr Shchur",
+        "Syama Sundar Rangapuram",
+        "Sebastian Pineda Arango",
+        "Shubham Kapoor",
+        "Jasper Zschiegner",
+        "Danielle C. Maddix",
+        "Michael W. Mahoney",
+        "Kari Torkkola",
+        "Andrew Gordon Wilson",
+        "Michael Bohlke-Schneider",
+        "Yuyang Wang"
+      ],
+      "workIds": [
+        "aws-chronos-2024",
+        "amazon-deepar-2017"
+      ],
+      "sources": [
+        {
+          "title": "Chronos · 2024 v1",
+          "url": "https://arxiv.org/pdf/2403.07815v1",
+          "note": "PDF1쪽17명·소속과 동등 기여, PDF2쪽Fig1, PDF5–6쪽§3, §5의15/27 데이터셋 평가."
+        },
+        {
+          "title": "Chronos · 공식 저장소",
+          "url": "https://github.com/amazon-science/chronos-forecasting",
+          "note": "News의2024-03-13 공개. 모델을 실제 실행한 기록은 아니다."
+        }
+      ],
+      "caveat": "Jan Gasthaus는 Chronos2024 공동저자가 아니다. 글로벌 zero-shot 벤치마크를 모든 물류·판매 환경의 효과로 일반화하지 않으며 상세 카드의 수치는 명시한 작은 자체 계산이다."
+    },
+    {
+      "id": "amazon-deepfleet-2025",
+      "date": "2025-06-30",
+      "year": 2025,
+      "dateLabel": "2025.06.30 · 공식 운영 발표",
+      "precision": "day",
+      "type": "product",
+      "title": "DeepFleet: 로봇군의 이동을 조정하는 AI 기반을 발표하다",
+      "question": "다른 로봇도 계속 움직이는 창고에서 혼잡과 이동을 어떻게 다룰까?",
+      "idea": "Amazon은 실제 창고의 로봇 이동 기록에서 학습한 DeepFleet을 발표하고, AWS·SageMaker를 포함한 기반과 로봇군 이동 조정을 소개했다.",
+      "change": "공식 글은 이동 효율10% 개선을 회사의 운영 결과로 주장한다. 아래 상세 카드는 이후8월 원고의 네 모델 설계와 예측 평가도 함께 읽되 두 종류의 근거를 나눈다.",
+      "peopleIds": [],
+      "peopleNames": [
+        "Amazon Robotics 공동 연구·운영팀"
+      ],
+      "workIds": [
+        "amazon-deepfleet-2025"
+      ],
+      "flow": [
+        {
+          "label": "이동 기록",
+          "note": "창고의 로봇군 상호작용을 관찰한다."
+        },
+        {
+          "label": "학습·예측",
+          "note": "로봇군의 미래와 혼잡을 다루는 모델을 연구한다."
+        },
+        {
+          "label": "운영 연결",
+          "note": "이동 조정이라는 회사의 적용 맥락."
+        },
+        {
+          "label": "별도 검증",
+          "note": "공식10% 주장과 원고의 예측 지표를 구분한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "About Amazon · million robots and DeepFleet",
+          "url": "https://www.aboutamazon.com/news/operations/amazon-million-robots-ai-foundation-model",
+          "note": "2025-06-30. Scott Dresser 작성의 공식 운영 발표·이동 효율10% 주장·AWS/SageMaker. 글 작성자를 단독 모델 발명자로 표시하지 않는다."
+        }
+      ],
+      "caveat": "운영 발표에는 이 작업에서 재검증할 수 있는 시험 프로토콜·분산·대조 조건이 제시되지 않았다. 자작 격자와 예측 오차로10% 개선을 재현했다고 주장하지 않는다. 후속8월 연구 기여자들은 상세 카드에서 원고 역할에 맞춰 연결한다."
+    },
+    {
+      "id": "amazon-deepfleet-paper-2025",
+      "date": "2025-08-12",
+      "year": 2025,
+      "dateLabel": "2025.08.12 · 원고 v1 제출",
+      "precision": "day",
+      "type": "research",
+      "title": "DeepFleet 원고: RC·RF·IF·GF 네 모델로 로봇군의 미래를 표현하다",
+      "question": "하나의 로봇 문맥·바닥 토큰·상태 격자·시공간 그래프 중 어떤 구조를 입력과 모델에 남길까?",
+      "idea": "Robot-Centric, Robot-Floor, Image-Floor, Graph-Floor의 네 구조를 공개하고, 실제 이동 이력의 다음 행동·상태 예측과 미래 롤아웃을 비교한다.",
+      "change": "네 원아키텍처 Figures7–10과 예측 평가를 통해 모델의 입력·관계·출력·환경 모형을 자세히 읽는다.6월 운영 발표와8월 연구 원고는 날짜·대상·지표가 다르다.",
+      "peopleIds": [
+        "ameya-agaskar",
+        "sriram-siva",
+        "joseph-w-durham"
+      ],
+      "peopleNames": [
+        "Ameya Agaskar",
+        "Sriram Siva",
+        "Joseph W. Durham",
+        "외17명 · v1 PDF25 역할 목록"
+      ],
+      "workIds": [
+        "amazon-deepfleet-2025"
+      ],
+      "flow": [
+        {
+          "label": "표현 선택",
+          "note": "로봇 토큰·바닥 문맥·격자·그래프."
+        },
+        {
+          "label": "지도 학습",
+          "note": "관측 행동·상태를 예측한다."
+        },
+        {
+          "label": "미래 롤아웃",
+          "note": "행동 예측과 환경 전이·제약을 연결한다."
+        },
+        {
+          "label": "예측 평가",
+          "note": "감춘7일·7개 바닥의60초 궤적, DTW·CDE."
+        }
+      ],
+      "sources": [
+        {
+          "title": "arXiv · DeepFleet v1",
+          "url": "https://arxiv.org/abs/2508.08574v1",
+          "note": "최초 제출2025-08-12,25쪽 판본. Figures7–10 PDF12·13·15·17, Table2 PDF7, 기여자별 역할 PDF25."
+        },
+        {
+          "title": "Amazon Science · multirobot coordination",
+          "url": "https://www.amazon.science/blog/amazon-builds-first-foundation-model-for-multirobot-coordination",
+          "note": "2025-08-11 Joey Durham의 공식 기술 설명. 원고 최초 제출과 게시일이 하루 다르다."
+        }
+      ],
+      "caveat": "v1의 크기·훈련 자료·시간·문맥이 모델마다 달라 구조 하나의 효과만을 분리한 비교는 아니다. DTW·CDE는 예측 오차이며 실제 운영 효율10% 개선과 같은 지표가 아니다. 세 프로필은20명 공동 기여자의 일부다."
+    },
+    {
+      "id": "aws-chronos2-2025",
+      "date": "2025-10-17",
+      "year": 2025,
+      "dateLabel": "2025.10.17 원고 · 10.20 공식 공개",
+      "precision": "day",
+      "type": "research",
+      "title": "Chronos-2: 다변량·공변량을 함께 읽는 후속 모형",
+      "question": "여러 변수가 함께 움직이고 외부 요인도 있는 예측 문제를 어떻게 다룰까?",
+      "idea": "시계열들을 그룹으로 두고 시간 방향과 그룹 방향의 attention으로 정보를 나눈다.2025 보고서는 패치 표현·group attention·quantile head로 단변량·다변량·공변량 조건을 다룬다.",
+      "change": "2024 Chronos의 값 구간 토큰·자기회귀 샘플링과 구조·출력이 다르다. 이 회사 기록은 후속 원문과 기존2024 카드의 비교 경로이며2025 모델 심층 시각화 구현을 뜻하지 않는다.",
+      "flow": [
+        {
+          "label": "목표·공변량",
+          "note": "관련 변수와 과거/알려진 미래의 조건을 구분한다."
+        },
+        {
+          "label": "척도·패치",
+          "note": "robust scaling과 패치 임베딩을 구성한다."
+        },
+        {
+          "label": "시간·그룹 attention",
+          "note": "한 시계열의 시간과 관련 시계열 사이에서 정보를 나눈다."
+        },
+        {
+          "label": "분위수 출력",
+          "note": "quantile head로 여러 미래 단계의 분포를 요약한다."
+        }
+      ],
+      "peopleIds": [
+        "abdul-fatir-ansari",
+        "lorenzo-stella",
+        "oleksandr-shchur"
+      ],
+      "peopleNames": [
+        "Abdul Fatir Ansari",
+        "Oleksandr Shchur",
+        "Jaris Küken",
+        "Andreas Auer",
+        "Boran Han",
+        "Pedro Mercado",
+        "Syama Sundar Rangapuram",
+        "Huibin Shen",
+        "Lorenzo Stella",
+        "Xiyuan Zhang",
+        "Mononito Goswami",
+        "Shubham Kapoor",
+        "Danielle C. Maddix",
+        "Pablo Guerron",
+        "Tony Hu",
+        "Junming Yin",
+        "Nick Erickson",
+        "Prateek Mutalik Desai",
+        "Hao Wang",
+        "Huzefa Rangwala",
+        "George Karypis",
+        "Yuyang Wang",
+        "Michael Bohlke-Schneider"
+      ],
+      "workIds": [
+        "aws-chronos-2024"
+      ],
+      "sources": [
+        {
+          "title": "Chronos-2 · 2025 v1 보고서",
+          "url": "https://arxiv.org/pdf/2510.15821v1",
+          "note": "2025-10-17, PDF1쪽23명과 소속·기여 표시, PDF2쪽Fig1의 전체 경로. Caner Turkmen·Jan Gasthaus는 이 저자 명단에 없다."
+        },
+        {
+          "title": "공식 저장소 · Chronos2 공개 이력",
+          "url": "https://github.com/amazon-science/chronos-forecasting",
+          "note": "News의2025-10-20 공개와 원고 제출일을 구분한다."
+        }
+      ],
+      "caveat": "2025 원문을 읽는 후속 기록이다.2024 카드의 작은 계산을 Chronos2의 group attention·실제 예측으로 표시하지 않는다. 미래에 알려진 공변량과 아직 관찰하지 못한 목표의 실제 미래를 혼동하지 않는다."
     }
   ],
   "orgAliases": [

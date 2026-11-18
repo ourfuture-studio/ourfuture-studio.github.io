@@ -1,3 +1,7 @@
+## Amazon 추천·AWS 예측·물류 로봇 · v0.78
+
+아이템 간 추천, DSSTNE, DeepAR와 Chronos, Kiva와 DeepFleet를 원논문 기반 시각화·연구자·회사 연대기로 연결합니다. 현재 회사 16개·기록 81개입니다.
+
 ## Google·Netflix 연구와 회사 연대기 · v0.77
 
 Google의 적대적 예제·지식 증류·Transformer-XL·ViT, Google DeepMind의 AlphaGeometry·AlphaProof, Netflix Prize·행렬분해·실서비스 추천 시스템을 인물·원문·상세 시각화와 연결합니다. 이전 로컬 v0.76의 LLaMA·VAE·추천 기반 모델·DeepAR도 포함합니다. 현재 회사 16개·기록 71개입니다.

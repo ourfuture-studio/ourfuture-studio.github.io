@@ -1,5 +1,5 @@
 {
-  "version": "0.77-public.1",
+  "version": "0.78-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -663,6 +663,38 @@
     "papers/netflix-vae-2018-figure2.png": {
       "url": "https://arxiv.org/pdf/1802.05814v1#page=5",
       "title": "2018 원논문 Fig.2 · AE·DAE·VAE의 구조 비교"
+    },
+    "papers/amazon-dsstne-2016-original-overview.png": {
+      "url": "https://aws.amazon.com/blogs/big-data/generating-recommendations-at-amazon-scale-with-apache-spark-and-amazon-dsstne/",
+      "title": "AWS 공식 원도판 · CPU 자료 준비와 GPU 작업의 연결"
+    },
+    "papers/amazon-item-to-item-2003-original-algorithm.png": {
+      "url": "https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf#page=4",
+      "title": "2003 원문 · 상품 간 관계표를 만드는 순회"
+    },
+    "papers/aws-chronos-2024-figure1-original.png": {
+      "url": "https://arxiv.org/pdf/2403.07815v1#page=2",
+      "title": "Chronos2024 · 원문 Figure1의 토큰화·학습·예측"
+    },
+    "papers/deepfleet-2025-v1-figure10.png": {
+      "url": "https://arxiv.org/pdf/2508.08574v1#page=17",
+      "title": "DeepFleet v1 · Figure 10 · GF 원아키텍처"
+    },
+    "papers/deepfleet-2025-v1-figure7.png": {
+      "url": "https://arxiv.org/pdf/2508.08574v1#page=12",
+      "title": "DeepFleet v1 · Figure 7 · RC 원아키텍처"
+    },
+    "papers/deepfleet-2025-v1-figure8.png": {
+      "url": "https://arxiv.org/pdf/2508.08574v1#page=13",
+      "title": "DeepFleet v1 · Figure 8 · RF 원아키텍처"
+    },
+    "papers/deepfleet-2025-v1-figure9.png": {
+      "url": "https://arxiv.org/pdf/2508.08574v1#page=15",
+      "title": "DeepFleet v1 · Figure 9 · IF 원아키텍처"
+    },
+    "papers/kiva-2007-figure4-control-stack.png": {
+      "url": "https://cdn.aaai.org/AAAI/2007/AAAI07-282.pdf#page=6",
+      "title": "앞선 2007 학회판 Figure 4 · 다중 에이전트 제어 구조"
     }
   },
   "portraitPolicy": "40 file-specific verified Commons records. The user-selected Alan_Turing_Aged_16.jpg is served from this site first, with an exact-original remote fallback. Its photographer attribution remains qualified as possible. The one remaining pending portrait uses initials. Earlier retained photo assets and every prior figure decision remain preserved.",
@@ -1632,6 +1664,85 @@
         "url": "https://github.com/google-research/vision_transformer/blob/main/vit_figure.png",
         "title": "ViT · 원논문 Figure 1과 같은 공식 아키텍처 그림",
         "basis": "Official Google Research repository image with its Apache-2.0 LICENSE preserved; separate image-specific notice was not found; no blanket third-party clearance is asserted"
+      }
+    ],
+    "scope": "Prior public transformations and file-specific portrait exclusions preserved; original-source access and authored interactive diagrams remain separate."
+  },
+  "amazonExpansion": {
+    "date": "2026-11-18",
+    "sourceVersion": "0.78",
+    "records": [
+      {
+        "file": "assets/papers/amazon-dsstne-2016-original-overview.png",
+        "sha256": "0bb5466c1741025b86375fada23e0ab0adc6fa5eb845f4e3c42c4176d6176121",
+        "bytes": 40063,
+        "status": "source-link",
+        "url": "https://aws.amazon.com/blogs/big-data/generating-recommendations-at-amazon-scale-with-apache-spark-and-amazon-dsstne/",
+        "title": "AWS 공식 원도판 · CPU 자료 준비와 GPU 작업의 연결",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/amazon-item-to-item-2003-original-algorithm.png",
+        "sha256": "e1e763429c39de84c49b9b78cf78eccf0a178bbd209d15219d9311f9afc66372",
+        "bytes": 56455,
+        "status": "source-link",
+        "url": "https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf#page=4",
+        "title": "2003 원문 · 상품 간 관계표를 만드는 순회",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/aws-chronos-2024-figure1-original.png",
+        "sha256": "a410f240b494fcfe8efb0c96148ff5c63d3645231d04465729997992345e477d",
+        "bytes": 95302,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/2403.07815v1#page=2",
+        "title": "Chronos2024 · 원문 Figure1의 토큰화·학습·예측",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/deepfleet-2025-v1-figure10.png",
+        "sha256": "6053e0b34bbaeab6463a81f239e72a5f03f8bd7555a7407d1a08c216dae6f7e4",
+        "bytes": 1663749,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/2508.08574v1#page=17",
+        "title": "DeepFleet v1 · Figure 10 · GF 원아키텍처",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/deepfleet-2025-v1-figure7.png",
+        "sha256": "bf389436b14d8248bec9e77faee9448d9c9de5f5a1732745c1c4cd53e85df397",
+        "bytes": 853208,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/2508.08574v1#page=12",
+        "title": "DeepFleet v1 · Figure 7 · RC 원아키텍처",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/deepfleet-2025-v1-figure8.png",
+        "sha256": "f359b0a3a4e0d6549bb5fba0d6ea61f02c32247664f99f08b0fdde83a5f82111",
+        "bytes": 982208,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/2508.08574v1#page=13",
+        "title": "DeepFleet v1 · Figure 8 · RF 원아키텍처",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/deepfleet-2025-v1-figure9.png",
+        "sha256": "082addfba5ce859c2f326ab4567bb05f5434a3f188d12a3c07e2002a5746c3b0",
+        "bytes": 1122619,
+        "status": "source-link",
+        "url": "https://arxiv.org/pdf/2508.08574v1#page=15",
+        "title": "DeepFleet v1 · Figure 9 · IF 원아키텍처",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
+      },
+      {
+        "file": "assets/papers/kiva-2007-figure4-control-stack.png",
+        "sha256": "f3c3423685d44f3533a366b8231354463f029de17bcbe6c49ff22edaa1ca1164",
+        "bytes": 29129,
+        "status": "source-link",
+        "url": "https://cdn.aaai.org/AAAI/2007/AAAI07-282.pdf#page=6",
+        "title": "앞선 2007 학회판 Figure 4 · 다중 에이전트 제어 구조",
+        "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
       }
     ],
     "scope": "Prior public transformations and file-specific portrait exclusions preserved; original-source access and authored interactive diagrams remain separate."

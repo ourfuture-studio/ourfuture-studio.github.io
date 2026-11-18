@@ -10,7 +10,8 @@
     {id:'institution',label:'기관 인연',directed:false}
   ];
   const defaultKinds = ['advisor','collaboration','influence'];
-  const validKinds = new Set(kinds.map(kind=>kind.id));
+  const companyKind = {id:'company-record',label:'회사 기록 참여',directed:false};
+  const validKinds = new Set([...kinds.map(kind=>kind.id),companyKind.id]);
   const compare = (a,b)=>a<b?-1:a>b?1:0;
   const fold = value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').normalize('NFC').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
   function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
@@ -33,7 +34,7 @@
     }
     const ids=new Set();
     const edges=backgroundAPI.graphEdges.map(edge=>{
-      if(!validKinds.has(edge.kind)||!edge.sources?.length||edge.fromPersonId===edge.toPersonId)throw new TypeError('Graph edges must preserve a real typed and cited relationship.');
+      if(!kinds.some(kind=>kind.id===edge.kind)||!edge.sources?.length||edge.fromPersonId===edge.toPersonId)throw new TypeError('Graph edges must preserve a real typed and cited relationship.');
       const directed=['advisor','influence'].includes(edge.kind);
       if(edge.directed!==directed)throw new TypeError('Advisor and influence directions must remain explicit.');
       ids.add(edge.fromPersonId);ids.add(edge.toPersonId);
@@ -50,6 +51,38 @@
     });
     return freeze({nodes,edges});
   }
+  // A company is a separate node, never a shortcut for an inferred employment
+  // or coauthorship relationship. Only cited event.peopleIds create its edges.
+  function augmentCompanies(personModel,companies,profiles=[]){
+    if(!personModel||!Array.isArray(personModel.nodes)||!Array.isArray(personModel.edges)||!Array.isArray(companies)||!Array.isArray(profiles))throw new TypeError('Person graph, company records and profiles are required.');
+    const nodes=new Map(personModel.nodes.map(p=>[p.id,clone(p)])),profileById=new Map(profiles.map(p=>[p.id,p])),pairs=new Map(),companyIds=new Set(),skipped=[];
+    const sourceList=sources=>(sources||[]).filter(s=>s&&typeof s.title==='string'&&s.title.trim()&&/^https?:\/\//i.test(s.url||''));
+    for(const c of companies){
+      if(!c?.id||companyIds.has(c.id))throw new TypeError('Company identities must be present and unique.');companyIds.add(c.id);
+      const companyId='company:'+c.id;
+      if(nodes.has(companyId))throw new TypeError('Company and person identities must not collide.');
+      for(const event of c.events||[]){
+        const sources=sourceList(event.sources);if(!event.id||!sources.length)continue;
+        for(const id of new Set(event.peopleIds||[])){
+          if(typeof id!=='string'||id.startsWith('company:'))continue;
+          const profile=profileById.get(id),known=nodes.get(id);
+          if(!known&&!profile){skipped.push({companyId:c.id,recordId:event.id,personId:id,reason:'No sourced person identity in graph or profiles'});continue;}
+          if(!known)nodes.set(id,{id,name:profile.name,nameKo:profile.nameKo||'',label:profile.nameKo||profile.name,aliases:[...(profile.aliases||[])],profileId:profile.id,hasProfile:true,hasBackground:false,tags:[...(profile.tags||[])],degree:0});
+          const key=companyId+'|'+id;
+          if(!pairs.has(key))pairs.set(key,{id:companyKind.id+':'+companyId+':'+id,kind:companyKind.id,directed:false,fromPersonId:companyId,toPersonId:id,sources:[],evidence:[],records:[]});
+          const pair=pairs.get(key);if(pair.records.some(r=>r.id===event.id))continue;
+          const roster=(c.people||[]).filter(p=>p.id===id).map(p=>({name:p.name||'',role:p.role||'',note:p.note||''}));
+          const record={id:event.id,title:event.title||event.id,date:event.date||'',dateLabel:event.dateLabel||'',year:event.year??null,idea:event.idea||'',companyId:c.id,sources:clone(sources),roster:clone(roster)};
+          pair.records.push(record);pair.evidence.push({description:record.title+(record.idea?' — '+record.idea:''),period:record.dateLabel||record.date,recordId:record.id,companyId:c.id,roster:clone(roster)});
+          for(const source of sources)if(!pair.sources.some(s=>s.url===source.url&&s.title===source.title&&s.scope===source.scope))pair.sources.push(clone(source));
+        }
+      }
+      if([...pairs.values()].some(e=>e.fromPersonId===companyId))nodes.set(companyId,{id:companyId,nodeType:'company',companyId:c.id,name:c.name,nameKo:c.nameKo||'',label:c.nameKo||c.name,aliases:[...(c.aliases||[]),...(c.orgAliases||[])],tags:['industry'],hasProfile:false,profileId:null,hasBackground:false,logo:clone(c.logo||null),accent:c.accent||'',degree:0});
+    }
+    const edges=[...personModel.edges.map(clone),...[...pairs.values()].map(pair=>({...pair,records:pair.records.sort((a,b)=>compare(a.date,b.date)||compare(a.id,b.id))}))].sort((a,b)=>compare(a.id,b.id));
+    const adjacency=new Map([...nodes.keys()].map(id=>[id,new Set()]));for(const edge of edges){adjacency.get(edge.fromPersonId).add(edge.toPersonId);adjacency.get(edge.toPersonId).add(edge.fromPersonId);}
+    return freeze({nodes:[...nodes.values()].sort((a,b)=>compare(a.id,b.id)).map(p=>({...p,degree:adjacency.get(p.id).size})),edges,skipped});
+  }
   function subset(model,options={}){
     const selectedKinds=options.kinds===undefined?defaultKinds:[...options.kinds],kindSet=new Set(selectedKinds);
     for(const kind of kindSet)if(!validKinds.has(kind))throw new TypeError('Unknown relationship type: '+kind);
@@ -57,7 +90,15 @@
     const query=String(options.query||'').trim(),tokens=query.split(/\s+/).map(fold).filter(Boolean),focusId=options.focusId||null;
     const matched=model.nodes.filter(node=>availableIds.has(node.id)&&(!focusId||node.id===focusId)&&(!tokens.length||tokens.every(token=>fold([node.name,node.nameKo,...(node.aliases||[])].join(' ')).includes(token))));
     const matchedIds=matched.map(node=>node.id),matchedSet=new Set(matchedIds),narrow=!!focusId||tokens.length>0;
-    const edges=narrow?allowedEdges.filter(edge=>matchedSet.has(edge.fromPersonId)||matchedSet.has(edge.toPersonId)):allowedEdges;
+    let edges=narrow?allowedEdges.filter(edge=>matchedSet.has(edge.fromPersonId)||matchedSet.has(edge.toPersonId)):allowedEdges;
+    // Keep other participants visible through a directly matched person's company.
+    // This adds company-record paths only; it creates no person-person relation.
+    if(narrow&&options.companyContext){
+      const companies=new Set(edges.filter(e=>e.kind===companyKind.id).flatMap(e=>[e.fromPersonId,e.toPersonId]).filter(id=>id.startsWith('company:')));
+      const selectedCompanies=new Set(matched.filter(p=>p.nodeType==='company').map(p=>p.id)),participants=new Set();
+      for(const edge of allowedEdges)if(edge.kind===companyKind.id&&(selectedCompanies.has(edge.fromPersonId)||selectedCompanies.has(edge.toPersonId))){participants.add(edge.fromPersonId);participants.add(edge.toPersonId);}
+      edges=allowedEdges.filter(edge=>matchedSet.has(edge.fromPersonId)||matchedSet.has(edge.toPersonId)||(edge.kind===companyKind.id&&(companies.has(edge.fromPersonId)||companies.has(edge.toPersonId)))||(edge.kind!==companyKind.id&&participants.has(edge.fromPersonId)&&participants.has(edge.toPersonId)));
+    }
     const ids=new Set(edges.flatMap(edge=>[edge.fromPersonId,edge.toPersonId]));
     const nodes=model.nodes.filter(node=>ids.has(node.id)).map(node=>({...node,matched:narrow&&matchedSet.has(node.id),visibleDegree:edges.filter(edge=>edge.fromPersonId===node.id||edge.toPersonId===node.id).length}));
     return freeze({nodes,edges,matchedIds:narrow?matchedIds:[],kinds:[...kindSet],query,focusId});
@@ -181,5 +222,5 @@
     return freeze({width,height,nodes:model.nodes.map(p=>({...clone(p),...positions.get(p.id)})),edges,components:resultGroups});
   }
 
-  window.AtlasPersonGraphCore=freeze({build,subset,layout,network,components,kinds,defaultKinds});
+  window.AtlasPersonGraphCore=freeze({build,augmentCompanies,subset,layout,network,components,kinds,defaultKinds,companyKind});
 })();
