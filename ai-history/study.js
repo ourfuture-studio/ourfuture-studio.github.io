@@ -8,6 +8,7 @@
     window.AtlasArticle?.dispose();host.replaceChildren();const c=content(record);host.hidden=!c;if(!c)return;
     if(c.article){window.AtlasArticle.render(record,host);return;}
     const nav=node('nav','study-nav');nav.setAttribute('aria-label','상세 내용 바로가기');host.append(nav);
+    window.AtlasPaperArchitecture?.mountForRecord(host,record);
     let serial=0;
     function section(label,short){
       const s=node('section','study-section');s.id='study-section-'+(++serial);

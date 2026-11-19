@@ -1,0 +1,19 @@
+/* Explicit geometric observations and a tiny fitted line; never Tesla inference. */
+(function(){
+ 'use strict';
+ const cameras=Object.freeze([{id:'front',label:'앞 방향',angle:0,half:36},{id:'left',label:'왼쪽 방향',angle:-55,half:36},{id:'right',label:'오른쪽 방향',angle:55,half:36}]);
+ const frames=Object.freeze([{id:0,label:'t−2',egoX:-2,actor:{x:1,y:6}},{id:1,label:'t−1',egoX:-1,actor:{x:1,y:5}},{id:2,label:'t',egoX:0,actor:{x:1,y:4}}]);
+ const grid=Object.freeze(Array.from({length:7},(_,r)=>Array.from({length:7},(_,c)=>Object.freeze({x:c-3,y:7-r}))).flat());
+ const train=Object.freeze([{x:0,y:.8},{x:1,y:.5},{x:2,y:.2}].map(Object.freeze)),heldout=Object.freeze({x:1.5,y:.35});
+ function frameAt(id){if(!Number.isInteger(id)||id<0||id>=frames.length)throw Error('Invalid fixture frame');return frames[id];}
+ function objects(id,occluder=true){const f=frameAt(id);return [...(occluder?[{x:0,y:3,type:'가림 물체'}]:[]),{x:-2,y:6,type:'고정 물체'},{...f.actor,type:'움직이는 물체'}];}
+ function intersects(a,b,cell){let lo=0,hi=1;for(const axis of ['x','y']){const d=b[axis]-a[axis],min=cell[axis]-.46,max=cell[axis]+.46;if(Math.abs(d)<1e-12){if(a[axis]<min||a[axis]>max)return false;}else{const p=(min-a[axis])/d,q=(max-a[axis])/d;lo=Math.max(lo,Math.min(p,q));hi=Math.min(hi,Math.max(p,q));if(hi<lo)return false;}}return hi>1e-8&&lo<1-1e-8;}
+ function inCamera(origin,cell,camera){const angle=Math.atan2(cell.x-origin.x,cell.y-origin.y)*180/Math.PI;return Math.abs(angle-camera.angle)<=camera.half+1e-9;}
+ function observation(id,active=['front','left','right'],occluder=true){const f=frameAt(id),origin={x:f.egoX,y:0},obs=objects(id,occluder),chosen=cameras.filter(c=>active.includes(c.id));return grid.map(cell=>{const hit=obs.find(o=>o.x===cell.x&&o.y===cell.y),candidate=chosen.some(c=>inCamera(origin,cell,c)),blockers=obs.filter(o=>!(o.x===cell.x&&o.y===cell.y));const visible=candidate&&!blockers.some(o=>intersects(origin,cell,o));return {...cell,visible,status:visible?(hit?'occupied':'free'):'unknown',object:visible&&hit?hit.type:null};});}
+ function scene({frame=2,active=['front','left','right'],history=3,occluder=true}={}){frameAt(frame);if(![1,3].includes(history))throw Error('Invalid observation window');if(!Array.isArray(active)||active.some(id=>!cameras.some(c=>c.id===id)))throw Error('Invalid camera');const start=Math.max(0,frame-history+1),slices=Array.from({length:frame-start+1},(_,i)=>({frame:start+i,cells:observation(start+i,active,occluder)})),now=slices[slices.length-1];const cells=now.cells.map((cell,i)=>{const past=slices.slice(0,-1).filter(s=>s.cells[i].visible).map(s=>({frame:s.frame,status:s.cells[i].status}));return {...cell,past,state:cell.visible?cell.status:past.length?'history':'unknown'};});return {frame,origin:{x:frames[frame].egoX,y:0},framesUsed:slices.map(s=>s.frame),cells,counts:cells.reduce((a,c)=>(a[c.state]++,a),{free:0,occupied:0,history:0,unknown:0})};}
+ function predict(p,x){if(!p||![p.bias,p.weight,x].every(Number.isFinite))throw Error('Invalid line values');return p.bias+p.weight*x;}
+ function loss(p,rows=train){if(!rows.length)throw Error('Empty training set');return rows.reduce((s,r)=>s+(predict(p,r.x)-r.y)**2,0)/(2*rows.length);}
+ function gradient(p,rows=train){if(!rows.length)throw Error('Empty training set');return rows.reduce((g,r)=>{const e=predict(p,r.x)-r.y;g.bias+=e/rows.length;g.weight+=e*r.x/rows.length;return g;},{bias:0,weight:0});}
+ function step(p,rate=.2){if(!Number.isFinite(rate)||rate<=0||rate>1)throw Error('Invalid rate');const g=gradient(p),next={bias:p.bias-rate*g.bias,weight:p.weight-rate*g.weight};return {params:next,gradient:g,before:loss(p),after:loss(next)};}
+ window.AtlasTeslaFSDCore=Object.freeze({cameras,frames,grid,train,heldout,frameAt,objects,intersects,inCamera,observation,scene,initial:()=>({bias:.1,weight:.1}),predict,loss,gradient,step});
+})();

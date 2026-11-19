@@ -1,5 +1,5 @@
 {
-  "version": "0.78-public.1",
+  "version": "0.79-public.1",
   "retainedSourceFigures": [
     {
       "file": "alexnet-conv1-96.png",
@@ -1745,6 +1745,12 @@
         "basis": "Retain the local excerpt; public page links to original because no file-specific public reuse license was established"
       }
     ],
+    "scope": "Prior public transformations and file-specific portrait exclusions preserved; original-source access and authored interactive diagrams remain separate."
+  },
+  "teslaExpansion": {
+    "date": "2026-11-19",
+    "sourceVersion": "0.79",
+    "records": [],
     "scope": "Prior public transformations and file-specific portrait exclusions preserved; original-source access and authored interactive diagrams remain separate."
   }
 }

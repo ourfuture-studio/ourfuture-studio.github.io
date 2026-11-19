@@ -7,16 +7,26 @@
     "Tesla Vision",
     "Autopilot",
     "FSD",
-    "카파시"
+    "카파시",
+    "Optimus",
+    "Tesla Bot",
+    "Karpathy",
+    "Elluswamy",
+    "Kovac",
+    "휴머노이드",
+    "옵티머스",
+    "엘루스와미",
+    "코바치",
+    "Full Self-Driving"
   ],
   "kind": "company",
-  "sector": "차량 시각·제어",
+  "sector": "차량 시각·주행 학습·휴머노이드",
   "accent": "#9f5b69",
-  "summary": "차량의 관측을 학습 데이터로 모으고, 신경망의 인식을 운전자 감독 아래 제어로 연결하다.",
+  "summary": "차량의 관측에서 행동을 배우는 FSD와, 보고 배운 일을 몸으로 실행하려는 Optimus의 개발 경로를 연결하다.",
   "question": "도로에서 본 장면을 차량의 행동으로 어떻게 이어 갈 수 있을까?",
   "overview": [
-    "실제 차량 데이터, 신경망 학습, 차량 내 배포가 만나는 흐름을 살펴본다. 회사의 출시 보고와 독립적인 안전성 검증은 다른 자료로 취급한다.",
-    "Karpathy의 Tesla 역할은 2017–2022년 이력에 따라 연결한다. 2023년 말 FSD v12 기록은 Tesla AI 팀의 후속 사건으로 다루며 개인의 기여를 추정하지 않는다."
+    "실제 관측, 학습 자료, 신경망 학습, 장치에서의 실행이 만나는 흐름을 차량과 로봇으로 나누어 살펴본다. 회사의 개발·운영·제조 보고를 독립적인 성능·안전성 검증과 구분한다.",
+    "Karpathy의 2017–2022년 팀 이력, Elluswamy·Kovac의 2021·2022년 발표, 이후 FSD v12와 Optimus의 후속 개발을 시점별로 연결한다. 경영자·발표자를 전체 시스템의 단독 발명자로 표시하지 않는다."
   ],
   "people": [
     {
@@ -27,9 +37,24 @@
     },
     {
       "name": "Andrej Karpathy",
-      "role": "Tesla AI Director, 2017–2022",
-      "note": "개인 공식 이력에서 Autopilot 컴퓨터 비전 팀의 데이터·학습·배포 역할을 확인.",
-      "url": "https://karpathy.ai/"
+      "role": "Autopilot 컴퓨터 비전 팀 · 2017–2022",
+      "note": "공식 개인 이력의 데이터 라벨링·신경망 학습·전용 칩 배포 역할. 2021 AI Day vision 발표와 연결하며 2023년 말 v12 개발로 소급하지 않는다.",
+      "url": "https://karpathy.ai/",
+      "id": "andrej-karpathy"
+    },
+    {
+      "id": "ashok-elluswamy",
+      "name": "Ashok Elluswamy",
+      "role": "Autopilot 계획·제어·자료 개발 발표 · 2021·2022",
+      "note": "2021년 계획·제어·자동 라벨링·시뮬레이션 팀, 2022년 Milan과 공동 리더 소개. 2024 공식 Tesla 자료는 Autopilot Software Director, CMU 행사 안내는 VP AI Software로 표기한다. 2026 직책은 추정하지 않는다.",
+      "url": "https://www.youtube.com/watch?v=ODSJsviD_SU&t=3490s"
+    },
+    {
+      "id": "milan-kovac",
+      "name": "Milan Kovac",
+      "role": "Optimus & Autopilot Engineering · 2022.01–2024.09 / Optimus VP · 2024.09–2025.06",
+      "note": "공식 이사 이력의 과거 Tesla 역할. 차량·로봇이 공유하는 기반 소프트웨어와 인프라를 이끈 기록이며 현재 Tesla 재직으로 표시하지 않는다.",
+      "url": "https://ir.doordash.com/governance/board-of-directors/person-details/default.aspx?ItemId=6c52892a-cf87-4829-94e4-e8a6dee3a95a"
     }
   ],
   "connections": [
@@ -43,13 +68,16 @@
   "events": [
     {
       "peopleIds": [
-        "elon-musk"
+        "elon-musk",
+        "andrej-karpathy"
       ],
       "peopleNames": [
-        "Andrej Karpathy",
+        "Andrej Karpathy · 당시 컴퓨터 비전 팀",
         "Tesla Autopilot 팀"
       ],
-      "workIds": [],
+      "workIds": [
+        "tesla-vision-2021"
+      ],
       "id": "tesla-vision-2021",
       "date": "2021",
       "year": 2021,
@@ -93,13 +121,132 @@
       "caveat": "공식 자료가 확인하는 사건 시점은 2021년 2분기다. 임의의 출시일을 넣지 않으며 차량 데이터가 많다는 사실만으로 모든 도로 상황의 안전성을 보장하지 않는다."
     },
     {
+      "id": "tesla-ai-day-2021",
+      "date": "2021-08-19",
+      "year": 2021,
+      "dateLabel": "2021.08.19 · AI Day 개발 발표",
+      "precision": "day",
+      "type": "research",
+      "title": "AI Day 2021: 시각·계획·자료·차량 실행의 개발 흐름을 공개하다",
+      "question": "인식한 장면을 행동에 연결하려면 모델 바깥에서 무엇도 함께 만들어야 할까?",
+      "idea": "공식 발표는 Vision에서 Planning and Control로, 라벨링·시뮬레이션에서 Hardware Integration으로 이어진다. 장면의 표현을 배우는 신경망과 행동·학습 자료·차량 내 계산을 잇는 팀 개발 과제를 보여 준다.",
+      "change": "48:46–52 Karpathy는 vision 팀을 소개하고, 1:12:58–1:13:18의 인계에서 Elluswamy는 계획·제어·자동 라벨링·시뮬레이션 팀을 설명한다. 1:41:53–1:42:10에는 Kovac으로 발표가 이어진다. Musk는 행사 진행·기업 방향 발표로 구분한다.",
+      "peopleIds": [
+        "elon-musk",
+        "andrej-karpathy",
+        "ashok-elluswamy",
+        "milan-kovac"
+      ],
+      "peopleNames": [
+        "Andrej Karpathy · vision 발표",
+        "Ashok Elluswamy · 계획·제어·자료 발표",
+        "Milan Kovac · hardware integration 발표",
+        "Elon Musk · 행사 진행·기업 방향",
+        "Tesla Autopilot 개발팀"
+      ],
+      "workIds": [
+        "tesla-vision-2021"
+      ],
+      "flow": [
+        {
+          "label": "시각 표현",
+          "note": "카메라의 장면을 행동에 쓸 표현으로 다루는 문제."
+        },
+        {
+          "label": "계획·제어",
+          "note": "그 표현 위에서 움직임을 정하는 문제."
+        },
+        {
+          "label": "자료·시뮬레이션",
+          "note": "학습 정답과 추가로 살필 상황을 준비하는 문제."
+        },
+        {
+          "label": "차량 내 실행",
+          "note": "학습한 계산을 차량 장치에서 실행하는 문제."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · AI Day 2021 · 공식 영상",
+          "url": "https://www.youtube.com/watch?v=j0z4FweCy4M",
+          "note": "공식 업로드 2021.08.19. 목차 48:44 Vision / 1:13:12 Planning and Control / 1:42:10 Hardware Integration. 역할 소개·인계는 자동 영어 자막을 직접 확인하고 이름은 공식 이력과 대조했다."
+        },
+        {
+          "title": "Andrej Karpathy · 공식 개인 이력",
+          "url": "https://karpathy.ai/",
+          "note": "2017–2022년 Tesla 컴퓨터 비전 팀, 라벨링·학습·추론 칩 배포 기록. Q2 출시 보고와 8월 개발 발표를 구분한다."
+        }
+      ],
+      "caveat": "발표에서 확인한 팀의 역할과 공개 개발 과제다. 2023년 말 v12의 전체 아키텍처나 독립적인 실차 안전성 결과가 아니다. 앞선 Q2 Tesla Vision 출시 사건과 별도로 기록한다."
+    },
+    {
+      "id": "tesla-optimus-2022",
+      "date": "2022-09-30",
+      "year": 2022,
+      "dateLabel": "2022.09.30 · AI Day 프로토타입·개발 발표",
+      "precision": "day",
+      "type": "research",
+      "title": "AI Day 2022: 차량 AI와 Optimus 프로토타입의 과제를 나누어 공개하다",
+      "question": "차량에서 쌓은 AI·소프트웨어 기반은 로봇의 몸과 어떻게 만날까?",
+      "idea": "같은 행사 안에서 Autopilot의 공간 표현·계획·자료 개발과, Optimus의 하드웨어·보행·상태 추정·조작을 각각 다룬다. 기반이 이어진다는 개발 방향과 서로 다른 몸·과제가 요구하는 제약을 함께 읽는다.",
+      "change": "16:45–48 Kovac은 Autopilot과 Tesla Bot 참여를 소개한다. 47:13에는 Kovac과 autonomy 팀으로 로봇 발표가 넘어가고, 58:10–14 Elluswamy는 Kovac과 Autopilot 팀을 함께 이끈다고 소개한다. Elluswamy의 연결은 Autopilot 발표자라는 뜻이며 Optimus 개별 모듈의 개발 기여로 배정하지 않는다.",
+      "peopleIds": [
+        "elon-musk",
+        "ashok-elluswamy",
+        "milan-kovac"
+      ],
+      "peopleNames": [
+        "Milan Kovac · Autopilot·Tesla Bot 참여",
+        "Ashok Elluswamy · Autopilot 공동 리더 발표",
+        "Elon Musk · 행사 진행·기업 방향",
+        "Tesla Autopilot·Optimus 개발팀"
+      ],
+      "workIds": [
+        "tesla-optimus-2022",
+        "tesla-ai-day-2022-autopilot"
+      ],
+      "flow": [
+        {
+          "label": "Optimus 하드웨어",
+          "note": "당시 로봇 프로토타입을 공개한다."
+        },
+        {
+          "label": "보행·조작",
+          "note": "몸을 움직이는 계획·제어·상태 추정의 과제를 다룬다."
+        },
+        {
+          "label": "Autopilot",
+          "note": "별도 발표 구간에서 공간 표현과 계획을 다룬다."
+        },
+        {
+          "label": "공유 기반",
+          "note": "차량·로봇의 기반 소프트웨어·인프라 이력과 연결한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · AI Day 2022 · 공식 영상",
+          "url": "https://www.youtube.com/watch?v=ODSJsviD_SU",
+          "note": "공식 2022.09.30 행사. 자동 영어 자막에서 16:45·47:13·58:10의 역할 소개·인계를 확인. 공식 챕터는 로봇 하드웨어·보행·상태 추정·조작과 후반 Autopilot을 구분한다."
+        },
+        {
+          "title": "DoorDash · Milan Kovac 공식 이력",
+          "url": "https://ir.doordash.com/governance/board-of-directors/person-details/default.aspx?ItemId=6c52892a-cf87-4829-94e4-e8a6dee3a95a",
+          "note": "2022.01–2024.09 Optimus & Autopilot Engineering Director 당시 이력. 개인별 모든 설계·구현 기여의 목록은 아니다."
+        }
+      ],
+      "caveat": "프로토타입 공개·개발 설명을 상용 준비 완료나 모든 작업의 자율 실행으로 바꾸지 않는다. 같은 행사에 나온 인물이라는 사실을 모든 프로그램의 개발 기여로 확장하지 않으며 Karpathy의 2017–2022 이력을 이 9월 행사에 소급 연결하지 않는다."
+    },
+    {
       "peopleIds": [
         "elon-musk"
       ],
       "peopleNames": [
         "Tesla AI 팀"
       ],
-      "workIds": [],
+      "workIds": [
+        "tesla-fsd-v12-2023"
+      ],
       "id": "tesla-fsd-v12-2023",
       "date": "2023-12",
       "year": 2023,
@@ -136,6 +283,168 @@
         }
       ],
       "caveat": "회사는 적극적인 운전자 감독이 필요하며 차량을 자율주행차로 만들지 않는다고 명시한다. Karpathy의 2017–2022년 재직과 v12 개발을 동일시하지 않으며 독립적인 안전성 결과로 일반화하지 않는다."
+    },
+    {
+      "id": "tesla-optimus-gen2-2023",
+      "date": "2023-12-13",
+      "year": 2023,
+      "dateLabel": "2023.12.13 · 공식 Gen 2 개발 영상",
+      "precision": "day",
+      "type": "product",
+      "title": "Optimus Gen 2: 몸·센서·손의 설계를 갱신하다",
+      "question": "행동을 학습하는 소프트웨어는 어떤 몸과 센서에서 실행되어야 할까?",
+      "idea": "Tesla는 자체 설계 액추에이터와 센서, 손·보행·목 관절 등의 변경을 공식 영상 설명으로 발표했다. 학습된 행동이 만나는 몸의 설계도 로봇 개발의 일부라는 관점에서 읽는다.",
+      "change": "공식 채널의 2023.12.13 Gen 2 영상은 2022년 프로토타입과 구분한 하드웨어 갱신이다. Kovac은 이 시기에 Optimus 엔지니어링을 이끈 공식 이력으로 연결하며 영상의 모든 설계나 동작을 혼자 구현했다고 표시하지 않는다.",
+      "peopleIds": [
+        "milan-kovac"
+      ],
+      "peopleNames": [
+        "Tesla Optimus 개발팀",
+        "Milan Kovac · 당시 프로그램 엔지니어링 리더 이력"
+      ],
+      "workIds": [
+        "tesla-optimus-2022"
+      ],
+      "flow": [
+        {
+          "label": "몸과 액추에이터",
+          "note": "공식 설명의 기계 설계 변경."
+        },
+        {
+          "label": "센서와 손",
+          "note": "관측·접촉·조작에 필요한 장치 변경."
+        },
+        {
+          "label": "실행",
+          "note": "바뀐 몸에서 움직임을 보여 주는 개발 영상."
+        },
+        {
+          "label": "확인 범위",
+          "note": "홍보 영상과 독립적인 자율 작업 실험을 구분한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · Optimus - Gen 2 · 공식 영상",
+          "url": "https://www.youtube.com/watch?v=cpraXaw7dyc",
+          "note": "Tesla 공식 채널, 업로드 2023.12.13. 공식 설명의 액추에이터·센서·손·보행·목 관절 갱신. 영상 게시일과 2022년 프로토타입 날짜를 섞지 않는다."
+        },
+        {
+          "title": "DoorDash · Milan Kovac 공식 이력",
+          "url": "https://ir.doordash.com/governance/board-of-directors/person-details/default.aspx?ItemId=6c52892a-cf87-4829-94e4-e8a6dee3a95a",
+          "note": "2022.01–2024.09 Optimus & Autopilot Engineering Director로 Optimus 엔지니어링을 이끈 경력. 특정 액추에이터·손의 개인 발명으로 배정하지 않는다."
+        }
+      ],
+      "caveat": "공식 영상의 개발 갱신 설명이다. 편집된 시연에서 모든 작업의 자율성·성공률·양산 처리량을 추정하지 않으며 2022·2023·2026의 몸과 제조 상태를 합치지 않는다."
+    },
+    {
+      "id": "tesla-fsd-supervised-2024",
+      "date": "2024-04-23",
+      "year": 2024,
+      "dateLabel": "2024.04.23 보고 · 1분기 FSD (Supervised) 출시·체험 배포",
+      "precision": "day",
+      "type": "product",
+      "title": "FSD (Supervised): 종단간 학습을 감독이 필요한 제품으로 제공하다",
+      "question": "개발한 주행 신경망을 고객에게 어떤 조건으로 제공했을까?",
+      "idea": "Tesla는 Q1 2024 보고에서 비전 기반 종단간 신경망과 FSD (Supervised) v12 출시를 설명하고, 미국·캐나다의 대상 차량에 30일 체험을 제공했다고 기록했다. 학습 방식과 실제 사용 조건을 함께 읽는다.",
+      "change": "8쪽은 v12의 출시·주행 기능·AI 인프라 확장을 설명한다. 3쪽 각주 5는 적극적인 운전자 감독이 필요하고 차량을 자율주행차로 만들지 않는다고 명시한다. 2023년 말 직원 대상 초기 배포와 후속 고객 제품 보고는 별도 기록이다.",
+      "peopleIds": [],
+      "peopleNames": [
+        "Tesla AI / Autopilot 개발팀"
+      ],
+      "workIds": [
+        "tesla-fsd-v12-2023"
+      ],
+      "flow": [
+        {
+          "label": "학습 방식",
+          "note": "회사 보고의 vision-only·end-to-end 방향."
+        },
+        {
+          "label": "대상 차량",
+          "note": "미국·캐나다 eligible cars의 체험 배포 보고."
+        },
+        {
+          "label": "실행 기능",
+          "note": "차로 변경·경로 분기·회피·회전 등 회사가 열거한 기능."
+        },
+        {
+          "label": "운전자 감독",
+          "note": "제품 사용 조건을 기술 설명과 함께 보존한다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · Q1 2024 Update · SEC 제출 원문 pp.3·8",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000095017024046895/tsla-ex99_1.htm",
+          "note": "3쪽 각주 5 감독 조건, 8쪽 FSD (Supervised) V12·체험 배포·종단간 신경망 보고. 4월23일은 발표일이며 모든 대상 차량의 실제 설치일이 아니다."
+        },
+        {
+          "title": "Tesla Investor Relations · Q1 2024 공시 일정",
+          "url": "https://ir.tesla.com/",
+          "note": "2024 Q1 행의 Earnings Date Apr23,2024 및 해당 Shareholder Deck·SEC Filing 연결을 확인했다."
+        }
+      ],
+      "caveat": "회사 보고는 학습·출시·사용 조건의 근거다. 독립적인 안전성 비교나 모든 도로 환경의 성능 결과가 아니며, 이 자료가 개인 개발자별 기여를 밝히지 않아 peopleIds는 팀을 대신하는 임의 인물로 채우지 않는다."
+    },
+    {
+      "id": "tesla-ai-robotics-status-2026",
+      "date": "2026-10-21",
+      "year": 2026,
+      "dateLabel": "2026.10.21 보고 · Q3 FSD 운영·Optimus 제조 상태",
+      "precision": "day",
+      "type": "infrastructure",
+      "title": "2026 Q3: FSD 운영과 Optimus의 초기 제조 상태를 나누어 보고하다",
+      "question": "개발 발표 이후 실제로 보고된 운영·제조 상태와 앞으로의 목표는 무엇이 다를까?",
+      "idea": "최신 분기 자료는 FSD (Supervised)의 제품 운영 기록과, Optimus의 Fremont 생산 시작·California Early Ramp·Texas Construction을 각각 보고한다. 차량 소프트웨어의 사용 조건과 로봇의 제조 단계는 서로 다른 진척 기준이다.",
+      "change": "6쪽 Robotics는 Fremont에서 생산을 시작했다는 회사 설명과 초기 제조 상태를 제시한다. 3·8쪽은 FSD에 적극적인 운전자 감독이 필요하다는 조건을 계속 붙인다. Musk는 같은 날짜 SEC 인증의 CEO라는 경영 역할로만 연결한다.",
+      "peopleIds": [
+        "elon-musk"
+      ],
+      "peopleNames": [
+        "Tesla AI·Autopilot·Optimus 개발팀",
+        "Elon Musk · 해당 분기 CEO 인증·경영 역할"
+      ],
+      "workIds": [
+        "tesla-fsd-v12-2023",
+        "tesla-optimus-2022"
+      ],
+      "flow": [
+        {
+          "label": "FSD 제품 운영",
+          "note": "감독이 필요한 제품의 운영 기록."
+        },
+        {
+          "label": "Fremont 생산 시작",
+          "note": "회사가 보고한 Optimus 제조 진척."
+        },
+        {
+          "label": "서로 다른 제조 단계",
+          "note": "California Early Ramp와 Texas Construction을 구분."
+        },
+        {
+          "label": "목표와 실적 구분",
+          "note": "계획 능력·설치 능력·실제 생산율·작업 성능은 다르다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Tesla · Q3 2026 Update · pp.3·6·8",
+          "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "note": "PDF33쪽 본문 확인. p6 Robotics·capacity 표의 Fremont 생산·California Early Ramp·Texas Construction과 설치 능력≠현재 생산율 주석. p3·8의 운전자 감독 조건. 연말400MW 등 계획을 달성으로 바꾸지 않는다."
+        },
+        {
+          "title": "Tesla · Q3 2026 Form10-Q Exhibit31.1 · CEO 인증",
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066775/tsla-2026x09x30xex311.htm",
+          "note": "2026.10.21 Elon Musk / Chief Executive Officer 서명. 경영자 역할의 근거이며 기술의 단독 개발자 근거가 아니다."
+        },
+        {
+          "title": "Tesla Investor Relations · Q3 2026 공시 일정",
+          "url": "https://ir.tesla.com/",
+          "note": "2026 Q3 행의 Oct21,2026과 공식 shareholder deck·10-Q 연결을 직접 확인했다."
+        }
+      ],
+      "caveat": "2026.11.19 확인한 회사 보고 범위다. 초기 제조·건설 상태를 보급 대수·작업 자율성·외부 고객 배치·독립 안전성 실적으로 확대하지 않는다. 과거 개발자 이력을 2026년 재직으로 소급하지 않으며 Robotaxi 운행과 고객 FSD (Supervised)를 같은 사용 조건으로 다루지 않는다."
     }
   ],
   "orgAliases": [
