@@ -1,271 +1,208 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>필터와 특징 맵</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>합성곱 · 작은 계산에서 특징 지도로 | ourfuture studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
-  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
-    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+:root{--bg:#fff;--ink:#1b2340;--ink2:#3e424a;--label:#5b5f67;--rule:#e4e4e0;--box:#f4f4f2;--accent:#7a1f2e;--lining:#1f6f6f;--negative:#b5481a}
+@media(prefers-color-scheme:dark){:root{--bg:#121829;--ink:#ecece8;--ink2:#c3c6cf;--label:#a6adba;--rule:#303b51;--box:#1a2136;--accent:#e98394;--lining:#68c7bd;--negative:#ee9866}}
+*{box-sizing:border-box}body{margin:0;padding:24px 28px 44px;background:var(--bg);color:var(--ink);font:17px/1.75 'IBM Plex Sans KR','Malgun Gothic',sans-serif;word-break:keep-all}.wrap{max-width:1300px;margin:auto}a{color:var(--lining);text-underline-offset:4px}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--lining);outline-offset:2px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px;font-size:15px}.brand{font-size:20px;font-weight:600;color:var(--ink);text-decoration:none}.brand span,h1>span{color:var(--accent)}.eyebrow{font-size:14px;color:var(--lining);font-weight:500;letter-spacing:.04em;margin:0 0 8px}h1,h2,h3,h4,p{margin-top:0}h1{font:600 clamp(28px,3vw,38px)/1.45 'Noto Serif KR',serif;margin-bottom:14px}h2{font-size:22px;line-height:1.5;margin-bottom:14px}.lede{max-width:950px;font-size:18px;color:var(--ink2);margin-bottom:22px}.phases{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--rule)}
+.phases button,.seg button,.scan-controls button,.editor-row button,.weight-presets button,.probe-button{border:1px solid var(--rule);background:var(--bg);color:var(--ink);border-radius:5px;padding:8px 14px;font-size:15px}.phases button[aria-pressed=true],.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(340px,1fr);gap:30px;align-items:start}.layout>section{min-width:0}.section-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.section-top h2{font-size:19px;margin:0}.section-top span{font-size:14px;color:var(--label)}.options{margin:16px 0 10px}.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}.seg button{font-size:14px;padding:6px 10px}.tip,.legend{font-size:14px;color:var(--label);margin:8px 0 12px}.mobile-jump{display:none}.boards{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}figure{margin:0;min-width:0}figcaption{font-size:15px;font-weight:500;margin-bottom:9px}.image-grid,.output-grid{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));border:1px solid var(--label);aspect-ratio:1;max-width:360px;width:100%}.image-grid button,.image-grid .pad,.output-grid button,.small-grid>*{min-width:0;min-height:0;aspect-ratio:1;border:1px solid var(--rule);border-radius:0;background:var(--bg);color:var(--ink);padding:0;text-align:center;font:15px 'IBM Plex Mono',monospace}.image-grid button.on{background:var(--ink);color:var(--bg)}.image-grid .pad{display:grid;place-items:center;background:var(--box);color:var(--label);border-style:dashed}.window-outline{position:absolute;pointer-events:none;border:3px solid var(--accent);width:calc(300% / var(--n));height:calc(300% / var(--n));left:calc(var(--wc)*100% / var(--n));top:calc(var(--wr)*100% / var(--n));z-index:2}.output-grid button{position:relative}.output-grid button.selected{outline:3px solid var(--accent);outline-offset:-3px;z-index:1}.output-grid button.affected{border:2px dashed var(--negative)}.output-grid button.changed{box-shadow:inset 0 0 0 2px var(--lining)}.output-grid button.positive{background:color-mix(in srgb,var(--lining) var(--strength),var(--bg))}.output-grid button.negative{background:color-mix(in srgb,var(--negative) var(--strength),var(--bg))}.scan-controls{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}.scan-controls button{font-size:14px;padding:7px 10px}.calculation{padding:18px;background:var(--box);border-radius:5px}.calculation h3{font-size:17px;margin-bottom:16px}.multiply{display:grid;grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr) 17px minmax(0,1fr);gap:9px;align-items:center}.multiply h4{font-size:14px;color:var(--label);font-weight:400;margin:0 0 8px}.operator{text-align:center;font-size:20px}.small-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--rule)}.small-grid>*{display:grid;place-items:center;font-size:15px}.small-grid .selected{box-shadow:inset 0 0 0 2px var(--accent);z-index:1}.small-grid .positive{color:var(--lining)}.small-grid .negative{color:var(--negative)}.sum{font-size:18px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule);font-variant-numeric:tabular-nums}.sum strong{color:var(--lining)}
+.weight-editor,.settings{border-top:1px solid var(--rule);margin-top:20px;padding-top:15px;font-size:15px}.weight-editor p,.settings p{font-size:14px;color:var(--label);margin:12px 0}.editor-row{display:flex;gap:10px;margin:10px 0}.editor-row input{width:110px;max-width:45%;padding:7px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--bg);color:var(--ink)}.editor-row button{font-size:14px}.weight-presets{display:flex;gap:7px;flex-wrap:wrap}.weight-presets button{padding:5px 12px;font-size:14px}.settings-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:15px}.settings-row>.seg{margin:0}.notice{font-size:14px;color:var(--lining);min-height:1.5em;margin:16px 0}.interpretation{border:1px solid var(--rule);border-top:3px solid var(--lining);border-radius:5px;padding:23px}.interpretation h2{font:600 24px/1.5 'Noto Serif KR',serif}.interpretation p{font-size:16px;margin-bottom:14px}.interpretation .eyebrow{font-size:14px}.current-reading{background:var(--box);padding:16px;border-radius:4px;margin:18px 0}.current-reading p{font-size:15px;margin:8px 0 0}.current-reading .reading-label{font-size:14px;color:var(--lining);font-weight:500}.term-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}.term-table th,.term-table td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right}.term-table th{font-weight:500;color:var(--label)}.term-table td:first-child,.term-table th:first-child{text-align:left}.term-table tr.selected{background:var(--box)}.sign-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:16px 0}.sign-summary div{background:var(--box);padding:10px;border-radius:4px;font-size:14px;color:var(--label)}.sign-summary strong{display:block;font-size:19px;color:var(--ink)}.sign-summary .positive strong{color:var(--lining)}.sign-summary .negative strong{color:var(--negative)}.parameter-counts,.position-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.parameter-counts>div,.position-pair>div{border:1px solid var(--rule);border-radius:4px;padding:12px}.parameter-counts span,.position-pair span{font-size:14px;color:var(--label)}.parameter-counts strong,.position-pair strong{display:block;font:500 22px/1.7 'IBM Plex Mono',monospace}.interpretation details{border-top:1px solid var(--rule);padding-top:14px;margin-top:16px}.interpretation details p{font-size:15px;margin-top:12px}.probe-button{font-size:14px}.effects,.theory{border-top:1px solid var(--rule);padding-top:26px;margin-top:34px}.effects p,.theory p{font-size:16px;color:var(--ink2)}.effects .eyebrow,.theory .eyebrow{font-size:14px;color:var(--lining)}#changeReading{background:var(--box);padding:17px 20px;border-radius:5px;margin-bottom:16px}#changeReading p{margin:0 0 8px}.theory{max-width:930px}.theory details{border-top:1px solid var(--rule);padding-top:16px;margin-top:16px}.theory details p{margin-top:12px}.equation{font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace;font-size:16px;line-height:1.9;overflow-wrap:anywhere;background:var(--box);padding:16px 18px;border-radius:4px;margin:16px 0}summary{font-size:16px;font-weight:500;cursor:pointer}.related{border-left:3px solid var(--lining);background:var(--box);padding:16px 20px;margin:22px 0}.related h3{font-size:18px;margin-bottom:10px}.related a{display:block;font-size:15px;margin-top:8px}.sources{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink2)}.sources li{margin:12px 0}.sources p{max-width:960px}footer{font-size:14px;color:var(--label);margin-top:30px}#experiment,#interpretation{scroll-margin-top:18px}
+@media(max-width:1050px){body{padding:20px 18px 36px}.layout{grid-template-columns:1fr;gap:22px}.interpretation{padding:20px}.mobile-jump{display:inline-block;font-size:15px;margin-bottom:12px}.lede{font-size:17px}}
+@media(max-width:620px){.boards{grid-template-columns:1fr;gap:18px}.boards figure{width:100%;max-width:360px;margin:auto}.phases{display:grid;grid-template-columns:1fr 1fr;gap:7px}.phases button{font-size:14px;padding:8px 6px}.section-top{align-items:flex-start}.section-top h2{font-size:18px}.section-top span{font-size:13px}.calculation{padding:12px}.multiply{gap:4px;grid-template-columns:minmax(0,1fr) 13px minmax(0,1fr) 13px minmax(0,1fr)}.small-grid>*{font-size:14px}.multiply h4{font-size:13px}.brand{font-size:18px}.term-table th,.term-table td{padding:6px}.sign-summary{gap:6px}.sign-summary div{padding:8px}.sum{font-size:17px}}
+@media(max-width:620px){.multiply{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr);gap:7px}.multiply>div:nth-child(1){grid-area:1/1}.multiply>span:nth-child(2){grid-area:1/2}.multiply>div:nth-child(3){grid-area:1/3}.multiply>span:nth-child(4){grid-area:2/2}.multiply>div:nth-child(5){grid-area:3/1/4/4;width:180px;max-width:100%;justify-self:center}}
+
+</style><script data-viz-compat="1">
+(() => {
+  const query = new URLSearchParams(location.search);
+  if (query.get('shorts') === '1' || query.get('play') === '1') {
+    location.replace(new URL('recording/convolution.html' + location.search + location.hash, location.href).href);
   }
-}
-:root[data-theme="dark"]{
-  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
-  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink)}
-body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
-.wrap{max-width:760px;margin:0 auto}
-.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
-h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
-h1 .dot{color:var(--accent)}
-.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
-.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
-.tag .d{color:var(--lining)}
-.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
-.seg{display:inline-flex;border:1px solid var(--ink)}
-.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
-.seg button:last-child{border-right:0}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.seg button:disabled{color:var(--label);cursor:default}
-.ctl-label{margin-right:10px}
-input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
-.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
-.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
-.stats b{color:var(--ink);font-weight:400}
-figure{margin:0;border:1px solid var(--rule)}
-svg{display:block;width:100%;height:auto}
-figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
-.insight{background:var(--box);padding:18px 22px;margin:20px 0}
-.insight p{margin:0}
-.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
-.result b{font-weight:600}
-table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
-th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
-.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
-.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
-.notes p{margin:0 0 6px}
-/* 쇼츠 녹화용 9:16 */
-body.shorts{padding:0;display:flex;justify-content:center}
-body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
-body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
-body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
-body.shorts .result{font-size:24px}
-body.shorts h1{font-size:26px}
-body.shorts .insight{padding:14px 16px;margin:14px 0}
-#g .px{cursor:pointer}
-body.shorts .insight p{line-height:1.5}
-body.shorts .result{margin-bottom:6px;font-size:22px}
-body.shorts figure{border:0}
-body.shorts .controls{margin:10px 0 6px}
-body.shorts .ctl-run{display:none}
-
-[data-viz-recording-control]{display:none!important}
-</style>
-<style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-23</div>
-  <h1>필터는 이미지에서 무엇을 찾을까<span class="dot">.</span></h1>
-  <p class="lede">3×3 필터를 8×8 이미지 위에 한 칸씩 밀며, 겹친 9칸의 원소곱을 모두 더한 값을 특징 맵에 적습니다. 필터 모양과 같은 무늬가 있는 곳에서 값이 커집니다. 필터를 바꾸고 [한 칸씩]을 눌러 보세요. 입력 픽셀은 눌러서 켜고 끌 수 있습니다.</p>
-
-  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 가상 데이터</span><span class="mono">8×8 흑백 그림 · 손으로 그린 예시</span></p>
-
-  <div class="controls">
-    <div><span class="mono ctl-label">필터</span>
-      <span class="seg" role="group" aria-label="필터">
-        <button data-f="v" aria-pressed="true">세로선</button>
-        <button data-f="h" aria-pressed="false">가로선</button>
-        <button data-f="blur" aria-pressed="false">흐리기</button>
-      </span>
-    </div>
-    <div class="ctl-extra"><span class="mono ctl-label">입력</span>
-      <span class="seg" role="group" aria-label="입력 그림">
-        <button data-img="seven" aria-pressed="true">숫자 7</button>
-        <button data-img="square" aria-pressed="false">사각형</button>
-      </span>
-    </div>
-    <div class="ctl-run"><span class="seg" role="group" aria-label="진행">
-        <button id="stepBtn">한 칸씩</button>
-        <button id="playBtn" aria-pressed="false">재생</button>
-        <button id="endBtn" class="ctl-extra">끝까지</button>
-        <button id="resetBtn">처음으로</button>
-      </span></div>
-    <div class="ctl-view" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면">
-        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
-      </span></div>
-  </div>
-
-  <figure>
-    <svg id="g" viewBox="0 0 760 330" role="img" aria-label="입력 이미지, 필터, 특징 맵"></svg>
-    <figcaption class="mono">입력: ■ 채운 칸 = 1 · □ 빈 칸 = 0 · 붉은 테두리 = 현재 필터 창(칸 속 숫자 = 필터 값) · 특징 맵: 청록 = 양수, 주황 = 음수, 진할수록 절댓값이 큼, 숫자 = 값 · 위치 (행, 열)은 0부터 셉니다</figcaption>
-  </figure>
-
-  <div class="insight">
-    <p class="result" id="result"></p>
-    <p id="explain"></p>
-  </div>
-  <p class="formula" id="formula"></p>
-
-  <div class="notes">
-    <p>스트라이드 1, 패딩 없음: 출력 크기 = 8 − 3 + 1 = 6, 그래서 6×6 특징 맵입니다. 각 칸은 out[i][j] = Σₐ Σ_b in[i+a][j+b] · k[a][b] (a, b = 0, 1, 2)입니다.</p>
-    <p>PyTorch·TensorFlow 같은 딥러닝 라이브러리의 ‘convolution’은 실제로는 필터를 뒤집지 않는 교차상관(cross-correlation)이며, 이 페이지도 그렇게 계산합니다. 수학의 합성곱은 필터를 180° 뒤집어 곱합니다. 필터를 학습으로 정하는 신경망에서는 뒤집힌 필터를 배우면 되므로 결과에 차이가 없습니다. 여기 보인 세로선·가로선 필터는 좌우·상하 대칭이라 뒤집어도 같습니다.</p>
-    <p>필터 값은 설명용으로 직접 정했습니다. CNN에서는 필터 값을 학습하며, 보통 편향을 더하고 ReLU 같은 활성화를 거칩니다(여기서는 생략). 흐리기 필터는 9칸 평균(모든 값 1/9)이고 특징 맵 숫자는 소수 둘째 자리로 반올림했습니다.</p>
-    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
-  </div>
-</div>
-
-<script>
-(function(){
-  const IMGS={
-    seven:['00000000','01111110','00000100','00001000','00010000','00010000','00010000','00000000'],
-    square:['00000000','01111110','01000010','01000010','01000010','01000010','01111110','00000000']
-  };
-  const FILT={
-    v:{name:'세로선',k:[[-1,2,-1],[-1,2,-1],[-1,2,-1]],lab:['−1','2','−1']},
-    h:{name:'가로선',k:[[-1,-1,-1],[2,2,2],[-1,-1,-1]]},
-    blur:{name:'흐리기',k:[[1/9,1/9,1/9],[1/9,1/9,1/9],[1/9,1/9,1/9]]}
-  };
-  let img=IMGS.seven.map(r=>r.split('').map(Number)), fk='v', k=0, playing=false, raf=0, last=0, imgName='seven';
-  const N=8, M=6;
-  const NS='http://www.w3.org/2000/svg';
-  const svg=document.getElementById('g');
-  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);(p||svg).appendChild(e);return e;};
-  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  const hex=c=>{c=c.replace('#','');return [0,2,4].map(i=>parseInt(c.substr(i,2),16));};
-  const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,i)=>Math.round(v*t+B[i]*(1-t))).join(',')+')';};
-  const isBlur=()=>fk==='blur';
-  const fmtV=v=>{if(isBlur()){const r=Math.round(v*100)/100;return r===0?'0':r.toFixed(2);} const r=Math.round(v);return r>0?'+'+r:(r<0?'−'+(-r):'0');};
-  const wTxt=w=>isBlur()?'1/9':(w<0?'−'+(-w):String(w));
-
-  function conv(){
-    const K=FILT[fk].k, out=[];
-    for(let i=0;i<M;i++){out.push([]);for(let j=0;j<M;j++){let s=0;for(let a=0;a<3;a++)for(let b=0;b<3;b++)s+=img[i+a][j+b]*K[a][b];out[i].push(s);}}
-    return out;
-  }
-
-  function draw(){
-    svg.innerHTML='';
-    const big=document.body.classList.contains('shorts');
-    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg'), c1=css('--c1'), c2=css('--c2');
-    const Lo=big?{vb:[400,456],inp:[10,30,25],fil:[250,60,40],out:[10,268,31],fs:15,ts:15}
-                :{vb:[760,330],inp:[20,42,34],fil:[338,110,34],out:[492,42,38],fs:13,ts:13};
-    svg.setAttribute('viewBox',`0 0 ${Lo.vb[0]} ${Lo.vb[1]}`);
-    const out=conv(), K=FILT[fk].k, ci=Math.floor(k/M), cj=k%M;
-    const maxAbs=Math.max(1e-9,...out.flat().map(Math.abs));
-    const T=(x,y,s,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono','font-size':Lo.fs,fill:ink},a));e.textContent=s;return e;};
-    // 입력
-    const [ix,iy,ic]=Lo.inp;
-    T(ix,iy-10,'입력 8×8',{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
-    for(let r=0;r<N;r++)for(let c=0;c<N;c++){
-      const on=img[r][c]===1, rc=el('rect',{x:ix+c*ic,y:iy+r*ic,width:ic,height:ic,fill:on?ink:bg,stroke:rule,'stroke-width':1,class:'px','data-r':r,'data-c':c});
-    }
-    el('rect',{x:ix,y:iy,width:N*ic,height:N*ic,fill:'none',stroke:label,'stroke-width':1});
-    // 필터 창
-    for(let a=0;a<3;a++)for(let b=0;b<3;b++){
-      const r=ci+a,c=cj+b,on=img[r][c]===1;
-      T(ix+c*ic+ic/2,iy+r*ic+ic/2+Lo.fs*0.36,wTxt(K[a][b]),{'text-anchor':'middle','font-size':(isBlur()?Lo.fs*0.8:Lo.fs),fill:on?bg:acc,'pointer-events':'none'});
-    }
-    el('rect',{x:ix+cj*ic,y:iy+ci*ic,width:3*ic,height:3*ic,fill:'none',stroke:acc,'stroke-width':3,'pointer-events':'none'});
-    // 필터
-    const [fx,fy,fc]=Lo.fil;
-    T(fx,fy-10,`필터 · ${FILT[fk].name}`,{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
-    for(let a=0;a<3;a++)for(let b=0;b<3;b++){
-      const w=K[a][b];
-      el('rect',{x:fx+b*fc,y:fy+a*fc,width:fc,height:fc,fill:isBlur()?mix(c1,bg,.12):(w>0?mix(c1,bg,.22):mix(c2,bg,.16)),stroke:label,'stroke-width':1});
-      T(fx+b*fc+fc/2,fy+a*fc+fc/2+Lo.fs*0.36,wTxt(w),{'text-anchor':'middle','font-size':isBlur()?Lo.fs*0.85:Lo.fs});
-    }
-    if(!big){T(fx+1.5*fc,fy+3*fc+24,'원소곱 후 합',{'text-anchor':'middle',fill:label,'font-size':12,'font-family':'IBM Plex Sans KR'});
-      T(fx+1.5*fc,fy+3*fc+44,'→',{'text-anchor':'middle',fill:label,'font-size':18});}
-    // 출력
-    const [ox,oy,oc]=Lo.out;
-    T(ox,oy-10,'특징 맵 6×6',{fill:label,'font-size':Lo.ts,'font-family':'IBM Plex Sans KR'});
-    for(let i=0;i<M;i++)for(let j=0;j<M;j++){
-      const idx=i*M+j, done=idx<=k, v=out[i][j];
-      const t=Math.abs(v)/maxAbs, fill=!done?bg:(Math.abs(v)<1e-9?bg:mix(v>0?c1:c2,bg,0.12+0.5*t));
-      el('rect',{x:ox+j*oc,y:oy+i*oc,width:oc,height:oc,fill,stroke:rule,'stroke-width':1});
-      if(done)T(ox+j*oc+oc/2,oy+i*oc+oc/2+Lo.fs*0.36,fmtV(v),{'text-anchor':'middle','font-size':isBlur()?Lo.fs*0.8:Lo.fs});
-    }
-    el('rect',{x:ox,y:oy,width:M*oc,height:M*oc,fill:'none',stroke:label,'stroke-width':1});
-    el('rect',{x:ox+cj*oc,y:oy+ci*oc,width:oc,height:oc,fill:'none',stroke:acc,'stroke-width':3});
-    // 쇼츠: 현재 계산을 오른쪽 아래 빈칸에
-    const v=out[ci][cj];
-    if(big){
-      T(222,300,`위치 (${ci},${cj})`,{fill:label,'font-size':16});
-      T(222,342,'합 =',{'font-size':20,'font-family':'IBM Plex Sans KR'});
-      T(222,388,fmtV(v),{'font-size':36,fill:Math.abs(v)<1e-9?ink:(v>0?c1:c2)});
-      T(222,440,`${k+1} / 36칸`,{fill:label,'font-size':15});
-    }
-
-    // 문구
-    const terms=[];let ones=0;
-    for(let a=0;a<3;a++)for(let b=0;b<3;b++){const p=img[ci+a][cj+b];ones+=p;terms.push(`${p}·${wTxt(K[a][b]).replace('−','(−')+(K[a][b]<0?')':'')}`);}
-    document.getElementById('formula').textContent=isBlur()
-      ? `위치 (${ci},${cj}): (1/9) × (${terms.map(s=>s.split('·')[0]).join(' + ')}) = ${ones}/9 = ${fmtV(v)}`
-      : `위치 (${ci},${cj}): ${terms.join(' + ')} = ${fmtV(v)}`;
-    const vr=fmtV(v);
-    let res, ex;
-    if(k===M*M-1){
-      let bi=0,bj=0;out.forEach((row,i)=>row.forEach((x,j)=>{if(x>out[bi][bj]){bi=i;bj=j;}}));
-      res=`특징 맵 완성 · 가장 큰 값 <b>${fmtV(out[bi][bj])}</b> (위치 ${bi},${bj})`;
-      ex=fk==='v'?'세로 획이 있는 곳이 청록으로 밝게 떴습니다. 획 바로 옆은 필터의 −1 칸에 걸려 음수(주황)가 됩니다.'
-        :fk==='h'?'가로 획이 있는 곳이 청록으로 떴습니다. 같은 그림이라도 필터가 다르면 전혀 다른 부분을 찾아냅니다.'
-        :'흐리기는 9칸 평균이라 음수가 없고, 획이 부드럽게 번진 그림이 됩니다. 무늬를 찾기보다 잡음을 줄이는 필터입니다.';
-    }else{
-      res=`위치 (${ci},${cj}) · 원소곱의 합 = <b>${vr}</b>`;
-      ex=isBlur()?`창 안 검은 칸 ${ones}개 → 평균 ${ones}/9. 흐리기는 무늬와 상관없이 밝기의 평균만 냅니다.`
-        :(v>0?`창 안의 무늬가 필터의 ‘2’ 줄(${fk==='v'?'가운데 열':'가운데 행'})과 겹쳐 양수가 나왔습니다.`
-        :v<0?`검은 칸이 필터의 ‘−1’ 칸에 걸려 음수가 나왔습니다. 찾는 선의 옆자리라는 뜻입니다.`
-        :`양수와 음수가 상쇄되었거나 창이 비어 있어 0입니다.`);
-    }
-    document.getElementById('result').innerHTML=big?`(${ci},${cj}) 합 = <b>${vr}</b>`:res;
-    document.getElementById('explain').innerHTML=big?(fk==='v'?'세로 획 위에서 커지고, 옆에서 음수.':fk==='h'?'가로 획 위에서 커지고, 위아래에서 음수.':'9칸 평균 — 음수 없이 번집니다.'):ex;
-    if(big&&k===M*M-1)document.getElementById('result').innerHTML=`완성 · 최댓값 <b>${fmtV(Math.max(...out.flat()))}</b>`;
-    document.getElementById('stepBtn').disabled=k>=M*M-1;
-  }
-
-  svg.addEventListener('click',e=>{const t=e.target;if(t.classList&&t.classList.contains('px')){const r=+t.dataset.r,c=+t.dataset.c;img[r][c]=1-img[r][c];draw();}});
-  function go(n){k=Math.max(0,Math.min(M*M-1,n));draw();}
-  document.getElementById('stepBtn').addEventListener('click',()=>{setPlay(false);go(k+1);});
-  document.getElementById('endBtn').addEventListener('click',()=>{setPlay(false);go(M*M-1);});
-  document.getElementById('resetBtn').addEventListener('click',()=>{setPlay(false);go(0);});
-  const pb=document.getElementById('playBtn');
-  function tick(ts){if(!playing)return;if(ts-last>420){last=ts;if(k>=M*M-1){setPlay(false);return;}go(k+1);}raf=requestAnimationFrame(tick);}
-  function setPlay(on){playing=on;pb.textContent=on?'일시정지':'재생';pb.setAttribute('aria-pressed',on);cancelAnimationFrame(raf);
-    if(on){if(k>=M*M-1)go(0);last=performance.now();raf=requestAnimationFrame(tick);}}
-  pb.addEventListener('click',()=>setPlay(!playing));
-  document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>{fk=b.dataset.f;document.querySelectorAll('[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
-  document.querySelectorAll('[data-img]').forEach(b=>b.addEventListener('click',()=>{imgName=b.dataset.img;img=IMGS[imgName].map(r=>r.split('').map(Number));document.querySelectorAll('[data-img]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
-  const sbt=document.getElementById('shortsBtn');
-  function setShorts(on){document.body.classList.toggle('shorts',on);sbt.setAttribute('aria-pressed',on);draw();}
-  sbt.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
-
-  // URL 옵션: ?filter=v|h|blur&img=seven|square&pos=1~36&play=1&shorts=1
-  const u=new URLSearchParams(location.search);
-  if(u.get('filter'))document.querySelector(`[data-f="${u.get('filter')}"]`)?.click();
-  if(u.get('img'))document.querySelector(`[data-img="${u.get('img')}"]`)?.click();
-  if(u.get('pos'))k=Math.max(0,Math.min(M*M-1,(parseInt(u.get('pos'))||1)-1));
-  if(u.get('shorts')==='1')setShorts(true);
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
-  draw();
-  if(u.get('play')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)setPlay(true);
-  window.__conv=conv; // 검증용
 })();
 </script>
+<style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
+</head>
+<body><main class="wrap">
+<header><a class="brand" href="https://ourfuture-studio.github.io/">ourfuture studio<span>.</span></a><a href="https://ourfuture-studio.github.io/viz/">시각화 모음</a></header>
+<p class="eyebrow">기계와 생각 · 합성곱의 의미와 이론</p><h1>작은 계산이, 특징 지도가 된다<span>.</span></h1><p class="lede">선택한 작은 영역에서 <strong>같은 자리끼리 곱하고, 더하고, 결과를 한 칸에 적습니다.</strong> 창을 옮겨도 필터의 9개 값은 그대로입니다.</p>
+<nav class="phases" aria-label="살펴볼 핵심 아이디어"><button data-phase="local">한 칸의 계산</button><button data-phase="map">특징 지도 만들기</button><button data-phase="shared">가중치 공유</button></nav>
+<div class="layout"><section id="experiment" aria-label="입력과 특징 지도 직접 비교">
+<div class="section-top"><h2>작은 창과 출력 한 칸을 연결하기</h2><span id="positionLabel"></span></div>
+<div class="options"><div role="group" aria-label="필터 선택" class="seg"><button data-filter="v">세로 대비</button><button data-filter="h">가로 대비</button><button data-filter="blur">9칸 평균</button></div><div role="group" aria-label="입력 그림" class="seg"><button data-image="square">사각형</button><button data-image="seven">숫자 7</button><button data-image="full">모두 1</button><button data-image="blank">모두 0</button></div></div>
+<p class="tip">입력 칸은 눌러 바꾸고, 출력 칸은 눌러 그 계산을 볼 수 있습니다. 키보드는 방향키로 이동하고 Enter로 선택합니다.</p><a class="mobile-jump" href="#interpretation">지금 결과의 의미 읽기</a>
+<div class="boards"><figure><figcaption id="inputLabel">입력 8×8</figcaption><div id="inputGrid" class="image-grid" role="group" aria-label="직접 바꾸는 입력 이미지"></div></figure><figure><figcaption id="mapLabel"></figcaption><div id="outputGrid" class="output-grid" role="group" aria-label="계산을 선택하는 특징 지도"></div></figure></div>
+<p id="mapLegend" class="legend">자주색 테두리: 선택한 창과 출력 · 청록: 양수 · 주황: 음수 · 숫자: 연산 결과</p>
+<div class="scan-controls"><button id="previous">이전 위치</button><button id="next">다음 위치</button><button id="all">전체 지도 보기</button><button id="restart">처음부터 표시</button></div>
+<section class="calculation" aria-labelledby="calculationTitle"><h3 id="calculationTitle">이 9개의 곱이, 출력 한 칸이 됩니다</h3><div class="multiply"><div><h4>현재 입력 영역</h4><div id="patchGrid" class="small-grid"></div></div><span class="operator" aria-label="같은 자리끼리 곱하기" title="같은 자리끼리 곱하기">⊙</span><div><h4 id="kernelLabel">공유 필터</h4><div id="kernelGrid" class="small-grid" role="group" aria-label="계수를 선택하는 공유 필터"></div></div><span class="operator">=</span><div><h4>자리별 곱</h4><div id="productGrid" class="small-grid"></div></div></div><div class="sum" id="sumLine"></div></section>
+<details class="weight-editor"><summary>필터의 계수 하나를 바꿔 보기</summary><p>같은 계수를 쓰는 모든 창을 다시 계산합니다. 해당 자리의 입력이 0인 창은 결과가 그대로일 수 있습니다.</p><label for="weightValue" id="weightLabel"></label><div class="editor-row"><input id="weightValue" type="number" min="-2" max="2" step="any"><button id="applyWeight">선택한 계수 적용</button></div><div class="weight-presets" role="group" aria-label="선택한 계수의 새 값"><button data-weight="-2">−2</button><button data-weight="-1">−1</button><button data-weight="0">0</button><button data-weight="1">1</button><button data-weight="2">2</button></div></details>
+<details class="settings"><summary>보폭과 패딩을 바꿔 보기</summary><div class="settings-row"><span>보폭</span><div class="seg" role="group" aria-label="보폭"><button data-stride="1">1</button><button data-stride="2">2</button></div><span>0 패딩</span><div class="seg" role="group" aria-label="0 패딩"><button data-padding="0">없음</button><button data-padding="1">한 겹</button></div></div><p id="shapeFormula"></p></details>
+<p id="notice" class="notice" role="status"></p></section>
+<aside class="interpretation" id="interpretation" aria-label="계산 결과의 의미와 이론"><a class="mobile-jump" href="#experiment">그림으로 돌아가기</a><div id="meaning"></div></aside></div>
+<section class="effects" aria-labelledby="effectTitle"><p class="eyebrow">바꾼 값의 영향 범위</p><h2 id="effectTitle">입력 한 칸과 필터 한 계수는 어디에 영향을 줄까?</h2><div id="changeReading"></div><p>입력 한 칸은 그 칸을 포함한 창에만 들어갑니다. 공유 필터의 계수는 모든 창에서 같은 자리에 쓰입니다. 창에 포함되는 것과 출력값이 실제로 바뀌는 것은 구분해서 읽어야 합니다.</p></section>
+<section class="theory" aria-labelledby="theoryTitle"><p class="eyebrow">계산에서 구조의 의미로</p><h2 id="theoryTitle">위치가 달라도 같은 기준을 쓴다</h2><p>국소 연결은 작은 영역만 보고 하나의 출력을 계산하는 구조입니다. 가중치 공유는 그 기준을 위치마다 따로 두지 않고 같은 필터를 반복해서 쓰는 선택입니다. 그래서 다른 위치에서 나온 반응을 같은 계산 기준으로 비교할 수 있습니다.</p><div class="equation">Y[r,c] = Σᵢ Σⱼ X[r·s − p + i, c·s − p + j] K[i,j]<br>i,j = 0,1,2 · s: 보폭 · p: 0 패딩</div><p>그림에서 밝은 곳이나 물체의 의미가 미리 주어진 것은 아닙니다. 이 화면은 직접 정한 필터의 가중합을 보여줍니다. CNN에서는 과제의 손실에서 기울기를 구해 필터 값을 학습합니다.</p><details><summary>공유한 필터는 학습할 때 어떻게 바뀔까?</summary><p>공유 계수 하나가 여러 출력에 영향을 주므로, 그 계수의 기울기는 각 출력 위치에서 온 항을 더해 구합니다. 같은 값이 여러 번 쓰였다고 서로 다른 가중치가 되는 것은 아닙니다.</p><div class="equation">∂L/∂K[i,j] = Σ<sub>r</sub> Σ<sub>c</sub> (∂L/∂Y[r,c]) X[r·s − p + i, c·s − p + j]</div><p>이 식은 현재 모형에 연쇄법칙을 적용한 유도입니다. 이 화면에서 실제 CNN을 학습하거나 원논문 성능을 재현하지 않습니다.</p></details><details><summary>교차상관과 수학적 합성곱</summary><p>이 화면은 PyTorch Conv2d처럼 필터를 뒤집지 않는 교차상관으로 계산합니다. 수학적 합성곱은 필터를 180° 뒤집습니다. 고정한 비대칭 필터라면 두 결과는 달라질 수 있습니다.</p></details><div class="related"><h3>LeNet의 아이디어와 연결하기</h3><p>LeNet은 국소 수용장과 공유 가중치로 특징 지도를 만들고, 손실에서 특징을 찾는 연결값까지 학습했습니다. 이 화면은 작은 영역의 계산과 공유 구조를 따로 살펴봅니다.</p><a href="https://ourfuture-studio.github.io/ai-history/#event=lenet" target="_blank" rel="noopener">LeNet 상세 카드 · 시각계에서 가져온 구조</a><a href="https://ourfuture-studio.github.io/viz/31-shift-filter-pool.html" target="_blank" rel="noopener">입력 이동·공유 필터·풀링 시각화</a></div></section>
+<details class="sources"><summary>근거 자료와 현재 계산의 범위</summary><ul><li><a href="https://d2l.ai/chapter_convolutional-neural-networks/conv-layer.html" target="_blank" rel="noopener">D2L §7.2.1·7.2.4·7.2.5</a>: 교차상관의 곱·합, 필터의 학습과 합성곱의 구분.</li><li><a href="https://d2l.ai/chapter_convolutional-neural-networks/why-conv.html" target="_blank" rel="noopener">D2L §7.1.2.1–2</a>: 같은 계수를 여러 위치에 적용하는 구조와 국소성.</li><li><a href="https://docs.pytorch.org/docs/2.15/generated/torch.nn.Conv2d.html" target="_blank" rel="noopener">PyTorch Conv2d 공식 정의</a>: 교차상관, 보폭·패딩·출력 크기와 공유 계수의 형태.</li><li><a href="recording/convolution.html" target="_blank" rel="noopener">기존 합성곱 시각화</a>: 원래 입력 그림과 필터의 기준.</li></ul><p>단일 입력 채널·필터 하나·편향 없음·활성화 없음의 직접 계산입니다. 필터 값은 직접 정했습니다. 양수·음수·0은 이 연산의 값이며 확률·정확도·물체 존재 판정이 아닙니다. 숫자는 반올림해 표시하고 계산에는 원래 값을 사용합니다. 좌표는 화면에서 1행·1열부터 셉니다. 자료 확인 2026-11-24.</p></details>
+<footer>ourfuture studio · 새로운 지식, 뜻밖의 연결.</footer></main><script>
+/* A directly specified, single-channel cross-correlation model.
+ * No kernel flip, learned weights, bias, activation, DOM or rendering state. */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.ConvolutionCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const freezeRows=rows=>Object.freeze(rows.map(row=>Array.isArray(row)?Object.freeze(row.slice()):row));
+  const IMAGES=Object.freeze({
+    seven:freezeRows(['00000000','01111110','00000100','00001000','00010000','00010000','00010000','00000000']),
+    square:freezeRows(['00000000','01111110','01000010','01000010','01000010','01000010','01111110','00000000']),
+    full:freezeRows(Array(8).fill('11111111')),
+    blank:freezeRows(Array(8).fill('00000000'))
+  });
+  const FILTERS=Object.freeze({
+    v:Object.freeze({name:'세로 대비',matrix:freezeRows([[-1,2,-1],[-1,2,-1],[-1,2,-1]])}),
+    h:Object.freeze({name:'가로 대비',matrix:freezeRows([[-1,-1,-1],[2,2,2],[-1,-1,-1]])}),
+    blur:Object.freeze({name:'9칸 평균',matrix:freezeRows(Array.from({length:3},()=>Array(3).fill(1/9)))})
+  });
+  function dimensions(matrix,label){
+    if(!Array.isArray(matrix)||matrix.length===0||!Array.isArray(matrix[0])||matrix[0].length===0)throw new TypeError(label+'는 비어 있지 않은 숫자 행렬이어야 합니다.');
+    const cols=matrix[0].length;
+    for(const row of matrix){
+      if(!Array.isArray(row)||row.length!==cols)throw new TypeError(label+'의 모든 행은 길이가 같아야 합니다.');
+      for(let col=0;col<cols;col++)if(!Number.isFinite(row[col]))throw new TypeError(label+'에는 유한한 숫자만 사용할 수 있습니다.');
+    }
+    return {rows:matrix.length,cols};
+  }
+  function configuration(image,kernel,stride,padding){
+    const imageShape=dimensions(image,'입력'),kernelShape=dimensions(kernel,'필터');
+    if(!Number.isSafeInteger(stride)||stride<1)throw new RangeError('보폭은 1 이상의 정수여야 합니다.');
+    if(!Number.isSafeInteger(padding)||padding<0)throw new RangeError('패딩은 0 이상의 정수여야 합니다.');
+    const rows=Math.floor((imageShape.rows+2*padding-kernelShape.rows)/stride)+1;
+    const cols=Math.floor((imageShape.cols+2*padding-kernelShape.cols)/stride)+1;
+    if(!Number.isSafeInteger(rows)||!Number.isSafeInteger(cols)||rows<1||cols<1)throw new RangeError('현재 입력·패딩 안에 필터를 놓을 수 있는 위치가 없습니다.');
+    return {imageShape,kernelShape,rows,cols,stride,padding};
+  }
+  function finite(value){
+    if(!Number.isFinite(value))throw new RangeError('계산 결과가 유한한 숫자 범위를 벗어났습니다.');
+    return Object.is(value,-0)?0:value;
+  }
+  function makeImage(name){
+    if(!Object.prototype.hasOwnProperty.call(IMAGES,name))throw new RangeError('입력 그림 이름이 올바르지 않습니다.');
+    return IMAGES[name].map(row=>row.split('').map(Number));
+  }
+  function outputShape(image,kernel,stride=1,padding=0){
+    const {rows,cols}=configuration(image,kernel,stride,padding);
+    return {rows,cols};
+  }
+  function inspectPatch(image,kernel,row,col,config){
+    const {imageShape,kernelShape,stride,padding}=config;
+    const startRow=row*stride-padding,startCol=col*stride-padding;
+    const patch=[],products=[],terms=[];
+    let sum=0,positiveSum=0,negativeSum=0;
+    for(let kr=0;kr<kernelShape.rows;kr++){
+      const inputRow=startRow+kr,patchRow=[],productRow=[];
+      for(let kc=0;kc<kernelShape.cols;kc++){
+        const inputCol=startCol+kc;
+        const padded=inputRow<0||inputRow>=imageShape.rows||inputCol<0||inputCol>=imageShape.cols;
+        const input=padded?0:image[inputRow][inputCol],weight=kernel[kr][kc],product=finite(input*weight);
+        patchRow.push(input);productRow.push(product);
+        terms.push({kr,kc,inputRow,inputCol,input,weight,product,padded});
+        sum=finite(sum+product);
+        if(product>0)positiveSum=finite(positiveSum+product);
+        if(product<0)negativeSum=finite(negativeSum+product);
+      }
+      patch.push(patchRow);products.push(productRow);
+    }
+    return {row,col,startRow,startCol,patch,products,terms,positiveSum,negativeSum,sum};
+  }
+  function patchAt(image,kernel,row,col,stride=1,padding=0){
+    const config=configuration(image,kernel,stride,padding);
+    if(!Number.isSafeInteger(row)||!Number.isSafeInteger(col)||row<0||col<0||row>=config.rows||col>=config.cols)throw new RangeError('특징 지도의 선택 위치가 범위를 벗어났습니다.');
+    return inspectPatch(image,kernel,row,col,config);
+  }
+  function correlate(image,kernel,stride=1,padding=0){
+    const config=configuration(image,kernel,stride,padding);
+    return Array.from({length:config.rows},(_,row)=>Array.from({length:config.cols},(_,col)=>inspectPatch(image,kernel,row,col,config).sum));
+  }
+  function affectedOutputs(image,kernel,inputRow,inputCol,stride=1,padding=0){
+    const config=configuration(image,kernel,stride,padding);
+    if(!Number.isSafeInteger(inputRow)||!Number.isSafeInteger(inputCol)||inputRow<0||inputCol<0||inputRow>=config.imageShape.rows||inputCol>=config.imageShape.cols)throw new RangeError('입력의 선택 위치가 범위를 벗어났습니다.');
+    const affected=[];
+    for(let row=0;row<config.rows;row++)for(let col=0;col<config.cols;col++){
+      const kr=inputRow-(row*stride-padding),kc=inputCol-(col*stride-padding);
+      if(kr>=0&&kc>=0&&kr<config.kernelShape.rows&&kc<config.kernelShape.cols)affected.push({row,col,kr,kc,weight:kernel[kr][kc]});
+    }
+    return affected;
+  }
+  function shiftRight(image){
+    dimensions(image,'입력');
+    return image.map(row=>[0,...row.slice(0,-1)]);
+  }
+  return Object.freeze({IMAGES,FILTERS,makeImage,outputShape,correlate,patchAt,affectedOutputs,shiftRight});
+});
+
+</script>
+<script>
+(() => {
+  'use strict';
+  const C=window.ConvolutionCore,$=id=>document.getElementById(id),clone=m=>m.map(r=>r.slice());
+  const s={image:C.makeImage('square'),imageName:'square',kernel:clone(C.FILTERS.v.matrix),phase:'local',index:6,kIndex:4,stride:1,padding:0,full:false,inputFocus:0,last:null,note:'현재 창의 9개 곱을 아래에서 확인하고, 다른 출력 칸을 선택해 보세요.'};
+  const q=new URLSearchParams(location.search);
+  if(Object.hasOwn(C.IMAGES,q.get('img'))){s.imageName=q.get('img');s.image=C.makeImage(s.imageName);}
+  if(Object.hasOwn(C.FILTERS,q.get('filter')))s.kernel=clone(C.FILTERS[q.get('filter')].matrix);
+  if(['local','map','shared'].includes(q.get('phase')))s.phase=q.get('phase');
+  if(q.get('stride')==='2')s.stride=2;if(q.get('padding')==='1')s.padding=1;
+  const fmt=(n,d=3)=>{if(n===0||Object.is(n,-0))return '0';if(Math.abs(n)<.01||Math.abs(n)>=1e5)return Number(n.toPrecision(3)).toString().replace(/-/g,'−');return n.toFixed(d).replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'').replace('-','−');};
+  const weightText=n=>n===1/9?'1/9':fmt(n,3),esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function kind(){return Object.keys(C.FILTERS).find(k=>C.FILTERS[k].matrix.every((r,i)=>r.every((v,j)=>v===s.kernel[i][j])))||'custom';}
+  const filterName=()=>kind()==='custom'?'직접 바꾼 필터':C.FILTERS[kind()].name;
+  function context(){const map=C.correlate(s.image,s.kernel,s.stride,s.padding),shape={rows:map.length,cols:map[0].length};s.index=Math.max(0,Math.min(shape.rows*shape.cols-1,s.index));const row=Math.floor(s.index/shape.cols),col=s.index%shape.cols;return {map,shape,row,col,patch:C.patchAt(s.image,s.kernel,row,col,s.stride,s.padding),total:shape.rows*shape.cols};}
+  if(q.has('pos')&&Number.isFinite(Number(q.get('pos'))))s.index=Math.max(0,Math.round(Number(q.get('pos')))-1);
+  function changed(before,after){const cells=[];for(let r=0;r<after.length;r++)for(let c=0;c<after[r].length;c++)if(before[r][c]!==after[r][c])cells.push({row:r,col:c,before:before[r][c],after:after[r][c]});return cells;}
+  function choosePosition(index,focus=false){s.index=index;render();if(focus)$('outputGrid').querySelector(`[data-index="${s.index}"]`).focus();}
+  function chooseWeight(index,focus=false){s.kIndex=index;render();if(focus)$('kernelGrid').querySelector(`[data-k="${index}"]`).focus();}
+  function togglePixel(row,col){const before=C.correlate(s.image,s.kernel,s.stride,s.padding),old=s.image[row][col];s.image[row][col]=1-old;s.imageName='custom';s.inputFocus=row*8+col;const after=C.correlate(s.image,s.kernel,s.stride,s.padding);s.last={type:'pixel',row,col,old,newValue:s.image[row][col],affected:C.affectedOutputs(s.image,s.kernel,row,col,s.stride,s.padding),cells:changed(before,after),before,after};s.phase='shared';s.full=true;s.note=`입력 ${row+1}행 ${col+1}열을 ${old}에서 ${s.image[row][col]}로 바꿨습니다. 영향 범위를 전체 지도에 표시합니다.`;render();$('inputGrid').querySelector(`[data-pixel="${s.inputFocus}"]`).focus();}
+  function applyWeight(value){if(!Number.isFinite(value)||value< -2||value>2){s.note='새 계수는 −2부터 2 사이의 숫자로 입력해 주세요.';$('notice').textContent=s.note;return;}const before=C.correlate(s.image,s.kernel,s.stride,s.padding),row=Math.floor(s.kIndex/3),col=s.kIndex%3,old=s.kernel[row][col];s.kernel[row][col]=value;const after=C.correlate(s.image,s.kernel,s.stride,s.padding);s.last={type:'weight',row,col,old,newValue:value,cells:changed(before,after),before,after};s.phase='shared';s.full=true;s.note=old===value?'선택한 계수를 같은 값으로 유지하고 모든 창을 다시 계산했습니다.':`공유 계수 K의 ${row+1}행 ${col+1}열을 바꿨습니다. 같은 값을 쓰는 모든 창을 다시 계산했습니다.`;render();}
+  document.querySelector('.phases').addEventListener('click',e=>{const b=e.target.closest('[data-phase]');if(!b)return;const phase=b.dataset.phase;if(phase==='map'&&s.phase!=='map'){s.index=0;s.full=false;}s.phase=phase;render();});
+  document.querySelector('[aria-label="필터 선택"]').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;s.kernel=clone(C.FILTERS[b.dataset.filter].matrix);s.last=null;s.note='다른 필터로 바꿨습니다. 입력을 유지한 채 어떤 곱과 합이 달라지는지 비교해 보세요.';render();});
+  document.querySelector('[aria-label="입력 그림"]').addEventListener('click',e=>{const b=e.target.closest('[data-image]');if(!b)return;s.imageName=b.dataset.image;s.image=C.makeImage(s.imageName);s.last=null;s.index=0;s.inputFocus=0;s.note='입력 그림을 바꿨습니다. 필터는 그대로 유지합니다.';render();});
+  $('inputGrid').addEventListener('click',e=>{const b=e.target.closest('[data-pixel]');if(!b)return;const index=Number(b.dataset.pixel);togglePixel(Math.floor(index/8),index%8);});
+  $('outputGrid').addEventListener('click',e=>{const b=e.target.closest('[data-index]');if(b)choosePosition(Number(b.dataset.index),true);});
+  $('kernelGrid').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b)chooseWeight(Number(b.dataset.k),true);});
+  function arrowIndex(index,key,rows,cols){let r=Math.floor(index/cols),c=index%cols;if(key==='ArrowUp')r--;if(key==='ArrowDown')r++;if(key==='ArrowLeft')c--;if(key==='ArrowRight')c++;return Math.max(0,Math.min(rows-1,r))*cols+Math.max(0,Math.min(cols-1,c));}
+  for(const id of ['inputGrid','outputGrid','kernelGrid'])$(id).addEventListener('keydown',e=>{if(!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;const b=e.target.closest('button');if(!b)return;e.preventDefault();if(id==='inputGrid'){s.inputFocus=arrowIndex(Number(b.dataset.pixel),e.key,8,8);$('inputGrid').querySelectorAll('button').forEach(x=>x.tabIndex=Number(x.dataset.pixel)===s.inputFocus?0:-1);$('inputGrid').querySelector(`[data-pixel="${s.inputFocus}"]`).focus();}else if(id==='outputGrid'){const c=context();choosePosition(arrowIndex(Number(b.dataset.index),e.key,c.shape.rows,c.shape.cols),true);}else chooseWeight(arrowIndex(Number(b.dataset.k),e.key,3,3),true);});
+  $('previous').addEventListener('click',()=>choosePosition(Math.max(0,s.index-1)));
+  $('next').addEventListener('click',()=>choosePosition(Math.min(context().total-1,s.index+1)));
+  $('all').addEventListener('click',()=>{s.phase='map';s.full=true;s.note='전체 출력값을 표시합니다. 한 칸을 선택하면 그 창의 계산을 읽을 수 있습니다.';render();});
+  $('restart').addEventListener('click',()=>{s.phase='map';s.index=0;s.full=false;s.note='입력과 필터는 유지하고 첫 출력 위치부터 표시합니다.';render();});
+  $('applyWeight').addEventListener('click',()=>{const value=$('weightValue').value;if(value.trim()===''){s.note='새 계수를 입력해 주세요.';$('notice').textContent=s.note;return;}applyWeight(Number(value));});
+  document.querySelector('.weight-presets').addEventListener('click',e=>{const b=e.target.closest('[data-weight]');if(b)applyWeight(Number(b.dataset.weight));});
+  for(const name of ['stride','padding'])document.querySelector(`[aria-label="${name==='stride'?'보폭':'0 패딩'}"]`).addEventListener('click',e=>{const b=e.target.closest(`[data-${name}]`);if(!b)return;s[name]=Number(b.dataset[name]);s.index=0;s.last=null;s.phase='map';s.full=true;s.note='보폭·패딩을 바꾸어 출력 크기와 각 창의 위치를 다시 계산했습니다.';render();});
+  $('meaning').addEventListener('click',e=>{if(e.target.closest('[data-probe]')){const c=context(),probe=findProbe(c);choosePosition(probe.row*c.shape.cols+probe.col);}});
+  function findProbe(c){for(let r=0;r<c.shape.rows;r++)for(let col=0;col<c.shape.cols;col++)if(c.map[r][col]!==c.patch.sum)return {row:r,col,value:c.map[r][col]};const i=(s.index+1)%c.total;return {row:Math.floor(i/c.shape.cols),col:i%c.shape.cols,value:c.map[Math.floor(i/c.shape.cols)][i%c.shape.cols]};}
+  function renderInputs(c){const n=8+2*s.padding;$('inputGrid').style.setProperty('--n',n);let html='';for(let r=0;r<n;r++)for(let col=0;col<n;col++){const ir=r-s.padding,ic=col-s.padding,pad=ir<0||ic<0||ir>=8||ic>=8;if(pad)html+='<span class="pad" aria-label="바깥 패딩 0">0</span>';else{const index=ir*8+ic,v=s.image[ir][ic];html+=`<button class="${v?'on':''}" data-pixel="${index}" tabindex="${index===s.inputFocus?0:-1}" aria-label="입력 ${ir+1}행 ${ic+1}열, 값 ${v} 바꾸기">${v}</button>`;}}html+=`<div class="window-outline" aria-hidden="true" style="--wr:${c.row*s.stride};--wc:${c.col*s.stride}"></div>`;$('inputGrid').innerHTML=html;$('inputLabel').textContent=s.padding?'입력 8×8 · 바깥에 0 한 겹':'입력 8×8';}
+  function renderMap(c){$('outputGrid').style.setProperty('--n',c.shape.cols);const changedSet=new Set((s.last?.cells||[]).map(x=>x.row+','+x.col)),affectedSet=new Set((s.last?.affected||[]).map(x=>x.row+','+x.col));$('outputGrid').innerHTML=c.map.map((row,r)=>row.map((v,col)=>{const i=r*c.shape.cols+col,shown=s.phase==='shared'||s.full||s.phase==='local'&&i===s.index||s.phase==='map'&&i<=s.index;const classes=[i===s.index?'selected':'',shown&&v>0?'positive':shown&&v<0?'negative':'',changedSet.has(r+','+col)?'changed':'',affectedSet.has(r+','+col)?'affected':''].join(' ');return `<button class="${classes}" style="--strength:${8+Math.min(1,Math.abs(v)/6)*45}%" data-index="${i}" tabindex="${i===s.index?0:-1}" aria-label="특징 지도 ${r+1}행 ${col+1}열, ${shown?'값 '+fmt(v,2):'아직 표시하지 않은 칸'}, 계산 보기">${shown?fmt(v,2):'·'}</button>`;}).join('')).join('');$('mapLabel').textContent=`특징 지도 ${c.shape.rows}×${c.shape.cols}`;$('mapLegend').textContent=s.last?'자주색: 선택 · 점선: 바꾼 입력을 포함한 창 · 안쪽 청록 테두리: 값이 바뀐 출력. 색은 부호와 크기(절댓값 6에서 최대), 숫자는 계산값입니다.':'자주색: 현재 창과 출력 · 청록: 양수 · 주황: 음수. 색의 진하기는 절댓값 6에서 최대이며, 정확한 값은 숫자로 읽습니다.';}
+  function renderCalculation(c){$('patchGrid').innerHTML=c.patch.terms.map((t,i)=>`<span class="${i===s.kIndex?'selected':''}" ${t.padded?'title="패딩 0"':''}>${t.input}</span>`).join('');$('kernelGrid').innerHTML=s.kernel.flat().map((v,i)=>`<button data-k="${i}" tabindex="${i===s.kIndex?0:-1}" class="${i===s.kIndex?'selected':''}" aria-label="필터 ${Math.floor(i/3)+1}행 ${i%3+1}열, 값 ${weightText(v)} 선택">${weightText(v)}</button>`).join('');$('productGrid').innerHTML=c.patch.terms.map((t,i)=>`<span class="${i===s.kIndex?'selected ':''}${t.product>0?'positive':t.product<0?'negative':''}">${t.product===1/9?'1/9':fmt(t.product,2)}</span>`).join('');$('sumLine').innerHTML=`양의 항 ${fmt(c.patch.positiveSum)} + 음의 항 (${fmt(c.patch.negativeSum)}) = <strong>${fmt(c.patch.sum)}</strong>`;$('kernelLabel').textContent=filterName();const r=Math.floor(s.kIndex/3),col=s.kIndex%3;$('weightLabel').textContent=`선택한 K[${r+1},${col+1}] · 현재 ${weightText(s.kernel[r][col])} · 새 값 −2~2`;$('weightValue').value=s.kernel[r][col];}
+  function interpretation(c){const p=c.patch,k=kind(),nonzero=p.patch.flat().filter(v=>v!==0).length;let meaning;
+    if(k==='blur')meaning=`이 값은 현재 9칸 밝기의 평균입니다. 입력값의 합은 ${nonzero}이며, 이를 9로 나눈 결과는 ${fmt(p.sum)}입니다.${p.terms.some(t=>t.padded)?' 바깥 패딩 0도 평균에 포함됩니다.':''}`;
+    else if(Math.abs(p.sum)<1e-12&&p.sum!==0)meaning='양수와 음수 항이 거의 상쇄되어 0에 매우 가까운 계산값이 나왔습니다. 반올림한 표시와 원래 계산값을 구분해 읽으세요.';
+    else if(p.sum===0)meaning=p.positiveSum!==0||p.negativeSum!==0?'양수와 음수 항이 정확히 상쇄되어 0입니다. 0이라는 결과만으로 무늬가 없다고 말할 수 없습니다.':nonzero===0?'현재 창의 입력이 모두 0이라 9개의 곱도 모두 0입니다.':'현재 입력과 계수의 곱에 0이 아닌 항이 없어 합도 0입니다. 입력에 검은 칸이 없다는 뜻은 아닙니다.';
+    else meaning=`양의 항 합은 ${fmt(p.positiveSum)}, 음의 항 합은 ${fmt(p.negativeSum)}입니다. 둘을 더한 결과는 ${fmt(p.sum)}입니다. ${p.sum>0?'이 창에서는 양의 가중합이 더 큽니다.':'이 창에서는 음의 가중합의 절댓값이 더 큽니다.'}`;
+    const rows=p.terms.map((t,i)=>`<tr class="${i===s.kIndex?'selected':''}"><td>${t.kr+1},${t.kc+1}${t.padded?' · 패딩':''}</td><td>${t.input} × (${weightText(t.weight)})</td><td>${fmt(t.product,6)}</td></tr>`).join('');
+    let title,idea,details;
+    if(s.phase==='local'){title='9개의 곱을, 출력 한 칸에';idea=`입력의 현재 3×3 영역과 필터의 같은 자리끼리 곱합니다. 9개를 더한 결과는 ${fmt(p.sum)}입니다. 이 값을 특징 지도 ${c.row+1}행 ${c.col+1}열에 적습니다.`;details=`<table class="term-table"><thead><tr><th>필터 칸</th><th>입력 × 계수</th><th>곱</th></tr></thead><tbody>${rows}</tbody></table>`;}
+    else if(s.phase==='map'){title='창을 옮겨, 반응의 지도를 만들다';idea=`현재 출력은 ${c.shape.rows}×${c.shape.cols}, 모두 ${c.total}칸입니다. 한 칸은 입력의 작은 영역 하나와 대응합니다. ${s.full?'전체 값을 표시하고 있습니다.':`행 순서로 ${s.index+1}번째 칸까지 표시합니다.`}`;details=`<p>다음 위치로 옮기면 입력 창은 보폭 ${s.stride}만큼 이동합니다. 필터는 그대로이고 창에 들어오는 입력이 바뀝니다.</p><div class="equation">현재 출력 ${c.row+1}행 ${c.col+1}열<br>입력 창 시작: ${p.startRow<0?'패딩':p.startRow+1+'행'}, ${p.startCol<0?'패딩':p.startCol+1+'열'}<br>공유 필터의 값 9개는 유지</div>`;}
+    else {const probe=findProbe(c);title='같은 9개 기준을, 여러 위치에서';idea='가중치 공유는 모든 창에 같은 9개 계수를 적용한다는 뜻입니다. 입력 영역이 다르면 같은 필터라도 결과는 달라질 수 있습니다.';details=`<div class="parameter-counts"><div><span>공유하는 계수</span><strong>9개</strong></div><div><span>위치마다 따로 두면</span><strong>${c.total*9}개</strong></div></div><p>같은 3×3 국소 영역·편향 없음에서 ${c.total}개 위치에 독립적인 필터를 둘 때와 비교한 수치입니다.</p><div class="position-pair"><div><span>현재 ${c.row+1}행 ${c.col+1}열</span><strong>${fmt(p.sum)}</strong></div><div><span>다른 ${probe.row+1}행 ${probe.col+1}열</span><strong>${fmt(probe.value)}</strong></div></div><button class="probe-button" data-probe>다른 창으로 이동</button>`;}
+    const criterion=k==='v'?'현재 세로 대비 필터는 가운데 열을 두 배 더하고 양옆 열을 뺍니다. 세로선의 존재 확률이나 물체 판정으로 읽지 않습니다.':k==='h'?'현재 가로 대비 필터는 가운데 행을 두 배 더하고 위아래 행을 뺍니다. 반응값은 선택한 가중합의 결과입니다.':k==='blur'?'현재 필터는 9개 계수가 모두 1/9입니다. 경계에서 패딩이 들어가면 그 0도 함께 평균냅니다.':'계수를 직접 바꾼 필터입니다. 이전 필터의 이름이나 해석을 유지하지 않고 실제 곱과 합을 읽어야 합니다.';
+    $('meaning').innerHTML=`<p class="eyebrow">작은 영역 · 곱과 합 · 공유</p><h2>${title}</h2><p>${idea}</p><div class="current-reading" role="status"><p class="reading-label">현재 결과의 의미</p><p>${meaning}</p></div><div class="sign-summary"><div class="positive">양의 항<strong>${fmt(p.positiveSum)}</strong></div><div class="negative">음의 항<strong>${fmt(p.negativeSum)}</strong></div><div>최종 합<strong>${fmt(p.sum)}</strong></div></div>${details}<details><summary>이 값을 어떻게 해석할까?</summary><p>${criterion}</p><p>같은 계수를 쓴다는 사실과 같은 출력값이 나온다는 사실은 다릅니다. 현재 필터는 학습한 모델이 아니라 직접 정한 계산 기준입니다.</p></details>`;
+  }
+  function renderChange(c){const change=s.last;if(!change){$('changeReading').innerHTML='<p>입력 한 칸을 누르거나, 필터의 계수 하나를 바꿔 보세요. 바뀐 출력의 위치와 개수를 함께 표시합니다.</p>';return;}
+    const before=change.before[c.row][c.col],after=change.after[c.row][c.col];
+    if(change.type==='pixel')$('changeReading').innerHTML=`<p>입력 ${change.row+1}행 ${change.col+1}열: ${change.old} → ${change.newValue}</p><p>이 입력을 포함한 창 <strong>${change.affected.length}개</strong> · 실제 값이 달라진 출력 <strong>${change.cells.length}개</strong></p><p>현재 선택한 출력: ${fmt(before)} → ${fmt(after)}. 포함한 창이라도 해당 계수가 0이면 결과는 유지됩니다.</p>`;
+    else $('changeReading').innerHTML=`<p>공유 계수 K[${change.row+1},${change.col+1}]: ${weightText(change.old)} → ${weightText(change.newValue)}</p><p>같은 계수를 사용하는 창 <strong>${c.total}개</strong> · 실제 값이 달라진 출력 <strong>${change.cells.length}개</strong></p><p>현재 선택한 출력: ${fmt(before)} → ${fmt(after)}. 대응하는 입력이 0이면 이 계수만 바꿔도 그 출력은 유지됩니다.</p>`;
+  }
+  function render(){const c=context();document.querySelectorAll('[data-phase]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.phase===s.phase)));document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===kind())));document.querySelectorAll('[data-image]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.image===s.imageName)));for(const key of ['stride','padding'])document.querySelectorAll(`[data-${key}]`).forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset[key])===s[key])));$('positionLabel').textContent=`출력 ${c.row+1}행 ${c.col+1}열`;$('previous').disabled=s.index===0;$('next').disabled=s.index===c.total-1;$('notice').textContent=s.note;$('shapeFormula').textContent=`각 축의 크기 = floor((8 + 2×${s.padding} − 3) / ${s.stride}) + 1 = ${c.shape.rows}. 총 ${c.total}개 창에서 같은 9개 계수를 씁니다.`;renderInputs(c);renderMap(c);renderCalculation(c);interpretation(c);renderChange(c);}
+  render();
+})();
+
+</script>
 <aside class="of-rights" aria-label="저작권·이용 안내" data-site-rights="1"><p>© 2026 ourfuture studio. 학습자료의 무단 복제·재배포·판매를 금합니다.</p><p>법령상 허용되는 이용과 별도 라이선스는 예외입니다. <a href="/copyright.html">저작권·이용 안내 ↗</a></p></aside>
-</body>
-</html>
+</body></html>
