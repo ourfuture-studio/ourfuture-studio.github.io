@@ -1,253 +1,174 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>어텐션 히트맵</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>어텐션 · 점수에서 문맥 표현으로 | ourfuture studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#FFFFFF; --ink:#1B2340; --ink2:#3E424A; --label:#5B5F67; --rule:#E4E4E0; --box:#F4F4F2;
-  --accent:#7A1F2E; --lining:#7A1F2E; --c1:#1F6F6F; --c2:#B5481A;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
-    --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
+:root{--bg:#fff;--ink:#1b2340;--ink2:#3e424a;--label:#5b5f67;--rule:#e4e4e0;--box:#f4f4f2;--accent:#7a1f2e;--teal:#1f6f6f;--neg:#b5481a}
+@media(prefers-color-scheme:dark){:root{--bg:#121829;--ink:#ecece8;--ink2:#c3c6cf;--label:#a6adba;--rule:#303b51;--box:#1a2136;--accent:#e98394;--teal:#68c7bd;--neg:#ee9866}}
+*{box-sizing:border-box}body{margin:0;padding:24px 28px 44px;background:var(--bg);color:var(--ink);font:17px/1.75 'IBM Plex Sans KR','Malgun Gothic',sans-serif;word-break:keep-all}.wrap{max-width:1300px;margin:auto}a{color:var(--teal);text-underline-offset:4px}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px}button:disabled{opacity:.45;cursor:default}header{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px;margin-bottom:24px}.brand{font-size:20px;color:var(--ink);text-decoration:none;font-weight:600}.brand span,h1>span{color:var(--accent)}h1,h2,h3,h4,p{margin-top:0}.eyebrow{font-size:14px;color:var(--teal);letter-spacing:.04em;margin-bottom:8px}h1{font:600 clamp(28px,3vw,38px)/1.5 'Noto Serif KR',serif;margin-bottom:14px}h2{font-size:22px;line-height:1.5}h3{font-size:18px}.lede{font-size:18px;max-width:1000px;color:var(--ink2);margin-bottom:24px}.phases{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:24px}button{border:1px solid var(--rule);border-radius:5px;padding:7px 12px;background:var(--bg);color:var(--ink);font-size:15px}.phases button[aria-pressed=true],.tokens button[aria-pressed=true],.seg button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}.layout{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(340px,1fr);gap:30px;align-items:start}.layout>section{min-width:0}.section-top{display:flex;gap:14px;justify-content:space-between;align-items:center}.section-top h2{font-size:19px;margin-bottom:10px}.section-top>span{font-size:14px;color:var(--label)}.tokens{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.tokens button{font-size:16px}.tip,.legend{font-size:14px;color:var(--label);margin-bottom:14px}.mobile-jump{display:none}.flow{display:grid;grid-template-columns:1fr 14px 1fr 14px 1.6fr;gap:8px;align-items:center;background:var(--box);padding:14px;margin:16px 0 22px;border-radius:5px}.flow>div>span{display:block;font-size:14px;color:var(--label)}.flow strong{font:500 18px/1.6 'IBM Plex Mono',monospace}.flow>span{text-align:center;color:var(--label)}.matrix-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.matrix-head h3{margin:0 0 10px}.matrix-head>span{font-size:14px;color:var(--label)}.matrix{display:grid;grid-template-columns:54px repeat(6,minmax(0,1fr));gap:2px;max-width:650px;margin-bottom:10px}.matrix>span{display:grid;place-items:center;font-size:14px;min-width:0}.matrix button{font:14px 'IBM Plex Mono',monospace;padding:8px 0;min-width:0;min-height:40px;border-radius:0}.matrix .row-label{font:14px 'IBM Plex Sans KR',sans-serif;border:0;padding:0}.matrix .row-label.active{font-weight:600;color:var(--accent)}.matrix .cell{background:color-mix(in srgb,var(--teal) var(--strength),var(--bg))}.matrix .cell.negative{background:color-mix(in srgb,var(--neg) var(--strength),var(--bg))}.matrix .cell.row{border-bottom:2px solid var(--accent)}.matrix .cell.selected{outline:3px solid var(--accent);outline-offset:-3px}.matrix .cell.masked{background:var(--box);color:var(--label)}.parameters{display:flex;flex-wrap:wrap;gap:16px 26px;border-top:1px solid var(--rule);padding-top:15px;margin:18px 0}.parameters span,.parameters label{font-size:14px;color:var(--label);display:block}.parameters input{width:200px;max-width:100%;accent-color:var(--teal)}.parameters strong{font-family:'IBM Plex Mono',monospace;color:var(--ink)}.seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.seg button{font-size:14px;padding:5px 10px}.detail{background:var(--box);padding:18px;border-radius:5px}.detail h3{margin-bottom:10px}.detail p{font-size:15px;color:var(--ink2);margin-bottom:12px}.vector-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vector-pair div{padding:12px;border:1px solid var(--rule);background:var(--bg)}.vector-pair span{font-size:14px;color:var(--label);display:block}.vector-pair strong{font:15px/1.7 'IBM Plex Mono',monospace;overflow-wrap:anywhere}.table-scroll{overflow:auto;max-width:100%}table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}th,td{padding:7px 6px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:var(--label);font-weight:500}tr.selected{background:color-mix(in srgb,var(--accent) 8%,var(--bg))}.positive{color:var(--teal)}.negative{color:var(--neg)}.sum-line{font-size:17px;color:var(--teal);border-top:1px solid var(--rule);padding-top:12px;margin-top:14px;font-variant-numeric:tabular-nums}.equation{padding:14px 16px;background:var(--box);border-radius:4px;font:15px/1.9 'IBM Plex Mono','IBM Plex Sans KR',monospace;overflow-wrap:anywhere;margin:16px 0}.editor{border-top:1px solid var(--rule);margin-top:20px;padding-top:14px}.editor p,.editor label{font-size:15px;color:var(--ink2)}summary{cursor:pointer;font-size:16px;font-weight:500}.editor p{margin:12px 0}.editor-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.editor input{width:110px;max-width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--rule);padding:6px 8px;border-radius:4px}.value-fields{display:flex;gap:14px;flex-wrap:wrap}.value-fields label{display:grid;gap:5px}.reset-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}.reset-row span,#notice{font-size:14px;color:var(--teal)}#notice{min-height:1.7em;margin:12px 0}.interpretation{border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:5px;padding:23px}.interpretation h2{font:600 24px/1.5 'Noto Serif KR',serif}.interpretation p{font-size:16px}.interpretation .eyebrow{font-size:14px}.current-reading{background:var(--box);padding:16px;border-radius:4px;margin:18px 0}.current-reading p{font-size:15px;margin:6px 0}.current-reading .reading-label{font-size:14px;font-weight:500;color:var(--teal)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.metrics>div{background:var(--box);padding:10px;border-radius:4px;font-size:14px;color:var(--label)}.metrics strong{display:block;font:500 18px/1.7 'IBM Plex Mono',monospace;color:var(--ink)}.output-vector{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.output-vector>div{border:1px solid var(--rule);padding:12px;border-radius:5px}.output-vector span{font-size:14px;color:var(--label)}.output-vector strong{display:block;font:500 25px/1.7 'IBM Plex Mono',monospace;color:var(--teal)}.weights{display:grid;gap:7px;margin:16px 0}.weight-bar{display:grid;grid-template-columns:48px 1fr 45px;gap:9px;align-items:center;font-size:14px}.weight-track{height:14px;background:var(--box)}.weight-track span{display:block;height:100%;background:var(--teal)}.weight-bar.selected .weight-track span{background:var(--accent)}.weight-bar strong{font:14px 'IBM Plex Mono',monospace;text-align:right}.interpretation details{border-top:1px solid var(--rule);padding-top:14px;margin-top:16px}.interpretation details p{font-size:15px;margin-top:12px}.scatter{width:100%;height:auto;max-height:300px;display:block;background:var(--bg);border:1px solid var(--rule);margin:12px 0}.effects,.theory{border-top:1px solid var(--rule);padding-top:26px;margin-top:34px}.effects p,.theory p{font-size:16px;color:var(--ink2)}.effects .eyebrow,.theory .eyebrow{font-size:14px;color:var(--teal)}#changeReading{background:var(--box);padding:17px 20px;border-radius:5px;margin:16px 0}#changeReading p{margin:0 0 8px}.theory{max-width:950px}.theory details{border-top:1px solid var(--rule);padding-top:15px;margin:18px 0}.theory details p{margin-top:12px}.related{padding:16px 20px;background:var(--box);border-left:3px solid var(--teal);margin-top:24px}.related h3{margin-bottom:10px}.related a{font-size:15px}.sources{border-top:1px solid var(--rule);margin-top:30px;padding-top:18px;font-size:15px}.sources li{margin:12px 0}.sources p{max-width:960px}footer{font-size:14px;color:var(--label);margin-top:30px}#experiment,#interpretation{scroll-margin-top:18px}
+@media(max-width:1050px){body{padding:20px 18px 36px}.layout{grid-template-columns:1fr}.mobile-jump{display:inline-block;font-size:15px;margin-bottom:10px}.interpretation{padding:20px}.lede{font-size:17px}}
+@media(max-width:620px){header{font-size:14px}.brand{font-size:18px}.phases{display:grid;grid-template-columns:1fr 1fr;gap:7px}.phases button{font-size:14px;padding:8px 6px}.flow{grid-template-columns:1fr 14px 1fr;gap:8px;padding:12px}.flow>span:nth-child(4){display:none}.flow>div:nth-child(5){grid-column:1/4;border-top:1px solid var(--rule);padding-top:8px}.flow strong{font-size:17px}.section-top{align-items:flex-start}.section-top h2{font-size:18px}.section-top>span{font-size:14px}.detail{padding:12px}.matrix button{font-size:14px;padding:7px 0}.matrix{grid-template-columns:46px repeat(6,minmax(0,1fr));gap:1px}.matrix>span,.matrix .row-label{font-size:14px}.matrix-head h3{font-size:17px}.vector-pair{grid-template-columns:1fr}.metrics{gap:6px}.metrics>div{padding:8px}.metrics strong{font-size:17px}.interpretation h2{font-size:23px}}
+
+.table-hint{display:none}@media(max-width:620px){.table-hint{display:block;font-size:14px!important;color:var(--label);margin-top:8px}}
+
+</style><script data-viz-compat="1">
+(() => {
+  const query = new URLSearchParams(location.search);
+  if (query.get('shorts') === '1') {
+    location.replace(new URL('recording/attention.html' + location.search + location.hash, location.href).href);
   }
-}
-:root[data-theme="dark"]{
-  --bg:#121829; --ink:#ECECE8; --ink2:#C3C6CF; --label:#9AA0AD; --rule:#2A3249; --box:#1A2136;
-  --accent:#E06A7C; --lining:#E06A7C; --c1:#4DB5AC; --c2:#EE8A52;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink)}
-body{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:17px;line-height:1.85;word-break:keep-all;padding:40px 16px 56px}
-.wrap{max-width:760px;margin:0 auto}
-.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--label)}
-h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:34px;line-height:1.35;margin:6px 0 10px}
-h1 .dot{color:var(--accent)}
-.lede{color:var(--ink2);margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
-.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;line-height:1.6;border:1px dashed var(--ink);padding:0 8px;margin-right:8px;color:var(--ink)}
-.tag .d{color:var(--lining)}
-.controls{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin:20px 0 12px}
-.seg{display:inline-flex;border:1px solid var(--ink)}
-.seg button{font:inherit;font-size:14px;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:6px 14px;cursor:pointer}
-.seg button:last-child{border-right:0}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.seg button:disabled{color:var(--label);cursor:default}
-.ctl-label{margin-right:10px}
-input[type=range]{accent-color:var(--ink);vertical-align:middle;width:180px;max-width:100%}
-.val{font-family:'IBM Plex Mono',monospace;font-size:14px;margin-left:8px;display:inline-block;min-width:3.2em;font-variant-numeric:tabular-nums}
-.stats{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-variant-numeric:tabular-nums}
-.stats b{color:var(--ink);font-weight:400}
-figure{margin:0;border:1px solid var(--rule)}
-svg{display:block;width:100%;height:auto}
-figcaption{padding:10px 14px;border-top:1px solid var(--rule)}
-.insight{background:var(--box);padding:18px 22px;margin:20px 0}
-.insight p{margin:0}
-.result{font-family:'Noto Serif KR',serif;font-size:21px;margin:0 0 6px}
-.result b{font-weight:600}
-table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 6px}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
-th{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);font-weight:400}
-.formula{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);overflow-wrap:anywhere}
-.notes{font-size:14px;color:var(--label);margin-top:28px;border-top:1px solid var(--rule);padding-top:14px}
-.notes p{margin:0 0 6px}
-/* 쇼츠 녹화용 9:16 */
-body.shorts{padding:0;display:flex;justify-content:center}
-body.shorts .wrap{width:405px;max-width:405px;height:720px;overflow:hidden;padding:28px 18px;border:1px solid var(--rule)}
-body.shorts .lede, body.shorts .notes, body.shorts table, body.shorts .formula, body.shorts figcaption, body.shorts .tagline, body.shorts .ctl-view, body.shorts .ctl-extra{display:none}
-body.shorts .controls{margin:14px 0 12px;gap:10px 16px}
-body.shorts .result{font-size:24px}
-body.shorts h1{font-size:26px}
-body.shorts .insight{padding:14px 16px;margin:14px 0}
-.disc{font-size:14px;color:var(--ink2);border-left:2px solid var(--accent);padding:2px 0 2px 12px;margin:14px 0 0}
-#g text.tok{cursor:pointer}
-#g rect.cell{cursor:pointer}
-.mats{display:flex;flex-wrap:wrap;gap:12px 28px;margin:10px 0}
-.mats table{width:auto;font-family:'IBM Plex Mono',monospace;font-size:13px;margin:0}
-.mats td,.mats th{padding:2px 8px}
-.mats caption{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--label);text-align:left;padding-bottom:2px}
-body.shorts .mats, body.shorts .ctl-tau{display:none}
-body.shorts .insight p{line-height:1.5}
-body.shorts .result{margin-bottom:6px;font-size:22px}
-body.shorts figure{border:0}
-body.shorts .controls{margin:10px 0 6px}
-body.shorts .disc{display:none}
-.disc-s{display:none}
-body.shorts .disc-s{display:block;font-size:12px;margin:6px 0 0;color:var(--ink2)}
-
-[data-viz-recording-control]{display:none!important}
-</style>
-<style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="mono">기계와 생각 · 07 신경망·심화 기법 · VIZ-24</div>
-  <h1>단어는 다른 단어를 얼마나 볼까<span class="dot">.</span></h1>
-  <p class="lede">어텐션은 각 단어(질의 Q)가 문장의 모든 단어(키 K)와 얼마나 맞는지 내적으로 점수를 매기고, softmax로 합이 1인 가중치로 바꿉니다. 행을 눌러 한 단어가 어디를 보는지 확인하고, √d 나누기를 끄거나 온도를 바꿔 분포가 얼마나 날카로워지는지 보세요.</p>
-
-  <p class="tagline" style="margin:0"><span class="tag"><span class="d">●</span> 장난감 계산</span><span class="mono">6토큰 · 손으로 만든 임베딩 d=4</span></p>
-
-  <div class="controls">
-    <div><span class="mono ctl-label">스케일</span>
-      <span class="seg" role="group" aria-label="점수 스케일">
-        <button data-scale="sqrt" aria-pressed="true">÷√d (표준)</button>
-        <button data-scale="none" aria-pressed="false">÷1 (안 나눔)</button>
-      </span>
-    </div>
-    <div class="ctl-tau"><label class="mono ctl-label" for="tau">온도 τ</label><input type="range" id="tau" min="0.25" max="3" step="0.05" value="1"><span class="val" id="tauV">1.00</span></div>
-    <div class="ctl-view" hidden data-viz-recording-control="1"><span class="seg" role="group" aria-label="화면">
-        <button id="shortsBtn" aria-pressed="false">쇼츠 화면</button>
-      </span></div>
-  </div>
-
-  <figure>
-    <svg id="g" viewBox="0 0 760 430" role="img" aria-label="어텐션 가중치 히트맵"></svg>
-    <figcaption class="mono">행 = 보는 단어(질의) · 열 = 보이는 단어(키) · 칸 숫자 = 가중치(각 행의 합 = 1) · 진할수록 큼(5단계: 0.1 · 0.2 · 0.35 · 0.5 경계) · 오른쪽 막대 = 선택한 행</figcaption>
-  </figure>
-  <p class="mono disc-s">장난감 계산 · 실제 모델의 학습된 가중치 아님</p>
-  <p class="disc">실제 언어모델에서 학습된 가중치가 아니라, 원리를 보여 주려고 손으로 정한 숫자로 계산한 장난감 계산입니다.</p>
-
-  <div class="insight">
-    <p class="result" id="result"></p>
-    <p id="explain"></p>
-  </div>
-  <p class="formula" id="formula"></p>
-  <div class="mats" id="mats"></div>
-
-  <div class="notes">
-    <p>계산: Q = E·W_Q, K = E·W_K, 점수 S = Q·Kᵀ, 가중치 A = softmax(S / (√d·τ)) — softmax는 각 행(질의)마다 키 6개에 대해 적용합니다. d = 4이므로 √d = 2. 표준 트랜스포머는 τ = 1, ÷√d입니다. τ와 ‘÷1’ 토글은 점수의 크기가 분포의 날카로움을 어떻게 바꾸는지 보여 주려고 넣었습니다(÷√d에서 τ = 0.5는 √4 = 2이므로 ÷1·τ = 1과 같은 결과입니다).</p>
-    <p>√d로 나누는 이유: 차원 d가 커지면 내적의 크기(분산)가 d에 비례해 커지고, softmax가 한 칸에 쏠려 기울기가 매우 작아지기 때문입니다(Vaswani 외, 2017).</p>
-    <p>단순화: 임베딩 E(4차원: 사물·조사·장소·동작 느낌의 축)와 W_Q, W_K는 설명용으로 직접 정했고, W_K는 단위행렬입니다. 위치 인코딩·여러 헤드·값(V)과의 곱·마스킹은 생략했습니다. 위치 정보가 없으므로 ‘가’와 ‘에’는 어느 명사 뒤에 붙었는지 모르고, 단어 뜻 축만으로 점수가 정해집니다. 실제 모델의 어텐션 패턴은 이와 다르며, 어텐션 가중치를 곧바로 ‘설명’으로 해석하는 데에도 한계가 있습니다.</p>
-    <p>모든 숫자는 이 페이지가 브라우저에서 직접 계산한 값입니다(표시는 소수 둘째 자리 반올림이라 행 합이 1.00과 0.01 정도 다르게 보일 수 있습니다).</p>
-    <p>ourfuture studio · 새로운 지식, 뜻밖의 연결<span style="color:var(--accent)">.</span></p>
-  </div>
-</div>
-
-<script>
-(function(){
-  const TOK=['고양이','가','매트','위','에','앉았다'];
-  // 손으로 만든 임베딩 (축: 사물·명사, 조사, 장소, 동작)
-  const E=[[1,0,0,0],[0,1,0,0],[0.6,0,1,0],[0.2,0,0.8,0],[0,1,1,0],[0,0,0,1]];
-  const WQ=[[0,0,0,3],[4,0,0,0],[1,0,3,0],[4,0,1,0]];
-  const WK=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];
-  const D=4;
-  let row=5, scale='sqrt', tau=1;
-  const mm=(A,B)=>A.map(r=>B[0].map((_,j)=>r.reduce((s,v,k)=>s+v*B[k][j],0)));
-  const Q=mm(E,WQ), K=mm(E,WK);
-  const S=Q.map(q=>K.map(k=>q.reduce((s,v,i)=>s+v*k[i],0)));
-  function attn(sc,t){
-    const div=(sc==='sqrt'?Math.sqrt(D):1)*t;
-    return S.map(r=>{const z=r.map(v=>v/div), m=Math.max(...z), e=z.map(v=>Math.exp(v-m)), Z=e.reduce((a,b)=>a+b,0);return e.map(v=>v/Z);});
-  }
-  const NS='http://www.w3.org/2000/svg';
-  const svg=document.getElementById('g');
-  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);(p||svg).appendChild(e);return e;};
-  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  const hex=c=>{c=c.replace('#','');return [0,2,4].map(i=>parseInt(c.substr(i,2),16));};
-  const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return 'rgb('+A.map((v,i)=>Math.round(v*t+B[i]*(1-t))).join(',')+')';};
-  const lum=rgb=>{const v=rgb.match(/\d+/g).map(Number).map(c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);});return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];};
-  const f2=v=>v.toFixed(2), f3=v=>v.toFixed(3);
-  const LV=[0.1,0.2,0.35,0.5], SH=[0.06,0.2,0.38,0.58,0.85];
-  const level=w=>LV.filter(x=>w>=x).length;
-
-  function draw(){
-    svg.innerHTML='';
-    const big=document.body.classList.contains('shorts');
-    const ink=css('--ink'), rule=css('--rule'), label=css('--label'), acc=css('--accent'), bg=css('--bg');
-    const A=attn(scale,tau);
-    const Lo=big?{vb:[400,436],hx:80,hy:28,c:44,fs:15,ls:16,bx:80,by:328,bw:250,bh:18}
-                :{vb:[760,430],hx:90,hy:44,c:62,fs:15,ls:15,bx:560,by:70,bw:150,bh:44};
-    svg.setAttribute('viewBox',`0 0 ${Lo.vb[0]} ${Lo.vb[1]}`);
-    const T=(x,y,s,a)=>{const e=el('text',Object.assign({x,y,'font-family':'IBM Plex Mono','font-size':Lo.fs,fill:ink},a));e.textContent=s;return e;};
-    // 열 이름 (키)
-    TOK.forEach((t,j)=>T(Lo.hx+j*Lo.c+Lo.c/2,Lo.hy-10,t,{'text-anchor':'middle','font-size':Lo.ls-1,fill:label,'font-family':'IBM Plex Sans KR'}));
-    if(!big)T(Lo.hx+3*Lo.c,14,'키 (보이는 단어) →',{'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Sans KR'});
-    for(let i=0;i<6;i++){
-      const sel=i===row;
-      const tl=T(Lo.hx-10,Lo.hy+i*Lo.c+Lo.c/2+5,TOK[i],{'text-anchor':'end','font-size':Lo.ls,fill:sel?acc:ink,'font-family':'IBM Plex Sans KR','font-weight':sel?600:400,class:'tok','data-i':i});
-      for(let j=0;j<6;j++){
-        const w=A[i][j], lv=level(w);
-        const cf=mix(acc,bg,SH[lv]);
-        el('rect',{x:Lo.hx+j*Lo.c,y:Lo.hy+i*Lo.c,width:Lo.c,height:Lo.c,fill:cf,stroke:bg,'stroke-width':1.5,class:'cell','data-i':i});
-        T(Lo.hx+j*Lo.c+Lo.c/2,Lo.hy+i*Lo.c+Lo.c/2+5,f2(w),{'text-anchor':'middle',fill:lum(cf)>0.18?'#1B2340':'#FFFFFF','pointer-events':'none','font-size':Lo.fs-1});
-      }
-    }
-    el('rect',{x:Lo.hx-1,y:Lo.hy+row*Lo.c,width:6*Lo.c+2,height:Lo.c,fill:'none',stroke:ink,'stroke-width':2.5,'pointer-events':'none'});
-    if(!big){const y0=Lo.hy+3*Lo.c;const t=T(16,y0,'질의 (보는 단어)',{'text-anchor':'middle','font-size':12,fill:label,'font-family':'IBM Plex Sans KR',transform:`rotate(-90 16 ${y0})`});}
-
-    // 선택한 행의 막대
-    const r=A[row], sum=r.reduce((a,b)=>a+b,0), mx=Math.max(...r);
-    if(!big){
-      T(Lo.bx-70,Lo.by-30,`‘${TOK[row]}’가 주는 가중치`,{'font-size':13,fill:label,'font-family':'IBM Plex Sans KR'});
-      r.forEach((w,j)=>{
-        const y=Lo.by+j*Lo.bh;
-        T(Lo.bx-10,y+Lo.bh/2+5,TOK[j],{'text-anchor':'end','font-size':14,'font-family':'IBM Plex Sans KR'});
-        el('rect',{x:Lo.bx,y:y+8,width:Lo.bw,height:Lo.bh-16,fill:'none',stroke:rule});
-        el('rect',{x:Lo.bx,y:y+8,width:Lo.bw*w,height:Lo.bh-16,fill:w===mx?acc:ink});
-        T(Lo.bx+Lo.bw+8,y+Lo.bh/2+5,f3(w),{'font-size':13});
-      });
-      const ys=Lo.by+6*Lo.bh+22;
-      el('line',{x1:Lo.bx-60,x2:Lo.bx+Lo.bw+50,y1:ys-16,y2:ys-16,stroke:rule});
-      T(Lo.vb[0]-8,ys+2,`합 ${f3(sum)}`,{'font-size':13,fill:acc,'text-anchor':'end'});
-      T(Lo.bx-10,ys+2,'행 합',{'text-anchor':'end','font-size':13,fill:label,'font-family':'IBM Plex Sans KR'});
-    }else{
-      const y0=Lo.by;
-      T(Lo.bx-10,y0-10,`‘${TOK[row]}’ 행 · 합 ${f3(sum)}`,{'font-size':14,fill:label,'font-family':'IBM Plex Sans KR','text-anchor':'start'});
-      r.forEach((w,j)=>{
-        const y=y0+j*Lo.bh;
-        T(Lo.bx-10,y+Lo.bh/2+5,TOK[j],{'text-anchor':'end','font-size':14,'font-family':'IBM Plex Sans KR'});
-        el('rect',{x:Lo.bx,y:y+3,width:Lo.bw*w,height:Lo.bh-6,fill:w===mx?acc:ink});
-        T(Lo.bx+Lo.bw*w+6,y+Lo.bh/2+5,f2(w),{'font-size':13});
-      });
-    }
-
-    // 문구
-    const jm=r.indexOf(mx);
-    const other=attn(scale==='sqrt'?'none':'sqrt',tau)[row], omx=Math.max(...other);
-    const sharp=scale==='none'?'나누지 않으면':'√d로 나누면';
-    document.getElementById('result').innerHTML=big
-      ? `‘${TOK[row]}’ → ‘${TOK[jm]}’ <b>${f2(mx)}</b>`
-      : (jm===row?`‘${TOK[row]}’는 자기 자신을 가장 많이 봅니다 · <b>${f2(mx)}</b>`:`‘${TOK[row]}’는 ‘${TOK[jm]}’를 가장 많이 봅니다 · <b>${f2(mx)}</b>`);
-    const ent=-r.reduce((s,w)=>s+(w>0?w*Math.log(w):0),0);
-    document.getElementById('explain').innerHTML=big
-      ? (scale==='none'?`÷√d를 끄면 최댓값 ${f2(mx)} — 더 쏠립니다.`:`÷√d를 끄면 ${f2(omx)}까지 쏠립니다.`)
-      : `지금 설정(${scale==='sqrt'?'÷√d':'÷1'}, τ=${tau.toFixed(2)})에서 이 행의 최댓값은 ${f2(mx)}, 엔트로피는 ${ent.toFixed(2)}입니다(균등이면 ln 6 ≈ 1.79). ${scale==='sqrt'?'√d로 나누지 않으면':'√d로 나누면'} 최댓값이 ${f2(omx)}가 됩니다. 점수를 크게 만들수록(÷1, 작은 τ) 분포가 한 단어로 쏠리고, 작게 만들수록(큰 τ) 고르게 퍼집니다.`;
-    const div=(scale==='sqrt'?Math.sqrt(D):1)*tau;
-    document.getElementById('formula').innerHTML=
-      `‘${TOK[row]}’의 q = [${Q[row].join(', ')}] · 점수 q·k = [${S[row].map(v=>+v.toFixed(2)).join(', ')}]<br>`+
-      `가중치 = softmax(점수 / ${div.toFixed(2)}) → ‘${TOK[jm]}’: exp(${(S[row][jm]/div).toFixed(2)}) / Σ exp(…) = ${f3(mx)} · 행 합 = ${f3(sum)}`;
-    document.getElementById('tauV').textContent=tau.toFixed(2);
-  }
-
-  // 행렬 표
-  const tbl=(cap,M,rowNames,colNames)=>`<table><caption>${cap}</caption><thead><tr><th></th>${colNames.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${M.map((r,i)=>`<tr><th>${rowNames[i]}</th>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-  document.getElementById('mats').innerHTML=tbl('임베딩 E (6×4)',E,TOK,['사물','조사','장소','동작'])+tbl('W_Q (4×4)',WQ,['1','2','3','4'],['1','2','3','4'])+tbl('W_K (4×4)',WK,['1','2','3','4'],['1','2','3','4']);
-
-  svg.addEventListener('click',e=>{const t=e.target;if(t.dataset&&t.dataset.i!==undefined){row=+t.dataset.i;draw();}});
-  document.querySelectorAll('[data-scale]').forEach(b=>b.addEventListener('click',()=>{scale=b.dataset.scale;document.querySelectorAll('[data-scale]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();}));
-  const ts=document.getElementById('tau');
-  ts.addEventListener('input',()=>{tau=+ts.value;draw();});
-  const sbt=document.getElementById('shortsBtn');
-  function setShorts(on){document.body.classList.toggle('shorts',on);sbt.setAttribute('aria-pressed',on);draw();}
-  sbt.addEventListener('click',()=>setShorts(!document.body.classList.contains('shorts')));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')setShorts(false);});
-
-  // URL 옵션: ?row=0~5&scale=sqrt|none&tau=0.25~3&shorts=1
-  const u=new URLSearchParams(location.search);
-  if(u.get('row'))row=Math.max(0,Math.min(5,parseInt(u.get('row'))||0));
-  if(u.get('scale'))document.querySelector(`[data-scale="${u.get('scale')}"]`)?.click();
-  if(u.get('tau')){const v=parseFloat(u.get('tau'));if(!isNaN(v)){tau=Math.max(0.25,Math.min(3,v));ts.value=tau;}}
-  if(u.get('shorts')==='1')setShorts(true);
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
-  draw();
 })();
 </script>
+<style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
+</head>
+<body><main class="wrap"><header><a class="brand" href="https://ourfuture-studio.github.io/">ourfuture studio<span>.</span></a><a href="https://ourfuture-studio.github.io/viz/">시각화 모음</a></header>
+<p class="eyebrow">기계와 생각 · 어텐션의 의미와 이론</p><h1>어텐션은 정보를 어떻게 모을까<span>.</span></h1><p class="lede">단어 사이의 <strong>점수를 가중치로 바꾸고, 그 비중만큼 정보를 모읍니다.</strong> 결과는 단어 하나의 선택이 아니라, 현재 위치에서 다른 위치들의 정보를 섞은 벡터입니다.</p>
+<nav class="phases" aria-label="계산 과정"><button data-phase="score">단어 사이 점수</button><button data-phase="weight">가중치로 바꾸기</button><button data-phase="context">문맥 표현 만들기</button></nav>
+<div class="layout"><section id="experiment" aria-label="어텐션 직접 비교"><div class="section-top"><h2>어느 위치의 표현을 만들까?</h2><span id="queryLabel"></span></div><div id="tokens" class="tokens" role="group" aria-label="질의 위치 선택"></div><p class="tip">행은 질의 Q의 위치, 열은 참고할 K·V의 위치입니다. 칸을 누르면 그 단어 쌍의 계산을 읽습니다. 방향키로 이동할 수 있습니다.</p><a class="mobile-jump" href="#interpretation">지금 결과의 의미 읽기</a>
+<div class="flow" aria-label="계산 흐름"><div><span id="flowScoreLabel">Q · K</span><strong id="flowScore"></strong></div><span aria-hidden="true">→</span><div><span>이 칸의 softmax 가중치</span><strong id="flowWeight"></strong></div><span aria-hidden="true">→</span><div><span>V의 가중합 · 현재 행</span><strong id="flowOutput"></strong></div></div>
+<div class="matrix-head"><h3 id="matrixTitle"></h3><span>열: K·V 위치</span></div><div id="matrix" class="matrix" role="group" aria-label="단어 쌍의 점수와 가중치 선택"></div><p id="matrixLegend" class="legend"></p>
+<div class="parameters"><div><span>점수 나누기</span><div class="seg" role="group" aria-label="점수 스케일"><button data-scale="sqrt">√dₖ = 2</button><button data-scale="none">1</button></div></div><div><label for="tau">온도 τ <strong id="tauValue"></strong></label><input id="tau" type="range" min="0.25" max="3" step="0.05" value="1"></div></div>
+<div id="detail" class="detail"></div>
+<details class="editor"><summary>점수 하나를 직접 바꿔 비교하기</summary><p>Q·K로 나온 점수 대신, 선택한 칸의 점수를 직접 지정하는 비교입니다. Q·K의 원래 값과 구분해 표시합니다.</p><label for="scoreValue" id="scoreLabel"></label><div class="editor-row"><input id="scoreValue" type="number" min="-6" max="12" step="any"><button id="applyScore">이 점수 적용</button><button id="restoreScore">이 칸 원래대로</button></div><button id="equalScores">현재 행 점수를 모두 0으로</button></details>
+<details class="editor"><summary>정보 V만 바꿔 비교하기</summary><p>점수와 가중치는 유지한 채, 선택한 열이 전달하는 값만 바꿉니다. 두 성분은 의미 이름을 붙이지 않은 임의의 좌표입니다.</p><p id="valueLabel"></p><div class="value-fields"><label>성분 1<input id="v0" type="number" min="-3" max="3" step="any"></label><label>성분 2<input id="v1" type="number" min="-3" max="3" step="any"></label></div><div class="editor-row"><button id="applyValue">이 V 적용</button><button id="zeroValue">이 V를 [0, 0]으로</button></div></details>
+<details class="editor"><summary>참고할 수 있는 위치 제한하기</summary><div class="seg" role="group" aria-label="참고 위치"><button data-mask="all">전체 위치</button><button data-mask="causal">현재·이전 위치</button></div><p>‘현재·이전 위치’는 미래 열의 softmax 입력을 −∞로 두어 가중치를 0으로 만듭니다. 자기 위치는 포함합니다.</p></details>
+<div class="reset-row"><button id="reset">모든 수치 처음으로</button><span id="editStatus"></span></div><p id="notice" role="status"></p></section>
+<aside class="interpretation" id="interpretation" aria-label="결과의 의미와 이론"><a class="mobile-jump" href="#experiment">그림으로 돌아가기</a><div id="meaning"></div></aside></div>
+<section class="effects"><p class="eyebrow">바꾼 값에서 결과까지</p><h2>점수를 바꿀 때와 정보를 바꿀 때</h2><div id="changeReading"></div><p>허용된 열의 점수를 바꾸면, 같은 행의 가중치를 함께 다시 계산합니다. V만 바꾸면 가중치는 그대로이고, 출력 변화는 그 가중치에 V의 변화를 곱한 값입니다.</p></section>
+<section class="theory"><p class="eyebrow">계산에서 구조의 의미로</p><h2>같은 단어도, 참고한 정보에 따라 표현이 달라진다</h2><p>Q는 현재 위치에서 정보를 찾기 위한 벡터, K는 각 위치와 비교할 벡터, V는 실제로 모을 정보입니다. self-attention에서는 같은 입력 표현을 서로 다른 행렬로 변환해 Q·K·V를 만듭니다. 이 화면은 그중 한 헤드의 가중합까지 보여 줍니다.</p>
+<div class="equation">Q = E W<sub>Q</sub> · K = E W<sub>K</sub> · V = E W<sub>V</sub><br>S = QKᵀ / √d<sub>k</sub><br>A = softmax<sub>행</sub>(S) · Z = AV</div>
+<p>한 질의의 가중치는 그 행의 허용된 열끼리 합이 1입니다. Z의 한 행은 여러 V를 섞어 현재 위치에서 만든 어텐션 출력입니다. 가중치 히트맵 A와 출력 표현 Z는 서로 다른 결과입니다.</p>
+<details><summary>왜 √dₖ로 나눌까?</summary><p>원논문은 q와 k의 각 성분이 서로 독립이고 평균 0·분산 1인 조건에서 내적의 분산이 dₖ가 됨을 보입니다. 점수 규모가 커져 softmax가 포화되는 문제를 줄이기 위해 √dₖ로 나눕니다. 이번에 직접 정한 네 성분이 그 통계적 조건을 만족한다는 뜻은 아닙니다.</p><p>온도 τ는 점수 규모의 영향을 비교하려고 추가한 조절값입니다. 원논문의 식(1)에는 τ가 없으며 기본 설정은 √dₖ로 나누고 τ=1입니다. 모든 허용 점수가 같으면 온도를 바꿔도 균등합니다.</p></details>
+<details><summary>어텐션 가중치로 무엇을 해석할 수 있을까?</summary><p>가중치는 이 연산에서 각 V를 섞는 비중입니다. 특정 성분의 실제 기여는 가중치×V이므로, V의 크기와 부호를 함께 읽어야 합니다. 가중치가 높다는 사실만으로 정답 확신이나 최종 예측의 원인을 알 수는 없습니다.</p><p>이 화면은 직접 정한 수치로 계산하며 언어를 학습하지 않았습니다. 위치 인코딩·다중 헤드·출력 투영·잔차 연결·정규화·FFN·다음 토큰 예측은 생략했습니다. 여섯 표기 단위의 분할은 실제 언어모델 토크나이저의 결과가 아닙니다.</p></details>
+<details><summary>현재 수치와 원논문 계산의 연결</summary><div id="fixtureTables"></div><p>Q·K의 입력 행렬은 기존 시각화의 수치를 유지했습니다. V와 W<sub>V</sub>를 추가해 식(1)의 마지막 가중합까지 연결했습니다. 행렬의 좌표에 ‘명사·동작’처럼 학습된 의미를 부여하지 않습니다.</p></details>
+<div class="related"><h3>Transformer 카드와 함께 보기</h3><a href="https://ourfuture-studio.github.io/ai-history/#event=transformer" target="_blank" rel="noopener">Transformer 상세 카드 · 단어 사이의 참조와 전체 구조</a></div></section>
+<details class="sources"><summary>근거 자료와 계산의 범위</summary><ul><li><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf#page=4" target="_blank" rel="noopener">Vaswani 외(2017), §3.2.1·식(1)·그림 2, 인쇄 p.4</a>: 점수의 스케일링, softmax와 V 가중합. 각주 4: 내적 분산의 가정.</li><li><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf#page=5" target="_blank" rel="noopener">같은 논문 §3.2.2–3.2.3·3.5</a>: 선형 투영·마스킹·위치 정보.</li><li><a href="recording/attention.html" target="_blank" rel="noopener">기존 어텐션 시각화</a>: 여섯 위치의 입력 E와 W<sub>Q</sub>·W<sub>K</sub> 수치의 기준.</li></ul><p>직접 정한 6×4 입력·한 헤드, dₖ=4·dᵥ=2입니다. 실제 모델의 학습된 가중치나 원논문 실험 결과가 아닙니다. softmax는 최댓값을 빼고 계산해 큰 지수의 넘침을 피합니다. 표시만 반올림하며 실제 계산에는 원래 값을 사용합니다. 자료 확인 2026-11-24.</p></details>
+<footer>ourfuture studio · 새로운 지식, 뜻밖의 연결.</footer></main><script>
+/* One directly specified attention head. No tokenization, training, position
+ * encoding, residual path, output projection or semantic interpretation. */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.AttentionCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const freezeMatrix=matrix=>Object.freeze(matrix.map(row=>Object.freeze(row.slice())));
+  const TOKENS=Object.freeze(['고양이','가','매트','위','에','앉았다']);
+  const FIXTURE=Object.freeze({
+    TOKENS,tokens:TOKENS,
+    E:freezeMatrix([[1,0,0,0],[0,1,0,0],[0.6,0,1,0],[0.2,0,0.8,0],[0,1,1,0],[0,0,0,1]]),
+    WQ:freezeMatrix([[0,0,0,3],[4,0,0,0],[1,0,3,0],[4,0,1,0]]),
+    WK:freezeMatrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]),
+    WV:freezeMatrix([[1,0],[0,1],[1,-1],[-1,0.5]])
+  });
+  function makeFixture(){
+    return {tokens:TOKENS.slice(),TOKENS:TOKENS.slice(),E:FIXTURE.E.map(r=>r.slice()),WQ:FIXTURE.WQ.map(r=>r.slice()),WK:FIXTURE.WK.map(r=>r.slice()),WV:FIXTURE.WV.map(r=>r.slice())};
+  }
+  function dimensions(matrix,label){
+    if(!Array.isArray(matrix)||matrix.length===0||!Array.isArray(matrix[0])||matrix[0].length===0)throw new TypeError(label+' must be a non-empty matrix.');
+    const cols=matrix[0].length;
+    for(const row of matrix){
+      if(!Array.isArray(row)||row.length!==cols)throw new TypeError(label+' must be rectangular.');
+      if(row.some(v=>!Number.isFinite(v)))throw new TypeError(label+' must contain finite numbers.');
+    }
+    return {rows:matrix.length,cols};
+  }
+  function finite(value){
+    if(!Number.isFinite(value))throw new RangeError('Calculation exceeded the finite number range.');
+    return Object.is(value,-0)?0:value;
+  }
+  function matmul(A,B){
+    const a=dimensions(A,'Left matrix'),b=dimensions(B,'Right matrix');
+    if(a.cols!==b.rows)throw new RangeError('Matrix inner dimensions must agree.');
+    return A.map(row=>Array.from({length:b.cols},(_,col)=>finite(row.reduce((sum,v,k)=>finite(sum+finite(v*B[k][col])),0))));
+  }
+  function project(E,WQ,WK,WV){
+    return {Q:matmul(E,WQ),K:matmul(E,WK),V:matmul(E,WV)};
+  }
+  /* scores are RAW dot products (or an explicit intervention), not scaled
+   * logits. Pass divisor=sqrt(d_k) for scaled dot-product attention. Default
+   * divisor=1 intentionally has no dependency on the value-vector width. */
+  function rowAttention(scores,V,{divisor=1,tau=1,allowed}={}){
+    const v=dimensions(V,'Values');
+    if(!Array.isArray(scores)||scores.length!==v.rows||scores.some(s=>!Number.isFinite(s)))throw new TypeError('Scores must be a finite number for every value row.');
+    if(!Number.isFinite(divisor)||divisor<=0||!Number.isFinite(tau)||tau<=0)throw new RangeError('Divisor and temperature must be positive and finite.');
+    if(!Array.isArray(allowed)&&allowed!==undefined)throw new TypeError('Allowed positions must be a boolean array.');
+    const use=allowed===undefined?scores.map(()=>true):allowed.slice();
+    if(use.length!==scores.length||use.some(a=>typeof a!=='boolean')||!use.some(Boolean))throw new RangeError('At least one allowed key is required and the mask must match the scores.');
+    const logits=scores.map((s,j)=>use[j]?finite(finite(s/divisor)/tau):-Infinity);
+    let max=-Infinity;
+    for(const z of logits)if(z>max)max=z;
+    const shifted=logits.map((z,j)=>use[j]?z-max:-Infinity);
+    const exps=shifted.map(z=>Math.exp(z));
+    const denominator=exps.reduce((sum,e)=>sum+e,0);
+    const weights=exps.map(e=>e/denominator);
+    const contributions=weights.map((weight,j)=>V[j].map(value=>finite(weight*value)));
+    const output=Array.from({length:v.cols},(_,d)=>finite(contributions.reduce((sum,row)=>finite(sum+row[d]),0)));
+    const entropy=-weights.reduce((sum,w)=>sum+(w>0?w*Math.log(w):0),0);
+    return {scores:scores.slice(),logits,shifted,exps,denominator,weights,contributions,output,entropy:finite(entropy),allowed:use};
+  }
+  function attention(Q,K,V,{scale=true,tau=1,causal=false}={}){
+    const q=dimensions(Q,'Queries'),k=dimensions(K,'Keys'),v=dimensions(V,'Values');
+    if(q.cols!==k.cols||k.rows!==v.rows)throw new RangeError('Queries and keys must share d_k; key and value row counts must agree.');
+    if(typeof scale!=='boolean'||typeof causal!=='boolean')throw new TypeError('Scale and causal options must be booleans.');
+    const rawScores=Q.map(query=>K.map(key=>finite(query.reduce((sum,value,d)=>finite(sum+finite(value*key[d])),0))));
+    const divisor=scale?Math.sqrt(q.cols):1;
+    const rows=rawScores.map((scores,i)=>rowAttention(scores,V,{divisor,tau,allowed:scores.map((_,j)=>!causal||j<=i)}));
+    return {rawScores,logits:rows.map(r=>r.logits),weights:rows.map(r=>r.weights),outputs:rows.map(r=>r.output),rows};
+  }
+  return Object.freeze({TOKENS,FIXTURE,makeFixture,matmul,project,rowAttention,oneRow:rowAttention,attention});
+});
+
+</script>
+<script>
+(() => {
+  'use strict';
+  const C=window.AttentionCore,$=id=>document.getElementById(id),f=C.makeFixture(),T=f.tokens;
+  const P=C.project(f.E,f.WQ,f.WK,f.WV),copy=m=>m.map(r=>r.slice());
+  const s={phase:'score',row:5,col:0,scale:true,tau:1,causal:false,V:copy(P.V),manual:T.map(()=>T.map(()=>null)),last:null,note:'선택한 칸의 점수부터 확인하고, 가중치와 V의 가중합으로 이어 가세요.'};
+  const q=new URLSearchParams(location.search);
+  if(['score','weight','context'].includes(q.get('phase')))s.phase=q.get('phase');
+  if(q.has('row')&&Number.isFinite(Number(q.get('row'))))s.row=Math.min(5,Math.max(0,Math.floor(Number(q.get('row')))));
+  if(q.get('scale')==='none')s.scale=false;
+  if(q.has('tau')&&q.get('tau').trim()&&Number.isFinite(Number(q.get('tau'))))s.tau=Math.max(.25,Math.min(3,Number(q.get('tau'))));
+  if(q.get('mask')==='causal')s.causal=true;
+  const fmt=(n,d=3)=>{if(n===Infinity)return '∞';if(n===-Infinity)return '−∞';if(n===0||Object.is(n,-0))return '0';if(Math.abs(n)<.001)return Number(n.toPrecision(3)).toString().replace(/-/g,'−');return n.toFixed(d).replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'').replace('-','−');};
+  const vec=(a,d=3)=>'['+a.map(v=>fmt(v,d)).join(', ')+']';
+  function context(){const base=C.attention(P.Q,P.K,s.V,{scale:s.scale,tau:s.tau,causal:s.causal});const rows=base.rawScores.map((raw,i)=>C.rowAttention(raw.map((v,j)=>s.manual[i][j]===null?v:s.manual[i][j]),s.V,{divisor:s.scale?2:1,tau:s.tau,allowed:T.map((_,j)=>!s.causal||j<=i)}));return {base,rows,r:rows[s.row],override:s.manual[s.row][s.col]!==null,divisor:s.scale?2:1};}
+  function select(row,col=s.col,focus=false){if(row!==s.row)s.last=null;s.row=row;s.col=col;render();if(focus)$('matrix').querySelector(`[data-index="${row*6+col}"]`).focus();}
+  function recordScore(value,restore=false,uniform=false){if(!restore&&(!Number.isFinite(value)||value< -6||value>12)){s.note='점수는 −6부터 12 사이의 숫자로 입력해 주세요.';$('notice').textContent=s.note;return;}const before=context().r;if(uniform)s.manual[s.row]=T.map(()=>0);else s.manual[s.row][s.col]=restore?null:value;const after=context().r;s.last={type:uniform?'uniform':'score',row:s.row,col:s.col,before,after};s.phase='weight';s.note=uniform?'현재 행의 점수만 모두 0으로 지정했습니다. 허용된 열의 가중치를 비교해 보세요.':restore?'이 칸을 원래 Q·K 점수로 되돌렸습니다.':'선택한 점수를 직접 지정했습니다. 공통 분모와 다른 열의 가중치도 함께 비교해 보세요.';render();}
+  function recordValue(values){if(values.some(v=>!Number.isFinite(v)||v< -3||v>3)){s.note='V의 두 성분은 −3부터 3 사이의 숫자로 입력해 주세요.';$('notice').textContent=s.note;return;}const before=context().r,old=s.V[s.col].slice();s.V[s.col]=values.slice();s.last={type:'value',row:s.row,col:s.col,before,after:context().r,old,newValue:values.slice()};s.phase='context';s.note='V만 바꿨습니다. 가중치가 유지되는지와 출력의 변화를 비교해 보세요.';render();}
+  document.querySelector('.phases').addEventListener('click',e=>{const b=e.target.closest('[data-phase]');if(b){s.phase=b.dataset.phase;render();}});
+  $('tokens').addEventListener('click',e=>{const b=e.target.closest('[data-row]');if(b){select(Number(b.dataset.row));$('tokens').querySelector(`[data-row="${s.row}"]`).focus();}});
+  $('matrix').addEventListener('click',e=>{const b=e.target.closest('[data-index],[data-row]');if(!b)return;if(b.dataset.index!==undefined){const i=Number(b.dataset.index);select(Math.floor(i/6),i%6,true);}else select(Number(b.dataset.row));});
+  $('matrix').addEventListener('keydown',e=>{const b=e.target.closest('[data-index]');if(!b||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();let r=s.row,c=s.col;if(e.key==='ArrowUp')r--;if(e.key==='ArrowDown')r++;if(e.key==='ArrowLeft')c--;if(e.key==='ArrowRight')c++;select(Math.max(0,Math.min(5,r)),Math.max(0,Math.min(5,c)),true);});
+  document.querySelector('[aria-label="점수 스케일"]').addEventListener('click',e=>{const b=e.target.closest('[data-scale]');if(b){s.scale=b.dataset.scale==='sqrt';s.last=null;s.note='점수와 V는 유지하고, softmax에 넣는 점수의 나눗수만 바꿨습니다.';render();}});
+  $('tau').addEventListener('input',e=>{s.tau=Number(e.target.value);s.last=null;s.note='온도만 바꿨습니다. 원래 점수의 순서는 유지되며 가중치의 분포를 다시 계산합니다.';render();});
+  document.querySelector('[aria-label="참고 위치"]').addEventListener('click',e=>{const b=e.target.closest('[data-mask]');if(b){s.causal=b.dataset.mask==='causal';s.last=null;s.note='참고할 수 있는 열을 바꾸고 각 행에서 가중치를 다시 계산했습니다.';render();}});
+  $('applyScore').addEventListener('click',()=>{const v=$('scoreValue').value;if(!v.trim()){$('notice').textContent='새 점수를 입력해 주세요.';return;}recordScore(Number(v));});
+  $('restoreScore').addEventListener('click',()=>recordScore(0,true));$('equalScores').addEventListener('click',()=>recordScore(0,false,true));
+  $('applyValue').addEventListener('click',()=>{const a=$('v0').value,b=$('v1').value;if(!a.trim()||!b.trim()){$('notice').textContent='V의 두 성분을 모두 입력해 주세요.';return;}recordValue([Number(a),Number(b)]);});$('zeroValue').addEventListener('click',()=>recordValue([0,0]));
+  $('reset').addEventListener('click',()=>{Object.assign(s,{phase:'score',row:5,col:0,scale:true,tau:1,causal:false,V:copy(P.V),manual:T.map(()=>T.map(()=>null)),last:null,note:'처음 수치와 선택으로 되돌렸습니다.'});render();});
+  function renderMatrix(c){$('tokens').innerHTML=T.map((t,i)=>`<button data-row="${i}" aria-pressed="${i===s.row}">${t}</button>`).join('');$('queryLabel').textContent=`질의 ${s.row+1}번 ‘${T[s.row]}’`;let h='<span>Q / K·V</span>'+T.map(t=>`<span>${t}</span>`).join('');c.rows.forEach((r,i)=>{h+=`<button class="row-label ${i===s.row?'active':''}" data-row="${i}" aria-label="${i+1}번 ${T[i]} 질의 선택">${T[i]}</button>`;r.scores.forEach((score,j)=>{const v=s.phase==='score'?score:r.weights[j],mask=!r.allowed[j],manual=s.manual[i][j]!==null,opacity=6+Math.min(1,Math.abs(v)/(s.phase==='score'?6:1))*60;h+=`<button class="cell ${v<0?'negative':''} ${i===s.row?'row':''} ${i===s.row&&j===s.col?'selected':''} ${mask?'masked':''}" data-index="${i*6+j}" tabindex="${i===s.row&&j===s.col?0:-1}" style="--strength:${opacity}%" aria-label="질의 ${T[i]}, 참고 ${T[j]}, ${mask?'마스킹, ':''}${s.phase==='score'?'점수 '+fmt(score):'가중치 '+fmt(r.weights[j],6)}${manual?', 직접 지정한 점수':''}">${mask?'×':s.phase==='score'?fmt(v,2):v.toFixed(2)}</button>`;});});$('matrix').innerHTML=h;$('matrixTitle').textContent=s.phase==='score'?'단어 쌍의 점수 · softmax 전':'어텐션 가중치 · 각 행 합 1';$('matrixLegend').textContent='자주색: 선택한 단어 쌍 · 밑줄: 현재 질의 행 · ×: 허용하지 않은 열. '+(s.phase==='score'?'청록은 양수, 주황은 음수이며 점수의 크기(절댓값 6에서 최대)를 표시합니다.':'청록의 진하기는 가중치 0~1을 표시합니다. 작은 값이 반올림되어 0으로 보일 수 있습니다.');}
+  function scatter(r){const all=s.V.concat([r.output]),lo=all[0].map((_,d)=>Math.min(0,...all.map(v=>v[d]))-.45),hi=all[0].map((_,d)=>Math.max(0,...all.map(v=>v[d]))+.45);const x=v=>45+(v-lo[0])/(hi[0]-lo[0])*300,y=v=>210-(v-lo[1])/(hi[1]-lo[1])*170;let h=`<svg class="scatter" viewBox="0 0 390 270" role="img" aria-label="V의 두 성분 좌표와 가중합 출력"><line x1="35" y1="${y(0)}" x2="365" y2="${y(0)}" stroke="var(--rule)"/><line x1="${x(0)}" y1="25" x2="${x(0)}" y2="225" stroke="var(--rule)"/>`;s.V.forEach((v,j)=>{const duplicate=s.V.slice(0,j).filter(a=>a[0]===v[0]&&a[1]===v[1]).length;h+=`<circle cx="${x(v[0])}" cy="${y(v[1])}" r="${4+r.weights[j]*10}" fill="var(--bg)" stroke="${j===s.col?'var(--accent)':'var(--label)'}" stroke-width="2"/><text x="${x(v[0])+8}" y="${y(v[1])-9+duplicate*20}" fill="var(--label)" font-size="14">${T[j]}</text>`;});const ox=x(r.output[0]),oy=y(r.output[1]);h+=`<path d="M ${ox} ${oy-8} L ${ox+8} ${oy} L ${ox} ${oy+8} L ${ox-8} ${oy} Z" fill="var(--teal)"/><text x="18" y="23" fill="var(--teal)" font-size="14">청록 마름모 = 출력 Z</text><text x="190" y="253" fill="var(--label)" font-size="14">가로: 성분 1 · 세로: 성분 2</text></svg>`;return h;}
+  function renderDetail(c){const r=c.r,j=s.col,score=r.scores[j],base=c.base.rawScores[s.row][j];let html;
+    if(s.phase==='score'){const a=P.Q[s.row],b=P.K[j];html=`<h3>‘${T[s.row]}’의 Q와 ‘${T[j]}’의 K를 비교합니다</h3><div class="vector-pair"><div><span>질의 Q · 현재 위치</span><strong>${vec(a)}</strong></div><div><span>키 K · 선택한 열</span><strong>${vec(b)}</strong></div></div><div class="table-scroll"><table><thead><tr><th>성분</th><th>Q × K</th><th>곱</th></tr></thead><tbody>${a.map((v,d)=>`<tr><td>${d+1}</td><td>${fmt(v)} × ${fmt(b[d])}</td><td>${fmt(v*b[d])}</td></tr>`).join('')}</tbody></table></div><div class="sum-line">Q · K = ${fmt(base)}${c.override?` · 직접 지정한 비교 점수 = ${fmt(score)}`:''}</div><p>${c.override?'이 칸은 점수를 직접 지정한 비교입니다. 아래 단계에는 Q·K의 원래 합 대신 지정한 값을 넣습니다.':'같은 자리의 성분끼리 곱한 뒤 더했습니다. 이 점수는 아직 가중치가 아니며, 합이 1일 필요도 없습니다.'}${!r.allowed[j]?' 현재 마스크에서는 이 쌍을 허용하지 않으므로 다음 단계에는 −∞를 넣습니다.':''}</p>`;}
+    else if(s.phase==='weight'){const max=Math.max(...r.logits);html=`<h3>한 행의 점수를 함께 정규화합니다</h3><p>logit = 점수 / (${c.divisor} × τ ${fmt(s.tau)}). 최댓값 m=${fmt(max)}을 뺀 뒤 지수와 합을 계산합니다. 최댓값을 빼도 가중치는 같습니다.</p><div class="table-scroll"><table><thead><tr><th>참고 위치</th><th>점수</th><th>logit</th><th>exp(logit−m)</th><th>가중치</th></tr></thead><tbody>${T.map((t,k)=>`<tr class="${k===j?'selected':''}"><td>${t}${s.manual[s.row][k]!==null?' *':''}</td><td>${fmt(r.scores[k])}</td><td>${fmt(r.logits[k])}</td><td>${fmt(r.exps[k],4)}</td><td>${fmt(r.weights[k],4)}</td></tr>`).join('')}</tbody></table></div><div class="sum-line">지수의 합 = ${fmt(r.denominator,6)} · 가중치 합 = ${fmt(r.weights.reduce((a,b)=>a+b,0),6)}</div><p>*는 직접 지정한 점수입니다. 마스킹한 열은 exp(−∞)=0입니다. 다른 열의 가중치도 같은 분모로 나눕니다.</p>`;}
+    else {html=`<h3>가중치로 V를 곱한 뒤, 성분별로 더합니다</h3><p>현재 행의 점수로 구한 가중치를 같은 열의 정보 V에 적용합니다. 표의 마지막 두 열을 세로로 더한 값이 현재 위치의 출력입니다.</p><div class="table-scroll"><table><thead><tr><th>참고 위치</th><th>가중치</th><th>V [1, 2]</th><th>성분 1 기여</th><th>성분 2 기여</th></tr></thead><tbody>${T.map((t,k)=>`<tr class="${k===j?'selected':''}"><td>${t}</td><td>${fmt(r.weights[k],4)}</td><td>${vec(s.V[k])}</td>${r.contributions[k].map(v=>`<td class="${v<0?'negative':'positive'}">${fmt(v,4)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="sum-line">현재 행의 출력 Z = ${vec(r.output,6)}</div>${scatter(r)}<p>원은 각 V의 좌표이며 크기는 현재 행의 가중치를 표시합니다. 청록 마름모는 가중합 출력입니다. 좌표는 수치 성분이며 문법·의미의 이름이 아닙니다.</p>`;}
+    if(s.phase!=='score')html=html.replace('</table></div>','</table></div><p class="table-hint">계산표를 좌우로 밀면 나머지 성분도 볼 수 있습니다.</p>');$('detail').innerHTML=html;
+  }
+  function renderMeaning(c){const r=c.r,j=s.col,allowed=r.allowed.filter(Boolean).length,max=Math.max(...r.weights),tops=r.weights.map((w,i)=>w===max?i:-1).filter(i=>i>=0),uniform=r.scores.filter((_,i)=>r.allowed[i]).every(v=>v===r.scores[r.allowed.indexOf(true)]);let title,idea,reading;
+    if(s.phase==='score'){title='점수는 비교의 결과입니다';idea='현재 질의의 Q와 각 위치의 K를 내적으로 비교합니다. 단어 이름에서 점수를 읽어 내는 것이 아니라, 현재 벡터의 성분으로 계산합니다.';reading=`‘${T[s.row]}’와 ‘${T[j]}’의 ${c.override?'직접 지정한 비교':'Q·K'} 점수는 ${fmt(r.scores[j])}입니다. ${!r.allowed[j]?'다만 현재 마스크에서는 이 열을 참고하지 않습니다.':'같은 점수도 다른 열의 점수에 따라 서로 다른 가중치가 됩니다.'}`;}
+    else if(s.phase==='weight'){title='가중치는 허용된 정보의 비중입니다';idea='softmax는 한 질의 행의 점수들을 함께 계산해, 허용된 V를 어떤 비율로 섞을지 정합니다. 세로 열의 합을 1로 맞추는 연산이 아닙니다.';reading=uniform?`허용된 ${allowed}개 열의 점수가 모두 같아 각각 ${fmt(1/allowed,6)}입니다. ${allowed===1?'허용된 열이 하나라 그 가중치는 1입니다.':'온도를 바꿔도 이 균등 분포는 유지됩니다.'}`:`가장 큰 비중은 ${tops.map(k=>'‘'+T[k]+'’').join('·')}의 ${fmt(max,6)}입니다. 선택한 ‘${T[j]}’의 비중은 ${fmt(r.weights[j],6)}입니다. 이는 다음 단어가 정답일 확률이 아닙니다.`;}
+    else {const largest=Math.max(...r.contributions.filter((_,i)=>r.allowed[i]).map(v=>v[0])),best=r.contributions.map((v,i)=>r.allowed[i]&&v[0]===largest?i:-1).filter(i=>i>=0);title='비중과 실제 기여를 함께 읽습니다';idea='가중치가 정해지면 여러 위치의 V를 동시에 모읍니다. V의 두 성분마다 양수·음수 기여를 더해 현재 위치의 벡터를 만듭니다.';reading=`가중치가 가장 큰 위치는 ${tops.map(k=>'‘'+T[k]+'’').join('·')}입니다. 허용된 위치 중 첫 성분의 부호 있는 기여가 가장 큰 곳은 ${best.map(k=>'‘'+T[k]+'’').join('·')}(${fmt(largest,6)})입니다. 가중치와 V를 곱한 값으로 비교한 결과입니다. 음수 성분은 음수 기여로 더해집니다.`;}
+    const bars=T.map((t,k)=>`<div class="weight-bar ${k===j?'selected':''}"><span>${t}</span><div class="weight-track"><span style="width:${r.weights[k]*100}%"></span></div><strong>${fmt(r.weights[k],3)}</strong></div>`).join('');
+    $('meaning').innerHTML=`<p class="eyebrow">점수 · 가중치 · 정보의 가중합</p><h2>${title}</h2><p>${idea}</p><div class="current-reading" role="status"><p class="reading-label">현재 결과의 의미</p><p>${reading}</p></div><div class="metrics"><div>가중치 합<strong>${fmt(r.weights.reduce((a,b)=>a+b,0),6)}</strong></div><div>허용 위치<strong>${allowed}개</strong></div><div>엔트로피<strong>${fmt(r.entropy)}</strong></div></div>${bars}<div class="output-vector"><div><span>Z의 성분 1</span><strong>${fmt(r.output[0],4)}</strong></div><div><span>Z의 성분 2</span><strong>${fmt(r.output[1],4)}</strong></div></div><p>위 가중치로 모은 현재 위치의 출력입니다. 두 숫자의 합을 1로 맞추지 않으며, 음수도 가능합니다.</p><details><summary>집중도를 어떻게 읽을까?</summary><p>엔트로피는 −Σ a log(a), 자연로그 단위입니다. 허용된 ${allowed}개 위치에 균등하면 ln(${allowed})=${fmt(Math.log(allowed))}입니다. 이 값은 분포의 집중도이며 정확도나 이해의 점수가 아닙니다.</p></details>`;
+  }
+  function renderChange(c){const a=s.last;if(!a){$('changeReading').innerHTML='<p>점수 하나나 V 하나를 바꾸면, 가중치와 출력의 전후 값을 여기에서 비교합니다.</p>';return;}const before=a.before,after=a.after;if(a.type==='value'){const delta=a.newValue.map((v,d)=>v-a.old[d]);$('changeReading').innerHTML=`<p>‘${T[a.col]}’의 V: ${vec(a.old)} → ${vec(a.newValue)}</p><p>현재 행의 가중치는 모두 유지됩니다. 이 열의 가중치 ${fmt(after.weights[a.col],6)} × V 변화 ${vec(delta)} = 출력 변화 ${vec(after.output.map((v,d)=>v-before.output[d]),6)}</p><p>출력 ${vec(before.output,6)} → ${vec(after.output,6)}${after.weights[a.col]===0?' · 마스킹된 열의 V는 이 행의 출력에 영향을 주지 않습니다.':''}</p>`;}else{const count=after.weights.filter((v,k)=>v!==before.weights[k]).length;$('changeReading').innerHTML=`<p>${a.type==='uniform'?'현재 행의 모든 점수를 0으로 지정했습니다.':`‘${T[a.col]}’와의 점수: ${fmt(before.scores[a.col])} → ${fmt(after.scores[a.col])}`}</p><p>선택한 열의 가중치 ${fmt(before.weights[a.col],6)} → ${fmt(after.weights[a.col],6)} · 가중치가 달라진 열 ${count}개</p><p>출력 ${vec(before.output,6)} → ${vec(after.output,6)}${!after.allowed[a.col]&&a.type!=='uniform'?' · 마스킹된 점수만 바꿔 이 행의 가중치와 출력은 그대로입니다.':''}</p>`;}}
+  function renderFixture(){const table=(label,m)=>`<h3>${label}</h3><div class="table-scroll"><table><tbody>${m.map((r,i)=>`<tr><th>${i+1}</th>${r.map(v=>`<td>${fmt(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;$('fixtureTables').innerHTML=table('입력 E · 6×4',f.E)+table('WQ · 4×4',f.WQ)+table('WK · 4×4',f.WK)+table('WV · 4×2',f.WV)+table('현재 Q · 6×4',P.Q)+table('현재 K · 6×4',P.K)+table('현재 V · 6×2 · 직접 지정 포함',s.V);}
+  function render(){const c=context();document.querySelectorAll('[data-phase]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.phase===s.phase)));document.querySelectorAll('[data-scale]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.scale==='sqrt')===s.scale)));document.querySelectorAll('[data-mask]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.mask==='causal')===s.causal)));$('flowScoreLabel').textContent=c.override?'직접 지정 점수':'Q · K';$('flowScore').textContent=fmt(c.r.scores[s.col]);$('flowWeight').textContent=fmt(c.r.weights[s.col],4);$('flowOutput').textContent=vec(c.r.output,3);$('tauValue').textContent=s.tau.toFixed(2);$('tau').value=s.tau;$('scoreLabel').textContent=`‘${T[s.row]}’와 ‘${T[s.col]}’ · Q·K 원래 점수 ${fmt(c.base.rawScores[s.row][s.col])}`;$('scoreValue').value=c.r.scores[s.col];$('valueLabel').textContent=`선택한 참고 위치 ‘${T[s.col]}’의 V · 원래 EWV ${vec(P.V[s.col])} · 현재 ${vec(s.V[s.col])}`;s.V[s.col].forEach((v,d)=>$('v'+d).value=v);const n=s.manual.flat().filter(v=>v!==null).length,edited=s.V.filter((r,i)=>r.some((v,d)=>v!==P.V[i][d])).length;$('editStatus').textContent=`직접 지정한 점수 ${n}칸 · 바꾼 V ${edited}개`;$('notice').textContent=s.note;renderMatrix(c);renderDetail(c);renderMeaning(c);renderChange(c);renderFixture();}
+  render();
+})();
+
+</script>
 <aside class="of-rights" aria-label="저작권·이용 안내" data-site-rights="1"><p>© 2026 ourfuture studio. 학습자료의 무단 복제·재배포·판매를 금합니다.</p><p>법령상 허용되는 이용과 별도 라이선스는 예외입니다. <a href="/copyright.html">저작권·이용 안내 ↗</a></p></aside>
-</body>
-</html>
+</body></html>
