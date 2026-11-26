@@ -2683,8 +2683,8 @@
     },
     {
       "path": "experiments.html",
-      "sha256": "cef8aae5e829aa1690ae8591a2fa96d2891350f9cbb4088e54ca93eb03acb393",
-      "bytes": 5012
+      "sha256": "48bee3dab896fb8fa422ac20bc2d268b50cbdb063a394ba9e110ea5e50e003a8",
+      "bytes": 5016
     },
     {
       "path": "favicon.svg",
@@ -2693,8 +2693,8 @@
     },
     {
       "path": "index.html",
-      "sha256": "7dfddfc65e960e3d6d5a8c49629e1bfc2a133eb86a3409d142ae68d59a5f550b",
-      "bytes": 5721
+      "sha256": "62311d7230701a2b3a270d0f399c5b4cbae97957829889ff14b23f81801af4bb",
+      "bytes": 5725
     },
     {
       "path": "learner.css",
@@ -2703,8 +2703,8 @@
     },
     {
       "path": "learning.mjs",
-      "sha256": "ef83f25f03640f68521cf93132ab7e4424b013217b8c249010af0cb9a03c8980",
-      "bytes": 31464
+      "sha256": "ce528c946910db46ad98d9bed3dc9861adb9a7ca944439de44ad967236de5a88",
+      "bytes": 28858
     },
     {
       "path": "lesson-progress.mjs",
@@ -2768,13 +2768,13 @@
     },
     {
       "path": "practical/help-dir.html",
-      "sha256": "3eefb57cc980871f8b3aee3e7644ceaa87757921cddaef4c233a9e408e83d731",
-      "bytes": 35647
+      "sha256": "02bee373ec1fb982875ee8e32b0010577040c4b7b453d85a14e2bc1ef7d778c3",
+      "bytes": 36486
     },
     {
       "path": "practical/index.html",
-      "sha256": "f590d2ef196c72507098c6224989af3da14fbdfa072b9dfaeedfc169dd4746d6",
-      "bytes": 6516
+      "sha256": "482501394e472bf350206e24353601761cb6a7111a5d939ce2b6f6e0a7f4e80e",
+      "bytes": 7355
     },
     {
       "path": "practical/practical.css",
@@ -2788,8 +2788,8 @@
     },
     {
       "path": "practice.html",
-      "sha256": "dc4bdb685227c404d8a59ff768a715ef4c591607e1f48fbc1778d237c71a54e9",
-      "bytes": 3865
+      "sha256": "7c5c7a15944983ea92fa46aab111b9af262c03042d2573774180ffefa8e39918",
+      "bytes": 4040
     },
     {
       "path": "progress.mjs",
@@ -2798,8 +2798,8 @@
     },
     {
       "path": "review.html",
-      "sha256": "4f3571340ac51a8422365ae5f2320d51348add28f62416263c4fe7074412f250",
-      "bytes": 3863
+      "sha256": "cd098fd106145c1452b41fa2f68b12d5af5f415e3ccdc631fbaa2615698c0467",
+      "bytes": 3867
     },
     {
       "path": "site.css",
@@ -2938,8 +2938,8 @@
     },
     {
       "path": "study.html",
-      "sha256": "9f5b5ee3034521bc182e7d8cb5cfcab86c384ef5f1cade42b8063c6aa6c12f94",
-      "bytes": 5016
+      "sha256": "3a5874451f2023a59b797533d7cad5b9c31189a0f60e043f561dfb1f03202d2c",
+      "bytes": 5020
     },
     {
       "path": "summary.css",
@@ -3525,6 +3525,36 @@
       "path": "theory/4-37.html",
       "sha256": "706bfec57858da7a11c1a64df11ed2d2ad2f02fbc5859d710a8c4bb2abf95107",
       "bytes": 20472
+    },
+    {
+      "path": "practice-challenges.css",
+      "sha256": "1c45268069ec50e84e4042b548d664ab85046d5e1f6a878523a6d5de8e34defc",
+      "bytes": 8641
+    },
+    {
+      "path": "practice-challenges.mjs",
+      "sha256": "4106440ae4a82b0cfce019f5d53a0a976799e76207a4a8c41a3c822786c43ac6",
+      "bytes": 12655
+    },
+    {
+      "path": "question-evidence-data.mjs",
+      "sha256": "5f3bcd4342538ef7f7be0ce0c9046c32d3b1e4256f3d5da13d308417a7f9f6f1",
+      "bytes": 31022
+    },
+    {
+      "path": "question-evidence.css",
+      "sha256": "e130d0dff007cf7ef0fd18d7dd232d2ed3ffc7b860e6d9c7d0c662fb657e7f8e",
+      "bytes": 2667
+    },
+    {
+      "path": "question-evidence.mjs",
+      "sha256": "1673257490ed576f1c0f710a9f5b0af927d18e16844b370a333519c320460bcc",
+      "bytes": 5235
+    },
+    {
+      "path": "question-profiles.mjs",
+      "sha256": "f646333477e58e5fde226e1c57fa8e14a9b5bcb3b6367b5664c946755fe7c055",
+      "bytes": 4794
     }
   ],
   "reviewed_on": "2026-11-04",
@@ -3553,5 +3583,26 @@
   "practicalExamples": 6,
   "practicalFigures": 2,
   "practicalIndex": "practical/index.html",
-  "practicalHelpDirVersion": 1
+  "practicalHelpDirVersion": 1,
+  "practiceProfiles": {
+    "reviewedOn": "2026-11-21",
+    "questions": 108,
+    "axes": [
+      "concept",
+      "trap"
+    ],
+    "examFrequency": "unrated",
+    "basis": "editorial reading of existing question conditions and explanations; no measured learner error rates"
+  },
+  "questionEvidence": {
+    "sourceCheckedOn": "2026-11-21",
+    "topicMappingReviewedOn": "2026-11-23",
+    "units": [
+      "external related item reference rate",
+      "reconstruction corpus related type-group session count"
+    ],
+    "ownQuestionPopulationRate": null,
+    "publicRelease": true,
+    "publishedOn": "2026-11-26"
+  }
 }

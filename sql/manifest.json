@@ -38,13 +38,13 @@
     },
     {
       "file": "experiments.html",
-      "sha256": "84354773df8b7cc1667dedf5c7b5715c93977b87fc02a02811079525feb29669",
-      "bytes": 3866
+      "sha256": "249223dba05187ab672bc0b133d3b218725e3a54ca48bbff76d1997a4ec1b9c8",
+      "bytes": 3870
     },
     {
       "file": "index.html",
-      "sha256": "23b226ce79e49128c0873c34c91b420df0aa3c376c319c78795b38a5c03e20ae",
-      "bytes": 4202
+      "sha256": "87af4494f714676cb230acb7b48355697271e162a5250581b01e3eed3ea5bdfd",
+      "bytes": 4206
     },
     {
       "file": "lab.css",
@@ -68,8 +68,8 @@
     },
     {
       "file": "learning.mjs",
-      "sha256": "fe7f1809e6b6b903228b110cad2663667cb15c6fbc46a230b46107cb0919892b",
-      "bytes": 31456
+      "sha256": "7512c16c6455698d95869848cecbfe59d428bdc511810b738381a736a3dfdddc",
+      "bytes": 27927
     },
     {
       "file": "lesson-progress.mjs",
@@ -208,8 +208,8 @@
     },
     {
       "file": "practice.html",
-      "sha256": "9a0bdf88407d7569bbf2d9df19ba0e0df08e5e37b61eafdc16d53ecdff190590",
-      "bytes": 3273
+      "sha256": "a027d0017d7bd09e606768d601af9d72c7c0a7a8f038530d55c047e05b261ff1",
+      "bytes": 3417
     },
     {
       "file": "progress.mjs",
@@ -233,13 +233,13 @@
     },
     {
       "file": "review.html",
-      "sha256": "93b1426d1fd9f3b8ffdd4dc4d6bfa90dde6ec594fefcdddc9491a4cf2bdc9a61",
-      "bytes": 3271
+      "sha256": "8f72454ba536c08058686c2ed93f8113bb0fee6274d55e12c67953dc1efa4071",
+      "bytes": 3275
     },
     {
       "file": "study.html",
-      "sha256": "69ec6d025dc1d094ffc95a485dc96c8ef2a407986b190122142a2625978d3483",
-      "bytes": 4216
+      "sha256": "da1c9c2366923c0bd68c26861e1986306e1e30713f70d0265348ee38094b73b5",
+      "bytes": 4220
     },
     {
       "file": "theory-links.json",
@@ -490,6 +490,36 @@
       "file": "yearly.mjs",
       "sha256": "cd5d39830e7682bb6bf4048772b07cb4aaebcbb17c1ec4a1888d8aa7ea824a1c",
       "bytes": 7089
+    },
+    {
+      "file": "practice-challenges.css",
+      "sha256": "bf8fb8f457b73986bcd94a2db5845eb4925900e8c857c05e2f01ea1973cf57df",
+      "bytes": 6783
+    },
+    {
+      "file": "practice-picker.mjs",
+      "sha256": "d9ff4dd3947882a8430a092d90c5cacaa70f3ad6f9ea7623823a18ce6238f528",
+      "bytes": 11339
+    },
+    {
+      "file": "question-evidence-data.mjs",
+      "sha256": "1c0d3d20518071186ae6aa52fdf12cd5e64ef443942f8a213bc3cf9f31fdfa65",
+      "bytes": 13477
+    },
+    {
+      "file": "question-evidence.css",
+      "sha256": "e130d0dff007cf7ef0fd18d7dd232d2ed3ffc7b860e6d9c7d0c662fb657e7f8e",
+      "bytes": 2667
+    },
+    {
+      "file": "question-evidence.mjs",
+      "sha256": "66a25c28b98bc547d531ce7b0d949dd0b1d3e7bbfc256365c98c20d7b6e21707",
+      "bytes": 5235
+    },
+    {
+      "file": "question-profiles.mjs",
+      "sha256": "bbb345cf34136823c4ab11d39ee12725ae5a02416a5f1f80c1d6f938be472acd",
+      "bytes": 5631
     }
   ],
   "visualLearningVersion": 2,
@@ -504,5 +534,26 @@
   "yearlyYears": 7,
   "yearlyPoints": 10,
   "yearlyPastRounds": 26,
-  "yearlyEvidenceAsOf": "2026-11-04"
+  "yearlyEvidenceAsOf": "2026-11-04",
+  "practiceProfiles": {
+    "reviewedOn": "2026-11-20",
+    "questions": 103,
+    "axes": [
+      "concept",
+      "trap"
+    ],
+    "examFrequency": "unrated",
+    "basis": "editorial review of question conditions and reasoning; not observed difficulty"
+  },
+  "questionEvidence": {
+    "sourceCheckedOn": "2026-11-21",
+    "topicMappingReviewedOn": "2026-11-23",
+    "units": [
+      "external related item reference rate",
+      "reconstruction corpus related type-group session count"
+    ],
+    "ownQuestionPopulationRate": null,
+    "publicRelease": true,
+    "publishedOn": "2026-11-26"
+  }
 }
