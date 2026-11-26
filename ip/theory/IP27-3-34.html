@@ -1,43 +1,85 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>finally의 새 반환과 예외가 남기는 결과 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=1ab9c8f17660" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipp-style="" href="../programming.css?v=f09a674c260e" rel="stylesheet"/><style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>finally의 return과 throw가 정하는 최종 결과 · 정처기 공부방</title><meta content="정보처리기사 2027 필기의 핵심 이론과 자체 문제, 조건 체험" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600&amp;display=swap" rel="stylesheet"/><link href="../site.css?v=1ab9c8f17660" rel="stylesheet"/><link href="../favicon.svg" rel="icon"/><link data-ipp-style="" href="../programming.css?v=f09a674c260e" rel="stylesheet"/><style data-site-rights-style="1">.of-rights{box-sizing:border-box;max-width:1100px;margin:24px auto 0;padding:20px 24px 24px;border-top:1px solid #d7d7d2;font-family:inherit;font-size:12px;line-height:1.8;letter-spacing:normal;color:inherit;overflow-wrap:anywhere}.of-rights p{margin:0 0 4px;font-size:12px;line-height:1.8}.of-rights a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.of-rights{padding:18px 20px}}@media print{.of-rights{break-inside:avoid}}</style>
+<link data-of-learning-theme="1" rel="stylesheet" href="/home-assets/learning-theme.css?v=cedb46e7302d"/>
+<script data-of-code-style="1" defer src="/home-assets/learning-code.js?v=7325de271343"></script>
 </head>
-<body data-page="theory" data-topic="IP27-3-34"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-34 · 이론 읽기</p><h1>finally의 새 반환과 예외가 남기는 결과</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-3-34" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-34">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p>finally가 정상 종료하는지, 새 return이나 throw로 끝나는지 먼저 구분한다.</p><aside class="ipp-discovery" data-ipp-owned=""><h3>Java 이론·문제·실습 모아 보기</h3><p>변수·객체·실행 순서를 함께 살펴보고 같은 개념의 문제로 이어갑니다.</p><div class="ipp-links"><a href="../programming.html#java-theory">프로그래밍 학습 →</a><a href="../practice.html?topic=IP27-3-34">관련 문제풀이</a></div></aside>
+<body data-page="theory" data-topic="IP27-3-34" data-learning-course="ip"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="header"><div class="container header-inner"><a aria-label="ourfuture studio 통합 홈" class="brand" href="/"><span class="brand-wordmark"><img alt="ourfuture studio" height="391" src="../../home-assets/ourfuture-wordmark.png" width="1678"/><i aria-hidden="true"></i></span><span class="brand-course">정처기 공부방<small>SYSTEM NOTES</small></span></a><nav aria-label="주 메뉴" class="nav" tabindex="0"><a href="../index.html">홈</a><a aria-current="page" class="active" href="../study.html">과목별 핵심</a><a href="../practice.html">문제풀이</a><a href="../experiments.html">조건 체험</a><a href="../review.html">오답노트</a><a data-ipv-nav="" href="../visual.html">그림 체험</a><a data-ipp-nav="" href="../programming.html">프로그래밍</a></nav><span aria-hidden="true" class="nav-scroll-hint">메뉴 더 보기 →</span><span class="local">로그인 없이 공부</span></div></header><main class="container" id="main" tabindex="-1"><p class="eyebrow">3과목 · 3-34 · 이론 읽기</p><h1>finally의 return과 throw가 정하는 최종 결과</h1><div class="actions"><a class="button primary" href="../practice.html?topic=IP27-3-34" id="question-count">관련 문제 1개</a><a class="button" href="../lab.html?topic=IP27-3-34">조건 바꿔 체험</a></div><div class="topic-layout"><article class="theory"><p><code>try</code>에서 <code>return</code>을 만나도 호출자에게 값을 전달하기 전에 <code>finally</code>를 실행한다. <code>finally</code>가 끝나는 방식에 따라 최종 반환값이나 전달되는 예외가 달라진다.</p><aside class="ipp-discovery" data-ipp-owned=""><h3>Java 이론·문제·실습 모아 보기</h3><p>변수·객체·실행 순서를 함께 살펴보고 같은 개념의 문제로 이어갑니다.</p><div class="ipp-links"><a href="../programming.html#java-theory">프로그래밍 학습 →</a><a href="../practice.html?topic=IP27-3-34">관련 문제풀이</a></div></aside>
 <h2 id="section-1">핵심 이론</h2>
-<p>Java에서 return과 throw는 현재 문장의 정상 진행을 끝내는 비정상 완료 이유이다. 여기서 비정상 완료는 반드시 오류가 발생했다는 뜻이 아니라 정상적으로 다음 문장으로 진행하지 않는다는 명세 용어이다. try에서 return을 만나도 해당 try-finally의 finally를 실행하는 규칙이 있다.</p>
-<p>finally가 정상 완료하면 앞서 보류된 return 또는 throw의 이유를 계속 전달한다. finally가 새 return이나 throw로 비정상 완료하면 이전 이유는 버려지고 새 이유가 결과를 정한다.</p>
-<p>이 때문에 finally에서 무조건 return하는 코드는 이전 예외까지 가릴 수 있다. 프로세스 강제 종료·VM 중단·끝나지 않는 실행까지 포함해 finally가 언제나 실행된다고 일반화하지 않는다. 아래 실험은 일반적인 메서드 호출과 정상 VM 실행에 고정한다.</p>
+<p><code>finally</code>가 <code>return</code>이나 <code>throw</code>를 실행하지 않고 정상적으로 끝나면, <code>try</code> 또는 <code>catch</code>에서 이미 정해진 반환값이나 전파 중인 예외를 그대로 유지한다.</p>
+<p>반대로 <code>finally</code>에서 <code>return 8;</code>이 실행되면, <code>try</code>에서 반환하려던 값이 3이더라도 메서드는 8을 반환한다. <code>finally</code>에서 <code>throw</code>가 실행되면, 반환값을 전달하는 대신 그 예외를 호출자에게 전달한다.</p>
+<p>Java 명세는 <code>return</code>이나 <code>throw</code>처럼 제어 흐름을 다른 곳으로 옮기는 종료를 <strong>비정상 완료(Abrupt Completion)</strong>라고 부른다. 여기서 ‘비정상’은 반드시 실행 오류가 발생했다는 뜻이 아니다. 이 글에서는 추상적인 ‘이유의 대체’ 대신 실제로 유지되는 반환값과 전달되는 예외를 구분한다.</p>
+<p><code>finally</code>의 <code>return</code>은 앞서 발생한 예외까지 가릴 수 있으므로 반환값을 바꾸는 용도로 사용하지 않는 편이 안전하다. 아래 예제는 동작 규칙을 비교하기 위한 교육용 코드다.</p>
 <h2 id="section-2">작은 예제로 확인하기</h2>
-<p>Java SE 17, Main.java로 저장한다. 외부 입력은 없다. f의 try는 return 3, finally는 return 8로 끝난다. main이 f의 반환값을 한 번 출력한다.</p>
-<div aria-label="예제 조건과 값의 표" class="table-wrap" role="region" tabindex="0"><table>
+<p>Java SE 17 기준이다. 아래 코드를 <code>Main.java</code>로 저장한다. 외부 입력은 없으며 <code>main</code>이 <code>f()</code>의 반환값을 한 번 출력한다.</p>
+<pre><code class="language-java">public class Main {
+    static int f() {
+        try {
+            return 3;
+        } finally {
+            return 8;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(f());
+    }
+}
+</code></pre>
+<div aria-label="finally의 실행 순서와 결과 비교" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
-<th scope="col">조건 또는 단계</th>
-<th scope="col">판단 또는 값</th>
+<th>실행 단계</th>
+<th>실제로 일어나는 일</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>try return3</td>
-<td>반환 3 보류</td>
+<td><code>try</code>에서 <code>return 3;</code> 실행</td>
+<td>반환할 값 3을 계산하지만, 호출자에게 전달하기 전에 <code>finally</code>를 실행한다.</td>
 </tr>
 <tr>
-<td>finally return8</td>
-<td>새반환 8이앞이유대체</td>
+<td><code>finally</code>에서 <code>return 8;</code> 실행</td>
+<td>반환하려던 3은 전달되지 않고, 메서드가 반환할 값이 8로 결정된다.</td>
 </tr>
 <tr>
-<td>최종호출결과</td>
-<td>8</td>
+<td><code>main</code>에서 <code>f()</code>의 결과 출력</td>
+<td>최종 반환값인 8을 한 번 출력한다. <code>return</code> 자체는 출력문이 아니다.</td>
 </tr>
 </tbody>
 </table></div>
-<p>finally 실행 여부와 최종 반환값의 보존 여부를 별도로 확인한다.</p>
+<p>출력은 다음과 같다.</p>
+<pre data-no-highlight="true"><code class="language-text">8
+</code></pre>
+<h3>finally의 마지막 동작만 바꾸어 비교하기</h3>
+<div aria-label="finally의 실행 순서와 결과 비교" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>finally의 동작</th>
+<th>try의 <code>return 3;</code> 이후 최종 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int local = 8;</code>을 실행하고 정상 종료</td>
+<td>지역 변수 대입은 반환값을 바꾸지 않으므로 3을 반환한다.</td>
+</tr>
+<tr>
+<td><code>return 8;</code> 실행</td>
+<td>3 대신 8을 반환한다.</td>
+</tr>
+<tr>
+<td><code>throw new IllegalStateException("x");</code> 실행</td>
+<td>3을 반환하지 않고 <code>IllegalStateException</code>을 호출자에게 전달한다. 연결된 조건 체험의 <code>main</code>은 이 예외를 잡아 클래스 이름을 출력한다.</td>
+</tr>
+</tbody>
+</table></div>
 <h2 id="section-3">다시 떠올릴 단서</h2>
-<p>finally가 정상 끝나면 앞 이유를 유지하고 새 return·throw면 그 이유가 남는다.</p>
+<p>finally가 정상 완료하면 기존 결과를 유지한다. finally에서 return이나 throw가 실행되면 그 결과를 따른다.</p>
 <h2 id="section-4">적용 범위</h2>
-<p>Java SE 17 일반 실행이다. System.exit·강제 종료·무한 반복·try-with-resources는 제외한다.</p>
+<p>Java SE 17의 일반적인 메서드 호출을 비교한다. <code>System.exit</code>, 프로세스·VM 강제 종료, 끝나지 않는 실행, <code>try-with-resources</code>는 이 예제의 범위에서 제외한다. 모든 상황에서 <code>finally</code>가 반드시 실행된다고 일반화하지 않는다.</p>
 <h2 id="section-5">근거와 확인 범위</h2>
 <ul>
-<li><a href="https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html" rel="noopener noreferrer" target="_blank">Java SE 17 JLS Blocks and Statements</a> — 14.20.2 try-finally의 정상 완료와 비정상 완료 분기. 확인일 2026-10-31.</li>
-</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-034">finally의 새 반환과 예외가 남기는 결과 · main의 출력은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=bbdb8d916d58586f" type="module"></script><aside class="of-rights" aria-label="저작권·이용 안내" data-site-rights="1"><p>© 2026 ourfuture studio. 학습자료의 무단 복제·재배포·판매를 금합니다.</p><p>법령상 허용되는 이용과 별도 라이선스는 예외입니다. <a href="/copyright.html">저작권·이용 안내 ↗</a></p></aside>
+<li><a href="https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html#jls-14.20.2">Java SE 17 JLS §14.20.2 — try-finally의 실행 규칙</a>: finally의 정상 완료 시 기존 제어 흐름 유지와, finally의 return·throw 실행 시 최종 제어 흐름 결정 규칙을 확인했다. 공식 문서 확인일: 2026-11-26.</li>
+</ul></article><aside class="topic-sidebar"><h2 style="font-size:17px;margin-top:0">이 글의 순서</h2><ul><li><a href="#section-1">핵심 이론</a></li><li><a href="#section-2">작은 예제로 확인하기</a></li><li><a href="#section-3">다시 떠올릴 단서</a></li><li><a href="#section-4">적용 범위</a></li><li><a href="#section-5">근거와 확인 범위</a></li></ul><div class="topic-tools" id="topic-tools"></div><h3>관련 문제</h3><ul id="related-questions"><li><a href="../practice.html?question=IP27-Q3-034">finally의 새 반환과 예외가 남기는 결과 · main의 출력은?</a></li></ul></aside></div><p class="notice" hidden="" id="storage-warning" role="status"></p></main><footer class="footer"><div class="container"><a href="../../">ourfuture studio ↗</a><a href="https://www.q-net.or.kr/pageLink.do?link=cst/cstReport&amp;jmCd=1320&amp;mcrtrNo=1453" rel="noopener noreferrer" target="_blank">2027~2029 공식 출제기준 ↗</a><p>직접 만든 교육용 문제입니다. 공식 기출문항·합격 예측 서비스가 아닙니다. 읽음·북마크·답안 기록은 이 브라우저에 저장하며 서버로 전송하지 않습니다. 이론과 체험을 여는 것만으로 문제풀이 기록이 생기지는 않습니다.</p></div></footer><script src="../app.mjs?v=a4514dd754a97756" type="module"></script><aside aria-label="저작권·이용 안내" class="of-rights" data-site-rights="1"><p>© 2026 ourfuture studio. 학습자료의 무단 복제·재배포·판매를 금합니다.</p><p>법령상 허용되는 이용과 별도 라이선스는 예외입니다. <a href="/copyright.html">저작권·이용 안내 ↗</a></p></aside>
 </body></html>

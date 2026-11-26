@@ -1847,7 +1847,7 @@
       "IP27-3-34"
     ],
     "subject": 3,
-    "title": "finally의 새 반환과 예외가 남기는 결과 · main의 출력은?",
+    "title": "finally의 return과 throw가 정하는 최종 결과 · main의 출력은?",
     "origin": "original",
     "sourceExamYear": null,
     "sourceSession": null,

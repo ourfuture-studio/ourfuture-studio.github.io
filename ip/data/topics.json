@@ -1229,9 +1229,9 @@
     "id": "IP27-3-34",
     "subject": 3,
     "code": "3-34",
-    "title": "finally의 새 반환과 예외가 남기는 결과",
-    "lead": "finally가 정상 종료하는지, 새 return이나 throw로 끝나는지 먼저 구분한다.",
-    "cue": "finally가 정상 끝나면 앞 이유를 유지하고 새 return·throw면 그 이유가 남는다.",
+    "title": "finally의 return과 throw가 정하는 최종 결과",
+    "lead": "try가 정한 반환값은 finally를 실행한 뒤 호출자에게 전달된다.",
+    "cue": "finally가 정상 완료하면 기존 결과를 유지한다. finally에서 return이나 throw가 실행되면 그 결과를 따른다.",
     "experimentTitle": "조건을 바꾸어 결과 비교하기",
     "relatedIds": [
       "IP27-3-18"

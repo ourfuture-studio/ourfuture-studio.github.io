@@ -1,4 +1,4 @@
-import {evidenceMarkup,evidenceGuide,matchesEvidence,normalizeEvidenceFilter} from './question-evidence.mjs?v=37f1e52741e0';
+import {evidenceMarkup,evidenceGuide,matchesEvidence,normalizeEvidenceFilter} from './question-evidence.mjs?v=af4085d65e19';
 import {CONCEPT_LEVELS,TRAP_LEVELS,CHALLENGES,questionProfile,normalizeProfileLevel,matchesProfile} from './question-profiles.mjs?v=aa2007bca57d';
 
 export function profileBadges(id,esc){

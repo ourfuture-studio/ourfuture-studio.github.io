@@ -1593,8 +1593,9 @@ export const EVIDENCE = {
     },
     "IP27-Q3-034": {
       "error": null,
-      "frequency": "S4-PY",
-      "relation": null
+      "frequency": "S4-JAVA",
+      "relation": null,
+      "frequencyMappingReviewedOn": "2026-11-26"
     },
     "IP27-Q3-C101": {
       "error": null,

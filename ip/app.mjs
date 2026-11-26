@@ -1,4 +1,4 @@
-import {mountChallengePicker,profileBadges,profileDescription,returnToPickerUrl} from './practice-challenges.mjs?v=d30ad6a78148';
+import {mountChallengePicker,profileBadges,profileDescription,returnToPickerUrl} from './practice-challenges.mjs?v=e35de969aca1';
 import {createStore} from './progress.mjs?v=3339715642ca12c2';
 import {validateQuestion,grade,isAnswered,answerLabel,filterIndex} from './bank.mjs?v=a71b32bec1d038a7';
 const $=s=>document.querySelector(s),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

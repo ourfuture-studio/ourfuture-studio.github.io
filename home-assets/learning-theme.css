@@ -1,0 +1,33 @@
+@font-face{font-family:"JetBrains Mono";src:url("./learning-code/JetBrainsMono-Regular.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+body[data-learning-course]{--answer-blue:#1d4ed8;--answer-blue-bg:#edf3ff;--answer-blue-border:#557cdb;--answer-red:#b42332;--answer-red-bg:#fff0f1;--answer-red-border:#d95c68;--code-font:"JetBrains Mono",Consolas,"IBM Plex Mono","Malgun Gothic",monospace}
+/* White paper and navy text match the SQLD/bigdata reading surfaces. */
+body[data-learning-course="ip"]{--bg:#fff;--paper:#fff;--ink:#1b2340;--muted:#5b5f67;--line:#e1e5e9;--accent:#343edb;--light:#f1f3ff;--rust:#b42332;--mono:var(--code-font);background:#fff;color:#1b2340;color-scheme:light}
+body[data-learning-course="ip"] .header{background:#fff}
+body[data-learning-course] :is(.quiz-choice.is-correct,.choice.correct){background:var(--answer-blue-bg);border:2px solid var(--answer-blue-border);color:#1b2340}
+body[data-learning-course] :is(.quiz-choice.is-wrong,.choice.wrong){background:var(--answer-red-bg);border:2px solid var(--answer-red-border);color:#1b2340}
+body[data-learning-course] :is(.quiz-choice.is-correct,.choice.correct) .answer-mark{color:var(--answer-blue)}
+body[data-learning-course] :is(.quiz-choice.is-wrong,.choice.wrong) .answer-mark{color:var(--answer-red)}
+body[data-learning-course] :is(.answer-feedback,.feedback.correct),body[data-learning-course="ip"] .feedback{background:var(--answer-blue-bg);border:1px solid #c7d7fb;border-left:4px solid var(--answer-blue);color:#1b2340}
+body[data-learning-course] :is(.answer-feedback.wrong,.feedback.wrong,.feedback.incorrect){background:var(--answer-red-bg);border:1px solid #f0c1c7;border-left:4px solid var(--answer-red);color:#1b2340}
+body[data-learning-course] :is(.answer-feedback,.feedback.correct) h3,body[data-learning-course="ip"] .feedback h3{color:var(--answer-blue)}
+body[data-learning-course] :is(.answer-feedback.wrong,.feedback.wrong,.feedback.incorrect) h3{color:var(--answer-red)}
+body[data-learning-course] .quiz-overview :is(span,button).correct{background:var(--answer-blue-bg);color:var(--answer-blue);border-color:var(--answer-blue-border)}
+body[data-learning-course] .quiz-overview :is(span,button).wrong{background:var(--answer-red-bg);color:var(--answer-red);border-color:var(--answer-red-border)}
+body[data-learning-course] .card-state.wrong,body[data-learning-course] .summary-item:not(.good)>.icon{color:var(--answer-red)}
+body[data-learning-course] .summary-item.good>.icon{color:var(--answer-blue)}
+/* Code is a reading surface, separate from the blue/red answer semantics. */
+body[data-learning-course] :is(pre,code,.ipp-code,.ipp-java-code,.ipp-c-code,.ipp-code-line,.ipp-java-line,.ipp-c-line,.ipp-py-line){font-family:var(--code-font);font-variant-ligatures:none}
+body[data-learning-course] :is(pre,pre.ipp-code,pre.ipp-java-code,pre.ipp-c-code){background:#f8f9fc;color:#1b2340;border:1px solid #dce2ed;border-left:3px solid #728bd0;border-radius:6px;font-size:14px;line-height:1.9;tab-size:4;max-width:100%;overflow-x:auto}
+body[data-learning-course] pre code{font:inherit;color:inherit;background:transparent;padding:0;white-space:inherit}
+body[data-learning-course] .code-question .choice>span:not(.answer-mark),body[data-learning-course] :is(.theory table code,.trace code,.result code){font-family:var(--code-font)}
+body[data-learning-course] .token{font:inherit;text-shadow:none}
+body[data-learning-course] .token.comment,body[data-learning-course] .token.prolog,body[data-learning-course] .token.doctype{color:#68727f;font-style:italic}
+body[data-learning-course] .token.keyword,body[data-learning-course] .token.boolean,body[data-learning-course] .token.builtin{color:#0033b3}
+body[data-learning-course] .token.string,body[data-learning-course] .token.char,body[data-learning-course] .token.attr-value{color:#06733c}
+body[data-learning-course] .token.number,body[data-learning-course] .token.constant{color:#7050a5}
+body[data-learning-course] .token.function,body[data-learning-course] .token.function-variable{color:#805400}
+body[data-learning-course] .token.class-name,body[data-learning-course] .token.annotation{color:#6b4393}
+body[data-learning-course] .token.operator,body[data-learning-course] .token.punctuation{color:#344155}
+body[data-learning-course] :is(.ipp-java-line-active,.ipp-c-current,.ipp-py-line.is-current,.ipp-code-line.is-active){background:#e8efff;border-left-color:#4265bd}
+body[data-learning-course] :is(.ipp-output,.ipp-c-output) pre{background:transparent;color:inherit;border:0;padding:0}
+@media(max-width:650px){body[data-learning-course] :is(pre,pre.ipp-code,pre.ipp-java-code,pre.ipp-c-code){font-size:13px}body[data-learning-course] :is(pre,code){word-break:normal}}

@@ -1,4 +1,4 @@
-import {EVIDENCE} from './question-evidence-data.mjs?v=04d87329667e';
+import {EVIDENCE} from './question-evidence-data.mjs?v=7d7ce3ccaa7d';
 
 // The learner's record, editorial difficulty and external evidence are separate.
 export {EVIDENCE};
@@ -25,7 +25,7 @@ export function evidenceMarkup(id,esc){
   <div class="${frequency?'has-evidence':'evidence-unknown'}"><dt>수집자료 내 빈도</dt><dd>${frequency?`관련 유형군 <strong>${counts}</strong>${frequency.sessionHits===0?' <small>범위 내 미등장</small>':''}`:'집계·연결 미확인'}</dd></div></dl>
   ${frequency?`<p class="evidence-type">${esc(frequency.topic)}${EVIDENCE.course==='bigdata'?' · ML 선별 범위':' · 과거 5과목 자료'}</p>`:''}
   <details class="evidence-details"><summary>출처와 확인 범위</summary><div class="evidence-detail-body">
-   <p class="evidence-dates">자료 확인·재집계 ${EVIDENCE.checkedOn}<br>우리 문항과 주제 연결 검토 ${EVIDENCE.mappedOn}</p>
+   <p class="evidence-dates">자료 확인·재집계 ${EVIDENCE.checkedOn}<br>우리 문항과 주제 연결 검토 ${mapping.frequencyMappingReviewedOn||EVIDENCE.mappedOn}</p>
    <div class="evidence-block"><h3>외부 오답 참고</h3>${error?`
     <dl><dt>출처</dt><dd>${link(error.url,error.provider+' · '+error.topic,esc)}${error.statisticsUrl!==error.url?'<br>'+link(error.statisticsUrl,'표시 오답 통계',esc):''}</dd>
     <dt>확인 범위</dt><dd>${esc(error.scope)}</dd>
@@ -41,5 +41,5 @@ export function evidenceMarkup(id,esc){
  </section>`;
 }
 export function evidenceGuide(){
- return `<div class="evidence-guide"><strong>외부 근거는 별도로 읽어요.</strong><p>‘개념·함정’은 문항을 읽고 나눈 편집 가이드입니다. ‘외부 오답 참고’는 다른 플랫폼의 관련 문항 값이고, ‘수집자료 내 빈도’는 복원자료의 관련 유형군이 등장한 회차 수입니다. 서로 다른 값이므로 합산해 난이도를 매기지 않습니다.</p><p>자료 확인·재집계 ${EVIDENCE.checkedOn} · 문항 연결 검토 ${EVIDENCE.mappedOn}. 카드와 문제의 ‘출처와 확인 범위’를 펼치면 출처, 집계 범위, 연결 이유를 따로 볼 수 있습니다. 미확인은 쉬움·저빈도를 뜻하지 않습니다.</p></div>`;
+ return `<div class="evidence-guide"><strong>외부 근거는 별도로 읽어요.</strong><p>‘개념·함정’은 문항을 읽고 나눈 편집 가이드입니다. ‘외부 오답 참고’는 다른 플랫폼의 관련 문항 값이고, ‘수집자료 내 빈도’는 복원자료의 관련 유형군이 등장한 회차 수입니다. 서로 다른 값이므로 합산해 난이도를 매기지 않습니다.</p><p>자료 확인·재집계 ${EVIDENCE.checkedOn} · 문항 연결 검토 ${mapping.frequencyMappingReviewedOn||EVIDENCE.mappedOn}. 카드와 문제의 ‘출처와 확인 범위’를 펼치면 출처, 집계 범위, 연결 이유를 따로 볼 수 있습니다. 미확인은 쉬움·저빈도를 뜻하지 않습니다.</p></div>`;
 }
